@@ -2,7 +2,7 @@
 
 GitHub: [#3](https://github.com/valtronforever/personal-guitar-coach/issues/3)
 
-Статус: `todo`
+Статус: `done`
 Етап: MVP
 Залежності: 01
 
@@ -33,4 +33,10 @@ GitHub: [#3](https://github.com/valtronforever/personal-guitar-coach/issues/3)
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- Реалізовано Pitch, FretPosition, TunedString, TuningProfile, Fingering, MusicalEvent, Exercise, ResolvedEvent та спільний MusicalTime (PPQ 960).
+- Standard/Drop D/D Standard, reference A4, spelling/октави, muted/open/fretted, fixedTuning/followsInstrument та monophonic/display-only правила узгоджено.
+- Усі source-моделі перевіряють інваріанти також при Codable-декодуванні; derived pitches не мають незалежного decoder.
+- 17 package tests у 3 suites пройдено; pitch round-trip окремо включає 15 MIDI-випадків × 4 reference values. Негативні fixtures перевіряють NaN, overflow, неправильні лади/строї/послідовності/JSON.
+- Debug/Release .app зібрано й підпис перевірено. Domain не імпортує SwiftUI/AVFoundation/CoreAudio.
+- [Local review](../docs/reviews/03-review.md) містить перевірені ризики та виправлення.
+- Гілка: `codex/03-music-domain`; PR та merge evidence — на GitHub. Апаратні перевірки для чистих музичних правил не потрібні.
