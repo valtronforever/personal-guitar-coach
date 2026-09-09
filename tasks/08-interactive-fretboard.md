@@ -2,7 +2,7 @@
 
 GitHub: [#8](https://github.com/valtronforever/personal-guitar-coach/issues/8)
 
-Статус: `todo`
+Статус: `done`
 Етап: MVP
 Залежності: 03, 04, 06
 
@@ -33,4 +33,9 @@ GitHub: [#8](https://github.com/valtronforever/personal-guitar-coach/issues/8)
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- `FretboardModel` / `FretboardView`: Canonical positions, six strings, nut, 0–24 frets, horizontal scrolling and jump control; expected circles, selected squares, open ○, muted ×, pitch/octave and optional fingers. Detected pitch is a separate label without string attribution.
+- Native buttons provide 68×44 hit areas, hover descriptions, keyboard arrows and Space/Return selection, with localized accessible states. Mirroring changes only horizontal presentation.
+- Lesson steps update external highlights and clear them for rests. Instrument Settings includes a collapsible live preview of the selected tuning.
+- 42 core + 11 app tests pass; fixtures include Em, scale, mutes, all positions under Standard/Drop D and keyboard boundaries. Debug/Release builds, signature checks, project check and 156 en/uk keys pass.
+- Native CUA: rest/full-bar selection; six simultaneous open markers; Standard → Drop D updates only string 6; English/dark and Ukrainian/light, both orientations, fret 24 at minimum main-window width, and keyboard activation verified. Original preferences restored.
+- Local self-review and fixes: [08-review.md](../docs/reviews/08-review.md). Authored UI XCTest remains unexecuted locally (U07); final spoken VoiceOver/user walkthrough remains U05.

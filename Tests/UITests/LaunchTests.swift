@@ -44,4 +44,23 @@ final class LaunchTests: XCTestCase {
         let title = app.descendants(matching: .any)["screen.title"].firstMatch
         XCTAssertTrue((title.value as? String ?? title.label).contains("Твій прогрес"))
     }
+
+    @MainActor
+    func testLessonStepClearsExpectedMarkersForRest() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-app.language", "en"]
+        app.launch()
+        let lesson = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Meet your open strings")).firstMatch
+        XCTAssertTrue(lesson.waitForExistence(timeout: 10))
+        lesson.click()
+        let low = app.buttons["fretboard.string.6.fret.0"]
+        XCTAssertTrue(low.waitForExistence(timeout: 5))
+        XCTAssertEqual(low.value as? String, "Expected")
+        app.buttons["lesson.step.leave-space"].click()
+        XCTAssertEqual(low.value as? String, "Not selected")
+        app.buttons["lesson.step.play-the-bar"].click()
+        XCTAssertEqual(low.value as? String, "Expected")
+        XCTAssertEqual(app.buttons["fretboard.string.1.fret.0"].value as? String, "Expected")
+    }
+
 }

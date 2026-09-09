@@ -1,5 +1,6 @@
 import SwiftUI
 import Learning
+import Domain
 
 struct LessonLibraryView: View {
     @Environment(LessonLibraryStore.self) private var store
@@ -57,15 +58,18 @@ struct LessonLibraryView: View {
     private func issueKey(_ code: ContentIssueCode) -> String { "content.error.\(code.rawValue)" }
 }
 
-/// Text-only reading is usable before the interactive fretboard/timeline integration in task 10.
+/// Step-to-fretboard selection; shared timeline selection and restoration follow in task 10.
 struct LessonTextView: View {
     let lesson: LoadedLesson
+    @State private var selectedStepID: String?
+    @State private var selectedPosition: FretPosition?
     @Environment(AppSettings.self) private var settings
     @Environment(LocalDataStore.self) private var localData
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
 
     var body: some View {
         let text = lesson.text(for: language)
+        VStack(spacing: 0) {
         ScrollView {
             VStack(alignment: .leading, spacing: CoachLayout.padding) {
                 Text(verbatim: text.title).font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
@@ -81,8 +85,15 @@ struct LessonTextView: View {
                 ForEach(lesson.manifest.steps) { step in
                     if let copy = text.steps[step.id] {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(verbatim: copy.title).font(.title3.bold()).accessibilityAddTraits(.isHeader)
-                                .accessibilityIdentifier("lesson.step.\(step.id)")
+                            Button {
+                                selectedStepID = step.id
+                                selectedPosition = nil
+                            } label: {
+                                Label { Text(verbatim: copy.title).font(.title3.bold()) } icon: {
+                                    Image(systemName: selectedStepID == step.id ? "checkmark.circle.fill" : "circle")
+                                }
+                            }.buttonStyle(.plain).accessibilityIdentifier("lesson.step.\(step.id)")
+                                .accessibilityValue(Text(LocalizedStringKey(selectedStepID == step.id ? "fretboard.selected" : "fretboard.unmarked")))
                             Text(verbatim: copy.body).textSelection(.enabled)
                         }
                     }
@@ -92,6 +103,16 @@ struct LessonTextView: View {
             .padding(CoachLayout.padding)
             .frame(maxWidth: .infinity, alignment: .center)
         }
+        .frame(minHeight: 140)
+        Divider()
+        if let visual = try? lesson.visual(stepID: selectedStepID ?? lesson.manifest.steps[0].id, instrument: localData.preferences.instrument.tuning) {
+            FretboardView(model: FretboardModel(tuning: visual.tuning, orientation: localData.preferences.instrument.orientation,
+                positions: visual.positions.map(\.position), mutedStrings: visual.mutedStrings,
+                fingers: Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } })), selected: $selectedPosition)
+                .padding(16)
+        }
+        }
+        .onAppear { if selectedStepID == nil { selectedStepID = lesson.manifest.steps.first?.id } }
         .navigationTitle(text.title)
     }
 }
