@@ -1,7 +1,7 @@
 import AVFAudio
 import AudioToolbox
 
-/// A fixed-tempo output probe. Full transport/count-in is implemented in task 14.
+/// Fixed-tempo setup probe. Lessons and practice use the separate sample-scheduled TransportOutput.
 public actor ClickOutput {
     private var engine: AVAudioEngine?
     private var player: AVAudioPlayerNode?

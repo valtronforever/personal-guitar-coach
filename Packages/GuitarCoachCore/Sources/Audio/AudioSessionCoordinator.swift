@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public enum AudioPurpose: String, Sendable { case setup, tuner, practice, calibration }
+public enum AudioPurpose: String, Sendable { case setup, tuner, practice, calibration, preview }
 public enum AudioSessionPhase: Equatable, Sendable {
     case idle, requestingPermission, starting, running
     case interrupted(AudioBackendError), failed(AudioBackendError)
@@ -17,6 +17,8 @@ public struct AudioCoordinatorSnapshot: Sendable, Equatable {
     public let meters: CaptureSnapshot?
     public let isClicking: Bool
     public let isStartingClick: Bool
+    public let transportRequestID: UUID?
+    public let transport: TransportPlaybackSnapshot?
     public let routeRevision: UInt64
 }
 
@@ -44,6 +46,8 @@ public actor AudioSessionCoordinator {
     private var lastFrameTime: ContinuousClock.Instant?
     private var lastFrameCount: UInt64 = 0
     private var isReading = false
+    private var transportRequestID: UUID?
+    private var transport: TransportPlaybackSnapshot?
 
     public init(runtime: any AudioRuntime = LiveAudioRuntime(), permissions: any AudioPermissionProviding = SystemAudioPermission()) {
         self.runtime = runtime; self.permissions = permissions
@@ -52,7 +56,7 @@ public actor AudioSessionCoordinator {
     public func snapshot() -> AudioCoordinatorSnapshot {
         AudioCoordinatorSnapshot(selection: selection, devices: devices, capabilities: capabilities, permission: permission,
             phase: phase, purpose: purpose, meters: meters, isClicking: isClicking,
-            isStartingClick: isStartingClick, routeRevision: routeRevision)
+            isStartingClick: isStartingClick, transportRequestID: transportRequestID, transport: transport, routeRevision: routeRevision)
     }
 
     public func configure(_ next: AudioRouteSelection) async {
@@ -89,7 +93,7 @@ public actor AudioSessionCoordinator {
                 await stop(reason: .routeChanged)
             } else if let activeOutput, !found.contains(where: { sameStream($0, activeOutput) && $0.isAlive }) {
                 await stop(reason: .routeChanged)
-            } else if phase == .running && authorization != .authorized {
+            } else if activeInput != nil && phase == .running && authorization != .authorized {
                 await stop(reason: .permissionDenied)
             }
         } catch {
@@ -101,6 +105,7 @@ public actor AudioSessionCoordinator {
     }
 
     public func start(purpose requested: AudioPurpose) async throws {
+        guard requested != .preview else { throw AudioBackendError.invalidFormat }
         guard purpose == nil, !phase.isStarting, !isStartingClick, !isClicking || requested == .setup else { throw AudioBackendError.inUse }
         generation &+= 1
         let ticket = generation, route = selection
@@ -152,11 +157,11 @@ public actor AudioSessionCoordinator {
     public func stop(reason: AudioBackendError? = nil) async {
         generation &+= 1; clickGeneration &+= 1
         phase = reason.map(AudioSessionPhase.interrupted) ?? .idle
-        purpose = nil; activeInput = nil; activeOutput = nil
-        if reason == nil { meters = nil }
+        purpose = nil; activeInput = nil; activeOutput = nil; transportRequestID = nil
+        if reason == nil { meters = nil; transport = nil }
         isClicking = false; isStartingClick = false; lastFrameTime = nil; lastFrameCount = 0
         let runtime = runtime
-        let operation = enqueue { await runtime.stopInput(); await runtime.stopClick() }
+        let operation = enqueue { await runtime.stopInput(); await runtime.stopClick(); await runtime.stopTransport() }
         _ = try? await operation.value
     }
 
@@ -166,17 +171,67 @@ public actor AudioSessionCoordinator {
         isReading = true
         defer { isReading = false }
         let ticket = generation
-        let value = await runtime.readInput()
-        guard ticket == generation, phase == .running else { return }
-        if let value {
-            meters = value
-            if value.droppedPackets > 0 || value.invalidSamples > 0 || value.discontinuities > 0 { await stop(reason: .dataLoss); return }
-            if value.totalFrames > lastFrameCount { lastFrameCount = value.totalFrames; lastFrameTime = now }
-            if value.totalFrames > 0 && (!value.hostTimeValid || value.sampleRate != activeInput?.sampleRate) {
-                await stop(reason: .invalidFormat); return
+        if purpose != .preview {
+            let value = await runtime.readInput()
+            guard ticket == generation, phase == .running else { return }
+            if let value {
+                meters = value
+                if value.droppedPackets > 0 || value.invalidSamples > 0 || value.discontinuities > 0 { await stop(reason: .dataLoss); return }
+                if value.totalFrames > lastFrameCount { lastFrameCount = value.totalFrames; lastFrameTime = now }
+                if value.totalFrames > 0 && (!value.hostTimeValid || value.sampleRate != activeInput?.sampleRate) {
+                    await stop(reason: .invalidFormat); return
+                }
+            }
+            if let lastFrameTime, lastFrameTime.duration(to: now) > .seconds(2) { await stop(reason: .streamStalled); return }
+        }
+        if activeOutput != nil, !isClicking {
+            let value = await runtime.readTransport()
+            guard ticket == generation, phase == .running else { return }
+            if let value {
+                transport = value
+                switch value.phase {
+                case let .interrupted(error): await stop(reason: error)
+                case .completed where purpose == .preview:
+                    await stop(); transport = value
+                default: break
+                }
             }
         }
-        if let lastFrameTime, lastFrameTime.duration(to: now) > .seconds(2) { await stop(reason: .streamStalled) }
+    }
+
+    /// Preview is output-only and requires no microphone permission. Practice keeps its existing capture owner.
+    public func startTransport(_ request: TransportRequest) async throws {
+        let preview = request.mode == .preview
+        guard !isClicking, !isStartingClick, activeOutput == nil,
+              preview ? (purpose == nil && !phase.isStarting) : (purpose == .practice && phase == .running) else {
+            throw AudioBackendError.inUse
+        }
+        if preview { generation &+= 1; purpose = .preview; phase = .starting; meters = nil }
+        clickGeneration &+= 1
+        let ticket = generation, outputTicket = clickGeneration, route = selection, runtime = runtime
+        isStartingClick = true; transport = nil; transportRequestID = request.id
+        do {
+            let found = try await runtime.devices()
+            guard isCurrent(ticket, output: outputTicket) else { throw AudioBackendError.cancelled }
+            let device = try Self.output(for: route, in: found)
+            try await enqueue { [weak self] in
+                guard await self?.isCurrent(ticket, output: outputTicket) == true else { throw AudioBackendError.cancelled }
+                do { try await runtime.startTransport(device: device, channel: route.outputChannel, request: request) }
+                catch { await runtime.stopTransport(); throw error }
+            }.value
+            guard isCurrent(ticket, output: outputTicket) else { throw AudioBackendError.cancelled }
+            devices = found; activeOutput = device; isStartingClick = false; phase = .running
+            let value = await runtime.readTransport()
+            if isCurrent(ticket, output: outputTicket) { transport = value }
+        } catch {
+            if isCurrent(ticket, output: outputTicket) { await stop(reason: Self.backendError(error)) }
+            throw Self.backendError(error)
+        }
+    }
+
+    public func stopTransport(requestID: UUID) async {
+        guard transportRequestID == requestID else { return }
+        await stop()
     }
 
     public func startClick() async throws {
@@ -204,6 +259,7 @@ public actor AudioSessionCoordinator {
     }
 
     public func stopClick() async {
+        guard purpose == nil || purpose == .setup else { return }
         clickGeneration &+= 1; isClicking = false; isStartingClick = false; activeOutput = nil
         let runtime = runtime
         _ = try? await enqueue { await runtime.stopClick() }.value

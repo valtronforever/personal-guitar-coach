@@ -35,15 +35,25 @@ public protocol AudioRuntime: Sendable {
     func readInput() async -> CaptureSnapshot?
     func startClick(device: AudioDeviceDescriptor, channel: Int) async throws
     func stopClick() async
+    func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws
+    func readTransport() async -> TransportPlaybackSnapshot?
+    func stopTransport() async
     func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) async throws
     func setBufferFrames(_ frames: UInt32, device: AudioDeviceDescriptor) async throws
     func setInputGain(_ value: Float, device: AudioDeviceDescriptor, element: UInt32) async throws
+}
+
+public extension AudioRuntime {
+    func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws { throw AudioBackendError.unavailableDevice }
+    func readTransport() async -> TransportPlaybackSnapshot? { nil }
+    func stopTransport() async {}
 }
 
 public actor LiveAudioRuntime: AudioRuntime {
     private let hardware = AudioDeviceService()
     private let capture = AudioCaptureBackend()
     private let click = ClickOutput()
+    private let transport = TransportOutput()
     public init() {}
     public func devices() throws -> [AudioDeviceDescriptor] { try hardware.devices() }
     public func capabilities(device: AudioDeviceDescriptor, channel: Int) throws -> AudioDeviceCapabilities {
@@ -57,6 +67,11 @@ public actor LiveAudioRuntime: AudioRuntime {
     public func readInput() async -> CaptureSnapshot? { await capture.snapshot() }
     public func startClick(device: AudioDeviceDescriptor, channel: Int) async throws { try await click.start(device: device, channel: channel) }
     public func stopClick() async { await click.stop() }
+    public func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws {
+        try await transport.start(device: device, channel: channel, request: request)
+    }
+    public func readTransport() async -> TransportPlaybackSnapshot? { await transport.read() }
+    public func stopTransport() async { await transport.stop() }
     public func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) throws { try hardware.setSampleRate(rate, device: device) }
     public func setBufferFrames(_ frames: UInt32, device: AudioDeviceDescriptor) throws { try hardware.setBufferFrames(frames, device: device) }
     public func setInputGain(_ value: Float, device: AudioDeviceDescriptor, element: UInt32) throws { try hardware.setInputGain(value, device: device, element: element) }
