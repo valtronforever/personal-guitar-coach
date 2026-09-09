@@ -38,7 +38,7 @@ The output probe schedules one 0.5-second click buffer in a loop at 120 BPM, usi
 
 ## Follow-up work
 
-Task 11 adds production coordinator state, format/device change listeners, hot-plug/sleep recovery, preferences, source selection, and setup UX. Task 12 replaces level-only analysis with note evidence. Do not silently grade unsupported formats or routes. U01/U03/U04/U08 are deferred until after all implementations at the user's request.
+Task 11 adds production coordinator state, format/device change listeners, hot-plug/sleep recovery, preferences, source selection, and setup UX. Task 12 now adds bounded monophonic note/quality evidence on the same single-consumer worker; see ADR 002. Do not silently grade unsupported formats or routes. U01/U03/U04/U08 are deferred until after all implementations at the user's request.
 
 ## Sources
 

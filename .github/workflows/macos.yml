@@ -22,6 +22,12 @@ jobs:
         run: swift test
       - name: Validate bundled lessons
         run: swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons
+      - name: Verify audio corpus
+        run: python3 Scripts/check_audio_fixtures.py
+      - name: Benchmark audio regression
+        run: |
+          swift run -c release --package-path Packages/GuitarCoachCore BenchmarkAudio Tests/Fixtures/Audio --quick --output "$RUNNER_TEMP/audio-benchmark.json"
+          python3 Scripts/check_audio_benchmark.py "$RUNNER_TEMP/audio-benchmark.json"
       - name: Build Debug
         run: xcodebuild -project PersonalGuitarCoach.xcodeproj -scheme PersonalGuitarCoach -configuration Debug -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
       - name: Build Release

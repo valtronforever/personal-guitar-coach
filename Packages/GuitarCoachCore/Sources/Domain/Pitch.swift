@@ -19,6 +19,7 @@ public enum MusicError: Error, Equatable, Sendable {
     case displayOnlyExercise
     case tuningMismatch
     case unsupportedPitch
+    case unsupportedDuration
 }
 
 public enum PitchSpelling: String, Codable, Sendable {

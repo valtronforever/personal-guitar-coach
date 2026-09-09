@@ -102,6 +102,9 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         guard try resolvedEvents(instrument: instrument).flatMap(\.pitches).allSatisfy({ Self.monophonicMIDITarget.contains($0.midi) }) else {
             throw MusicError.unsupportedPitch
         }
+        if let limitation = try MonophonicCapability.limitations(exercise: self, instrument: instrument, bpm: bpm).first {
+            throw limitation.reason == .frequency ? MusicError.unsupportedPitch : MusicError.unsupportedDuration
+        }
     }
 
     private enum CodingKeys: String, CodingKey {

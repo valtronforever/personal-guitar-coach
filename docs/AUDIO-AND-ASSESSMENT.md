@@ -112,3 +112,12 @@ Confidence невизначених подій не можна використ�
 | Тривала сесія | 15 хвилин на baseline Mac/USB route без втрачених buffers та необмеженого росту пам'яті |
 
 Corpus включає 44.1/48 kHz, Standard/Drop D/D Standard, низькі/високі ноти, тихі/гучні атаки, повтори однієї ноти, sustain, паузи, шум, dominant harmonics, clipping, помилки октави, контрольовану затримку та негативний polyphonic приклад. Реальні записи мають labels і provenance; самі лише синусоїди не закривають точність на гітарі.
+
+
+## Реалізація задачі 12
+
+Алгоритм `mono-mpm-flux-1` і software capability `mono-capability-1` описані в [ADR 002](decisions/002-monophonic-analysis.md). [Повний benchmark](benchmarks/12-audio-analysis.md) містить 3 360 сценаріїв, coverage, median/p95, onsets/misses/extras і processing cost. Додано 34 public acoustic clips із hashes, provenance та оціненими pitch/onset annotations. Це development corpus, не заміна U02/U04 з реальною електрогітарою/п’єзо/кімнатним мікрофоном.
+
+Поточне оцінювання дозволене для C2–E6, resolved 55–1500 Hz, note duration ≥200 ms і input 44.1/48 kHz. Quarter: 40–200 BPM; eighth: ≤150 BPM; sixteenth: ≤75 BPM. A4 обчислюється зі snapshot строю. 125 ms перевіряється як позамежовий випадок і не дозволяється для grading. Ці межі не змінюють playback/visualization і не дають дозволу на rhythm score без калібрування.
+
+Між стартом capture і першою оцінюваною атакою має бути щонайменше 80 ms для causal onset history; звичайний preflight/count-in забезпечує більший запас. Немає reliable estimate — немає підстав називати звук правильною нотою. Capture quality spans та monotonically increasing event IDs треба споживати без пропусків; 128 events / 256 spans — rolling bounds, не сховище всієї спроби.
