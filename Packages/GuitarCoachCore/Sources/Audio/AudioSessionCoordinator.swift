@@ -257,7 +257,7 @@ public actor AudioSessionCoordinator {
         guard let device = devices.first(where: { $0.uid == route.inputUID }), device.isAlive else { throw AudioBackendError.unavailableDevice }
         guard route.inputChannel <= device.inputChannels else { throw AudioBackendError.invalidChannel }
         guard device.exclusivePID == -1 || device.exclusivePID == ProcessInfo.processInfo.processIdentifier else { throw AudioBackendError.busyDevice }
-        if validateRate { guard [44_100.0, 48_000.0].contains(device.sampleRate), (1...8192).contains(device.bufferFrames) else { throw AudioBackendError.invalidFormat } }
+        if validateRate { guard MonophonicCapability.sampleRates.contains(device.sampleRate), (1...8192).contains(device.bufferFrames) else { throw AudioBackendError.invalidFormat } }
         return device
     }
     private static func output(for route: AudioRouteSelection, in devices: [AudioDeviceDescriptor]) throws -> AudioDeviceDescriptor {

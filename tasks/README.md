@@ -30,7 +30,7 @@
 | 09 | [Табулатура та послідовність нот](09-tablature-timeline.md) | 03, 04 | MVP | `done` | [#9](https://github.com/valtronforever/personal-guitar-coach/issues/9) |
 | 10 | [Каталог уроків і синхронізація кроків](10-lesson-reader.md) | 05, 07, 08, 09 | MVP | `done` | [#10](https://github.com/valtronforever/personal-guitar-coach/issues/10) |
 | 11 | [Налаштування пристроїв і стабільний аудіовхід](11-audio-devices-capture.md) | 02, 04, 05 | MVP | `pending_user` | [#11](https://github.com/valtronforever/personal-guitar-coach/issues/11) |
-| 12 | [Розпізнавання висоти й атак нот](12-pitch-onset-analysis.md) | 03, 11 | MVP | `todo` | [#12](https://github.com/valtronforever/personal-guitar-coach/issues/12) |
+| 12 | [Розпізнавання висоти й атак нот](12-pitch-onset-analysis.md) | 03, 11 | MVP | `pending_user` | [#12](https://github.com/valtronforever/personal-guitar-coach/issues/12) |
 | 13 | [Тюнер поточного строю](13-guitar-tuner.md) | 06, 12 | MVP | `todo` | [#13](https://github.com/valtronforever/personal-guitar-coach/issues/13) |
 | 14 | [Метроном, transport і прослуховування](14-metronome-playback.md) | 03, 09, 10, 11 | MVP | `todo` | [#14](https://github.com/valtronforever/personal-guitar-coach/issues/14) |
 | 15 | [Калібрування затримки та спільний час](15-latency-calibration.md) | 11, 12, 14 | MVP | `todo` | [#15](https://github.com/valtronforever/personal-guitar-coach/issues/15) |

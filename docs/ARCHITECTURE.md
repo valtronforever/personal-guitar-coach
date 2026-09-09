@@ -165,4 +165,15 @@ LessonLibraryStore завантажує app-bundle ресурси на worker. R
 
 `AudioRouteSelection` Domain DTO має input/output UID та one-based канали 1…256. `audio-selection.json` envelope v1 зберігається атомарно тим самим repository actor. Missing дає explicit unselected; corrupt/future file зберігається й блокує редагування. Успішний запис передує публікації нового вибору, але поточне захоплення зупиняється одразу. Rate/buffer не відновлюються приховано при запуску: UI показує actual HAL values і застосовує тільки явний вибір користувача.
 
-Capture приймає 44.1/48 kHz і до 8192 frames per slice. C packets несуть host/sample timestamp validity; worker рахує non-finite samples та sample discontinuities. Втрата даних або відсутність нових frames понад 2 s — interruption; здорові нульові samples — silence. Моноаналіз додається задачою 12; часові допуски й route confidence — задачею 15. Output probe заповнює тільки вибраний канал у native output format, решта клієнтських каналів нульові. Фізичне channel mapping/clock behavior залишається U01/U03.
+Capture приймає 44.1/48 kHz і до 8192 frames per slice. C packets несуть host/sample timestamp validity; worker рахує non-finite samples та sample discontinuities. Втрата даних або відсутність нових frames понад 2 s — interruption; здорові нульові samples — silence. Моноаналіз реалізовано задачею 12; часові допуски й route confidence — задачею 15. Output probe заповнює тільки вибраний канал у native output format, решта клієнтських каналів нульові. Фізичне channel mapping/clock behavior залишається U01/U03.
+
+
+## Розпізнавання окремих нот
+
+`PCMReader` тепер має власний cancellable worker, який читає C ring незалежно від UI. `MonophonicAnalyzer` фільтрує DC/rumble, обчислює MPM pitch і окремі energy/spectral-flux атаки; `PitchDetector` також має YIN для offline comparison. Алгоритм не отримує Exercise/expected pitch. Висота, onset і пізніший resolvedAt є різними полями. MIDI/cents визначаються через Domain Pitch з явним A4.
+
+`AudioAnalysisSnapshot` містить поточну якість, останні 128 resolved events і 256 coalesced quality spans. Consumers мають відстежувати IDs, оновлювати кінець останнього span і відхиляти втрачений prefix. Коротка clipping-подія не зникає лише тому, що останній UI frame уже чистий. Capture generation створює новий analyzer; event IDs локальні до нього. PCM не публікується й не записується.
+
+Три стабільні кадри та повне pitch window після onset потрібні для reliable estimate; за 300 ms без такої оцінки attack стає uncertain. Host seconds поки є first-packet anchor + stream frames/rate, без latency subtraction; фізичний clock mapping і drift належать задачі 15. Параметри, bounds і джерела — в ADR 002; measured evidence — у docs/benchmarks/12-audio-analysis.md.
+
+`MonophonicCapability` у Domain додає до validateForPractice частотні й duration limits: C2–E6, 55–1500 Hz з фактичним A4, minimum 200 ms. Audio capture допускає 44.1/48 kHz. Це software capability окремо від route/calibration validity; display, preview та історія не блокуються. Tuner/practice UI отримують evidence через вже спільний coordinator.

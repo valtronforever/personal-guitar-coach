@@ -64,3 +64,16 @@ Run `python3 Scripts/check_ui_sources.py` to type-check UI-test sources against 
 Каталог уроків підтримує пошук у локалізованих назвах/описах і фільтри теми та складності. Кроки та події табулатури синхронізують гриф; останній урок/крок відновлюються після перезапуску. Позначка прочитаного зберігається окремо від результатів практики. Перехід до конкретної вправи показує її стрій і темп; transport та оцінювана сесія реалізуються наступними задачами.
 
 Аудіоналаштування тепер спільні для вікон: explicit input/output UID та канали, actual format, доступні hardware controls, meters і стани переривання. Від’єднаний пристрій не підміняється іншим входом. Фізичні USB/permission перевірки задачі 11 залишаються у `docs/USER-VALIDATION.md`; поточна перевірка охоплює native discovery/UI та synthetic lifecycle tests.
+
+
+## Offline audio analysis
+
+The shared capture worker now produces monophonic pitch, separate attack timestamps and bounded signal-quality evidence. Read [ADR 002](docs/decisions/002-monophonic-analysis.md) and the [measured benchmark](docs/benchmarks/12-audio-analysis.md). Tuner and practice UI are the next tasks; real electric-interface checks remain deferred.
+
+```sh
+python3 Scripts/check_audio_fixtures.py
+swift run -c release --package-path Packages/GuitarCoachCore BenchmarkAudio Tests/Fixtures/Audio --quick --output /tmp/audio-benchmark.json
+python3 Scripts/check_audio_benchmark.py /tmp/audio-benchmark.json
+```
+
+The committed public acoustic fixtures work offline and have [provenance/permission](Tests/Fixtures/Audio/README.md). Omit `--quick` for the full 3,360-case comparison. Software grading capability requires notes ≥200 ms; shorter examples remain available for visualization/playback. Raw user audio is not recorded.

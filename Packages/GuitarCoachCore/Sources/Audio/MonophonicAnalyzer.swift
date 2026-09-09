@@ -1,0 +1,206 @@
+import Domain
+import Foundation
+
+public enum SignalQuality: String, Codable, Sendable {
+    case warmingUp, silence, quiet, unstable, reliable, clipping, ambiguous, outOfRange, invalid
+}
+
+public struct DetectedPitch: Equatable, Codable, Sendable {
+    public let frequency: Double
+    public let clarity: Double
+    public func nearestPitch(referenceA4: Double = 440) throws -> Pitch { try .nearest(to: frequency, referenceA4: referenceA4) }
+    public func cents(referenceA4: Double = 440) throws -> Double {
+        try nearestPitch(referenceA4: referenceA4).cents(from: frequency, referenceA4: referenceA4)
+    }
+}
+
+public struct AnalysisTimestamp: Equatable, Codable, Sendable {
+    /// Relative to this analyzer/capture generation, never a device-global sample counter.
+    public let frame: Int64
+    public let sampleRate: Double
+    /// First input packet host timestamp plus stream-frame offset. Hardware latency is not subtracted here.
+    public let hostSeconds: Double?
+    public var streamSeconds: Double { Double(frame) / sampleRate }
+}
+
+public struct PitchObservation: Equatable, Codable, Sendable {
+    public let time: AnalysisTimestamp
+    public let quality: SignalQuality
+    public let pitch: DetectedPitch?
+    public let rms: Double
+    public let peak: Double
+    public let noiseFloor: Double
+    public let periodEvidence: PeriodEstimate?
+}
+
+public struct DetectedNoteEvent: Equatable, Codable, Sendable, Identifiable {
+    public let id: UInt64
+    public let onset: AnalysisTimestamp
+    public let resolvedAt: AnalysisTimestamp
+    public let quality: SignalQuality
+    public let pitch: DetectedPitch?
+}
+
+public struct SignalQualitySpan: Equatable, Codable, Sendable, Identifiable {
+    public let id: UInt64
+    public let quality: SignalQuality
+    public let start: AnalysisTimestamp
+    public let end: AnalysisTimestamp
+}
+
+public struct AudioAnalysisSnapshot: Equatable, Sendable {
+    public let algorithmVersion: String
+    public let latest: PitchObservation?
+    /// Rolling bounded history; consumers compare event IDs and must reject a skipped prefix.
+    public let events: [DetectedNoteEvent]
+    public let totalEvents: UInt64
+    public let invalidSamples: UInt64
+    public let qualitySpans: [SignalQualitySpan]
+    public let totalQualitySpans: UInt64
+}
+
+/// Single-worker streaming analyzer. The audio callback only fills the existing bounded PCM ring.
+/// All storage is bounded independently of session length; no raw PCM leaves this object.
+public final class MonophonicAnalyzer {
+    public static let algorithmVersion = "mono-mpm-flux-1"
+    public static let eventCapacity = 128
+    public static let qualitySpanCapacity = 256
+    public let sampleRate: Double
+    public let hopFrames: Int
+    private let detector: PitchDetector
+    private let onsetDetector: OnsetDetector
+    private var ring = [Float](repeating: 0, count: PitchDetector.windowFrames)
+    private var rawRing = [Float](repeating: 0, count: PitchDetector.windowFrames)
+    private var frame = [Float](repeating: 0, count: PitchDetector.windowFrames)
+    private var head = 0
+    private var hopCount = 0
+    private var processed: Int64 = 0
+    private var originHostSeconds: Double?
+    private var pendingOnset: Int64?
+    private var previousFrequency: Double?
+    private var stableFrames = 0
+    private var noiseFloor = 0.0003
+    private var invalidSamples: UInt64 = 0
+    private var latest: PitchObservation?
+    private var events: [DetectedNoteEvent] = []
+    private var totalEvents: UInt64 = 0
+    private var qualitySpans: [SignalQualitySpan] = []
+    private var totalQualitySpans: UInt64 = 0
+    private var hopSquares = 0.0
+    private let highPassCoefficient: Double
+    private var previousInput = 0.0, firstHighPass = 0.0, secondHighPass = 0.0
+
+    public init(sampleRate: Double, method: PitchMethod = .mpm) throws {
+        self.sampleRate = sampleRate
+        detector = try PitchDetector(sampleRate: sampleRate, method: method)
+        onsetDetector = try OnsetDetector(sampleRate: sampleRate)
+        hopFrames = Int(sampleRate / 100)
+        highPassCoefficient = exp(-2 * .pi * 30 / sampleRate)
+        events.reserveCapacity(Self.eventCapacity)
+        qualitySpans.reserveCapacity(Self.qualitySpanCapacity)
+    }
+
+    /// The optional host time belongs to the first sample of this chunk, not its delivery time.
+    public func process(_ samples: UnsafeBufferPointer<Float>, startHostSeconds: Double? = nil,
+                        observe: ((PitchObservation) -> Void)? = nil) {
+        if originHostSeconds == nil, let startHostSeconds, startHostSeconds.isFinite {
+            originHostSeconds = startHostSeconds - Double(processed) / sampleRate
+        }
+        for sample in samples {
+            let value: Float
+            if sample.isFinite { value = sample } else { value = 0; invalidSamples += 1 }
+            rawRing[head] = value
+            let bounded = Double(max(-1, min(1, value)))
+            let first = highPassCoefficient * (firstHighPass + bounded - previousInput)
+            secondHighPass = highPassCoefficient * (secondHighPass + first - firstHighPass)
+            previousInput = bounded; firstHighPass = first
+            ring[head] = Float(secondHighPass); head = (head + 1) % ring.count
+            processed += 1; hopCount += 1; hopSquares += secondHighPass * secondHighPass
+            if hopCount == hopFrames {
+                analyze(hopRMS: (hopSquares / Double(hopFrames)).squareRoot())
+                if let latest { observe?(latest) }
+                hopCount = 0; hopSquares = 0
+            }
+        }
+    }
+
+    public func snapshot() -> AudioAnalysisSnapshot {
+        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-1", latest: latest, events: events,
+                              totalEvents: totalEvents, invalidSamples: invalidSamples,
+                              qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans)
+    }
+
+    /// Offline/session finalization preserves an attack that never yielded a stable estimate.
+    public func finish() {
+        if let onset = pendingOnset { emit(onset: onset, quality: latest?.quality == .reliable ? .unstable : latest?.quality ?? .unstable, pitch: nil) }
+    }
+
+    private func timestamp(_ frame: Int64) -> AnalysisTimestamp {
+        AnalysisTimestamp(frame: frame, sampleRate: sampleRate,
+                          hostSeconds: originHostSeconds.map { $0 + Double(frame) / sampleRate })
+    }
+
+    private func analyze(hopRMS: Double) {
+        var squares = 0.0, peak = 0.0
+        for i in frame.indices {
+            let value = ring[(head + i) % ring.count]
+            frame[i] = value; squares += Double(value) * Double(value); peak = max(peak, Double(abs(rawRing[(head + i) % ring.count])))
+        }
+        let rms = (squares / Double(frame.count)).squareRoot()
+        if let onset = onsetDetector.process(frame: frame, endFrame: processed, hop: hopFrames, rms: hopRMS, noiseFloor: noiseFloor) {
+            if let previous = pendingOnset { emit(onset: previous, quality: .unstable, pitch: nil) }
+            pendingOnset = onset; stableFrames = 0; previousFrequency = nil
+        }
+        var quality: SignalQuality = .unstable
+        var pitch: DetectedPitch?
+        var evidence: PeriodEstimate?
+        var trackedPeriod = false
+        if invalidSamples > 0 { quality = .invalid }
+        else if peak >= 0.995 { quality = .clipping }
+        else if hopRMS < 0.001 && rms < 0.001 { quality = .silence }
+        else if processed < frame.count { quality = .warmingUp }
+        else if rms < max(0.0015, noiseFloor * 3) { quality = .quiet }
+        else if let estimate = frame.withUnsafeBufferPointer({ detector.estimate($0) }) {
+            evidence = estimate
+            if estimate.octaveAmbiguous || estimate.fundamentalFraction < 0.001 { quality = .ambiguous }
+            else if !MonophonicCapability.frequencyRange.contains(estimate.frequency) { quality = .outOfRange }
+            else if estimate.clarity < 0.9 { quality = .unstable }
+            else {
+                trackedPeriod = true
+                let settled = previousFrequency.map { abs(1200 * log2(estimate.frequency / $0)) <= 15 } ?? false
+                stableFrames = settled ? stableFrames + 1 : 1
+                previousFrequency = estimate.frequency
+                if stableFrames >= 3, pendingOnset == nil || processed - Int64(frame.count) >= pendingOnset! {
+                    quality = .reliable; pitch = DetectedPitch(frequency: estimate.frequency, clarity: estimate.clarity)
+                }
+            }
+        }
+        if !trackedPeriod { stableFrames = 0; previousFrequency = nil }
+        // Learn the quiet background only. Loud noise cannot raise a gate until it hides a guitar.
+        if rms < 0.003 { noiseFloor = max(0.0001, min(0.001, noiseFloor * 0.98 + rms * 0.02)) }
+        latest = PitchObservation(time: timestamp(processed), quality: quality, pitch: pitch, rms: rms, peak: peak, noiseFloor: noiseFloor,
+                                  periodEvidence: evidence)
+        if let last = qualitySpans.last, last.quality == quality {
+            qualitySpans[qualitySpans.count - 1] = SignalQualitySpan(id: last.id, quality: quality, start: last.start, end: timestamp(processed))
+        } else {
+            totalQualitySpans += 1
+            if qualitySpans.count == Self.qualitySpanCapacity { qualitySpans.removeFirst() }
+            qualitySpans.append(SignalQualitySpan(id: totalQualitySpans, quality: quality,
+                start: timestamp(processed - Int64(hopFrames)), end: timestamp(processed)))
+        }
+        if let onset = pendingOnset {
+            if quality == .reliable, processed - Int64(frame.count) >= onset, let pitch {
+                emit(onset: onset, quality: .reliable, pitch: pitch)
+            } else if Double(processed - onset) / sampleRate >= 0.3 {
+                emit(onset: onset, quality: quality == .reliable ? .unstable : quality, pitch: nil)
+            }
+        }
+    }
+
+    private func emit(onset: Int64, quality: SignalQuality, pitch: DetectedPitch?) {
+        totalEvents += 1
+        if events.count == Self.eventCapacity { events.removeFirst() }
+        events.append(DetectedNoteEvent(id: totalEvents, onset: timestamp(onset), resolvedAt: timestamp(processed), quality: quality, pitch: pitch))
+        pendingOnset = nil
+    }
+}
