@@ -20,7 +20,7 @@
 | ID | Задача | Залежності | Етап | Статус | GitHub |
 | --- | --- | --- | --- | --- | --- |
 | 01 | [Основа нативного macOS-проєкту](01-project-scaffold.md) | — | MVP | `pending_user` | [#1](https://github.com/valtronforever/personal-guitar-coach/issues/1) |
-| 02 | [Аудіопрототип і вибір бекенда](02-audio-feasibility.md) | 01 | MVP | `todo` | [#2](https://github.com/valtronforever/personal-guitar-coach/issues/2) |
+| 02 | [Аудіопрототип і вибір бекенда](02-audio-feasibility.md) | 01 | MVP | `pending_user` | [#2](https://github.com/valtronforever/personal-guitar-coach/issues/2) |
 | 03 | [Музична модель і час вправ](03-music-domain.md) | 01 | MVP | `todo` | [#3](https://github.com/valtronforever/personal-guitar-coach/issues/3) |
 | 04 | [Навігація, дизайн і двомовність](04-app-shell-localization.md) | 01 | MVP | `todo` | [#4](https://github.com/valtronforever/personal-guitar-coach/issues/4) |
 | 05 | [Локальні налаштування та історія](05-local-persistence.md) | 03, 04 | MVP | `todo` | [#5](https://github.com/valtronforever/personal-guitar-coach/issues/5) |

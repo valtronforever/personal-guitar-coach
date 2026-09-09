@@ -2,7 +2,7 @@
 
 GitHub: [#2](https://github.com/valtronforever/personal-guitar-coach/issues/2)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: MVP
 Залежності: 01
 
@@ -34,4 +34,10 @@ GitHub: [#2](https://github.com/valtronforever/personal-guitar-coach/issues/2)
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- AUHAL input + окремий AVAudioEngine output; actor-isolated hardware lifecycle, C SPSC PCM buffer, explicit channel extraction і timestamps.
+- Нативний audio setup: пристрій, канал, вихід, реальний формат, start/stop, рівень і діагностика; en/uk.
+- Scarlett 2i2 USB визначено: 2 входи/2 виходи, 44,100 Hz, 512 frames. Output click start/stop перевірено в UI.
+- 7 package tests пройдено, включно з concurrent 10,000-packet FIFO test. Debug/Release .app зібрано й підпис перевірено.
+- [ADR і hardware matrix](../docs/decisions/001-audio-backend.md), [local review та fixes](../docs/reviews/02-review.md).
+- Реальний capture очікує системного дозволу; U01/U02/U03/U04/U08 відкладено до фінальної сесії. Synthetic tests не замінюють ці перевірки.
+- Гілка: `codex/02-audio-feasibility`; PR та merge evidence — на GitHub.
