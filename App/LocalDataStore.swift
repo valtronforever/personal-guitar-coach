@@ -5,6 +5,8 @@ import Persistence
 @MainActor @Observable
 final class LocalDataStore {
     @ObservationIgnored private let repository: LocalRepository?
+    /// The practice coordinator installs its synchronous interrupt handler before a new snapshot becomes visible.
+    @ObservationIgnored var instrumentWillChange: ((InstrumentProfile) -> Void)?
     private(set) var preferences = InstrumentPreferences.defaults
     private(set) var records: [PracticeRecord] = []
     private(set) var preferencesIssue: StorageIssue?
@@ -28,7 +30,7 @@ final class LocalDataStore {
         defer { isLoading = false }
         operationError = nil
         switch await repository.loadPreferences() {
-        case let .available(value, _): preferences = value; preferencesIssue = nil
+        case let .available(value, _): publishPreferences(value); preferencesIssue = nil
         case let .needsRecovery(issue): preferencesIssue = issue
         }
         hasLoaded = true
@@ -44,8 +46,35 @@ final class LocalDataStore {
         defer { isSaving = false }
         do {
             try await repository.savePreferences(value)
-            preferences = value // Publish only after the atomic write commits.
+            publishPreferences(value) // Publish only after the atomic write commits.
         } catch { operationError = "storage.saveFailed" }
+    }
+
+    private func publishPreferences(_ value: InstrumentPreferences) {
+        if preferences.instrument != value.instrument { instrumentWillChange?(value.instrument) }
+        preferences = value
+    }
+
+    func selectTuning(id: String) async {
+        do { try await savePreferences(preferences.selectingTuning(id: id)) }
+        catch { operationError = "tuning.error.profile" }
+    }
+
+    func changeOrientation(_ orientation: FretboardOrientation) async {
+        do {
+            let instrument = InstrumentProfile(tuning: preferences.instrument.tuning, orientation: orientation, source: preferences.instrument.source)
+            try await savePreferences(InstrumentPreferences(instrument: instrument, customTunings: preferences.customTunings,
+                                                           practiceBPM: preferences.practiceBPM))
+        } catch { operationError = "storage.saveFailed" }
+    }
+
+    func saveTuning(_ tuning: TuningProfile, expectedRevision: Int?) async -> Bool {
+        guard canEditPreferences else { return false }
+        do {
+            let value = try preferences.savingCustomTuning(tuning, expectedRevision: expectedRevision)
+            await savePreferences(value)
+            return operationError == nil && preferences.instrument.tuning == tuning
+        } catch { operationError = "tuning.error.conflict"; return false }
     }
 
     func changeSource(_ source: InputSource) async {

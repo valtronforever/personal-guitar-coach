@@ -17,10 +17,28 @@ public enum MusicError: Error, Equatable, Sendable {
     case unsupportedPolyphony
     case displayOnlyExercise
     case tuningMismatch
+    case unsupportedPitch
 }
 
 public enum PitchSpelling: String, Codable, Sendable {
     case sharps, flats
+}
+
+extension Pitch {
+    /// Scientific pitch notation with ASCII or Unicode accidentals; octave refers to the written letter.
+    public static func parse(_ text: String) throws -> Pitch {
+        let token = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let letters = ["C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11]
+        guard let semitone = letters[String(token.prefix(1)).uppercased()] else { throw MusicError.invalidPitch }
+        var suffix = token.dropFirst()
+        var accidental = 0
+        if let first = suffix.first {
+            if first == "#" || first == "♯" { accidental = 1; suffix = suffix.dropFirst() }
+            else if first == "b" || first == "♭" { accidental = -1; suffix = suffix.dropFirst() }
+        }
+        guard let octave = Int(suffix), (-1...9).contains(octave) else { throw MusicError.invalidPitch }
+        return try Pitch(midi: (octave + 1) * 12 + semitone + accidental)
+    }
 }
 
 /// Sounding pitch. Guitar staff notation's written octave must not alter this value.

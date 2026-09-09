@@ -8,9 +8,10 @@ struct CoachSettingsView: View {
 
     var body: some View {
         @Bindable var settings = settings
-        Form {
-            StorageNotices()
-            Section("settings.general") {
+        VStack(spacing: 0) {
+            StorageNotices().padding(.horizontal, CoachLayout.padding)
+            TabView {
+                Form {
                 Picker("settings.language", selection: $settings.language) {
                     ForEach(AppLanguage.allCases) { language in
                         Text(LocalizedStringKey(language.titleKey)).tag(language)
@@ -23,8 +24,10 @@ struct CoachSettingsView: View {
                 }.accessibilityIdentifier("settings.appearance")
                 Text("settings.languageExplanation").font(.callout).foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-            }
-            Section("audio.title") {
+                }.formStyle(.grouped).tabItem { Label("settings.general", systemImage: "gearshape") }
+                Form { TuningSettingsView() }.formStyle(.grouped)
+                    .tabItem { Label("tuning.title", systemImage: "guitars") }
+                Form {
                 Picker("settings.source", selection: Binding(get: { store.preferences.instrument.source }, set: { source in
                     Task { await store.changeSource(source) }
                 })) {
@@ -32,11 +35,11 @@ struct CoachSettingsView: View {
                 }.disabled(!store.canEditPreferences).accessibilityIdentifier("settings.source")
                 Text("welcome.acoustic").foregroundStyle(.secondary)
                 Button("audio.title") { showsAudio = true }
+                }.formStyle(.grouped).tabItem { Label("audio.title", systemImage: "waveform") }
             }
             if store.isSaving { ProgressView("storage.saving") }
         }
-        .formStyle(.grouped)
-        .frame(width: 600, height: 500)
+        .frame(width: 680, height: 620)
         .background(NativeWindowTitle(title: settings.localized("settings.title")))
         .sheet(isPresented: $showsAudio) { AudioProbeView().environment(\.locale, settings.locale) }
     }

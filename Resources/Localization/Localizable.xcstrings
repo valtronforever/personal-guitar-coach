@@ -1549,6 +1549,499 @@
           }
         }
       }
+    },
+    "common.save": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зберегти"
+          }
+        }
+      }
+    },
+    "tuning.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrument"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Інструмент"
+          }
+        }
+      }
+    },
+    "tuning.profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuning profile"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Профіль строю"
+          }
+        }
+      }
+    },
+    "tuning.customize": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create custom tuning…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Створити власний стрій…"
+          }
+        }
+      }
+    },
+    "tuning.edit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit tuning…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Редагувати стрій…"
+          }
+        }
+      }
+    },
+    "tuning.orientation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fretboard orientation"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Орієнтація грифа"
+          }
+        }
+      }
+    },
+    "tuning.rightHanded": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right-handed"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для правої руки"
+          }
+        }
+      }
+    },
+    "tuning.leftHanded": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left-handed (mirrored)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для лівої руки (дзеркально)"
+          }
+        }
+      }
+    },
+    "tuning.reference": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reference A4 (Hz)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Еталон A4 (Гц)"
+          }
+        }
+      }
+    },
+    "tuning.physicalExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This selects target notes. Retune the strings on your guitar to match; the app does not change the sound of the instrument."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Це вибір цільових нот. Фізично переналаштуй струни гітари відповідно до них; додаток не змінює звучання інструмента."
+          }
+        }
+      }
+    },
+    "tuning.openStrings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open strings · lowest to highest"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відкриті струни · від найнижчої до найвищої"
+          }
+        }
+      }
+    },
+    "tuning.string": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "String"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Струна"
+          }
+        }
+      }
+    },
+    "tuning.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нота"
+          }
+        }
+      }
+    },
+    "tuning.frequency": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frequency (Hz)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Частота (Гц)"
+          }
+        }
+      }
+    },
+    "tuning.stringNumber %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "String %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Струна %lld"
+          }
+        }
+      }
+    },
+    "tuning.noteForString %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note for string %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нота струни %lld"
+          }
+        }
+      }
+    },
+    "tuning.instrumentSize": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six strings · 24 frets · String 1 is the thinnest."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шість струн · 24 лади · Струна 1 — найтонша."
+          }
+        }
+      }
+    },
+    "tuning.outOfRange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some open strings are outside the initial audio target range C2–E6. They remain available for display, but are not eligible for audio assessment."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Деякі відкриті струни поза початковим діапазоном аудіоаналізу C2–E6. Вони доступні для перегляду, але не для оцінювання зі звуку."
+          }
+        }
+      }
+    },
+    "tuning.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile name"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Назва профілю"
+          }
+        }
+      }
+    },
+    "tuning.editorExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter note names with octaves, such as E2, F#3, or B♭3. A4 accepts 400–480 Hz. Saving a custom copy leaves the preset unchanged."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введи ноти з октавами, наприклад E2, F#3 або B♭3. A4 допускає 400–480 Гц. Збереження власної копії не змінює пресет."
+          }
+        }
+      }
+    },
+    "tuning.error.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a name for your tuning."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введи назву свого строю."
+          }
+        }
+      }
+    },
+    "tuning.error.reference": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter A4 as a number between 400 and 480 Hz."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введи частоту A4 числом від 400 до 480 Гц."
+          }
+        }
+      }
+    },
+    "tuning.error.notes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each open string needs a valid note from C-1 to G7, including its octave."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для кожної відкритої струни потрібна коректна нота від C-1 до G7 із номером октави."
+          }
+        }
+      }
+    },
+    "tuning.error.profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This tuning could not be applied. Check the values and reopen the editor."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося застосувати цей стрій. Перевір значення та відкрий редактор знову."
+          }
+        }
+      }
+    },
+    "tuning.error.conflict": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This profile changed while you were editing. Reopen the editor to use its latest version."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей профіль змінився під час редагування. Відкрий редактор знову, щоб використати останню версію."
+          }
+        }
+      }
+    },
+    "tuning.preset.standard": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стандартний"
+          }
+        }
+      }
+    },
+    "tuning.preset.drop-d": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop D"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop D"
+          }
+        }
+      }
+    },
+    "tuning.preset.d-standard": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D Standard"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стандартний D"
+          }
+        }
+      }
+    },
+    "tuning.mismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This exercise requires a different tuning. Retune your guitar and select the required profile before practice."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для цієї вправи потрібен інший стрій. Переналаштуй гітару та вибери потрібний профіль перед практикою."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
