@@ -12,6 +12,8 @@ jobs:
         run: xcodebuild -version && swift --version
       - name: Verify generated project
         run: python3 Scripts/generate_project.py --check
+      - name: Verify localizations
+        run: python3 Scripts/check_localizations.py
       - name: Package tests
         run: swift test --package-path Packages/GuitarCoachCore
       - name: Build Debug
