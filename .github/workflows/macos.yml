@@ -14,6 +14,8 @@ jobs:
         run: python3 Scripts/generate_project.py --check
       - name: Verify localizations
         run: python3 Scripts/check_localizations.py
+      - name: Type-check UI test sources
+        run: python3 Scripts/check_ui_sources.py
       - name: Package tests
         run: swift test --package-path Packages/GuitarCoachCore
       - name: App state tests

@@ -18,3 +18,5 @@ The user requested that checks requiring their help take place **after all 22 im
 Task 02 discovery: Scarlett 2i2 USB is connected with 2 inputs, 2 outputs, 44,100 Hz and a 512-frame buffer. Native output click start/stop succeeds; audibility, input PCM and played-guitar evidence are still pending. Task 01 Xcode Debug/Release builds passed on a clean GitHub runner in PR #23; local Xcode UI tests still require U07.
 
 Record the Mac/macOS, interface/driver, channel, actual sample rate/buffer, source type, procedure, observed result, and any fix/retest here. Do not record private audio without an explicit recording action. Synthetic and software-only checks belong in the individual task evidence and cannot close these hardware rows.
+
+Task 09 adds independent UI-test source type checking (`Scripts/check_ui_sources.py`), now passing locally and included in CI. It verifies Swift/XCTest API compilation without loading the broken xcodebuild component; U07 still requires actual UI-test execution.

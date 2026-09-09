@@ -140,3 +140,11 @@ LessonLibraryStore завантажує app-bundle ресурси на worker. R
 ## Реалізований гриф
 
 `FretboardModel` проєктує Domain-позиції через `TuningProfile.pitch(at:)`; не має власної формули нот. `FretboardView` отримує expected positions/mutes/fingers, binding ручного вибору та optional detected pitch. Canvas малює тільки струни/лади; 150 native buttons задають незалежні hit targets і accessibility. Дзеркальність змінює горизонтальний порядок 0…24, а не номери струн або pitches. Клавіатурні стрілки рухають focus за екранним напрямком; Space/Return змінюють selection. Зовнішня зміна expected набору прокручує до його першого ладу. Detected pitch лишається окремим позначенням без атрибуції до струни.
+
+## Реалізована табулатура
+
+`TimelineModel` тримає canonical Exercise/ResolvedEvent, а геометрію обчислює відносно початку такту. Integer subtraction перед Double conversion зберігає точність великих абсолютних ticks. `TimelineSegment` обрізає лише графічне представлення довгої події на межі такту, зберігаючи event ID і позначку continuation. `TimelineSelection` тримає стабільний anchor для вибору діапазону.
+
+`TablatureView` будує не більше 16 тактів за раз через LazyHStack; попередня/наступна частина та перехід за номером зберігають доступ до всіх тактів. Мінімальний масштаб дає шістнадцятій 44 точки, масштабування 1×–2× не змінює час. Струна 1 завжди зверху; орієнтація грифа не перевертає часову послідовність.
+
+Курсор — вхідний optional tick, без timer. `TimelineFollowTarget` адресує половину долі для прокручування всередині збільшеного такту; фокус/сторінка не стають джерелом часу. Клавіатурна навігація спочатку монтує потрібну частину, потім фокусує event button. Debug-only fixtures і точний minimum-window helper доступні через Developer menu; Release не містить цих flows.
