@@ -21,7 +21,7 @@ Review performed by the implementing agent, not an independent reviewer. Scope: 
 - Full Release benchmark: 3,360 cases; quick CI regression: 360 cases. Both pass `check_audio_benchmark.py`. Fixture validation verifies all 34 WAV hashes, mono/rate format and provenance offline.
 - MPM synthetic pitch p95 0.048 cents; acoustic p95 7.301 cents, with 99.05% of all annotated stable frames within ±15 cents. Matrix onset p95 13.22 ms; acoustic onset p95 30 ms. p95 resolved-note latency is 100/160 ms respectively. These are development-corpus results, not live USB latency claims.
 - Native Debug and Release builds and strict ad-hoc signature verification pass. No input Start, permission manipulation or private recording was performed. New detector behavior is exercised offline and through synthetic ring input; physical capture is still pending.
-- `git diff --check` passes. PR CI must pass before merge; its actual result belongs to the PR record.
+- `git diff --check` passes. PR #34 CI 34413464524 passed all checks at 32044623bdd76083f3a6bf22b5916778f0abaf61; merged as e376de2eda399566c0dc70a22ac61462e89c75dc.
 
 ## Remaining limits
 

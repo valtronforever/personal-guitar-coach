@@ -58,6 +58,10 @@ struct PersonalGuitarCoachApp: App {
             VisualFixtureView().environment(settings).environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
         }.defaultSize(width: 800, height: 640)
+        Window(settings.localized("debug.tunerTitle"), id: "tuner-fixtures") {
+            TunerFixtureView().environment(settings).environment(\.locale, settings.locale)
+                .preferredColorScheme(settings.appearance.colorScheme)
+        }.defaultSize(width: 680, height: 500)
         #endif
         Settings {
             CoachSettingsView()

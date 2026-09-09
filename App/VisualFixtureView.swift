@@ -76,6 +76,7 @@ struct VisualFixtureCommands: Commands {
     var body: some Commands {
         CommandMenu(settings.localized("debug.tools")) {
             Button(settings.localized("debug.visualTitle")) { openWindow(id: "visual-fixtures") }
+            Button(settings.localized("debug.tunerTitle")) { openWindow(id: "tuner-fixtures") }
             Button(settings.localized("debug.minimumWindow")) {
                 if let window = NSApp.windows.first(where: { $0.identifier?.rawValue == "main" }) {
                     window.setContentSize(NSSize(width: CoachLayout.minimumWidth, height: CoachLayout.minimumHeight))

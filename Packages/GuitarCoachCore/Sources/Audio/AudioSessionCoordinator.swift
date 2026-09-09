@@ -101,7 +101,7 @@ public actor AudioSessionCoordinator {
     }
 
     public func start(purpose requested: AudioPurpose) async throws {
-        guard purpose == nil, !phase.isStarting, !isStartingClick else { throw AudioBackendError.inUse }
+        guard purpose == nil, !phase.isStarting, !isStartingClick, !isClicking || requested == .setup else { throw AudioBackendError.inUse }
         generation &+= 1
         let ticket = generation, route = selection
         purpose = requested; phase = .requestingPermission; meters = nil

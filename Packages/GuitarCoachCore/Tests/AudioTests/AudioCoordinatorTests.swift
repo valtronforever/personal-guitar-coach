@@ -63,6 +63,16 @@ private actor RuntimeStub: AudioRuntime {
 }
 
 struct AudioCoordinatorTests {
+    @Test func outputProbeCannotLeakIntoTunerCapture() async throws {
+        let runtime = RuntimeStub(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PermissionStub())
+        await coordinator.configure(try route())
+        try await coordinator.startClick()
+        await #expect(throws: AudioBackendError.inUse) { try await coordinator.start(purpose: .tuner) }
+        #expect(await runtime.starts.isEmpty)
+        await coordinator.stopClick()
+        try await coordinator.start(purpose: .tuner)
+        await coordinator.stop()
+    }
     private func route(channel: Int = 2) throws -> AudioRouteSelection {
         try AudioRouteSelection(inputUID: "usb", inputChannel: channel, outputUID: "usb", outputChannel: 2)
     }
