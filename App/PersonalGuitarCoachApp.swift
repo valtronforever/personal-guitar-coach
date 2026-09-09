@@ -7,6 +7,7 @@ struct PersonalGuitarCoachApp: App {
     @State private var navigation = AppNavigation()
     @State private var localData: LocalDataStore
     @State private var reading: ReadingProgressStore
+    @State private var audio: AudioSessionStore
     @State private var library = LessonLibraryStore()
 
     init() {
@@ -20,6 +21,7 @@ struct PersonalGuitarCoachApp: App {
         #endif
         _localData = State(initialValue: LocalDataStore(repository: repository))
         _reading = State(initialValue: ReadingProgressStore(repository: repository))
+        _audio = State(initialValue: AudioSessionStore(repository: repository))
     }
 
     var body: some Scene {
@@ -29,9 +31,11 @@ struct PersonalGuitarCoachApp: App {
                 .environment(localData)
                 .environment(library)
                 .environment(reading)
+                .environment(audio)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .task { await localData.reload() }
+                .task { audio.activate() }
         }
         .defaultSize(width: 1000, height: 700)
         .commands {
@@ -59,6 +63,7 @@ struct PersonalGuitarCoachApp: App {
             CoachSettingsView()
                 .environment(settings)
                 .environment(localData)
+                .environment(audio)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
         }

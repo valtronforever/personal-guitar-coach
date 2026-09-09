@@ -62,3 +62,5 @@ Debug builds include Developer → Visual test fixtures (no audio) and a minimum
 Run `python3 Scripts/check_ui_sources.py` to type-check UI-test sources against the selected Xcode SDK with Swift 6 and a macOS 14 deployment target. This also runs in CI and does not substitute for Xcode UI-test execution (U07).
 
 Каталог уроків підтримує пошук у локалізованих назвах/описах і фільтри теми та складності. Кроки та події табулатури синхронізують гриф; останній урок/крок відновлюються після перезапуску. Позначка прочитаного зберігається окремо від результатів практики. Перехід до конкретної вправи показує її стрій і темп; transport та оцінювана сесія реалізуються наступними задачами.
+
+Аудіоналаштування тепер спільні для вікон: explicit input/output UID та канали, actual format, доступні hardware controls, meters і стани переривання. Від’єднаний пристрій не підміняється іншим входом. Фізичні USB/permission перевірки задачі 11 залишаються у `docs/USER-VALIDATION.md`; поточна перевірка охоплює native discovery/UI та synthetic lifecycle tests.

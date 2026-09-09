@@ -1,7 +1,7 @@
 import AVFAudio
 import RealtimeAudio
 
-public struct CaptureSnapshot: Sendable {
+public struct CaptureSnapshot: Sendable, Equatable {
     public let totalFrames: UInt64
     public let totalPackets: UInt64
     public let droppedPackets: UInt64
@@ -10,6 +10,18 @@ public struct CaptureSnapshot: Sendable {
     public let sampleRate: Double
     public let lastHostTime: UInt64
     public let hostTimeValid: Bool
+    public let lastSampleTime: Double
+    public let sampleTimeValid: Bool
+    public let invalidSamples: UInt64
+    public let discontinuities: UInt64
+    public init(totalFrames: UInt64, totalPackets: UInt64, droppedPackets: UInt64, peak: Float, rms: Float,
+                sampleRate: Double, lastHostTime: UInt64, hostTimeValid: Bool, lastSampleTime: Double = 0,
+                sampleTimeValid: Bool = false, invalidSamples: UInt64 = 0, discontinuities: UInt64 = 0) {
+        self.totalFrames = totalFrames; self.totalPackets = totalPackets; self.droppedPackets = droppedPackets
+        self.peak = peak; self.rms = rms; self.sampleRate = sampleRate; self.lastHostTime = lastHostTime
+        self.hostTimeValid = hostTimeValid; self.lastSampleTime = lastSampleTime; self.sampleTimeValid = sampleTimeValid
+        self.invalidSamples = invalidSamples; self.discontinuities = discontinuities
+    }
 }
 
 /// C owns the SPSC synchronization. The input unit is the sole producer and
@@ -45,6 +57,8 @@ private actor PCMReader {
     var totalFrames: UInt64 = 0
     var totalPackets: UInt64 = 0
     var last = GCPacketInfo()
+    var invalidSamples: UInt64 = 0
+    var discontinuities: UInt64 = 0
 
     init(storage: PCMStorage) { self.storage = storage }
 
@@ -59,12 +73,15 @@ private actor PCMReader {
                 GCRingRead(storage.handle, $0.baseAddress!, UInt32($0.count), &info)
             }
             guard available else { break }
+            if info.sample_time_valid && !info.sample_time.isFinite { discontinuities += 1 }
+            if totalPackets > 0, info.sample_time_valid, last.sample_time_valid,
+               abs(info.sample_time - last.sample_time - Double(last.frame_count)) > 0.5 { discontinuities += 1 }
             for i in 0..<Int(info.frame_count) {
                 let value = scratch[i]
                 if value.isFinite {
                     peak = max(peak, abs(value))
                     squares += Double(value) * Double(value)
-                }
+                } else { invalidSamples += 1 }
             }
             count += Int(info.frame_count)
             totalFrames += UInt64(info.frame_count)
@@ -74,7 +91,9 @@ private actor PCMReader {
         return CaptureSnapshot(totalFrames: totalFrames, totalPackets: totalPackets,
             droppedPackets: GCRingDropped(storage.handle), peak: peak,
             rms: count > 0 ? Float((squares / Double(count)).squareRoot()) : 0,
-            sampleRate: last.sample_rate, lastHostTime: last.host_time, hostTimeValid: last.host_time_valid)
+            sampleRate: last.sample_rate, lastHostTime: last.host_time, hostTimeValid: last.host_time_valid,
+            lastSampleTime: last.sample_time, sampleTimeValid: last.sample_time_valid,
+            invalidSamples: invalidSamples, discontinuities: discontinuities)
     }
 }
 

@@ -13,6 +13,11 @@ public protocol InstrumentRepository: Sendable {
     func restoreDefaultPreferencesPreservingCopy() async throws
 }
 
+public protocol AudioSettingsRepository: Sendable {
+    func loadAudioSelection() async throws -> AudioRouteSelection
+    func saveAudioSelection(_ value: AudioRouteSelection) async throws
+}
+
 public struct AtomicDocumentWriter: Sendable {
     let write: @Sendable (Data, URL) throws -> Void
     public init(write: @escaping @Sendable (Data, URL) throws -> Void = { try $0.write(to: $1, options: .atomic) }) {
@@ -21,7 +26,7 @@ public struct AtomicDocumentWriter: Sendable {
 }
 
 /// One actor serializes each app's disk mutations. Individual attempt files are authoritative.
-public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingRepository {
+public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingRepository, AudioSettingsRepository {
     public let root: URL
     private let writer: AtomicDocumentWriter
     private let manager = FileManager.default
@@ -29,6 +34,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
     private var preferencesURL: URL { root.appendingPathComponent("instrument.json") }
     private var indexURL: URL { root.appendingPathComponent("history-index.json") }
     private var readingURL: URL { root.appendingPathComponent("reading-progress.json") }
+    private var audioURL: URL { root.appendingPathComponent("audio-selection.json") }
 
     public init(root: URL, writer: AtomicDocumentWriter = AtomicDocumentWriter()) {
         self.root = root; self.writer = writer
@@ -38,6 +44,23 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         let library = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
                                                  appropriateFor: nil, create: false)
         return LocalRepository(root: library.appendingPathComponent("PersonalGuitarCoach", isDirectory: true))
+    }
+
+    public func loadAudioSelection() throws -> AudioRouteSelection {
+        do {
+            let data = try Data(contentsOf: audioURL)
+            let version = try JSONDecoder().decode(VersionHeader.self, from: data).schemaVersion
+            guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+            return try JSONDecoder().decode(DocumentEnvelope<AudioRouteSelection>.self, from: data).payload
+        } catch let error as CocoaError where error.code == .fileReadNoSuchFile || error.code == .fileNoSuchFile {
+            return .unselected
+        }
+    }
+
+    public func saveAudioSelection(_ value: AudioRouteSelection) throws {
+        _ = try loadAudioSelection()
+        try prepare()
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: value)), audioURL)
     }
 
     public func loadReadingProgress() throws -> ReadingProgress {
