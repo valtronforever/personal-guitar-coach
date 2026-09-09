@@ -10,21 +10,28 @@ public actor ClickOutput {
 
     public init() {}
 
-    public func start(device: AudioDeviceDescriptor) throws {
+    public func start(device: AudioDeviceDescriptor, channel: Int = 1) throws {
         stop()
-        guard device.outputChannels > 0 else { throw AudioBackendError.unavailableDevice }
+        guard channel > 0, channel <= device.outputChannels else { throw AudioBackendError.unavailableDevice }
         let engine = AVAudioEngine()
         guard let output = engine.outputNode.audioUnit else { throw AudioBackendError.unavailableDevice }
         var id = device.hardwareID
         let status = AudioUnitSetProperty(output, kAudioOutputUnitProperty_CurrentDevice,
             kAudioUnitScope_Global, 0, &id, UInt32(MemoryLayout.size(ofValue: id)))
         guard status == noErr else { throw AudioBackendError.system(status) }
-        let rate = engine.outputNode.inputFormat(forBus: 0).sampleRate
-        guard rate.isFinite, rate > 0,
-              let format = AVAudioFormat(standardFormatWithSampleRate: rate, channels: 1),
+        let native = engine.outputNode.inputFormat(forBus: 0)
+        let rate = native.sampleRate
+        let channelCount = Int(native.channelCount)
+        guard channel <= channelCount, channelCount > 0, channelCount <= 256 else { throw AudioBackendError.invalidChannel }
+        guard rate.isFinite, (8_000...384_000).contains(rate),
+              let format = AVAudioFormat(standardFormatWithSampleRate: rate, channels: AVAudioChannelCount(channelCount)),
               let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(rate / 2)),
-              let samples = buffer.floatChannelData?[0] else { throw AudioBackendError.invalidFormat }
+              let channels = buffer.floatChannelData else { throw AudioBackendError.invalidFormat }
         buffer.frameLength = buffer.frameCapacity
+        for index in 0..<channelCount {
+            channels[index].initialize(repeating: 0, count: Int(buffer.frameLength))
+        }
+        let samples = channels[channel - 1]
         let clickFrames = Int(rate * 0.012)
         for i in 0..<Int(buffer.frameLength) {
             samples[i] = i < clickFrames
@@ -33,7 +40,7 @@ public actor ClickOutput {
         }
         let player = AVAudioPlayerNode()
         engine.attach(player)
-        engine.connect(player, to: engine.mainMixerNode, format: format)
+        engine.connect(player, to: engine.outputNode, format: format)
         player.scheduleBuffer(buffer, at: nil, options: .loops)
         try engine.start()
         let start = mach_absolute_time() + AVAudioTime.hostTime(forSeconds: 0.1)

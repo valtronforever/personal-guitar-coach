@@ -41,7 +41,7 @@ struct RealtimeBufferTests {
         let ring = try #require(GCRingCreate(2, 4))
         defer { GCRingDestroy(ring) }
         let stereo: [Float] = [1, 11, 2, 12, 3, 13, 4, 14]
-        let timestamp = GCPacketInfo(host_time: 123, sample_time: 456, sample_rate: 44100, frame_count: 0, host_time_valid: true)
+        let timestamp = GCPacketInfo(host_time: 123, sample_time: 456, sample_rate: 44100, frame_count: 0, host_time_valid: true, sample_time_valid: true)
         #expect(stereo.withUnsafeBufferPointer { GCRingWrite(ring, $0.baseAddress! + 1, 4, 2, timestamp) })
         var mono = [Float](repeating: 0, count: 4)
         var info = GCPacketInfo()

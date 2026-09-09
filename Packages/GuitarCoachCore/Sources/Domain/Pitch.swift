@@ -1,6 +1,7 @@
 import Foundation
 
 public enum MusicError: Error, Equatable, Sendable {
+    case invalidAudioRoute
     case invalidPitch
     case invalidReference
     case invalidFrequency

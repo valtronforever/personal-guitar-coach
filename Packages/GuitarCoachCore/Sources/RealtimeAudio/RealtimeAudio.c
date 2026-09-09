@@ -90,7 +90,8 @@ static OSStatus capture(void *context, AudioUnitRenderActionFlags *flags,
     GCPacketInfo info = {
         .host_time = time->mHostTime, .sample_time = time->mSampleTime,
         .sample_rate = input->sample_rate, .frame_count = frames,
-        .host_time_valid = (time->mFlags & kAudioTimeStampHostTimeValid) != 0
+        .host_time_valid = (time->mFlags & kAudioTimeStampHostTimeValid) != 0,
+        .sample_time_valid = (time->mFlags & kAudioTimeStampSampleTimeValid) != 0
     };
     const float *source = input->buffers.mBuffers[0].mData;
     GCRingWrite(input->ring, source + input->selected_channel, frames, input->channels, info);

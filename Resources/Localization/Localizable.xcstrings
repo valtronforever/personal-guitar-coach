@@ -126,13 +126,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose the guitar input and one channel. Input stays separate from the click output."
+            "value": "Choose your guitar input and one channel. Start the input check to inspect the signal."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Вибери вхід гітари та один канал. Вхід аналізується окремо від виходу метронома."
+            "value": "Вибери вхід гітари та один канал. Запусти перевірку входу, щоб побачити сигнал."
           }
         }
       }
@@ -3758,6 +3758,448 @@
           "stringUnit": {
             "state": "translated",
             "value": "Струни 6 → 1, від найтовщої до найтоншої"
+          }
+        }
+      }
+    },
+    "audio.chooseInput": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an input"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибери вхід"
+          }
+        }
+      }
+    },
+    "audio.chooseOutput": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an output"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибери вихід"
+          }
+        }
+      }
+    },
+    "audio.savedDeviceMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved device is disconnected"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережений пристрій від’єднано"
+          }
+        }
+      }
+    },
+    "audio.outputChannel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click output channel"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вихідний канал кліку"
+          }
+        }
+      }
+    },
+    "audio.sampleRate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample rate (Hz)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Частота дискретизації (Гц)"
+          }
+        }
+      }
+    },
+    "audio.bufferSize": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buffer size (frames)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розмір буфера (кадрів)"
+          }
+        }
+      }
+    },
+    "audio.formatShared": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applying device settings stops the current capture and may affect other apps using this device. Input capture currently accepts 44.1 and 48 kHz."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосування налаштувань пристрою зупиняє захоплення й може вплинути на інші додатки, що його використовують. Захоплення входу наразі приймає 44,1 і 48 кГц."
+          }
+        }
+      }
+    },
+    "audio.inputGain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device input level"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рівень входу пристрою"
+          }
+        }
+      }
+    },
+    "audio.masterInputGain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device input level (all channels)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рівень входу пристрою (усі канали)"
+          }
+        }
+      }
+    },
+    "audio.hardwareGain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device does not expose an input level control. Adjust its physical gain knob or control panel."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пристрій не надає керування рівнем входу. Використовуй його ручку gain або панель керування."
+          }
+        }
+      }
+    },
+    "audio.routeGuidance": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For electric guitar, use a clean instrument input and wired headphones on the same USB interface. Other routes need timing validation before rhythm grading."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для електрогітари використовуй чистий інструментальний вхід і дротові навушники на тому самому USB-інтерфейсі. Інші маршрути потребують перевірки затримки перед оцінюванням ритму."
+          }
+        }
+      }
+    },
+    "audio.monitoringOff": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Software monitoring is off. No input audio is sent to the output or saved to disk."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Програмний моніторинг вимкнено. Звук входу не надсилається на вихід і не зберігається на диск."
+          }
+        }
+      }
+    },
+    "audio.rmsDB": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RMS level (dBFS)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рівень RMS (dBFS)"
+          }
+        }
+      }
+    },
+    "audio.discontinuities": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timestamp gaps"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розриви часових міток"
+          }
+        }
+      }
+    },
+    "audio.lastSnapshot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last input reading before capture stopped."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Останні дані входу перед зупинкою захоплення."
+          }
+        }
+      }
+    },
+    "audio.storageLoadFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved audio settings could not be read. The original file has been preserved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося прочитати збережені налаштування аудіо. Початковий файл залишено без змін."
+          }
+        }
+      }
+    },
+    "audio.storageSaveFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio settings were not saved. Select the device or channel again to retry."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Налаштування аудіо не збережено. Вибери пристрій або канал ще раз для повторної спроби."
+          }
+        }
+      }
+    },
+    "audio.error.busy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another app has exclusive access to this device. Release it there, then retry."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Інший додаток має виключний доступ до пристрою. Звільни його там і повтори спробу."
+          }
+        }
+      }
+    },
+    "audio.error.control": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This hardware control is unavailable or read-only."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей апаратний параметр недоступний або доступний лише для читання."
+          }
+        }
+      }
+    },
+    "audio.error.routeChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio stopped because the selected device or its format changed. Check the route and start again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіо зупинено через зміну вибраного пристрою або його формату. Перевір маршрут і запусти знову."
+          }
+        }
+      }
+    },
+    "audio.error.dataLoss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio data was lost or invalid. This capture cannot be graded. Check the device and buffer size, then restart."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіодані втрачено або пошкоджено. Це захоплення не можна оцінювати. Перевір пристрій і розмір буфера та запусти знову."
+          }
+        }
+      }
+    },
+    "audio.error.stalled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The input stopped delivering audio frames. Check the connection and start again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вхід перестав надсилати аудіокадри. Перевір підключення та запусти знову."
+          }
+        }
+      }
+    },
+    "audio.error.suspended": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio was interrupted by sleep. Check the device and start again when ready."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіо перервано через режим сну. Перевір пристрій і запусти знову, коли будеш готовий."
+          }
+        }
+      }
+    },
+    "audio.error.inUse": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another audio activity is running. Stop it before starting this one."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виконується інша аудіодія. Зупини її, перш ніж починати цю."
+          }
+        }
+      }
+    },
+    "audio.error.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio start was cancelled."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запуск аудіо скасовано."
+          }
+        }
+      }
+    },
+    "audio.applyInputLevel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply input level"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати рівень входу"
           }
         }
       }

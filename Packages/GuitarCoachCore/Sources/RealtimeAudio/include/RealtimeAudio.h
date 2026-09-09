@@ -12,6 +12,7 @@ typedef struct {
     double sample_rate;
     uint32_t frame_count;
     bool host_time_valid;
+    bool sample_time_valid;
 } GCPacketInfo;
 
 // Exactly one producer and one consumer. Allocate/destroy only while stopped.

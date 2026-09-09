@@ -45,3 +45,11 @@ Task 11 adds production coordinator state, format/device change listeners, hot-p
 - Apple [TN2091: Device input using the HAL Output Audio Unit](https://developer.apple.com/library/archive/technotes/tn2091/_index.html); modern SDK declarations take precedence over deprecated examples.
 - Installed macOS 26.5 SDK `AudioUnitProperties.h` for bus/property semantics and `AudioHardwareBase.h` for persistent device UID and caller-owned CFString properties.
 - Apple [AVAudioPlayerNode.scheduleBuffer](https://developer.apple.com/documentation/avfaudio/avaudioplayernode/schedulebuffer(_:at:options:completionhandler:)).
+
+## Task 11 implementation update (2026-09-10)
+
+Production ownership is now `AudioSessionCoordinator` with serial hardware operations, purpose exclusion and generation checks. All native scenes share it. Explicit input/output UIDs and one-based channels persist in a separate versioned document; missing devices do not fall back. HAL property listeners plus periodic discovery detect route/format changes; sleep interrupts and wake requires an explicit restart.
+
+The output probe now connects its player to the output node using the native channel count and populates only the selected output channel. This changes the earlier mono-mixer probe and requires physical channel/audibility validation under U01. Discovery currently sees built-in, virtual and Bluetooth devices; Scarlett is absent. No physical input/output claim is added by the synthetic coordinator tests.
+
+Installed SDK `AudioHardware.h` and `AudioHardwareBase.h` were checked for listener registration/removal, alive/hog properties, sample-rate ranges, buffer-frame ranges and per-element/master volume controls. Read-only properties produce disabled controls; absent gain uses hardware-control guidance. No system default device property is modified. The full test/review record is in `docs/reviews/11-review.md`.
