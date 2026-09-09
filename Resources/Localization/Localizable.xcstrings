@@ -1158,6 +1158,397 @@
           }
         }
       }
+    },
+    "settings.source": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guitar signal source"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Джерело сигналу гітари"
+          }
+        }
+      }
+    },
+    "common.refresh": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оновити"
+          }
+        }
+      }
+    },
+    "common.cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасувати"
+          }
+        }
+      }
+    },
+    "storage.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local storage is unavailable. Check access to Application Support and restart the app."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальне сховище недоступне. Перевір доступ до Application Support і перезапусти додаток."
+          }
+        }
+      }
+    },
+    "storage.readFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read your history. Check disk access and try Refresh."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося прочитати історію. Перевір доступ до диска та натисни «Оновити»."
+          }
+        }
+      }
+    },
+    "storage.saveFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes were not saved. Check free disk space and access, then try again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зміни не збережено. Перевір вільне місце й доступ до диска та спробуй ще раз."
+          }
+        }
+      }
+    },
+    "storage.recoveryFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings could not be restored. Your original file has not been replaced."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося відновити налаштування. Оригінальний файл не замінено."
+          }
+        }
+      }
+    },
+    "storage.clearFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History could not be fully cleared. Refresh to see the remaining attempts and try again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося повністю очистити історію. Онови список, щоб побачити решту спроб, і спробуй ще раз."
+          }
+        }
+      }
+    },
+    "storage.preferencesProblem": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved instrument settings could not be read or use a newer format. Editing is paused until you restore them."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережені налаштування інструмента неможливо прочитати або вони мають новіший формат. Для редагування спочатку віднови їх."
+          }
+        }
+      }
+    },
+    "storage.restoreDefaults": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore default instrument settings"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відновити початкові налаштування інструмента"
+          }
+        }
+      }
+    },
+    "storage.restoreExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The original settings file will be kept as a recovery copy on this Mac. Practice history stays unchanged."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригінальний файл налаштувань залишиться на цьому Mac як копія для відновлення. Історія практики збережеться."
+          }
+        }
+      }
+    },
+    "storage.historyProblem": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some history data could not be read or indexed. Readable attempts are shown; unreadable files are kept for recovery."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Частину історії не вдалося прочитати або впорядкувати. Доступні спроби показано; нечитабельні файли збережено для відновлення."
+          }
+        }
+      }
+    },
+    "storage.saving": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збереження…"
+          }
+        }
+      }
+    },
+    "history.conditions %@ %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$lld BPM"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$lld BPM"
+          }
+        }
+      }
+    },
+    "history.score %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Score: %lld / 100"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка: %lld / 100"
+          }
+        }
+      }
+    },
+    "history.pitchScore %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch: %lld / 100"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Висота нот: %lld / 100"
+          }
+        }
+      }
+    },
+    "history.validity.valid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершено"
+          }
+        }
+      }
+    },
+    "history.validity.uncalibrated": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing is uncalibrated; no overall score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ритм не відкалібровано; загальна оцінка недоступна."
+          }
+        }
+      }
+    },
+    "history.validity.insufficientSignal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Insufficient signal; no score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недостатній сигнал; оцінка недоступна."
+          }
+        }
+      }
+    },
+    "history.validity.interrupted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attempt interrupted; no score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробу перервано; оцінка недоступна."
+          }
+        }
+      }
+    },
+    "history.clear": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear practice history…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистити історію практики…"
+          }
+        }
+      }
+    },
+    "history.clearTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all practice history?"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видалити всю історію практики?"
+          }
+        }
+      }
+    },
+    "history.clearExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This permanently deletes all saved practice attempts, scores, and recommendations from this Mac, including unreadable attempt files. Your instrument settings and lessons remain. This cannot be undone."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Це назавжди видалить з цього Mac усі збережені спроби, оцінки та рекомендації, включно з нечитабельними файлами спроб. Налаштування інструмента й уроки залишаться. Скасувати видалення неможливо."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -12,10 +12,15 @@ let package = Package(
             name: "PersonalGuitarCoach",
             dependencies: [
                 .product(name: "Domain", package: "GuitarCoachCore"),
-                .product(name: "Audio", package: "GuitarCoachCore")
+                .product(name: "Audio", package: "GuitarCoachCore"),
+                .product(name: "Persistence", package: "GuitarCoachCore")
             ],
             path: "App",
             exclude: ["PersonalGuitarCoach.entitlements"]
-        )
+        ),
+        .testTarget(name: "AppTests", dependencies: [
+            "PersonalGuitarCoach", .product(name: "Domain", package: "GuitarCoachCore"),
+            .product(name: "Persistence", package: "GuitarCoachCore")
+        ], path: "Tests/AppTests")
     ]
 )

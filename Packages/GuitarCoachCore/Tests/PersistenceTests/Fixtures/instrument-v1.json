@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "payload": {
+    "tuning": {
+      "id": "standard", "revision": 1, "name": "Standard", "referenceA4": 440,
+      "strings": [
+        { "number": 1, "openPitch": { "midi": 64 } },
+        { "number": 2, "openPitch": { "midi": 59 } },
+        { "number": 3, "openPitch": { "midi": 55 } },
+        { "number": 4, "openPitch": { "midi": 50 } },
+        { "number": 5, "openPitch": { "midi": 45 } },
+        { "number": 6, "openPitch": { "midi": 40 } }
+      ]
+    },
+    "orientation": "leftHanded",
+    "customTunings": [],
+    "practiceBPM": 80
+  }
+}
