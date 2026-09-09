@@ -63,4 +63,29 @@ final class LaunchTests: XCTestCase {
         XCTAssertEqual(app.buttons["fretboard.string.1.fret.0"].value as? String, "Expected")
     }
 
+
+    @MainActor
+    func testTimelineKeyboardCrossesPageBoundary() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-app.language", "en"]
+        app.launch()
+        app.menuBars.menuBarItems["Developer"].click()
+        app.menuItems["Visual test fixtures · no audio"].click()
+        let fixture = app.popUpButtons["debug.fixture"]
+        XCTAssertTrue(fixture.waitForExistence(timeout: 5))
+        fixture.click()
+        app.menuItems["4/4 · 20 bars of sixteenth notes"].click()
+        let jump = app.textFields["tab.jump"]
+        jump.click(); jump.typeKey("a", modifierFlags: .command); jump.typeText("16")
+        app.buttons["Show bar"].click()
+        let last = app.buttons["tab.event.scale-255.bar.16"]
+        XCTAssertTrue(last.waitForExistence(timeout: 5))
+        last.click()
+        app.typeKey(.rightArrow, modifierFlags: [])
+        app.typeKey(" ", modifierFlags: [])
+        let next = app.buttons["tab.event.scale-256.bar.17"]
+        XCTAssertTrue(next.waitForExistence(timeout: 5))
+        XCTAssertEqual(next.value as? String, "Selected")
+    }
+
 }

@@ -63,6 +63,8 @@ struct LessonTextView: View {
     let lesson: LoadedLesson
     @State private var selectedStepID: String?
     @State private var selectedPosition: FretPosition?
+    @State private var timelineSelection = TimelineSelection()
+    @State private var visualMode = "fretboard"
     @Environment(AppSettings.self) private var settings
     @Environment(LocalDataStore.self) private var localData
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
@@ -70,47 +72,64 @@ struct LessonTextView: View {
     var body: some View {
         let text = lesson.text(for: language)
         VStack(spacing: 0) {
-        ScrollView {
-            VStack(alignment: .leading, spacing: CoachLayout.padding) {
-                Text(verbatim: text.title).font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
-                    .accessibilityIdentifier("lesson.title")
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("content.goal").font(.headline)
-                    Text(verbatim: text.goal)
-                }
-                Text(verbatim: text.body).textSelection(.enabled)
-                if let exercise = lesson.manifest.exercises.first(where: { lesson.manifest.practiceExerciseIDs.contains($0.id) }) {
-                    TuningRequirementView(exercise: exercise, instrument: localData.preferences.instrument.tuning)
-                }
-                ForEach(lesson.manifest.steps) { step in
-                    if let copy = text.steps[step.id] {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Button {
-                                selectedStepID = step.id
-                                selectedPosition = nil
-                            } label: {
-                                Label { Text(verbatim: copy.title).font(.title3.bold()) } icon: {
-                                    Image(systemName: selectedStepID == step.id ? "checkmark.circle.fill" : "circle")
-                                }
-                            }.buttonStyle(.plain).accessibilityIdentifier("lesson.step.\(step.id)")
-                                .accessibilityValue(Text(LocalizedStringKey(selectedStepID == step.id ? "fretboard.selected" : "fretboard.unmarked")))
-                            Text(verbatim: copy.body).textSelection(.enabled)
+            ScrollView {
+                VStack(alignment: .leading, spacing: CoachLayout.padding) {
+                    Text(verbatim: text.title).font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
+                        .accessibilityIdentifier("lesson.title")
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("content.goal").font(.headline)
+                        Text(verbatim: text.goal)
+                    }
+                    Text(verbatim: text.body).textSelection(.enabled)
+                    if let exercise = lesson.manifest.exercises.first(where: { lesson.manifest.practiceExerciseIDs.contains($0.id) }) {
+                        TuningRequirementView(exercise: exercise, instrument: localData.preferences.instrument.tuning)
+                    }
+                    ForEach(lesson.manifest.steps) { step in
+                        if let copy = text.steps[step.id] {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Button {
+                                    selectedStepID = step.id
+                                    selectedPosition = nil
+                                    timelineSelection.clear()
+                                } label: {
+                                    Label { Text(verbatim: copy.title).font(.title3.bold()) } icon: {
+                                        Image(systemName: selectedStepID == step.id ? "checkmark.circle.fill" : "circle")
+                                    }
+                                }.buttonStyle(.plain).accessibilityIdentifier("lesson.step.\(step.id)")
+                                    .accessibilityValue(Text(LocalizedStringKey(selectedStepID == step.id ? "fretboard.selected" : "fretboard.unmarked")))
+                                Text(verbatim: copy.body).textSelection(.enabled)
+                            }
                         }
                     }
                 }
+                .frame(maxWidth: 740, alignment: .leading)
+                .padding(CoachLayout.padding)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-            .frame(maxWidth: 740, alignment: .leading)
-            .padding(CoachLayout.padding)
-            .frame(maxWidth: .infinity, alignment: .center)
-        }
-        .frame(minHeight: 140)
-        Divider()
-        if let visual = try? lesson.visual(stepID: selectedStepID ?? lesson.manifest.steps[0].id, instrument: localData.preferences.instrument.tuning) {
-            FretboardView(model: FretboardModel(tuning: visual.tuning, orientation: localData.preferences.instrument.orientation,
-                positions: visual.positions.map(\.position), mutedStrings: visual.mutedStrings,
-                fingers: Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } })), selected: $selectedPosition)
-                .padding(16)
-        }
+            .frame(minHeight: 140)
+            Divider()
+            Picker("tab.visualMode", selection: $visualMode) {
+                Text("fretboard.title").tag("fretboard")
+                Text("tab.title").tag("tablature")
+            }.pickerStyle(.segmented).padding(.horizontal, 16).padding(.top, 8).accessibilityIdentifier("lesson.visualMode")
+            if let visual = try? lesson.visual(stepID: selectedStepID ?? lesson.manifest.steps[0].id, instrument: localData.preferences.instrument.tuning) {
+                let exercise = lesson.manifest.exercises.first { $0.id == visual.exerciseID }
+                let manuallySelected = exercise?.events.filter { timelineSelection.ids.contains($0.id) } ?? []
+                if visualMode == "fretboard" {
+                    FretboardView(model: FretboardModel(tuning: visual.tuning, orientation: localData.preferences.instrument.orientation,
+                        positions: timelineSelection.ids.isEmpty ? visual.positions.map(\.position) : manuallySelected.flatMap(\.positions),
+                        mutedStrings: timelineSelection.ids.isEmpty ? visual.mutedStrings : [],
+                        fingers: timelineSelection.ids.isEmpty ? Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } }) : [:]), selected: $selectedPosition)
+                        .padding(12)
+                } else if let exercise, let model = try? TimelineModel(exercise: exercise, instrument: localData.preferences.instrument.tuning) {
+                    TablatureView(model: model, selectedIDs: timelineSelection.ids.isEmpty ? Set(visual.events.map(\.id)) : timelineSelection.ids) { id, extending in
+                        timelineSelection.select(id, extending: extending, events: exercise.events)
+                        selectedPosition = nil
+                    }.padding(12)
+                } else {
+                    Text("tab.noSequence").foregroundStyle(.secondary).padding()
+                }
+            }
         }
         .onAppear { if selectedStepID == nil { selectedStepID = lesson.manifest.steps.first?.id } }
         .navigationTitle(text.title)

@@ -22,3 +22,7 @@ Reviewed the canonical position projection, orientation, external step changes, 
 - Authored a UI smoke test for rest/full-bar marker transitions. Xcode UI-test execution remains U07; this is distinct from the completed CUA walkthrough. A spoken VoiceOver walkthrough remains part of final user validation U05.
 
 Lesson text scrolls independently above the fretboard. Shared timeline selection, catalog filters and restoration remain task 10; detected audio is supplied later by the audio features and is not fabricated here.
+
+## Follow-up evidence from task 09
+
+The Debug fixture window added in task 09 enabled a native Em/finger/mute walkthrough with the real fretboard component. All six Em positions, suggested fingers and separate muted-string symbols were inspected. Numeric finger labels and a localized legend replace the ambiguous F3-style shorthand; see the task 09 review. This supplements, rather than changes, the original task 08 verification record.

@@ -52,3 +52,11 @@ Instrument settings and immutable practice summaries use atomic, versioned JSON 
 ## Lesson authoring
 
 Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The current app bundles an original open-string lesson and supports reading it in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
+
+## Musical views and UI-source validation
+
+Select a lesson step to highlight its fretboard positions, or switch to Tablature to inspect event timing and select notes. Shift-click/Shift-Space extends a range. Fractions describe duration as part of a whole note; dashed lines group beats. Long exercises have bar navigation and a 1×–2× zoom.
+
+Debug builds include Developer → Visual test fixtures (no audio) and a minimum-window resize helper. They exercise the real renderers without saving attempts or claiming input capture. They are absent from Release.
+
+Run `python3 Scripts/check_ui_sources.py` to type-check UI-test sources against the selected Xcode SDK with Swift 6 and a macOS 14 deployment target. This also runs in CI and does not substitute for Xcode UI-test execution (U07).

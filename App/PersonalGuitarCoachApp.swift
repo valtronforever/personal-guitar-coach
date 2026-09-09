@@ -19,6 +19,9 @@ struct PersonalGuitarCoachApp: App {
         }
         .defaultSize(width: 1000, height: 700)
         .commands {
+            #if DEBUG
+            VisualFixtureCommands(settings: settings)
+            #endif
             CommandGroup(replacing: .appSettings) {
                 SettingsLink { Text(verbatim: settings.localized("settings.title")) }
                     .keyboardShortcut(",")
@@ -30,6 +33,12 @@ struct PersonalGuitarCoachApp: App {
                 }
             }
         }
+        #if DEBUG
+        Window(settings.localized("debug.visualTitle"), id: "visual-fixtures") {
+            VisualFixtureView().environment(settings).environment(\.locale, settings.locale)
+                .preferredColorScheme(settings.appearance.colorScheme)
+        }.defaultSize(width: 800, height: 640)
+        #endif
         Settings {
             CoachSettingsView()
                 .environment(settings)

@@ -13,7 +13,7 @@ struct FretboardView: View {
     private let rowHeight: CGFloat = 44
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("fretboard.title").font(.headline).accessibilityAddTraits(.isHeader)
                 Spacer()
@@ -24,6 +24,7 @@ struct FretboardView: View {
                 Label("fretboard.selected", systemImage: "square")
                 Text("fretboard.openMuted")
             }.font(.caption)
+            if !model.fingers.isEmpty { Text("fretboard.fingerLegend").font(.caption).foregroundStyle(.secondary) }
             ScrollViewReader { proxy in
                 HStack {
                     Picker("fretboard.jump", selection: $jumpFret) {
@@ -111,7 +112,7 @@ struct FretboardView: View {
                     else if visible {
                         Text(verbatim: model.pitch(at: position)?.name() ?? "—").font(.caption.bold().monospaced())
                         if position.fret == 0 { Text(verbatim: "○").font(.caption2) }
-                        else if let finger = model.finger(at: position) { Text("fretboard.finger \(finger)").font(.system(size: 9)) }
+                        else if let finger = model.finger(at: position) { Text(verbatim: String(finger)).font(.caption2.bold()) }
                     }
                 }
             }.frame(width: columnWidth - 4, height: rowHeight - 4).contentShape(Rectangle())

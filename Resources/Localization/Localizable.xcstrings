@@ -2606,23 +2606,6 @@
         }
       }
     },
-    "fretboard.finger %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "F%lld"
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "П%lld"
-          }
-        }
-      }
-    },
     "fretboard.fingerHint %lld": {
       "extractionState": "manual",
       "localizations": {
@@ -2721,6 +2704,516 @@
           "stringUnit": {
             "state": "translated",
             "value": "Переглянути гриф"
+          }
+        }
+      }
+    },
+    "tab.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tablature"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Табулатура"
+          }
+        }
+      }
+    },
+    "tab.zoom": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zoom"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Масштаб"
+          }
+        }
+      }
+    },
+    "tab.previous": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous bars"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Попередні такти"
+          }
+        }
+      }
+    },
+    "tab.next": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next bars"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Наступні такти"
+          }
+        }
+      }
+    },
+    "tab.jump": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перейти до такту"
+          }
+        }
+      }
+    },
+    "tab.show": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показати такт"
+          }
+        }
+      }
+    },
+    "tab.bars %lld %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bars %lld–%lld of %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такти %lld–%lld із %lld"
+          }
+        }
+      }
+    },
+    "tab.bar %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bar %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такт %lld"
+          }
+        }
+      }
+    },
+    "tab.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read left to right. Fractions show duration as part of a whole note; dashed lines group beats. Shift-click selects a range. Use arrow keys, then Space or Return."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Читай зліва направо. Дроби показують тривалість як частину цілої ноти; пунктир групує долі. Shift-клік вибирає діапазон. Використовуй стрілки, потім пробіл або Return."
+          }
+        }
+      }
+    },
+    "tab.selectHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activate to select this event. Hold Shift to extend the selection."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Активуй, щоб вибрати подію. Утримуй Shift для розширення вибору."
+          }
+        }
+      }
+    },
+    "tab.cursor %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cursor: bar %lld, beat %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Курсор: такт %lld, доля %@"
+          }
+        }
+      }
+    },
+    "tab.position %lld %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "string %lld, fret %lld, %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "струна %lld, лад %lld, %@"
+          }
+        }
+      }
+    },
+    "tab.restDescription %lld %@ %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bar %lld, beat %@, rest, duration %@ of a whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такт %lld, доля %@, пауза, тривалість %@ цілої ноти."
+          }
+        }
+      }
+    },
+    "tab.noteDescription %lld %@ %@ %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bar %lld, beat %@, duration %@ of a whole note: %@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такт %lld, доля %@, тривалість %@ цілої ноти: %@."
+          }
+        }
+      }
+    },
+    "tab.visualMode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musical view"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Музичний вигляд"
+          }
+        }
+      }
+    },
+    "tab.noSequence": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This step has no note sequence."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей крок не містить послідовності нот."
+          }
+        }
+      }
+    },
+    "debug.tools": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розробка"
+          }
+        }
+      }
+    },
+    "debug.visualTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visual test fixtures · no audio"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Візуальні тестові приклади · без аудіо"
+          }
+        }
+      }
+    },
+    "debug.fixture": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fixture"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приклад"
+          }
+        }
+      }
+    },
+    "debug.fixture.rhythm": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3/4 · mixed rhythm and a held note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3/4 · змішаний ритм і довга нота"
+          }
+        }
+      }
+    },
+    "debug.fixture.scale": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4/4 · 20 bars of sixteenth notes"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4/4 · 20 тактів шістнадцятих нот"
+          }
+        }
+      }
+    },
+    "debug.fixture.em": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em · six-note chord display"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em · показ акорду із шести нот"
+          }
+        }
+      }
+    },
+    "debug.fixture.muted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Four strings with two muted"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чотири струни та дві приглушені"
+          }
+        }
+      }
+    },
+    "debug.cursor": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inspect cursor position (no playback)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переглянути позицію курсора (без відтворення)"
+          }
+        }
+      }
+    },
+    "tab.continuationHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This continues a held event across a barline; it is not a new attack. Activate to select the event."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Це продовження події через тактову риску, а не нова атака. Активуй, щоб вибрати подію."
+          }
+        }
+      }
+    },
+    "fretboard.fingerLegend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Small numbers suggest fingers 1–4."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Малі числа позначають пальці 1–4."
+          }
+        }
+      }
+    },
+    "debug.minimumWindow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resize main window to minimum"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мінімальний розмір головного вікна"
+          }
+        }
+      }
+    },
+    "tab.continuation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Held event continues"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продовження довгої події"
+          }
+        }
+      }
+    },
+    "tab.continuationSelected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected; held event continues"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрано; продовження довгої події"
+          }
+        }
+      }
+    },
+    "tab.cursorEnd": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cursor: end of exercise"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Курсор: кінець вправи"
           }
         }
       }
