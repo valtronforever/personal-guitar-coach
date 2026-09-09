@@ -35,4 +35,3 @@ State transition tests із fake clock/device/observations; complete, cancel, pa
 ## Докази виконання
 
 Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
-

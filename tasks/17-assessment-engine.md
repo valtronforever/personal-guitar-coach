@@ -36,4 +36,3 @@ Golden fixtures: perfect, wrong pitch, early/late, dropped middle note, repeated
 ## Докази виконання
 
 Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
-

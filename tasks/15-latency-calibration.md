@@ -35,4 +35,3 @@ Synthetic delay injection, buffer/rate/device change, missing loopback, manual o
 ## Докази виконання
 
 Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
-

@@ -34,4 +34,3 @@ Round-trip snapshots, atomic-write failure, corrupt file, unsupported schema, mi
 ## Докази виконання
 
 Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
-

@@ -35,4 +35,3 @@ Offline sample interval tests, count-in/bar boundaries, rests, stop/restart, see
 ## Докази виконання
 
 Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
-

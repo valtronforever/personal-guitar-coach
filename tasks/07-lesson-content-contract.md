@@ -34,4 +34,3 @@ Valid sample, missing translation, unknown event, bad fret, duplicate ID, negati
 ## Докази виконання
 
 Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
-
