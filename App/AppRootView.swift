@@ -48,9 +48,7 @@ struct AppRootView: View {
         case .practice:
             PracticeEntryView()
         case .tuner:
-            FeatureStateView(title: "tuner.emptyTitle", message: "tuner.empty", symbol: "tuningfork") {
-                Button("audio.title") { showsAudio = true }
-            }
+            TunerView()
         case .progress:
             HistoryView()
         }
