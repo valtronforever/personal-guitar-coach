@@ -37,6 +37,7 @@ struct AppRootView: View {
                 }
         }
         .frame(minWidth: CoachLayout.minimumWidth, minHeight: CoachLayout.minimumHeight)
+        .environment(navigation)
         .sheet(isPresented: $showsAudio) { AudioProbeView().environment(\.locale, settings.locale) }
     }
 
@@ -45,9 +46,7 @@ struct AppRootView: View {
         case .lessons:
             LessonLibraryView()
         case .practice:
-            FeatureStateView(title: "practice.emptyTitle", message: "practice.empty", symbol: "play.circle") {
-                Button("navigation.lessons") { navigation.destination = .lessons }
-            }
+            PracticeEntryView()
         case .tuner:
             FeatureStateView(title: "tuner.emptyTitle", message: "tuner.empty", symbol: "tuningfork") {
                 Button("audio.title") { showsAudio = true }
@@ -109,5 +108,6 @@ struct AppShellPreviews: PreviewProvider {
         }
         .environment(LocalDataStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
         .environment(LessonLibraryStore())
+        .environment(ReadingProgressStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
     }
 }

@@ -1,11 +1,26 @@
 import SwiftUI
+import Persistence
 
 @main
 struct PersonalGuitarCoachApp: App {
     @State private var settings = AppSettings()
     @State private var navigation = AppNavigation()
-    @State private var localData = LocalDataStore()
+    @State private var localData: LocalDataStore
+    @State private var reading: ReadingProgressStore
     @State private var library = LessonLibraryStore()
+
+    init() {
+        let repository: LocalRepository?
+        #if DEBUG
+        if let token = ProcessInfo.processInfo.environment["COACH_UI_TEST_STORAGE"], let id = UUID(uuidString: token) {
+            repository = LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-ui-tests-" + id.uuidString))
+        } else { repository = try? LocalRepository.applicationSupport() }
+        #else
+        repository = try? LocalRepository.applicationSupport()
+        #endif
+        _localData = State(initialValue: LocalDataStore(repository: repository))
+        _reading = State(initialValue: ReadingProgressStore(repository: repository))
+    }
 
     var body: some Scene {
         Window(settings.localized("app.name"), id: "main") {
@@ -13,6 +28,7 @@ struct PersonalGuitarCoachApp: App {
                 .environment(settings)
                 .environment(localData)
                 .environment(library)
+                .environment(reading)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .task { await localData.reload() }

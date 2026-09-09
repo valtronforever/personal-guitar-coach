@@ -4,6 +4,7 @@ final class LaunchTests: XCTestCase {
     @MainActor
     func testEnglishLaunch() {
         let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
         app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US", "-app.language", "system"]
         app.launch()
         XCTAssertTrue(app.windows["Lessons"].waitForExistence(timeout: 10))
@@ -16,6 +17,7 @@ final class LaunchTests: XCTestCase {
     @MainActor
     func testUkrainianLaunch() {
         let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
         app.launchArguments = ["-AppleLanguages", "(uk)", "-AppleLocale", "uk_UA", "-app.language", "system"]
         app.launch()
         XCTAssertTrue(app.windows["Уроки"].waitForExistence(timeout: 10))
@@ -28,6 +30,7 @@ final class LaunchTests: XCTestCase {
     @MainActor
     func testKeyboardNavigationAndLanguagePreserveSelection() {
         let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
         app.launchArguments = ["-app.language", "en"]
         app.launch()
         app.typeKey("4", modifierFlags: .command)
@@ -48,6 +51,7 @@ final class LaunchTests: XCTestCase {
     @MainActor
     func testLessonStepClearsExpectedMarkersForRest() {
         let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
         app.launchArguments = ["-app.language", "en"]
         app.launch()
         let lesson = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Meet your open strings")).firstMatch
@@ -65,8 +69,31 @@ final class LaunchTests: XCTestCase {
 
 
     @MainActor
+    func testTabSelectsStepAndRelaunchRestoresReading() {
+        let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
+        app.launchArguments = ["-app.language", "en"]
+        app.launch()
+        let lesson = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Meet your open strings")).firstMatch
+        XCTAssertTrue(lesson.waitForExistence(timeout: 10)); lesson.click()
+        app.radioButtons["Tablature"].click()
+        app.buttons["tab.event.high-e.bar.1"].click()
+        XCTAssertEqual(app.buttons["lesson.step.hear-high-e"].value as? String, "Selected")
+        app.checkBoxes["lesson.markRead"].click()
+        // Give the atomic writer a visible navigation boundary before relaunch.
+        app.buttons["lesson.practice.open-strings-intro-practice"].click()
+        XCTAssertTrue(app.descendants(matching: .any)["practice.selectedExercise"].firstMatch.waitForExistence(timeout: 5))
+        app.terminate(); app.launch()
+        let restored = app.buttons["lesson.step.hear-high-e"]
+        XCTAssertTrue(restored.waitForExistence(timeout: 10))
+        XCTAssertEqual(restored.value as? String, "Selected")
+        XCTAssertEqual(app.checkBoxes["lesson.markRead"].value as? String, "1")
+    }
+
+    @MainActor
     func testTimelineKeyboardCrossesPageBoundary() {
         let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
         app.launchArguments = ["-app.language", "en"]
         app.launch()
         app.menuBars.menuBarItems["Developer"].click()

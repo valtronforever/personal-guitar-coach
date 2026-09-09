@@ -5,14 +5,20 @@ import Domain
 struct LessonLibraryView: View {
     @Environment(LessonLibraryStore.self) private var store
     @Environment(AppSettings.self) private var settings
+    @Environment(AppNavigation.self) private var navigation
+    @Environment(ReadingProgressStore.self) private var reading
+    @State private var filter = LessonFilter()
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
+    private var filtered: [LoadedLesson] { store.lessons.filter { filter.matches($0, language: language) } }
 
     var body: some View {
-        NavigationStack {
+        @Bindable var navigation = navigation
+        NavigationStack(path: $navigation.lessonPath) {
             VStack(alignment: .leading, spacing: CoachLayout.spacing) {
-                if !store.hasLoaded || store.isLoading {
+                if !store.hasLoaded || store.isLoading || !reading.hasLoaded {
                     ProgressView("lessons.loading").frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
+                    ReadingProgressNotice()
                     if store.missingBundle { Label("content.error.unavailableCatalog", systemImage: "exclamationmark.triangle").padding() }
                     if !store.issues.isEmpty {
                         DisclosureGroup {
@@ -32,15 +38,27 @@ struct LessonLibraryView: View {
                     if store.lessons.isEmpty {
                         FeatureStateView(title: "navigation.lessons", message: store.issues.isEmpty && !store.missingBundle ? "lessons.empty" : "content.noReadableLessons", symbol: "book") { EmptyView() }
                     } else {
-                        Text("lessons.count \(store.lessons.count)").font(.headline).padding(.horizontal, CoachLayout.padding)
-                        List(store.lessons) { lesson in
-                            NavigationLink(value: lesson.id) {
-                                VStack(alignment: .leading, spacing: 6) {
-                                    Text(verbatim: lesson.text(for: language).title).font(.headline)
-                                    Text(verbatim: lesson.text(for: language).summary).foregroundStyle(.secondary)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                }.padding(.vertical, 8)
-                            }.accessibilityIdentifier("lesson.\(lesson.id)")
+                        filters
+                        if filtered.isEmpty {
+                            FeatureStateView(title: "lessons.noMatches", message: "lessons.changeFilters", symbol: "magnifyingglass") {
+                                Button("lessons.clearFilters") { filter = LessonFilter() }
+                            }
+                        } else {
+                            List(filtered) { lesson in
+                                NavigationLink(value: lesson.id) {
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text(verbatim: lesson.text(for: language).title).font(.headline)
+                                        Text(verbatim: lesson.text(for: language).summary).foregroundStyle(.secondary).lineLimit(3)
+                                        HStack {
+                                            Text(LocalizedStringKey(difficultyKey(lesson.manifest.difficulty)))
+                                            Text(LocalizedStringKey(topicKey(lesson.manifest.topic)))
+                                            if let readVersion = reading.progress.lessons[lesson.id]?.readVersion {
+                                                Label(LocalizedStringKey(readVersion == lesson.manifest.version ? "reading.read" : "reading.updated"), systemImage: "book.closed.fill")
+                                            }
+                                        }.font(.caption).foregroundStyle(.secondary)
+                                    }.padding(.vertical, 8)
+                                }.accessibilityIdentifier("lesson.\(lesson.id)")
+                            }
                         }
                     }
                     Button("common.refresh") { Task { await store.load(force: true) } }.padding(.horizontal, CoachLayout.padding)
@@ -48,90 +66,40 @@ struct LessonLibraryView: View {
             }
             .padding(.vertical, CoachLayout.spacing)
             .navigationDestination(for: String.self) { id in
-                if let lesson = store.lessons.first(where: { $0.id == id }) { LessonTextView(lesson: lesson) }
-                else { FeatureStateView(title: "common.error", message: "content.error.missingFile", symbol: "book") { EmptyView() } }
+                if let lesson = store.lessons.first(where: { $0.id == id }) {
+                    LessonTextView(lesson: lesson, bookmark: reading.progress.lessons[id]).id("\(lesson.id):\(lesson.manifest.version)")
+                } else { FeatureStateView(title: "common.error", message: "content.error.missingFile", symbol: "book") { EmptyView() } }
             }
         }
-        .task { await store.load() }
+        .task {
+            await store.load()
+            await reading.load()
+            if !navigation.restoredReading && store.hasLoaded && reading.hasLoaded {
+                navigation.restoredReading = true
+                if navigation.lessonPath.isEmpty, let id = reading.progress.lastLessonID, store.lessons.contains(where: { $0.id == id }) {
+                    navigation.lessonPath = [id]
+                }
+            }
+        }
     }
 
+    private var filters: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            TextField("lessons.search", text: $filter.query).textFieldStyle(.roundedBorder).accessibilityIdentifier("lessons.search")
+            HStack {
+                Picker("lessons.difficulty", selection: $filter.difficulty) {
+                    Text("lessons.allDifficulties").tag(nil as LessonDifficulty?)
+                    ForEach(LessonDifficulty.allCases, id: \.self) { value in Text(LocalizedStringKey(difficultyKey(value))).tag(Optional(value)) }
+                }
+                Picker("lessons.topic", selection: $filter.topic) {
+                    Text("lessons.allTopics").tag(nil as LessonTopic?)
+                    ForEach(LessonTopic.allCases, id: \.self) { value in Text(LocalizedStringKey(topicKey(value))).tag(Optional(value)) }
+                }
+            }
+            Text("lessons.count \(filtered.count)").font(.headline)
+        }.padding(.horizontal, CoachLayout.padding)
+    }
     private func issueKey(_ code: ContentIssueCode) -> String { "content.error.\(code.rawValue)" }
-}
-
-/// Step-to-fretboard selection; shared timeline selection and restoration follow in task 10.
-struct LessonTextView: View {
-    let lesson: LoadedLesson
-    @State private var selectedStepID: String?
-    @State private var selectedPosition: FretPosition?
-    @State private var timelineSelection = TimelineSelection()
-    @State private var visualMode = "fretboard"
-    @Environment(AppSettings.self) private var settings
-    @Environment(LocalDataStore.self) private var localData
-    private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
-
-    var body: some View {
-        let text = lesson.text(for: language)
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: CoachLayout.padding) {
-                    Text(verbatim: text.title).font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
-                        .accessibilityIdentifier("lesson.title")
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("content.goal").font(.headline)
-                        Text(verbatim: text.goal)
-                    }
-                    Text(verbatim: text.body).textSelection(.enabled)
-                    if let exercise = lesson.manifest.exercises.first(where: { lesson.manifest.practiceExerciseIDs.contains($0.id) }) {
-                        TuningRequirementView(exercise: exercise, instrument: localData.preferences.instrument.tuning)
-                    }
-                    ForEach(lesson.manifest.steps) { step in
-                        if let copy = text.steps[step.id] {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Button {
-                                    selectedStepID = step.id
-                                    selectedPosition = nil
-                                    timelineSelection.clear()
-                                } label: {
-                                    Label { Text(verbatim: copy.title).font(.title3.bold()) } icon: {
-                                        Image(systemName: selectedStepID == step.id ? "checkmark.circle.fill" : "circle")
-                                    }
-                                }.buttonStyle(.plain).accessibilityIdentifier("lesson.step.\(step.id)")
-                                    .accessibilityValue(Text(LocalizedStringKey(selectedStepID == step.id ? "fretboard.selected" : "fretboard.unmarked")))
-                                Text(verbatim: copy.body).textSelection(.enabled)
-                            }
-                        }
-                    }
-                }
-                .frame(maxWidth: 740, alignment: .leading)
-                .padding(CoachLayout.padding)
-                .frame(maxWidth: .infinity, alignment: .center)
-            }
-            .frame(minHeight: 140)
-            Divider()
-            Picker("tab.visualMode", selection: $visualMode) {
-                Text("fretboard.title").tag("fretboard")
-                Text("tab.title").tag("tablature")
-            }.pickerStyle(.segmented).padding(.horizontal, 16).padding(.top, 8).accessibilityIdentifier("lesson.visualMode")
-            if let visual = try? lesson.visual(stepID: selectedStepID ?? lesson.manifest.steps[0].id, instrument: localData.preferences.instrument.tuning) {
-                let exercise = lesson.manifest.exercises.first { $0.id == visual.exerciseID }
-                let manuallySelected = exercise?.events.filter { timelineSelection.ids.contains($0.id) } ?? []
-                if visualMode == "fretboard" {
-                    FretboardView(model: FretboardModel(tuning: visual.tuning, orientation: localData.preferences.instrument.orientation,
-                        positions: timelineSelection.ids.isEmpty ? visual.positions.map(\.position) : manuallySelected.flatMap(\.positions),
-                        mutedStrings: timelineSelection.ids.isEmpty ? visual.mutedStrings : [],
-                        fingers: timelineSelection.ids.isEmpty ? Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } }) : [:]), selected: $selectedPosition)
-                        .padding(12)
-                } else if let exercise, let model = try? TimelineModel(exercise: exercise, instrument: localData.preferences.instrument.tuning) {
-                    TablatureView(model: model, selectedIDs: timelineSelection.ids.isEmpty ? Set(visual.events.map(\.id)) : timelineSelection.ids) { id, extending in
-                        timelineSelection.select(id, extending: extending, events: exercise.events)
-                        selectedPosition = nil
-                    }.padding(12)
-                } else {
-                    Text("tab.noSequence").foregroundStyle(.secondary).padding()
-                }
-            }
-        }
-        .onAppear { if selectedStepID == nil { selectedStepID = lesson.manifest.steps.first?.id } }
-        .navigationTitle(text.title)
-    }
+    private func difficultyKey(_ value: LessonDifficulty) -> String { "difficulty.\(value.rawValue)" }
+    private func topicKey(_ value: LessonTopic) -> String { "topic.\(value.rawValue)" }
 }

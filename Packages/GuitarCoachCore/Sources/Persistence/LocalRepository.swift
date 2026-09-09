@@ -21,13 +21,14 @@ public struct AtomicDocumentWriter: Sendable {
 }
 
 /// One actor serializes each app's disk mutations. Individual attempt files are authoritative.
-public actor LocalRepository: PracticeRepository, InstrumentRepository {
+public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingRepository {
     public let root: URL
     private let writer: AtomicDocumentWriter
     private let manager = FileManager.default
     private var sessions: URL { root.appendingPathComponent("Sessions", isDirectory: true) }
     private var preferencesURL: URL { root.appendingPathComponent("instrument.json") }
     private var indexURL: URL { root.appendingPathComponent("history-index.json") }
+    private var readingURL: URL { root.appendingPathComponent("reading-progress.json") }
 
     public init(root: URL, writer: AtomicDocumentWriter = AtomicDocumentWriter()) {
         self.root = root; self.writer = writer
@@ -37,6 +38,26 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository {
         let library = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
                                                  appropriateFor: nil, create: false)
         return LocalRepository(root: library.appendingPathComponent("PersonalGuitarCoach", isDirectory: true))
+    }
+
+    public func loadReadingProgress() throws -> ReadingProgress {
+        do {
+            let data = try Data(contentsOf: readingURL)
+            let version = try JSONDecoder().decode(VersionHeader.self, from: data).schemaVersion
+            guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+            let value = try JSONDecoder().decode(DocumentEnvelope<ReadingProgress>.self, from: data).payload
+            try value.validate()
+            return value
+        } catch let error as CocoaError where error.code == .fileReadNoSuchFile || error.code == .fileNoSuchFile {
+            return ReadingProgress()
+        }
+    }
+
+    public func saveReadingProgress(_ value: ReadingProgress) throws {
+        try value.validate()
+        _ = try loadReadingProgress() // Preserve corrupt/future documents instead of replacing them.
+        try prepare()
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: value)), readingURL)
     }
 
     public func loadPreferences() -> PreferencesLoad {

@@ -2,7 +2,7 @@
 
 GitHub: [#10](https://github.com/valtronforever/personal-guitar-coach/issues/10)
 
-Статус: `todo`
+Статус: `done`
 Етап: MVP
 Залежності: 05, 07, 08, 09
 
@@ -33,4 +33,8 @@ UI walkthrough обома мовами; click step, click tab, restore app, disp
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+Реалізовано `LessonSelection`, каталог з локалізованим пошуком/difficulty/topic, reader і bidirectional step/tab selection. `ReadingProgressStore` + envelope v1 зберігають останній урок/крок і read version окремо від оцінок. `PracticeRequest` передає незмінну конкретну вправу та її tuning policy; playback поки чесно недоступний.
+
+Перевірки: 45 core tests / 7 suites, 27 AppTests / 7 suites; 217 en/uk keys; generator check; bundled content validator; Debug/Release .app зі strict signature verification; UI-test source type-check. Native walkthrough en/uk: пошук і difficulty filter, step↔tab rule, збереження вибору при зміні мови, relaunch restoration, read badge без practice score, конкретний practice handoff і повернення, minimum 900×620.
+
+[Локальний review](../docs/reviews/10-review.md) містить знайдені проблеми та виправлення. UI XCTest execution залишається U07, користувацький musical/VoiceOver walkthrough — U05; ці загальні gates не блокують програмну задачу за вказівкою користувача. Читання не запускає аудіо і не запитує дозвіл.

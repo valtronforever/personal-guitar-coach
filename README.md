@@ -60,3 +60,5 @@ Select a lesson step to highlight its fretboard positions, or switch to Tablatur
 Debug builds include Developer → Visual test fixtures (no audio) and a minimum-window resize helper. They exercise the real renderers without saving attempts or claiming input capture. They are absent from Release.
 
 Run `python3 Scripts/check_ui_sources.py` to type-check UI-test sources against the selected Xcode SDK with Swift 6 and a macOS 14 deployment target. This also runs in CI and does not substitute for Xcode UI-test execution (U07).
+
+Каталог уроків підтримує пошук у локалізованих назвах/описах і фільтри теми та складності. Кроки та події табулатури синхронізують гриф; останній урок/крок відновлюються після перезапуску. Позначка прочитаного зберігається окремо від результатів практики. Перехід до конкретної вправи показує її стрій і темп; transport та оцінювана сесія реалізуються наступними задачами.
