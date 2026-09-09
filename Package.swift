@@ -10,7 +10,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "PersonalGuitarCoach",
-            dependencies: [.product(name: "Domain", package: "GuitarCoachCore")],
+            dependencies: [
+                .product(name: "Domain", package: "GuitarCoachCore"),
+                .product(name: "Audio", package: "GuitarCoachCore")
+            ],
             path: "App",
             exclude: ["PersonalGuitarCoach.entitlements"]
         )

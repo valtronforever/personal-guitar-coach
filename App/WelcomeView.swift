@@ -3,6 +3,7 @@ import Domain
 
 struct WelcomeView: View {
     let defaultSource: InputSource
+    @State private var showsAudio = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -23,11 +24,15 @@ struct WelcomeView: View {
             Text("welcome.acoustic")
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
+            Button("audio.title") { showsAudio = true }
+                .buttonStyle(.borderedProminent)
+                .accessibilityIdentifier("welcome.audio")
         }
         .accessibilityElement(children: .contain)
         .padding(48)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .frame(minWidth: 720, minHeight: 480)
+        .sheet(isPresented: $showsAudio) { AudioProbeView() }
     }
 
     private var sourceTitle: LocalizedStringKey {

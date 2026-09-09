@@ -35,9 +35,18 @@
 			"package" = "BC4A71180870F7945155FBB0";
 			"productName" = "Domain";
 		};
+		"726953DEBBC538A2A2D25F8B" = {
+			"isa" = "XCSwiftPackageProductDependency";
+			"package" = "BC4A71180870F7945155FBB0";
+			"productName" = "Audio";
+		};
 		"F412331F6B7D6424E59C1E20" = {
 			"isa" = "PBXBuildFile";
 			"productRef" = "983B64092D5DB09323A7C4BB";
+		};
+		"CFC07535C29D258BF937E2EF" = {
+			"isa" = "PBXBuildFile";
+			"productRef" = "726953DEBBC538A2A2D25F8B";
 		};
 		"681C948D238C526E9E3424E0" = {
 			"isa" = "PBXFileReference";
@@ -50,6 +59,16 @@
 			"explicitFileType" = "wrapper.cfbundle";
 			"path" = "PersonalGuitarCoachUITests.xctest";
 			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"E77303F82C9A160465B22133" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "App/AudioProbeView.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"54E0B1E08D2EB3CD4418F67E" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "E77303F82C9A160465B22133";
 		};
 		"14C0F074DA644B0ED79D7F01" = {
 			"isa" = "PBXFileReference";
@@ -74,13 +93,13 @@
 		"AFF87A50730392B6633ACECE" = {
 			"isa" = "PBXSourcesBuildPhase";
 			"buildActionMask" = "2147483647";
-			"files" = ("744808F9B85A4DCEEA053BB7", "65F41D1774A7D7C0D584BC94");
+			"files" = ("54E0B1E08D2EB3CD4418F67E", "744808F9B85A4DCEEA053BB7", "65F41D1774A7D7C0D584BC94");
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
 		"7A4C2DC8FCA657188648E999" = {
 			"isa" = "PBXFrameworksBuildPhase";
 			"buildActionMask" = "2147483647";
-			"files" = ("F412331F6B7D6424E59C1E20");
+			"files" = ("F412331F6B7D6424E59C1E20", "CFC07535C29D258BF937E2EF");
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
 		"F9187E824FE171A6F0EFAE28" = {
@@ -262,7 +281,7 @@
 			"buildPhases" = ("AFF87A50730392B6633ACECE", "7A4C2DC8FCA657188648E999", "F9187E824FE171A6F0EFAE28");
 			"buildRules" = ();
 			"dependencies" = ();
-			"packageProductDependencies" = ("983B64092D5DB09323A7C4BB");
+			"packageProductDependencies" = ("983B64092D5DB09323A7C4BB", "726953DEBBC538A2A2D25F8B");
 			"productReference" = "681C948D238C526E9E3424E0";
 			"productType" = "com.apple.product-type.application";
 		};
@@ -281,7 +300,7 @@
 			"isa" = "PBXGroup";
 			"name" = "Sources";
 			"sourceTree" = "<group>";
-			"children" = ("14C0F074DA644B0ED79D7F01", "F5DC10AA4740647467780E4F", "E250E07043113FAB44DB7036");
+			"children" = ("E77303F82C9A160465B22133", "14C0F074DA644B0ED79D7F01", "F5DC10AA4740647467780E4F", "E250E07043113FAB44DB7036");
 		};
 		"C5E55183ECB076EB335DF6EE" = {
 			"isa" = "PBXGroup";
