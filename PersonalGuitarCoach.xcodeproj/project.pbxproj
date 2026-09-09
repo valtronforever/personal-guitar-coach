@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	"archiveVersion" = "1";
+	"classes" = {
+
+	};
+	"objectVersion" = "56";
+	"objects" = {
+		"114F4CA765DE9E10ADC330CB" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.json.xcstrings";
+			"path" = "Resources/Localization/InfoPlist.xcstrings";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"D255F967F3ADCB2D24165D5A" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "114F4CA765DE9E10ADC330CB";
+		};
+		"9CF268CF79415E1082DE0BBC" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.json.xcstrings";
+			"path" = "Resources/Localization/Localizable.xcstrings";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"4D9DF2A4C70B6488900AF1CD" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "9CF268CF79415E1082DE0BBC";
+		};
+		"BC4A71180870F7945155FBB0" = {
+			"isa" = "XCLocalSwiftPackageReference";
+			"relativePath" = "Packages/GuitarCoachCore";
+		};
+		"983B64092D5DB09323A7C4BB" = {
+			"isa" = "XCSwiftPackageProductDependency";
+			"package" = "BC4A71180870F7945155FBB0";
+			"productName" = "Domain";
+		};
+		"F412331F6B7D6424E59C1E20" = {
+			"isa" = "PBXBuildFile";
+			"productRef" = "983B64092D5DB09323A7C4BB";
+		};
+		"681C948D238C526E9E3424E0" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.application";
+			"path" = "PersonalGuitarCoach.app";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"93E46A602338E07A8524AEF6" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.cfbundle";
+			"path" = "PersonalGuitarCoachUITests.xctest";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"14C0F074DA644B0ED79D7F01" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "App/PersonalGuitarCoachApp.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"744808F9B85A4DCEEA053BB7" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "14C0F074DA644B0ED79D7F01";
+		};
+		"F5DC10AA4740647467780E4F" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "App/WelcomeView.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"65F41D1774A7D7C0D584BC94" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "F5DC10AA4740647467780E4F";
+		};
+		"AFF87A50730392B6633ACECE" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("744808F9B85A4DCEEA053BB7", "65F41D1774A7D7C0D584BC94");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"7A4C2DC8FCA657188648E999" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("F412331F6B7D6424E59C1E20");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"F9187E824FE171A6F0EFAE28" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("D255F967F3ADCB2D24165D5A", "4D9DF2A4C70B6488900AF1CD");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"E250E07043113FAB44DB7036" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Tests/UITests/LaunchTests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"68DDB13067DF7100C22A5FBD" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "E250E07043113FAB44DB7036";
+		};
+		"760DD443C1DF2461277A1FDF" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("68DDB13067DF7100C22A5FBD");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"5571A8135AC78D6956901922" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"6E9F5BADA175FDA0A5AC8038" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"73EBF6644258C120893E685D" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"SDKROOT" = "macosx";
+				"SWIFT_VERSION" = "6.0";
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"CODE_SIGN_STYLE" = "Manual";
+				"CODE_SIGN_IDENTITY" = "-";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"ENABLE_TESTABILITY" = "YES";
+				"ONLY_ACTIVE_ARCH" = "YES";
+			};
+		};
+		"0B0C687DF8B6B8DC790B519C" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"SDKROOT" = "macosx";
+				"SWIFT_VERSION" = "6.0";
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"CODE_SIGN_STYLE" = "Manual";
+				"CODE_SIGN_IDENTITY" = "-";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+			};
+		};
+		"76F8DEC3DFE0BDB465198890" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("73EBF6644258C120893E685D", "0B0C687DF8B6B8DC790B519C");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"B00CCDD09424E369308D67FA" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.valtronforever.PersonalGuitarCoach";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"INFOPLIST_KEY_CFBundleDisplayName" = "Personal Guitar Coach";
+				"INFOPLIST_KEY_LSApplicationCategoryType" = "public.app-category.education";
+				"INFOPLIST_KEY_NSMicrophoneUsageDescription" = "Listen to your guitar for tuning and practice feedback.";
+				"CODE_SIGN_ENTITLEMENTS" = "App/PersonalGuitarCoach.entitlements";
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks");
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"ENABLE_TESTABILITY" = "YES";
+				"ONLY_ACTIVE_ARCH" = "YES";
+			};
+		};
+		"1B104479E55E37CF8A63CBDF" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.valtronforever.PersonalGuitarCoach";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"INFOPLIST_KEY_CFBundleDisplayName" = "Personal Guitar Coach";
+				"INFOPLIST_KEY_LSApplicationCategoryType" = "public.app-category.education";
+				"INFOPLIST_KEY_NSMicrophoneUsageDescription" = "Listen to your guitar for tuning and practice feedback.";
+				"CODE_SIGN_ENTITLEMENTS" = "App/PersonalGuitarCoach.entitlements";
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks");
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+			};
+		};
+		"06CB67C35A91E16DBD17B949" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("B00CCDD09424E369308D67FA", "1B104479E55E37CF8A63CBDF");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"156F725150A84FCB69393542" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.valtronforever.PersonalGuitarCoachUITests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"TEST_TARGET_NAME" = "PersonalGuitarCoach";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"ENABLE_TESTABILITY" = "YES";
+				"ONLY_ACTIVE_ARCH" = "YES";
+			};
+		};
+		"C23B5A69B2E27C3E5F160FC6" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.valtronforever.PersonalGuitarCoachUITests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"TEST_TARGET_NAME" = "PersonalGuitarCoach";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+			};
+		};
+		"F39F41D0F9A1459B523C2622" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("156F725150A84FCB69393542", "C23B5A69B2E27C3E5F160FC6");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"F6301EAD2AC55A883FB1AF3A" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "244210E48437B6556980A702";
+			"proxyType" = "1";
+			"remoteGlobalIDString" = "C1E9827DB735CA9BAA54A540";
+			"remoteInfo" = "PersonalGuitarCoach";
+		};
+		"8DA290C1E75835394B937A40" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "C1E9827DB735CA9BAA54A540";
+			"targetProxy" = "F6301EAD2AC55A883FB1AF3A";
+		};
+		"C1E9827DB735CA9BAA54A540" = {
+			"isa" = "PBXNativeTarget";
+			"name" = "PersonalGuitarCoach";
+			"productName" = "PersonalGuitarCoach";
+			"buildConfigurationList" = "06CB67C35A91E16DBD17B949";
+			"buildPhases" = ("AFF87A50730392B6633ACECE", "7A4C2DC8FCA657188648E999", "F9187E824FE171A6F0EFAE28");
+			"buildRules" = ();
+			"dependencies" = ();
+			"packageProductDependencies" = ("983B64092D5DB09323A7C4BB");
+			"productReference" = "681C948D238C526E9E3424E0";
+			"productType" = "com.apple.product-type.application";
+		};
+		"4EA0BBFB4641B4E941FBF077" = {
+			"isa" = "PBXNativeTarget";
+			"name" = "PersonalGuitarCoachUITests";
+			"productName" = "PersonalGuitarCoachUITests";
+			"buildConfigurationList" = "F39F41D0F9A1459B523C2622";
+			"buildPhases" = ("760DD443C1DF2461277A1FDF", "5571A8135AC78D6956901922", "6E9F5BADA175FDA0A5AC8038");
+			"buildRules" = ();
+			"dependencies" = ("8DA290C1E75835394B937A40");
+			"productReference" = "93E46A602338E07A8524AEF6";
+			"productType" = "com.apple.product-type.bundle.ui-testing";
+		};
+		"3B321D4C1A98E53F25157DEF" = {
+			"isa" = "PBXGroup";
+			"name" = "Sources";
+			"sourceTree" = "<group>";
+			"children" = ("14C0F074DA644B0ED79D7F01", "F5DC10AA4740647467780E4F", "E250E07043113FAB44DB7036");
+		};
+		"C5E55183ECB076EB335DF6EE" = {
+			"isa" = "PBXGroup";
+			"name" = "Resources";
+			"sourceTree" = "<group>";
+			"children" = ("114F4CA765DE9E10ADC330CB", "9CF268CF79415E1082DE0BBC");
+		};
+		"B9E7F2871A3402983868AFC8" = {
+			"isa" = "PBXGroup";
+			"name" = "Products";
+			"sourceTree" = "<group>";
+			"children" = ("681C948D238C526E9E3424E0", "93E46A602338E07A8524AEF6");
+		};
+		"19F479106CE8C3BA8C106518" = {
+			"isa" = "PBXGroup";
+			"sourceTree" = "<group>";
+			"children" = ("3B321D4C1A98E53F25157DEF", "C5E55183ECB076EB335DF6EE", "B9E7F2871A3402983868AFC8");
+		};
+		"244210E48437B6556980A702" = {
+			"isa" = "PBXProject";
+			"buildConfigurationList" = "76F8DEC3DFE0BDB465198890";
+			"compatibilityVersion" = "Xcode 14.0";
+			"developmentRegion" = "en";
+			"knownRegions" = ("en", "uk", "Base");
+			"mainGroup" = "19F479106CE8C3BA8C106518";
+			"productRefGroup" = "B9E7F2871A3402983868AFC8";
+			"projectDirPath" = "";
+			"projectRoot" = "";
+			"targets" = ("C1E9827DB735CA9BAA54A540", "4EA0BBFB4641B4E941FBF077");
+			"packageReferences" = ("BC4A71180870F7945155FBB0");
+			"attributes" = {
+				"LastUpgradeCheck" = "1600";
+				"BuildIndependentTargetsInParallel" = "YES";
+				"TargetAttributes" = {
+					"4EA0BBFB4641B4E941FBF077" = {
+						"TestTargetID" = "C1E9827DB735CA9BAA54A540";
+					};
+				};
+			};
+		};
+	};
+	"rootObject" = "244210E48437B6556980A702";
+}
