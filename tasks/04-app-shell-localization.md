@@ -2,7 +2,7 @@
 
 GitHub: [#4](https://github.com/valtronforever/personal-guitar-coach/issues/4)
 
-Статус: `todo`
+Статус: `done`
 Етап: MVP
 Залежності: 01
 
@@ -33,4 +33,9 @@ UI smoke в en/uk, System fallback, світла/темна тема, window res
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- Реалізовано NavigationSplitView, чотири розділи, нативні Settings, ⌘1…4 та ⌘,. Навігація відокремлена від мови; app-owned заголовки оновлюються одразу.
+- String Catalog: 66 ключів en/uk, plural rules; System/English/Українська та System/Light/Dark збережено у preferences. Мінімальний content size 900×620.
+- `python3 Scripts/build_local.py` і `--configuration release`: успішні native .app та strict codesign. `Scripts/check_localizations.py` і generator check: успішно.
+- Native CUA: усі destinations, клавіатурні shortcuts, зміна мови зі збереженням selection, відновлення preferences після relaunch, light/dark, український текст на мінімальній ширині без обрізання.
+- UI previews та XCTest smoke-сценарії додано. Xcode UI-test execution відкладено до U07; VoiceOver walkthrough — фінальна перевірка. Це не замінює виконані native CUA checks.
+- Self-review та виправлення: [04-review](../docs/reviews/04-review.md).

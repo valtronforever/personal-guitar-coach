@@ -40,3 +40,7 @@ xcodebuild -project PersonalGuitarCoach.xcodeproj -scheme PersonalGuitarCoach -d
 ```
 
 На поточному Mac `xcodebuild` не завантажує системний `DVTDownloads` потрібної версії. Це окрема від Swift-компілятора проблема встановлення Xcode, відкладена як U07. Не заявляємо проходження Xcode UI tests. CI перевіряє Xcode-проєкт у чистому середовищі; фактичний результат кожного запуску наведено у PR. Unit tests ядра запускаються окремо без UI та аудіопристрою.
+
+## App navigation and language
+
+Use ⌘1–⌘4 for Lessons, Practice, Tuner, and Progress; ⌘, opens Settings. Language and appearance changes apply immediately. System language uses the first supported English/Ukrainian preference, falling back to English; macOS controls system dialogs and standard menus. Validate catalogs with `python3 Scripts/check_localizations.py`.
