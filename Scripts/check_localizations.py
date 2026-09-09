@@ -39,7 +39,11 @@ for catalog in (root / "Resources/Localization").glob("*.xcstrings"):
 keys = json.loads((root / "Resources/Localization/Localizable.xcstrings").read_text())["strings"]
 pattern = re.compile(r'(?:Text|Label|Button|Picker|Section|accessibilityLabel|accessibilityHint|localized)\(\s*"([a-z][a-zA-Z0-9.]+)"')
 for source in (root / "App").rglob("*.swift"):
-    for key in pattern.findall(source.read_text()):
+    text = source.read_text()
+    for number, line in enumerate(text.splitlines(), 1):
+        if re.search(r'LocalizedStringKey\("[^"\n]*\\\(', line):
+            errors.append(f"{source.name}:{number}: build computed localization keys as String variables; use Text interpolation for translated arguments")
+    for key in pattern.findall(text):
         if "." in key and key not in keys:
             errors.append(f"{source.name}: missing key {key}")
 if errors:

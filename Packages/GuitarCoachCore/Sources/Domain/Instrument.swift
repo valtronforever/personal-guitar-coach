@@ -71,6 +71,12 @@ public struct TuningProfile: Hashable, Codable, Identifiable, Sendable {
         strings == other.strings && referenceA4 == other.referenceA4
     }
 
+    public func revised(name: String, strings: [TunedString], referenceA4: Double) throws -> TuningProfile {
+        if self.name == name, self.strings == strings.sorted(by: { $0.number < $1.number }), self.referenceA4 == referenceA4 { return self }
+        guard revision < Int.max else { throw MusicError.invalidTuning }
+        return try TuningProfile(id: id, revision: revision + 1, name: name, strings: strings, referenceA4: referenceA4)
+    }
+
     public static let standard = preset(id: "standard", name: "Standard", lowToHigh: [40, 45, 50, 55, 59, 64])
     public static let dropD = preset(id: "drop-d", name: "Drop D", lowToHigh: [38, 45, 50, 55, 59, 64])
     public static let dStandard = preset(id: "d-standard", name: "D Standard", lowToHigh: [38, 43, 48, 53, 57, 62])

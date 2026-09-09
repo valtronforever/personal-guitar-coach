@@ -2,7 +2,7 @@
 
 GitHub: [#6](https://github.com/valtronforever/personal-guitar-coach/issues/6)
 
-Статус: `todo`
+Статус: `done`
 Етап: MVP
 Залежності: 03, 04, 05
 
@@ -33,4 +33,10 @@ Presets, invalid values, save/load, profile revisions, mismatch для fixedTuni
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- Нативна Instrument-вкладка: Standard/Drop D/D Standard, custom editor, A4 400–480, орієнтація, відкриті ноти/частоти та пояснення фізичного переналаштування.
+- Custom profiles мають сталі ID, послідовні revision, перевірку stale edit і атомарний запис. Пресети не перезаписуються; selected snapshot узгоджений із registry.
+- Pitch.parse підтримує E2, F#3, B♭3 та octave boundaries. Перегляд дозволено ширше C2–E6; validateForPractice відхиляє позадіапазонні ноти, без обіцянки виміряної DSP-точності.
+- Fixed-tuning validator і TuningRequirementView підготовлено для задач 10/16. Тестований instrumentWillChange спрацьовує перед публікацією snapshot; підключення running-attempt interruption належить задачі 16.
+- 32 core + 7 AppTests: успішно. Custom save/edit/reload, revision conflicts, неправильні значення, invariants і localization-independent ID перевірені на ізольованих даних.
+- Native CUA: пресети/частоти, Drop D після relaunch та зміни мови, invalid A4/Save disabled, A4 442/частоти, Cancel без змін, en/uk layouts. Повернуто Standard/System; тестові custom profiles у користувацькі дані не додавалися.
+- Debug/Release native builds, strict codesign, project/catalog checks (118 ключів) успішні. [Self-review](../docs/reviews/06-review.md).

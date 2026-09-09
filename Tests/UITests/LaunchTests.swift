@@ -28,6 +28,9 @@ final class LaunchTests: XCTestCase {
         app.launch()
         app.typeKey("4", modifierFlags: .command)
         app.typeKey(",", modifierFlags: .command)
+        let general = app.toolbars.buttons["General"].firstMatch
+        XCTAssertTrue(general.waitForExistence(timeout: 5))
+        general.click()
         let language = app.popUpButtons["settings.language"]
         XCTAssertTrue(language.waitForExistence(timeout: 5))
         language.click()

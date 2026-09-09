@@ -28,6 +28,30 @@ public struct InstrumentPreferences: Codable, Equatable, Sendable {
               Set(customTunings.map(\.id)).isDisjoint(with: Set(TuningProfile.presets.map(\.id))) else {
             throw StorageError.invalidRecord
         }
+        guard (TuningProfile.presets + customTunings).contains(instrument.tuning) else { throw StorageError.invalidRecord }
+    }
+    public var availableTunings: [TuningProfile] { TuningProfile.presets + customTunings }
+
+    public func selectingTuning(id: String) throws -> InstrumentPreferences {
+        guard let tuning = availableTunings.first(where: { $0.id == id }) else { throw StorageError.invalidRecord }
+        return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source),
+                                         customTunings: customTunings, practiceBPM: practiceBPM)
+    }
+
+    public func savingCustomTuning(_ tuning: TuningProfile, expectedRevision: Int?) throws -> InstrumentPreferences {
+        guard !TuningProfile.presets.contains(where: { $0.id == tuning.id }) else { throw StorageError.invalidRecord }
+        var profiles = customTunings
+        if let index = profiles.firstIndex(where: { $0.id == tuning.id }) {
+            let old = profiles[index]
+            guard expectedRevision == old.revision,
+                  tuning == old || (old.revision < Int.max && tuning.revision == old.revision + 1) else { throw StorageError.identifierConflict }
+            profiles[index] = tuning
+        } else {
+            guard expectedRevision == nil, tuning.revision == 1 else { throw StorageError.identifierConflict }
+            profiles.append(tuning)
+        }
+        return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source),
+                                         customTunings: profiles, practiceBPM: practiceBPM)
     }
     public static let defaults = try! InstrumentPreferences()
 }
@@ -125,7 +149,7 @@ public struct PracticeRecord: Codable, Equatable, Sendable, Identifiable {
         guard result.schemaVersion == 1 else { throw StorageError.unsupportedVersion(result.schemaVersion) }
         try result.payload.validate()
         try calibration?.validate()
-        try exercise.validateForPractice(instrument: instrument.tuning, bpm: bpm)
+        try exercise.validatePracticeSnapshot(instrument: instrument.tuning, bpm: bpm)
         guard startedAt.timeIntervalSinceReferenceDate.isFinite, finishedAt.timeIntervalSinceReferenceDate.isFinite,
               finishedAt >= startedAt, startTick >= 0, startTick < endTick, endTick <= exercise.durationTicks else {
             throw StorageError.invalidRecord
@@ -135,6 +159,21 @@ public struct PracticeRecord: Codable, Equatable, Sendable, Identifiable {
               !exercise.events.contains(where: { $0.startTick < startTick && $0.endTick > startTick }),
               selected.filter({ $0.kind == .note }).count == result.payload.expectedCount else { throw StorageError.invalidRecord }
         if result.payload.validity == .valid && calibration == nil { throw StorageError.invalidRecord }
+    }
+
+    private enum CodingKeys: String, CodingKey { case id, startedAt, finishedAt, exercise, instrument, bpm, startTick, endTick, calibration, result }
+    private enum ResultKeys: String, CodingKey { case schemaVersion, payload }
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let result = try values.nestedContainer(keyedBy: ResultKeys.self, forKey: .result)
+        let version = try result.decode(Int.self, forKey: .schemaVersion)
+        guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+        try self.init(id: values.decode(UUID.self, forKey: .id), startedAt: values.decode(Date.self, forKey: .startedAt),
+                      finishedAt: values.decode(Date.self, forKey: .finishedAt), exercise: values.decode(Exercise.self, forKey: .exercise),
+                      instrument: values.decode(InstrumentProfile.self, forKey: .instrument), bpm: values.decode(Double.self, forKey: .bpm),
+                      startTick: values.decode(Int64.self, forKey: .startTick), endTick: values.decode(Int64.self, forKey: .endTick),
+                      calibration: values.decodeIfPresent(CalibrationSnapshot.self, forKey: .calibration),
+                      result: result.decode(AssessmentSnapshot.self, forKey: .payload))
     }
 }
 

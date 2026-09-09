@@ -21,7 +21,7 @@ struct HistoryView: View {
                         if let score = record.result.payload.overallScore {
                             Text("history.score \(Int(score.rounded()))").font(.title3.bold())
                         } else {
-                            Text(LocalizedStringKey("history.validity.\(record.result.payload.validity.rawValue)"))
+                            Text(LocalizedStringKey(validityKey(record.result.payload.validity)))
                             if let pitch = record.result.payload.pitchScore {
                                 Text("history.pitchScore \(Int(pitch.rounded()))")
                             }
@@ -41,4 +41,6 @@ struct HistoryView: View {
             Button("common.cancel", role: .cancel) {}
         } message: { Text("history.clearExplanation") }
     }
+
+    private func validityKey(_ validity: StoredResultValidity) -> String { "history.validity.\(validity.rawValue)" }
 }

@@ -39,6 +39,8 @@ public struct ResolvedEvent: Hashable, Sendable, Identifiable {
 }
 
 public struct Exercise: Hashable, Codable, Identifiable, Sendable {
+    /// Initial musical target C2–E6. Actual audio capability also requires task 12's measured limits.
+    public static let monophonicMIDITarget = 36...88
     public let id: String
     public let version: Int
     public let ppq: Int64
@@ -87,11 +89,19 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         }
     }
 
-    public func validateForPractice(instrument: TuningProfile, bpm: Double) throws {
+    /// Structural snapshot validation is independent of today's audio capability limits.
+    public func validatePracticeSnapshot(instrument: TuningProfile, bpm: Double) throws {
         guard assessmentMode == .monophonic else { throw MusicError.displayOnlyExercise }
         try MusicalTime.validateTempo(bpm)
         guard (minimumBPM...maximumBPM).contains(bpm) else { throw MusicError.invalidTempo }
         if let requiredTuning, !requiredTuning.hasSamePitches(as: instrument) { throw MusicError.tuningMismatch }
+    }
+
+    public func validateForPractice(instrument: TuningProfile, bpm: Double) throws {
+        try validatePracticeSnapshot(instrument: instrument, bpm: bpm)
+        guard try resolvedEvents(instrument: instrument).flatMap(\.pitches).allSatisfy({ Self.monophonicMIDITarget.contains($0.midi) }) else {
+            throw MusicError.unsupportedPitch
+        }
     }
 
     private enum CodingKeys: String, CodingKey {

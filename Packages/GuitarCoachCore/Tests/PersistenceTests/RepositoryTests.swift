@@ -191,7 +191,8 @@ struct RepositoryTests {
         var document = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: path)) as? [String: Any])
         var payload = try #require(document["payload"] as? [String: Any])
         var result = try #require(payload["result"] as? [String: Any])
-        result["schemaVersion"] = 999; payload["result"] = result; document["payload"] = payload
+        result["schemaVersion"] = 999; result["payload"] = ["futureStructure": true]
+        payload["result"] = result; document["payload"] = payload
         let bytes = try JSONSerialization.data(withJSONObject: document); try bytes.write(to: path)
         let loaded = try await repository.history()
         #expect(loaded.records.isEmpty)
