@@ -7,7 +7,8 @@ struct AudioProbeView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var gainDraft = 0.0
     @State private var editingGain = false
-    private var active: Bool { model.state?.phase == .running || model.state?.phase.isStarting == true }
+    private var previewActive: Bool { model.state?.purpose == .preview }
+    private var active: Bool { !previewActive && (model.state?.phase == .running || model.state?.phase.isStarting == true) }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -58,7 +59,8 @@ struct AudioProbeView: View {
                     Text("audio.monitoringOff").font(.caption).foregroundStyle(.secondary)
                 }
                 Section {
-                    if model.state?.phase.isStarting == true { ProgressView("audio.waitingInput") }
+                    if model.state?.phase.isStarting == true && !previewActive { ProgressView("audio.waitingInput") }
+                    if previewActive { Text("audio.previewActive").foregroundStyle(.secondary) }
                     if model.state?.isStartingClick == true { ProgressView("audio.waitingOutput") }
                     if let snapshot = model.state?.meters {
                         ProgressView(value: Double(min(snapshot.peak, 1))) { Text("audio.level") }
@@ -91,10 +93,10 @@ struct AudioProbeView: View {
             HStack {
                 Button(active ? "audio.stop" : "audio.start") {
                     Task { if active { await model.stop() } else { await model.start() } }
-                }.disabled(model.isBusy || (!active && (model.selectedInput == nil || !model.canEdit)))
+                }.disabled(previewActive || model.isBusy || (!active && (model.selectedInput == nil || !model.canEdit)))
                     .accessibilityIdentifier("audio.capture")
                 Button(model.state?.isClicking == true ? "audio.stopClick" : "audio.startClick") { Task { await model.toggleClick() } }
-                    .disabled(model.isBusy || model.selectedOutput == nil || model.state?.isStartingClick == true || model.state?.phase.isStarting == true)
+                    .disabled(model.isBusy || model.selectedOutput == nil || model.state?.isStartingClick == true || model.state?.phase.isStarting == true || (model.state?.purpose != nil && model.state?.purpose != .setup))
                 Spacer()
                 Button("audio.refresh") { Task { await model.refresh() } }
                 Button("common.done") { Task { await model.dismissSetup(); dismiss() } }.keyboardShortcut(.defaultAction)

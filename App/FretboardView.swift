@@ -6,11 +6,12 @@ struct FretboardView: View {
     let model: FretboardModel
     @Binding var selected: FretPosition?
     var detectedPitch: Pitch? = nil
+    var compact = false
     @FocusState private var focused: FretPosition?
     @State private var hovered: FretPosition?
     @State private var jumpFret = 0
     private let columnWidth: CGFloat = 68
-    private let rowHeight: CGFloat = 44
+    private var rowHeight: CGFloat { compact ? 32 : 44 }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

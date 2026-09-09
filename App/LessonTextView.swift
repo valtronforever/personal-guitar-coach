@@ -2,11 +2,14 @@ import SwiftUI
 import Learning
 import Domain
 import Persistence
+import Audio
 
 struct LessonTextView: View {
     let lesson: LoadedLesson
     private let restoresBookmark: Bool
     @State private var selection: LessonSelection
+    @State private var preview = PreviewModel()
+    @Environment(AudioSessionStore.self) private var audio
     @State private var visualMode = "fretboard"
     @Environment(AppSettings.self) private var settings
     @Environment(LocalDataStore.self) private var localData
@@ -71,14 +74,15 @@ struct LessonTextView: View {
                 .onAppear { if restoresBookmark, let id = selection.stepID { proxy.scrollTo(id, anchor: .top) } }
             }.frame(minHeight: 140)
             Divider()
+            if selection.exercise != nil { PreviewControls(model: preview) }
             Picker("tab.visualMode", selection: $visualMode) {
                 Text("fretboard.title").tag("fretboard")
                 Text("tab.title").tag("tablature")
             }.pickerStyle(.segmented).padding(.horizontal, 16).padding(.top, 8).accessibilityIdentifier("lesson.visualMode")
             if visualMode == "fretboard" {
-                FretboardView(model: selection.fretboard(instrument: localData.preferences.instrument), selected: $selection.selectedPosition).padding(12)
+                FretboardView(model: playbackFretboard ?? selection.fretboard(instrument: localData.preferences.instrument), selected: $selection.selectedPosition, compact: true).padding(12)
             } else if let exercise = selection.exercise, let model = try? TimelineModel(exercise: exercise, instrument: localData.preferences.instrument.tuning) {
-                TablatureView(model: model, selectedIDs: selection.selectedIDs) { id, extending in
+                TablatureView(model: model, selectedIDs: selection.selectedIDs, cursorTick: preview.cursorTick) { id, extending in
                     selection.selectEvent(id, exerciseID: exercise.id, extending: extending); saveBookmark()
                 }.padding(12)
             } else {
@@ -86,7 +90,16 @@ struct LessonTextView: View {
             }
         }
         .onAppear { saveBookmark() }
+        .task(id: selection.exercise) { await preview.configure(selection.exercise, audio: audio) }
+        .onChange(of: audio.state) { _, state in preview.update(state) }
+        .onChange(of: localData.preferences.instrument) { _, _ in Task { await preview.stop(audio: audio) } }
+        .onDisappear { Task { await preview.stop(audio: audio) } }
         .navigationTitle(text.title)
+    }
+    private var playbackFretboard: FretboardModel? {
+        guard preview.requestID != nil, let exercise = preview.exercise else { return nil }
+        return FretboardModel(tuning: exercise.requiredTuning ?? localData.preferences.instrument.tuning,
+            orientation: localData.preferences.instrument.orientation, positions: preview.activeEvent()?.positions ?? [])
     }
     private func saveBookmark() { reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID) }
 }

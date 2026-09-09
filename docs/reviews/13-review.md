@@ -16,4 +16,4 @@ Reviewed by the implementing agent, not an independent reviewer. Date: 2026-09-1
 
 77 core tests in 13 suites pass; 34 app tests in 9 suites pass. Includes PCM sine → actual analyzer → tuner → silence integration. Localization validator passes 279 en/uk keys. UI-test sources type-check under Swift 6/macOS 14. Native Debug and Release builds/signing pass. Native dark UI inspected in English and Ukrainian, including synthetic in-tune and silence; no real input or permission was attempted. User language preference restored to System.
 
-CI is required before merge; the PR/run result is recorded in the following task’s evidence if it becomes available after this commit. U02/U05/U07/U08 remain open. No distribution or notarization.
+PR #35 passed GitHub CI run 34415291760 (4m25s) and merged as fa60d1b on 2026-09-10. U02/U05/U07/U08 remain open. No distribution or notarization.

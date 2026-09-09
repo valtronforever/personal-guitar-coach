@@ -77,3 +77,11 @@ python3 Scripts/check_audio_benchmark.py /tmp/audio-benchmark.json
 ```
 
 The committed public acoustic fixtures work offline and have [provenance/permission](Tests/Fixtures/Audio/README.md). Omit `--quick` for the full 3,360-case comparison. Software grading capability requires notes ≥200 ms; shorter examples remain available for visualization/playback. Raw user audio is not recorded.
+
+An explicit, silent native-output transport smoke test is available when the named output is connected. It does not request microphone permission, change device rate/buffer, or establish audibility/round-trip latency:
+
+```sh
+COACH_TEST_OUTPUT_NAME='MacBook Pro Speakers' DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test --package-path Packages/GuitarCoachCore --filter TransportHardwareTests
+```
+
+Ordinary tests skip this hardware test. Choose the exact device name intentionally; no fallback output is selected.

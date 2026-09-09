@@ -4813,6 +4813,406 @@
           }
         }
       }
+    },
+    "playback.play": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play example"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухати приклад"
+          }
+        }
+      }
+    },
+    "playback.resume": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume with count-in"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продовжити з відліком"
+          }
+        }
+      }
+    },
+    "playback.pause": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза"
+          }
+        }
+      }
+    },
+    "playback.stop": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупинити"
+          }
+        }
+      }
+    },
+    "playback.options": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playback options"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Параметри відтворення"
+          }
+        }
+      }
+    },
+    "playback.countInBeat %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Count-in: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відлік: %lld"
+          }
+        }
+      }
+    },
+    "playback.tempo %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld BPM"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld BPM"
+          }
+        }
+      }
+    },
+    "playback.countIn": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Count-in"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відлік"
+          }
+        }
+      }
+    },
+    "playback.countInNone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "None"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без відліку"
+          }
+        }
+      }
+    },
+    "playback.countInOne": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 такт"
+          }
+        }
+      }
+    },
+    "playback.countInTwo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 bars"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 такти"
+          }
+        }
+      }
+    },
+    "playback.firstBar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перший такт"
+          }
+        }
+      }
+    },
+    "playback.lastBar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Останній такт"
+          }
+        }
+      }
+    },
+    "playback.loop": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loop"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторювати"
+          }
+        }
+      }
+    },
+    "playback.click": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metronome"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Метроном"
+          }
+        }
+      }
+    },
+    "playback.accent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accent first beat"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Акцент першої долі"
+          }
+        }
+      }
+    },
+    "playback.clickVolume": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click volume"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гучність метронома"
+          }
+        }
+      }
+    },
+    "playback.toneVolume": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Example volume"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гучність прикладу"
+          }
+        }
+      }
+    },
+    "playback.seek": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start position"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Початкова позиція"
+          }
+        }
+      }
+    },
+    "playback.seekExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a position while stopped or paused, then play with a new count-in. Later loops use the full bar range."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обери позицію під час зупинки або паузи, потім почни з нового відліку. Наступні повтори охоплюють увесь вибраний діапазон тактів."
+          }
+        }
+      }
+    },
+    "playback.optionsExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause or stop to change these options. They apply to the next playback segment. Set example volume to zero to hear only the metronome."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Призупини або зупини відтворення, щоб змінити параметри. Вони діятимуть із наступного запуску. Гучність прикладу 0 залишає лише метроном."
+          }
+        }
+      }
+    },
+    "playback.audioInUse": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop the other audio activity before playing an example."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупини інший аудіорежим перед прослуховуванням прикладу."
+          }
+        }
+      }
+    },
+    "playback.chooseOutput": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an output and channel in Audio setup to listen. No microphone permission is needed."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обери вихід і канал у налаштуваннях аудіо. Для прослуховування дозвіл на мікрофон не потрібен."
+          }
+        }
+      }
+    },
+    "playback.invalid": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This playback range or audio format is unsupported. Choose a longer range or another output format."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей діапазон відтворення або аудіоформат не підтримується. Обери довший діапазон або інший формат виходу."
+          }
+        }
+      }
+    },
+    "audio.previewActive": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An example is playing. Stop playback before testing input."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відтворюється приклад. Зупини його перед перевіркою входу."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

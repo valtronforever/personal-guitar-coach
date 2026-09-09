@@ -21,6 +21,8 @@ private actor RuntimeStub: AudioRuntime {
     var available = [RuntimeStub.device()]
     var starts: [Int] = []
     var outputStarts: [Int] = []
+    var transports: [TransportRequest] = []
+    var transportValue: TransportPlaybackSnapshot?
     var stops = 0
     var active = false
     var maximumActive = 0
@@ -48,6 +50,21 @@ private actor RuntimeStub: AudioRuntime {
     func readInput() -> CaptureSnapshot? { value }
     func startClick(device: AudioDeviceDescriptor, channel: Int) { outputStarts.append(channel) }
     func stopClick() {}
+    func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async {
+        if delayStart { delayStart = false; await withCheckedContinuation { gate = $0 } }
+        outputStarts.append(channel); transports.append(request)
+        transportValue = TransportPlaybackSnapshot(requestID: request.id, phase: .playing,
+            position: TransportPosition(tick: 0, loopIndex: 0, countInBeat: 1, completed: false), sampleRate: device.sampleRate,
+            renderedFrames: 0, scheduledStartHostSeconds: 100, renderAnchorHostSeconds: nil, presentationLatency: 0.01)
+    }
+    func readTransport() -> TransportPlaybackSnapshot? { transportValue }
+    func stopTransport() { transportValue = nil }
+    func completeTransport() {
+        guard let old = transportValue else { return }
+        transportValue = TransportPlaybackSnapshot(requestID: old.requestID, phase: .completed,
+            position: TransportPosition(tick: 960, loopIndex: 0, countInBeat: nil, completed: true), sampleRate: old.sampleRate,
+            renderedFrames: 48000, scheduledStartHostSeconds: 100, renderAnchorHostSeconds: 100, presentationLatency: 0.01)
+    }
     func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) { hardwareChanges.append("rate"); available = [Self.device(rate: rate)] }
     func setBufferFrames(_ frames: UInt32, device: AudioDeviceDescriptor) { hardwareChanges.append("buffer"); available = [Self.device(buffer: frames)] }
     func setInputGain(_ value: Float, device: AudioDeviceDescriptor, element: UInt32) { hardwareChanges.append("gain") }
@@ -71,6 +88,56 @@ struct AudioCoordinatorTests {
         #expect(await runtime.starts.isEmpty)
         await coordinator.stopClick()
         try await coordinator.start(purpose: .tuner)
+        await coordinator.stop()
+    }
+    private func preview(mode: TransportMode = .preview) throws -> TransportRequest {
+        try TransportRequest(exercise: Exercise(id: "preview", events: [MusicalEvent(id: "e", startTick: 0,
+            durationTicks: 960, kind: .note, positions: [FretPosition(string: 6, fret: 0)])]), tuning: .standard, bpm: 60, mode: mode)
+    }
+    @Test func previewDoesNotRequestCapturePermissionAndCompletesOnChosenOutput() async throws {
+        let runtime = RuntimeStub(), permission = PermissionStub(.denied)
+        let coordinator = AudioSessionCoordinator(runtime: runtime, permissions: permission)
+        await coordinator.configure(try route())
+        let request = try preview(); try await coordinator.startTransport(request)
+        await coordinator.refresh(); await coordinator.poll(now: .now.advanced(by: .seconds(10)))
+        #expect(await coordinator.snapshot().phase == .running)
+        #expect(await runtime.starts.isEmpty)
+        #expect(await runtime.outputStarts == [2])
+        #expect(await permission.requests == 0)
+        await #expect(throws: AudioBackendError.inUse) { try await coordinator.start(purpose: .tuner) }
+        await coordinator.stopActivity(.setup)
+        #expect(await coordinator.snapshot().purpose == .preview)
+        await runtime.completeTransport(); await coordinator.poll()
+        #expect(await coordinator.snapshot().phase == .idle)
+        #expect(await coordinator.snapshot().transport?.phase == .completed)
+    }
+    @Test func practiceOutputRequiresPracticeOwnerAndCannotUsePreviewTones() async throws {
+        let runtime = RuntimeStub(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PermissionStub())
+        await coordinator.configure(try route())
+        await #expect(throws: AudioBackendError.inUse) { try await coordinator.startTransport(preview(mode: .practice)) }
+        try await coordinator.start(purpose: .practice)
+        await #expect(throws: AudioBackendError.inUse) { try await coordinator.startTransport(preview()) }
+        try await coordinator.startTransport(preview(mode: .practice))
+        #expect(await runtime.transports.map(\.mode) == [.practice])
+        await coordinator.stop()
+        #expect(await runtime.transportValue == nil)
+        #expect(await runtime.active == false)
+    }
+    @Test func cancelledPreviewCannotClearTheNextSegmentsBuffers() async throws {
+        let runtime = RuntimeStub(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PermissionStub())
+        await coordinator.configure(try route()); await runtime.delayNextStart()
+        let first = try preview(), second = try preview()
+        let start = Task { try await coordinator.startTransport(first) }
+        try await waitFor { await runtime.waiting() }
+        let stop = Task { await coordinator.stopTransport(requestID: first.id) }
+        try await waitFor { await coordinator.snapshot().purpose == nil }
+        let restart = Task { try await coordinator.startTransport(second) }
+        await runtime.release()
+        await #expect(throws: AudioBackendError.cancelled) { try await start.value }
+        await stop.value; try await restart.value
+        await coordinator.stopTransport(requestID: first.id)
+        #expect(await coordinator.snapshot().transportRequestID == second.id)
+        #expect(await runtime.transportValue?.requestID == second.id)
         await coordinator.stop()
     }
     private func route(channel: Int = 2) throws -> AudioRouteSelection {
