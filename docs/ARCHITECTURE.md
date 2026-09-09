@@ -131,7 +131,7 @@ UI використовує note names з octave, підтримує ASCII/Unico
 
 `LoadedLesson.visual(stepID:instrument:)` повертає events, display tuning, позиції/висоти/підказані пальці та muted strings. Event set може мати кілька ладів на одній струні для гами; fingering лишається одночасною формою. Text-only/rest кроки не залишають stale note markers. Жодного пошуку нот у prose. Див. CONTENT-AUTHORING.md для JSON-контракту.
 
-LessonLibraryStore завантажує app-bundle ресурси на worker. Reader уже підтримує крок → гриф; спільний selection controller із табулатурою додається у задачі 10. CLI ValidateLessonContent перевіряє actual bundled content у CI, без audio services.
+LessonLibraryStore завантажує app-bundle ресурси на worker. Reader використовує `LessonSelection` для двобічного вибору кроків і подій табулатури. CLI ValidateLessonContent перевіряє actual bundled content у CI, без audio services.
 
 ## Верифікація
 
@@ -148,3 +148,11 @@ LessonLibraryStore завантажує app-bundle ресурси на worker. R
 `TablatureView` будує не більше 16 тактів за раз через LazyHStack; попередня/наступна частина та перехід за номером зберігають доступ до всіх тактів. Мінімальний масштаб дає шістнадцятій 44 точки, масштабування 1×–2× не змінює час. Струна 1 завжди зверху; орієнтація грифа не перевертає часову послідовність.
 
 Курсор — вхідний optional tick, без timer. `TimelineFollowTarget` адресує половину долі для прокручування всередині збільшеного такту; фокус/сторінка не стають джерелом часу. Клавіатурна навігація спочатку монтує потрібну частину, потім фокусує event button. Debug-only fixtures і точний minimum-window helper доступні через Developer menu; Release не містить цих flows.
+
+## Читання уроків і перехід до практики
+
+`LessonSelection` зберігає step/exercise IDs та ручний range anchor. Event IDs локальні до вправи; для події в кількох кроках лишається поточний відповідний крок, інакше перший за manifest order. Явний вибір кроку скидає ручний range і вибір позиції. Немає циклу observers між незалежними view selections. UI copy перемикається без зміни selection identity.
+
+`reading-progress.json` — envelope v1: last lesson ID, per-lesson version/step bookmark та окремий readVersion. Зміна версії уроку повертає читання до першого кроку, але не позначає нову версію прочитаною. Missing file дає defaults; corrupt/future file зберігається й блокує перезапис із локалізованим повідомленням, не блокуючи уроки. `ReadingProgressStore` серіалізує/coalesces pending snapshots і має явний retry після write failure. Він використовує той самий LocalRepository actor, що preferences/history. Clear practice history не зачіпає читання.
+
+`PracticeRequest` містить lesson ID/version і повний Exercise snapshot із practiceExerciseIDs. Display-only не може створити цей request. Поточний preflight показує policy/стрій/темп та повернення до уроку; transport/session додаються задачами 14–16. Debug UI tests можуть вибрати ізольований тимчасовий repository через UUID `COACH_UI_TEST_STORAGE`; Release ігнорує цей test hook.

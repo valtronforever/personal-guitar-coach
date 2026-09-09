@@ -28,7 +28,7 @@
 | 07 | [Формат уроків і вправ](07-lesson-content-contract.md) | 03 | MVP | `done` | [#7](https://github.com/valtronforever/personal-guitar-coach/issues/7) |
 | 08 | [Інтерактивний гітарний гриф](08-interactive-fretboard.md) | 03, 04, 06 | MVP | `done` | [#8](https://github.com/valtronforever/personal-guitar-coach/issues/8) |
 | 09 | [Табулатура та послідовність нот](09-tablature-timeline.md) | 03, 04 | MVP | `done` | [#9](https://github.com/valtronforever/personal-guitar-coach/issues/9) |
-| 10 | [Каталог уроків і синхронізація кроків](10-lesson-reader.md) | 05, 07, 08, 09 | MVP | `todo` | [#10](https://github.com/valtronforever/personal-guitar-coach/issues/10) |
+| 10 | [Каталог уроків і синхронізація кроків](10-lesson-reader.md) | 05, 07, 08, 09 | MVP | `done` | [#10](https://github.com/valtronforever/personal-guitar-coach/issues/10) |
 | 11 | [Налаштування пристроїв і стабільний аудіовхід](11-audio-devices-capture.md) | 02, 04, 05 | MVP | `todo` | [#11](https://github.com/valtronforever/personal-guitar-coach/issues/11) |
 | 12 | [Розпізнавання висоти й атак нот](12-pitch-onset-analysis.md) | 03, 11 | MVP | `todo` | [#12](https://github.com/valtronforever/personal-guitar-coach/issues/12) |
 | 13 | [Тюнер поточного строю](13-guitar-tuner.md) | 06, 12 | MVP | `todo` | [#13](https://github.com/valtronforever/personal-guitar-coach/issues/13) |

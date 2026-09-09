@@ -58,4 +58,10 @@ enum AppDestination: String, CaseIterable, Identifiable {
 @MainActor @Observable
 final class AppNavigation {
     var destination: AppDestination? = .lessons
+    var lessonPath: [String] = []
+    var restoredReading = false
+    private(set) var practiceRequest: PracticeRequest?
+    func openPractice(_ request: PracticeRequest) {
+        practiceRequest = request; destination = .practice
+    }
 }

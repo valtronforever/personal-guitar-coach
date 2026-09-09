@@ -21,7 +21,7 @@ let package = Package(
         ),
         .testTarget(name: "AppTests", dependencies: [
             "PersonalGuitarCoach", .product(name: "Domain", package: "GuitarCoachCore"),
-            .product(name: "Persistence", package: "GuitarCoachCore")
+            .product(name: "Persistence", package: "GuitarCoachCore"), .product(name: "Learning", package: "GuitarCoachCore")
         ], path: "Tests/AppTests")
     ]
 )
