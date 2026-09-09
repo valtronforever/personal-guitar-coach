@@ -2042,6 +2042,348 @@
           }
         }
       }
+    },
+    "content.goal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your goal"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Твоя мета"
+          }
+        }
+      }
+    },
+    "content.error.unsupportedSchema": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson uses a newer content format and could not be opened."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Урок має новіший формат, тому його не вдалося відкрити."
+          }
+        }
+      }
+    },
+    "content.error.missingFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson file is missing or cannot be read."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файл уроку відсутній або недоступний для читання."
+          }
+        }
+      }
+    },
+    "content.error.invalidJSON": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson file is damaged or has an invalid format."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файл уроку пошкоджений або має некоректний формат."
+          }
+        }
+      }
+    },
+    "content.error.invalidIdentifier": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson has an invalid reference identifier."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Урок містить некоректний ідентифікатор посилання."
+          }
+        }
+      }
+    },
+    "content.error.duplicateIdentifier": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson repeats an identifier that must be unique."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В уроці повторюється ідентифікатор, який має бути унікальним."
+          }
+        }
+      }
+    },
+    "content.error.invalidMusicalData": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson contains invalid notes, positions, tuning, or timing."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Урок містить некоректні ноти, позиції, стрій або музичний час."
+          }
+        }
+      }
+    },
+    "content.error.unknownExercise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson refers to an exercise that could not be found."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Урок посилається на вправу, яку не вдалося знайти."
+          }
+        }
+      }
+    },
+    "content.error.unknownEvent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson step refers to a note or rest that could not be found."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крок уроку посилається на ноту або паузу, яку не вдалося знайти."
+          }
+        }
+      }
+    },
+    "content.error.unknownStep": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This lesson step is no longer available. Select another step."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей крок уроку більше не доступний. Вибери інший крок."
+          }
+        }
+      }
+    },
+    "content.error.invalidStep": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson step contains conflicting or incomplete visual instructions."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крок уроку містить суперечливі або неповні вказівки для візуалізації."
+          }
+        }
+      }
+    },
+    "content.error.missingTranslation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson is missing its English or Ukrainian translation."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для уроку відсутній англійський або український переклад."
+          }
+        }
+      }
+    },
+    "content.error.translationMismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The lesson translations do not match the same version and steps."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переклади уроку не відповідають одній версії та однаковим крокам."
+          }
+        }
+      }
+    },
+    "content.error.invalidText": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson is missing required text."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В уроці відсутній обов’язковий текст."
+          }
+        }
+      }
+    },
+    "content.error.unavailableCatalog": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The lesson library could not be opened. Try Refresh or reinstall the local app build."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося відкрити бібліотеку уроків. Спробуй оновити список або перевстановити локальну збірку додатка."
+          }
+        }
+      }
+    },
+    "content.error.unsupportedMode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A lesson requests a learning or assessment mode that is not supported."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Урок потребує режиму навчання або оцінювання, який не підтримується."
+          }
+        }
+      }
+    },
+    "content.issues %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld library warning"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld library warnings"
+                }
+              }
+            }
+          }
+        },
+        "uk": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld попередження бібліотеки"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld попередження бібліотеки"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld попереджень бібліотеки"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld попередження бібліотеки"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "content.noReadableLessons": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No lessons can be shown until the content problems are fixed. Your saved practice history is unaffected."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уроки стануть доступними після виправлення проблем із контентом. Збережена історія практики не змінюється."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

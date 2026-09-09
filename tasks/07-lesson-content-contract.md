@@ -2,7 +2,7 @@
 
 GitHub: [#7](https://github.com/valtronforever/personal-guitar-coach/issues/7)
 
-Статус: `todo`
+Статус: `done`
 Етап: MVP
 Залежності: 03
 
@@ -33,4 +33,10 @@ Valid sample, missing translation, unknown event, bad fret, duplicate ID, negati
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- Learning module: catalog/lesson schema v1, en/uk text resources, strict loader, reason codes, stable IDs and visual resolver for event sets/fingerings/text-only steps.
+- Урок open-strings-intro: чотири кроки, E2/E4 і паузи, fixed Standard, одна моноголосна вправа. Дані зберігаються в app bundle; читання без audio permission.
+- Додано реальний текстовий reader з перемиканням мови без втрати відкритого уроку. Інтерактивна синхронізація й restore selection — задача 10 після 08/09.
+- `ValidateLessonContent` перевіряє source та Release bundle: 1 двомовний урок, 0 issues. CI виконує цю перевірку.
+- 42 core tests + 7 AppTests: успішно. Bad translation/ref/fret/duration/mode/schema, duplicate IDs, containment, partial recovery та round-trip перевірено.
+- Native CUA: усі 4 кроки англійською й українською в тому самому відкритому уроці; 900-point width, унікальні AX heading IDs; аудіовхід не запускався.
+- Debug/Release .app, strict codesign, generator/catalog checks (136 ключів): успішно. [Authoring guide](../docs/CONTENT-AUTHORING.md), [self-review](../docs/reviews/07-review.md).

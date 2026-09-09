@@ -48,3 +48,7 @@ Use ⌘1–⌘4 for Lessons, Practice, Tuner, and Progress; ⌘, opens Settings.
 ## Local persistence
 
 Instrument settings and immutable practice summaries use atomic, versioned JSON in the app’s sandbox-aware Application Support/PersonalGuitarCoach directory. Unreadable files stay available for recovery; the history index can be rebuilt. Raw audio is not saved. Run UI state tests separately with `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test`; core tests remain `swift test --package-path Packages/GuitarCoachCore`.
+
+## Lesson authoring
+
+Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The current app bundles an original open-string lesson and supports reading it in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.

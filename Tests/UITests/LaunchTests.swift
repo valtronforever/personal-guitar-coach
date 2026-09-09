@@ -6,9 +6,11 @@ final class LaunchTests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US", "-app.language", "system"]
         app.launch()
-        let title = app.descendants(matching: .any)["screen.title"].firstMatch
-        XCTAssertTrue(title.waitForExistence(timeout: 10))
-        XCTAssertTrue((title.value as? String ?? title.label).contains("Personal Guitar Coach"))
+        XCTAssertTrue(app.windows["Lessons"].waitForExistence(timeout: 10))
+        let lesson = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Meet your open strings")).firstMatch
+        XCTAssertTrue(lesson.waitForExistence(timeout: 10))
+        lesson.click()
+        XCTAssertTrue(app.descendants(matching: .any)["lesson.title"].firstMatch.waitForExistence(timeout: 5))
     }
 
     @MainActor
@@ -16,9 +18,11 @@ final class LaunchTests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-AppleLanguages", "(uk)", "-AppleLocale", "uk_UA", "-app.language", "system"]
         app.launch()
-        let title = app.descendants(matching: .any)["screen.title"].firstMatch
-        XCTAssertTrue(title.waitForExistence(timeout: 10))
-        XCTAssertTrue((title.value as? String ?? title.label).contains("Персональний гітарний тренер"))
+        XCTAssertTrue(app.windows["Уроки"].waitForExistence(timeout: 10))
+        let lesson = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Познайомся з відкритими струнами")).firstMatch
+        XCTAssertTrue(lesson.waitForExistence(timeout: 10))
+        lesson.click()
+        XCTAssertTrue(app.descendants(matching: .any)["lesson.title"].firstMatch.waitForExistence(timeout: 5))
     }
 
     @MainActor

@@ -1,0 +1,27 @@
+{
+  "lessonID": "open-strings-intro",
+  "lessonVersion": 1,
+  "locale": "en",
+  "title": "Meet your open strings",
+  "summary": "Find low E2 and high E4, with a beat of silence between them.",
+  "goal": "Play two open E strings at a steady pulse and leave the rests quiet.",
+  "body": "An open string rings without pressing a fret. String 6 is the thickest and sounds E2 in Standard tuning. String 1 is the thinnest and sounds E4. They share the name E, but E4 is two octaves higher.\n\nSelect Standard in Instrument settings and physically tune your guitar before practicing. Use a clean, comfortable sound. The numbers on tablature identify frets: 0 means an open string.",
+  "steps": {
+    "hear-low-e": {
+      "title": "1. Hear the low E",
+      "body": "On beat 1, pluck string 6 without pressing a fret. Listen to E2. One relaxed pluck is enough."
+    },
+    "leave-space": {
+      "title": "2. Leave a beat of silence",
+      "body": "Beat 2 is a rest. Gently stop the low string with a comfortable touch and keep counting. Do not pluck another note."
+    },
+    "hear-high-e": {
+      "title": "3. Hear the high E",
+      "body": "On beat 3, pluck open string 1. It sounds E4, two octaves above the low E. You do not need to press the fingerboard."
+    },
+    "play-the-bar": {
+      "title": "4. Put the four beats together",
+      "body": "Count 1, 2, 3, 4: low E, rest, high E, rest. Start at 60 BPM or choose a slower tempo. Aim for a clear note on each playing beat and silence on each rest."
+    }
+  }
+}

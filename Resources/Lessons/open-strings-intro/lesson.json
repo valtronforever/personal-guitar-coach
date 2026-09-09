@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "open-strings-intro",
+  "version": 1,
+  "difficulty": "beginner",
+  "topic": "basics",
+  "steps": [
+    {
+      "id": "hear-low-e",
+      "kind": "events",
+      "exerciseID": "open-strings-intro-practice",
+      "eventIDs": [
+        "low-e"
+      ]
+    },
+    {
+      "id": "leave-space",
+      "kind": "events",
+      "exerciseID": "open-strings-intro-practice",
+      "eventIDs": [
+        "first-rest"
+      ]
+    },
+    {
+      "id": "hear-high-e",
+      "kind": "events",
+      "exerciseID": "open-strings-intro-practice",
+      "eventIDs": [
+        "high-e"
+      ]
+    },
+    {
+      "id": "play-the-bar",
+      "kind": "events",
+      "exerciseID": "open-strings-intro-practice",
+      "eventIDs": [
+        "low-e",
+        "first-rest",
+        "high-e",
+        "last-rest"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "open-strings-intro-practice",
+      "version": 1,
+      "ppq": 960,
+      "timeSignature": "4/4",
+      "defaultBPM": 60,
+      "minimumBPM": 40,
+      "maximumBPM": 100,
+      "tuningPolicy": "fixedTuning",
+      "requiredTuning": {
+        "id": "standard",
+        "revision": 1,
+        "name": "Standard",
+        "referenceA4": 440,
+        "strings": [
+          {
+            "number": 1,
+            "openPitch": {
+              "midi": 64
+            }
+          },
+          {
+            "number": 2,
+            "openPitch": {
+              "midi": 59
+            }
+          },
+          {
+            "number": 3,
+            "openPitch": {
+              "midi": 55
+            }
+          },
+          {
+            "number": 4,
+            "openPitch": {
+              "midi": 50
+            }
+          },
+          {
+            "number": 5,
+            "openPitch": {
+              "midi": 45
+            }
+          },
+          {
+            "number": 6,
+            "openPitch": {
+              "midi": 40
+            }
+          }
+        ]
+      },
+      "assessmentMode": "monophonic",
+      "events": [
+        {
+          "id": "low-e",
+          "startTick": 0,
+          "durationTicks": 960,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "first-rest",
+          "startTick": 960,
+          "durationTicks": 960,
+          "kind": "rest",
+          "positions": []
+        },
+        {
+          "id": "high-e",
+          "startTick": 1920,
+          "durationTicks": 960,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 1,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "last-rest",
+          "startTick": 2880,
+          "durationTicks": 960,
+          "kind": "rest",
+          "positions": []
+        }
+      ]
+    }
+  ],
+  "practiceExerciseIDs": [
+    "open-strings-intro-practice"
+  ]
+}
