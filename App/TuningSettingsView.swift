@@ -5,6 +5,7 @@ struct TuningSettingsView: View {
     @Environment(LocalDataStore.self) private var store
     @Environment(AppSettings.self) private var settings
     @State private var editor: TuningEditorModel?
+    @State private var selectedPosition: FretPosition?
 
     var body: some View {
         let tuning = store.preferences.instrument.tuning
@@ -44,6 +45,11 @@ struct TuningSettingsView: View {
                 }
             }
             Text("tuning.instrumentSize").font(.caption).foregroundStyle(.secondary)
+            DisclosureGroup("fretboard.preview") {
+                FretboardView(model: FretboardModel(tuning: tuning, orientation: store.preferences.instrument.orientation,
+                    positions: (1...6).compactMap { try? FretPosition(string: $0, fret: 0) }), selected: $selectedPosition)
+                    .padding(.vertical, 8)
+            }
             if tuning.strings.contains(where: { !Exercise.monophonicMIDITarget.contains($0.openPitch.midi) }) {
                 Label("tuning.outOfRange", systemImage: "exclamationmark.triangle")
             }

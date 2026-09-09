@@ -131,8 +131,12 @@ UI використовує note names з octave, підтримує ASCII/Unico
 
 `LoadedLesson.visual(stepID:instrument:)` повертає events, display tuning, позиції/висоти/підказані пальці та muted strings. Event set може мати кілька ладів на одній струні для гами; fingering лишається одночасною формою. Text-only/rest кроки не залишають stale note markers. Жодного пошуку нот у prose. Див. CONTENT-AUTHORING.md для JSON-контракту.
 
-LessonLibraryStore завантажує app-bundle ресурси на worker. Текстовий reader уже працює; інтерактивний selection controller додається у задачі 10. CLI ValidateLessonContent перевіряє actual bundled content у CI, без audio services.
+LessonLibraryStore завантажує app-bundle ресурси на worker. Reader уже підтримує крок → гриф; спільний selection controller із табулатурою додається у задачі 10. CLI ValidateLessonContent перевіряє actual bundled content у CI, без audio services.
 
 ## Верифікація
 
 Чисті domain/scoring tests працюють без пристроїв; DSP tests проганяють синтетичні та реальні annotated fixtures; UI tests користуються deterministic adapters. Окремий hardware checklist перевіряє USB capture, канал, hot-plug, formats, калібрування й тривалу практику. Автоматизований fake input не закриває hardware gate.
+
+## Реалізований гриф
+
+`FretboardModel` проєктує Domain-позиції через `TuningProfile.pitch(at:)`; не має власної формули нот. `FretboardView` отримує expected positions/mutes/fingers, binding ручного вибору та optional detected pitch. Canvas малює тільки струни/лади; 150 native buttons задають незалежні hit targets і accessibility. Дзеркальність змінює горизонтальний порядок 0…24, а не номери струн або pitches. Клавіатурні стрілки рухають focus за екранним напрямком; Space/Return змінюють selection. Зовнішня зміна expected набору прокручує до його першого ладу. Detected pitch лишається окремим позначенням без атрибуції до струни.
