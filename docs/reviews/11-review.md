@@ -16,7 +16,7 @@ Reviewed by the implementing agent on 2026-09-10; this is not an independent rev
 
 ## Evidence
 
-- Core Swift Testing: **57 tests in 9 suites**. Audio tests use a synthetic runtime/permission provider; C ring tests cover selected channel extraction, FIFO/bounds/overflow and timestamp transport. Persistence tests cover audio-selection round-trip, invalid values, corrupt/future files and independent history clearing.
+- Core Swift Testing: **58 tests in 9 suites**. Audio tests use a synthetic runtime/permission provider; C ring tests cover selected channel extraction, FIFO/bounds/overflow and timestamp transport. Persistence tests cover audio-selection round-trip, invalid values, corrupt/future files and independent history clearing.
 - App Swift Testing: **30 tests in 8 suites**. New cases verify missing saved UIDs, channel persistence, explicit clearing, failed saves and preserved future-version files without requesting permission.
 - Localization: **243 en/uk UI keys**; source format/placeholders passed validation.
 - Generated project check and UI-test source type checking passed. Actual UI XCTest execution remains U07.
@@ -27,3 +27,7 @@ Reviewed by the implementing agent on 2026-09-10; this is not an independent rev
 ## Open gates
 
 U01: physical USB input channel identity, 44.1/48 kHz, simultaneous click/input, hot-plug, busy-device/format/sleep behavior and sustained capture. U04: acoustic microphone/piezo and click leakage. U08: normal microphone permission flow; the earlier UserNotificationCenter restriction is not bypassed. Full calibration and rhythm-route capability remain task 15/U03. Monophonic DSP replaces level-only observation in task 12.
+
+## CI compatibility follow-up
+
+The first PR run passed core tests but failed App compilation on the runner's Swift version because `Notification` from NotificationCenter's async sequence was non-Sendable. The local Swift 6.3 toolchain had accepted this code. Replaced that boundary with observer callbacks that discard Notification immediately and emit only a Sendable sleep/wake enum into a bounded stream. Both events use the same ordered consumer, and wake also suspends any still-active capture before refreshing. Idle sleep does not invent a capture interruption. The failing run was 34409012205; a new CI run must pass before merge.

@@ -4,6 +4,8 @@ import Audio
 import Domain
 import Persistence
 
+private enum AudioWorkspaceEvent: Sendable { case sleep, wake }
+
 @MainActor @Observable
 final class AudioSessionStore {
     let coordinator: AudioSessionCoordinator
@@ -65,16 +67,21 @@ final class AudioSessionStore {
                 await coordinator.refresh(); await self?.publish()
             }
         }
-        let sleep = Task { [weak self, coordinator] in
-            for await _ in NSWorkspace.shared.notificationCenter.notifications(named: NSWorkspace.willSleepNotification) {
-                guard !Task.isCancelled else { break }
-                await coordinator.stop(reason: .suspended); await self?.publish()
-            }
+        // Discard Notification inside its callback; older Swift SDKs do not mark it Sendable.
+        let events = AsyncStream<AudioWorkspaceEvent>.makeStream(bufferingPolicy: .bufferingNewest(8))
+        let center = NSWorkspace.shared.notificationCenter
+        let sleepToken = center.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: nil) { _ in
+            events.continuation.yield(.sleep)
         }
-        let wake = Task { [weak self, coordinator] in
-            for await _ in NSWorkspace.shared.notificationCenter.notifications(named: NSWorkspace.didWakeNotification) {
+        let wakeToken = center.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil) { _ in
+            events.continuation.yield(.wake)
+        }
+        let powerEvents = Task { [weak self, coordinator] in
+            for await event in events.stream {
                 guard !Task.isCancelled else { break }
-                await coordinator.refresh(); await self?.publish() // Explicit Start is required after wake.
+                await coordinator.suspend()
+                if event == .wake { await coordinator.refresh() }
+                await self?.publish() // Explicit Start is required after wake.
             }
         }
         var count = 0
@@ -84,7 +91,9 @@ final class AudioSessionStore {
             count = (count + 1) % 20
             do { try await Task.sleep(for: .milliseconds(50)) } catch { break }
         }
-        changes.cancel(); sleep.cancel(); wake.cancel()
+        changes.cancel(); powerEvents.cancel()
+        center.removeObserver(sleepToken); center.removeObserver(wakeToken)
+        events.continuation.finish()
         await coordinator.stop(); await monitor.stop()
         self.monitor = nil; isMonitoring = false
     }

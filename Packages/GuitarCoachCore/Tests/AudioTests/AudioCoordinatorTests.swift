@@ -179,7 +179,7 @@ struct AudioCoordinatorTests {
         #expect(await runtime.active == false)
         #expect(await runtime.hardwareChanges == ["rate"])
         try await coordinator.start(purpose: .tuner)
-        await coordinator.stop(reason: .suspended); await coordinator.refresh()
+        await coordinator.suspend(); await coordinator.refresh()
         #expect(await coordinator.snapshot().phase == .interrupted(.suspended))
         #expect(await runtime.active == false)
     }
@@ -212,6 +212,12 @@ struct AudioCoordinatorTests {
         await coordinator.configure(try route(channel: 1))
         #expect(await coordinator.snapshot().phase == .interrupted(.routeChanged))
         #expect(await coordinator.snapshot().selection.inputChannel == 1)
+    }
+
+    @Test func sleepWhileIdleDoesNotInventAnInterruptedCapture() async {
+        let coordinator = AudioSessionCoordinator(runtime: RuntimeStub(), permissions: PermissionStub())
+        await coordinator.suspend()
+        #expect(await coordinator.snapshot().phase == .idle)
     }
 
 }

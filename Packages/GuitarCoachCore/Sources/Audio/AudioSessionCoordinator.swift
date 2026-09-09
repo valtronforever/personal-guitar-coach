@@ -138,6 +138,11 @@ public actor AudioSessionCoordinator {
         }
     }
 
+    public func suspend() async {
+        guard phase == .running || phase.isStarting || isClicking || isStartingClick else { return }
+        await stop(reason: .suspended)
+    }
+
     /// A disappearing feature may only stop the activity it owns.
     public func stopActivity(_ expected: AudioPurpose) async {
         guard purpose == expected || (expected == .setup && purpose == nil) else { return }
