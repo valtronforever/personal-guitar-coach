@@ -4,13 +4,16 @@ import SwiftUI
 struct PersonalGuitarCoachApp: App {
     @State private var settings = AppSettings()
     @State private var navigation = AppNavigation()
+    @State private var localData = LocalDataStore()
 
     var body: some Scene {
         Window(settings.localized("app.name"), id: "main") {
             AppRootView(navigation: navigation)
                 .environment(settings)
+                .environment(localData)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
+                .task { await localData.reload() }
         }
         .defaultSize(width: 1000, height: 700)
         .commands {
@@ -28,6 +31,7 @@ struct PersonalGuitarCoachApp: App {
         Settings {
             CoachSettingsView()
                 .environment(settings)
+                .environment(localData)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
         }

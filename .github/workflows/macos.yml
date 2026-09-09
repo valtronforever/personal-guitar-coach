@@ -16,6 +16,8 @@ jobs:
         run: python3 Scripts/check_localizations.py
       - name: Package tests
         run: swift test --package-path Packages/GuitarCoachCore
+      - name: App state tests
+        run: swift test
       - name: Build Debug
         run: xcodebuild -project PersonalGuitarCoach.xcodeproj -scheme PersonalGuitarCoach -configuration Debug -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
       - name: Build Release

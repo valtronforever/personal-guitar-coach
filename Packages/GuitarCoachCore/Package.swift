@@ -6,13 +6,16 @@ let package = Package(
     platforms: [.macOS(.v14)],
     products: [
         .library(name: "Domain", targets: ["Domain"]),
-        .library(name: "Audio", targets: ["Audio"])
+        .library(name: "Audio", targets: ["Audio"]),
+        .library(name: "Persistence", targets: ["Persistence"])
     ],
     targets: [
         .target(name: "Domain"),
         .target(name: "RealtimeAudio", linkerSettings: [.linkedFramework("AudioToolbox")]),
         .target(name: "Audio", dependencies: ["Domain", "RealtimeAudio"]),
+        .target(name: "Persistence", dependencies: ["Domain"]),
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
-        .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio"])
+        .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio"]),
+        .testTarget(name: "PersistenceTests", dependencies: ["Persistence", "Domain"], resources: [.copy("Fixtures")])
     ]
 )

@@ -44,3 +44,7 @@ xcodebuild -project PersonalGuitarCoach.xcodeproj -scheme PersonalGuitarCoach -d
 ## App navigation and language
 
 Use ⌘1–⌘4 for Lessons, Practice, Tuner, and Progress; ⌘, opens Settings. Language and appearance changes apply immediately. System language uses the first supported English/Ukrainian preference, falling back to English; macOS controls system dialogs and standard menus. Validate catalogs with `python3 Scripts/check_localizations.py`.
+
+## Local persistence
+
+Instrument settings and immutable practice summaries use atomic, versioned JSON in the app’s sandbox-aware Application Support/PersonalGuitarCoach directory. Unreadable files stay available for recovery; the history index can be rebuilt. Raw audio is not saved. Run UI state tests separately with `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test`; core tests remain `swift test --package-path Packages/GuitarCoachCore`.

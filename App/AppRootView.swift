@@ -1,4 +1,5 @@
 import SwiftUI
+import Persistence
 
 enum CoachLayout {
     static let spacing: CGFloat = 16
@@ -55,9 +56,7 @@ struct AppRootView: View {
                 Button("audio.title") { showsAudio = true }
             }
         case .progress:
-            FeatureStateView(title: "progress.emptyTitle", message: "progress.empty", symbol: "chart.xyaxis.line") {
-                Button("navigation.lessons") { navigation.destination = .lessons }
-            }
+            HistoryView()
         }
     }
 }
@@ -111,5 +110,6 @@ struct AppShellPreviews: PreviewProvider {
             FeatureStateView(title: "common.error", message: "lessons.error", symbol: "exclamationmark.triangle") { EmptyView() }
                 .environment(\.locale, Locale(identifier: "en")).previewDisplayName("Error")
         }
+        .environment(LocalDataStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
     }
 }

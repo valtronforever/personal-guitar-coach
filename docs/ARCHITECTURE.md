@@ -107,6 +107,16 @@ MVP: Codable JSON repositories із versioned envelopes й атомарною з
 
 Довгостроково зберігати підсумки та per-event evidence, а не безмежний потік PCM/analysis frames. Development fixtures мають походження й умови використання. Службова діагностика не зберігає приватний звук.
 
+## Реалізований контракт сховища
+
+`LocalRepository` — спільний actor для native scenes. Foundation визначає sandbox-aware Application Support/PersonalGuitarCoach. `instrument.json` має envelope v2; підтримується явна міграція v1 (source раніше не задано → electricInterface). Читання не переписує оригінал. Відновлення defaults зберігає копію в Recovery перед атомарною заміною.
+
+`Sessions/<UUID>.json` — незмінні `PracticeRecord` в envelope v1. Повний Exercise/InstrumentProfile/BPM/range та CalibrationSnapshot зберігають контекст; AssessmentSnapshot має власний envelope v1 та algorithmVersion. Це storage DTO: repository обов’язково викликає `validate()` після Codable decode й до видачі UI. Музичні вкладені типи мають власні validating decoders. Схему результату розширювати з явною сумісністю, не переоцінюючи старі записи.
+
+`history-index.json` — відновлюваний cache v1; читання сканує індивідуальні файли. Пошкоджені/новіші файли залишаються на диску й породжують StorageIssue. Index failure після commit — warning; помилка запису самої спроби — throw. Clear history видаляє лише attempt files із Sessions та перебудовує індекс; інструмент і Recovery збережено. Несподівані директорії не видаляються рекурсивно.
+
+`LocalDataStore` оновлює UI preferences тільки після commit, блокує редагування до load/recovery, відображає disk/recovery warnings. UserDefaults зберігає мову/тему окремо. Raw audio не входить у жодну storage модель.
+
 ## Верифікація
 
 Чисті domain/scoring tests працюють без пристроїв; DSP tests проганяють синтетичні та реальні annotated fixtures; UI tests користуються deterministic adapters. Окремий hardware checklist перевіряє USB capture, канал, hot-plug, formats, калібрування й тривалу практику. Автоматизований fake input не закриває hardware gate.

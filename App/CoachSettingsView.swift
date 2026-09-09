@@ -1,12 +1,15 @@
 import SwiftUI
+import Domain
 
 struct CoachSettingsView: View {
     @Environment(AppSettings.self) private var settings
+    @Environment(LocalDataStore.self) private var store
     @State private var showsAudio = false
 
     var body: some View {
         @Bindable var settings = settings
         Form {
+            StorageNotices()
             Section("settings.general") {
                 Picker("settings.language", selection: $settings.language) {
                     ForEach(AppLanguage.allCases) { language in
@@ -22,13 +25,18 @@ struct CoachSettingsView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             Section("audio.title") {
-                Text("source.electric")
+                Picker("settings.source", selection: Binding(get: { store.preferences.instrument.source }, set: { source in
+                    Task { await store.changeSource(source) }
+                })) {
+                    ForEach(InputSource.allCases) { source in Text(LocalizedStringKey(source.titleKey)).tag(source) }
+                }.disabled(!store.canEditPreferences).accessibilityIdentifier("settings.source")
                 Text("welcome.acoustic").foregroundStyle(.secondary)
                 Button("audio.title") { showsAudio = true }
             }
+            if store.isSaving { ProgressView("storage.saving") }
         }
         .formStyle(.grouped)
-        .frame(width: 540, height: 420)
+        .frame(width: 600, height: 500)
         .background(NativeWindowTitle(title: settings.localized("settings.title")))
         .sheet(isPresented: $showsAudio) { AudioProbeView().environment(\.locale, settings.locale) }
     }
