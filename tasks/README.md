@@ -25,7 +25,7 @@
 | 04 | [Навігація, дизайн і двомовність](04-app-shell-localization.md) | 01 | MVP | `done` | [#4](https://github.com/valtronforever/personal-guitar-coach/issues/4) |
 | 05 | [Локальні налаштування та історія](05-local-persistence.md) | 03, 04 | MVP | `done` | [#5](https://github.com/valtronforever/personal-guitar-coach/issues/5) |
 | 06 | [Профіль гітари та вибір строю](06-tuning-settings.md) | 03, 04, 05 | MVP | `done` | [#6](https://github.com/valtronforever/personal-guitar-coach/issues/6) |
-| 07 | [Формат уроків і вправ](07-lesson-content-contract.md) | 03 | MVP | `todo` | [#7](https://github.com/valtronforever/personal-guitar-coach/issues/7) |
+| 07 | [Формат уроків і вправ](07-lesson-content-contract.md) | 03 | MVP | `done` | [#7](https://github.com/valtronforever/personal-guitar-coach/issues/7) |
 | 08 | [Інтерактивний гітарний гриф](08-interactive-fretboard.md) | 03, 04, 06 | MVP | `todo` | [#8](https://github.com/valtronforever/personal-guitar-coach/issues/8) |
 | 09 | [Табулатура та послідовність нот](09-tablature-timeline.md) | 03, 04 | MVP | `todo` | [#9](https://github.com/valtronforever/personal-guitar-coach/issues/9) |
 | 10 | [Каталог уроків і синхронізація кроків](10-lesson-reader.md) | 05, 07, 08, 09 | MVP | `todo` | [#10](https://github.com/valtronforever/personal-guitar-coach/issues/10) |

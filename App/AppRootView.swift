@@ -43,10 +43,7 @@ struct AppRootView: View {
     @ViewBuilder private func destinationView(_ destination: AppDestination) -> some View {
         switch destination {
         case .lessons:
-            FeatureStateView(title: "app.name", message: "lessons.empty", symbol: "guitars.fill") {
-                Text("lessons.count \(0)").foregroundStyle(.secondary)
-                Button("audio.title") { showsAudio = true }.buttonStyle(.borderedProminent)
-            }
+            LessonLibraryView()
         case .practice:
             FeatureStateView(title: "practice.emptyTitle", message: "practice.empty", symbol: "play.circle") {
                 Button("navigation.lessons") { navigation.destination = .lessons }
@@ -100,16 +97,17 @@ struct AppShellPreviews: PreviewProvider {
             AppRootView(navigation: AppNavigation())
                 .environment(settings(.english))
                 .environment(\.locale, Locale(identifier: "en"))
-                .preferredColorScheme(.light).previewDisplayName("English • empty")
+                .preferredColorScheme(.light).previewDisplayName("English • library")
             AppRootView(navigation: AppNavigation())
                 .environment(settings(.ukrainian))
                 .environment(\.locale, Locale(identifier: "uk"))
-                .preferredColorScheme(.dark).previewDisplayName("Українська • порожній стан")
+                .preferredColorScheme(.dark).previewDisplayName("Українська • бібліотека")
             FeatureStateView(title: "common.loading", message: "lessons.loading", symbol: "book", loading: true) { EmptyView() }
                 .environment(\.locale, Locale(identifier: "uk")).previewDisplayName("Loading")
             FeatureStateView(title: "common.error", message: "lessons.error", symbol: "exclamationmark.triangle") { EmptyView() }
                 .environment(\.locale, Locale(identifier: "en")).previewDisplayName("Error")
         }
         .environment(LocalDataStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
+        .environment(LessonLibraryStore())
     }
 }

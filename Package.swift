@@ -13,7 +13,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Domain", package: "GuitarCoachCore"),
                 .product(name: "Audio", package: "GuitarCoachCore"),
-                .product(name: "Persistence", package: "GuitarCoachCore")
+                .product(name: "Persistence", package: "GuitarCoachCore"),
+                .product(name: "Learning", package: "GuitarCoachCore")
             ],
             path: "App",
             exclude: ["PersonalGuitarCoach.entitlements"]

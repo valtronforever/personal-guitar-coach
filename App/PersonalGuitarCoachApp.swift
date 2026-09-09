@@ -5,12 +5,14 @@ struct PersonalGuitarCoachApp: App {
     @State private var settings = AppSettings()
     @State private var navigation = AppNavigation()
     @State private var localData = LocalDataStore()
+    @State private var library = LessonLibraryStore()
 
     var body: some Scene {
         Window(settings.localized("app.name"), id: "main") {
             AppRootView(navigation: navigation)
                 .environment(settings)
                 .environment(localData)
+                .environment(library)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .task { await localData.reload() }
