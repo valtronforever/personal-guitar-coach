@@ -191,3 +191,10 @@ Coordinator резервує preview як output-only purpose, без microphone
 ## Калібрування (задача 15)
 
 `CalibrationRoute` і `CalibrationProfile` у Domain визначають host normalization та умови rhythm capability. Audio читає selected-stream metadata, контролює drift і виконує irregular-pulse loopback; Persistence атомарно зберігає профілі; спільний `CalibrationStore` та `CalibrationModel` керують нативним екраном. Capture UUID lease захищає асинхронний start/stop. Деталі та невиміряні hardware припущення — [ADR 003](decisions/003-calibration-time.md).
+
+
+## Практика (задача 16)
+
+`PracticeConfiguration` і `PracticeStateMachine` у Domain фіксують immutable спробу та дозволені переходи. `PracticeEvidenceCollector` в Audio споживає агреговані DSP DTO без PCM й обмежує пам'ять; `PracticePreflightSignal` перевіряє стабільний свіжий сигнал за DSP frame timestamps. Один `PracticeModel` у composition root володіє UUID capture lease і окремим transport кожної спроби, передає завершену/partial evidence через async callback для Learning/Persistence задачі 17. Автоматичний repeat чекає фіналізації перед новим count-in; це окремі спроби зі спільним здоровим capture, без перекриття хвостів.
+
+`LocalDataStore.instrumentWillChange` синхронно перериває практику до публікації нового строю/джерела; navigation, pause, seek та tempo changes також завершують partial. UI показує окремо очікувані позиції і незалежну чутну частоту, а не розпізнану фізичну струну. Параметри можна згорнути для гри; TAB вибирає цілі такти. Завершення capture саме по собі не є оцінкою.

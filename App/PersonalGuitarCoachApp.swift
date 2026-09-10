@@ -9,6 +9,7 @@ struct PersonalGuitarCoachApp: App {
     @State private var reading: ReadingProgressStore
     @State private var audio: AudioSessionStore
     @State private var calibration: CalibrationStore
+    @State private var practice: PracticeModel
     @State private var library = LessonLibraryStore()
 
     init() {
@@ -20,10 +21,16 @@ struct PersonalGuitarCoachApp: App {
         #else
         repository = try? LocalRepository.applicationSupport()
         #endif
-        _localData = State(initialValue: LocalDataStore(repository: repository))
+        let data = LocalDataStore(repository: repository)
+        let audio = AudioSessionStore(repository: repository)
+        let calibration = CalibrationStore(repository: repository)
+        let practice = PracticeModel(audio: audio, calibration: calibration)
+        data.instrumentWillChange = { [weak practice] value in practice?.instrumentWillChange(value) }
+        _localData = State(initialValue: data)
         _reading = State(initialValue: ReadingProgressStore(repository: repository))
-        _audio = State(initialValue: AudioSessionStore(repository: repository))
-        _calibration = State(initialValue: CalibrationStore(repository: repository))
+        _audio = State(initialValue: audio)
+        _calibration = State(initialValue: calibration)
+        _practice = State(initialValue: practice)
     }
 
     var body: some Scene {
@@ -35,6 +42,7 @@ struct PersonalGuitarCoachApp: App {
                 .environment(reading)
                 .environment(audio)
                 .environment(calibration)
+                .environment(practice)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .task { await localData.reload() }
@@ -73,6 +81,7 @@ struct PersonalGuitarCoachApp: App {
                 .environment(localData)
                 .environment(audio)
                 .environment(calibration)
+                .environment(practice)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
         }

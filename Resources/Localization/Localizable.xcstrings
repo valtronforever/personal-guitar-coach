@@ -3632,13 +3632,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suggested tempo: %lld BPM"
+            "value": "Tempo: %lld BPM"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Рекомендований темп: %lld BPM"
+            "value": "Темп: %lld BPM"
           }
         }
       }
@@ -5788,6 +5788,992 @@
           "stringUnit": {
             "state": "translated",
             "value": "Запас (кадри)"
+          }
+        }
+      }
+    },
+    "practice.options": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Practice options"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Параметри практики"
+          }
+        }
+      }
+    },
+    "practice.expectedExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The fretboard shows the expected fingering. Detected pitch does not identify the string or finger you used."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гриф показує очікувану аплікатуру. Розпізнана висота не визначає, якою струною чи пальцем ви зіграли."
+          }
+        }
+      }
+    },
+    "practice.attemptSummary": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latest attempt"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остання спроба"
+          }
+        }
+      }
+    },
+    "practice.capturedAttacks %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attacks captured: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зареєстровано атак: %lld"
+          }
+        }
+      }
+    },
+    "practice.captureOnly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This attempt has no score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ця спроба не має оцінки."
+          }
+        }
+      }
+    },
+    "practice.tunedConfirmation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I have physically tuned the guitar to the selected tuning"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Я фізично налаштував(-ла) гітару відповідно до вибраного строю"
+          }
+        }
+      }
+    },
+    "practice.firstBar": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перший такт"
+          }
+        }
+      }
+    },
+    "practice.lastBar": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last bar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Останній такт"
+          }
+        }
+      }
+    },
+    "practice.repeat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeat the selected bars"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторювати вибрані такти"
+          }
+        }
+      }
+    },
+    "practice.repeatExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each repeat is a separate attempt with a new count-in after the final note has been analyzed. Pausing resumes from the current bar with a new attempt. Changing tempo or bars interrupts the current attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кожен повтор — окрема спроба з новим відліком після аналізу останньої ноти. Після паузи нова спроба починається з поточного такту. Зміна темпу або тактів перериває поточну спробу."
+          }
+        }
+      }
+    },
+    "practice.pitchOnlyExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without verified timing, pitch practice remains available; rhythm and overall scores are unavailable."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без перевіреного часу практика висоти доступна; оцінки ритму та загальна оцінка недоступні."
+          }
+        }
+      }
+    },
+    "practice.pluckForCheck": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play one clean note and let it ring. The count-in starts after the signal check passes."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте одну чисту ноту й дайте їй прозвучати. Відлік почнеться після успішної перевірки сигналу."
+          }
+        }
+      }
+    },
+    "practice.countInBeat %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Count-in: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відлік: %lld"
+          }
+        }
+      }
+    },
+    "practice.observed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heard"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розпізнано"
+          }
+        }
+      }
+    },
+    "practice.hz": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гц"
+          }
+        }
+      }
+    },
+    "practice.noStablePitch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No stable pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Немає стабільної висоти"
+          }
+        }
+      }
+    },
+    "practice.waitingTail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for the last input samples…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очікуємо останні вхідні семпли…"
+          }
+        }
+      }
+    },
+    "practice.resume": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resume with count-in"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продовжити з відліком"
+          }
+        }
+      }
+    },
+    "practice.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start / retry"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати / повторити"
+          }
+        }
+      }
+    },
+    "practice.completedAttempts %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed attempts: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершено спроб: %lld"
+          }
+        }
+      }
+    },
+    "practice.error.route": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an available input, output and channels in Audio Setup."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть доступні вхід, вихід і канали в налаштуваннях аудіо."
+          }
+        }
+      }
+    },
+    "practice.error.evidence": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The attempt data could not be finalized. No score is available."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося завершити обробку даних спроби. Оцінка недоступна."
+          }
+        }
+      }
+    },
+    "practice.error.tuning": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected tuning does not match this exercise."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибраний стрій не відповідає цій вправі."
+          }
+        }
+      }
+    },
+    "practice.error.tempo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a tempo within the exercise limits."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть темп у межах вправи."
+          }
+        }
+      }
+    },
+    "practice.error.capability": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some selected notes are outside the supported pitch or duration range. Reduce the tempo or choose another fragment."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Деякі вибрані ноти виходять за підтримувану висоту або тривалість. Зменште темп або виберіть інший фрагмент."
+          }
+        }
+      }
+    },
+    "practice.error.exercise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This exercise cannot be used for single-note practice."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цю вправу не можна використати для практики окремих нот."
+          }
+        }
+      }
+    },
+    "practice.error.format": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Practice input supports 44.1 and 48 kHz. Change the input format in Audio Setup."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Практика підтримує вхід 44,1 та 48 кГц. Змініть формат входу в налаштуваннях аудіо."
+          }
+        }
+      }
+    },
+    "practice.error.range": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose complete bars containing notes, up to 15 minutes and 1024 notes. Notes cannot cross the selection boundary."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть цілі такти з нотами, не більше 15 хвилин і 1024 нот. Ноти не можуть перетинати межу вибраного фрагмента."
+          }
+        }
+      }
+    },
+    "practice.phase.idle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready to practice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готові до практики"
+          }
+        }
+      }
+    },
+    "practice.phase.preflight": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the guitar signal"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевіряємо сигнал гітари"
+          }
+        }
+      }
+    },
+    "practice.phase.preflightFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signal check not completed"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірку перед грою не пройдено"
+          }
+        }
+      }
+    },
+    "practice.phase.countIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Count-in"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відлік"
+          }
+        }
+      }
+    },
+    "practice.phase.running": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play the selected notes"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Грайте вибрані ноти"
+          }
+        }
+      }
+    },
+    "practice.phase.finalizing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finishing the attempt"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершуємо спробу"
+          }
+        }
+      }
+    },
+    "practice.phase.completed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attempt finished"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробу завершено"
+          }
+        }
+      }
+    },
+    "practice.phase.paused": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused — partial attempt"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза — неповна спроба"
+          }
+        }
+      }
+    },
+    "practice.phase.interrupted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attempt interrupted"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробу перервано"
+          }
+        }
+      }
+    },
+    "practice.phase.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attempt cancelled"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробу скасовано"
+          }
+        }
+      }
+    },
+    "practice.reason.userCancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped by you. No overall score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ви зупинили спробу. Загальної оцінки немає."
+          }
+        }
+      }
+    },
+    "practice.reason.paused": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue from this bar with a fresh count-in."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продовжте з цього такту з новим відліком."
+          }
+        }
+      }
+    },
+    "practice.reason.changedTempo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The tempo changed. Start a new attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Темп змінився. Почніть нову спробу."
+          }
+        }
+      }
+    },
+    "practice.reason.changedRange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected bars changed. Start a new attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрані такти змінилися. Почніть нову спробу."
+          }
+        }
+      }
+    },
+    "practice.reason.changedInstrument": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The instrument settings changed. Check the physical tuning again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Налаштування інструмента змінилися. Перевірте фізичний стрій знову."
+          }
+        }
+      }
+    },
+    "practice.reason.changedExercise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You left or changed the exercise."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ви залишили або змінили вправу."
+          }
+        }
+      }
+    },
+    "practice.reason.routeChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The audio route changed or disconnected. Reconnect it and check the signal."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіомаршрут змінився або від’єднався. Відновіть підключення та перевірте сигнал."
+          }
+        }
+      }
+    },
+    "practice.reason.permissionDenied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microphone permission is required for the guitar input."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для входу гітари потрібен дозвіл на мікрофон."
+          }
+        }
+      }
+    },
+    "practice.reason.suspended": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Mac slept or the audio session was suspended. Start again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac перейшов у сон або аудіосесію призупинено. Почніть знову."
+          }
+        }
+      }
+    },
+    "practice.reason.dataLoss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Input data was lost. Check the audio connection before retrying."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Частину вхідних даних втрачено. Перевірте аудіопідключення перед повтором."
+          }
+        }
+      }
+    },
+    "practice.reason.streamStalled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio stopped arriving or the final input could not be verified."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіодані перестали надходити або не вдалося перевірити завершення входу."
+          }
+        }
+      }
+    },
+    "practice.reason.invalidFormat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The input format or timestamps could not be verified."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося перевірити формат або часові мітки входу."
+          }
+        }
+      }
+    },
+    "practice.reason.audioFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The audio session could not run. Check Audio Setup."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося запустити аудіосесію. Перевірте налаштування аудіо."
+          }
+        }
+      }
+    },
+    "practice.reason.noTestSignal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No stable test note was detected. Check gain and input selection, then play a clean note. This is not a playing score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стабільну тестову ноту не розпізнано. Перевірте підсилення й вибір входу та зіграйте чисту ноту. Це не оцінка гри."
+          }
+        }
+      }
+    },
+    "practice.reason.tuningNotConfirmed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tune the physical guitar, then confirm the tuning in Practice options."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Налаштуйте фізичну гітару, потім підтвердьте стрій у параметрах практики."
+          }
+        }
+      }
+    },
+    "practice.reason.evidenceOverflow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too much or invalid analysis data was received. Retry a shorter fragment."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Надійшло забагато або некоректні дані аналізу. Повторіть коротший фрагмент."
+          }
+        }
+      }
+    },
+    "practice.reason.missingTimestamp": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A reliable audio timestamp is missing. Restart the audio route."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Немає надійної часової мітки аудіо. Перезапустіть аудіомаршрут."
+          }
+        }
+      }
+    },
+    "practice.firstBarValue %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First bar: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перший такт: %lld"
+          }
+        }
+      }
+    },
+    "practice.lastBarValue %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last bar: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Останній такт: %lld"
+          }
+        }
+      }
+    },
+    "practice.tabInstructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a note to choose its whole bar; Shift-select extends the bars. Selecting during play interrupts the attempt. Use arrow keys and Space or Return."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть ноту, щоб обрати весь її такт; Shift розширює вибрані такти. Вибір під час гри перериває спробу. Використовуйте стрілки й пробіл або Return."
           }
         }
       }
