@@ -2,7 +2,7 @@
 
 GitHub: [#18](https://github.com/valtronforever/personal-guitar-coach/issues/18)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: MVP
 Залежності: 05, 10, 17
 
@@ -33,4 +33,8 @@ Rule fixtures з мінімальною evidence, result → retry flow, persist
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+Реалізовано `FeedbackEngine` / `PracticeComparison`, shared native `ResultDetailView`, annotations у TAB, detail history, immutable archived retry та безпечне відновлення строю. Поради містять 1–3 пріоритетні дії з конкретними counts/event/attack references, тактами й BPM. Правила, пороги, архівна семантика й межі — [ADR 005](../docs/decisions/005-feedback-progress.md).
+
+Core: 125 tests / 25 suites passed (один opt-in hardware probe skipped); App: 51 tests / 15 suites passed; focused review regressions 6 FeedbackTests + 4 ResultFlowTests passed. 492 UI keys en/uk, project consistency і UI-test source compilation passed. Native Debug/Release build evidence та знайдені/виправлені проблеми — [review](../docs/reviews/18-review.md).
+
+Після merge software ready; `pending_user` лишає відкритими native UI/VoiceOver/layout та фізичний practice → feedback walkthrough. Computer-use channel не відновився (pipe closed), тому visual success не заявляється. Див. U05/U07/U10 у [фінальній перевірці](../docs/USER-VALIDATION.md).

@@ -53,6 +53,14 @@ public struct InstrumentPreferences: Codable, Equatable, Sendable {
         return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source),
                                          customTunings: profiles, practiceBPM: practiceBPM)
     }
+    /// Restoring a historical target never overwrites a newer profile with the same ID.
+    public func restoringPitches(from archived: TuningProfile) throws -> InstrumentPreferences {
+        if let same = availableTunings.first(where: { $0 == archived }) ?? availableTunings.first(where: { $0.hasSamePitches(as: archived) }) {
+            return try selectingTuning(id: same.id)
+        }
+        let copy = try TuningProfile(id: UUID().uuidString, name: archived.name, strings: archived.strings, referenceA4: archived.referenceA4)
+        return try savingCustomTuning(copy, expectedRevision: nil)
+    }
     public static let defaults = try! InstrumentPreferences()
 }
 

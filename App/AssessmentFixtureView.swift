@@ -6,17 +6,15 @@ import Learning
 struct AssessmentFixtureView: View {
     @State private var selected = "valid"
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("debug.assessmentTitle").font(.headline)
-                Picker("debug.fixture", selection: $selected) {
-                    ForEach(["valid", "uncalibrated", "insufficientSignal", "interrupted"], id: \.self) { value in
-                        Text(LocalizedStringKey("assessment.validity." + value)).tag(value)
-                    }
-                }.accessibilityIdentifier("debug.assessmentCase")
-                if let result = try? Self.result(selected) { AssessmentSummaryView(result: result) }
-            }.padding(20)
-        }.frame(minWidth: 500, minHeight: 500)
+        VStack(alignment: .leading, spacing: 16) {
+            Text("debug.assessmentTitle").font(.headline).padding(.horizontal, 20)
+            Picker("debug.fixture", selection: $selected) {
+                ForEach(["valid", "uncalibrated", "insufficientSignal", "interrupted"], id: \.self) { value in
+                    Text(LocalizedStringKey("assessment.validity." + value)).tag(value)
+                }
+            }.padding(.horizontal, 20).accessibilityIdentifier("debug.assessmentCase")
+            if let result = try? Self.result(selected) { ResultDetailView(result: result) }
+        }.padding(.top, 20).frame(minWidth: 760, minHeight: 620)
     }
     static func result(_ selected: String) throws -> AssessedPractice {
         let endpoint = try CalibrationEndpoint(uid: "synthetic-fixture", channel: 1, sampleRate: 48000, bufferFrames: 512,
