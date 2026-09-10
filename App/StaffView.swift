@@ -45,6 +45,8 @@ struct StaffView: View {
                                     Rectangle().fill(.clear).frame(width: 44, height: 248).contentShape(Rectangle())
                                 }.buttonStyle(.plain).offset(x: x(symbol) - 22)
                                     .focusable()
+                                    // Canvas draws focus at the note; the native ring uses the unoffset button frame.
+                                    .focusEffectDisabled()
                                     .focused($focusedID, equals: symbol.id)
                                     .onAppear { if requestedFocus == symbol.id { focusedID = symbol.id } }
                                     .onKeyPress(keys: [.space, .return]) { event in

@@ -41,3 +41,5 @@ Sounding E2 → правильна гітарна written note, key/accidental f
 - 503 UI keys en/uk, актуальний Xcode-проєкт, UI-source type-check, локальні Debug/Release й підписаний ZIP. Final CI/merge evidence публікується в GitHub issue #22.
 - `pending_user`: U05/U07 — нативний keyboard/VoiceOver, мінімальне вікно, en/uk тексти й user musical review. Повторне CUA-підключення повернуло pipe-closed error; обхід не застосовано.
 - Ties, tuplets, tempo map та bend/slide/hammer-on/pull-off сплановано з версіонуванням і новими assessment gates. Імпорт форматів і неперевірене оцінювання технік не додані.
+
+Після PR #44 нативний доступ до Release відновився: перевірено вибір нот/пауз, перехід клавіатурою через такт, збереження вибору у TAB та після en/uk перемикання. Знайдену зміщену рамку фокуса виправлено й перевірено повторно; [окремий review](../docs/reviews/22-native-ui-review.md) фіксує точні межі доказів. `pending_user` збережено: VoiceOver, повне музичне приймання й решта U05/U07 ще відкриті.

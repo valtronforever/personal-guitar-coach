@@ -27,3 +27,6 @@ Same-agent review of staff pitch/spelling, bar/accidental/rhythm projection, les
 - Native app reconnect again failed with “Sky Computer Use native pipe closed before response”. No alternative UI-control path or permission bypass was used. U05/U07 must still validate staff↔TAB native selection, rapid cross-bar keyboard focus, both languages at minimum window size, live cursor following and VoiceOver.
 
 No unresolved critical software issue was found in the reviewed scope. This limited prototype is not a complete engraver; ties, tuplets, tempo maps, multiple voices and technique-aware analysis remain explicit follow-up work in ADR 007.
+# Native follow-up
+
+After the original PR #44 merge, native observation recovered for the Release app. The [follow-up review](22-native-ui-review.md) records an actual focus-decoration defect, its fix and native retest, plus the remaining acceptance limits.
