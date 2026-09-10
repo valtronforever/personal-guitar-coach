@@ -25,3 +25,5 @@ Reviewed monotonic assignment, normalized/sample-rounded timestamps, pitch and r
 The final recorded pipeline matches all 32 annotated first attacks: 18 attempts graded, 14 unscored due to uncertain extras; two unannotated B3 clips are excluded from onset assessment. Exact metrics and per-clip results are in docs/benchmarks/17-assessment.md. The successful full DSP artifact is docs/benchmarks/17-audio-analysis.json.
 
 Local Debug and Release .app builds and ad-hoc signing pass. UI-test source checks include the synthetic pitch-only/interrupted result flow; actual native execution remains deferred as described above.
+
+The first GitHub CI run (34425873822) exposed a type-check timeout in the golden-fixture event generator on the runner's compiler. The compound throwing map/ternary expression was split into explicitly typed loop steps; product behavior and expected fixture data are unchanged. The focused golden suite was rerun before pushing the correction.

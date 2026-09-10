@@ -9,10 +9,14 @@ struct AssessmentTests {
                        unreliable: Set<Int> = [], extras: [Double] = [], offset: Double = 0,
                        calibrated: Bool = true, drift: Double? = 0, phase: PracticePhase = .completed,
                        confirmed: Bool = true, clipped: Bool = false, noisy: Bool = false) throws -> PracticeEvidence {
-        let events = try (0..<count).map { i in
-            try MusicalEvent(id: "n\(i)", startTick: Int64(i) * ticks, durationTicks: ticks,
-                kind: rests && i % 2 == 1 ? .rest : .note,
-                positions: rests && i % 2 == 1 ? [] : [FretPosition(string: 6, fret: i % 5)])
+        var events: [MusicalEvent] = []
+        for index in 0..<count {
+            let isRest = rests && index % 2 == 1
+            let kind: MusicalEventKind = isRest ? .rest : .note
+            let positions: [FretPosition] = isRest ? [] : [try FretPosition(string: 6, fret: index % 5)]
+            let event = try MusicalEvent(id: "n\(index)", startTick: Int64(index) * ticks,
+                durationTicks: ticks, kind: kind, positions: positions)
+            events.append(event)
         }
         let endpoint = try CalibrationEndpoint(uid: "usb", channel: 1, sampleRate: 48000, bufferFrames: 512,
             deviceLatencyFrames: 240, streamLatencyFrames: 240)
