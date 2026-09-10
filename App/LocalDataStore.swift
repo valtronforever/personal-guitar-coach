@@ -68,6 +68,11 @@ final class LocalDataStore {
         catch { operationError = "tuning.error.profile" }
     }
 
+    func restoreArchivedTuning(_ tuning: TuningProfile) async {
+        do { try await savePreferences(preferences.restoringPitches(from: tuning)) }
+        catch { operationError = "tuning.error.profile" }
+    }
+
     func changeOrientation(_ orientation: FretboardOrientation) async {
         do {
             let instrument = InstrumentProfile(tuning: preferences.instrument.tuning, orientation: orientation, source: preferences.instrument.source)

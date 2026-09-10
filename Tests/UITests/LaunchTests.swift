@@ -129,6 +129,7 @@ final class LaunchTests: XCTestCase {
         app.launch()
         app.menuBars.menuBarItems["Developer"].click()
         app.menuItems["Synthetic results · no audio or saved history"].click()
+        XCTAssertTrue(app.descendants(matching: .any)["result.detail"].firstMatch.waitForExistence(timeout: 5))
         let summary = app.descendants(matching: .any)["assessment.summary"].firstMatch
         XCTAssertTrue(summary.waitForExistence(timeout: 5))
         let fixture = app.popUpButtons["debug.assessmentCase"]

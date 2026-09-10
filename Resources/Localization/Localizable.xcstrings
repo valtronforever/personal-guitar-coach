@@ -7202,6 +7202,1213 @@
           }
         }
       }
+    },
+    "result.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Practice result"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Результат практики"
+          }
+        }
+      }
+    },
+    "result.nextSteps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next steps"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Наступні кроки"
+          }
+        }
+      }
+    },
+    "result.conditions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved conditions"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережені умови"
+          }
+        }
+      }
+    },
+    "result.versions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versions and calibration"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Версії та калібрування"
+          }
+        }
+      }
+    },
+    "result.bars %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bars %1$lld–%2$lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такти %1$lld–%2$lld"
+          }
+        }
+      }
+    },
+    "result.reference %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reference A4: %@ Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Еталон A4: %@ Гц"
+          }
+        }
+      }
+    },
+    "result.exerciseVersion %@ %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercise: %1$@ · version %2$lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вправа: %1$@ · версія %2$lld"
+          }
+        }
+      }
+    },
+    "result.tuningVersion %@ %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuning: %1$@ · revision %2$lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стрій: %1$@ · редакція %2$lld"
+          }
+        }
+      }
+    },
+    "result.analysisVersion %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio analysis: %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аналіз аудіо: %@"
+          }
+        }
+      }
+    },
+    "result.scoringVersion %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scoring rules: %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Правила оцінювання: %@"
+          }
+        }
+      }
+    },
+    "result.capabilityVersion %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Practice capability: %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Межі підтримки практики: %@"
+          }
+        }
+      }
+    },
+    "result.adviceVersion %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Advice generated from saved measurements using rules %@. Scores are unchanged."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поради сформовано зі збережених вимірів за правилами %@. Оцінки не змінено."
+          }
+        }
+      }
+    },
+    "result.comparison": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparable attempts"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Порівнювані спроби"
+          }
+        }
+      }
+    },
+    "result.comparisonConditions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compare the same exercise version, tuning, tempo, bars, source, audio route, calibration and analysis rules. Reading progress is separate from playing results."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Порівнюються однакові версія вправи, стрій, темп, такти, джерело, аудіомаршрут, калібрування та правила аналізу. Прогрес читання відокремлено від результатів гри."
+          }
+        }
+      }
+    },
+    "result.comparingOverall": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overall score comparison"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Порівняння загальної оцінки"
+          }
+        }
+      }
+    },
+    "result.comparingPitch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch score comparison · rhythm unavailable"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Порівняння оцінки висоти · ритм недоступний"
+          }
+        }
+      }
+    },
+    "result.previousScore %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous: %1$lld / 100 · change: %2$@ points"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Попередня: %1$lld / 100 · зміна: %2$@ бала"
+          }
+        }
+      }
+    },
+    "result.bestScore %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Best under these conditions: %lld / 100"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Найкраща за цих умов: %lld / 100"
+          }
+        }
+      }
+    },
+    "result.noComparison": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No earlier comparable attempt. Attempts with different conditions, partial results and older summaries are not ranked together."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Немає попередньої порівнюваної спроби. Спроби за інших умов, незавершені результати та старі підсумки не входять до спільного рейтингу."
+          }
+        }
+      }
+    },
+    "result.tabInstructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a note or rest to inspect its saved measurements. Symbols describe this attempt; unmarked events were not assessed. Pitch symbols start at 15 cents; timing symbols require valid calibration."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть ноту або паузу, щоб переглянути збережені виміри. Символи описують цю спробу; непозначені події не оцінювалися. Висота позначається від 15 центів; час — лише за валідного калібрування."
+          }
+        }
+      }
+    },
+    "result.eventDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected event"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрана подія"
+          }
+        }
+      }
+    },
+    "result.extraDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional observed attacks"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Додаткові зафіксовані атаки"
+          }
+        }
+      }
+    },
+    "result.attackID %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observed attack %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зафіксована атака %@"
+          }
+        }
+      }
+    },
+    "result.extraObserved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional attack · not matched to an expected note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Додаткова атака · без відповідної очікуваної ноти"
+          }
+        }
+      }
+    },
+    "result.measurementLimits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tablature shows expected positions. Audio measures pitch and attack time; it cannot identify your finger or played string. Clarity describes signal periodicity, not a probability of correctness. Partial measurements are not a performance grade."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Табулатура показує очікувані позиції. Аудіо вимірює висоту й час атаки, але не визначає палець або зіграну струну. Чіткість описує періодичність сигналу, а не ймовірність правильності. Часткові виміри не є оцінкою гри."
+          }
+        }
+      }
+    },
+    "result.repeatFragment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare this fragment"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підготувати цей фрагмент"
+          }
+        }
+      }
+    },
+    "result.retryUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This result has no available lesson retry link. Its saved measurements remain readable."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для цього результату немає доступного переходу до повтору уроку. Збережені виміри доступні для читання."
+          }
+        }
+      }
+    },
+    "result.showEvidence": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Referenced events"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Події, що підтверджують пораду"
+          }
+        }
+      }
+    },
+    "result.unassessed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No assessment for this event"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ця подія не оцінювалася"
+          }
+        }
+      }
+    },
+    "result.expectedPosition %@ %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected: %1$@ · string %2$lld · fret %3$lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очікується: %1$@ · струна %2$lld · лад %3$lld"
+          }
+        }
+      }
+    },
+    "result.targetFrequency %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target frequency: %@ Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цільова частота: %@ Гц"
+          }
+        }
+      }
+    },
+    "result.observedFrequency %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observed frequency: %@ Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряна частота: %@ Гц"
+          }
+        }
+      }
+    },
+    "result.pitchError %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch error: %@ cents · positive is sharp"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відхилення висоти: %@ центів · додатне — вище"
+          }
+        }
+      }
+    },
+    "result.timingError %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing error: %@ ms · positive is late"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відхилення часу: %@ мс · додатне — пізніше"
+          }
+        }
+      }
+    },
+    "result.clarity %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signal clarity (0–1): %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чіткість сигналу (0–1): %@"
+          }
+        }
+      }
+    },
+    "result.restAttacks %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attacks observed in this rest: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Атак під час цієї паузи: %lld"
+          }
+        }
+      }
+    },
+    "result.savedExercise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved exercise"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережена вправа"
+          }
+        }
+      }
+    },
+    "result.legacyExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This older record contains a summary only. Event measurements, recommendations and comparable progress are unavailable. Its original score has been preserved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей старий запис містить лише підсумок. Виміри подій, рекомендації та порівняння прогресу недоступні. Початкову оцінку збережено."
+          }
+        }
+      }
+    },
+    "result.viewDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View result and next steps"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Результат і наступні кроки"
+          }
+        }
+      }
+    },
+    "result.archivedRetry": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This retry uses the saved exercise and target tuning. Check the selected tuning, tune the guitar, then confirm before starting a new attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей повтор використовує збережену вправу й цільовий стрій. Перевірте вибраний стрій, налаштуйте гітару та підтвердьте це перед новою спробою."
+          }
+        }
+      }
+    },
+    "result.retryTuningMismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected tuning differs from this saved attempt, including its A4 reference. Select the saved pitches and physically tune the guitar before starting."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибраний стрій відрізняється від збереженої спроби, зокрема еталоном A4. Виберіть збережені висоти та фізично налаштуйте гітару перед стартом."
+          }
+        }
+      }
+    },
+    "result.restoreTuning": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select saved tuning pitches"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрати збережені висоти строю"
+          }
+        }
+      }
+    },
+    "result.annotation.uncertain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uncertain signal"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невизначений сигнал"
+          }
+        }
+      }
+    },
+    "result.annotation.missing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missing attack"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пропущена атака"
+          }
+        }
+      }
+    },
+    "result.annotation.pitch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch deviation"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відхилення висоти"
+          }
+        }
+      }
+    },
+    "result.annotation.early": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Early attack"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рання атака"
+          }
+        }
+      }
+    },
+    "result.annotation.late": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Late attack"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пізня атака"
+          }
+        }
+      }
+    },
+    "result.annotation.matched": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matched attack"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіставлена атака"
+          }
+        }
+      }
+    },
+    "result.annotation.restExtra": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attack during a rest"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Атака під час паузи"
+          }
+        }
+      }
+    },
+    "feedback.inputLevel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the input level for clipping before trying again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірте рівень входу на перевантаження перед повтором."
+          }
+        }
+      }
+    },
+    "feedback.signal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the input and play clean single notes for the signal check. There is not enough reliable evidence to assess playing."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірте вхід і зіграйте чисті окремі ноти для перевірки сигналу. Надійних даних для оцінки гри недостатньо."
+          }
+        }
+      }
+    },
+    "feedback.interrupted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resolve the audio interruption before a new attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Усуньте причину переривання аудіо перед новою спробою."
+          }
+        }
+      }
+    },
+    "feedback.restart": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start a fresh attempt with a new count-in. The partial attempt is not graded."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почніть нову спробу з відліком. Незавершена спроба не оцінюється."
+          }
+        }
+      }
+    },
+    "feedback.calibration": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check route calibration to enable rhythm and overall scores. Pitch feedback remains available."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірте калібрування маршруту для оцінки ритму й загального бала. Аналіз висоти доступний."
+          }
+        }
+      }
+    },
+    "feedback.early": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Several attacks were earlier than the timing tolerance. Repeat with the metronome."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кілька атак були ранішими за допустиму межу. Повторіть із метрономом."
+          }
+        }
+      }
+    },
+    "feedback.late": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Several attacks were later than the timing tolerance. Repeat with the metronome."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кілька атак були пізнішими за допустиму межу. Повторіть із метрономом."
+          }
+        }
+      }
+    },
+    "feedback.missed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Several expected attacks were missing while the input remained reliable. Repeat the fragment."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кілька очікуваних атак були відсутні за надійного входу. Повторіть фрагмент."
+          }
+        }
+      }
+    },
+    "feedback.pitch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The same target pitch repeatedly differed by at least 50 cents. Review its expected note and repeat."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Та сама цільова висота неодноразово відрізнялася щонайменше на 50 центів. Перегляньте очікувану ноту та повторіть."
+          }
+        }
+      }
+    },
+    "feedback.tuning": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At least three target pitches have a repeated deviation in the same direction. Check with the tuner; these measurements do not identify the cause."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Щонайменше три цільові висоти мають повторюване відхилення в одному напрямку. Перевірте тюнером; ці виміри не визначають причину."
+          }
+        }
+      }
+    },
+    "feedback.rests": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional attacks occurred during rests. Repeat the fragment and leave the written rests between attacks."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Під час пауз зафіксовано додаткові атаки. Повторіть фрагмент, залишаючи записані паузи між атаками."
+          }
+        }
+      }
+    },
+    "feedback.repeatFragment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeat this fragment to build a comparable record of practice. One attempt does not establish mastery."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторіть цей фрагмент для накопичення порівнюваних результатів. Одна спроба не доводить опанування."
+          }
+        }
+      }
+    },
+    "feedback.clippingEvidence %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clipping intervals recorded: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зафіксовані інтервали перевантаження: %lld"
+          }
+        }
+      }
+    },
+    "feedback.signalEvidence %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uncertain expected events and extra attacks: %1$lld · expected notes: %2$lld. A missing preflight signal also prevents grading."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невизначені очікувані події та зайві атаки: %1$lld · очікувані ноти: %2$lld. Без перевірочного сигналу оцінювання також недоступне."
+          }
+        }
+      }
+    },
+    "feedback.noteEvidence %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notes supporting this pattern: %1$lld of %2$lld expected in the fragment."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ноти, що підтверджують цю закономірність: %1$lld із %2$lld очікуваних у фрагменті."
+          }
+        }
+      }
+    },
+    "feedback.restEvidence %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reliable extra attacks: %1$lld · written rests in the fragment: %2$lld."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Надійно зафіксовані зайві атаки: %1$lld · записані паузи у фрагменті: %2$lld."
+          }
+        }
+      }
+    },
+    "feedback.repeatEvidence %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected notes in this fragment: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очікувані ноти в цьому фрагменті: %lld"
+          }
+        }
+      }
+    },
+    "feedback.fragment %lld %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggested repeat: bars %1$lld–%2$lld at %3$lld BPM. Preparing the fragment does not start audio."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рекомендований повтор: такти %1$lld–%2$lld на %3$lld BPM. Підготовка фрагмента не запускає аудіо."
+          }
+        }
+      }
+    },
+    "common.close": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закрити"
+          }
+        }
+      }
+    },
+    "result.evidenceEvent %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bar %1$lld · beat %2$@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такт %1$lld · доля %2$@"
+          }
+        }
+      }
+    },
+    "result.openSavedTuner": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select saved tuning and open tuner"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрати збережений стрій і відкрити тюнер"
+          }
+        }
+      }
+    },
+    "result.tunerPreparationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The saved tuning could not be selected. Check storage notices in Settings and try again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося вибрати збережений стрій. Перевірте повідомлення сховища в налаштуваннях і спробуйте знову."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

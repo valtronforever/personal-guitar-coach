@@ -27,3 +27,5 @@ The final recorded pipeline matches all 32 annotated first attacks: 18 attempts 
 Local Debug and Release .app builds and ad-hoc signing pass. UI-test source checks include the synthetic pitch-only/interrupted result flow; actual native execution remains deferred as described above.
 
 The first GitHub CI run (34425873822) exposed a type-check timeout in the golden-fixture event generator on the runner's compiler. The compound throwing map/ternary expression was split into explicitly typed loop steps; product behavior and expected fixture data are unchanged. The focused golden suite was rerun before pushing the correction.
+
+Повторний CI [34426884902](https://github.com/valtronforever/personal-guitar-coach/actions/runs/34426884902) пройшов на `fb76d9c`; PR #39 змерджено як `858890b`.

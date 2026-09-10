@@ -13,21 +13,23 @@ struct PracticeEntryView: View {
     @Environment(PracticeModel.self) private var model
     @Environment(CalibrationStore.self) private var calibration
     @State private var showsAudio = false
+    @State private var detailResult: AssessedPractice?
+    @State private var pendingAudioSetup = false
     @State private var showsOptions = true
     @State private var visualMode = "fretboard"
     @State private var selectedPosition: FretPosition?
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
     private var instrument: InstrumentProfile { model.phase.active ? model.machine.configuration?.instrument ?? data.preferences.instrument : data.preferences.instrument }
-    private var tuning: TuningProfile { model.request?.exercise.requiredTuning ?? instrument.tuning }
+    private var tuning: TuningProfile { model.request?.archivedTuning ?? model.request?.exercise.requiredTuning ?? instrument.tuning }
     private var detectedPitch: Pitch? { model.latestFrequency.flatMap { try? Pitch.nearest(to: $0, referenceA4: tuning.referenceA4) } }
 
     var body: some View {
         if let request = navigation.practiceRequest {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    if let lesson = library.lessons.first(where: { $0.id == request.lessonID }) {
+                    if let lesson = library.lessons.first(where: { $0.id == request.lessonID && $0.manifest.version == request.lessonVersion }) {
                         Text(verbatim: lesson.text(for: language).title).font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise")
-                    }
+                    } else { Text("result.savedExercise").font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise") }
                     DisclosureGroup("practice.options", isExpanded: $showsOptions) {
                         options(request.exercise).padding(.top, 10)
                     }
@@ -40,7 +42,7 @@ struct PracticeEntryView: View {
                         FretboardView(model: FretboardModel(tuning: tuning, orientation: instrument.orientation,
                             positions: model.expectedPositions), selected: $selectedPosition,
                             detectedPitch: detectedPitch, compact: true)
-                    } else if let timeline = try? TimelineModel(exercise: request.exercise, instrument: instrument.tuning) {
+                    } else if let timeline = try? TimelineModel(exercise: request.exercise, instrument: tuning) {
                         TablatureView(model: timeline, selectedIDs: model.selectedEventIDs,
                             cursorTick: model.countInBeat == nil ? model.cursorTick : nil, instructionsKey: "practice.tabInstructions") { id, extending in
                                 guard let event = request.exercise.events.first(where: { $0.id == id }) else { return }
@@ -51,6 +53,9 @@ struct PracticeEntryView: View {
                     Text("practice.expectedExplanation").font(.caption).foregroundStyle(.secondary)
                     if let result = assessment.latest, result.id == model.latestEvidence?.id {
                         AssessmentSummaryView(result: result)
+                        Button("result.viewDetails") {
+                            model.setRepeat(false); model.stop(); detailResult = result
+                        }.accessibilityIdentifier("result.viewDetails")
                     } else if assessment.isSaving {
                         ProgressView("assessment.processing")
                     } else if let evidence = model.latestEvidence {
@@ -68,6 +73,22 @@ struct PracticeEntryView: View {
             .onChange(of: navigation.practiceRequest, initial: true) { _, value in model.configure(value) }
             .onChange(of: model.phase) { _, value in if value == .countIn || value == .running { showsOptions = false } }
             .sheet(isPresented: $showsAudio) { AudioProbeView().environment(\.locale, settings.locale) }
+            .sheet(item: $detailResult, onDismiss: {
+                if pendingAudioSetup { pendingAudioSetup = false; showsAudio = true }
+            }) { result in
+                VStack(spacing: 0) {
+                    HStack { Spacer(); Button("common.close") { detailResult = nil } }.padding(12)
+                    ResultDetailView(result: result, history: data.records.compactMap { $0.assessment?.payload },
+                        onRetry: { request in detailResult = nil; navigation.openPractice(request) },
+                        onAudioSetup: { pendingAudioSetup = true; detailResult = nil },
+                        onTuner: { target in
+                            guard data.canEditPreferences else { return false }
+                            await data.restoreArchivedTuning(target)
+                            guard data.operationError == nil, data.preferences.instrument.tuning.hasSamePitches(as: target) else { return false }
+                            detailResult = nil; navigation.destination = .tuner; return true
+                        })
+                }.environment(\.locale, settings.locale)
+            }
             .onDisappear { model.stop(.changedExercise) }
         } else {
             FeatureStateView(title: "practice.emptyTitle", message: "practice.empty", symbol: "play.circle") {
@@ -80,6 +101,14 @@ struct PracticeEntryView: View {
     private func options(_ exercise: Exercise) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             TuningRequirementView(exercise: exercise, instrument: data.preferences.instrument.tuning)
+            if let archived = model.request?.archivedTuning {
+                Text("result.archivedRetry").font(.callout)
+                if !data.preferences.instrument.tuning.hasSamePitches(as: archived) {
+                    Text("result.retryTuningMismatch").foregroundStyle(.secondary)
+                    Button("result.restoreTuning") { Task { await data.restoreArchivedTuning(archived) } }
+                        .disabled(!data.canEditPreferences || model.isBusy)
+                }
+            }
             HStack {
                 TuningName(profile: tuning)
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name() }.joined(separator: " · "))

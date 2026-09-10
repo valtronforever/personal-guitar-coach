@@ -55,7 +55,11 @@ final class PracticeModel {
         guard self.request != request else { return }
         stop(.changedExercise); self.request = request
         if isBusy { pendingConfigurationReset = true } else { machine = PracticeStateMachine() }
-        bpm = request?.exercise.defaultBPM ?? 60; firstBar = 1; lastBar = barCount
+        bpm = request?.initialBPM ?? request?.exercise.defaultBPM ?? 60
+        let bar = request?.exercise.timeSignature.ticksPerBar ?? 3840
+        firstBar = request?.initialRange.map { Int($0.lowerBound / bar) + 1 } ?? 1
+        lastBar = request?.initialRange.map { Int(($0.upperBound - 1) / bar) + 1 } ?? barCount
+        repeatEnabled = false
         physicallyTuned = false; latestEvidence = nil; completedCount = 0; errorKey = nil
     }
     func setTempo(_ value: Double) {
@@ -104,13 +108,16 @@ final class PracticeModel {
     func start(instrument: InstrumentProfile) {
         guard !isBusy, let request else { return }
         errorKey = nil; backendError = nil
+        let targetInstrument: InstrumentProfile
+        do { targetInstrument = try request.retryInstrument(from: instrument) }
+        catch { errorKey = "result.retryTuningMismatch"; physicallyTuned = false; return }
         guard let route = audio.state?.calibrationRoute else { errorKey = "practice.error.route"; return }
         let configuration: PracticeConfiguration
         do {
             let bar = request.exercise.timeSignature.ticksPerBar
             let upper = Int64(lastBar).multipliedReportingOverflow(by: bar)
             let endTick = upper.overflow ? request.exercise.durationTicks : min(request.exercise.durationTicks, upper.partialValue)
-            configuration = try PracticeConfiguration(exercise: request.exercise, instrument: instrument, bpm: bpm,
+            configuration = try PracticeConfiguration(exercise: request.exercise, instrument: targetInstrument, bpm: bpm,
                 range: Int64(firstBar - 1) * bar..<endTick,
                 route: route, calibration: calibration.profile(for: route),
                 lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion))

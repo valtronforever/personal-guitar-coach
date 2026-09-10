@@ -82,7 +82,7 @@ struct PersonalGuitarCoachApp: App {
         Window(settings.localized("debug.assessmentTitle"), id: "assessment-fixtures") {
             AssessmentFixtureView().environment(settings).environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
-        }.defaultSize(width: 540, height: 620)
+        }.defaultSize(width: 900, height: 700)
         Window(settings.localized("debug.tunerTitle"), id: "tuner-fixtures") {
             TunerFixtureView().environment(settings).environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)

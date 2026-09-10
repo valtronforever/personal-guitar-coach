@@ -10,6 +10,7 @@ struct TablatureView: View {
     let selectedIDs: Set<String>
     var cursorTick: Int64? = nil
     var instructionsKey = "tab.instructions"
+    var annotations: [String: ResultAnnotation] = [:]
     let onSelect: (String, Bool) -> Void
     @Environment(AppSettings.self) private var settings
     @State private var zoom = 1.0
@@ -201,6 +202,10 @@ struct TablatureView: View {
                             .position(x: min(22, width / 2), y: gridTop + (CGFloat(position.string) - 0.5) * rowHeight)
                     }
                 }
+                if let annotation = annotations[event.id] {
+                    Image(systemName: annotation.symbol).font(.body).frame(width: min(width, 44), height: 22)
+                        .offset(y: gridTop + rowHeight * 6).accessibilityHidden(true)
+                }
             }.frame(width: width, height: height - 2, alignment: .topLeading).contentShape(Rectangle())
         }
         .buttonStyle(.plain).focusable().focused($focus, equals: target)
@@ -214,7 +219,8 @@ struct TablatureView: View {
         .accessibilityValue(Text(LocalizedStringKey(segment.isContinuation
             ? (selectedIDs.contains(event.id) ? "tab.continuationSelected" : "tab.continuation")
             : (selectedIDs.contains(event.id) ? "fretboard.selected" : "fretboard.unmarked"))))
-        .accessibilityHint(Text(LocalizedStringKey(segment.isContinuation ? "tab.continuationHint" : "tab.selectHint")))
+        .accessibilityHint(annotations[event.id].map { Text(LocalizedStringKey($0.key)) }
+            ?? Text(LocalizedStringKey(segment.isContinuation ? "tab.continuationHint" : "tab.selectHint")))
         .help(description(segment))
         .accessibilityIdentifier("tab.event.\(event.id).bar.\(segment.bar + 1)")
     }

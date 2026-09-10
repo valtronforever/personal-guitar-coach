@@ -73,6 +73,10 @@ struct LessonFilter {
 }
 
 struct PracticeRequest: Equatable, Sendable {
+    let selectionID = UUID()
+    let initialRange: Range<Int64>?
+    let initialBPM: Double?
+    let archivedTuning: TuningProfile?
     let lessonID: String
     let lessonVersion: Int
     let exercise: Exercise
@@ -81,5 +85,34 @@ struct PracticeRequest: Equatable, Sendable {
               let exercise = lesson.manifest.exercises.first(where: { $0.id == exerciseID }),
               exercise.assessmentMode == .monophonic else { return nil }
         lessonID = lesson.id; lessonVersion = lesson.manifest.version; self.exercise = exercise
+        initialRange = nil; initialBPM = nil; archivedTuning = nil
+    }
+}
+
+extension PracticeRequest {
+    /// A cached recommendation can be pressed again after returning from practice.
+    func freshSelection() -> PracticeRequest { PracticeRequest(copying: self) }
+    private init(copying request: PracticeRequest) {
+        lessonID = request.lessonID; lessonVersion = request.lessonVersion; exercise = request.exercise
+        initialRange = request.initialRange; initialBPM = request.initialBPM; archivedTuning = request.archivedTuning
+    }
+    init?(result: AssessedPractice, recommendation: PracticeRecommendation) {
+        guard recommendation.sourceAttemptID == result.id,
+              FeedbackEngine.recommendations(for: result).contains(recommendation),
+              recommendation.action == .repeatFragment,
+              let lesson = result.evidence.configuration.lesson else { return nil }
+        let config = result.evidence.configuration
+        lessonID = lesson.id; lessonVersion = lesson.version; exercise = config.exercise
+        initialBPM = recommendation.bpm
+        let bar = exercise.timeSignature.ticksPerBar
+        initialRange = Int64(recommendation.firstBar - 1) * bar..<min(Int64(recommendation.lastBar) * bar, exercise.durationTicks)
+        archivedTuning = exercise.requiredTuning ?? config.instrument.tuning
+    }
+
+    /// Explicit archived target, after the currently selected physical pitches have been checked.
+    func retryInstrument(from current: InstrumentProfile) throws -> InstrumentProfile {
+        guard let archivedTuning else { return current }
+        guard current.tuning.hasSamePitches(as: archivedTuning) else { throw MusicError.tuningMismatch }
+        return InstrumentProfile(tuning: archivedTuning, orientation: current.orientation, source: current.source)
     }
 }
