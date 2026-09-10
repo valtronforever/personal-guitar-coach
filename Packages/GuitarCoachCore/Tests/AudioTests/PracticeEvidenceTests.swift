@@ -20,11 +20,11 @@ struct PracticeEvidenceTests {
             pitch: DetectedPitch(frequency: 82.4, clarity: 0.99))
     }
     private func snapshot(events: [DetectedNoteEvent] = [], total: UInt64? = nil, latest: Double = 100,
-                          spans: [SignalQualitySpan] = []) -> AudioAnalysisSnapshot {
+                          spans: [SignalQualitySpan] = [], spanTotal: UInt64? = nil) -> AudioAnalysisSnapshot {
         AudioAnalysisSnapshot(algorithmVersion: MonophonicAnalyzer.algorithmVersion,
             latest: PitchObservation(time: time(latest), quality: .silence, pitch: nil, rms: 0, peak: 0, noiseFloor: 0, periodEvidence: nil),
             events: events, totalEvents: total ?? UInt64(events.count), invalidSamples: 0,
-            qualitySpans: spans, totalQualitySpans: UInt64(spans.count))
+            qualitySpans: spans, totalQualitySpans: spanTotal ?? UInt64(spans.count))
     }
     @Test func countInAndPostGuardAreExcludedButLastResolvedAttackRemains() throws {
         var collector = PracticeEvidenceCollector(configuration: try configuration(), baseline: snapshot())
@@ -75,6 +75,30 @@ struct PracticeEvidenceTests {
         #expect(collector.uncertainSignal.count == 1 && collector.clipping.isEmpty)
         #expect(collector.uncertainSignal[0].reason == .ambiguous)
         #expect(abs(collector.uncertainSignal[0].interval.end - 104.59) < 1e-8)
+    }
+
+    @Test func CombinedClippingAndUncertainIntervalsStopAtOneSharedBound() throws {
+        var collector = PracticeEvidenceCollector(configuration: try configuration(), baseline: snapshot())
+        func batch(_ lower: Int, _ upper: Int) -> AudioAnalysisSnapshot {
+            var spans: [SignalQualitySpan] = []
+            for index in lower...upper {
+                let quality: SignalQuality = index % 2 == 0 ? .clipping : .ambiguous
+                let start = time(104 + Double(index) * 0.0005)
+                let end = time(104 + Double(index + 1) * 0.0005)
+                spans.append(SignalQualitySpan(id: UInt64(index), quality: quality, start: start, end: end))
+            }
+            return snapshot(latest: 107, spans: spans, spanTotal: UInt64(upper))
+        }
+        for index in 0..<20 {
+            try collector.consume(batch(index * 200 + 1, (index + 1) * 200), renderEpochSeconds: 100)
+        }
+        #expect(throws: PracticeError.unsupportedSize) {
+            try collector.consume(batch(4001, 4200), renderEpochSeconds: 100)
+        }
+        // The collector visits clipping before uncertainty within a publication.
+        // Both categories share the cap; overflow need not divide it equally.
+        #expect(collector.clipping.count + collector.uncertainSignal.count == 4096)
+        #expect(collector.clipping.count >= 2000 && collector.uncertainSignal.count >= 2000)
     }
 
 }

@@ -21,11 +21,12 @@
 export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 swift test --package-path Packages/GuitarCoachCore
 python3 Scripts/build_local.py
-python3 Scripts/build_local.py --configuration release
+python3 Scripts/build_local.py --configuration release --archive
+python3 Scripts/check_local_bundle.py build/release/PersonalGuitarCoach.app --archive build/release/PersonalGuitarCoach.zip
 open build/debug/PersonalGuitarCoach.app
 ```
 
-`build_local.py` збирає ті самі App-джерела через SwiftPM, компілює String Catalogs, пакує нативну .app та ставить локальний ad-hoc підпис. Production-сертифікати не потрібні. Результат — `build/debug/PersonalGuitarCoach.app` або `build/release/PersonalGuitarCoach.app`.
+`build_local.py` збирає ті самі App-джерела через SwiftPM, компілює String Catalogs, пакує нативну .app та ставить локальний ad-hoc підпис. Перед заміною попередньої .app перевіряє staged bundle, уроки, переклади, іконку та підпис. `--archive` також створює локальний ZIP. Production-сертифікати не потрібні. Результат — `build/debug/PersonalGuitarCoach.app` або `build/release/PersonalGuitarCoach.app`.
 
 ## Xcode-проєкт
 
@@ -90,3 +91,5 @@ Latency calibration is available from Audio setup → Latency calibration. Selec
 
 
 Practice checks a stable input signal after explicit physical-tuning confirmation, then starts the audio-clock count-in. Pause, seek, tempo or tuning changes close a partial attempt. Each repeat waits for analysis/save and starts a new count-in. Completed attempts save the exact inputs and score parameters; unreliable rhythm calibration produces pitch feedback only. Save failures stop automatic repetition and offer retry. Debug → Synthetic results presents the four result-validity states without capture or history writes. Results now include evidence-backed advice, per-event TAB symbols, saved conditions and compatible previous/best scores. Open Progress for saved attempts or View result after practice. Prepare a recommended fragment to restore its archived exercise, tuning target, bars and tempo without starting audio. Summary-only legacy history stays readable. See [feedback and progress rules](docs/decisions/005-feedback-progress.md). The six-lesson starter course now covers open strings, first frets, steady pulse, C major, A minor pentatonic and an Em arpeggio. Final physical/UI validation remains pending.
+
+Зведена перевірка MVP, відтворення локального пакета, походження іконки та відкриті hardware gates: [VALIDATION.md](docs/VALIDATION.md). Прискорений 900-секундний synthetic event benchmark перевіряє обмеження пам’яті даних і збереження спроб; він не замінює 15 хвилин реальної гри.

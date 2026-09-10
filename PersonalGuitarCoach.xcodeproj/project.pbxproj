@@ -36,6 +36,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = "9C22087BA7A30D6815C37301";
 		};
+		"B8FA18644A594FE11B39A425" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder.assetcatalog";
+			"path" = "Resources/Assets.xcassets";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"05590C0A002231F93CAC6A0C" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "B8FA18644A594FE11B39A425";
+		};
 		"BC4A71180870F7945155FBB0" = {
 			"isa" = "XCLocalSwiftPackageReference";
 			"relativePath" = "Packages/GuitarCoachCore";
@@ -443,7 +453,7 @@
 		"F9187E824FE171A6F0EFAE28" = {
 			"isa" = "PBXResourcesBuildPhase";
 			"buildActionMask" = "2147483647";
-			"files" = ("D255F967F3ADCB2D24165D5A", "4D9DF2A4C70B6488900AF1CD", "2029515E6DA163D6E46B1770");
+			"files" = ("D255F967F3ADCB2D24165D5A", "4D9DF2A4C70B6488900AF1CD", "2029515E6DA163D6E46B1770", "05590C0A002231F93CAC6A0C");
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
 		"E250E07043113FAB44DB7036" = {
@@ -552,6 +562,7 @@
 				"CURRENT_PROJECT_VERSION" = "1";
 				"MARKETING_VERSION" = "0.1.0";
 				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks");
 				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
 				"DEBUG_INFORMATION_FORMAT" = "dwarf";
@@ -575,6 +586,7 @@
 				"CURRENT_PROJECT_VERSION" = "1";
 				"MARKETING_VERSION" = "0.1.0";
 				"SWIFT_EMIT_LOC_STRINGS" = "YES";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
 				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks");
 				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
 				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
@@ -664,7 +676,7 @@
 			"isa" = "PBXGroup";
 			"name" = "Resources";
 			"sourceTree" = "<group>";
-			"children" = ("114F4CA765DE9E10ADC330CB", "9CF268CF79415E1082DE0BBC", "9C22087BA7A30D6815C37301");
+			"children" = ("114F4CA765DE9E10ADC330CB", "9CF268CF79415E1082DE0BBC", "9C22087BA7A30D6815C37301", "B8FA18644A594FE11B39A425");
 		};
 		"B9E7F2871A3402983868AFC8" = {
 			"isa" = "PBXGroup";

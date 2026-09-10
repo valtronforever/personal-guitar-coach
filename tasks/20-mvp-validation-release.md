@@ -2,7 +2,7 @@
 
 GitHub: [#20](https://github.com/valtronforever/personal-guitar-coach/issues/20)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: MVP
 Залежності: 01–19
 
@@ -35,4 +35,10 @@ GitHub: [#20](https://github.com/valtronforever/personal-guitar-coach/issues/20)
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+Програмна реалізація: [зведена матриця приймання](../docs/VALIDATION.md), [локальний review](../docs/reviews/20-review.md), [900-секундний synthetic event benchmark](../docs/benchmarks/20-practice-soak.json) та [Release/ZIP report](../docs/benchmarks/20-local-release.json).
+
+- Оригінальна іконка з десятьма macOS-розмірами; staged packaging перевіряє підпис, entitlements, ресурси й контент перед заміною .app. Локальний ZIP розпаковується й перевіряється повторно.
+- Debug/Release збірки, 52 App tests, 360 quick DSP cases/gates, 492 локалізовані UI keys, генератор проєкту, UI-source type-check та corpus checks пройдено.
+- Full core run: 128 перевірок пройдено; новий тест спільного ліміту спочатку мав неправильне очікування рівного розподілу. Після виправлення всі 5 collector tests проходять. Повний CI повторює 129 тестів на фінальному PR head.
+- Прискорена симуляція: 45 231 snapshots, 900 атак, окрема нова спроба, два незмінні відновлені записи; не PCM і не фізичні 15 хвилин.
+- `pending_user`: U01–U10, справжній USB/мікрофон/п'єзо, калібрування, тривалий CPU/RSS/drift, offline launch і фінальний UI/VoiceOver. Ці gates явно відкриті за вказівкою користувача; розповсюдження відсутнє.

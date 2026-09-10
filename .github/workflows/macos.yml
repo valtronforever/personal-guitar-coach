@@ -28,6 +28,12 @@ jobs:
         run: |
           swift run -c release --package-path Packages/GuitarCoachCore BenchmarkAudio Tests/Fixtures/Audio --quick --output "$RUNNER_TEMP/audio-benchmark.json"
           python3 Scripts/check_audio_benchmark.py "$RUNNER_TEMP/audio-benchmark.json"
+      - name: Validate long synthetic practice
+        run: swift run -c release --package-path Packages/GuitarCoachCore BenchmarkPractice "$RUNNER_TEMP/practice-soak.json"
+      - name: Verify local signed release bundle and archive
+        run: |
+          python3 Scripts/build_local.py --configuration release --archive
+          python3 Scripts/check_local_bundle.py build/release/PersonalGuitarCoach.app --archive build/release/PersonalGuitarCoach.zip
       - name: Build Debug
         run: xcodebuild -project PersonalGuitarCoach.xcodeproj -scheme PersonalGuitarCoach -configuration Debug -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
       - name: Build Release
