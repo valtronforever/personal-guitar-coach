@@ -7,6 +7,7 @@ final class LocalDataStore {
     @ObservationIgnored private let repository: LocalRepository?
     /// The practice coordinator installs its synchronous interrupt handler before a new snapshot becomes visible.
     @ObservationIgnored var instrumentWillChange: ((InstrumentProfile) -> Void)?
+    @ObservationIgnored private var historyRevision = 0
     private(set) var preferences = InstrumentPreferences.defaults
     private(set) var records: [PracticeRecord] = []
     private(set) var preferencesIssue: StorageIssue?
@@ -34,10 +35,17 @@ final class LocalDataStore {
         case let .needsRecovery(issue): preferencesIssue = issue
         }
         hasLoaded = true
+        await refreshHistory()
+    }
+
+    func refreshHistory() async {
+        guard let repository else { return }
+        historyRevision += 1; let revision = historyRevision
         do {
             let loaded = try await repository.history()
+            guard revision == historyRevision else { return }
             records = loaded.records; historyIssues = loaded.issues
-        } catch { operationError = "storage.readFailed" }
+        } catch { if revision == historyRevision { operationError = "storage.readFailed" } }
     }
 
     func savePreferences(_ value: InstrumentPreferences) async {

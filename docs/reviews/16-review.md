@@ -21,3 +21,5 @@ Reviewed immutable practice configuration/state transitions, input/output owners
 396 en/uk keys, generated project and UI-test source type-check pass. Native read-only inspection covers English/dark and Ukrainian/light, minimum 900×620 content area, all six strings in fretboard and TAB, collapsed options and persistent action controls. The actual Xcode UI suite remains U07. No input permission or capture was attempted. U10/U01/U02/U03/U08/U09 remain open. Task 17 consumes the bounded evidence callback for scoring and persistence; no fabricated score or raw recording is stored by this task.
 
 Debug and Release native local .app builds pass with ad-hoc signing (`Scripts/build_local.py --configuration debug|release`).
+
+PR #38 passed CI 34422938399 on b02c6c5 and merged as a0604f8.

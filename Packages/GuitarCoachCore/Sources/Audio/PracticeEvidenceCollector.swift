@@ -7,10 +7,12 @@ public struct PracticeEvidenceCollector: Sendable {
     public let analysisVersion: String
     public private(set) var attacks: [PracticeAttack] = []
     public private(set) var clipping: [PracticeClippingInterval] = []
+    public private(set) var uncertainSignal: [PracticeUncertainSpan] = []
     public private(set) var latestNormalizedTime: Double?
     private var lastEvent: UInt64
     private var lastSpan: UInt64
     private var clippingID: UInt64?
+    private var uncertainID: UInt64?
 
     public init(configuration: PracticeConfiguration, baseline: AudioAnalysisSnapshot) {
         self.configuration = configuration; analysisVersion = baseline.algorithmVersion
@@ -50,8 +52,21 @@ public struct PracticeEvidenceCollector: Sendable {
             let interval = try PracticeClippingInterval(start: max(start, window.lowerBound + offset), end: min(end, window.upperBound + offset))
             if clippingID == span.id, !clipping.isEmpty { clipping[clipping.count - 1] = interval }
             else {
-                guard clipping.count < 4096 else { throw PracticeError.unsupportedSize }
+                guard clipping.count + uncertainSignal.count < 4096 else { throw PracticeError.unsupportedSize }
                 clipping.append(interval); clippingID = span.id
+            }
+        }
+        for span in analysis.qualitySpans where span.id >= lastSpan {
+            guard let reason = PracticeUncertainSpan.Reason(rawValue: span.quality.rawValue) else { continue }
+            guard let rawStart = span.start.hostSeconds, let rawEnd = span.end.hostSeconds else { throw AudioBackendError.invalidFormat }
+            let start = try route.observedTime(inputHostSeconds: rawStart), end = try route.observedTime(inputHostSeconds: rawEnd)
+            guard start - offset < window.upperBound, end - offset >= window.lowerBound else { continue }
+            let interval = try PracticeClippingInterval(start: max(start, window.lowerBound + offset), end: min(end, window.upperBound + offset))
+            let value = PracticeUncertainSpan(interval: interval, reason: reason)
+            if uncertainID == span.id, !uncertainSignal.isEmpty { uncertainSignal[uncertainSignal.count - 1] = value }
+            else {
+                guard clipping.count + uncertainSignal.count < 4096 else { throw PracticeError.unsupportedSize }
+                uncertainSignal.append(value); uncertainID = span.id
             }
         }
         lastEvent = analysis.totalEvents; lastSpan = analysis.totalQualitySpans

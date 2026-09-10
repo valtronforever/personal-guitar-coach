@@ -99,7 +99,7 @@ public struct CalibrationEvidence: Codable, Equatable, Sendable {
 }
 
 public enum CalibrationMethod: String, Codable, Sendable { case estimated, manual, measured }
-public enum RhythmCapability: String, Sendable { case available, routeMismatch, unmeasured, durationUnverified, missingClock, uncertain }
+public enum RhythmCapability: String, Codable, Sendable { case available, routeMismatch, unmeasured, durationUnverified, missingClock, uncertain }
 
 public struct CalibrationProfile: Codable, Equatable, Sendable, Identifiable {
     public let id: UUID

@@ -130,3 +130,10 @@ Snapshot обмежений 1024 очікуваними нотами, 900 s та
 Нормалізовані атаки після віднімання зафіксованого residual потрапляють у `[expectedStart − 0.100, expectedEnd + 0.100)`. Це явний guard для ранньої першої/пізньої останньої атаки; інші count-in та post-exercise атаки виключено. Після output completion capture триває щонайменше 1.4 s + відому input hardware latency. Додатково потрібен analyzer watermark за `expectedEnd + 0.100 + 0.300` після компенсації residual. Без watermark або здорового потоку результат перерваний, а не передчасно completed.
 
 Кожен repeat має нові attempt/transport UUID, порожні observation arrays, власний render epoch і count-in; input lease зберігається лише доки потік справний. Між колами є пауза на фіналізацію. Input clock baseline береться з analyzer origin (host − frame/rate) початкового capture: попередній preflight або repeat drift не обнуляється зі стартом нового вихідного сегмента. Regression перевіряє збереження 30 ms, потім 60 ms накопиченого drift. Максимальний drift або втрата валідного clock evidence передаються задачі 17 для rhythm gate.
+
+
+## Реалізація оцінювання (задача 17)
+
+Контракт `monophonic-assessment-1`, конкретні match/quality windows, формула, persistence та перевірки визначені в [ADR 004](decisions/004-assessment.md). Bounded DP не використовує pitch для вибору відповідності; кожна eligible атака зберігається як match або extra. Перевантаження та тривалі non-silent uncertain spans відрізняються від справної тиші. Невизначені очікувані ноти та додаткові атаки враховуються у quality gate; приховано видаляти їх не можна.
+
+Event pitch тепер має версію `mono-mpm-flux-2`: п’ять підтверджених post-onset estimates, медіанна частота, незмінний onset timestamp і timeout 300 ms. Live display й оцінка події мають різні вимоги до стабільності. Попередні route profiles не підходять до нового backend version автоматично. Старі збережені оцінки лишаються зі своїми analysis/scoring versions і не перераховуються.

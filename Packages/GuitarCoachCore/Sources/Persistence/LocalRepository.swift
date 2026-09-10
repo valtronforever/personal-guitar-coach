@@ -196,7 +196,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         if manager.fileExists(atPath: url.path) {
             guard try decodeRecord(Data(contentsOf: url)) == record else { throw StorageError.identifierConflict }
         } else {
-            try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: record)), url)
+            try writer.write(encode(DocumentEnvelope(schemaVersion: record.assessment == nil ? 1 : 2, payload: record)), url)
         }
         // The attempt is committed; an index failure is a recoverable warning, not a failed save.
         do { return try history().issues }
@@ -225,8 +225,9 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
     }
     private func decodeRecord(_ data: Data) throws -> PracticeRecord {
         let version = try JSONDecoder().decode(VersionHeader.self, from: data).schemaVersion
-        guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+        guard version == 1 || version == 2 else { throw StorageError.unsupportedVersion(version) }
         let record = try JSONDecoder().decode(DocumentEnvelope<PracticeRecord>.self, from: data).payload
+        guard (version == 2) == (record.assessment != nil) else { throw StorageError.invalidRecord }
         try record.validate()
         return record
     }
@@ -237,6 +238,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
     private func issue(for url: URL, error: Error) -> StorageIssue {
         let reason: StorageIssue.Reason
         if case StorageError.unsupportedVersion = error { reason = .unsupported }
+        else if case AssessmentError.unsupportedVersion = error { reason = .unsupported }
         else if error is CocoaError { reason = .unreadable }
         else { reason = .corrupt }
         return StorageIssue(fileName: url.lastPathComponent, reason: reason)

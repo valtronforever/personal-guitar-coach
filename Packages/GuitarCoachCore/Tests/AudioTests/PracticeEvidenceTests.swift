@@ -65,4 +65,16 @@ struct PracticeEvidenceTests {
         #expect(abs(collector.clipping[0].start - 103.91) < 1e-8)
         #expect(abs(collector.clipping[0].end - 104.99) < 1e-8)
     }
+    @Test func nonSilentUncertaintyGrowsButSilenceDoesNotBecomeBadSignal() throws {
+        var collector = PracticeEvidenceCollector(configuration: try configuration(), baseline: snapshot())
+        let first = SignalQualitySpan(id: 1, quality: .ambiguous, start: time(104), end: time(104.2))
+        try collector.consume(snapshot(latest: 104.2, spans: [first]), renderEpochSeconds: 100)
+        let extended = SignalQualitySpan(id: 1, quality: .ambiguous, start: time(104), end: time(104.6))
+        let silent = SignalQualitySpan(id: 2, quality: .silence, start: time(104.6), end: time(105))
+        try collector.consume(snapshot(latest: 105, spans: [extended, silent]), renderEpochSeconds: 100)
+        #expect(collector.uncertainSignal.count == 1 && collector.clipping.isEmpty)
+        #expect(collector.uncertainSignal[0].reason == .ambiguous)
+        #expect(abs(collector.uncertainSignal[0].interval.end - 104.59) < 1e-8)
+    }
+
 }

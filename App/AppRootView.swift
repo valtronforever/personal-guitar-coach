@@ -112,6 +112,7 @@ struct AppShellPreviews: PreviewProvider {
         .environment(audio)
         .environment(calibration)
         .environment(practice)
+        .environment(AssessmentStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
         .environment(ReadingProgressStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
     }
 }

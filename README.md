@@ -61,14 +61,14 @@ Debug builds include Developer → Visual test fixtures (no audio) and a minimum
 
 Run `python3 Scripts/check_ui_sources.py` to type-check UI-test sources against the selected Xcode SDK with Swift 6 and a macOS 14 deployment target. This also runs in CI and does not substitute for Xcode UI-test execution (U07).
 
-Каталог уроків підтримує пошук у локалізованих назвах/описах і фільтри теми та складності. Кроки та події табулатури синхронізують гриф; останній урок/крок відновлюються після перезапуску. Позначка прочитаного зберігається окремо від результатів практики. Перехід до конкретної вправи показує її стрій і темп; transport та оцінювана сесія реалізуються наступними задачами.
+Каталог уроків підтримує пошук у локалізованих назвах/описах і фільтри теми та складності. Кроки та події табулатури синхронізують гриф; останній урок/крок відновлюються після перезапуску. Позначка прочитаного зберігається окремо від результатів практики. Перехід до конкретної вправи відкриває практику з її строєм і темпом. Доступні тюнер, метроном, preflight, відлік, вибір цілих тактів, окремі повтори та збереження оцінки. Фізичний аудіопрохід потребує фінальних перевірок.
 
 Аудіоналаштування тепер спільні для вікон: explicit input/output UID та канали, actual format, доступні hardware controls, meters і стани переривання. Від’єднаний пристрій не підміняється іншим входом. Фізичні USB/permission перевірки задачі 11 залишаються у `docs/USER-VALIDATION.md`; поточна перевірка охоплює native discovery/UI та synthetic lifecycle tests.
 
 
 ## Offline audio analysis
 
-The shared capture worker now produces monophonic pitch, separate attack timestamps and bounded signal-quality evidence. Read [ADR 002](docs/decisions/002-monophonic-analysis.md) and the [measured benchmark](docs/benchmarks/12-audio-analysis.md). Tuner and practice UI are the next tasks; real electric-interface checks remain deferred.
+The shared capture worker now produces monophonic pitch, separate attack timestamps and bounded signal-quality evidence. Read [ADR 002](docs/decisions/002-monophonic-analysis.md), the [current assessment/DSP benchmark](docs/benchmarks/17-assessment.md), and [assessment rules](docs/decisions/004-assessment.md). Tuner, practice and bounded scoring are implemented; real electric-interface checks remain deferred.
 
 ```sh
 python3 Scripts/check_audio_fixtures.py
@@ -87,3 +87,6 @@ COACH_TEST_OUTPUT_NAME='MacBook Pro Speakers' DEVELOPER_DIR=/Applications/Xcode.
 Ordinary tests skip this hardware test. Choose the exact device name intentionally; no fallback output is selected.
 
 Latency calibration is available from Audio setup → Latency calibration. Select input/output first. Estimated/manual profiles preserve pitch practice without enabling rhythm scores. Cable loopback measures the selected route; physical validation is pending. See [ADR 003](docs/decisions/003-calibration-time.md) for timestamp semantics, uncertainty and the final hardware procedure.
+
+
+Practice checks a stable input signal after explicit physical-tuning confirmation, then starts the audio-clock count-in. Pause, seek, tempo or tuning changes close a partial attempt. Each repeat waits for analysis/save and starts a new count-in. Completed attempts save the exact inputs and score parameters; unreliable rhythm calibration produces pitch feedback only. Save failures stop automatic repetition and offer retry. Debug → Synthetic results presents the four result-validity states without capture or history writes. Detailed feedback/recommendations and the expanded starter course are the next tasks.

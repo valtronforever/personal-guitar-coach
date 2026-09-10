@@ -62,7 +62,7 @@ public struct AudioAnalysisSnapshot: Equatable, Sendable {
 /// Single-worker streaming analyzer. The audio callback only fills the existing bounded PCM ring.
 /// All storage is bounded independently of session length; no raw PCM leaves this object.
 public final class MonophonicAnalyzer {
-    public static let algorithmVersion = "mono-mpm-flux-1"
+    public static let algorithmVersion = "mono-mpm-flux-2"
     public static let eventCapacity = 128
     public static let qualitySpanCapacity = 256
     public let sampleRate: Double
@@ -77,6 +77,7 @@ public final class MonophonicAnalyzer {
     private var processed: Int64 = 0
     private var originHostSeconds: Double?
     private var pendingOnset: Int64?
+    private var eventPitchCandidates: [DetectedPitch] = []
     private var previousFrequency: Double?
     private var stableFrames = 0
     private var noiseFloor = 0.0003
@@ -96,6 +97,7 @@ public final class MonophonicAnalyzer {
         onsetDetector = try OnsetDetector(sampleRate: sampleRate)
         hopFrames = Int(sampleRate / 100)
         highPassCoefficient = exp(-2 * .pi * 30 / sampleRate)
+        eventPitchCandidates.reserveCapacity(5)
         events.reserveCapacity(Self.eventCapacity)
         qualitySpans.reserveCapacity(Self.qualitySpanCapacity)
     }
@@ -125,7 +127,7 @@ public final class MonophonicAnalyzer {
     }
 
     public func snapshot() -> AudioAnalysisSnapshot {
-        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-1", latest: latest, events: events,
+        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-2", latest: latest, events: events,
                               totalEvents: totalEvents, invalidSamples: invalidSamples,
                               qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans)
     }
@@ -149,7 +151,7 @@ public final class MonophonicAnalyzer {
         let rms = (squares / Double(frame.count)).squareRoot()
         if let onset = onsetDetector.process(frame: frame, endFrame: processed, hop: hopFrames, rms: hopRMS, noiseFloor: noiseFloor) {
             if let previous = pendingOnset { emit(onset: previous, quality: .unstable, pitch: nil) }
-            pendingOnset = onset; stableFrames = 0; previousFrequency = nil
+            pendingOnset = onset; eventPitchCandidates.removeAll(keepingCapacity: true); stableFrames = 0; previousFrequency = nil
         }
         var quality: SignalQuality = .unstable
         var pitch: DetectedPitch?
@@ -189,9 +191,20 @@ public final class MonophonicAnalyzer {
                 start: timestamp(processed - Int64(hopFrames)), end: timestamp(processed)))
         }
         if let onset = pendingOnset {
-            if quality == .reliable, processed - Int64(frame.count) >= onset, let pitch {
-                emit(onset: onset, quality: .reliable, pitch: pitch)
-            } else if Double(processed - onset) / sampleRate >= 0.3 {
+            // Confirm five post-onset, stable pitch frames and use their median. A
+            // single early periodic window can still contain a transient octave/glide.
+            if quality == .reliable, stableFrames >= 5, processed - Int64(frame.count) >= onset, let pitch {
+                if let previous = eventPitchCandidates.last, abs(1200 * log2(pitch.frequency / previous.frequency)) > 15 {
+                    eventPitchCandidates.removeAll(keepingCapacity: true)
+                }
+                eventPitchCandidates.append(pitch)
+                if eventPitchCandidates.count == 5 {
+                    let frequency = eventPitchCandidates.map(\.frequency).sorted()[2]
+                    let clarity = eventPitchCandidates.map(\.clarity).min() ?? 0
+                    emit(onset: onset, quality: .reliable, pitch: DetectedPitch(frequency: frequency, clarity: clarity))
+                }
+            } else { eventPitchCandidates.removeAll(keepingCapacity: true) }
+            if pendingOnset != nil && Double(processed - onset) / sampleRate >= 0.3 {
                 emit(onset: onset, quality: quality == .reliable ? .unstable : quality, pitch: nil)
             }
         }
@@ -201,6 +214,6 @@ public final class MonophonicAnalyzer {
         totalEvents += 1
         if events.count == Self.eventCapacity { events.removeFirst() }
         events.append(DetectedNoteEvent(id: totalEvents, onset: timestamp(onset), resolvedAt: timestamp(processed), quality: quality, pitch: pitch))
-        pendingOnset = nil
+        pendingOnset = nil; eventPitchCandidates.removeAll(keepingCapacity: true)
     }
 }
