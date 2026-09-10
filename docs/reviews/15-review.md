@@ -13,6 +13,7 @@ Reviewed capture/render host mapping, actual selected-stream metadata, profile i
 - Duplicate/stale frames cannot keep clock evidence fresh. Frame regressions, missing metadata after baseline and data loss invalidate the segment; maximum drift is retained across recovery. Separate-device duration and combined uncertainty gate rhythm eligibility.
 - A fixed periodic pulse train could align after a missing beat. Irregular spacing and candidate ambiguity checks reject competing fits; misses/extras are bounded. Offline tests cover empty/excess/ambiguous evidence and a missing first pulse.
 - App history counters are checked before unsigned subtraction. Lost event/quality prefixes, clipping, missing clocks, route changes and timeout cannot save a partial profile. The completed synthetic App flow saves +50 ms; changing the buffer interrupts without saving.
+- The Xcode preview composition also supplies the new shared CalibrationStore environment, so opening calibration from a preview does not miss its dependency.
 - Storage publishes only after an atomic successful write, validates envelope/profile identities and preserves corrupt/future documents. App failure/retry/restore tests confirm previous profiles remain intact.
 
 ## Validation and limits
