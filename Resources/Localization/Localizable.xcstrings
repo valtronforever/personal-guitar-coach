@@ -8409,6 +8409,193 @@
           }
         }
       }
+    },
+    "staff.bar %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bar %1$lld of %2$lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такт %1$lld із %2$lld"
+          }
+        }
+      }
+    },
+    "staff.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guitar notes are written one octave above their sound. Key signatures change spelling only. This prototype shows single notes and rests; bends, slides, legato, tuplets and tempo changes are not represented or assessed."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ноти гітари записано на октаву вище їхнього звучання. Ключові знаки змінюють лише запис. Прототип показує окремі ноти й паузи; підтягування, слайди, легато, тріолі та зміни темпу тут не відображаються й не оцінюються."
+          }
+        }
+      }
+    },
+    "staff.key": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notation key"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ключові знаки"
+          }
+        }
+      }
+    },
+    "staff.key.fMajor": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "F major · B♭"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "F major · B♭"
+          }
+        }
+      }
+    },
+    "staff.key.gMajor": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "G major · F♯"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "G major · F♯"
+          }
+        }
+      }
+    },
+    "staff.key.neutral": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No key signature"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без ключових знаків"
+          }
+        }
+      }
+    },
+    "staff.note %@ %@ %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Written %1$@, sounding %2$@, duration %3$@ of a whole note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записана нота %1$@, звучить %2$@, тривалість %3$@ цілої ноти"
+          }
+        }
+      }
+    },
+    "staff.rest %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rest, duration %@ of a whole note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза, тривалість %@ цілої ноти"
+          }
+        }
+      }
+    },
+    "staff.selectHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select the same event in the lesson and tablature. Shift extends selection."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрати ту саму подію в уроці й табулатурі. Shift розширює вибір."
+          }
+        }
+      }
+    },
+    "staff.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Staff (prototype)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нотний стан (прототип)"
+          }
+        }
+      }
+    },
+    "staff.unsupported": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This bar uses notation outside the prototype: chords, ties across bars, gaps, incomplete bars, unusual durations or pitches outside C2–E6. Use Tablature to see the complete sequence."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей такт виходить за межі прототипу: акорди, ліги через тактові риски, проміжки, неповні такти, нестандартні тривалості або ноти поза C2–E6. Повна послідовність доступна в табулатурі."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

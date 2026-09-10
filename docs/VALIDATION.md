@@ -81,3 +81,7 @@ After task 22, record Mac/OS, interface/driver, guitar/source, selected input an
 6. Repeat relevant source/noise/leakage checks for microphone and piezo. Verify final Release offline, both themes/languages, minimum window, all result disclosures, keyboard and VoiceOver. Record failures and fixes before closing U01–U10 or declaring hardware MVP acceptance.
 
 No physical metrics are currently available. Task 20 remains `pending_user`; subsequent research/prototype work is authorized without presenting these gates as passed.
+
+## Subsequent task 21–22 software evidence
+
+Task 21 adds a [reproducible chord study](research/21-chords.md) with a conservative no-go; it enables no polyphonic score. Task 22 adds [bounded staff presentation](decisions/007-staff-notation.md), six notation/selection tests and opt-in shared-drawing artifacts. The current app has 503 en/uk UI keys and 59 App tests in 18 suites. Final local Release/ZIP verification is recorded in [22-local-release.json](benchmarks/22-local-release.json). These changes do not close U01–U10. Task-20 artifacts above remain historical evidence for their recorded source stage.

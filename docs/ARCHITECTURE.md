@@ -210,3 +210,7 @@ Coordinator резервує preview як output-only purpose, без microphone
 ## Рекомендації та прогрес (задача 18)
 
 `FeedbackEngine` формує versioned rule advice із frozen evidence; `PracticeComparison` порівнює лише сумісні умови без rerating. `ResultDetailView` використовується у Practice та History, формує advice/retry requests поза MainActor і показує eligibility, TAB annotations та конкретні виміри. Нова selection UUID при кожному натисканні retry скидає фізичне підтвердження; archived tuning не переписує історію або новіші preferences. Деталі порогів, persistence compatibility та UI — [ADR 005](decisions/005-feedback-progress.md).
+
+## Прототип нотного стану (задача 22)
+
+StaffModel/StaffDrawing — presentation поверх тієї самої TimelineModel; canonical event IDs і ticks залишаються спільними з TAB. Written MIDI +12 не записується назад у Domain/audio. Key/accidental state локальні до показу; unsupported bars мають явний fallback до TAB. [ADR 007](decisions/007-staff-notation.md) визначає обмеження та schema plan для подальшої нотації.

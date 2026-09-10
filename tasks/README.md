@@ -1,6 +1,6 @@
 # План реалізації
 
-22 задачі: **20 для MVP**, **2 для наступного етапу**. Реалізація триває; актуальні статуси наведено в таблиці. Кожен файл містить мету, роботу, критерії приймання, перевірки та місце для доказів виконання.
+22 задачі: **20 для MVP**, **2 для наступного етапу**. Програмний обсяг реалізовано; актуальні статуси наведено в таблиці. `pending_user` зберігає відкритими фізичні й користувацькі перевірки, а не означає підтверджене hardware-приймання. Кожен файл містить мету, роботу, критерії приймання, перевірки та місце для доказів виконання.
 
 Англомовні issues створено в [GitHub Project — Backlog](https://github.com/users/valtronforever/projects/4/views/1). Кожна задача реалізується в окремій гілці через перевірки, local review, PR і merge.
 
@@ -40,7 +40,7 @@
 | 19 | [Початковий двомовний курс](19-starter-course.md) | 07, 10, 18 | MVP | `pending_user` | [#19](https://github.com/valtronforever/personal-guitar-coach/issues/19) |
 | 20 | [Перевірка MVP та локальна release-збірка](20-mvp-validation-release.md) | 01–19 | MVP | `pending_user` | [#20](https://github.com/valtronforever/personal-guitar-coach/issues/20) |
 | 21 | [Дослідження оцінювання акордів](21-polyphonic-chords.md) | 20 | Після MVP | `pending_user` | [#21](https://github.com/valtronforever/personal-guitar-coach/issues/21) |
-| 22 | [Нотний стан і розширена нотація](22-staff-advanced-notation.md) | 20 | Після MVP | `todo` | [#22](https://github.com/valtronforever/personal-guitar-coach/issues/22) |
+| 22 | [Нотний стан і розширена нотація](22-staff-advanced-notation.md) | 20 | Після MVP | `pending_user` | [#22](https://github.com/valtronforever/personal-guitar-coach/issues/22) |
 
 ## Контрольні результати
 

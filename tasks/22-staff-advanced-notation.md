@@ -2,7 +2,7 @@
 
 GitHub: [#22](https://github.com/valtronforever/personal-guitar-coach/issues/22)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: Після MVP
 Залежності: 20
 
@@ -33,4 +33,11 @@ Sounding E2 → правильна гітарна written note, key/accidental f
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+Прототип реалізовано: [ADR 007](../docs/decisions/007-staff-notation.md), [локальний review](../docs/reviews/22-review.md), [подальші задачі нотації](follow-up/notation.md).
+
+- Режим Staff (prototype) в уроці використовує ту саму TimelineModel, event IDs, LessonSelection і preview cursor, що й табулатура. Записана октава +12 не змінює звук, стрій або оцінювання.
+- Ключові знаки neutral/G major/F major, accidental memory по октавах із reset такту, ledger lines, п'ять тривалостей нот/пауз, uniform beaming і клавіатурні bindings. Непідтримувані такти явно пояснено en/uk.
+- 6 staff model/selection tests, golden C-major sequence та весь курс; full App suite 59/18 пройдено. Окремий opt-in ImageRenderer прогін створив 48 geometry artifacts; оглянуто ключ, паузи, beams, ledger lines та hollow heads у темах. Це не native UI/VoiceOver test.
+- 503 UI keys en/uk, актуальний Xcode-проєкт, UI-source type-check, локальні Debug/Release й підписаний ZIP. Final CI/merge evidence публікується в GitHub issue #22.
+- `pending_user`: U05/U07 — нативний keyboard/VoiceOver, мінімальне вікно, en/uk тексти й user musical review. Повторне CUA-підключення повернуло pipe-closed error; обхід не застосовано.
+- Ties, tuplets, tempo map та bend/slide/hammer-on/pull-off сплановано з версіонуванням і новими assessment gates. Імпорт форматів і неперевірене оцінювання технік не додані.

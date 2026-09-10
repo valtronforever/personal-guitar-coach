@@ -78,13 +78,22 @@ struct LessonTextView: View {
             Picker("tab.visualMode", selection: $visualMode) {
                 Text("fretboard.title").tag("fretboard")
                 Text("tab.title").tag("tablature")
+                Text("staff.title").tag("staff")
             }.pickerStyle(.segmented).padding(.horizontal, 16).padding(.top, 8).accessibilityIdentifier("lesson.visualMode")
             if visualMode == "fretboard" {
                 FretboardView(model: playbackFretboard ?? selection.fretboard(instrument: localData.preferences.instrument), selected: $selection.selectedPosition, compact: true).padding(12)
             } else if let exercise = selection.exercise, let model = try? TimelineModel(exercise: exercise, instrument: localData.preferences.instrument.tuning) {
-                TablatureView(model: model, selectedIDs: selection.selectedIDs, cursorTick: preview.cursorTick) { id, extending in
-                    selection.selectEvent(id, exerciseID: exercise.id, extending: extending); saveBookmark()
-                }.padding(12)
+                if visualMode == "staff" {
+                    ScrollView(.vertical) {
+                        StaffView(timeline: model, selectedIDs: selection.selectedIDs, cursorTick: preview.cursorTick) { id, extending in
+                            selection.selectEvent(id, exerciseID: exercise.id, extending: extending); saveBookmark()
+                        }.padding(12)
+                    }.frame(minHeight: 180, maxHeight: 360).accessibilityIdentifier("staff.panel")
+                } else {
+                    TablatureView(model: model, selectedIDs: selection.selectedIDs, cursorTick: preview.cursorTick) { id, extending in
+                        selection.selectEvent(id, exerciseID: exercise.id, extending: extending); saveBookmark()
+                    }.padding(12)
+                }
             } else {
                 Text("tab.noSequence").foregroundStyle(.secondary).padding()
             }
