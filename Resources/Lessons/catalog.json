@@ -1,6 +1,11 @@
 {
   "schemaVersion": 1,
   "lessons": [
-    "open-strings-intro"
+    "open-strings-intro",
+    "first-frets",
+    "steady-pulse",
+    "c-major",
+    "a-minor-pentatonic",
+    "em-arpeggio"
   ]
 }

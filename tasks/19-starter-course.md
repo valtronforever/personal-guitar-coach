@@ -2,7 +2,7 @@
 
 GitHub: [#19](https://github.com/valtronforever/personal-guitar-coach/issues/19)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: MVP
 Залежності: 07, 10, 18
 
@@ -33,4 +33,8 @@ Content validator для всього bundle, ручна перевірка musi
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+Додано п’ять нових уроків і розширено вступ: 6 уроків en/uk, 29 кроків, 6 single-note practice exercises та 1 display-only Em chord. Усі pitches, positions, ticks, rests, tempi та prerequisites звірено; [опис курсу](../docs/STARTER-COURSE.md) містить музичну перевірку та походження. Вступний lesson підвищено до 2 без зміни exercise version 1 або історичних scores.
+
+Content validator: 6 bilingual lessons / 0 issues, також для packaged Debug/Release resources; 19 JSON files у кожному bundle збігаються із source. Core: 128 tests / 26 suites passed (один hardware opt-in probe skipped). App: 52 tests / 16 suites passed. Deterministic fixtures покривають 24 perfect/all-missed event cases та повний software handoff шести уроків до result/save/retry. 492 UI keys, generated project, UI-test sources і diff check passed; локальні Debug/Release ad-hoc builds passed.
+
+[Local review](../docs/reviews/19-review.md) записує знайдені проблеми, виправлення й межі. Після merge `pending_user`: native bilingual layout/VoiceOver, beginner walkthrough і живе виконання відкриті в U05/U07/U10 [фінальної перевірки](../docs/USER-VALIDATION.md), після всіх 22 задач. Computer-use pipe досі недоступний; UI/source fixtures не називаються живою грою.
