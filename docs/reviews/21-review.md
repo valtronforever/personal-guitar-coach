@@ -19,3 +19,5 @@ Same-agent review of the research protocol, acquisition/provenance, estimator an
 - Five Python research contract tests pass: identity/unknown, one-to-one timing, onset-group boundary, silence and metrics including unknown/abstention denominators. Seventy-four deterministic control cases executed.
 - The frozen identity, note-set and strum criteria fail; no thresholds changed after inspecting held-out results. No-go ADR leaves production UI and scoring unchanged.
 - Generated project/localizations/UI-source checks and final PR CI results are recorded with merge evidence. Real electric/amplifier/piezo/microphone corpus validation and human strum labels remain U06; this task is pending_user rather than falsely complete.
+
+PR #43 CI run 34432432700 passed full package/App tests, signed local Release/ZIP validation and Xcode Debug/Release builds at the exact submitted branch head. Merged as `90c4408f1c6f3709bdee02011b6391f0ff6ba8f4`; U06 remains pending.
