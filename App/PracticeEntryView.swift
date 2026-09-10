@@ -9,6 +9,7 @@ struct PracticeEntryView: View {
     @Environment(LessonLibraryStore.self) private var library
     @Environment(AppSettings.self) private var settings
     @Environment(AudioSessionStore.self) private var audio
+    @Environment(AssessmentStore.self) private var assessment
     @Environment(PracticeModel.self) private var model
     @Environment(CalibrationStore.self) private var calibration
     @State private var showsAudio = false
@@ -48,7 +49,11 @@ struct PracticeEntryView: View {
                             }
                     }
                     Text("practice.expectedExplanation").font(.caption).foregroundStyle(.secondary)
-                    if let evidence = model.latestEvidence {
+                    if let result = assessment.latest, result.id == model.latestEvidence?.id {
+                        AssessmentSummaryView(result: result)
+                    } else if assessment.isSaving {
+                        ProgressView("assessment.processing")
+                    } else if let evidence = model.latestEvidence {
                         GroupBox("practice.attemptSummary") {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(LocalizedStringKey("practice.phase." + evidence.phase.rawValue)).font(.headline)
@@ -67,6 +72,7 @@ struct PracticeEntryView: View {
         } else {
             FeatureStateView(title: "practice.emptyTitle", message: "practice.empty", symbol: "play.circle") {
                 Button("navigation.lessons") { navigation.destination = .lessons }
+                assessmentNotices
             }
         }
     }
@@ -101,8 +107,18 @@ struct PracticeEntryView: View {
             Text("practice.pitchOnlyExplanation").font(.callout).foregroundStyle(.secondary)
         }
     }
+    private var assessmentNotices: some View {
+        Group {
+            if let error = assessment.errorKey { Text(LocalizedStringKey(error)).foregroundStyle(.red) }
+            if assessment.needsRetry {
+                Button("assessment.retrySave") { Task { if await assessment.retry() { await data.refreshHistory() } } }
+            }
+            if !assessment.warnings.isEmpty { Text("storage.historyProblem").foregroundStyle(.secondary) }
+        }
+    }
     private var status: some View {
         VStack(alignment: .leading, spacing: 8) {
+            assessmentNotices
             Text(LocalizedStringKey("practice.phase." + model.phase.rawValue)).font(.headline)
                 .accessibilityAddTraits(.isHeader).accessibilityIdentifier("practice.phase")
             if audio.state?.calibrationRoute == nil { Text("practice.error.route").foregroundStyle(.secondary) }
@@ -130,7 +146,7 @@ struct PracticeEntryView: View {
     private var actions: some View {
         HStack {
             Button(model.phase == .paused ? "practice.resume" : "practice.start") { model.start(instrument: data.preferences.instrument) }
-                .disabled(model.isBusy || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
+                .disabled(model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
             Button("playback.pause") { model.pause() }.disabled(!model.phase.active || model.phase == .finalizing)
                 .accessibilityIdentifier("practice.pause")
             Button("playback.stop") { model.stop() }.disabled(!model.isBusy).accessibilityIdentifier("practice.stop")

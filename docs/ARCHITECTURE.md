@@ -174,7 +174,7 @@ Capture приймає 44.1/48 kHz і до 8192 frames per slice. C packets не
 
 `AudioAnalysisSnapshot` містить поточну якість, останні 128 resolved events і 256 coalesced quality spans. Consumers мають відстежувати IDs, оновлювати кінець останнього span і відхиляти втрачений prefix. Коротка clipping-подія не зникає лише тому, що останній UI frame уже чистий. Capture generation створює новий analyzer; event IDs локальні до нього. PCM не публікується й не записується.
 
-Три стабільні кадри та повне pitch window після onset потрібні для reliable estimate; за 300 ms без такої оцінки attack стає uncertain. Host seconds поки є first-packet anchor + stream frames/rate, без latency subtraction; фізичний clock mapping і drift належать задачі 15. Параметри, bounds і джерела — в ADR 002; measured evidence — у docs/benchmarks/12-audio-analysis.md.
+Для live display потрібні три стабільні кадри; event pitch у `mono-mpm-flux-2` додатково підтверджується п’ятьма стабільними post-onset estimates і їх медіаною. За 300 ms без підтвердження attack стає uncertain. Host seconds поки є first-packet anchor + stream frames/rate, без latency subtraction; фізичний clock mapping і drift належать задачі 15. Параметри, bounds і джерела — в ADR 002; measured evidence — у docs/benchmarks/12-audio-analysis.md.
 
 `MonophonicCapability` у Domain додає до validateForPractice частотні й duration limits: C2–E6, 55–1500 Hz з фактичним A4, minimum 200 ms. Audio capture допускає 44.1/48 kHz. Це software capability окремо від route/calibration validity; display, preview та історія не блокуються. Tuner/practice UI отримують evidence через вже спільний coordinator.
 
@@ -198,3 +198,10 @@ Coordinator резервує preview як output-only purpose, без microphone
 `PracticeConfiguration` і `PracticeStateMachine` у Domain фіксують immutable спробу та дозволені переходи. `PracticeEvidenceCollector` в Audio споживає агреговані DSP DTO без PCM й обмежує пам'ять; `PracticePreflightSignal` перевіряє стабільний свіжий сигнал за DSP frame timestamps. Один `PracticeModel` у composition root володіє UUID capture lease і окремим transport кожної спроби, передає завершену/partial evidence через async callback для Learning/Persistence задачі 17. Автоматичний repeat чекає фіналізації перед новим count-in; це окремі спроби зі спільним здоровим capture, без перекриття хвостів.
 
 `LocalDataStore.instrumentWillChange` синхронно перериває практику до публікації нового строю/джерела; navigation, pause, seek та tempo changes також завершують partial. UI показує окремо очікувані позиції і незалежну чутну частоту, а не розпізнану фізичну струну. Параметри можна згорнути для гри; TAB вибирає цілі такти. Завершення capture саме по собі не є оцінкою.
+
+
+## Оцінювання і збереження спроби (задача 17)
+
+`AssessmentEngine` (Learning) виконує bounded monotonic alignment за часом і порядком, обчислює pitch/rhythm та validity. `AssessedPractice` (Domain) зберігає immutable evidence, версію параметрів і результат без залежності від Audio/Persistence. `AssessmentStore` у composition root виконує оцінювання поза MainActor та атомарно зберігає результат до наступного repeat. Save failure лишає bounded pending attempt для retry й зупиняє повторення. Детальна семантика, quality gates і версії — [ADR 004](decisions/004-assessment.md).
+
+Нові session envelopes мають schema 2 з detailed assessment envelope 1; старі schema 1 читаються без перерахунку або вигаданих observation arrays. Historical capability version зберігається, але не застосовує поточні DSP limits при читанні; новий запуск перевіряє їх явно. `LocalDataStore.refreshHistory` використовує generation, щоб старий async read не повертав у UI уже очищену історію. Короткий результат у Practice показує eligibility, незалежні метрики й counts; розгорнутий аналіз і рекомендації додає задача 18.

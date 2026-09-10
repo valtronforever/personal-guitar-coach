@@ -22,7 +22,7 @@ let package = Package(
         .executableTarget(name: "ValidateLessonContent", dependencies: ["Learning"]),
         .executableTarget(name: "BenchmarkAudio", dependencies: ["Audio", "AudioTestSupport", "Domain"]),
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
-        .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio", "AudioTestSupport"]),
+        .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio", "AudioTestSupport", "Learning"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence", "Domain"], resources: [.copy("Fixtures")]),
         .testTarget(name: "LearningTests", dependencies: ["Learning", "Domain"])
     ]

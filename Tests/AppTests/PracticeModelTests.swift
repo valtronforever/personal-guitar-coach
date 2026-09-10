@@ -144,7 +144,11 @@ private actor PracticeRuntimeStub: AudioRuntime {
     @Test func repeatsAreIndependentAndHealthySilenceAfterPreflightIsCompletedEvidence() async throws {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
         var attempts: [PracticeEvidence] = []
-        h.model.onAttemptFinished = { attempts.append($0) }
+        let repository = LocalRepository(root: h.directory), assessment = AssessmentStore(repository: LocalRepository(root: h.directory))
+        h.model.onAttemptFinished = { evidence in
+            attempts.append(evidence)
+            #expect(await assessment.receive(evidence))
+        }
         h.model.setRepeat(true); h.model.start(instrument: InstrumentProfile())
         try await playing(h); try await h.runtime.advance(.completed)
         try await wait(h) { h.model.completedCount == 1 && h.model.phase == .countIn }
@@ -159,6 +163,11 @@ private actor PracticeRuntimeStub: AudioRuntime {
         #expect(attempts[1].attacks.isEmpty && attempts[1].signalConfirmed && attempts[1].phase == .completed)
         #expect(await h.runtime.inputStarts == 1)
         #expect(await h.runtime.transportStarts == 2)
+        let stored = try await repository.history()
+        #expect(stored.issues.isEmpty && stored.records.count == 2)
+        let silent = try #require(stored.records.first { $0.id == attempts[1].id })
+        #expect(silent.result.payload.validity == .uncalibrated && silent.result.payload.pitchScore == 0)
+        #expect(silent.assessment?.payload.evidence == attempts[1])
     }
     @Test func pauseRetryAndInstrumentChangeDoNotCarryAttacksOrMutateSnapshots() async throws {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }

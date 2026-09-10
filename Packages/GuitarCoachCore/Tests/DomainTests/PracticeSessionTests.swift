@@ -57,4 +57,18 @@ struct PracticeSessionTests {
             try PracticeConfiguration(exercise: original.exercise, instrument: original.instrument, bpm: .nan, route: original.route)
         }
     }
+    @Test func archivedCapabilityIsPreservedButStartingAgainChecksCurrentSupport() throws {
+        let original = try configuration()
+        var document = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
+        var route = try #require(document["route"] as? [String: Any])
+        var input = try #require(route["input"] as? [String: Any])
+        input["sampleRate"] = 32000
+        route["input"] = input; document["route"] = route; document["capabilityVersion"] = "archived-capability"
+        let restored = try JSONDecoder().decode(PracticeConfiguration.self, from: JSONSerialization.data(withJSONObject: document))
+        #expect(restored.capabilityVersion == "archived-capability" && restored.route.input.sampleRate == 32000)
+        var machine = PracticeStateMachine()
+        #expect(throws: PracticeError.unsupportedFormat) { try machine.begin(restored) }
+        #expect(machine.phase == .idle)
+    }
+
 }

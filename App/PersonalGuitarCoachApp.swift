@@ -9,6 +9,7 @@ struct PersonalGuitarCoachApp: App {
     @State private var reading: ReadingProgressStore
     @State private var audio: AudioSessionStore
     @State private var calibration: CalibrationStore
+    @State private var assessment: AssessmentStore
     @State private var practice: PracticeModel
     @State private var library = LessonLibraryStore()
 
@@ -25,6 +26,13 @@ struct PersonalGuitarCoachApp: App {
         let audio = AudioSessionStore(repository: repository)
         let calibration = CalibrationStore(repository: repository)
         let practice = PracticeModel(audio: audio, calibration: calibration)
+        let assessment = AssessmentStore(repository: repository)
+        practice.onAttemptFinished = { [weak practice, weak assessment, weak data] evidence in
+            guard let assessment else { practice?.setRepeat(false); return }
+            if await !assessment.receive(evidence) { practice?.setRepeat(false) }
+            await data?.refreshHistory()
+        }
+        _assessment = State(initialValue: assessment)
         data.instrumentWillChange = { [weak practice] value in practice?.instrumentWillChange(value) }
         _localData = State(initialValue: data)
         _reading = State(initialValue: ReadingProgressStore(repository: repository))
@@ -43,6 +51,7 @@ struct PersonalGuitarCoachApp: App {
                 .environment(audio)
                 .environment(calibration)
                 .environment(practice)
+                .environment(assessment)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .task { await localData.reload() }
@@ -70,6 +79,10 @@ struct PersonalGuitarCoachApp: App {
             VisualFixtureView().environment(settings).environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
         }.defaultSize(width: 800, height: 640)
+        Window(settings.localized("debug.assessmentTitle"), id: "assessment-fixtures") {
+            AssessmentFixtureView().environment(settings).environment(\.locale, settings.locale)
+                .preferredColorScheme(settings.appearance.colorScheme)
+        }.defaultSize(width: 540, height: 620)
         Window(settings.localized("debug.tunerTitle"), id: "tuner-fixtures") {
             TunerFixtureView().environment(settings).environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
@@ -82,6 +95,7 @@ struct PersonalGuitarCoachApp: App {
                 .environment(audio)
                 .environment(calibration)
                 .environment(practice)
+                .environment(assessment)
                 .environment(\.locale, settings.locale)
                 .preferredColorScheme(settings.appearance.colorScheme)
         }

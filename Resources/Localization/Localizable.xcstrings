@@ -6777,6 +6777,431 @@
           }
         }
       }
+    },
+    "assessment.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attempt result"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Результат спроби"
+          }
+        }
+      }
+    },
+    "assessment.overall": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overall / 100"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загальна / 100"
+          }
+        }
+      }
+    },
+    "assessment.pitch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch / 100"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Висота / 100"
+          }
+        }
+      }
+    },
+    "assessment.rhythm": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rhythm / 100"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ритм / 100"
+          }
+        }
+      }
+    },
+    "assessment.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unavailable"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недоступно"
+          }
+        }
+      }
+    },
+    "assessment.processing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assessing and saving the attempt…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінюємо та зберігаємо спробу…"
+          }
+        }
+      }
+    },
+    "assessment.saveFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This attempt could not be saved. Retry saving before starting another attempt. Automatic repetition has stopped."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося зберегти цю спробу. Повторіть збереження перед наступною спробою. Автоматичне повторення зупинено."
+          }
+        }
+      }
+    },
+    "assessment.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This attempt could not be assessed. No score has been saved. Retry before starting another attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося оцінити цю спробу. Оцінку не збережено. Повторіть спробу обробки перед наступною грою."
+          }
+        }
+      }
+    },
+    "assessment.retrySave": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry assessment and save"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторити оцінювання та збереження"
+          }
+        }
+      }
+    },
+    "assessment.validity.valid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed assessment"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінювання завершено"
+          }
+        }
+      }
+    },
+    "assessment.validity.uncalibrated": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch feedback only"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лише оцінка висоти"
+          }
+        }
+      }
+    },
+    "assessment.validity.insufficientSignal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No score: insufficient reliable signal"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без оцінки: недостатньо надійного сигналу"
+          }
+        }
+      }
+    },
+    "assessment.validity.interrupted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No score: interrupted attempt"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без оцінки: спробу перервано"
+          }
+        }
+      }
+    },
+    "assessment.rhythmReason.routeMismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The saved timing calibration does not match this audio route."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережене калібрування часу не відповідає цьому аудіомаршруту."
+          }
+        }
+      }
+    },
+    "assessment.rhythmReason.unmeasured": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing has not been verified by a measured calibration for this route."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точність часу не підтверджено виміряним калібруванням цього маршруту."
+          }
+        }
+      }
+    },
+    "assessment.rhythmReason.durationUnverified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing between these devices has not been verified for an attempt this long."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Узгодженість часу між цими пристроями не перевірено для спроб такої тривалості."
+          }
+        }
+      }
+    },
+    "assessment.rhythmReason.missingClock": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There was not enough reliable input/output clock evidence to assess rhythm."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недостатньо надійних даних годинників входу й виходу для оцінки ритму."
+          }
+        }
+      }
+    },
+    "assessment.rhythmReason.uncertain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing uncertainty is too large for the rhythm tolerance of this exercise."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невизначеність часу завелика для допустимого відхилення ритму цієї вправи."
+          }
+        }
+      }
+    },
+    "assessment.expected %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected notes: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очікуваних нот: %lld"
+          }
+        }
+      }
+    },
+    "assessment.matched %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matched attacks: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіставлених атак: %lld"
+          }
+        }
+      }
+    },
+    "assessment.missed %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missing attacks: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відсутніх атак: %lld"
+          }
+        }
+      }
+    },
+    "assessment.extra %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extra attacks: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зайвих атак: %lld"
+          }
+        }
+      }
+    },
+    "assessment.uncertain %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uncertain expected notes: %lld · uncertain extra attacks: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невизначених очікуваних нот: %lld · невизначених зайвих атак: %lld"
+          }
+        }
+      }
+    },
+    "assessment.uncertainExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uncertain notes stay in the expected-note count and earn no points. Too much uncertainty prevents a score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невизначені ноти залишаються в загальній кількості очікуваних нот і не отримують балів. За надмірної невизначеності оцінка недоступна."
+          }
+        }
+      }
+    },
+    "debug.assessmentTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synthetic results · no audio or saved history"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Синтетичні результати · без аудіо та збереження"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

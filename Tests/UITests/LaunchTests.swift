@@ -121,4 +121,23 @@ final class LaunchTests: XCTestCase {
         XCTAssertEqual(next.value as? String, "Selected")
     }
 
+    @MainActor
+    func testSyntheticAssessmentShowsExplicitPitchOnlyAndInterruptedStates() {
+        let app = XCUIApplication()
+        app.launchEnvironment["COACH_UI_TEST_STORAGE"] = UUID().uuidString
+        app.launchArguments = ["-app.language", "en"]
+        app.launch()
+        app.menuBars.menuBarItems["Developer"].click()
+        app.menuItems["Synthetic results · no audio or saved history"].click()
+        let summary = app.descendants(matching: .any)["assessment.summary"].firstMatch
+        XCTAssertTrue(summary.waitForExistence(timeout: 5))
+        let fixture = app.popUpButtons["debug.assessmentCase"]
+        fixture.click(); app.menuItems["Pitch feedback only"].click()
+        let status = app.descendants(matching: .any)["assessment.validity"].firstMatch
+        XCTAssertTrue((status.value as? String ?? status.label).contains("Pitch feedback only"))
+        XCTAssertTrue(app.staticTexts["Unavailable"].firstMatch.exists)
+        fixture.click(); app.menuItems["No score: interrupted attempt"].click()
+        XCTAssertTrue((status.value as? String ?? status.label).contains("No score: interrupted attempt"))
+    }
+
 }

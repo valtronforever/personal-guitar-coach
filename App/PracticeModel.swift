@@ -219,7 +219,7 @@ final class PracticeModel {
             let value = try PracticeEvidence(id: id, configuration: configuration, startedAt: startedAt, finishedAt: max(Date(), startedAt),
                 phase: phase, reason: machine.reason, signalConfirmed: signalConfirmed, renderEpochSeconds: renderEpoch,
                 maximumClockDriftSeconds: clockInvalid ? nil : maximumDrift, attacks: collector?.attacks ?? [],
-                clipping: collector?.clipping ?? [], analysisVersion: collector?.analysisVersion ?? MonophonicAnalyzer.algorithmVersion)
+                clipping: collector?.clipping ?? [], uncertainSignal: collector?.uncertainSignal ?? [], analysisVersion: collector?.analysisVersion ?? MonophonicAnalyzer.algorithmVersion)
             publishedAttemptID = id
             if !pendingConfigurationReset { latestEvidence = value }
             await onAttemptFinished?(value)

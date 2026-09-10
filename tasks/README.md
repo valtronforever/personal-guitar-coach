@@ -35,7 +35,7 @@
 | 14 | [Метроном, transport і прослуховування](14-metronome-playback.md) | 03, 09, 10, 11 | MVP | `pending_user` | [#14](https://github.com/valtronforever/personal-guitar-coach/issues/14) |
 | 15 | [Калібрування затримки та спільний час](15-latency-calibration.md) | 11, 12, 14 | MVP | `pending_user` | [#15](https://github.com/valtronforever/personal-guitar-coach/issues/15) |
 | 16 | [Повний цикл практики](16-practice-session.md) | 06, 10, 13, 14, 15 | MVP | `pending_user` | [#16](https://github.com/valtronforever/personal-guitar-coach/issues/16) |
-| 17 | [Оцінювання висоти та ритму](17-assessment-engine.md) | 03, 12, 15, 16 | MVP | `todo` | [#17](https://github.com/valtronforever/personal-guitar-coach/issues/17) |
+| 17 | [Оцінювання висоти та ритму](17-assessment-engine.md) | 03, 12, 15, 16 | MVP | `pending_user` | [#17](https://github.com/valtronforever/personal-guitar-coach/issues/17) |
 | 18 | [Результати, рекомендації й прогрес](18-feedback-progress.md) | 05, 10, 17 | MVP | `todo` | [#18](https://github.com/valtronforever/personal-guitar-coach/issues/18) |
 | 19 | [Початковий двомовний курс](19-starter-course.md) | 07, 10, 18 | MVP | `todo` | [#19](https://github.com/valtronforever/personal-guitar-coach/issues/19) |
 | 20 | [Перевірка MVP та локальна release-збірка](20-mvp-validation-release.md) | 01–19 | MVP | `todo` | [#20](https://github.com/valtronforever/personal-guitar-coach/issues/20) |
