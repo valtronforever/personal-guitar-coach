@@ -22,3 +22,5 @@ Review performed by the implementing agent; this is not an independent review. S
 - Signature is local ad-hoc with hardened runtime, sandbox and audio-input entitlements. No upload, distribution certificate or notarization.
 
 Local Xcode UI-test execution, final native UI/VoiceOver/offline launch and real USB guitar acceptance remain pending user/environment checks. No critical unresolved software issue was found within this reviewed scope; this is not a claim of hardware MVP acceptance.
+
+Final PR #42 CI run 34431391545 (job 102727450272) passed the complete suites, signed Release/ZIP checks and Xcode Debug/Release at exact head `264f9841b27ec9cb5e02423e863d60e91f416f14`. Merged as `8c4c19ebf24c9e4c41408bb2594ddd5e181c115a`. Hardware acceptance remains pending.

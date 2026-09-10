@@ -1,0 +1,4465 @@
+{
+  "algorithmVersion": "mono-mpm-flux-2",
+  "chordAssessmentSupported": false,
+  "comparison": "Last production observation <= frame center, age <=20 ms; mono can emit at most one pitch. Chord baseline uses a centered 186-ms window. Different window alignment is explicit; neither uses expected pitches.",
+  "hardwareMeasured": false,
+  "mode": "offline-production-monophonic-baseline",
+  "schemaVersion": 1,
+  "summaries": [
+    {
+      "attackQualityCounts": {
+        "ambiguous": 106,
+        "quiet": 2,
+        "reliable": 61,
+        "silence": 2,
+        "unstable": 418
+      },
+      "condition": "clean",
+      "eligibleFrames": 121,
+      "eligibleReliableFrames": 7,
+      "exactSetAccuracy": 0.049586776859504134,
+      "pitchSetPrecision": 1.0,
+      "pitchSetRecall": 0.017948717948717947,
+      "processingRealTimeFactor": 0.03191632214498946,
+      "qualityCountsAllFrames": {
+        "ambiguous": 6631,
+        "clipping": 9,
+        "outOfRange": 15,
+        "quiet": 273,
+        "reliable": 1124,
+        "silence": 128,
+        "unstable": 11492,
+        "warmingUp": 72
+      },
+      "split": "development"
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 82,
+        "outOfRange": 1,
+        "reliable": 83,
+        "unstable": 386
+      },
+      "condition": "derived-distortion",
+      "eligibleFrames": 121,
+      "eligibleReliableFrames": 12,
+      "exactSetAccuracy": 0.049586776859504134,
+      "pitchSetPrecision": 0.5833333333333334,
+      "pitchSetRecall": 0.017948717948717947,
+      "processingRealTimeFactor": 0.030757859503851792,
+      "qualityCountsAllFrames": {
+        "ambiguous": 5873,
+        "outOfRange": 141,
+        "quiet": 81,
+        "reliable": 1638,
+        "silence": 6,
+        "unstable": 11933,
+        "warmingUp": 72
+      },
+      "split": "development"
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 25,
+        "quiet": 1,
+        "reliable": 30,
+        "unstable": 235
+      },
+      "condition": "clean",
+      "eligibleFrames": 61,
+      "eligibleReliableFrames": 10,
+      "exactSetAccuracy": 0.16393442622950818,
+      "pitchSetPrecision": 1.0,
+      "pitchSetRecall": 0.050761421319796954,
+      "processingRealTimeFactor": 0.029726137440245732,
+      "qualityCountsAllFrames": {
+        "ambiguous": 2553,
+        "clipping": 9,
+        "quiet": 316,
+        "reliable": 787,
+        "silence": 106,
+        "unstable": 6065,
+        "warmingUp": 36
+      },
+      "split": "heldout"
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 21,
+        "reliable": 29,
+        "unstable": 229
+      },
+      "condition": "derived-distortion",
+      "eligibleFrames": 61,
+      "eligibleReliableFrames": 12,
+      "exactSetAccuracy": 0.16393442622950818,
+      "pitchSetPrecision": 0.8333333333333334,
+      "pitchSetRecall": 0.050761421319796954,
+      "processingRealTimeFactor": 0.030448007288976186,
+      "qualityCountsAllFrames": {
+        "ambiguous": 2424,
+        "outOfRange": 28,
+        "quiet": 35,
+        "reliable": 904,
+        "unstable": 6445,
+        "warmingUp": 36
+      },
+      "split": "heldout"
+    }
+  ],
+  "tracks": [
+    {
+      "attackQualityCounts": {
+        "ambiguous": 8,
+        "quiet": 2,
+        "reliable": 18,
+        "silence": 1,
+        "unstable": 41
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 2.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            65,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 6.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            65,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [
+            65
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            44,
+            56,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            56,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 13.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 21.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            58,
+            62,
+            67,
+            70
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 726,
+        "outOfRange": 3,
+        "quiet": 92,
+        "reliable": 287,
+        "silence": 38,
+        "unstable": 1077,
+        "warmingUp": 9
+      },
+      "id": "00_BN1-129-Eb_comp",
+      "processingSeconds": 0.833678292,
+      "split": "development",
+      "totalEvents": 70
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 5,
+        "reliable": 20,
+        "unstable": 43
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 2.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            65,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 6.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            65,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [
+            65
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            44,
+            56,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            56,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 13.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 21.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            58,
+            62,
+            67,
+            70
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 646,
+        "outOfRange": 5,
+        "quiet": 11,
+        "reliable": 347,
+        "unstable": 1214,
+        "warmingUp": 9
+      },
+      "id": "00_BN1-129-Eb_comp",
+      "processingSeconds": 0.757937958,
+      "split": "development",
+      "totalEvents": 68
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 18,
+        "reliable": 1,
+        "unstable": 61
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 1.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 1.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            48,
+            64,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 4.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            53,
+            57,
+            60,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            57,
+            60,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 13.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            64,
+            67
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 541,
+        "reliable": 15,
+        "unstable": 2139,
+        "warmingUp": 9
+      },
+      "id": "00_Rock2-142-D_comp",
+      "processingSeconds": 0.996142584,
+      "split": "development",
+      "totalEvents": 80
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 15,
+        "reliable": 3,
+        "unstable": 52
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 1.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 1.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            48,
+            64,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 4.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            53,
+            57,
+            60,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            57,
+            60,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 13.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            64,
+            67
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 519,
+        "reliable": 37,
+        "unstable": 2139,
+        "warmingUp": 9
+      },
+      "id": "00_Rock2-142-D_comp",
+      "processingSeconds": 0.85140625,
+      "split": "development",
+      "totalEvents": 70
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 15,
+        "reliable": 3,
+        "unstable": 58
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 4.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 5.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 6.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 6.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 7.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 7.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            51
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            56,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            56,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 9.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            51
+          ]
+        },
+        {
+          "centerSeconds": 10.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            56,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 11.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 13.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 15.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 15.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 18.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 18.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 20.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 1244,
+        "outOfRange": 5,
+        "quiet": 71,
+        "reliable": 60,
+        "silence": 36,
+        "unstable": 807,
+        "warmingUp": 9
+      },
+      "id": "01_BN1-129-Eb_comp",
+      "processingSeconds": 0.646877875,
+      "split": "development",
+      "totalEvents": 76
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 12,
+        "reliable": 8,
+        "unstable": 56
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 4.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 5.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 6.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 6.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 7.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 7.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            51
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            56,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            56,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 9.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            51
+          ]
+        },
+        {
+          "centerSeconds": 10.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            56,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 11.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 13.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 15.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 15.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 18.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 18.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 20.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 1163,
+        "outOfRange": 7,
+        "quiet": 50,
+        "reliable": 147,
+        "silence": 6,
+        "unstable": 850,
+        "warmingUp": 9
+      },
+      "id": "01_BN1-129-Eb_comp",
+      "processingSeconds": 0.664771334,
+      "split": "development",
+      "totalEvents": 76
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 23,
+        "reliable": 4,
+        "unstable": 49
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 2.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 4.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53,
+            57,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 5.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            46,
+            53,
+            58,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 7.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            47,
+            52,
+            59,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            45,
+            52,
+            57,
+            61,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            52,
+            57,
+            61,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 15.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 16.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 17.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53,
+            57,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 19.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            46,
+            53,
+            58
+          ]
+        },
+        {
+          "centerSeconds": 20.5,
+          "prediction": [
+            40
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            40
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            47,
+            52,
+            59
+          ]
+        },
+        {
+          "centerSeconds": 22.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            45,
+            52,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 22.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            45,
+            52,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 24.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 24.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 26.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 1115,
+        "reliable": 79,
+        "unstable": 1501,
+        "warmingUp": 9
+      },
+      "id": "01_Rock2-142-D_comp",
+      "processingSeconds": 0.827433542,
+      "split": "development",
+      "totalEvents": 76
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 17,
+        "reliable": 8,
+        "unstable": 46
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 2.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 4.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53,
+            57,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 5.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            46,
+            53,
+            58,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 7.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            47,
+            52,
+            59,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            45,
+            52,
+            57,
+            61,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [
+            33
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            45,
+            52,
+            57,
+            61,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 15.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 16.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 17.75,
+          "prediction": [],
+          "quality": "outOfRange",
+          "referenceNotes": [
+            41,
+            48,
+            53,
+            57,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 19.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            46,
+            53,
+            58
+          ]
+        },
+        {
+          "centerSeconds": 20.5,
+          "prediction": [
+            40
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            40
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            47,
+            52,
+            59
+          ]
+        },
+        {
+          "centerSeconds": 22.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            45,
+            52,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 22.75,
+          "prediction": [
+            33
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            40,
+            45,
+            52,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 24.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 24.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 26.25,
+          "prediction": [
+            38
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 964,
+        "outOfRange": 32,
+        "reliable": 177,
+        "unstable": 1522,
+        "warmingUp": 9
+      },
+      "id": "01_Rock2-142-D_comp",
+      "processingSeconds": 0.816159667,
+      "split": "development",
+      "totalEvents": 71
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 12,
+        "reliable": 5,
+        "unstable": 43
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 1.0,
+          "prediction": [
+            63
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            63
+          ]
+        },
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 4.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 5.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 6.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 9.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50
+          ]
+        },
+        {
+          "centerSeconds": 11.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 11.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 11.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 12.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 13.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 15.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 16.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            51
+          ]
+        },
+        {
+          "centerSeconds": 17.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 19.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 20.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 21.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 22.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            60
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 850,
+        "outOfRange": 3,
+        "quiet": 11,
+        "reliable": 160,
+        "silence": 3,
+        "unstable": 1196,
+        "warmingUp": 9
+      },
+      "id": "02_BN1-129-Eb_comp",
+      "processingSeconds": 0.671800958,
+      "split": "development",
+      "totalEvents": 60
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 11,
+        "reliable": 7,
+        "unstable": 38
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 1.0,
+          "prediction": [
+            63
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            63
+          ]
+        },
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 4.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 5.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 6.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 9.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50
+          ]
+        },
+        {
+          "centerSeconds": 11.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 11.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 11.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 12.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 13.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 15.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 16.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            51
+          ]
+        },
+        {
+          "centerSeconds": 17.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 19.5,
+          "prediction": [],
+          "quality": "outOfRange",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 20.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 21.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 22.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            55,
+            60
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 815,
+        "outOfRange": 18,
+        "reliable": 177,
+        "unstable": 1213,
+        "warmingUp": 9
+      },
+      "id": "02_BN1-129-Eb_comp",
+      "processingSeconds": 0.673789125,
+      "split": "development",
+      "totalEvents": 56
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 11,
+        "reliable": 4,
+        "silence": 1,
+        "unstable": 62
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 1.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            50,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 4.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 7.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            47
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 14.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            50,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 17.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48
+          ]
+        },
+        {
+          "centerSeconds": 17.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 20.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            47,
+            50,
+            56
+          ]
+        },
+        {
+          "centerSeconds": 22.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            52,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 26.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            57,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 1070,
+        "outOfRange": 1,
+        "quiet": 12,
+        "reliable": 86,
+        "silence": 16,
+        "unstable": 1510,
+        "warmingUp": 9
+      },
+      "id": "02_Rock2-142-D_comp",
+      "processingSeconds": 0.872855667,
+      "split": "development",
+      "totalEvents": 78
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 11,
+        "outOfRange": 1,
+        "reliable": 4,
+        "unstable": 55
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 1.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            50,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 4.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 7.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            40,
+            47
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 14.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            50,
+            55
+          ]
+        },
+        {
+          "centerSeconds": 17.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48
+          ]
+        },
+        {
+          "centerSeconds": 17.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 20.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            53
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            40,
+            47,
+            50,
+            56
+          ]
+        },
+        {
+          "centerSeconds": 22.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            52,
+            57
+          ]
+        },
+        {
+          "centerSeconds": 26.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            57,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 982,
+        "outOfRange": 69,
+        "quiet": 2,
+        "reliable": 96,
+        "unstable": 1546,
+        "warmingUp": 9
+      },
+      "id": "02_Rock2-142-D_comp",
+      "processingSeconds": 0.830105292,
+      "split": "development",
+      "totalEvents": 71
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 4,
+        "reliable": 20,
+        "unstable": 45
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [
+            44
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            44
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            55,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            55,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 11.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 12.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 13.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 15.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            53,
+            56,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 22.0,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 302,
+        "outOfRange": 2,
+        "quiet": 63,
+        "reliable": 354,
+        "silence": 34,
+        "unstable": 1468,
+        "warmingUp": 9
+      },
+      "id": "03_BN1-129-Eb_comp",
+      "processingSeconds": 0.646587959,
+      "split": "development",
+      "totalEvents": 69
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 1,
+        "reliable": 25,
+        "unstable": 42
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [
+            44
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            44
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            55,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            55,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 11.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 12.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 13.0,
+          "prediction": [
+            39
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 15.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            53,
+            56,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 22.0,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 138,
+        "outOfRange": 1,
+        "quiet": 16,
+        "reliable": 495,
+        "unstable": 1573,
+        "warmingUp": 9
+      },
+      "id": "03_BN1-129-Eb_comp",
+      "processingSeconds": 0.67155525,
+      "split": "development",
+      "totalEvents": 68
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 15,
+        "reliable": 6,
+        "unstable": 59
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 6.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            53,
+            58,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            52,
+            55,
+            61,
+            64,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 10.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 14.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 16.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            48,
+            55,
+            58,
+            64,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 17.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53,
+            57,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            53,
+            58
+          ]
+        },
+        {
+          "centerSeconds": 25.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            45,
+            50,
+            57,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 783,
+        "clipping": 9,
+        "outOfRange": 1,
+        "quiet": 24,
+        "reliable": 83,
+        "silence": 1,
+        "unstable": 1794,
+        "warmingUp": 9
+      },
+      "id": "03_Rock2-142-D_comp",
+      "processingSeconds": 0.806948917,
+      "split": "development",
+      "totalEvents": 80
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 10,
+        "reliable": 8,
+        "unstable": 54
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 6.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            53,
+            58,
+            62
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            52,
+            55,
+            61,
+            64,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 10.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 14.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 16.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            48,
+            55,
+            58,
+            64,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 17.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            41,
+            48,
+            53,
+            57,
+            60
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [
+            34
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            46,
+            53,
+            58
+          ]
+        },
+        {
+          "centerSeconds": 25.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            45,
+            50,
+            57,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 646,
+        "outOfRange": 9,
+        "quiet": 2,
+        "reliable": 162,
+        "unstable": 1876,
+        "warmingUp": 9
+      },
+      "id": "03_Rock2-142-D_comp",
+      "processingSeconds": 0.807846209,
+      "split": "development",
+      "totalEvents": 72
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 9,
+        "quiet": 1,
+        "reliable": 7,
+        "unstable": 46
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 4.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 8.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 11.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 11.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 13.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 14.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 15.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 15.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 19.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 19.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 20.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            67,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 21.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 22.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 541,
+        "quiet": 218,
+        "reliable": 139,
+        "silence": 60,
+        "unstable": 1265,
+        "warmingUp": 9
+      },
+      "id": "04_BN1-129-Eb_comp",
+      "processingSeconds": 0.604929333,
+      "split": "heldout",
+      "totalEvents": 63
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 6,
+        "reliable": 10,
+        "unstable": 46
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 4.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 4.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 5.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 8.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 9.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            44,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 11.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 11.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 13.0,
+          "prediction": [
+            39
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 14.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 15.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 15.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            46,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 19.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 19.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 20.5,
+          "prediction": [
+            39
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51,
+            58,
+            67,
+            70
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 21.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 22.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            62,
+            67
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 418,
+        "outOfRange": 24,
+        "quiet": 31,
+        "reliable": 220,
+        "unstable": 1530,
+        "warmingUp": 9
+      },
+      "id": "04_BN1-129-Eb_comp",
+      "processingSeconds": 0.657059375,
+      "split": "heldout",
+      "totalEvents": 62
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 15,
+        "unstable": 46
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [
+            43
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            43
+          ]
+        },
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            48,
+            55,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 2.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            48,
+            55,
+            64,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 7.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 7.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            61,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 10.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 12.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 13.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43
+          ]
+        },
+        {
+          "centerSeconds": 14.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 20.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 21.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 26.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            45,
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 779,
+        "clipping": 9,
+        "quiet": 3,
+        "reliable": 58,
+        "silence": 5,
+        "unstable": 1841,
+        "warmingUp": 9
+      },
+      "id": "04_Rock2-142-D_comp",
+      "processingSeconds": 0.844805542,
+      "split": "heldout",
+      "totalEvents": 61
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 15,
+        "unstable": 42
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [
+            43
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            43
+          ]
+        },
+        {
+          "centerSeconds": 1.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            48,
+            55,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 2.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            43,
+            48,
+            55,
+            64,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 7.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 7.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 8.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            45,
+            61,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 10.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 12.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 13.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43
+          ]
+        },
+        {
+          "centerSeconds": 14.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            43,
+            50,
+            55,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 20.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 21.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 21.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            52,
+            58,
+            62,
+            67
+          ]
+        },
+        {
+          "centerSeconds": 26.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            45,
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 781,
+        "quiet": 4,
+        "reliable": 59,
+        "unstable": 1851,
+        "warmingUp": 9
+      },
+      "id": "04_Rock2-142-D_comp",
+      "processingSeconds": 0.85404725,
+      "split": "heldout",
+      "totalEvents": 57
+    },
+    {
+      "attackQualityCounts": {
+        "reliable": 20,
+        "unstable": 47
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 3.0,
+          "prediction": [
+            46
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            46
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            46,
+            55,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 8.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            53,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            53,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 10.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            54,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50
+          ]
+        },
+        {
+          "centerSeconds": 11.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 11.5,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            55,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            46,
+            55,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 15.0,
+          "prediction": [
+            53
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            53
+          ]
+        },
+        {
+          "centerSeconds": 15.25,
+          "prediction": [
+            53
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            53
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 21.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            46,
+            55,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 114,
+        "quiet": 81,
+        "reliable": 532,
+        "silence": 41,
+        "unstable": 1455,
+        "warmingUp": 9
+      },
+      "id": "05_BN1-129-Eb_comp",
+      "processingSeconds": 0.660560416,
+      "split": "heldout",
+      "totalEvents": 67
+    },
+    {
+      "attackQualityCounts": {
+        "reliable": 17,
+        "unstable": 46
+      },
+      "audioSeconds": 22.32439909297052,
+      "comparisons": [
+        {
+          "centerSeconds": 0.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 2.0,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 3.0,
+          "prediction": [
+            46
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            46
+          ]
+        },
+        {
+          "centerSeconds": 5.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            46,
+            55,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 8.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            53,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 8.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            53,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 10.25,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            44,
+            54,
+            60,
+            63
+          ]
+        },
+        {
+          "centerSeconds": 11.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50
+          ]
+        },
+        {
+          "centerSeconds": 11.25,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 11.5,
+          "prediction": [
+            51
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            51
+          ]
+        },
+        {
+          "centerSeconds": 12.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            55,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 12.5,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            46,
+            55,
+            60,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 15.0,
+          "prediction": [
+            53
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            53
+          ]
+        },
+        {
+          "centerSeconds": 15.25,
+          "prediction": [
+            53
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            53
+          ]
+        },
+        {
+          "centerSeconds": 19.0,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            51,
+            55,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 21.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            46,
+            55,
+            62,
+            65
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 130,
+        "outOfRange": 2,
+        "reliable": 541,
+        "unstable": 1550,
+        "warmingUp": 9
+      },
+      "id": "05_BN1-129-Eb_comp",
+      "processingSeconds": 0.678944958,
+      "split": "heldout",
+      "totalEvents": 63
+    },
+    {
+      "attackQualityCounts": {
+        "ambiguous": 1,
+        "reliable": 3,
+        "unstable": 96
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 13.75,
+          "prediction": [
+            43
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            43
+          ]
+        },
+        {
+          "centerSeconds": 24.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 25.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 25.75,
+          "prediction": [],
+          "quality": "unstable",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        }
+      ],
+      "condition": "clean",
+      "frameQualityCounts": {
+        "ambiguous": 1119,
+        "quiet": 14,
+        "reliable": 58,
+        "unstable": 1504,
+        "warmingUp": 9
+      },
+      "id": "05_Rock2-142-D_comp",
+      "processingSeconds": 0.82462625,
+      "split": "heldout",
+      "totalEvents": 100
+    },
+    {
+      "attackQualityCounts": {
+        "reliable": 2,
+        "unstable": 95
+      },
+      "audioSeconds": 27.041609977324264,
+      "comparisons": [
+        {
+          "centerSeconds": 2.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            48,
+            55,
+            60,
+            64
+          ]
+        },
+        {
+          "centerSeconds": 13.75,
+          "prediction": [
+            43
+          ],
+          "quality": "reliable",
+          "referenceNotes": [
+            43
+          ]
+        },
+        {
+          "centerSeconds": 24.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65
+          ]
+        },
+        {
+          "centerSeconds": 25.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 25.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.0,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.25,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.5,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        },
+        {
+          "centerSeconds": 26.75,
+          "prediction": [],
+          "quality": "ambiguous",
+          "referenceNotes": [
+            50,
+            57,
+            62,
+            65,
+            69
+          ]
+        }
+      ],
+      "condition": "derived-distortion",
+      "frameQualityCounts": {
+        "ambiguous": 1095,
+        "outOfRange": 2,
+        "reliable": 84,
+        "unstable": 1514,
+        "warmingUp": 9
+      },
+      "id": "05_Rock2-142-D_comp",
+      "processingSeconds": 0.816141625,
+      "split": "heldout",
+      "totalEvents": 97
+    }
+  ]
+}

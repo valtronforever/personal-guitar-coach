@@ -11,7 +11,8 @@ let package = Package(
         .library(name: "Learning", targets: ["Learning"]),
         .executable(name: "ValidateLessonContent", targets: ["ValidateLessonContent"]),
         .executable(name: "BenchmarkAudio", targets: ["BenchmarkAudio"]),
-        .executable(name: "BenchmarkPractice", targets: ["BenchmarkPractice"])
+        .executable(name: "BenchmarkPractice", targets: ["BenchmarkPractice"]),
+        .executable(name: "BenchmarkChords", targets: ["BenchmarkChords"])
     ],
     targets: [
         .target(name: "Domain"),
@@ -23,6 +24,7 @@ let package = Package(
         .executableTarget(name: "ValidateLessonContent", dependencies: ["Learning"]),
         .executableTarget(name: "BenchmarkAudio", dependencies: ["Audio", "AudioTestSupport", "Domain"]),
         .executableTarget(name: "BenchmarkPractice", dependencies: ["Domain", "Audio", "Learning", "Persistence"]),
+        .executableTarget(name: "BenchmarkChords", dependencies: ["Audio"]),
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
         .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio", "AudioTestSupport", "Learning"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence", "Domain"], resources: [.copy("Fixtures")]),
