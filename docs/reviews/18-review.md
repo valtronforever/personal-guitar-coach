@@ -29,3 +29,5 @@ Review виконав той самий агент, що реалізував з
 ## Відкриті перевірки
 
 Нативний computer-use знову повернув `Sky Computer Use native pipe closed before response` під час reconnect; наявність running process не доводить правильність нового UI. Layout/wrapping en/uk/light/dark, VoiceOver/keyboard, sheet handoff і user walkthrough лишаються U05/U07. Реальна гра з оцінками та рекомендаціями — U02/U03/U04/U10 після всіх 22 задач, як погоджено користувачем. Мікрофонний permission flow не запускався й не обходився. Після merge статус `pending_user`, issue відкритий, Project `In review`.
+
+CI [34428325160](https://github.com/valtronforever/personal-guitar-coach/actions/runs/34428325160) пройшов на `3e2b06d`; PR #40 змерджено як `5c8284d`.

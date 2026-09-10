@@ -1,11 +1,11 @@
 {
   "lessonID": "open-strings-intro",
-  "lessonVersion": 1,
+  "lessonVersion": 2,
   "locale": "en",
   "title": "Meet your open strings",
   "summary": "Find low E2 and high E4, with a beat of silence between them.",
   "goal": "Play two open E strings at a steady pulse and leave the rests quiet.",
-  "body": "An open string rings without pressing a fret. String 6 is the thickest and sounds E2 in Standard tuning. String 1 is the thinnest and sounds E4. They share the name E, but E4 is two octaves higher.\n\nSelect Standard in Instrument settings and physically tune your guitar before practicing. Use a clean, comfortable sound. The numbers on tablature identify frets: 0 means an open string.",
+  "body": "Before starting: have your guitar ready and know which end of the strings is thickest. No fretting experience is needed.\n\nAn open string rings without pressing a fret. String 6 is the thickest and sounds E2 in Standard tuning. String 1 is the thinnest and sounds E4. They share the name E, but E4 is two octaves higher.\n\nSelect Standard in Instrument settings and physically tune your guitar before practicing. Use a clean, comfortable sound. The numbers on tablature identify frets: 0 means an open string.\n\nIn Standard tuning, strings 6 → 1 are E2, A2, D3, G3, B3, E4. The octave number distinguishes low and high notes. This course uses Standard with A4 = 440 Hz. In the tuner, select a string, pluck it alone, and gently adjust its tuning machine until the pitch settles near the target. Selecting a tuning in the app does not tune the guitar.\n\nFor an electric guitar, select the interface and its guitar input channel in Audio setup. Choose Acoustic guitar · Microphone or Acoustic guitar · Pickup when that is your source. Keep the sound clean and use headphones for the metronome. Start this exercise at 60 BPM; 40 BPM is available if you need more time.\n\nPractice begins with a short signal check and a count-in. After the attempt, open the result and prepare a suggested repeat. Without reliable timing calibration, the app can give pitch feedback while rhythm and the overall score remain unavailable. Listen to the written rests yourself: this version checks note pitch and new attacks, not how long every note rings.",
   "steps": {
     "hear-low-e": {
       "title": "1. Hear the low E",

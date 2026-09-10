@@ -1,0 +1,31 @@
+{
+  "lessonID": "a-minor-pentatonic",
+  "lessonVersion": 1,
+  "locale": "en",
+  "title": "A minor pentatonic in one position",
+  "summary": "Follow the five-note pattern across all six strings at frets 5–8.",
+  "goal": "Play the A minor pentatonic position up to C5 and return to A2 without rushing string changes.",
+  "body": "Before starting: practice C major across the strings and move comfortably between individual notes. Tune to Standard, A4 = 440 Hz.\n\nA minor pentatonic uses five pitch names: A, C, D, E, G. They repeat in higher octaves. This position begins on A2 at string 6 fret 5 and reaches C5 at string 1 fret 8. Its highest note is C5, not the next A.\n\nKeep the hand near fret 5. Suggested fingers are index at fret 5, ring at fret 7 and little finger at fret 8. Choose comfortable movement and release unnecessary pressure. The positions are a map to learn; the app measures audible pitch and attacks, not which finger followed that map.\n\nStart at 50 BPM, with one quarter note per click. The ascent takes bars 1–3; bars 4–6 return to A2 and end with a rest. Practice one or two bars first if needed. When the full path feels comfortable, try 60 BPM; a new tempo creates different comparison conditions. Keep just one note sounding at a time so the result can give useful pitch evidence.",
+  "steps": {
+    "low-strings": {
+      "title": "1. Begin with A2, C3, D3, E3",
+      "body": "Bar 1: string 6 frets 5, 8; string 5 frets 5, 7. Notice that each string begins at fret 5."
+    },
+    "middle-strings": {
+      "title": "2. Cross the middle strings",
+      "body": "Bar 2: string 4 frets 5, 7 gives G3, A3; string 3 frets 5, 7 gives C4, D4."
+    },
+    "high-strings": {
+      "title": "3. Reach the top of the position",
+      "body": "Bar 3: string 2 frets 5, 8 gives E4, G4; string 1 frets 5, 8 gives A4, C5."
+    },
+    "return-high": {
+      "title": "4. Turn around without repeating C5",
+      "body": "Bar 4 descends through A4, G4, E4, D4. Read each string change in tablature before playing."
+    },
+    "return-home": {
+      "title": "5. Return to A2 and leave space",
+      "body": "Bars 5–6 continue C4, A3, G3, E3, D3, C3, A2, then a quarter rest. Review a recommended fragment after the attempt instead of automatically increasing the tempo."
+    }
+  }
+}

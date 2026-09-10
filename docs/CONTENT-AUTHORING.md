@@ -13,7 +13,7 @@ Resources/Lessons/
     uk.json
 ```
 
-The checked-in [sample manifest](../Resources/Lessons/open-strings-intro/lesson.json), [English text](../Resources/Lessons/open-strings-intro/en.json), and [Ukrainian text](../Resources/Lessons/open-strings-intro/uk.json) are complete working examples. The sample is an introductory lesson, not the completed six-lesson starter course (task 19).
+The checked-in [sample manifest](../Resources/Lessons/open-strings-intro/lesson.json), [English text](../Resources/Lessons/open-strings-intro/en.json), and [Ukrainian text](../Resources/Lessons/open-strings-intro/uk.json) are complete working examples. The introduction is part of the completed software content set for the [six-lesson starter course](STARTER-COURSE.md); native/live-user validation remains pending.
 
 `catalog.json` defines display order:
 
@@ -94,6 +94,6 @@ python3 Scripts/generate_project.py --check
 python3 Scripts/build_local.py
 ```
 
-The CLI exits nonzero for any content issue or an empty catalog and prints lesson ID, reason code, and diagnostic detail. CI validates the actual bundled sample. The loader keeps valid lessons available if another lesson fails and never rewrites resource files. In-app warnings explain why entries are unavailable; their list is bounded so it cannot cover the healthy catalog.
+The CLI exits nonzero for any content issue or an empty catalog and prints lesson ID, reason code, and diagnostic detail. CI validates the actual bundled course. The loader keeps valid lessons available if another lesson fails and never rewrites resource files. In-app warnings explain why entries are unavailable; their list is bounded so it cannot cover the healthy catalog.
 
 Before marking new teaching content complete, inspect both languages in the native app and check the resolver's fretboard/timeline targets. Never substitute a synthetic audio test for actual guitar accuracy evidence. Importing songs, scraping tablature services, and adding copyrighted course text are outside this authoring workflow.
