@@ -23,6 +23,9 @@ private actor CalibrationRuntime: AudioRuntime {
         AudioDeviceCapabilities(sampleRates: [48000...48000], bufferRange: 256...512,
             canSetSampleRate: false, canSetBufferFrames: false, inputGain: nil)
     }
+    func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) -> AudioDeviceTiming {
+        AudioDeviceTiming(deviceLatencyFrames: input ? 4800 : 0, streamLatencyFrames: 0, safetyOffsetFrames: 0)
+    }
     func startInput(device: AudioDeviceDescriptor, channel: Int) -> AudioStreamFormat { AudioStreamFormat(sampleRate: 48000, inputChannels: 1) }
     func stopInput() {}
     func readInput() -> CaptureSnapshot? {
@@ -30,13 +33,13 @@ private actor CalibrationRuntime: AudioRuntime {
         let frames: UInt64 = (complete ? 27 * 48000 : 0) + reads * 512
         let events: [DetectedNoteEvent] = complete ? (request?.exercise.events.enumerated().map { index, event in
             let frame = Int64((Double(event.startTick) / 960 + 0.05) * 48000)
-            let onset = AnalysisTimestamp(frame: frame, sampleRate: 48000, hostSeconds: 100 + Double(frame) / 48000)
+            let onset = AnalysisTimestamp(frame: frame, sampleRate: 48000, hostSeconds: 100.1 + Double(frame) / 48000)
             return DetectedNoteEvent(id: UInt64(index + 1), onset: onset, resolvedAt: onset, quality: .unstable, pitch: nil)
         } ?? []) : []
         let analysis = AudioAnalysisSnapshot(algorithmVersion: MonophonicAnalyzer.algorithmVersion, latest: nil, events: events,
             totalEvents: UInt64(events.count), invalidSamples: 0, qualitySpans: [], totalQualitySpans: 0)
         return CaptureSnapshot(totalFrames: frames, totalPackets: frames / 512, droppedPackets: 0, peak: 0.2, rms: 0.01,
-            sampleRate: 48000, lastHostTime: AVAudioTime.hostTime(forSeconds: 100 + Double(frames - 512) / 48000),
+            sampleRate: 48000, lastHostTime: AVAudioTime.hostTime(forSeconds: 100.1 + Double(frames - 512) / 48000),
             hostTimeValid: true, analysis: analysis, lastPacketFrames: 512)
     }
     func startClick(device: AudioDeviceDescriptor, channel: Int) {}

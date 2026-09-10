@@ -89,7 +89,7 @@ final class CalibrationModel {
                         if playback.phase == .completed, completedAt == nil { completedAt = .now }
                     }
                     if let clock = state.clock?.validatedDriftSeconds { drift = max(drift, abs(clock)) }
-                    if let completedAt, completedAt.duration(to: .now) >= .milliseconds(1400) {
+                    if let completedAt, completedAt.duration(to: .now) >= .seconds(1.4 + (route.input.hardwareLatencySeconds ?? 0)) {
                         guard let epoch, state.clock?.validatedDriftSeconds != nil else { throw CalibrationError.insufficientEvidence }
                         let expected = try request.exercise.events.map {
                             try route.expectedTime(renderEpochSeconds: epoch, sampleFrame: Int64((Double($0.startTick) / 960 * route.output.sampleRate).rounded()))
