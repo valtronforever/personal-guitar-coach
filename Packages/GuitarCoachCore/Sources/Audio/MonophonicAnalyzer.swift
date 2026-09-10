@@ -8,6 +8,7 @@ public enum SignalQuality: String, Codable, Sendable {
 public struct DetectedPitch: Equatable, Codable, Sendable {
     public let frequency: Double
     public let clarity: Double
+    public init(frequency: Double, clarity: Double) { self.frequency = frequency; self.clarity = clarity }
     public func nearestPitch(referenceA4: Double = 440) throws -> Pitch { try .nearest(to: frequency, referenceA4: referenceA4) }
     public func cents(referenceA4: Double = 440) throws -> Double {
         try nearestPitch(referenceA4: referenceA4).cents(from: frequency, referenceA4: referenceA4)
@@ -20,6 +21,9 @@ public struct AnalysisTimestamp: Equatable, Codable, Sendable {
     public let sampleRate: Double
     /// First input packet host timestamp plus stream-frame offset. Hardware latency is not subtracted here.
     public let hostSeconds: Double?
+    public init(frame: Int64, sampleRate: Double, hostSeconds: Double?) {
+        self.frame = frame; self.sampleRate = sampleRate; self.hostSeconds = hostSeconds
+    }
     public var streamSeconds: Double { Double(frame) / sampleRate }
 }
 
@@ -31,6 +35,11 @@ public struct PitchObservation: Equatable, Codable, Sendable {
     public let peak: Double
     public let noiseFloor: Double
     public let periodEvidence: PeriodEstimate?
+    public init(time: AnalysisTimestamp, quality: SignalQuality, pitch: DetectedPitch?, rms: Double, peak: Double,
+                noiseFloor: Double, periodEvidence: PeriodEstimate?) {
+        self.time = time; self.quality = quality; self.pitch = pitch; self.rms = rms; self.peak = peak
+        self.noiseFloor = noiseFloor; self.periodEvidence = periodEvidence
+    }
 }
 
 public struct DetectedNoteEvent: Equatable, Codable, Sendable, Identifiable {
@@ -39,6 +48,9 @@ public struct DetectedNoteEvent: Equatable, Codable, Sendable, Identifiable {
     public let resolvedAt: AnalysisTimestamp
     public let quality: SignalQuality
     public let pitch: DetectedPitch?
+    public init(id: UInt64, onset: AnalysisTimestamp, resolvedAt: AnalysisTimestamp, quality: SignalQuality, pitch: DetectedPitch?) {
+        self.id = id; self.onset = onset; self.resolvedAt = resolvedAt; self.quality = quality; self.pitch = pitch
+    }
 }
 
 public struct SignalQualitySpan: Equatable, Codable, Sendable, Identifiable {
@@ -46,6 +58,9 @@ public struct SignalQualitySpan: Equatable, Codable, Sendable, Identifiable {
     public let quality: SignalQuality
     public let start: AnalysisTimestamp
     public let end: AnalysisTimestamp
+    public init(id: UInt64, quality: SignalQuality, start: AnalysisTimestamp, end: AnalysisTimestamp) {
+        self.id = id; self.quality = quality; self.start = start; self.end = end
+    }
 }
 
 public struct AudioAnalysisSnapshot: Equatable, Sendable {
@@ -57,6 +72,12 @@ public struct AudioAnalysisSnapshot: Equatable, Sendable {
     public let invalidSamples: UInt64
     public let qualitySpans: [SignalQualitySpan]
     public let totalQualitySpans: UInt64
+    /// Immutable worker DTO construction also supports offline fixtures without a capture runtime.
+    public init(algorithmVersion: String, latest: PitchObservation?, events: [DetectedNoteEvent], totalEvents: UInt64,
+                invalidSamples: UInt64, qualitySpans: [SignalQualitySpan], totalQualitySpans: UInt64) {
+        self.algorithmVersion = algorithmVersion; self.latest = latest; self.events = events; self.totalEvents = totalEvents
+        self.invalidSamples = invalidSamples; self.qualitySpans = qualitySpans; self.totalQualitySpans = totalQualitySpans
+    }
 }
 
 /// Single-worker streaming analyzer. The audio callback only fills the existing bounded PCM ring.

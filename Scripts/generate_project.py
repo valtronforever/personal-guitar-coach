@@ -85,6 +85,7 @@ app_configs = configurations("app", dict(
     INFOPLIST_KEY_NSMicrophoneUsageDescription="Listen to your guitar for tuning and practice feedback.",
     CODE_SIGN_ENTITLEMENTS="App/PersonalGuitarCoach.entitlements", ENABLE_HARDENED_RUNTIME="YES",
     CURRENT_PROJECT_VERSION="1", MARKETING_VERSION="0.1.0", SWIFT_EMIT_LOC_STRINGS="YES",
+    ASSETCATALOG_COMPILER_APPICON_NAME="AppIcon",
     LD_RUNPATH_SEARCH_PATHS=["$(inherited)", "@executable_path/../Frameworks"]))
 ui_configs = configurations("ui", dict(
     PRODUCT_NAME="$(TARGET_NAME)", PRODUCT_BUNDLE_IDENTIFIER="com.valtronforever.PersonalGuitarCoachUITests",
