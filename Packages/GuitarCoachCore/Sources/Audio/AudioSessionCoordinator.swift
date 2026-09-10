@@ -264,9 +264,15 @@ public actor AudioSessionCoordinator {
         }
     }
 
-    public func stopTransport(requestID: UUID) async {
+    public func stopTransport(requestID: UUID, keepingCapture: Bool = false) async {
         guard transportRequestID == requestID else { return }
-        await stop()
+        guard keepingCapture, captureRequestID != nil, phase == .running,
+              purpose == .practice || purpose == .calibration else { await stop(); return }
+        clickGeneration &+= 1
+        activeOutput = nil; transportRequestID = nil; transport = nil; isStartingClick = false
+        clock = nil; clockTracker.reset()
+        let runtime = runtime
+        _ = try? await enqueue { await runtime.stopTransport() }.value
     }
 
     public func startClick() async throws {

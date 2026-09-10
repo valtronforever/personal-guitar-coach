@@ -9,6 +9,7 @@ struct TablatureView: View {
     let model: TimelineModel
     let selectedIDs: Set<String>
     var cursorTick: Int64? = nil
+    var instructionsKey = "tab.instructions"
     let onSelect: (String, Bool) -> Void
     @Environment(AppSettings.self) private var settings
     @State private var zoom = 1.0
@@ -96,7 +97,7 @@ struct TablatureView: View {
                     }
                 }
             }
-            Text("tab.instructions").font(.caption).foregroundStyle(.secondary)
+            Text(LocalizedStringKey(instructionsKey)).font(.caption).foregroundStyle(.secondary)
                 .lineLimit(3).frame(minHeight: 44, alignment: .topLeading)
             if let tick = cursorTick, let bar = model.cursorBar(tick) {
                 Group {

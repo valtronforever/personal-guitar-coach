@@ -121,3 +121,12 @@ Corpus включає 44.1/48 kHz, Standard/Drop D/D Standard, низькі/ви
 Поточне оцінювання дозволене для C2–E6, resolved 55–1500 Hz, note duration ≥200 ms і input 44.1/48 kHz. Quarter: 40–200 BPM; eighth: ≤150 BPM; sixteenth: ≤75 BPM. A4 обчислюється зі snapshot строю. 125 ms перевіряється як позамежовий випадок і не дозволяється для grading. Ці межі не змінюють playback/visualization і не дають дозволу на rhythm score без калібрування.
 
 Між стартом capture і першою оцінюваною атакою має бути щонайменше 80 ms для causal onset history; звичайний preflight/count-in забезпечує більший запас. Немає reliable estimate — немає підстав називати звук правильною нотою. Capture quality spans та monotonically increasing event IDs треба споживати без пропусків; 128 events / 256 spans — rolling bounds, не сховище всієї спроби.
+
+
+## Реалізація циклу практики (задача 16)
+
+Snapshot обмежений 1024 очікуваними нотами, 900 s та 2048 observed attacks; collector також обмежує clipped intervals до 4096. Межі фрагмента — цілі такти, крім кінця останнього неповного такту вправи. Відлік — один такт у UI; Domain допускає 1–4. Тестовий сигнал має бути свіжим, reliable ≥200 ms за DSP frame time, без clipping/data loss; preflight timeout — 10 s. Підтверджений фізичний стрій не виводиться з автоматичної pitch detection.
+
+Нормалізовані атаки після віднімання зафіксованого residual потрапляють у `[expectedStart − 0.100, expectedEnd + 0.100)`. Це явний guard для ранньої першої/пізньої останньої атаки; інші count-in та post-exercise атаки виключено. Після output completion capture триває щонайменше 1.4 s + відому input hardware latency. Додатково потрібен analyzer watermark за `expectedEnd + 0.100 + 0.300` після компенсації residual. Без watermark або здорового потоку результат перерваний, а не передчасно completed.
+
+Кожен repeat має нові attempt/transport UUID, порожні observation arrays, власний render epoch і count-in; input lease зберігається лише доки потік справний. Між колами є пауза на фіналізацію. Input clock baseline береться з analyzer origin (host − frame/rate) початкового capture: попередній preflight або repeat drift не обнуляється зі стартом нового вихідного сегмента. Regression перевіряє збереження 30 ms, потім 60 ms накопиченого drift. Максимальний drift або втрата валідного clock evidence передаються задачі 17 для rhythm gate.

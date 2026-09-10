@@ -90,7 +90,10 @@ struct AppShellPreviews: PreviewProvider {
     }
 
     static var previews: some View {
-        Group {
+        let audio = AudioSessionStore(repository: nil)
+        let calibration = CalibrationStore(repository: nil)
+        let practice = PracticeModel(audio: audio, calibration: calibration)
+        return Group {
             AppRootView(navigation: AppNavigation())
                 .environment(settings(.english))
                 .environment(\.locale, Locale(identifier: "en"))
@@ -106,8 +109,9 @@ struct AppShellPreviews: PreviewProvider {
         }
         .environment(LocalDataStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
         .environment(LessonLibraryStore())
-        .environment(AudioSessionStore(repository: nil))
-        .environment(CalibrationStore(repository: nil))
+        .environment(audio)
+        .environment(calibration)
+        .environment(practice)
         .environment(ReadingProgressStore(repository: LocalRepository(root: FileManager.default.temporaryDirectory.appendingPathComponent("coach-previews"))))
     }
 }

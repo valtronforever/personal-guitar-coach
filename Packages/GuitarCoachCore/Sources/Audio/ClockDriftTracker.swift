@@ -46,7 +46,17 @@ public struct ClockDriftTracker: Sendable {
         if let lastOutputFrame, output.renderedFrames < lastOutputFrame { invalid = true }
         if inputFrame != lastInputFrame {
             let inputAnchor = AVAudioTime.seconds(forHostTime: input.lastHostTime) - Double(inputFrame) / input.sampleRate
-            if inputBase == nil { inputBase = inputAnchor; firstInputFrame = inputFrame }
+            if inputBase == nil {
+                // Onset timestamps retain the capture's original anchor across preflight and repeat segments.
+                // Include drift already accumulated before this output segment, not only its subsequent change.
+                let origin = input.analysis?.latest.flatMap { observation -> Double? in
+                    guard observation.time.frame >= 0, observation.time.sampleRate == input.sampleRate,
+                          let host = observation.time.hostSeconds, host.isFinite else { return nil }
+                    let value = host - Double(observation.time.frame) / input.sampleRate
+                    return value.isFinite ? value : nil
+                }
+                inputBase = origin ?? inputAnchor; firstInputFrame = inputFrame
+            }
             inputDelta = inputAnchor - inputBase!
             lastInputFrame = inputFrame; inputFreshAt = now
         }

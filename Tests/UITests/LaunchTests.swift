@@ -83,6 +83,12 @@ final class LaunchTests: XCTestCase {
         // Give the atomic writer a visible navigation boundary before relaunch.
         app.buttons["lesson.practice.open-strings-intro-practice"].click()
         XCTAssertTrue(app.descendants(matching: .any)["practice.selectedExercise"].firstMatch.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["practice.start"].exists)
+        XCTAssertFalse(app.buttons["practice.start"].isEnabled)
+        XCTAssertTrue(app.buttons["practice.pause"].exists)
+        XCTAssertFalse(app.buttons["practice.pause"].isEnabled)
+        XCTAssertTrue(app.buttons["practice.stop"].exists)
+        XCTAssertFalse(app.buttons["practice.stop"].isEnabled)
         app.terminate(); app.launch()
         let restored = app.buttons["lesson.step.hear-high-e"]
         XCTAssertTrue(restored.waitForExistence(timeout: 10))

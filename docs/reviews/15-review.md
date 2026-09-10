@@ -22,3 +22,5 @@ Reviewed capture/render host mapping, actual selected-stream metadata, profile i
 97 automatic core tests pass, plus 1 skipped opt-in hardware test (98 reported). 38 App tests pass. Actual TransportPlan PCM → MonophonicAnalyzer → LoopbackEstimator offline tests recover all 12 markers for ±50 ms at 44.1/48 kHz within 20 ms and residual p95 ≤20 ms; positive-delay variants include a weak background sinusoid. Synthetic results are not physical USB measurements.
 
 338 en/uk keys, current generated project and UI-source type-check pass. Debug and Release local native .app builds/ad-hoc signing pass. Native read-only UI inspection: English/dark and Ukrainian/light, scrollable form, visible manual semantics, no-route actions disabled. No capture, permission request or loopback cable was exercised. U03/U08/U09 and actual Xcode UI execution U07 remain open. Tasks 16/17 consume the eligibility service in assessment.
+
+PR #37 passed CI run 34419883588 on final head 8e0ba5e and merged as 8437958.

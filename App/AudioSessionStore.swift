@@ -135,7 +135,7 @@ final class AudioSessionStore {
         catch { if let value = error as? AudioBackendError, value != .cancelled { self.error = value } }
         await publish()
     }
-    func stopTransport(id: UUID) async { await coordinator.stopTransport(requestID: id); await publish() }
+    func stopTransport(id: UUID, keepingCapture: Bool = false) async { await coordinator.stopTransport(requestID: id, keepingCapture: keepingCapture); await publish() }
     func dismissSetup() async {
         await coordinator.stopActivity(.setup)
         await publish()

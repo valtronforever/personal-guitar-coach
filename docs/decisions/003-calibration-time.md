@@ -38,3 +38,6 @@ Rhythm requires a matching measured profile, fresh clocks and combined calibrati
 ## Deferred physical procedure
 
 After all 22 software tasks, use the actual USB interface and a compatible output-to-input cable. Record route UID/channel/rate/buffer, hardware latency metadata, input mode, gain and monitoring setup. Run short calibration, repeat after changes, and independently measure compensated residual p95 (target ≤20 ms or narrow eligibility). Run the long option with the supported split-device route and compare first/last pulses under UI load. Confirm reconnecting the guitar preserves the applicable route/input mode. Test missing cable, clipping, hotplug and sleep. No microphone permission or hardware-loopback claim is made by the synthetic tests.
+
+
+Task 16 refinement: when analyzer timestamps are available, `ClockDriftTracker` derives the input baseline from the analyzer's original capture epoch (`latest.hostSeconds − latest.frame / sampleRate`). Restarting a metronome segment must not erase drift accumulated during preflight or earlier repetitions, because detected onsets still use that original epoch. Metadata-only test runtimes retain the packet-anchor fallback. The regression demonstrates 30 ms then 60 ms drift across a fresh output request UUID; physical verification remains U03/U10.

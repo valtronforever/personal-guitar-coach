@@ -80,6 +80,27 @@ private actor RuntimeStub: AudioRuntime {
 }
 
 struct AudioCoordinatorTests {
+    @Test func repeatSegmentsRetainCaptureButResetOutputClockAndOwnership() async throws {
+        let runtime = RuntimeStub(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PermissionStub())
+        await coordinator.configure(try route())
+        let capture = UUID()
+        try await coordinator.start(purpose: .practice, requestID: capture)
+        let first = try preview(mode: .practice)
+        try await coordinator.startTransport(first)
+        await coordinator.stopTransport(requestID: first.id, keepingCapture: true)
+        #expect(await runtime.active)
+        #expect(await coordinator.snapshot().captureRequestID == capture)
+        #expect(await coordinator.snapshot().transport == nil)
+        #expect(await coordinator.snapshot().clock == nil)
+        let second = try preview(mode: .practice)
+        try await coordinator.startTransport(second)
+        await coordinator.stopTransport(requestID: first.id, keepingCapture: true)
+        #expect(await coordinator.snapshot().transportRequestID == second.id)
+        #expect(await runtime.starts.count == 1)
+        await coordinator.stopCapture(requestID: capture)
+        #expect(await runtime.active == false)
+    }
+
     @Test func cancelledCaptureLeaseCannotStopANewerCalibration() async throws {
         let runtime = RuntimeStub(), permissions = PermissionStub(.notDetermined)
         let coordinator = AudioSessionCoordinator(runtime: runtime, permissions: permissions)
