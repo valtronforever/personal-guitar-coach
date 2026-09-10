@@ -80,6 +80,26 @@ private actor RuntimeStub: AudioRuntime {
 }
 
 struct AudioCoordinatorTests {
+    @Test func cancelledCaptureLeaseCannotStopANewerCalibration() async throws {
+        let runtime = RuntimeStub(), permissions = PermissionStub(.notDetermined)
+        let coordinator = AudioSessionCoordinator(runtime: runtime, permissions: permissions)
+        await coordinator.configure(try route())
+        let old = UUID(), current = UUID()
+        let pending = Task { try await coordinator.start(purpose: .calibration, requestID: old) }
+        while !(await permissions.waiting()) { await Task.yield() }
+        await coordinator.stopCapture(requestID: old)
+        await permissions.resolve(true)
+        do { try await pending.value; Issue.record("Cancelled permission start succeeded") }
+        catch { #expect(error as? AudioBackendError == .cancelled) }
+        try await coordinator.start(purpose: .calibration, requestID: current)
+        try await coordinator.startTransport(LoopbackProbe.request())
+        await coordinator.stopCapture(requestID: old)
+        #expect(await coordinator.snapshot().captureRequestID == current)
+        #expect(await coordinator.snapshot().phase == .running)
+        await coordinator.stopCapture(requestID: current)
+        #expect(await coordinator.snapshot().phase == .idle)
+    }
+
     @Test func outputProbeCannotLeakIntoTunerCapture() async throws {
         let runtime = RuntimeStub(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PermissionStub())
         await coordinator.configure(try route())

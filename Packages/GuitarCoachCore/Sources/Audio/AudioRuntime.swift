@@ -38,12 +38,14 @@ public protocol AudioRuntime: Sendable {
     func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws
     func readTransport() async -> TransportPlaybackSnapshot?
     func stopTransport() async
+    func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) async -> AudioDeviceTiming
     func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) async throws
     func setBufferFrames(_ frames: UInt32, device: AudioDeviceDescriptor) async throws
     func setInputGain(_ value: Float, device: AudioDeviceDescriptor, element: UInt32) async throws
 }
 
 public extension AudioRuntime {
+    func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) async -> AudioDeviceTiming { AudioDeviceTiming() }
     func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws { throw AudioBackendError.unavailableDevice }
     func readTransport() async -> TransportPlaybackSnapshot? { nil }
     func stopTransport() async {}
@@ -72,6 +74,9 @@ public actor LiveAudioRuntime: AudioRuntime {
     }
     public func readTransport() async -> TransportPlaybackSnapshot? { await transport.read() }
     public func stopTransport() async { await transport.stop() }
+    public func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) -> AudioDeviceTiming {
+        hardware.timing(device: device, channel: channel, input: input)
+    }
     public func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) throws { try hardware.setSampleRate(rate, device: device) }
     public func setBufferFrames(_ frames: UInt32, device: AudioDeviceDescriptor) throws { try hardware.setBufferFrames(frames, device: device) }
     public func setInputGain(_ value: Float, device: AudioDeviceDescriptor, element: UInt32) throws { try hardware.setInputGain(value, device: device, element: element) }

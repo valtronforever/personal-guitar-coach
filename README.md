@@ -85,3 +85,5 @@ COACH_TEST_OUTPUT_NAME='MacBook Pro Speakers' DEVELOPER_DIR=/Applications/Xcode.
 ```
 
 Ordinary tests skip this hardware test. Choose the exact device name intentionally; no fallback output is selected.
+
+Latency calibration is available from Audio setup → Latency calibration. Select input/output first. Estimated/manual profiles preserve pitch practice without enabling rhythm scores. Cable loopback measures the selected route; physical validation is pending. See [ADR 003](docs/decisions/003-calibration-time.md) for timestamp semantics, uncertainty and the final hardware procedure.

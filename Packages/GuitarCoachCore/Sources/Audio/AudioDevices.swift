@@ -87,6 +87,30 @@ public struct AudioDeviceService: Sendable {
             canSetBufferFrames: settable(device.hardwareID, address(kAudioDevicePropertyBufferFrameSize)), inputGain: gain)
     }
 
+    /// Query the selected stream, not the device using the stream-latency selector (the selectors share a code).
+    public func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) -> AudioDeviceTiming {
+        guard channel > 0, channel <= (input ? device.inputChannels : device.outputChannels) else { return AudioDeviceTiming() }
+        let scope = input ? kAudioDevicePropertyScopeInput : kAudioDevicePropertyScopeOutput
+        let deviceLatency = try? scalar(device.hardwareID, kAudioDevicePropertyLatency, scope: scope, initial: UInt32(0))
+        let safety = try? scalar(device.hardwareID, kAudioDevicePropertySafetyOffset, scope: scope, initial: UInt32(0))
+        var streamLatency: UInt32?
+        var property = address(kAudioDevicePropertyStreams, scope: scope), size: UInt32 = 0
+        if AudioObjectGetPropertyDataSize(device.hardwareID, &property, 0, nil, &size) == noErr,
+           size > 0, size <= 4096, Int(size) % MemoryLayout<AudioStreamID>.size == 0 {
+            var streams = [AudioStreamID](repeating: 0, count: Int(size) / MemoryLayout<AudioStreamID>.size)
+            let status = streams.withUnsafeMutableBytes { AudioObjectGetPropertyData(device.hardwareID, &property, 0, nil, &size, $0.baseAddress!) }
+            if status == noErr {
+                let matching = streams.filter { stream in
+                    guard let first = try? scalar(stream, kAudioStreamPropertyStartingChannel, initial: UInt32(0)), first > 0,
+                          let format = try? scalar(stream, kAudioStreamPropertyPhysicalFormat, initial: AudioStreamBasicDescription()) else { return false }
+                    return channel >= Int(first) && UInt64(channel) < UInt64(first) + UInt64(format.mChannelsPerFrame)
+                }
+                if matching.count == 1 { streamLatency = try? scalar(matching[0], kAudioStreamPropertyLatency, initial: UInt32(0)) }
+            }
+        }
+        return AudioDeviceTiming(deviceLatencyFrames: deviceLatency, streamLatencyFrames: streamLatency, safetyOffsetFrames: safety)
+    }
+
     public func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) throws {
         guard rate.isFinite, try ranges(device.hardwareID, selector: kAudioDevicePropertyAvailableNominalSampleRates).contains(where: { $0.contains(rate) }) else {
             throw AudioBackendError.invalidFormat
@@ -154,8 +178,8 @@ public struct AudioDeviceService: Sendable {
         return value.takeRetainedValue() as String
     }
 
-    private func scalar<T>(_ id: AudioDeviceID, _ selector: AudioObjectPropertySelector, initial: T) throws -> T {
-        var property = address(selector), value = initial
+    private func scalar<T>(_ id: AudioDeviceID, _ selector: AudioObjectPropertySelector, scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal, initial: T) throws -> T {
+        var property = address(selector, scope: scope), value = initial
         var size = UInt32(MemoryLayout<T>.size)
         try withUnsafeMutableBytes(of: &value) {
             try check(AudioObjectGetPropertyData(id, &property, 0, nil, &size, $0.baseAddress!))
@@ -183,4 +207,13 @@ public struct AudioDeviceCapabilities: Equatable, Sendable {
     public let canSetSampleRate: Bool
     public let canSetBufferFrames: Bool
     public let inputGain: AudioInputGain?
+}
+
+public struct AudioDeviceTiming: Sendable, Equatable {
+    public let deviceLatencyFrames: UInt32?
+    public let streamLatencyFrames: UInt32?
+    public let safetyOffsetFrames: UInt32?
+    public init(deviceLatencyFrames: UInt32? = nil, streamLatencyFrames: UInt32? = nil, safetyOffsetFrames: UInt32? = nil) {
+        self.deviceLatencyFrames = deviceLatencyFrames; self.streamLatencyFrames = streamLatencyFrames; self.safetyOffsetFrames = safetyOffsetFrames
+    }
 }

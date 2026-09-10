@@ -17,6 +17,9 @@ public struct AudioCoordinatorSnapshot: Sendable, Equatable {
     public let meters: CaptureSnapshot?
     public let isClicking: Bool
     public let isStartingClick: Bool
+    public let clock: ClockDriftSnapshot?
+    public let calibrationRoute: CalibrationRoute?
+    public let captureRequestID: UUID?
     public let transportRequestID: UUID?
     public let transport: TransportPlaybackSnapshot?
     public let routeRevision: UInt64
@@ -46,6 +49,10 @@ public actor AudioSessionCoordinator {
     private var lastFrameTime: ContinuousClock.Instant?
     private var lastFrameCount: UInt64 = 0
     private var isReading = false
+    private var clockTracker = ClockDriftTracker()
+    private var clock: ClockDriftSnapshot?
+    private var calibrationRoute: CalibrationRoute?
+    private var captureRequestID: UUID?
     private var transportRequestID: UUID?
     private var transport: TransportPlaybackSnapshot?
 
@@ -56,12 +63,12 @@ public actor AudioSessionCoordinator {
     public func snapshot() -> AudioCoordinatorSnapshot {
         AudioCoordinatorSnapshot(selection: selection, devices: devices, capabilities: capabilities, permission: permission,
             phase: phase, purpose: purpose, meters: meters, isClicking: isClicking,
-            isStartingClick: isStartingClick, transportRequestID: transportRequestID, transport: transport, routeRevision: routeRevision)
+            isStartingClick: isStartingClick, clock: clock, calibrationRoute: calibrationRoute, captureRequestID: captureRequestID, transportRequestID: transportRequestID, transport: transport, routeRevision: routeRevision)
     }
 
     public func configure(_ next: AudioRouteSelection) async {
         guard selection != next else { return }
-        selection = next; capabilities = nil; routeRevision &+= 1
+        selection = next; capabilities = nil; calibrationRoute = nil; routeRevision &+= 1
         let reason: AudioBackendError?
         if phase == .running || phase.isStarting || isClicking { reason = .routeChanged }
         else if case let .interrupted(existing) = phase { reason = existing }
@@ -89,6 +96,24 @@ public actor AudioSessionCoordinator {
                 guard ticket == refreshGeneration, selected == selection else { return }
                 capabilities = value
             } else { capabilities = nil }
+            var nextRoute: CalibrationRoute?
+            if let input = found.first(where: { $0.uid == selected.inputUID && $0.isAlive }),
+               let output = found.first(where: { $0.uid == selected.outputUID && $0.isAlive }),
+               selected.inputChannel <= input.inputChannels, selected.outputChannel <= output.outputChannels {
+                let inputTiming = await runtime.timing(device: input, channel: selected.inputChannel, input: true)
+                let outputTiming = await runtime.timing(device: output, channel: selected.outputChannel, input: false)
+                guard ticket == refreshGeneration, selected == selection else { return }
+                nextRoute = try? CalibrationRoute(
+                    input: CalibrationEndpoint(uid: input.uid, channel: selected.inputChannel, sampleRate: input.sampleRate, bufferFrames: input.bufferFrames,
+                        deviceLatencyFrames: inputTiming.deviceLatencyFrames, streamLatencyFrames: inputTiming.streamLatencyFrames, safetyOffsetFrames: inputTiming.safetyOffsetFrames),
+                    output: CalibrationEndpoint(uid: output.uid, channel: selected.outputChannel, sampleRate: output.sampleRate, bufferFrames: output.bufferFrames,
+                        deviceLatencyFrames: outputTiming.deviceLatencyFrames, streamLatencyFrames: outputTiming.streamLatencyFrames, safetyOffsetFrames: outputTiming.safetyOffsetFrames),
+                    backendVersion: "auhal-avplayer-hardware-1:" + MonophonicAnalyzer.algorithmVersion + ":" + ProcessInfo.processInfo.operatingSystemVersionString)
+            }
+            if nextRoute != calibrationRoute {
+                calibrationRoute = nextRoute; routeRevision &+= 1
+                if purpose == .practice || purpose == .calibration { await stop(reason: .routeChanged); return }
+            }
             if let activeInput, !found.contains(where: { sameStream($0, activeInput) && $0.isAlive }) {
                 await stop(reason: .routeChanged)
             } else if let activeOutput, !found.contains(where: { sameStream($0, activeOutput) && $0.isAlive }) {
@@ -104,12 +129,13 @@ public actor AudioSessionCoordinator {
         }
     }
 
-    public func start(purpose requested: AudioPurpose) async throws {
+    public func start(purpose requested: AudioPurpose, requestID: UUID = UUID()) async throws {
         guard requested != .preview else { throw AudioBackendError.invalidFormat }
         guard purpose == nil, !phase.isStarting, !isStartingClick, !isClicking || requested == .setup else { throw AudioBackendError.inUse }
         generation &+= 1
         let ticket = generation, route = selection
-        purpose = requested; phase = .requestingPermission; meters = nil
+        purpose = requested; captureRequestID = requestID; phase = .requestingPermission; meters = nil
+        clockTracker.reset(); clock = nil
         do {
             permission = await permissions.status()
             if permission == .notDetermined {
@@ -138,7 +164,7 @@ public actor AudioSessionCoordinator {
             devices = found; activeInput = device; phase = .running
             lastFrameTime = .now; lastFrameCount = 0
         } catch {
-            if ticket == generation { phase = .failed(Self.backendError(error)); purpose = nil; activeInput = nil }
+            if ticket == generation { phase = .failed(Self.backendError(error)); purpose = nil; captureRequestID = nil; activeInput = nil }
             throw Self.backendError(error)
         }
     }
@@ -154,11 +180,16 @@ public actor AudioSessionCoordinator {
         await stop()
     }
 
+    public func stopCapture(requestID: UUID) async {
+        guard captureRequestID == requestID else { return }
+        await stop()
+    }
+
     public func stop(reason: AudioBackendError? = nil) async {
         generation &+= 1; clickGeneration &+= 1
         phase = reason.map(AudioSessionPhase.interrupted) ?? .idle
-        purpose = nil; activeInput = nil; activeOutput = nil; transportRequestID = nil
-        if reason == nil { meters = nil; transport = nil }
+        purpose = nil; captureRequestID = nil; activeInput = nil; activeOutput = nil; transportRequestID = nil
+        if reason == nil { meters = nil; transport = nil; clock = nil; clockTracker.reset() }
         isClicking = false; isStartingClick = false; lastFrameTime = nil; lastFrameCount = 0
         let runtime = runtime
         let operation = enqueue { await runtime.stopInput(); await runtime.stopClick(); await runtime.stopTransport() }
@@ -197,13 +228,17 @@ public actor AudioSessionCoordinator {
                 }
             }
         }
+        if ticket == generation, phase == .running {
+            clock = clockTracker.consume(input: meters, output: transport, now: now)
+        }
     }
 
     /// Preview is output-only and requires no microphone permission. Practice keeps its existing capture owner.
     public func startTransport(_ request: TransportRequest) async throws {
         let preview = request.mode == .preview
+        let captureOwner: AudioPurpose = request.mode == .calibration ? .calibration : .practice
         guard !isClicking, !isStartingClick, activeOutput == nil,
-              preview ? (purpose == nil && !phase.isStarting) : (purpose == .practice && phase == .running) else {
+              preview ? (purpose == nil && !phase.isStarting) : (purpose == captureOwner && phase == .running) else {
             throw AudioBackendError.inUse
         }
         if preview { generation &+= 1; purpose = .preview; phase = .starting; meters = nil }

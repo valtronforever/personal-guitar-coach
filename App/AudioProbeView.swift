@@ -5,6 +5,8 @@ import Audio
 struct AudioProbeView: View {
     @Environment(AudioSessionStore.self) private var model
     @Environment(\.dismiss) private var dismiss
+    @Environment(AppSettings.self) private var settings
+    @State private var showsCalibration = false
     @State private var gainDraft = 0.0
     @State private var editingGain = false
     private var previewActive: Bool { model.state?.purpose == .preview }
@@ -55,6 +57,7 @@ struct AudioProbeView: View {
                             } else { Text("audio.hardwareGain").foregroundStyle(.secondary) }
                         }
                     }
+                    Button("calibration.title") { showsCalibration = true }
                     Text("audio.routeGuidance").font(.callout)
                     Text("audio.monitoringOff").font(.caption).foregroundStyle(.secondary)
                 }
@@ -105,6 +108,7 @@ struct AudioProbeView: View {
         }
         .padding(20).frame(width: 680, height: 650)
         .task { model.activate(); await model.load(); await model.refresh() }
+        .sheet(isPresented: $showsCalibration) { CalibrationView().environment(\.locale, settings.locale) }
         .onDisappear { Task { await model.dismissSetup() } }
         .onChange(of: model.state?.capabilities?.inputGain?.value, initial: true) { _, value in
             if !editingGain { gainDraft = Double(value ?? 0) }

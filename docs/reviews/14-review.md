@@ -19,4 +19,4 @@ Implementing-agent review, not independent. 2026-09-10.
 
 Explicit silent backend test: MacBook Pro Speakers / BuiltInSpeakerDevice, 44100 Hz, 512 frames, output channel1, both volumes zero. One test passed in 0.674 s; rendered16433 frames and reported presentation estimate0.001474 s with valid host anchor. This verifies actual AVAudioPlayerNode progression/completion/cleanup, not audible output or calibrated latency. No input capture or permission request.
 
-UI tests are source-checked only (U07). Physical click/example audibility, 15-minute output measurement, USB routing and input leakage remain U09. Normal language/appearance preferences were not changed: temporary process launch arguments were used for Ukrainian/light inspection. CI must pass before merge; its result will be recorded after the PR run completes.
+UI tests are source-checked only (U07). Physical click/example audibility, 15-minute output measurement, USB routing and input leakage remain U09. Normal language/appearance preferences were not changed: temporary process launch arguments were used for Ukrainian/light inspection. PR #36 passed CI run 34417186427 (4m2s) and merged as 05d4b47.
