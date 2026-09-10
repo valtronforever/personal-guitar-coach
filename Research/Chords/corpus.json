@@ -1,0 +1,143 @@
+{
+  "doi": "10.5281/zenodo.3371780",
+  "license": "CC-BY-4.0",
+  "mirror": "https://huggingface.co/datasets/jhartquist/guitarset",
+  "mirrorRevision": "4aca25487bef5cb0d2c4ec146218f9145402a776",
+  "schemaVersion": 1,
+  "source": "GuitarSet 1.1.0 acoustic pickup mix",
+  "sourceAnnotationCaveat": "Mirror-derived note labels; no independent human re-annotation. Upstream known-error tracks excluded.",
+  "tracks": [
+    {
+      "annotationSHA256": "194f0cc4a7b906a57c49b129f484612f0a12a176d7338580a339ddbaf137353e",
+      "durationSeconds": 22.32439909297052,
+      "file": "00_BN1-129-Eb_comp.wav",
+      "id": "00_BN1-129-Eb_comp",
+      "noteAnnotations": 133,
+      "player": 0,
+      "row": 0,
+      "sha256": "af65c163510d746071bd346a99aac5afdff70ac5c65179518a7eaac0718084e8",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "5ca020ba4fe0d07c5c1a454e3f655ee1abd09f5550f0705d44a5c463a16aed4c",
+      "durationSeconds": 27.041609977324264,
+      "file": "00_Rock2-142-D_comp.wav",
+      "id": "00_Rock2-142-D_comp",
+      "noteAnnotations": 547,
+      "player": 0,
+      "row": 40,
+      "sha256": "db79cdf6f274ff9461cb6e7ab85ca095630d822ca63693c8cee9bb7878680f79",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "19f8f8b164ecd0712f48cab32909e4c838b64bb2a306d369dbc205f117609972",
+      "durationSeconds": 22.32439909297052,
+      "file": "01_BN1-129-Eb_comp.wav",
+      "id": "01_BN1-129-Eb_comp",
+      "noteAnnotations": 105,
+      "player": 1,
+      "row": 60,
+      "sha256": "6178feba92ac63cfebb4220b3642ff6f894596e22926cf2e57ca77d3ad2bf513",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "a49fd12d0741f25a92ded03f0797083f8fc31dfe8f2fd751af90e8d097a95381",
+      "durationSeconds": 27.041609977324264,
+      "file": "01_Rock2-142-D_comp.wav",
+      "id": "01_Rock2-142-D_comp",
+      "noteAnnotations": 295,
+      "player": 1,
+      "row": 100,
+      "sha256": "3b9d5bb3a031dda9b005a012a00a8fda6ce88d99cdfed621aa388e9d25130e90",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "874e80e9b526b98c32fcd5cef1338aa2292e1a4ee2811bb6908b8e35e1340604",
+      "durationSeconds": 22.32439909297052,
+      "file": "02_BN1-129-Eb_comp.wav",
+      "id": "02_BN1-129-Eb_comp",
+      "noteAnnotations": 154,
+      "player": 2,
+      "row": 120,
+      "sha256": "d2ff7979a97b93c760524efd6fc143369dd9af8a1073ed9babca1ce62737de25",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "a4645978c3782189df1a8a62fb85d5a3f19a800afc09da41cea3c16352855cfa",
+      "durationSeconds": 27.041609977324264,
+      "file": "02_Rock2-142-D_comp.wav",
+      "id": "02_Rock2-142-D_comp",
+      "noteAnnotations": 232,
+      "player": 2,
+      "row": 160,
+      "sha256": "c2a1d02a5a03dce722475ae1be0a3084fb84ddf8d6e109ac38700af1ba3ca590",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "554dba141fb2dbbadf5f83b25b93adf0f07b14b80c2af386236ffd414239cedc",
+      "durationSeconds": 22.32439909297052,
+      "file": "03_BN1-129-Eb_comp.wav",
+      "id": "03_BN1-129-Eb_comp",
+      "noteAnnotations": 157,
+      "player": 3,
+      "row": 180,
+      "sha256": "4557237f0a13546fa1d699d7ef38c8ca83e52327bac531e53ba072f1d26d52e3",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "d3d5b7fee5cda542b3548457da83221f1828d769b0c166ed15f7c4aea00b6032",
+      "durationSeconds": 27.041609977324264,
+      "file": "03_Rock2-142-D_comp.wav",
+      "id": "03_Rock2-142-D_comp",
+      "noteAnnotations": 259,
+      "player": 3,
+      "row": 220,
+      "sha256": "527170b4e792df52f2add645c49cae8583d5c39e0724f131edfab6fb125a0dce",
+      "split": "development"
+    },
+    {
+      "annotationSHA256": "0859fdc1c05c96b26ce46888ec8583a4cb98a8b5c2b70aa426022d739e78f722",
+      "durationSeconds": 22.32439909297052,
+      "file": "04_BN1-129-Eb_comp.wav",
+      "id": "04_BN1-129-Eb_comp",
+      "noteAnnotations": 127,
+      "player": 4,
+      "row": 240,
+      "sha256": "92c4ecd02a43db9c8fa51ce83bd9b2a6c7d196a3e7d80f835513370ffcd7e6f8",
+      "split": "heldout"
+    },
+    {
+      "annotationSHA256": "d507a25cf3bf90f0478a9a4e0ad839b22eeffbfd597e0c25dcccd0e9209b8314",
+      "durationSeconds": 27.041609977324264,
+      "file": "04_Rock2-142-D_comp.wav",
+      "id": "04_Rock2-142-D_comp",
+      "noteAnnotations": 353,
+      "player": 4,
+      "row": 280,
+      "sha256": "974d9de547156e093f72f197f17a4dd50d8bbc1f3c69601978ee30697e9dd325",
+      "split": "heldout"
+    },
+    {
+      "annotationSHA256": "34968bacce5f28bc34b70a8c5df4231722f7bdfa5038f15c50dd16cc6f65c0ab",
+      "durationSeconds": 22.32439909297052,
+      "file": "05_BN1-129-Eb_comp.wav",
+      "id": "05_BN1-129-Eb_comp",
+      "noteAnnotations": 148,
+      "player": 5,
+      "row": 300,
+      "sha256": "284c311b40dc5496c86716d015362743de6aa36e4216005c8915f02130bd7a07",
+      "split": "heldout"
+    },
+    {
+      "annotationSHA256": "9ffb3b5ab76d2e3b70dc4dfcfd8455c3d4697cc399901e42e735650a5ea12036",
+      "durationSeconds": 27.041609977324264,
+      "file": "05_Rock2-142-D_comp.wav",
+      "id": "05_Rock2-142-D_comp",
+      "noteAnnotations": 460,
+      "player": 5,
+      "row": 340,
+      "sha256": "7e47853c7694da925e2ec639df096edd75c48514810609911685ce61faddfd9a",
+      "split": "heldout"
+    }
+  ]
+}

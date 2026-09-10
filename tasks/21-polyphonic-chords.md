@@ -2,7 +2,7 @@
 
 GitHub: [#21](https://github.com/valtronforever/personal-guitar-coach/issues/21)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: Після MVP
 Залежності: 20
 
@@ -33,4 +33,9 @@ Negative/ambiguous examples, різні voicings, unseen guitar recordings і п
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+Дослідження реалізовано: [звіт](../docs/research/21-chords.md), [ADR 006 / no-go](../docs/decisions/006-polyphonic-feasibility.md), [відтворення й corpus](../Research/Chords/README.md), [локальний review](../docs/reviews/21-review.md), [подальший backlog](follow-up/chord-assessment.md).
+
+- 12 реальних акустичних pickup-записів GuitarSet, 6 виконавців, 296.196 s; player-held-out split, чистий і явно штучно перевантажений сигнал. Закріплено revision, hashes, ліцензію й обмеження анотацій.
+- Chroma, harmonic NNLS та реальний production monophonic baseline перевірено окремими offline CLI; 74 синтетичні controls і 5 contract tests.
+- Held-out polyphonic exact-set accuracy 22.4% / 20.4%; identity/unknown/coverage та strum precision/recall не проходять frozen gates. Рішення: не додавати chord hints або score до UI. No-go не означає неможливість майбутнього розпізнавання.
+- `pending_user`: U06 — незалежні анотації та справжні clean/distorted electric DI/мікрофон/п'єзо записи; native streaming latency/CPU не виміряні. Усі software результати відтворювані; ці фізичні gates перенесено на фінальний крок за вказівкою користувача.

@@ -39,7 +39,7 @@
 | 18 | [Результати, рекомендації й прогрес](18-feedback-progress.md) | 05, 10, 17 | MVP | `pending_user` | [#18](https://github.com/valtronforever/personal-guitar-coach/issues/18) |
 | 19 | [Початковий двомовний курс](19-starter-course.md) | 07, 10, 18 | MVP | `pending_user` | [#19](https://github.com/valtronforever/personal-guitar-coach/issues/19) |
 | 20 | [Перевірка MVP та локальна release-збірка](20-mvp-validation-release.md) | 01–19 | MVP | `pending_user` | [#20](https://github.com/valtronforever/personal-guitar-coach/issues/20) |
-| 21 | [Дослідження оцінювання акордів](21-polyphonic-chords.md) | 20 | Після MVP | `todo` | [#21](https://github.com/valtronforever/personal-guitar-coach/issues/21) |
+| 21 | [Дослідження оцінювання акордів](21-polyphonic-chords.md) | 20 | Після MVP | `pending_user` | [#21](https://github.com/valtronforever/personal-guitar-coach/issues/21) |
 | 22 | [Нотний стан і розширена нотація](22-staff-advanced-notation.md) | 20 | Після MVP | `todo` | [#22](https://github.com/valtronforever/personal-guitar-coach/issues/22) |
 
 ## Контрольні результати
