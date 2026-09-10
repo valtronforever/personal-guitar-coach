@@ -120,12 +120,13 @@ final class AudioSessionStore {
         await publish()
     }
 
-    func start(purpose: AudioPurpose = .setup) async {
+    func start(purpose: AudioPurpose = .setup, requestID: UUID = UUID()) async {
         error = nil
-        do { try await coordinator.start(purpose: purpose) }
+        do { try await coordinator.start(purpose: purpose, requestID: requestID) }
         catch { if let value = error as? AudioBackendError, value != .cancelled { self.error = value } }
         await publish()
     }
+    func stopCapture(id: UUID) async { await coordinator.stopCapture(requestID: id); await publish() }
     func stop() async { await coordinator.stop(); error = nil; await publish() }
     func stop(purpose: AudioPurpose) async { await coordinator.stopActivity(purpose); await publish() }
     func startTransport(_ request: TransportRequest) async {

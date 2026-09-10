@@ -2,7 +2,7 @@
 
 GitHub: [#15](https://github.com/valtronforever/personal-guitar-coach/issues/15)
 
-Статус: `todo`
+Статус: `pending_user`
 Етап: MVP
 Залежності: 11, 12, 14
 
@@ -34,4 +34,10 @@ Synthetic delay injection, buffer/rate/device change, missing loopback, manual o
 
 ## Докази виконання
 
-Заповнюється під час реалізації: змінені компоненти, фактичні команди/перевірки та результати, hardware evidence за потреби, відкриті обмеження. Наразі реалізацію не розпочато.
+- Реалізовано валідовані Domain profiles/routes/evidence, атомарне сховище version 1, selected-stream hardware metadata, normalization та rhythm gate. [ADR 003](../docs/decisions/003-calibration-time.md) фіксує timestamp semantics, формулу, припущення та процедуру hardware перевірки.
+- Loopback має короткий (~26 с) і довгий (~15 хв) режими, irregular pulses, зіставлення onset events, bounded history, confidence/clock checks, скасування через UUID lease. Невдалий або перерваний run не зберігає часткового профілю.
+- Нативний екран en/uk: параметри маршруту, estimated/manual/measured статус, offset/uncertainty, інструкції кабелю й обмеження rhythm. Тюнер/pitch не потребують measured profile; застосування gate до результатів — задачі 16/17.
+- `swift test --package-path Packages/GuitarCoachCore`: 97 автоматичних тестів пройшли; 1 opt-in hardware test пропущено (98 у звіті). Синтетичний PCM через actual renderer/analyzer: усі 12 імпульсів, offsets ±50 ms при 44.1/48 kHz, error ≤20 ms і residual p95 ≤20 ms; +50-ms варіанти також містять слабку фонову синусоїду. Це не hardware evidence.
+- `swift test`: 38 App tests пройшли, включно зі збереженням completed synthetic measurement, route-change interruption, failed writes і restore.
+- Генерація Xcode project, 338 en/uk keys, UI-test source type-check, Debug/Release local .app/ad-hoc signing. Нативно оглянуто English dark та Ukrainian light, scrolling/manual controls і disabled missing-route state. Реальний input не запускався.
+- [Локальний review](../docs/reviews/15-review.md). U03/U08/U09: USB round trip, actual residual p95, long-run drift та normal microphone permission залишаються до фінальної користувацької сесії. U07: actual UI-test execution. Issue залишається відкритим / Project In review після merge.

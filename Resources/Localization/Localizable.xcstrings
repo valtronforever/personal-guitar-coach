@@ -5213,6 +5213,584 @@
           }
         }
       }
+    },
+    "calibration.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Latency calibration"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Калібрування затримки"
+          }
+        }
+      }
+    },
+    "calibration.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Align recorded attacks with the metronome. Tuning and pitch practice remain available without measured calibration."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Узгодьте записані атаки з метрономом. Тюнер і практика висоти доступні без виміряного калібрування."
+          }
+        }
+      }
+    },
+    "calibration.hardwareExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hardware latency includes the device and selected stream. Buffer and safety values identify the route; they are not subtracted a second time."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Апаратна затримка включає пристрій та вибраний потік. Буфер і запас кадрів визначають маршрут; їх не віднімаємо вдруге."
+          }
+        }
+      }
+    },
+    "calibration.separateDevices": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Separate devices have separate clocks. Rhythm scoring needs fresh clock evidence and a calibration run at least as long as the attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Різні пристрої мають окремі годинники. Для оцінки ритму потрібні актуальні дані годинників і калібрування тривалістю не меншою за спробу."
+          }
+        }
+      }
+    },
+    "calibration.chooseRoute": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an available input and output in Audio Setup first."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спочатку виберіть доступні вхід і вихід у налаштуваннях аудіо."
+          }
+        }
+      }
+    },
+    "calibration.profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current route profile"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Профіль поточного маршруту"
+          }
+        }
+      }
+    },
+    "calibration.method.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No saved calibration"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Немає збереженого калібрування"
+          }
+        }
+      }
+    },
+    "calibration.method.estimated": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated — unverified"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінене — не перевірено"
+          }
+        }
+      }
+    },
+    "calibration.method.manual": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual — unverified"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ручне — не перевірено"
+          }
+        }
+      }
+    },
+    "calibration.method.measured": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured with loopback"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряне через loopback"
+          }
+        }
+      }
+    },
+    "calibration.offset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Residual offset (ms)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Залишкове зміщення (мс)"
+          }
+        }
+      }
+    },
+    "calibration.uncertainty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uncertainty allowance (ms)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Допуск невизначеності (мс)"
+          }
+        }
+      }
+    },
+    "calibration.pulses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matched pulses"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіставлені імпульси"
+          }
+        }
+      }
+    },
+    "calibration.duration": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured duration (seconds)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тривалість вимірювання (секунди)"
+          }
+        }
+      }
+    },
+    "calibration.measuredGate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rhythm eligibility is checked for each attempt: calibration uncertainty, onset detection and clock drift together must fit within half the timing tolerance."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступність оцінки ритму перевіряємо для кожної спроби: сума невизначеності калібрування, детектора атак і дрейфу годинників має вкладатися в половину ритмічного допуску."
+          }
+        }
+      }
+    },
+    "calibration.pitchOnly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch practice is available. Rhythm and overall scores remain unavailable until timing is verified."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Практика висоти доступна. Оцінки ритму та загальна оцінка недоступні до перевірки часу."
+          }
+        }
+      }
+    },
+    "calibration.forget": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forget this profile"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видалити цей профіль"
+          }
+        }
+      }
+    },
+    "calibration.loopback": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measure with a cable"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряти через кабель"
+          }
+        }
+      }
+    },
+    "calibration.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect a line output to a compatible line input using the appropriate cable. Disconnect the guitar, turn direct monitoring off and start with low output and input gain. The app sends quiet pulses; it does not monitor the input to the output. Avoid clipping. Reconnect the guitar after measurement."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "З’єднайте лінійний вихід із сумісним лінійним входом відповідним кабелем. Від’єднайте гітару, вимкніть direct monitoring і почніть із малої гучності виходу та підсилення входу. Додаток надсилає тихі імпульси й не передає вхід на вихід. Уникайте перевантаження. Після вимірювання під’єднайте гітару знову."
+          }
+        }
+      }
+    },
+    "calibration.cableReady": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cable connected; direct monitoring off; levels low"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кабель під’єднано; direct monitoring вимкнено; рівні низькі"
+          }
+        }
+      }
+    },
+    "calibration.longRun": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Long measurement (about 15 minutes)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Довге вимірювання (приблизно 15 хвилин)"
+          }
+        }
+      }
+    },
+    "calibration.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start loopback measurement"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати вимірювання loopback"
+          }
+        }
+      }
+    },
+    "calibration.measuring": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measuring…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вимірюємо…"
+          }
+        }
+      }
+    },
+    "calibration.manual": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without a loopback cable"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без кабелю loopback"
+          }
+        }
+      }
+    },
+    "calibration.manualExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter −1000 to +1000 ms. A positive value compensates for recorded attacks arriving late. Manual offsets and hardware estimates are not measured evidence and do not enable rhythm scores."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введіть від −1000 до +1000 мс. Додатне значення компенсує запізнення записаних атак. Ручне зміщення й апаратна оцінка не є виміряними доказами та не відкривають оцінку ритму."
+          }
+        }
+      }
+    },
+    "calibration.saveManual": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save manual offset"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зберегти ручне зміщення"
+          }
+        }
+      }
+    },
+    "calibration.saveEstimated": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use hardware estimate"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Використати апаратну оцінку"
+          }
+        }
+      }
+    },
+    "calibration.saved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured profile saved for this route."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряний профіль збережено для цього маршруту."
+          }
+        }
+      }
+    },
+    "calibration.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measurement could not be verified. Check the cable, levels and route, then try again. No partial profile was saved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося перевірити вимірювання. Перевірте кабель, рівні й маршрут та повторіть. Частковий профіль не збережено."
+          }
+        }
+      }
+    },
+    "calibration.storageLoad": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calibration profiles could not be read. Existing data has been preserved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося прочитати профілі калібрування. Наявні дані збережено."
+          }
+        }
+      }
+    },
+    "calibration.storageSave": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The calibration change could not be saved. Existing data has been preserved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося зберегти зміну калібрування. Наявні дані збережено."
+          }
+        }
+      }
+    },
+    "calibration.endpoint %lld %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Channel %1$lld · %2$lld Hz · %3$lld buffer frames"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Канал %1$lld · %2$lld Гц · %3$lld кадрів буфера"
+          }
+        }
+      }
+    },
+    "calibration.hardware": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hardware (ms)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Апаратна затримка (мс)"
+          }
+        }
+      }
+    },
+    "calibration.safety": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safety (frames)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запас (кадри)"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

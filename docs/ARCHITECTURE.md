@@ -187,3 +187,7 @@ Capture приймає 44.1/48 kHz і до 8192 frames per slice. C packets не
 Coordinator резервує preview як output-only purpose, без microphone permission. Оцінюваний output потребує вже активного practice owner. Stop/pause/seek відкидають scheduled buffers; новий запуск має UUID й новий epoch. Stale view може зупинити тільки свій requestID. PreviewModel спрямовує ту саму позицію до tab cursor та canonical event на грифі; ручний вибір кроку зберігається окремо. Налаштування змінюються після pause/stop, resume створює новий count-in.
 
 `renderAnchorHostSeconds` походить з `lastRenderTime` і `playerTime(forNodeTime:)`; окремо повертаються scheduled start та presentation latency. Це render-time evidence, не виміряне end-to-end калібрування. Задача 15 визначає єдину компенсацію й drift gate. Семантика player timeline та очищення queue звірена з [Apple AVAudioPlayerNode documentation](https://developer.apple.com/documentation/avfaudio/avaudioplayernode).
+
+## Калібрування (задача 15)
+
+`CalibrationRoute` і `CalibrationProfile` у Domain визначають host normalization та умови rhythm capability. Audio читає selected-stream metadata, контролює drift і виконує irregular-pulse loopback; Persistence атомарно зберігає профілі; спільний `CalibrationStore` та `CalibrationModel` керують нативним екраном. Capture UUID lease захищає асинхронний start/stop. Деталі та невиміряні hardware припущення — [ADR 003](decisions/003-calibration-time.md).

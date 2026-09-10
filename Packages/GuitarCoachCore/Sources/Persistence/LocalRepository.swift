@@ -18,6 +18,12 @@ public protocol AudioSettingsRepository: Sendable {
     func saveAudioSelection(_ value: AudioRouteSelection) async throws
 }
 
+public protocol CalibrationRepository: Sendable {
+    func loadCalibrationProfiles() async throws -> [CalibrationProfile]
+    func saveCalibration(_ profile: CalibrationProfile, replacing expectedID: UUID?) async throws
+    func removeCalibration(id: UUID) async throws
+}
+
 public struct AtomicDocumentWriter: Sendable {
     let write: @Sendable (Data, URL) throws -> Void
     public init(write: @escaping @Sendable (Data, URL) throws -> Void = { try $0.write(to: $1, options: .atomic) }) {
@@ -26,7 +32,7 @@ public struct AtomicDocumentWriter: Sendable {
 }
 
 /// One actor serializes each app's disk mutations. Individual attempt files are authoritative.
-public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingRepository, AudioSettingsRepository {
+public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingRepository, AudioSettingsRepository, CalibrationRepository {
     public let root: URL
     private let writer: AtomicDocumentWriter
     private let manager = FileManager.default
@@ -34,6 +40,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
     private var preferencesURL: URL { root.appendingPathComponent("instrument.json") }
     private var indexURL: URL { root.appendingPathComponent("history-index.json") }
     private var readingURL: URL { root.appendingPathComponent("reading-progress.json") }
+    private var calibrationURL: URL { root.appendingPathComponent("calibration-profiles.json") }
     private var audioURL: URL { root.appendingPathComponent("audio-selection.json") }
 
     public init(root: URL, writer: AtomicDocumentWriter = AtomicDocumentWriter()) {
@@ -44,6 +51,44 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         let library = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
                                                  appropriateFor: nil, create: false)
         return LocalRepository(root: library.appendingPathComponent("PersonalGuitarCoach", isDirectory: true))
+    }
+
+    public func loadCalibrationProfiles() throws -> [CalibrationProfile] {
+        do {
+            let data = try Data(contentsOf: calibrationURL)
+            let version = try JSONDecoder().decode(VersionHeader.self, from: data).schemaVersion
+            guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+            let profiles = try JSONDecoder().decode(DocumentEnvelope<[CalibrationProfile]>.self, from: data).payload
+            try validateCalibrationProfiles(profiles)
+            return profiles
+        } catch let error as CocoaError where error.code == .fileReadNoSuchFile || error.code == .fileNoSuchFile { return [] }
+    }
+    public func saveCalibration(_ profile: CalibrationProfile, replacing expectedID: UUID?) throws {
+        var profiles = try loadCalibrationProfiles()
+        if let index = profiles.firstIndex(where: { $0.route == profile.route }) {
+            let old = profiles[index]
+            guard old.id == expectedID else { throw StorageError.identifierConflict }
+            if old.id == profile.id {
+                guard old == profile || (old.revision < Int.max && profile.revision == old.revision + 1) else { throw StorageError.identifierConflict }
+            } else if profile.revision != 1 { throw StorageError.identifierConflict }
+            profiles[index] = profile
+        } else {
+            guard expectedID == nil, profile.revision == 1 else { throw StorageError.identifierConflict }
+            profiles.append(profile)
+        }
+        try validateCalibrationProfiles(profiles)
+        try prepare()
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: profiles)), calibrationURL)
+    }
+    public func removeCalibration(id: UUID) throws {
+        let profiles = try loadCalibrationProfiles(), remaining = profiles.filter { $0.id != id }
+        guard profiles.count != remaining.count else { return }
+        try prepare()
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: remaining)), calibrationURL)
+    }
+    private func validateCalibrationProfiles(_ profiles: [CalibrationProfile]) throws {
+        guard profiles.count <= 128, Set(profiles.map(\.id)).count == profiles.count,
+              Set(profiles.map(\.route)).count == profiles.count else { throw StorageError.invalidRecord }
     }
 
     public func loadAudioSelection() throws -> AudioRouteSelection {

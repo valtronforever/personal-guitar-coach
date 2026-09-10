@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public enum TransportMode: String, Sendable { case preview, practice }
+public enum TransportMode: String, Sendable { case preview, practice, calibration }
 
 /// Immutable segment. A seek, pause/resume or tempo change creates another segment and epoch.
 public struct TransportRequest: Sendable, Equatable {
@@ -99,7 +99,7 @@ public struct TransportPlan: Sendable {
               startFrame <= Int64(sampleRate * 86400) - Int64(count) else { throw MusicError.invalidTime }
         var output = [Float](repeating: 0, count: count)
         let end = startFrame + Int64(count)
-        if request.clickEnabled && startFrame < practiceStartFrame {
+        if request.clickEnabled && request.mode != .calibration && startFrame < practiceStartFrame {
             let first = max(0, Int64(floor(ticks(at: startFrame) / 960)) - 1)
             let last = min(countInTicks / 960, Int64(ceil(ticks(at: end) / 960)) + 1)
             if first < last { for beat in first..<last {
@@ -115,6 +115,14 @@ public struct TransportPlan: Sendable {
             let epoch = countInTicks + (loop == 0 ? 0 : firstTicks + (loop - 1) * cycleTicks)
             let segmentEnd = epoch + request.range.upperBound - sourceStart
             if frame(at: epoch) >= end || frame(at: segmentEnd) <= startFrame { continue }
+            if request.mode == .calibration {
+                if request.clickEnabled {
+                    for item in events where item.event.kind == .note && item.event.startTick >= sourceStart && item.event.startTick < request.range.upperBound {
+                        addClick(at: frame(at: epoch + item.event.startTick - sourceStart), accented: false, stop: frame(at: segmentEnd), start: startFrame, output: &output)
+                    }
+                }
+                continue
+            }
             if request.clickEnabled {
                 let sourceLow = sourceStart + max(0, Int64(floor(ticks(at: startFrame))) - epoch - 960)
                 let sourceHigh = min(request.range.upperBound, sourceStart + Int64(ceil(ticks(at: end))) - epoch + 960)

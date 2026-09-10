@@ -14,16 +14,18 @@ public struct CaptureSnapshot: Sendable, Equatable {
     public let sampleTimeValid: Bool
     public let invalidSamples: UInt64
     public let discontinuities: UInt64
+    /// The host/sample timestamps label the first frame of this last packet, not totalFrames.
+    public let lastPacketFrames: UInt32
     public let analysis: AudioAnalysisSnapshot?
     public init(totalFrames: UInt64, totalPackets: UInt64, droppedPackets: UInt64, peak: Float, rms: Float,
                 sampleRate: Double, lastHostTime: UInt64, hostTimeValid: Bool, lastSampleTime: Double = 0,
                 sampleTimeValid: Bool = false, invalidSamples: UInt64 = 0, discontinuities: UInt64 = 0,
-                analysis: AudioAnalysisSnapshot? = nil) {
+                analysis: AudioAnalysisSnapshot? = nil, lastPacketFrames: UInt32 = 0) {
         self.totalFrames = totalFrames; self.totalPackets = totalPackets; self.droppedPackets = droppedPackets
         self.peak = peak; self.rms = rms; self.sampleRate = sampleRate; self.lastHostTime = lastHostTime
         self.hostTimeValid = hostTimeValid; self.lastSampleTime = lastSampleTime; self.sampleTimeValid = sampleTimeValid
         self.invalidSamples = invalidSamples; self.discontinuities = discontinuities
-        self.analysis = analysis
+        self.analysis = analysis; self.lastPacketFrames = lastPacketFrames
     }
 }
 
@@ -116,7 +118,7 @@ actor PCMReader {
             rms: count > 0 ? Float((squares / Double(count)).squareRoot()) : 0,
             sampleRate: last.sample_rate, lastHostTime: last.host_time, hostTimeValid: last.host_time_valid,
             lastSampleTime: last.sample_time, sampleTimeValid: last.sample_time_valid,
-            invalidSamples: invalidSamples, discontinuities: discontinuities, analysis: analyzer.snapshot())
+            invalidSamples: invalidSamples, discontinuities: discontinuities, analysis: analyzer.snapshot(), lastPacketFrames: last.frame_count)
     }
 }
 
