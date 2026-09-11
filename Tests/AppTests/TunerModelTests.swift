@@ -51,6 +51,25 @@ import Domain
         #expect(model.reading.frequency == nil && !model.isStale)
     }
 
+    @Test(arguments: [44100.0, 48000.0]) func cStandardOpenStringsReachManualAndAutomaticTunerThroughPCM(sampleRate: Double) throws {
+        for string in TuningProfile.cStandard.strings {
+            for mode in [TunerMode.automatic, .manual(string: string.number)] {
+                let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
+                let model = TunerModel(); model.configure(tuning: .cStandard, mode: mode)
+                let frequency = try string.openPitch.frequency(), now = ContinuousClock.now
+                let frames = Int(sampleRate / 20)
+                for block in 0..<24 {
+                    let pcm = (0..<frames).map { Float(0.2 * sin(2 * .pi * frequency * Double(block * frames + $0) / sampleRate)) }
+                    pcm.withUnsafeBufferPointer { analyzer.process($0) }
+                    model.consume(analyzer.snapshot(), now: now)
+                }
+                // G3 and C4 can also be harmonics of low C2; automatic mode must ask for a string.
+                let feedback: TunerFeedback = mode == .automatic && string.number <= 2 ? .chooseString : .inTune
+                #expect(model.reading.feedback == feedback)
+                #expect(model.reading.detectedPitch == string.openPitch && model.reading.targetString == string.number)
+            }
+        }
+    }
     @Test func realAnalyzerSineThenSilenceFeedsTheSameDisplayModel() throws {
         let analyzer = try MonophonicAnalyzer(sampleRate: 48000)
         let model = TunerModel(); model.configure(tuning: .standard, mode: .manual(string: 5))

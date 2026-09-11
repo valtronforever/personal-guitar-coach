@@ -236,7 +236,7 @@ struct TablatureView: View {
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)") }
         let notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
-                   Int64(position.string), Int64(position.fret), pitch.name())
+                   Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         return Text("tab.noteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)")
     }

@@ -4,6 +4,20 @@ import Testing
 
 @Suite("Musical domain invariants")
 struct MusicDomainTests {
+    @Test func cStandardUsesSoundingPitchesAcrossEveryStringAndFret() throws {
+        #expect(TuningProfile.cStandard.strings.map { $0.openPitch.midi } == [60, 55, 51, 46, 41, 36])
+        #expect(TuningProfile.presets.map(\.id) == ["standard", "drop-d", "d-standard", "c-standard"])
+        #expect(TuningProfile.cStandard.strings.reversed().map { $0.openPitch.name(spelling: TuningProfile.cStandard.preferredSpelling) } == ["C2", "F2", "B♭2", "E♭3", "G3", "C4"])
+        for string in 1...6 {
+            for fret in 0...24 {
+                let position = try FretPosition(string: string, fret: fret)
+                #expect(try TuningProfile.cStandard.pitch(at: position).midi == TuningProfile.standard.pitch(at: position).midi - 4)
+            }
+        }
+        #expect(try abs(TuningProfile.cStandard.frequency(at: FretPosition(string: 6, fret: 0)) - 65.4063913251) < 0.000001)
+        let equivalent = try TuningProfile(id: "custom-c", name: "Custom C", strings: TuningProfile.cStandard.strings, referenceA4: 442)
+        #expect(equivalent.preferredSpelling == .flats)
+    }
     @Test(arguments: [0, 24, 36, 38, 40, 45, 50, 55, 59, 60, 64, 69, 88, 103, 127])
     func pitchFrequencyRoundTrip(midi: Int) throws {
         let pitch = try Pitch(midi: midi)

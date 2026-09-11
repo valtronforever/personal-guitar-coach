@@ -111,7 +111,7 @@ struct PracticeEntryView: View {
             }
             HStack {
                 TuningName(profile: tuning)
-                Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name() }.joined(separator: " · "))
+                Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
             }
             Text("practice.stringOrder").font(.caption).foregroundStyle(.secondary)
             Toggle("practice.tunedConfirmation", isOn: Binding(get: { model.physicallyTuned }, set: { model.physicallyTuned = $0 }))
@@ -163,7 +163,7 @@ struct PracticeEntryView: View {
                 HStack {
                     Text("practice.observed")
                     if let frequency = model.latestFrequency, let pitch = detectedPitch {
-                        Text(verbatim: pitch.name()).font(.headline)
+                        Text(verbatim: pitch.name(spelling: tuning.preferredSpelling)).font(.headline)
                         Text(frequency, format: .number.precision(.fractionLength(1)))
                         Text("practice.hz")
                     } else { Text("practice.noStablePitch").foregroundStyle(.secondary) }

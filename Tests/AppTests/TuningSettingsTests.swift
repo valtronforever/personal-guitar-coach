@@ -5,6 +5,18 @@ import Persistence
 @testable import PersonalGuitarCoach
 
 @MainActor struct TuningSettingsTests {
+    @Test func cStandardPersistsAcrossRelaunchWithoutReplacingExistingProfiles() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let store = LocalDataStore(repository: LocalRepository(root: root)); await store.reload()
+        #expect(store.preferences.instrument.tuning == .standard)
+        await store.selectTuning(id: "c-standard")
+        let restored = LocalDataStore(repository: LocalRepository(root: root)); await restored.reload()
+        #expect(restored.preferences.instrument.tuning == .cStandard)
+        #expect(restored.preferences.availableTunings.contains(.cStandard))
+        #expect(throws: StorageError.invalidRecord) { try restored.preferences.savingCustomTuning(.cStandard, expectedRevision: nil) }
+        #expect(try restored.preferences.restoringPitches(from: .cStandard).instrument.tuning == .cStandard)
+    }
     @Test func customEditorValidatesNamesNotesAndReference() throws {
         let editor = TuningEditorModel(tuning: .standard, editingExisting: false)
         #expect(editor.validationKey == "tuning.error.name")
@@ -71,10 +83,10 @@ import Persistence
         let defaults = try #require(UserDefaults(suiteName: suite))
         defer { try? FileManager.default.removeItem(at: root); defaults.removePersistentDomain(forName: suite) }
         let store = LocalDataStore(repository: LocalRepository(root: root)); await store.reload()
-        await store.selectTuning(id: TuningProfile.dropD.id)
+        await store.selectTuning(id: TuningProfile.cStandard.id)
         let settings = AppSettings(defaults: defaults)
         settings.language = .ukrainian
-        #expect(store.preferences.instrument.tuning.id == "drop-d")
-        #expect(store.preferences.instrument.tuning == .dropD)
+        #expect(store.preferences.instrument.tuning.id == "c-standard")
+        #expect(store.preferences.instrument.tuning == .cStandard)
     }
 }

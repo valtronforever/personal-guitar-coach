@@ -37,7 +37,7 @@ struct TuningSettingsView: View {
                 ForEach(tuning.strings.reversed()) { string in
                     GridRow {
                         Text("tuning.stringNumber \(string.number)")
-                        Text(verbatim: string.openPitch.name()).monospaced()
+                        Text(verbatim: string.openPitch.name(spelling: tuning.preferredSpelling)).monospaced()
                         if let frequency = try? string.openPitch.frequency(referenceA4: tuning.referenceA4) {
                             Text(frequency, format: .number.precision(.fractionLength(2))).monospacedDigit()
                         }
@@ -136,7 +136,7 @@ struct TuningRequirementView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Label("tuning.mismatch", systemImage: "exclamationmark.triangle")
                 TuningName(profile: required).font(.headline)
-                Text(verbatim: required.strings.reversed().map { $0.openPitch.name() }.joined(separator: " · "))
+                Text(verbatim: required.strings.reversed().map { $0.openPitch.name(spelling: required.preferredSpelling) }.joined(separator: " · "))
             }.accessibilityElement(children: .combine)
         }
     }

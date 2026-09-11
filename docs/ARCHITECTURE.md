@@ -66,6 +66,9 @@ flowchart LR
 - Standard: E2 A2 D3 G3 B3 E4 → MIDI `[40, 45, 50, 55, 59, 64]`.
 - Drop D: D2 A2 D3 G3 B3 E4 → `[38, 45, 50, 55, 59, 64]`.
 - D Standard: D2 G2 C3 F3 A3 D4 → `[38, 43, 48, 53, 57, 62]`.
+- C Standard: C2 F2 B♭2 E♭3 G3 C4 → `[36, 41, 46, 51, 55, 60]`.
+
+C Standard uses flat display spelling consistently (including equivalent custom string pitches). This derived presentation preference adds no serialized field and changes no saved pitch, frequency or assessment. In neutral staff notation these are explicit accidentals, not an inferred key signature.
 
 У коді профіль зберігає явні номери струн, а не масив із неочевидним порядком. `MIDI(position) = openMIDI(string) + fret`. `frequency = referenceA4 × 2^((MIDI − 69)/12)`. Для cents використовувати `1200 × log2(observedHz / targetHz)`.
 

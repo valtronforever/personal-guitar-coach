@@ -39,7 +39,7 @@ struct TunerView: View {
                         Button { model.configure(tuning: tuning, mode: .manual(string: string.number)) } label: {
                             VStack(spacing: 5) {
                                 Text("tuning.stringNumber \(string.number)").font(.caption)
-                                Text(verbatim: string.openPitch.name()).font(.title3.monospaced().bold())
+                                Text(verbatim: string.openPitch.name(spelling: tuning.preferredSpelling)).font(.title3.monospaced().bold())
                                 Image(systemName: selected ? "checkmark.circle.fill" : "circle").font(.caption)
                             }.frame(maxWidth: .infinity).padding(.vertical, 7).contentShape(Rectangle())
                         }.buttonStyle(.bordered).tint(selected ? .accentColor : .secondary)
@@ -48,7 +48,7 @@ struct TunerView: View {
                             .accessibilityIdentifier("tuner.string.\(string.number)")
                     }
                 }
-                TunerReadingView(reading: model.reading)
+                TunerReadingView(reading: model.reading, spelling: tuning.preferredSpelling)
                 if model.isStale { Label("tuner.stale", systemImage: "clock").foregroundStyle(.secondary) }
                 if model.reading.feedback == .chooseString { Text("tuner.confirmString").font(.callout).foregroundStyle(.secondary) }
                 Text("tuner.singleString").font(.callout).foregroundStyle(.secondary)
@@ -112,6 +112,7 @@ struct TunerView: View {
 
 struct TunerReadingView: View {
     let reading: TunerReading
+    var spelling: PitchSpelling = .sharps
     private var feedbackKey: String { "tuner.feedback.\(reading.feedback.rawValue)" }
     private var color: Color { reading.feedback == .inTune ? .green : [.flat, .sharp, .clipping].contains(reading.feedback) ? .orange : .primary }
     private var symbol: String {
@@ -130,15 +131,15 @@ struct TunerReadingView: View {
             HStack(alignment: .center, spacing: 32) {
                 VStack(spacing: 2) {
                     Text("tuner.detected").font(.caption).foregroundStyle(.secondary)
-                    Text(verbatim: reading.detectedPitch?.name() ?? "—").font(.system(size: 48, weight: .semibold, design: .rounded))
-                        .accessibilityElement(children: .ignore).accessibilityLabel(Text(verbatim: reading.detectedPitch?.name() ?? "—"))
+                    Text(verbatim: reading.detectedPitch?.name(spelling: spelling) ?? "—").font(.system(size: 48, weight: .semibold, design: .rounded))
+                        .accessibilityElement(children: .ignore).accessibilityLabel(Text(verbatim: reading.detectedPitch?.name(spelling: spelling) ?? "—"))
                         .accessibilityIdentifier("tuner.detectedNote")
                     if let frequency = reading.frequency { Text(frequency, format: .number.precision(.fractionLength(2))).monospacedDigit() }
                     Text("tuner.hertz").font(.caption).foregroundStyle(.secondary)
                 }.frame(maxWidth: .infinity)
                 VStack(spacing: 3) {
                     Text("tuner.target").font(.caption).foregroundStyle(.secondary)
-                    Text(verbatim: reading.targetPitch?.name() ?? "—").font(.title.bold()).accessibilityElement(children: .ignore).accessibilityLabel(Text(verbatim: reading.targetPitch?.name() ?? "—")).accessibilityIdentifier("tuner.targetNote")
+                    Text(verbatim: reading.targetPitch?.name(spelling: spelling) ?? "—").font(.title.bold()).accessibilityElement(children: .ignore).accessibilityLabel(Text(verbatim: reading.targetPitch?.name(spelling: spelling) ?? "—")).accessibilityIdentifier("tuner.targetNote")
                     if let string = reading.targetString { Text("tuning.stringNumber \(string)").font(.callout) }
                     if let frequency = reading.targetFrequency { Text(frequency, format: .number.precision(.fractionLength(2))).monospacedDigit() }
                 }.frame(maxWidth: .infinity)

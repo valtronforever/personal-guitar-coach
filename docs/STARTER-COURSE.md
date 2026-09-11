@@ -1,6 +1,6 @@
 # Starter course
 
-Six original bilingual lessons are bundled offline in the order below. Each includes a goal, prerequisites, short explanations, selectable steps, explicit Standard tuning (strings **6 → 1: E2 A2 D3 G3 B3 E4**, A4 = 440 Hz), one scored single-note exercise and a recommended starting tempo. The final lesson additionally provides an Em chord example for display/listening only.
+Twelve bilingual lessons are bundled offline: the six original Standard lessons below, followed by six explicitly adapted C Standard variants. Each original lesson includes a goal, prerequisites, short explanations, selectable steps, explicit Standard tuning (strings **6 → 1: E2 A2 D3 G3 B3 E4**, A4 = 440 Hz), one scored single-note exercise and a recommended starting tempo. The final Standard lesson additionally provides an Em chord example for display/listening only.
 
 | Lesson / resource ID | Focus | Practice | Start / available BPM | Next tempo suggested in text |
 | --- | --- | --- | --- | --- |
@@ -37,6 +37,24 @@ Texts, step sequences, fingerings and exercise arrangements were authored specif
 
 `StarterCourseTests` validates independent MIDI sequences, time/attack/rest counts, tuning and capability limits, reference/localization coverage, and the Em display-only boundary. It evaluates perfect and healthy-all-missed event fixtures at both 44.1 and 48 kHz with a known +50 ms residual offset. These fixtures are deterministic event evidence, **not PCM, microphone capture or proof of live guitar accuracy**.
 
-`StarterCourseFlowTests` loads all six actual bundled lessons, selects every step, checks fretboard/TAB state, opens practice without capture, saves synthetic pitch-only results and follows recommendation retry links with the correct exercise/range/BPM. It reloads history in both languages and checks the introduction's version boundary.
+`StarterCourseFlowTests` loads all twelve actual bundled lessons, selects every step, checks fretboard/TAB state, opens practice without capture, saves synthetic pitch-only results and follows recommendation retry links with the correct exercise/range/BPM. It reloads history in both languages and checks the introduction's version boundary.
 
 Native en/uk layout/VoiceOver and beginner/live-playing review remain in final U05/U07/U10 after all 22 implementation tasks. The current computer-use pipe failure prevents claiming visual validation for this content expansion.
+
+
+## C Standard course (2026-09-11)
+
+Select the built-in C Standard preset in Instrument settings or Tuner, then a lesson marked C Standard. Both languages include all explanations and steps. Strings **6 → 1: C2 F2 B♭2 E♭3 G3 C4**, MIDI **36, 41, 46, 51, 55, 60**, A4 = 440 Hz. The app does not physically retune or pitch-shift the guitar.
+
+| Resource ID | Sounding material | Same positions and timing as |
+| --- | --- | --- |
+| `c-standard-open-strings` | C2 and C4, two rests | `open-strings-intro` |
+| `c-standard-first-frets` | C2 D♭2 D2 E♭2, then return | `first-frets` |
+| `c-standard-steady-pulse` | Repeated C2 with quarter/eighth rests | `steady-pulse` |
+| `ab-major-c-standard` | A♭2 B♭2 C3 D♭3 E♭3 F3 G3 A♭3, then descend | `c-major` |
+| `f-minor-pentatonic-c-standard` | F A♭ B♭ C E♭; F2 to A♭4 and return | `a-minor-pentatonic` |
+| `cm-arpeggio-c-standard` | C2 G2 C3 E♭3 G3 C4 and return; Cm shape display only | `em-arpeggio` |
+
+All new lesson/exercise IDs are distinct and begin at version 1. Original resources, bookmarks and result snapshots remain unchanged. Both courses use `fixedTuning`: choosing the other preset does not silently transpose an existing lesson. History and recommended retries retain the saved exercise/tuning. The C Standard course adds 29 steps, 67 assessed attacks, nine rests and 18 bars. Its lowest pitch C2 (65.406 Hz) is at the existing software capability boundary; no DSP limits or grading thresholds were loosened.
+
+Independent MIDI goldens cover all twelve sequences, both sample rates, tuning mismatch, display-only chord boundaries and result/retry snapshots. Synthetic PCM passes through the real analyzer and manual/automatic tuner for all six C Standard open strings at 44.1/48 kHz. Automatic mode preserves harmonic-ambiguity confirmation for G3/C4; manually selecting the string permits normal tuning feedback. These checks do not establish accuracy on the connected guitar; that remains U02/U10 in USER-VALIDATION.md. C Standard labels use flats across musical views; neutral staff notation displays explicit accidentals without pretending to infer the key.

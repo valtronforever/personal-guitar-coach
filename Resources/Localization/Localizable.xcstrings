@@ -8596,6 +8596,22 @@
           }
         }
       }
+    },
+    "tuning.preset.c-standard": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "C Standard"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стандартний C"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
