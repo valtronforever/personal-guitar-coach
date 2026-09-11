@@ -80,7 +80,12 @@ public struct TuningProfile: Hashable, Codable, Identifiable, Sendable {
     public static let standard = preset(id: "standard", name: "Standard", lowToHigh: [40, 45, 50, 55, 59, 64])
     public static let dropD = preset(id: "drop-d", name: "Drop D", lowToHigh: [38, 45, 50, 55, 59, 64])
     public static let dStandard = preset(id: "d-standard", name: "D Standard", lowToHigh: [38, 43, 48, 53, 57, 62])
-    public static let presets = [standard, dropD, dStandard]
+    public static let cStandard = preset(id: "c-standard", name: "C Standard", lowToHigh: [36, 41, 46, 51, 55, 60])
+    public static let presets = [standard, dropD, dStandard, cStandard]
+
+    /// Consistent enharmonic labels for the C Standard course, including equivalent custom profiles.
+    /// Presentation only: the serialized pitches, frequencies and assessment targets do not change.
+    public var preferredSpelling: PitchSpelling { strings == Self.cStandard.strings ? .flats : .sharps }
 
     private static func preset(id: String, name: String, lowToHigh: [Int]) -> TuningProfile {
         // Compile-time musical constants; all externally supplied data uses throwing initializers.

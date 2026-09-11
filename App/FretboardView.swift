@@ -90,7 +90,7 @@ struct FretboardView: View {
                 description(position).font(.callout).accessibilityIdentifier("fretboard.description")
             } else { Text("fretboard.instructions").font(.callout).foregroundStyle(.secondary) }
             if let detectedPitch {
-                Label { Text("fretboard.detected \(detectedPitch.name())") } icon: { Image(systemName: "waveform") }
+                Label { Text("fretboard.detected \(detectedPitch.name(spelling: model.tuning.preferredSpelling))") } icon: { Image(systemName: "waveform") }
                 Text("fretboard.detectedExplanation").font(.caption).foregroundStyle(.secondary)
             }
         }
@@ -111,7 +111,7 @@ struct FretboardView: View {
                 VStack(spacing: 0) {
                     if muted { Text(verbatim: "×").font(.title2.bold()) }
                     else if visible {
-                        Text(verbatim: model.pitch(at: position)?.name() ?? "—").font(.caption.bold().monospaced())
+                        Text(verbatim: model.pitch(at: position)?.name(spelling: model.tuning.preferredSpelling) ?? "—").font(.caption.bold().monospaced())
                         if position.fret == 0 { Text(verbatim: "○").font(.caption2) }
                         else if let finger = model.finger(at: position) { Text(verbatim: String(finger)).font(.caption2.bold()) }
                     }
@@ -133,7 +133,7 @@ struct FretboardView: View {
 
     private func description(_ position: FretPosition) -> Text {
         if model.isMuted(position) { return Text("fretboard.mutedPosition \(position.string)") }
-        let name = model.pitch(at: position)?.name() ?? "—"
+        let name = model.pitch(at: position)?.name(spelling: model.tuning.preferredSpelling) ?? "—"
         if position.fret == 0 { return Text("fretboard.openPosition \(position.string) \(name)") }
         return Text("fretboard.position \(position.string) \(position.fret) \(name)")
     }

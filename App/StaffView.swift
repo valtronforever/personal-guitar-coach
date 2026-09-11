@@ -117,7 +117,7 @@ struct StaffView: View {
     private func accessibility(_ symbol: StaffSymbol) -> Text {
         let duration = TimelineModel.durationLabel(symbol.resolved.event.durationTicks)
         if let pitch = symbol.pitch {
-            let sounding = symbol.resolved.pitches[0].name()
+            let sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
             return Text("staff.note \(pitch.name) \(sounding) \(duration)")
         }
         return Text("staff.rest \(duration)")

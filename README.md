@@ -2,7 +2,7 @@
 
 Нативний macOS-додаток для навчання гри на гітарі українською та англійською: уроки → інтерактивний гриф і табулатура → тюнер → практика під метроном → оцінка та рекомендації.
 
-**Стан:** реалізовано навчальний цикл, тюнер, практику, оцінки й історію, шість двомовних уроків та обмежений нотний стан. Локальні Debug/Release .app доступні; фізичне приймання на гітарі та фінальні UI/VoiceOver перевірки залишаються відкритими.
+**Стан:** реалізовано навчальний цикл, тюнер, практику, оцінки й історію, дванадцять двомовних уроків (по шість для Standard і C Standard) та обмежений нотний стан. Локальні Debug/Release .app доступні; фізичне приймання на гітарі та фінальні UI/VoiceOver перевірки залишаються відкритими.
 
 - [AGENTS.md](AGENTS.md) — правила для агентів і розробників.
 - [Опис продукту](docs/PRODUCT.md) — сценарії, межі MVP, інтерфейс.
@@ -52,7 +52,7 @@ Instrument settings and immutable practice summaries use atomic, versioned JSON 
 
 ## Lesson authoring
 
-Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The app bundles [six original starter lessons](docs/STARTER-COURSE.md), fully readable in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
+Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The app bundles [six starter lessons in Standard and six adapted C Standard variants](docs/STARTER-COURSE.md), fully readable in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
 
 ## Musical views and UI-source validation
 
@@ -90,7 +90,7 @@ Ordinary tests skip this hardware test. Choose the exact device name intentional
 Latency calibration is available from Audio setup → Latency calibration. Select input/output first. Estimated/manual profiles preserve pitch practice without enabling rhythm scores. Cable loopback measures the selected route; physical validation is pending. See [ADR 003](docs/decisions/003-calibration-time.md) for timestamp semantics, uncertainty and the final hardware procedure.
 
 
-Practice checks a stable input signal after explicit physical-tuning confirmation, then starts the audio-clock count-in. Pause, seek, tempo or tuning changes close a partial attempt. Each repeat waits for analysis/save and starts a new count-in. Completed attempts save the exact inputs and score parameters; unreliable rhythm calibration produces pitch feedback only. Save failures stop automatic repetition and offer retry. Debug → Synthetic results presents the four result-validity states without capture or history writes. Results now include evidence-backed advice, per-event TAB symbols, saved conditions and compatible previous/best scores. Open Progress for saved attempts or View result after practice. Prepare a recommended fragment to restore its archived exercise, tuning target, bars and tempo without starting audio. Summary-only legacy history stays readable. See [feedback and progress rules](docs/decisions/005-feedback-progress.md). The six-lesson starter course now covers open strings, first frets, steady pulse, C major, A minor pentatonic and an Em arpeggio. Final physical/UI validation remains pending.
+Practice checks a stable input signal after explicit physical-tuning confirmation, then starts the audio-clock count-in. Pause, seek, tempo or tuning changes close a partial attempt. Each repeat waits for analysis/save and starts a new count-in. Completed attempts save the exact inputs and score parameters; unreliable rhythm calibration produces pitch feedback only. Save failures stop automatic repetition and offer retry. Debug → Synthetic results presents the four result-validity states without capture or history writes. Results now include evidence-backed advice, per-event TAB symbols, saved conditions and compatible previous/best scores. Open Progress for saved attempts or View result after practice. Prepare a recommended fragment to restore its archived exercise, tuning target, bars and tempo without starting audio. Summary-only legacy history stays readable. See [feedback and progress rules](docs/decisions/005-feedback-progress.md). The starter course covers open strings, first frets, steady pulse, C major, A minor pentatonic and an Em arpeggio in Standard. Six separately identified C Standard lessons preserve those fingerings with sounding A♭ major, F minor pentatonic and Cm. Select C Standard in Settings → Instrument or Tuner, then choose a lesson marked C Standard. Strings 6 → 1: C2 F2 B♭2 E♭3 G3 C4; A4 remains 440 Hz. Final physical/UI validation remains pending.
 
 Зведена перевірка MVP, відтворення локального пакета, походження іконки та відкриті hardware gates: [VALIDATION.md](docs/VALIDATION.md). Прискорений 900-секундний synthetic event benchmark перевіряє обмеження пам’яті даних і збереження спроб; він не замінює 15 хвилин реальної гри.
 

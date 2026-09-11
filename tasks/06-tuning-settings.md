@@ -14,7 +14,7 @@ GitHub: [#6](https://github.com/valtronforever/personal-guitar-coach/issues/6)
 
 ## Робота
 
-- Standard, Drop D, D Standard з явними string numbers; редактор custom tuning і reference A4.
+- Standard, Drop D, D Standard, C Standard з явними string numbers; редактор custom tuning і reference A4.
 - Орієнтація right/left, шість струн і 24 лади у MVP.
 - Валідатор діапазонів; непідтримуваний DSP pitch дозволено позначити для перегляду, але заборонено тихо оцінювати.
 - Версіонування редагованих профілів, preview відкритих нот і частот.
@@ -40,3 +40,5 @@ Presets, invalid values, save/load, profile revisions, mismatch для fixedTuni
 - 32 core + 7 AppTests: успішно. Custom save/edit/reload, revision conflicts, неправильні значення, invariants і localization-independent ID перевірені на ізольованих даних.
 - Native CUA: пресети/частоти, Drop D після relaunch та зміни мови, invalid A4/Save disabled, A4 442/частоти, Cancel без змін, en/uk layouts. Повернуто Standard/System; тестові custom profiles у користувацькі дані не додавалися.
 - Debug/Release native builds, strict codesign, project/catalog checks (118 ключів) успішні. [Self-review](../docs/reviews/06-review.md).
+
+C Standard follow-up: see [scope and evidence](follow-up/c-standard-course.md). The shared preset adds strings 6 → 1, C2 F2 B♭2 E♭3 G3 C4, without changing Standard defaults or existing saved profiles.

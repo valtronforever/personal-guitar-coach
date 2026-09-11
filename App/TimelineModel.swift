@@ -18,11 +18,13 @@ struct TimelineModel: Sendable {
     static let baseBeatWidth = 176.0 // A sixteenth retains a 44-point target at the smallest zoom.
     let exercise: Exercise
     let events: [ResolvedEvent]
+    let tuning: TuningProfile
     var ticksPerBar: Int64 { exercise.timeSignature.ticksPerBar }
     var barCount: Int64 { (exercise.durationTicks - 1) / ticksPerBar + 1 }
 
     init(exercise: Exercise, instrument: TuningProfile) throws {
         self.exercise = exercise
+        tuning = exercise.requiredTuning ?? instrument
         events = try exercise.resolvedEvents(instrument: instrument)
     }
 

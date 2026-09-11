@@ -21,11 +21,11 @@ struct StaffPitch: Equatable, Sendable {
     let octave: Int
     var step: Int { octave * 7 + letter }
     var name: String { ["C", "D", "E", "F", "G", "A", "B"][letter] + (alteration == 1 ? "♯" : alteration == -1 ? "♭" : "") + String(octave) }
-    init(sounding: Pitch, key: StaffKey) {
+    init(sounding: Pitch, key: StaffKey, preferredSpelling: PitchSpelling = .sharps) {
         soundingMIDI = sounding.midi; writtenMIDI = sounding.midi + 12
         let sharp: [(Int, Int)] = [(0,0),(0,1),(1,0),(1,1),(2,0),(3,0),(3,1),(4,0),(4,1),(5,0),(5,1),(6,0)]
         let flat: [(Int, Int)] = [(0,0),(1,-1),(1,0),(2,-1),(2,0),(3,0),(4,-1),(4,0),(5,-1),(5,0),(6,-1),(6,0)]
-        let spelling = (key == .fMajor ? flat : sharp)[writtenMIDI % 12]
+        let spelling = ((key == .fMajor || (key == .neutral && preferredSpelling == .flats)) ? flat : sharp)[writtenMIDI % 12]
         letter = spelling.0; alteration = spelling.1; octave = writtenMIDI / 12 - 1
     }
 }
@@ -62,7 +62,7 @@ struct StaffModel: Sendable {
             guard segment.startTick == end else { throw StaffLimitation.gaps }
             guard [240, 480, 960, 1920, 3840].contains(event.durationTicks), event.startTick % 240 == 0 else { throw StaffLimitation.duration }
             guard resolved.pitches.count <= 1 else { throw StaffLimitation.polyphony }
-            let pitch = resolved.pitches.first.map { StaffPitch(sounding: $0, key: key) }
+            let pitch = resolved.pitches.first.map { StaffPitch(sounding: $0, key: key, preferredSpelling: timeline.tuning.preferredSpelling) }
             var accidental: String?
             if let pitch {
                 guard (36...88).contains(pitch.soundingMIDI) else { throw StaffLimitation.range }

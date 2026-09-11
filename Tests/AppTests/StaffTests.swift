@@ -74,7 +74,7 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 6)
+        #expect(library.lessons.count == 12)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for exercise in lesson.manifest.exercises where exercise.assessmentMode == .monophonic {
@@ -85,6 +85,10 @@ struct StaffTests {
                 if exercise.id == "c-major-practice" {
                     #expect(symbols.compactMap(\.pitch).map(\.name) == ["C4","D4","E4","F4","G4","A4","B4","C5","B4","A4","G4","F4","E4","D4","C4"])
                     #expect(symbols.allSatisfy { $0.accidental == nil && $0.resolved.event.durationTicks == 960 })
+                }
+                if exercise.id == "ab-major-c-standard-practice" {
+                    #expect(symbols.compactMap(\.pitch).map(\.name) == ["A♭3","B♭3","C4","D♭4","E♭4","F4","G4","A♭4","G4","F4","E♭4","D♭4","C4","B♭3","A♭3"])
+                    #expect(try staff.symbols(in: 0).map(\.accidental) == ["♭", "♭", nil, "♭"])
                 }
                 #expect(symbols.compactMap(\.pitch).map(\.writtenMIDI) == timeline.events.flatMap(\.pitches).map { $0.midi + 12 })
                 for symbol in symbols {

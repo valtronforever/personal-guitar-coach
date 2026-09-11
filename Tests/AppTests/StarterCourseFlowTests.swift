@@ -10,7 +10,7 @@ import Audio
     @Test func EachBundledLessonConnectsTextVisualsPracticeSavedResultAndRetry() async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.issues.isEmpty && library.lessons.count == 6)
+        #expect(library.issues.isEmpty && library.lessons.count == 12)
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), assessment = AssessmentStore(repository: repository)
@@ -23,7 +23,7 @@ import Audio
                 selection.selectStep(step.id)
                 let board = selection.fretboard(instrument: InstrumentProfile(tuning: .dropD))
                 let visual = try lesson.visual(stepID: step.id, instrument: .dropD)
-                #expect(board.tuning == .standard && board.expected == Set(visual.positions.map(\.position)))
+                #expect(board.tuning == visual.tuning && board.expected == Set(visual.positions.map(\.position)))
                 if let exercise = selection.exercise {
                     let timeline = try TimelineModel(exercise: exercise, instrument: .dropD)
                     #expect(timeline.events.map(\.id) == exercise.events.map(\.id))
@@ -38,7 +38,7 @@ import Audio
                 navigation.openPractice(request); practice.configure(navigation.practiceRequest)
                 #expect(practice.phase == .idle && !practice.isBusy && !practice.physicallyTuned)
                 let endpoint = try CalibrationEndpoint(uid: "course-flow-stub", channel: 1, sampleRate: 48000, bufferFrames: 512)
-                let configuration = try PracticeConfiguration(exercise: request.exercise, instrument: InstrumentProfile(), bpm: practice.bpm,
+                let configuration = try PracticeConfiguration(exercise: request.exercise, instrument: InstrumentProfile(tuning: try #require(request.exercise.requiredTuning)), bpm: practice.bpm,
                     route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "course-events-1"),
                     lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion))
                 // Healthy silence is explicit synthetic evidence, not a device capture or a permission request.
@@ -52,6 +52,7 @@ import Audio
                 let retry = try #require(PracticeRequest(result: result, recommendation: advice))
                 navigation.openPractice(retry); practice.configure(navigation.practiceRequest)
                 #expect(practice.request?.exercise == request.exercise && practice.bpm == advice.bpm)
+                #expect(retry.archivedTuning == request.exercise.requiredTuning)
                 #expect(practice.firstBar == advice.firstBar && practice.lastBar == advice.lastBar)
                 #expect(practice.selectedEventIDs.isSuperset(of: Set(advice.eventIDs)))
                 #expect(!practice.physicallyTuned && !practice.isBusy && practice.phase == .idle)
@@ -62,7 +63,7 @@ import Audio
             }
         }
         await data.reload()
-        #expect(data.records.count == 6 && data.historyIssues.isEmpty)
+        #expect(data.records.count == 12 && data.historyIssues.isEmpty)
         for record in data.records {
             #expect(record.assessment != nil)
             #expect(ResultPresentation.title(record: record, lessons: library.lessons, language: .en) != nil)

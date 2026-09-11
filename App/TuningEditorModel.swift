@@ -16,7 +16,7 @@ final class TuningEditorModel: Identifiable {
         self.original = tuning; self.editingExisting = editingExisting
         self.name = editingExisting ? tuning.name : ""
         self.referenceText = String(tuning.referenceA4)
-        self.notes = Dictionary(uniqueKeysWithValues: tuning.strings.map { ($0.number, $0.openPitch.name()) })
+        self.notes = Dictionary(uniqueKeysWithValues: tuning.strings.map { ($0.number, $0.openPitch.name(spelling: tuning.preferredSpelling)) })
     }
 
     var validationKey: String? {

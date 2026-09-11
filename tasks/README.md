@@ -88,3 +88,7 @@
 - 12/15: підтверджені pitch/tempo/latency capability limits.
 - 19: складність і навчальна послідовність після пробного проходження початкових уроків.
 - 20: спосіб зовнішнього розповсюдження, якщо він буде потрібен. План уже дозволяє локальну розробку без цього рішення.
+
+## Follow-up: C Standard (2026-09-11)
+
+[C Standard preset and adapted course](follow-up/c-standard-course.md): `done`. Extends tasks 06/19 with the user's physical tuning and six bilingual course variants. Existing hardware-dependent task statuses remain unchanged.

@@ -86,7 +86,7 @@ struct ResultDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack { TuningName(profile: tuning); Text("practice.selectedTempo \(Int(config.bpm))") }
                 Text("result.bars \(Int(config.range.lowerBound / config.exercise.timeSignature.ticksPerBar) + 1) \(Int((config.range.upperBound - 1) / config.exercise.timeSignature.ticksPerBar) + 1)")
-                Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name() }.joined(separator: " · "))
+                Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
                 Text("practice.stringOrder").font(.caption)
                 Text("result.reference \(number(tuning.referenceA4))")
                 Text(LocalizedStringKey(config.instrument.source.titleKey))
@@ -167,7 +167,7 @@ struct ResultDetailView: View {
                     else { Text("result.unassessed") }
                     if let note = result.notes.first(where: { $0.id == id }) {
                         if let position = event.positions.first, let pitch = try? tuning.pitch(at: position) {
-                            Text("result.expectedPosition \(pitch.name()) \(position.string) \(position.fret)")
+                            Text("result.expectedPosition \(pitch.name(spelling: tuning.preferredSpelling)) \(position.string) \(position.fret)")
                         }
                         Text("result.targetFrequency \(number(note.targetFrequency))")
                         if let cents = note.centsError { Text("result.pitchError \(number(cents))") }

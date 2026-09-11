@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "c-standard-steady-pulse",
+  "version": 1,
+  "difficulty": "beginner",
+  "topic": "rhythm",
+  "steps": [
+    {
+      "id": "quarter-pulse",
+      "kind": "events",
+      "exerciseID": "c-standard-steady-pulse-practice",
+      "eventIDs": [
+        "quarter-one",
+        "quarter-rest",
+        "quarter-three",
+        "quarter-four"
+      ]
+    },
+    {
+      "id": "quarter-space",
+      "kind": "events",
+      "exerciseID": "c-standard-steady-pulse-practice",
+      "eventIDs": [
+        "quarter-rest"
+      ]
+    },
+    {
+      "id": "eighth-pairs",
+      "kind": "events",
+      "exerciseID": "c-standard-steady-pulse-practice",
+      "eventIDs": [
+        "eighth-1",
+        "eighth-2",
+        "eighth-3",
+        "eighth-4"
+      ]
+    },
+    {
+      "id": "eighth-spaces",
+      "kind": "events",
+      "exerciseID": "c-standard-steady-pulse-practice",
+      "eventIDs": [
+        "eighth-5",
+        "eighth-6",
+        "eighth-7",
+        "eighth-8"
+      ]
+    },
+    {
+      "id": "whole-pattern",
+      "kind": "events",
+      "exerciseID": "c-standard-steady-pulse-practice",
+      "eventIDs": [
+        "quarter-one",
+        "quarter-rest",
+        "quarter-three",
+        "quarter-four",
+        "eighth-1",
+        "eighth-2",
+        "eighth-3",
+        "eighth-4",
+        "eighth-5",
+        "eighth-6",
+        "eighth-7",
+        "eighth-8"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "c-standard-steady-pulse-practice",
+      "version": 1,
+      "ppq": 960,
+      "timeSignature": "4/4",
+      "defaultBPM": 60,
+      "minimumBPM": 40,
+      "maximumBPM": 100,
+      "tuningPolicy": "fixedTuning",
+      "requiredTuning": {
+        "id": "c-standard",
+        "revision": 1,
+        "name": "C Standard",
+        "referenceA4": 440,
+        "strings": [
+          {
+            "number": 1,
+            "openPitch": {
+              "midi": 60
+            }
+          },
+          {
+            "number": 2,
+            "openPitch": {
+              "midi": 55
+            }
+          },
+          {
+            "number": 3,
+            "openPitch": {
+              "midi": 51
+            }
+          },
+          {
+            "number": 4,
+            "openPitch": {
+              "midi": 46
+            }
+          },
+          {
+            "number": 5,
+            "openPitch": {
+              "midi": 41
+            }
+          },
+          {
+            "number": 6,
+            "openPitch": {
+              "midi": 36
+            }
+          }
+        ]
+      },
+      "assessmentMode": "monophonic",
+      "events": [
+        {
+          "id": "quarter-one",
+          "startTick": 0,
+          "durationTicks": 960,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "quarter-rest",
+          "startTick": 960,
+          "durationTicks": 960,
+          "kind": "rest",
+          "positions": []
+        },
+        {
+          "id": "quarter-three",
+          "startTick": 1920,
+          "durationTicks": 960,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "quarter-four",
+          "startTick": 2880,
+          "durationTicks": 960,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "eighth-1",
+          "startTick": 3840,
+          "durationTicks": 480,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "eighth-2",
+          "startTick": 4320,
+          "durationTicks": 480,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "eighth-3",
+          "startTick": 4800,
+          "durationTicks": 480,
+          "kind": "rest",
+          "positions": []
+        },
+        {
+          "id": "eighth-4",
+          "startTick": 5280,
+          "durationTicks": 480,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "eighth-5",
+          "startTick": 5760,
+          "durationTicks": 480,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "eighth-6",
+          "startTick": 6240,
+          "durationTicks": 480,
+          "kind": "rest",
+          "positions": []
+        },
+        {
+          "id": "eighth-7",
+          "startTick": 6720,
+          "durationTicks": 480,
+          "kind": "note",
+          "positions": [
+            {
+              "string": 6,
+              "fret": 0
+            }
+          ]
+        },
+        {
+          "id": "eighth-8",
+          "startTick": 7200,
+          "durationTicks": 480,
+          "kind": "rest",
+          "positions": []
+        }
+      ]
+    }
+  ],
+  "practiceExerciseIDs": [
+    "c-standard-steady-pulse-practice"
+  ]
+}
