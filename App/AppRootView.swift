@@ -12,6 +12,9 @@ struct AppRootView: View {
     @Bindable var navigation: AppNavigation
     @Environment(AppSettings.self) private var settings
     @State private var showsAudio = false
+    @Environment(LocalDataStore.self) private var data
+    @Environment(LessonLibraryStore.self) private var library
+    @Environment(PracticeModel.self) private var practice
 
     var body: some View {
         NavigationSplitView {
@@ -38,7 +41,15 @@ struct AppRootView: View {
         }
         .frame(minWidth: CoachLayout.minimumWidth, minHeight: CoachLayout.minimumHeight)
         .environment(navigation)
+        .onChange(of: data.preferences.instrument.tuning) { _, _ in refreshPractice() }
+        .onChange(of: library.hasLoaded) { _, _ in refreshPractice() }
+        .onChange(of: navigation.practiceRequest) { _, _ in refreshPractice() }
         .sheet(isPresented: $showsAudio) { AudioProbeView().environment(\.locale, settings.locale) }
+    }
+
+    private func refreshPractice() {
+        navigation.refreshPractice(tuning: data.preferences.instrument.tuning, lessons: library.lessons)
+        practice.configure(navigation.practiceAdaptationFailed ? nil : navigation.practiceRequest)
     }
 
     @ViewBuilder private func destinationView(_ destination: AppDestination) -> some View {

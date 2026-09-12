@@ -1,0 +1,31 @@
+{
+  "lessonID": "steady-pulse",
+  "lessonVersion": 2,
+  "locale": "en",
+  "title": "Keep a steady pulse",
+  "summary": "Repeat {{first}} with quarters, eighths and rests.",
+  "goal": "Place separate attacks on written beats and half-beats while counting through rests.",
+  "body": "First practice open strings. Use open string 6 throughout. Count “1 and 2 and 3 and 4 and”; the metronome marks the numbers. A quarter takes one beat and an eighth half a beat. A rest still takes time. Start at 60 BPM, count aloud, then play. Repeat at the same tempo before trying 70 BPM.\n\nTuning: {{tuning}}. Strings 6 → 1: {{openStrings}}. Reference A4 = {{reference}} Hz. Select your actual tuning in Settings → Instrument or in Tuner. Changing the profile updates this lesson; it does not physically tune the guitar.\n\nIn the steps, {{openExample}} (6/0) means sounding note {{openExample}}, string 6, fret 0. String 1 is the thinnest; 0 means open. Read the displayed positions for your selected tuning. Pitch labels use chromatic enharmonic names. Audio measures audible pitch and attacks, not your finger or string choice.\n\nUse a clean input from your guitar interface, or choose the acoustic microphone/pickup source explicitly. Play one note at a time and stop the previous string. Choose Practice for a signal check and count-in. Without reliable calibration, rhythm and overall scores remain unavailable. Review measured pitch or missed-attack feedback before increasing the tempo.",
+  "steps": {
+    "quarter-pulse": {
+      "title": "1. Count the quarter-note bar",
+      "body": "Bar 1: play on 1, rest on 2, play on 3 and 4. {{positions}}."
+    },
+    "quarter-space": {
+      "title": "2. Count through the rest",
+      "body": "Beat 2 lasts one complete click interval. Stop the sound and do not pluck."
+    },
+    "eighth-pairs": {
+      "title": "3. Divide the first two beats",
+      "body": "Bar 2: play on “1” and “and”, rest on “2”, play on “and”. {{positions}}."
+    },
+    "eighth-spaces": {
+      "title": "4. Leave space between attacks",
+      "body": "Finish bar 2: play on “3”, rest on “and”, play on “4”, rest on “and”. {{positions}}."
+    },
+    "whole-pattern": {
+      "title": "5. Play both bars",
+      "body": "Eight attacks, including repeated notes; every written note needs a fresh pluck. {{positions}}."
+    }
+  }
+}

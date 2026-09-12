@@ -97,3 +97,8 @@ python3 Scripts/build_local.py
 The CLI exits nonzero for any content issue or an empty catalog and prints lesson ID, reason code, and diagnostic detail. CI validates the actual bundled course. The loader keeps valid lessons available if another lesson fails and never rewrites resource files. In-app warnings explain why entries are unavailable; their list is bounded so it cannot cover the healthy catalog.
 
 Before marking new teaching content complete, inspect both languages in the native app and check the resolver's fretboard/timeline targets. Never substitute a synthetic audio test for actual guitar accuracy evidence. Importing songs, scraping tablature services, and adding copyrighted course text are outside this authoring workflow.
+
+
+## Adaptive teaching content
+
+Current starter lessons declare optional `adaptation` metadata and provide `adaptive.en.json` / `adaptive.uk.json`. Follow [AUTOMATIC-LESSON-TUNING.md](AUTOMATIC-LESSON-TUNING.md) for policies, allowed tokens and version requirements. Numeric note targets and position explanations must derive from the resolved musical snapshot; do not regex-transpose translated prose or alter immutable historical versions. Unknown tokens, missing translations and invalid versions fail validation.

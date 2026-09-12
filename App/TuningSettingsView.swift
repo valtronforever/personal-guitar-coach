@@ -28,6 +28,7 @@ struct TuningSettingsView: View {
                 Text("tuning.leftHanded").tag(FretboardOrientation.leftHanded)
             }.accessibilityIdentifier("tuning.orientation")
             LabeledContent("tuning.reference") { Text(tuning.referenceA4, format: .number.precision(.fractionLength(1))) }
+            Text("tuning.lessonAdaptation").foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             Text("tuning.physicalExplanation").foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
         }
         .disabled(!store.canEditPreferences)

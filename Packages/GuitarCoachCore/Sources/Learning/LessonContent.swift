@@ -26,10 +26,11 @@ public struct LessonManifest: Codable, Sendable, Equatable, Identifiable {
     public let steps: [LessonStep]
     public let exercises: [Exercise]
     public let practiceExerciseIDs: [String]
+    public let adaptation: LessonAdaptationDefinition?
     public init(schemaVersion: Int = 1, id: String, version: Int = 1, difficulty: LessonDifficulty = .beginner,
-                topic: LessonTopic = .basics, steps: [LessonStep], exercises: [Exercise], practiceExerciseIDs: [String]) {
+                topic: LessonTopic = .basics, steps: [LessonStep], exercises: [Exercise], practiceExerciseIDs: [String], adaptation: LessonAdaptationDefinition? = nil) {
         self.schemaVersion = schemaVersion; self.id = id; self.version = version; self.difficulty = difficulty; self.topic = topic
-        self.steps = steps; self.exercises = exercises; self.practiceExerciseIDs = practiceExerciseIDs
+        self.steps = steps; self.exercises = exercises; self.practiceExerciseIDs = practiceExerciseIDs; self.adaptation = adaptation
     }
 }
 
@@ -77,10 +78,14 @@ public struct LessonVisualSnapshot: Sendable {
 }
 
 /// Only the validating loader can construct a lesson consumed by the UI.
-public struct LoadedLesson: Identifiable, Sendable {
+public struct LoadedLesson: Identifiable, Sendable, Equatable {
     public let manifest: LessonManifest
     public let english: LessonText
     public let ukrainian: LessonText
+    let templates: AdaptiveLessonText?
+    init(manifest: LessonManifest, english: LessonText, ukrainian: LessonText, templates: AdaptiveLessonText? = nil) {
+        self.manifest = manifest; self.english = english; self.ukrainian = ukrainian; self.templates = templates
+    }
     public var id: String { manifest.id }
     public func text(for language: LessonLanguage) -> LessonText { language == .uk ? ukrainian : english }
 

@@ -1,5 +1,7 @@
 # Starter course
 
+**Current behavior (2026-09-12):** the user sees one six-lesson course that automatically adapts to the tuning in Settings/Tuner. See [automatic lesson tuning](AUTOMATIC-LESSON-TUNING.md) for transposition, Drop D/custom mapping, current templates and history compatibility. The static Standard/C Standard inventories and dated evidence below describe the retained source/legacy resources, not two separate live course choices.
+
 Twelve bilingual lessons are bundled offline: the six original Standard lessons below, followed by six explicitly adapted C Standard variants. Each original lesson includes a goal, prerequisites, short explanations, selectable steps, explicit Standard tuning (strings **6 → 1: E2 A2 D3 G3 B3 E4**, A4 = 440 Hz), one scored single-note exercise and a recommended starting tempo. The final Standard lesson additionally provides an Em chord example for display/listening only.
 
 | Lesson / resource ID | Focus | Practice | Start / available BPM | Next tempo suggested in text |

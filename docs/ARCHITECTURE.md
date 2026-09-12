@@ -68,7 +68,7 @@ flowchart LR
 - D Standard: D2 G2 C3 F3 A3 D4 → `[38, 43, 48, 53, 57, 62]`.
 - C Standard: C2 F2 B♭2 E♭3 G3 C4 → `[36, 41, 46, 51, 55, 60]`.
 
-C Standard uses flat display spelling consistently (including equivalent custom string pitches). This derived presentation preference adds no serialized field and changes no saved pitch, frequency or assessment. In neutral staff notation these are explicit accidentals, not an inferred key signature.
+The tuning’s string-1 transposition selects chromatic sharp/flat display spelling consistently, including equivalent custom profiles. This derived presentation preference adds no serialized field and changes no saved pitch, frequency or assessment. In neutral staff notation these are explicit accidentals, not an inferred key signature.
 
 У коді профіль зберігає явні номери струн, а не масив із неочевидним порядком. `MIDI(position) = openMIDI(string) + fret`. `frequency = referenceA4 × 2^((MIDI − 69)/12)`. Для cents використовувати `1200 × log2(observedHz / targetHz)`.
 
@@ -217,3 +217,8 @@ Coordinator резервує preview як output-only purpose, без microphone
 ## Прототип нотного стану (задача 22)
 
 StaffModel/StaffDrawing — presentation поверх тієї самої TimelineModel; canonical event IDs і ticks залишаються спільними з TAB. Written MIDI +12 не записується назад у Domain/audio. Key/accidental state локальні до показу; unsupported bars мають явний fallback до TAB. [ADR 007](decisions/007-staff-notation.md) визначає обмеження та schema plan для подальшої нотації.
+
+
+## Automatic lesson tuning (2026-09-12)
+
+[The adaptation contract](AUTOMATIC-LESSON-TUNING.md) supersedes the separate C Standard course selection. Learning owns pure position/interval adaptation and localized template rendering; the UI consumes one resolved fixed-tuning snapshot. Source resources remain readable for historical versions. Catalog aliases avoid duplicate live lessons without rewriting stored history. AppNavigation refreshes only fresh adaptive practice; archived retries remain fixed.

@@ -1,3 +1,5 @@
+import Domain
+import Learning
 import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Identifiable {
@@ -61,7 +63,18 @@ final class AppNavigation {
     var lessonPath: [String] = []
     var restoredReading = false
     private(set) var practiceRequest: PracticeRequest?
+    private(set) var practiceAdaptationFailed = false
+    func refreshPractice(tuning: TuningProfile, lessons: [LoadedLesson]) {
+        guard let request = practiceRequest, request.adaptsWithInstrument else { return }
+        guard practiceAdaptationFailed || request.exercise.requiredTuning != tuning else { return }
+        do {
+            guard let source = lessons.first(where: { $0.id == request.lessonID }) else { return }
+            let adapted = try source.adapted(to: tuning)
+            guard let next = PracticeRequest(lesson: adapted, exerciseID: request.exercise.id, adaptsWithInstrument: true) else { return }
+            practiceRequest = next; practiceAdaptationFailed = false
+        } catch { practiceAdaptationFailed = true }
+    }
     func openPractice(_ request: PracticeRequest) {
-        practiceRequest = request; destination = .practice
+        practiceRequest = request; practiceAdaptationFailed = false; destination = .practice
     }
 }

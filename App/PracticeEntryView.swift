@@ -24,11 +24,15 @@ struct PracticeEntryView: View {
     private var detectedPitch: Pitch? { model.latestFrequency.flatMap { try? Pitch.nearest(to: $0, referenceA4: tuning.referenceA4) } }
 
     var body: some View {
-        if let request = navigation.practiceRequest {
+        if navigation.practiceAdaptationFailed {
+            FeatureStateView(title: "navigation.practice", message: "lesson.adaptationUnavailable", symbol: "guitars") {
+                SettingsLink { Text("settings.title") }
+            }
+        } else if let request = navigation.practiceRequest {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    if let lesson = library.lessons.first(where: { $0.id == request.lessonID && $0.manifest.version == request.lessonVersion }) {
-                        Text(verbatim: lesson.text(for: language).title).font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise")
+                    if let title = ResultPresentation.lessonTitle(id: request.lessonID, version: request.lessonVersion, tuning: tuning, lessons: library.lessons, language: language) {
+                        Text(verbatim: title).font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise")
                     } else { Text("result.savedExercise").font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise") }
                     DisclosureGroup("practice.options", isExpanded: $showsOptions) {
                         options(request.exercise).padding(.top, 10)
