@@ -1,7 +1,7 @@
 import Foundation
 import Testing
 import Domain
-import Learning
+@testable import Learning
 
 struct LessonAdaptationTests {
     private func course() throws -> [LoadedLesson] {
@@ -56,6 +56,39 @@ struct LessonAdaptationTests {
                 }
             }
         }
+    }
+    @Test func allPresetAndFretCountCombinationsFitTheCourse() throws {
+        for count in GuitarFretCount.allCases {
+            for tuning in TuningProfile.presets {
+                let instrument = InstrumentProfile(tuning: tuning, frets: count)
+                for source in try course() {
+                    let lesson = try source.adapted(to: instrument)
+                    #expect(lesson.manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy(instrument.contains))
+                    #expect(lesson.manifest.steps.compactMap(\.fingering).flatMap(\.positions).allSatisfy(instrument.contains))
+                }
+            }
+        }
+    }
+    @Test func shorterNeckRemapsReachablePitchesAndRejectsUnreachableNotes() throws {
+        let source = try #require(course().first { $0.id == "c-major" })
+        func highLesson(string: Int) throws -> LoadedLesson {
+            let exercises = try source.manifest.exercises.map { original in
+                let events = try original.events.map { event in
+                    try MusicalEvent(id: event.id, startTick: event.startTick, durationTicks: event.durationTicks,
+                        kind: event.kind, positions: event.kind == .rest ? [] : [FretPosition(string: string, fret: 24)])
+                }
+                return try Exercise(id: original.id, events: events, tuningPolicy: .fixedTuning, requiredTuning: .standard)
+            }
+            return LoadedLesson(manifest: LessonManifest(id: source.id, steps: source.manifest.steps,
+                exercises: exercises, practiceExerciseIDs: source.manifest.practiceExerciseIDs, adaptation: source.manifest.adaptation),
+                english: source.english, ukrainian: source.ukrainian, templates: source.templates)
+        }
+        let reachable = try highLesson(string: 2).adapted(to: InstrumentProfile(frets: .nineteen))
+        #expect(reachable.manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.string == 1 && $0.fret == 19 })
+        #expect(try reachable.manifest.exercises[0].resolvedEvents(instrument: .standard).flatMap(\.pitches).allSatisfy { $0.midi == 83 })
+        let unreachable = try highLesson(string: 1)
+        #expect(throws: LessonAdaptationError.unplayable) { try unreachable.adapted(to: InstrumentProfile(frets: .nineteen)) }
+        #expect(try unreachable.adapted(to: InstrumentProfile()).manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.fret == 24 })
     }
     @Test func cStandardAndDropDHaveIndependentGoldenTargetsAndCorrectChordVoicing() throws {
         let lessons = try course()

@@ -73,9 +73,17 @@ final class LocalDataStore {
         catch { operationError = "tuning.error.profile" }
     }
 
+    func changeFretCount(_ frets: GuitarFretCount) async {
+        do {
+            let old = preferences.instrument
+            let instrument = InstrumentProfile(tuning: old.tuning, orientation: old.orientation, source: old.source, frets: frets)
+            try await savePreferences(InstrumentPreferences(instrument: instrument, customTunings: preferences.customTunings, practiceBPM: preferences.practiceBPM))
+        } catch { operationError = "storage.saveFailed" }
+    }
+
     func changeOrientation(_ orientation: FretboardOrientation) async {
         do {
-            let instrument = InstrumentProfile(tuning: preferences.instrument.tuning, orientation: orientation, source: preferences.instrument.source)
+            let instrument = InstrumentProfile(tuning: preferences.instrument.tuning, orientation: orientation, source: preferences.instrument.source, frets: preferences.instrument.frets)
             try await savePreferences(InstrumentPreferences(instrument: instrument, customTunings: preferences.customTunings,
                                                            practiceBPM: preferences.practiceBPM))
         } catch { operationError = "storage.saveFailed" }
@@ -92,7 +100,7 @@ final class LocalDataStore {
 
     func changeSource(_ source: InputSource) async {
         do {
-            let instrument = InstrumentProfile(tuning: preferences.instrument.tuning, orientation: preferences.instrument.orientation, source: source)
+            let instrument = InstrumentProfile(tuning: preferences.instrument.tuning, orientation: preferences.instrument.orientation, source: source, frets: preferences.instrument.frets)
             try await savePreferences(InstrumentPreferences(instrument: instrument, customTunings: preferences.customTunings,
                                                            practiceBPM: preferences.practiceBPM))
         } catch { operationError = "storage.saveFailed" }

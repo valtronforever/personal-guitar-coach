@@ -34,7 +34,7 @@ public struct InstrumentPreferences: Codable, Equatable, Sendable {
 
     public func selectingTuning(id: String) throws -> InstrumentPreferences {
         guard let tuning = availableTunings.first(where: { $0.id == id }) else { throw StorageError.invalidRecord }
-        return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source),
+        return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source, frets: instrument.frets),
                                          customTunings: customTunings, practiceBPM: practiceBPM)
     }
 
@@ -50,7 +50,7 @@ public struct InstrumentPreferences: Codable, Equatable, Sendable {
             guard expectedRevision == nil, tuning.revision == 1 else { throw StorageError.identifierConflict }
             profiles.append(tuning)
         }
-        return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source),
+        return try InstrumentPreferences(instrument: InstrumentProfile(tuning: tuning, orientation: instrument.orientation, source: instrument.source, frets: instrument.frets),
                                          customTunings: profiles, practiceBPM: practiceBPM)
     }
     /// Restoring a historical target never overwrites a newer profile with the same ID.

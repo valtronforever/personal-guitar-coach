@@ -65,12 +65,15 @@ final class AppNavigation {
     private(set) var practiceRequest: PracticeRequest?
     private(set) var practiceAdaptationFailed = false
     func refreshPractice(tuning: TuningProfile, lessons: [LoadedLesson]) {
+        refreshPractice(instrument: InstrumentProfile(tuning: tuning), lessons: lessons)
+    }
+    func refreshPractice(instrument: InstrumentProfile, lessons: [LoadedLesson]) {
         guard let request = practiceRequest, request.adaptsWithInstrument else { return }
-        guard practiceAdaptationFailed || request.exercise.requiredTuning != tuning else { return }
+        guard practiceAdaptationFailed || request.exercise.requiredTuning != instrument.tuning || request.frets != instrument.frets else { return }
         do {
             guard let source = lessons.first(where: { $0.id == request.lessonID }) else { return }
-            let adapted = try source.adapted(to: tuning)
-            guard let next = PracticeRequest(lesson: adapted, exerciseID: request.exercise.id, adaptsWithInstrument: true) else { return }
+            let adapted = try source.adapted(to: instrument)
+            guard let next = PracticeRequest(lesson: adapted, exerciseID: request.exercise.id, adaptsWithInstrument: true, frets: instrument.frets) else { return }
             practiceRequest = next; practiceAdaptationFailed = false
         } catch { practiceAdaptationFailed = true }
     }

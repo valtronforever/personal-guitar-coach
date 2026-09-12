@@ -88,6 +88,7 @@ struct ResultDetailView: View {
                 Text("result.bars \(Int(config.range.lowerBound / config.exercise.timeSignature.ticksPerBar) + 1) \(Int((config.range.upperBound - 1) / config.exercise.timeSignature.ticksPerBar) + 1)")
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
                 Text("practice.stringOrder").font(.caption)
+                Text("result.fretCount \(config.instrument.fretCount)")
                 Text("result.reference \(number(tuning.referenceA4))")
                 Text(LocalizedStringKey(config.instrument.source.titleKey))
                 DisclosureGroup("result.versions") {

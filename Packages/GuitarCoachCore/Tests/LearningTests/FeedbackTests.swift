@@ -7,7 +7,7 @@ struct FeedbackTests {
     private func report(count: Int = 16, changes: [Int: Double] = [:], timing: [Int: Double] = [:], missing: Set<Int> = [],
                         uncertain: Set<Int> = [], rests: Bool = false, extras: [Double] = [], calibrated: Bool = true,
                         phase: PracticePhase = .completed, reason: PracticeStopReason? = nil, clipped: Bool = false,
-                        bpm: Double = 60) throws -> AssessedPractice {
+                        bpm: Double = 60, frets: GuitarFretCount = .twentyFour) throws -> AssessedPractice {
         var events: [MusicalEvent] = []
         for index in 0..<count {
             let isRest = rests && index % 2 == 1
@@ -21,7 +21,7 @@ struct FeedbackTests {
         let profile = try CalibrationProfile(route: route, method: .measured, residualOffsetSeconds: 0, uncertaintySeconds: 0.015,
             evidence: CalibrationEvidence(algorithmVersion: "fixture", matchedPulses: 12, missedPulses: 0, extraPulses: 0,
                 durationSeconds: 25, residualP95Seconds: 0.005, driftSeconds: 0))
-        let config = try PracticeConfiguration(exercise: Exercise(id: "feedback-fixture", events: events), instrument: InstrumentProfile(),
+        let config = try PracticeConfiguration(exercise: Exercise(id: "feedback-fixture", events: events), instrument: InstrumentProfile(frets: frets),
             bpm: bpm, route: route, calibration: calibrated ? profile : nil,
             lesson: PracticeLessonReference(id: "lesson", version: 1))
         let start = try config.expectedStart(renderEpochSeconds: 100), step = 60 / bpm
@@ -40,6 +40,13 @@ struct FeedbackTests {
         return try AssessmentEngine.evaluate(PracticeEvidence(id: UUID(), configuration: config, startedAt: Date(timeIntervalSince1970: 100),
             finishedAt: Date(timeIntervalSince1970: 150), phase: phase, reason: reason, signalConfirmed: true,
             renderEpochSeconds: 100, maximumClockDriftSeconds: 0, attacks: attacks, clipping: clipping, analysisVersion: "fixture-1"))
+    }
+    @Test func comparisonsRequireTheSamePhysicalFretCount() throws {
+        let original = try report(calibrated: false), same = try report(calibrated: false), shorter = try report(calibrated: false, frets: .nineteen)
+        #expect(PracticeComparison.compatible(original, same))
+        #expect(!PracticeComparison.compatible(original, shorter))
+        let snapshot = try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(shorter))
+        #expect(snapshot.evidence.configuration.instrument.fretCount == 19)
     }
     private func advice(_ result: AssessedPractice) -> [PracticeRecommendation] { FeedbackEngine.recommendations(for: result) }
     @Test func timingRequiresThreeErrorsInOneDirectionAndReliableCalibration() throws {

@@ -17,9 +17,9 @@ struct LessonTextView: View {
     @Environment(AppNavigation.self) private var navigation
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
 
-    init(lesson: LoadedLesson, bookmark: LessonBookmark?, tuning: TuningProfile = .standard) {
+    init(lesson: LoadedLesson, bookmark: LessonBookmark?, tuning: TuningProfile = .standard, frets: GuitarFretCount = .twentyFour) {
         restoresBookmark = bookmark?.lessonVersion == (lesson.manifest.adaptation?.lessonVersion ?? lesson.manifest.version) && bookmark?.stepID != nil
-        _selection = State(initialValue: LessonSelection(lesson: lesson, bookmark: bookmark, tuning: tuning))
+        _selection = State(initialValue: LessonSelection(lesson: lesson, bookmark: bookmark, tuning: tuning, frets: frets))
     }
 
     var body: some View {
@@ -62,7 +62,7 @@ struct LessonTextView: View {
                                     .disabled(!reading.canEdit).accessibilityIdentifier("lesson.markRead")
                                 Text("reading.explanation").font(.caption).foregroundStyle(.secondary)
                                 ForEach(Array(lesson.manifest.practiceExerciseIDs.enumerated()), id: \.element) { index, id in
-                                    if let request = PracticeRequest(lesson: lesson, exerciseID: id, adaptsWithInstrument: selection.sourceLesson.manifest.adaptation != nil) {
+                                    if let request = PracticeRequest(lesson: lesson, exerciseID: id, adaptsWithInstrument: selection.sourceLesson.manifest.adaptation != nil, frets: localData.preferences.instrument.frets) {
                                         TuningRequirementView(exercise: request.exercise, instrument: localData.preferences.instrument.tuning)
                                         Button { navigation.openPractice(request) } label: {
                                             if lesson.manifest.practiceExerciseIDs.count == 1 { Text("lesson.practice") }
@@ -106,8 +106,8 @@ struct LessonTextView: View {
             }
         }
         .onAppear { saveBookmark() }
-        .onChange(of: localData.preferences.instrument.tuning) { _, tuning in
-            selection.adapt(to: tuning); saveBookmark()
+        .onChange(of: localData.preferences.instrument) { _, instrument in
+            selection.adapt(to: instrument.tuning, frets: instrument.frets); saveBookmark()
         }
         .task(id: selection.exercise) { await preview.configure(selection.exercise, audio: audio) }
         .onChange(of: audio.state) { _, state in preview.update(state) }
@@ -118,7 +118,7 @@ struct LessonTextView: View {
     private var playbackFretboard: FretboardModel? {
         guard preview.requestID != nil, let exercise = preview.exercise else { return nil }
         return FretboardModel(tuning: exercise.requiredTuning ?? localData.preferences.instrument.tuning,
-            orientation: localData.preferences.instrument.orientation, positions: preview.activeEvent()?.positions ?? [])
+            orientation: localData.preferences.instrument.orientation, frets: localData.preferences.instrument.frets, positions: preview.activeEvent()?.positions ?? [])
     }
     private func saveBookmark() { guard !selection.adaptationFailed else { return }; reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID) }
 }

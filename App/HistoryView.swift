@@ -74,7 +74,7 @@ struct HistoryView: View {
                 Text(verbatim: title).font(.headline)
             } else { Text("result.savedExercise").font(.headline) }
             Text(record.startedAt, format: .dateTime.year().month().day().hour().minute()).foregroundStyle(.secondary)
-            HStack { TuningName(profile: record.instrument.tuning); Text("practice.selectedTempo \(Int(record.bpm))") }
+            HStack { TuningName(profile: record.instrument.tuning); Text("practice.selectedTempo \(Int(record.bpm))"); Text("result.fretCount \(record.instrument.fretCount)") }
             if let score = record.result.payload.overallScore {
                 Text("history.score \(Int(score.rounded()))").font(.title3.bold())
             } else {

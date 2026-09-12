@@ -13,15 +13,15 @@ final class LessonSelection {
     private(set) var range = TimelineSelection()
     var selectedPosition: FretPosition?
 
-    init(lesson: LoadedLesson, bookmark: LessonBookmark? = nil, tuning: TuningProfile? = nil) {
+    init(lesson: LoadedLesson, bookmark: LessonBookmark? = nil, tuning: TuningProfile? = nil, frets: GuitarFretCount = .twentyFour) {
         sourceLesson = lesson; self.lesson = lesson
-        if let tuning { adapt(to: tuning) }
+        if let tuning { adapt(to: tuning, frets: frets) }
         let restored = bookmark?.lessonVersion == self.lesson.manifest.version ? bookmark?.stepID : nil
         selectStep(restored.flatMap { id in lesson.manifest.steps.first { $0.id == id } }?.id ?? lesson.manifest.steps[0].id)
     }
 
-    func adapt(to tuning: TuningProfile) {
-        do { lesson = try sourceLesson.adapted(to: tuning); adaptationFailed = false; selectedPosition = nil }
+    func adapt(to tuning: TuningProfile, frets: GuitarFretCount = .twentyFour) {
+        do { lesson = try sourceLesson.adapted(to: tuning, frets: frets); adaptationFailed = false; selectedPosition = nil }
         catch { adaptationFailed = true }
     }
     var exercise: Exercise? { adaptationFailed ? nil : lesson.manifest.exercises.first { $0.id == exerciseID } }
@@ -51,17 +51,17 @@ final class LessonSelection {
     }
 
     func fretboard(instrument: InstrumentProfile) -> FretboardModel {
-        guard !adaptationFailed else { return FretboardModel(tuning: instrument.tuning, orientation: instrument.orientation, positions: []) }
+        guard !adaptationFailed else { return FretboardModel(tuning: instrument.tuning, orientation: instrument.orientation, frets: instrument.frets, positions: []) }
         if !range.ids.isEmpty, let exercise {
-            return FretboardModel(tuning: exercise.requiredTuning ?? instrument.tuning, orientation: instrument.orientation,
+            return FretboardModel(tuning: exercise.requiredTuning ?? instrument.tuning, orientation: instrument.orientation, frets: instrument.frets,
                 positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.positions))
         }
         if let stepID, let visual = try? lesson.visual(stepID: stepID, instrument: instrument.tuning) {
-            return FretboardModel(tuning: visual.tuning, orientation: instrument.orientation, positions: visual.positions.map(\.position),
+            return FretboardModel(tuning: visual.tuning, orientation: instrument.orientation, frets: instrument.frets, positions: visual.positions.map(\.position),
                 mutedStrings: visual.mutedStrings,
                 fingers: Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } }))
         }
-        return FretboardModel(tuning: instrument.tuning, orientation: instrument.orientation, positions: [])
+        return FretboardModel(tuning: instrument.tuning, orientation: instrument.orientation, frets: instrument.frets, positions: [])
     }
 }
 
@@ -88,13 +88,14 @@ struct PracticeRequest: Equatable, Sendable {
     let lessonID: String
     let lessonVersion: Int
     let adaptsWithInstrument: Bool
+    let frets: GuitarFretCount
     let exercise: Exercise
-    init?(lesson: LoadedLesson, exerciseID: String, adaptsWithInstrument: Bool = false) {
+    init?(lesson: LoadedLesson, exerciseID: String, adaptsWithInstrument: Bool = false, frets: GuitarFretCount = .twentyFour) {
         guard lesson.manifest.practiceExerciseIDs.contains(exerciseID),
               let exercise = lesson.manifest.exercises.first(where: { $0.id == exerciseID }),
               exercise.assessmentMode == .monophonic else { return nil }
         lessonID = lesson.id; lessonVersion = lesson.manifest.version; self.exercise = exercise
-        self.adaptsWithInstrument = adaptsWithInstrument
+        self.adaptsWithInstrument = adaptsWithInstrument; self.frets = frets
         initialRange = nil; initialBPM = nil; archivedTuning = nil
     }
 }
@@ -104,7 +105,7 @@ extension PracticeRequest {
     func freshSelection() -> PracticeRequest { PracticeRequest(copying: self) }
     private init(copying request: PracticeRequest) {
         lessonID = request.lessonID; lessonVersion = request.lessonVersion; exercise = request.exercise
-        adaptsWithInstrument = request.adaptsWithInstrument
+        adaptsWithInstrument = request.adaptsWithInstrument; frets = request.frets
         initialRange = request.initialRange; initialBPM = request.initialBPM; archivedTuning = request.archivedTuning
     }
     init?(result: AssessedPractice, recommendation: PracticeRecommendation) {
@@ -114,7 +115,7 @@ extension PracticeRequest {
               let lesson = result.evidence.configuration.lesson else { return nil }
         let config = result.evidence.configuration
         lessonID = lesson.id; lessonVersion = lesson.version; exercise = config.exercise
-        adaptsWithInstrument = false
+        adaptsWithInstrument = false; frets = config.instrument.frets
         initialBPM = recommendation.bpm
         let bar = exercise.timeSignature.ticksPerBar
         initialRange = Int64(recommendation.firstBar - 1) * bar..<min(Int64(recommendation.lastBar) * bar, exercise.durationTicks)
@@ -125,6 +126,6 @@ extension PracticeRequest {
     func retryInstrument(from current: InstrumentProfile) throws -> InstrumentProfile {
         guard let archivedTuning else { return current }
         guard current.tuning.hasSamePitches(as: archivedTuning) else { throw MusicError.tuningMismatch }
-        return InstrumentProfile(tuning: archivedTuning, orientation: current.orientation, source: current.source)
+        return InstrumentProfile(tuning: archivedTuning, orientation: current.orientation, source: current.source, frets: current.frets)
     }
 }

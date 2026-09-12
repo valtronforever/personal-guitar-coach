@@ -164,6 +164,29 @@ private actor PracticeRuntimeStub: AudioRuntime {
         #expect(h.model.phase == .idle && h.model.latestEvidence == nil)
         await h.audio.stop(purpose: .practice)
     }
+    @Test func changingFretCountStopsOldAttemptAndKeepsItsOriginalEvidence() async throws {
+        let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
+        let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let lessons = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons
+        let source = try #require(lessons.first { $0.id == "c-major" })
+        let adapted = try source.adapted(to: .standard), navigation = AppNavigation()
+        navigation.openPractice(try #require(PracticeRequest(lesson: adapted, exerciseID: "c-major-practice", adaptsWithInstrument: true)))
+        h.model.configure(navigation.practiceRequest); h.model.physicallyTuned = true
+        var attempts: [PracticeEvidence] = []
+        h.model.onAttemptFinished = { attempts.append($0) }
+        await h.model.start(instrument: InstrumentProfile())
+        try await playing(h)
+        h.model.instrumentWillChange(InstrumentProfile(frets: .nineteen))
+        navigation.refreshPractice(instrument: InstrumentProfile(frets: .nineteen), lessons: lessons)
+        h.model.configure(navigation.practiceRequest)
+        try await wait(h) { !h.model.isBusy && attempts.count == 1 }
+        #expect(attempts[0].reason == .changedInstrument)
+        #expect(attempts[0].configuration.exercise == adapted.manifest.exercises[0])
+        #expect(attempts[0].configuration.instrument.frets == .twentyFour)
+        #expect(h.model.request?.frets == .nineteen && !h.model.physicallyTuned)
+        #expect(h.model.phase == .idle && h.model.latestEvidence == nil)
+        await h.audio.stop(purpose: .practice)
+    }
     @Test func repeatsAreIndependentAndHealthySilenceAfterPreflightIsCompletedEvidence() async throws {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
         var attempts: [PracticeEvidence] = []

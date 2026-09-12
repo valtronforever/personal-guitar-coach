@@ -138,12 +138,12 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
                 let old = try JSONDecoder().decode(DocumentEnvelope<LegacyPreferences>.self, from: data).payload
                 value = try InstrumentPreferences(instrument: InstrumentProfile(tuning: old.tuning, orientation: old.orientation),
                                                   customTunings: old.customTunings, practiceBPM: old.practiceBPM)
-            case 2:
+            case 2, 3:
                 value = try JSONDecoder().decode(DocumentEnvelope<InstrumentPreferences>.self, from: data).payload
             default: throw StorageError.unsupportedVersion(version)
             }
             try value.validate()
-            return .available(value, migrated: version == 1)
+            return .available(value, migrated: version < 3)
         } catch let error as CocoaError where error.code == .fileReadNoSuchFile || error.code == .fileNoSuchFile {
             return .available(.defaults, migrated: false)
         } catch { return .needsRecovery(issue(for: preferencesURL, error: error)) }
@@ -153,7 +153,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         try preferences.validate()
         if case .needsRecovery = loadPreferences() { throw StorageError.preferencesNeedRecovery }
         try prepare()
-        try writer.write(encode(DocumentEnvelope(schemaVersion: 2, payload: preferences)), preferencesURL)
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 3, payload: preferences)), preferencesURL)
     }
 
     /// Recovery is explicit. The unreadable/future file is retained before replacing preferences.
@@ -164,7 +164,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
             try manager.createDirectory(at: recovery, withIntermediateDirectories: true)
             try manager.copyItem(at: preferencesURL, to: recovery.appendingPathComponent("instrument-\(UUID().uuidString).json"))
         }
-        try writer.write(encode(DocumentEnvelope(schemaVersion: 2, payload: InstrumentPreferences.defaults)), preferencesURL)
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 3, payload: InstrumentPreferences.defaults)), preferencesURL)
     }
 
     public func history() throws -> HistoryLoad {
