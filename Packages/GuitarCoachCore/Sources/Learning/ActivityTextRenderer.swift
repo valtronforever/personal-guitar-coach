@@ -42,12 +42,16 @@ struct ActivityTextRenderer {
         let positionLabel: String
         if let region { positionLabel = text.locale == "uk" ? "ділянку від \(region.firstFret)-го ладу (до \(region.windowFrets) ладів)" : "the region from fret \(region.firstFret) (up to \(region.windowFrets) frets)" }
         else { positionLabel = text.locale == "uk" ? "початкову аплікатуру" : "the original fingering" }
-        var values = ["tuning": tuning.name, "reference": String(format: "%.1f", locale: Locale(identifier: text.locale), tuning.referenceA4),
-            "openExample": tuning.strings[5].openPitch.name(spelling: tuning.preferredSpelling),
-            "openStrings": tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "),
-            "root": names.first.map { String($0.prefix { !$0.isNumber && $0 != "-" }) } ?? "", "first": names.first ?? "",
-            "highest": pitches.max(by: { $0.midi < $1.midi })?.name(spelling: tuning.preferredSpelling) ?? "", "sequence": names.joined(separator: " – "),
-            "positionLabel": positionLabel]
+        var values: [String: String] = [:]
+        values["tuning"] = tuning.name
+        values["reference"] = String(format: "%.1f", locale: Locale(identifier: text.locale), tuning.referenceA4)
+        values["openExample"] = tuning.strings[5].openPitch.name(spelling: tuning.preferredSpelling)
+        values["openStrings"] = tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · ")
+        values["root"] = names.first.map { String($0.prefix { !$0.isNumber && $0 != "-" }) } ?? ""
+        values["first"] = names.first ?? ""
+        values["highest"] = pitches.max(by: { $0.midi < $1.midi })?.name(spelling: tuning.preferredSpelling) ?? ""
+        values["sequence"] = names.joined(separator: " – ")
+        values["positionLabel"] = positionLabel
         func positionValues(_ positions: [FretPosition]) throws -> [String: String] {
             let notes = try positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }
             return ["notes": notes.joined(separator: " – "), "positions": zip(notes, positions).map { "\($0) (\($1.string)/\($1.fret))" }.joined(separator: "; ")]

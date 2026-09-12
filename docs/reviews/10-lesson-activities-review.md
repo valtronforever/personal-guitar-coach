@@ -8,6 +8,7 @@ Reviewed schema-2-only decoding, source scope, policy tagged unions, author defa
 
 Findings fixed:
 
+- The first GitHub run on the hosted Swift toolchain rejected a large inferred template dictionary with a type-check timeout. Split it into explicitly typed individual assignments; local focused renderer tests and Release were rerun before retrying CI.
 - Selecting a whole lesson must not pick one incompatible tuning context implicitly. Validation requires equivalent physical source tunings and policy; renamed equivalent profiles remain valid.
 - Conflicting shared chord mappings could overwrite an earlier mapping. Resolution now fails explicitly instead of making linked arpeggios disagree.
 - Diagnostics initially collapsed unknown step events and display-only practice into a generic invalid-step error. Restored specific unknown-event/unsupported-mode diagnostics.
