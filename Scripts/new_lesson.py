@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create a bilingual lesson draft from the checked-in template; never overwrite a lesson."""
 import argparse
-import json
+from lesson_yaml import loads, dumps
 from pathlib import Path
 import re
 import shutil
@@ -38,9 +38,9 @@ def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None =
     elif starts != "auto":
         raise ValueError("--starts needs --positioning-window")
     catalog_root = catalog_root.resolve()
-    catalog_path = catalog_root / "catalog.json"
-    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
-    if catalog.get("schemaVersion") != 1 or not isinstance(catalog.get("lessons"), list) or not all(isinstance(x, str) for x in catalog["lessons"]):
+    catalog_path = catalog_root / "catalog.yml"
+    catalog = loads(catalog_path.read_text(encoding="utf-8"))
+    if not isinstance(catalog, dict) or catalog.get("schemaVersion") != 1 or not isinstance(catalog.get("lessons"), list) or not all(isinstance(x, str) for x in catalog["lessons"]):
         raise ValueError("Expected an existing schema-1 lesson catalog")
     destination = catalog_root / lesson_id
     if destination.exists() or destination.is_symlink() or lesson_id in catalog["lessons"]:
@@ -50,7 +50,7 @@ def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None =
     for existing_id in catalog["lessons"]:
         if not re.fullmatch(r"[a-z][a-z0-9-]{0,63}", existing_id):
             raise ValueError("The existing catalog contains an invalid lesson ID")
-        manifest = json.loads((catalog_root / existing_id / "lesson.json").read_text(encoding="utf-8"))
+        manifest = loads((catalog_root / existing_id / "lesson.yml").read_text(encoding="utf-8"))
         if any(exercise.get("id") == exercise_id for exercise in manifest["exercises"]):
             raise ValueError("Generated exercise ID is already used by another lesson; choose a different lesson ID")
 
@@ -69,15 +69,15 @@ def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None =
     created = False
     catalog_temp = None
     try:
-        for filename in ["lesson.json", "en.json", "uk.json"]:
+        for filename in ["lesson.yml", "en.yml", "uk.yml"]:
             source = ROOT / "docs/templates/lesson" / filename
-            data = rename(json.loads(source.read_text(encoding="utf-8")))
-            if source.name == "lesson.json":
+            data = rename(loads(source.read_text(encoding="utf-8")))
+            if source.name == "lesson.yml":
                 data["adaptation"]["policy"] = policy
                 if position_policy:
                     data["materials"][0]["positioning"] = position_policy
                     data["activities"][0]["positionSelection"] = {"mode": "learner", "default": {"kind": "original"}}
-            (staged / source.name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            (staged / source.name).write_text(dumps(data), encoding="utf-8")
         destination.mkdir()  # Fails if another author created this ID in the meantime.
         created = True
         for source in staged.iterdir():
@@ -85,8 +85,7 @@ def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None =
         catalog["lessons"].append(lesson_id)
         with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=catalog_root, prefix=".catalog-", delete=False) as file:
             catalog_temp = Path(file.name)
-            json.dump(catalog, file, ensure_ascii=False, indent=2)
-            file.write("\n")
+            file.write(dumps(catalog))
         catalog_temp.replace(catalog_path)
         registered = True
     finally:

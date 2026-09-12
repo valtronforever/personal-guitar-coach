@@ -14,13 +14,14 @@ let package = Package(
         .executable(name: "BenchmarkPractice", targets: ["BenchmarkPractice"]),
         .executable(name: "BenchmarkChords", targets: ["BenchmarkChords"])
     ],
+    dependencies: [.package(url: "https://github.com/jpsim/Yams.git", exact: "6.2.2")],
     targets: [
         .target(name: "Domain"),
         .target(name: "RealtimeAudio", linkerSettings: [.linkedFramework("AudioToolbox")]),
         .target(name: "Audio", dependencies: ["Domain", "RealtimeAudio"]),
         .target(name: "AudioTestSupport"),
         .target(name: "Persistence", dependencies: ["Domain"]),
-        .target(name: "Learning", dependencies: ["Domain"]),
+        .target(name: "Learning", dependencies: ["Domain", .product(name: "Yams", package: "Yams")]),
         .executableTarget(name: "ValidateLessonContent", dependencies: ["Learning"]),
         .executableTarget(name: "BenchmarkAudio", dependencies: ["Audio", "AudioTestSupport", "Domain"]),
         .executableTarget(name: "BenchmarkPractice", dependencies: ["Domain", "Audio", "Learning", "Persistence"]),
@@ -28,6 +29,6 @@ let package = Package(
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
         .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio", "AudioTestSupport", "Learning"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence", "Domain"], resources: [.copy("Fixtures")]),
-        .testTarget(name: "LearningTests", dependencies: ["Learning", "Domain"])
+        .testTarget(name: "LearningTests", dependencies: ["Learning", "Domain", .product(name: "Yams", package: "Yams")])
     ]
 )

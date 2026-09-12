@@ -2094,7 +2094,7 @@
         }
       }
     },
-    "content.error.invalidJSON": {
+    "content.error.invalidYAML": {
       "extractionState": "manual",
       "localizations": {
         "en": {

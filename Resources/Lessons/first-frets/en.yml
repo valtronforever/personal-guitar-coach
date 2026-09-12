@@ -1,0 +1,34 @@
+lessonID: first-frets
+lessonVersion: 2
+locale: en
+title: Your first frets
+summary: Move by semitones on the lowest string.
+goal: Play frets 0–1–2–3, then 3–2–1–0 with a fresh pluck on every beat.
+body: >-
+  First complete the open-string lesson. A fret raises a note by one semitone. Put your fingertip just behind the
+  metal fret, using only enough pressure for a clear note. Suggested fingers for frets 1/2/3 are index/middle/ring.
+  Start at 60 BPM; 40–50 gives more time. Try 70 only after comfortable repeats.
+steps:
+  open-start:
+    title: 1. Start open
+    body: 'Pluck string 6 without fretting: {{positions}}.'
+  first-fret:
+    title: 2. Find fret 1
+    body: 'Move one semitone above the open note: {{positions}}.'
+  climb:
+    title: 3. Climb in semitones
+    body: 'Play the remaining beats of bar 1: {{positions}}.'
+  return:
+    title: 4. Return to the open string
+    body: 'Bar 2 begins with a new attack on fret 3, then descends: {{positions}}.'
+  two-bars:
+    title: 5. Join both bars
+    body: Count four beats twice. Pluck every note, including the repeated note across the barline. {{positions}}.
+historicalTitle: Your first frets
+activities:
+  lesson:
+    title: '{{first}} to {{highest}}'
+    body: |-
+      Move by semitones on string 6 in your selected tuning.
+
+      Sequence: {{sequence}}.

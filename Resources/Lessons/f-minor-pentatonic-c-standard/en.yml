@@ -1,0 +1,38 @@
+lessonID: f-minor-pentatonic-c-standard
+lessonVersion: 1
+locale: en
+title: F minor pentatonic in one position · C Standard
+summary: Follow the five-note pattern across all six strings at frets 5–8.
+goal: Play the F minor pentatonic position up to A♭4 and return to F2 without rushing string changes.
+body: |-
+  This lesson belongs to the C Standard course. For prerequisites, choose lessons marked C Standard.
+
+  Before starting: practice A♭ major across the strings and move comfortably between individual notes. Tune to C Standard, A4 = 440 Hz.
+
+  F minor pentatonic uses five pitch names: F, A♭, B♭, C, E♭. They repeat in higher octaves. This position begins on F2 at string 6 fret 5 and reaches A♭4 at string 1 fret 8. Its highest note is A♭4, not the next F.
+
+  Keep the hand near fret 5. Suggested fingers are index at fret 5, ring at fret 7 and little finger at fret 8. Choose comfortable movement and release unnecessary pressure. The positions are a map to learn; the app measures audible pitch and attacks, not which finger followed that map.
+
+  Start at 50 BPM, with one quarter note per click. The ascent takes bars 1–3; bars 4–6 return to F2 and end with a rest. Practice one or two bars first if needed. When the full path feels comfortable, try 60 BPM; a new tempo creates different comparison conditions. Keep just one note sounding at a time so the result can give useful pitch evidence.
+steps:
+  low-strings:
+    title: 1. Begin with F2, A♭2, B♭2, C3
+    body: 'Bar 1: string 6 frets 5, 8; string 5 frets 5, 7. Notice that each string begins at fret 5.'
+  middle-strings:
+    title: 2. Cross the middle strings
+    body: 'Bar 2: string 4 frets 5, 7 gives E♭3, F3; string 3 frets 5, 7 gives A♭3, B♭3.'
+  high-strings:
+    title: 3. Reach the top of the position
+    body: 'Bar 3: string 2 frets 5, 8 gives C4, E♭4; string 1 frets 5, 8 gives F4, A♭4.'
+  return-high:
+    title: 4. Turn around without repeating A♭4
+    body: Bar 4 descends through F4, E♭4, C4, B♭3. Read each string change in tablature before playing.
+  return-home:
+    title: 5. Return to F2 and leave space
+    body: >-
+      Bars 5–6 continue A♭3, F3, E♭3, C3, B♭2, A♭2, F2, then a quarter rest. Review a recommended fragment after
+      the attempt instead of automatically increasing the tempo.
+activities:
+  lesson:
+    title: F minor pentatonic in one position · C Standard
+    body: Play the F minor pentatonic position up to A♭4 and return to F2 without rushing string changes.

@@ -1,0 +1,42 @@
+lessonID: c-standard-open-strings
+lessonVersion: 1
+locale: en
+title: Meet your open strings · C Standard
+summary: Find low C2 and high C4, with a beat of silence between them.
+goal: Play two open C strings at a steady pulse and leave the rests quiet.
+body: |-
+  This lesson belongs to the C Standard course. For prerequisites, choose lessons marked C Standard.
+
+  Before starting: have your guitar ready and know which end of the strings is thickest. No fretting experience is needed.
+
+  An open string rings without pressing a fret. String 6 is the thickest and sounds C2 in C Standard tuning. String 1 is the thinnest and sounds C4. They share the name C, but C4 is two octaves higher.
+
+  Select C Standard in Instrument settings and physically tune your guitar before practicing. Use a clean, comfortable sound. The numbers on tablature identify frets: 0 means an open string.
+
+  In C Standard tuning, strings 6 → 1 are C2, F2, B♭2, E♭3, G3, C4. The octave number distinguishes low and high notes. This course uses C Standard with A4 = 440 Hz. In the tuner, select a string, pluck it alone, and gently adjust its tuning machine until the pitch settles near the target. Selecting a tuning in the app does not tune the guitar.
+
+  For an electric guitar, select the interface and its guitar input channel in Audio setup. Choose Acoustic guitar · Microphone or Acoustic guitar · Pickup when that is your source. Keep the sound clean and use headphones for the metronome. Start this exercise at 60 BPM; 40 BPM is available if you need more time.
+
+  Practice begins with a short signal check and a count-in. After the attempt, open the result and prepare a suggested repeat. Without reliable timing calibration, the app can give pitch feedback while rhythm and the overall score remain unavailable. Listen to the written rests yourself: this version checks note pitch and new attacks, not how long every note rings.
+steps:
+  hear-low-e:
+    title: 1. Hear the low C
+    body: On beat 1, pluck string 6 without pressing a fret. Listen to C2. One relaxed pluck is enough.
+  leave-space:
+    title: 2. Leave a beat of silence
+    body: >-
+      Beat 2 is a rest. Gently stop the low string with a comfortable touch and keep counting. Do not pluck another
+      note.
+  hear-high-e:
+    title: 3. Hear the high C
+    body: >-
+      On beat 3, pluck open string 1. It sounds C4, two octaves above the low C. You do not need to press the fingerboard.
+  play-the-bar:
+    title: 4. Put the four beats together
+    body: >-
+      Count 1, 2, 3, 4: low C, rest, high C, rest. Start at 60 BPM or choose a slower tempo. Aim for a clear note
+      on each playing beat and silence on each rest.
+activities:
+  lesson:
+    title: Meet your open strings · C Standard
+    body: Play two open C strings at a steady pulse and leave the rests quiet.

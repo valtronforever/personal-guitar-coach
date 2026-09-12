@@ -46,6 +46,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = "B8FA18644A594FE11B39A425";
 		};
+		"B8C6700E7975BB17FF119A5F" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder";
+			"path" = "Resources/ThirdPartyLicenses";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"A3E628E49AE24EABDA88CDB8" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "B8C6700E7975BB17FF119A5F";
+		};
 		"BC4A71180870F7945155FBB0" = {
 			"isa" = "XCLocalSwiftPackageReference";
 			"relativePath" = "Packages/GuitarCoachCore";
@@ -473,7 +483,7 @@
 		"F9187E824FE171A6F0EFAE28" = {
 			"isa" = "PBXResourcesBuildPhase";
 			"buildActionMask" = "2147483647";
-			"files" = ("D255F967F3ADCB2D24165D5A", "4D9DF2A4C70B6488900AF1CD", "2029515E6DA163D6E46B1770", "05590C0A002231F93CAC6A0C");
+			"files" = ("D255F967F3ADCB2D24165D5A", "4D9DF2A4C70B6488900AF1CD", "2029515E6DA163D6E46B1770", "05590C0A002231F93CAC6A0C", "A3E628E49AE24EABDA88CDB8");
 			"runOnlyForDeploymentPostprocessing" = "0";
 		};
 		"E250E07043113FAB44DB7036" = {
@@ -696,7 +706,7 @@
 			"isa" = "PBXGroup";
 			"name" = "Resources";
 			"sourceTree" = "<group>";
-			"children" = ("114F4CA765DE9E10ADC330CB", "9CF268CF79415E1082DE0BBC", "9C22087BA7A30D6815C37301", "B8FA18644A594FE11B39A425");
+			"children" = ("114F4CA765DE9E10ADC330CB", "9CF268CF79415E1082DE0BBC", "9C22087BA7A30D6815C37301", "B8FA18644A594FE11B39A425", "B8C6700E7975BB17FF119A5F");
 		};
 		"B9E7F2871A3402983868AFC8" = {
 			"isa" = "PBXGroup";

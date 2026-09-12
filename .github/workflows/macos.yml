@@ -8,10 +8,17 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      - name: Set up author tooling
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install -r Scripts/requirements.txt
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"
       - name: Record toolchain
         run: xcodebuild -version && swift --version
       - name: Verify generated project
         run: python3 Scripts/generate_project.py --check
+      - name: Test author YAML tools
+        run: python3 -m unittest discover -s Scripts
       - name: Verify localizations
         run: python3 Scripts/check_localizations.py
       - name: Type-check UI test sources

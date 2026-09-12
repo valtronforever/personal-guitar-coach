@@ -1,0 +1,41 @@
+lessonID: c-standard-steady-pulse
+lessonVersion: 1
+locale: en
+title: Keep a steady pulse · C Standard
+summary: Repeat open C2 with quarter notes, eighth notes and written rests.
+goal: Place separate attacks on the written beats and half-beats while keeping the count through rests.
+body: |-
+  This lesson belongs to the C Standard course. For prerequisites, choose lessons marked C Standard.
+
+  Before starting: play the open-string exercise comfortably and tune to C Standard, A4 = 440 Hz. Use only open string 6 for this lesson so you can focus on time.
+
+  In 4/4, count four main beats per bar. A quarter note takes one beat. Two eighth notes share a beat: say “1 and 2 and 3 and 4 and”. The metronome marks the numbered beats; “and” falls halfway between clicks. A rest still takes its written time.
+
+  Bar 1 uses quarters. Bar 2 uses eighths and includes gaps. Repeated C2 notes need separate plucks; a ringing note does not replace a new attack. Avoid striking other strings, and stop the sound for rests. The app evaluates attacks; listening for a fully quiet rest is also part of your own check.
+
+  Start at 60 BPM. First count the pattern aloud, then play it. Repeat at the same tempo for comparison; try 70 BPM when it feels comfortable. If rhythm is unavailable, check calibration in Audio setup rather than interpreting a missing rhythm score as a playing error.
+steps:
+  quarter-pulse:
+    title: 1. Count the quarter-note bar
+    body: 'Bar 1: play on 1, rest on 2, play on 3 and 4. All three notes are open C2, string 6.'
+  quarter-space:
+    title: 2. Keep counting through the rest
+    body: Beat 2 lasts one full click interval. Stop the previous sound gently and leave this beat without a new
+      attack.
+  eighth-pairs:
+    title: 3. Divide the first two beats
+    body: 'Bar 2 begins: play on “1”, play on “and”, rest on “2”, play on “and”. Each eighth occupies half a beat.'
+  eighth-spaces:
+    title: 4. Leave space between the last attacks
+    body: >-
+      Finish bar 2: play on “3”, rest on “and”, play on “4”, rest on “and”. Keep the numbered beats aligned with
+      the clicks.
+  whole-pattern:
+    title: 5. Play both bars
+    body: >-
+      The complete pattern has eight expected attacks. Use Practice for the count-in, then inspect early/late, missed
+      or rest-attack evidence when the input and timing are reliable.
+activities:
+  lesson:
+    title: Keep a steady pulse · C Standard
+    body: Place separate attacks on the written beats and half-beats while keeping the count through rests.

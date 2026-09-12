@@ -1,8 +1,23 @@
 # Authoring bilingual lessons
 
-Lesson manifests use **schema 2 only**. Each lesson has `lesson.json`, `en.json` and `uk.json`; there are no baseline/adaptive text editions. The ordering file `catalog.json` has its own schema 1. Loading content is read-only, offline and does not request audio permission.
+Lessons are UTF-8 YAML (`.yml`). Manifests use **schema 2 only**. Each lesson has `lesson.yml`, `en.yml` and `uk.yml`; there are no baseline/adaptive text editions. The ordering file `catalog.yml` has its own schema 1. Loading content is read-only, offline and does not request audio permission.
+
+## YAML conventions
+
+Use two spaces for indentation and no tabs. Each file contains one document; comments (`# ...`) are welcome. Use `|-` for literal paragraphs and `>-` to fold wrapped lines into one paragraph without a trailing newline. Quote text containing `: ` or ` #`, strings such as `yes`/`null`, and values beginning with `{{...}}`. Musical numbers remain numbers; booleans use `true`/`false`. Duplicate mapping keys are rejected. Prefer explicit values over YAML anchors, merge keys or custom tags.
+
+The app reads `.yml` directly with Yams; no JSON lesson fallback or generated JSON copy is needed. Lesson schema 2, catalog schema 1 and content/exercise versions are unchanged by this serialization-only migration. Saved settings, practice evidence and machine-readable availability reports remain JSON.
 
 ## Create and validate a draft
+
+Set up the Python author tools once and activate the environment when authoring, testing or packaging:
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r Scripts/requirements.txt
+```
+
 
 ```sh
 python3 Scripts/new_lesson.py my-lesson
@@ -13,7 +28,7 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-pat
 
 The scaffold defaults to positioning disabled. `--starts` accepts `auto`, a sorted unique list such as `3,7`, or an inclusive range such as `3:12:1`. It requires `--positioning-window` (1–6). Edit both translations and the source exercise before publishing a draft. The position report evaluates one lesson against eight tuning presets and five neck sizes, using the actual resolver. It lists each choice and its failure reason. Mathematical feasibility does not establish ergonomic comfort or audio assessment capability.
 
-The [minimal template](templates/lesson/lesson.json) and [complete demonstration](../Resources/Lessons/same-notes-new-position/lesson.json) are loadable examples. The demonstration shares one exercise across note exploration, scale exploration, fixed Original and fixed near-seven performances. Use it to author a teaching sequence without writing Swift.
+The [minimal template](templates/lesson/lesson.yml) and [complete demonstration](../Resources/Lessons/same-notes-new-position/lesson.yml) are loadable examples. The demonstration shares one exercise across note exploration, scale exploration, fixed Original and fixed near-seven performances. Use it to author a teaching sequence without writing Swift.
 
 ## Music, materials and activities
 
@@ -32,13 +47,19 @@ IDs contain 1–64 lowercase ASCII letters, digits or hyphens, starting with a l
 
 Six strings use 1 = thinnest and 6 = thickest, with sounding MIDI (C4 = 60). Fret 0 is open; muted strings are separate. PPQ is 960; supported signatures are 3/4 and 4/4. Events are ordered, non-overlapping and have positive duration. Do not duplicate computed target MIDI next to fret positions. Domain derives pitches consistently for every consumer.
 
-Material `source` is one tagged object:
+Material `source` is one tagged object. Choose one of these alternatives:
 
-```json
-{"kind":"lesson"}
-{"kind":"exercise","exerciseID":"my-lesson-practice"}
-{"kind":"events","exerciseID":"my-lesson-practice","eventIDs":["start","step-up"]}
-{"kind":"fingering","fingeringID":"chord-shape"}
+```yaml
+{kind: lesson}
+```
+```yaml
+{kind: exercise, exerciseID: my-lesson-practice}
+```
+```yaml
+{kind: events, exerciseID: my-lesson-practice, eventIDs: [start, step-up]}
+```
+```yaml
+{kind: fingering, fingeringID: chord-shape}
 ```
 
 A single event selects one note. An event fragment must be contiguous in source order, including internal rests. Its derived exercise starts at tick 0 while preserving IDs, durations, rests and the source tick offset. A material cannot combine incompatible source tuning contexts. A whole-lesson material includes linked shapes and arpeggios so they retain consistent positions. A chord shape moves as a complete voicing on distinct strings; it remains display/preview only. Use a separate monophonic arpeggio for assessment.
@@ -52,25 +73,35 @@ Optional `adaptation` contains only `policy`:
 
 Without adaptation, a fixed-tuning source stays fixed; a follows-instrument source uses the selected tuning. Every resolved exercise freezes the actual tuning. Lesson positioning happens after choosing sounding pitches and **never changes the key or octave**.
 
-Omitted `positioning`, or `{"enabled":false}`, opts out. Enabled materials declare:
+Omitted `positioning`, or `{enabled: false}`, opts out. Enabled materials declare:
 
-```json
-{
-  "enabled": true,
-  "preserve": "soundingPitch",
-  "windowFrets": 6,
-  "allowedStarts": {"kind":"explicit","frets":[3,7]},
-  "allowOriginal": true
-}
+```yaml
+enabled: true
+preserve: soundingPitch
+windowFrets: 6
+allowedStarts:
+  kind: explicit
+  frets:
+    - 3
+    - 7
+allowOriginal: true
 ```
 
-`allowedStarts` also accepts `{"kind":"auto"}` (0–24) and `{"kind":"range","minimum":3,"maximum":12,"step":1}`. These are region starts, not every permitted note fret. A region from 7 with width 6 spans frets 7–12, limited by the configured neck. The first note need not be at fret 7. Availability requires the **complete material** to fit; selecting one step does not relax its material's constraints.
+`allowedStarts` also accepts `{kind: auto}` (0–24) and `{kind: range, minimum: 3, maximum: 12, step: 1}`. These are region starts, not every permitted note fret. A region from 7 with width 6 spans frets 7–12, limited by the configured neck. The first note need not be at fret 7. Availability requires the **complete material** to fit; selecting one step does not relax its material's constraints.
 
 Every enabled activity declares exactly one selection:
 
-```json
-{"id":"explore","materialID":"scale","positionSelection":{"mode":"learner","default":{"kind":"original"}}}
-{"id":"seven","materialID":"scale","positionSelection":{"mode":"fixed","value":{"kind":"region","firstFret":7}}}
+```yaml
+- id: explore
+  materialID: scale
+  positionSelection:
+    mode: learner
+    default: {kind: original}
+- id: seven
+  materialID: scale
+  positionSelection:
+    mode: fixed
+    value: {kind: region, firstFret: 7}
 ```
 
 A fixed Original uses `"value":{"kind":"original"}`. Original must be allowed when used by either mode. Disabled materials omit `positionSelection`. A permitted choice can still be unavailable on a particular instrument. The UI retains that choice with an explanation, offers feasible alternatives for learner activities and keeps other steps accessible. It never silently substitutes another key, octave or position.

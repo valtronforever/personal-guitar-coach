@@ -1,0 +1,207 @@
+schemaVersion: 2
+id: ab-major-c-standard
+version: 1
+difficulty: beginner
+topic: majorScale
+steps:
+  - id: root-c
+    kind: events
+    exerciseID: ab-major-c-standard-practice
+    eventIDs:
+      - up-1
+    activityID: lesson
+  - id: lower-half
+    kind: events
+    exerciseID: ab-major-c-standard-practice
+    eventIDs:
+      - up-1
+      - up-2
+      - up-3
+      - up-4
+    activityID: lesson
+  - id: upper-half
+    kind: events
+    exerciseID: ab-major-c-standard-practice
+    eventIDs:
+      - up-5
+      - up-6
+      - up-7
+      - up-8
+    activityID: lesson
+  - id: descending
+    kind: events
+    exerciseID: ab-major-c-standard-practice
+    eventIDs:
+      - down-1
+      - down-2
+      - down-3
+      - down-4
+      - down-5
+      - down-6
+      - down-7
+    activityID: lesson
+  - id: finish
+    kind: events
+    exerciseID: ab-major-c-standard-practice
+    eventIDs:
+      - finish-rest
+    activityID: lesson
+exercises:
+  - id: ab-major-c-standard-practice
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: c-standard
+      revision: 1
+      name: C Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 60
+        - number: 2
+          openPitch:
+            midi: 55
+        - number: 3
+          openPitch:
+            midi: 51
+        - number: 4
+          openPitch:
+            midi: 46
+        - number: 5
+          openPitch:
+            midi: 41
+        - number: 6
+          openPitch:
+            midi: 36
+    assessmentMode: monophonic
+    events:
+      - id: up-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: up-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 0
+      - id: up-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: up-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: up-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: up-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: up-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: up-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: down-1
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: down-2
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: down-3
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: down-4
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: down-5
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: down-6
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 0
+      - id: down-7
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: finish-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+materials:
+  - id: lesson-material
+    source:
+      kind: lesson
+    positioning:
+      enabled: false
+activities:
+  - id: lesson
+    materialID: lesson-material
+fingerings: []
+practiceEntries:
+  - id: ab-major-c-standard-practice
+    activityID: lesson
+    exerciseID: ab-major-c-standard-practice
