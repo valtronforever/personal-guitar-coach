@@ -27,5 +27,11 @@
       "title": "5. Join both bars",
       "body": "Count four beats twice: 0–1–2–3, then 3–2–1–0. Choose Practice and confirm the physical tuning before starting."
     }
+  },
+  "activities": {
+    "lesson": {
+      "title": "Your first frets · C Standard",
+      "body": "Play C2–D♭2–D2–E♭2 and return on one string with a fresh attack on every beat."
+    }
   }
 }

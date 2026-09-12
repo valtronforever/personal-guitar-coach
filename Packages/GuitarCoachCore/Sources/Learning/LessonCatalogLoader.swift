@@ -23,7 +23,7 @@ public struct LessonCatalogLoader: Sendable {
                     throw ContentFailure(.invalidIdentifier, "Lesson directory escapes the catalog")
                 }
                 let data = try read(folder.appendingPathComponent("lesson.json"))
-                try checkSchema(data)
+                try checkSchema(data, allowed: [2])
                 let manifest = try JSONDecoder().decode(LessonManifest.self, from: data)
                 guard manifest.id == id else { throw ContentFailure(.invalidIdentifier, "Folder and lesson IDs differ: \(id)") }
                 try validate(manifest)
@@ -33,21 +33,8 @@ public struct LessonCatalogLoader: Sendable {
                     throw ContentFailure(.duplicateIdentifier, "Exercise ID is already used by another lesson")
                 }
                 exerciseIDs.formUnion(manifest.exercises.map(\.id))
-                var templates: AdaptiveLessonText?
-                if let adaptation = manifest.adaptation {
-                    guard adaptation.lessonVersion > manifest.version,
-                          manifest.exercises.allSatisfy({ adaptation.exerciseVersion > $0.version }) else {
-                        throw ContentFailure(.invalidText, "Adapted content needs distinct newer versions")
-                    }
-                    let adaptedManifest = LessonManifest(id: manifest.id, version: adaptation.lessonVersion, steps: manifest.steps,
-                        exercises: manifest.exercises, practiceExerciseIDs: manifest.practiceExerciseIDs)
-                    templates = try AdaptiveLessonText(english: translation(.en, folder: folder, manifest: adaptedManifest, prefix: "adaptive."),
-                        ukrainian: translation(.uk, folder: folder, manifest: adaptedManifest, prefix: "adaptive."))
-                }
                 try validatePresentationParity(en, uk)
-                if let templates { try validatePresentationParity(templates.english, templates.ukrainian) }
-                let lesson = LoadedLesson(manifest: manifest, english: en, ukrainian: uk, templates: templates)
-                if templates != nil { _ = try lesson.adapted(to: manifest.exercises[0].requiredTuning ?? .standard) }
+                let lesson = LoadedLesson(manifest: manifest, english: en, ukrainian: uk)
                 lessons.append(lesson)
             } catch { issues.append(issue(error, lessonID: id)) }
         }
@@ -55,94 +42,88 @@ public struct LessonCatalogLoader: Sendable {
     }
 
     public func validate(_ manifest: LessonManifest) throws {
-        guard manifest.schemaVersion == 1 else { throw ContentFailure(.unsupportedSchema, "Lesson schema \(manifest.schemaVersion)") }
+        guard manifest.schemaVersion == 2 else { throw ContentFailure(.unsupportedSchema, "Lesson schema \(manifest.schemaVersion)") }
         try validateID(manifest.id)
-        guard manifest.version > 0, !manifest.steps.isEmpty, !manifest.exercises.isEmpty else {
-            throw ContentFailure(.invalidStep, "A lesson needs a positive version, steps, and exercises")
+        guard manifest.version > 0, !manifest.steps.isEmpty, manifest.steps.count <= 512,
+              !manifest.exercises.isEmpty, manifest.exercises.count <= 64 else {
+            throw ContentFailure(.invalidStep, "A lesson needs bounded steps/exercises and a positive version")
         }
-        try uniqueIDs(manifest.steps.map(\.id))
-        try uniqueIDs(manifest.exercises.map(\.id))
-        for exercise in manifest.exercises { try uniqueIDs(exercise.events.map(\.id)) }
-        let exercises = Dictionary(uniqueKeysWithValues: manifest.exercises.map { ($0.id, $0) })
-        try uniqueIDs(manifest.practiceExerciseIDs)
-        guard !manifest.practiceExerciseIDs.isEmpty else { throw ContentFailure(.unknownExercise, "A lesson needs a practice exercise") }
-        for id in manifest.practiceExerciseIDs {
-            guard let exercise = exercises[id] else { throw ContentFailure(.unknownExercise, "Unknown practice exercise: \(id)") }
-            guard exercise.assessmentMode == .monophonic else { throw ContentFailure(.unsupportedMode, "Display-only exercise cannot be a practice entry: \(id)") }
+        try uniqueIDs(manifest.steps.map(\.id)); try uniqueIDs(manifest.exercises.map(\.id))
+        for exercise in manifest.exercises {
+            guard exercise.events.count <= 4096 else { throw ContentFailure(.invalidMusicalData, "Too many source events") }
+            try uniqueIDs(exercise.events.map(\.id))
         }
-        for step in manifest.steps {
-            if step.kind == .none {
-                guard step.exerciseID == nil, step.eventIDs.isEmpty, step.fingering == nil else {
-                    throw ContentFailure(.invalidStep, "Text-only step has visual data: \(step.id)")
-                }
-                continue
-            }
-            guard let id = step.exerciseID, let exercise = exercises[id] else {
-                throw ContentFailure(.unknownExercise, "Unknown exercise in step: \(step.id)")
-            }
-            switch step.kind {
-            case .events:
-                guard step.fingering == nil, !step.eventIDs.isEmpty else { throw ContentFailure(.invalidStep, "Event step needs references and no fingering: \(step.id)") }
-                try uniqueIDs(step.eventIDs)
-                let known = Set(exercise.events.map(\.id))
-                guard Set(step.eventIDs).isSubset(of: known) else { throw ContentFailure(.unknownEvent, "Unknown event in step: \(step.id)") }
-                guard exercise.events.filter({ step.eventIDs.contains($0.id) }).map(\.id) == step.eventIDs else {
-                    throw ContentFailure(.invalidStep, "Event references must follow exercise order: \(step.id)")
-                }
-            case .fingering:
-                guard step.eventIDs.isEmpty, let fingering = step.fingering,
-                      !fingering.positions.isEmpty || !fingering.mutedStrings.isEmpty else {
-                    throw ContentFailure(.invalidStep, "Fingering step needs a shape and no event references: \(step.id)")
-                }
-            case .none: break
-            }
-        }
+        try validateActivities(manifest)
     }
 
-    private func translation(_ language: LessonLanguage, folder: URL, manifest: LessonManifest, prefix: String = "") throws -> LessonText {
+    private func translation(_ language: LessonLanguage, folder: URL, manifest: LessonManifest) throws -> LessonText {
         let data: Data
-        do { data = try read(folder.appendingPathComponent(prefix + language.rawValue + ".json")) }
+        do { data = try read(folder.appendingPathComponent(language.rawValue + ".json")) }
         catch { throw ContentFailure(.missingTranslation, "Missing/unreadable \(language.rawValue) translation") }
         let text = try JSONDecoder().decode(LessonText.self, from: data)
         guard text.lessonID == manifest.id, text.lessonVersion == manifest.version, text.locale == language.rawValue,
               Set(text.steps.keys) == Set(manifest.steps.map(\.id)) else {
             throw ContentFailure(.translationMismatch, "Translation IDs/version/steps differ: \(language.rawValue)")
         }
-        let strings = [text.title, text.summary, text.goal, text.body] + text.steps.values.flatMap { [$0.title, $0.body] }
-            + (text.variant.map { [$0.title, $0.body] } ?? []) + (text.historicalTitle.map { [$0] } ?? [])
-        if text.variant != nil {
-            guard [text.title, text.summary, text.goal, text.body].allSatisfy({ !$0.contains("{{") && !$0.contains("}}") }) else {
-                throw ContentFailure(.invalidText, "General teaching must be independent of instrument tokens; use variant or steps")
+        guard Set(text.activities.keys) == Set(manifest.activities.map(\.id)) else {
+            throw ContentFailure(.translationMismatch, "Translation activity IDs differ")
+        }
+        try ActivityTextRenderer.validate(text)
+        for step in manifest.steps where step.activityID == nil {
+            if let copy = text.steps[step.id], [copy.title, copy.body].contains(where: { $0.contains("{{") || $0.contains("}}") }) {
+                throw ContentFailure(.invalidText, "Context tokens need a step activity: \(step.id)")
             }
         }
+        var strings = [text.title, text.summary, text.goal, text.body]
+        strings += text.steps.values.flatMap { [$0.title, $0.body] }
+        strings += text.activities.values.flatMap { [$0.title, $0.body] }
+        strings += text.historicalTitle.map { [$0] } ?? []
         guard strings.allSatisfy({ !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) else {
             throw ContentFailure(.invalidText, "Blank text in \(language.rawValue)")
         }
         return text
     }
     private func validatePresentationParity(_ en: LessonText, _ uk: LessonText) throws {
-        guard (en.variant == nil) == (uk.variant == nil), (en.historicalTitle == nil) == (uk.historicalTitle == nil) else {
-            throw ContentFailure(.translationMismatch, "Variant and historical title fields must exist in both languages")
+        guard (en.historicalTitle == nil) == (uk.historicalTitle == nil) else {
+            throw ContentFailure(.translationMismatch, "Historical titles must exist in both languages")
+        }
+        do {
+            let activities = en.activities
+            for (id, copy) in activities {
+                guard let other = uk.activities[id],
+                      ActivityTextRenderer.tokenNames(copy.title) == ActivityTextRenderer.tokenNames(other.title),
+                      ActivityTextRenderer.tokenNames(copy.body) == ActivityTextRenderer.tokenNames(other.body) else {
+                    throw ContentFailure(.translationMismatch, "Activity template tokens differ: \(id)")
+                }
+            }
+            for (id, copy) in en.steps {
+                guard let other = uk.steps[id],
+                      ActivityTextRenderer.tokenNames(copy.title) == ActivityTextRenderer.tokenNames(other.title),
+                      ActivityTextRenderer.tokenNames(copy.body) == ActivityTextRenderer.tokenNames(other.body) else {
+                    throw ContentFailure(.translationMismatch, "Step template tokens differ: \(id)")
+                }
+            }
         }
     }
     private func read(_ url: URL) throws -> Data { try Data(contentsOf: url) }
-    private func checkSchema(_ data: Data) throws {
+    private func checkSchema(_ data: Data, allowed: Set<Int> = [1]) throws {
         struct Header: Decodable { let schemaVersion: Int }
         let version = try JSONDecoder().decode(Header.self, from: data).schemaVersion
-        guard version == 1 else { throw ContentFailure(.unsupportedSchema, "Unsupported schema: \(version)") }
+        guard allowed.contains(version) else { throw ContentFailure(.unsupportedSchema, "Unsupported schema: \(version)") }
     }
-    private func validateID(_ id: String) throws {
+    func validateID(_ id: String) throws {
         let bytes = Array(id.utf8)
         guard (1...64).contains(bytes.count), let first = bytes.first, (97...122).contains(first),
               bytes.allSatisfy({ (97...122).contains($0) || (48...57).contains($0) || $0 == 45 }) else {
             throw ContentFailure(.invalidIdentifier, "Use a stable lowercase ASCII ID: \(id)")
         }
     }
-    private func uniqueIDs(_ ids: [String]) throws {
+    func uniqueIDs(_ ids: [String]) throws {
         for id in ids { try validateID(id) }
         guard Set(ids).count == ids.count else { throw ContentFailure(.duplicateIdentifier, "Duplicate identifier") }
     }
     private func issue(_ error: Error, lessonID: String?) -> ContentIssue {
+        if error is PositioningError { return ContentIssue(lessonID: lessonID, code: .invalidMusicalData, detail: String(describing: error)) }
         if error is LessonAdaptationError { return ContentIssue(lessonID: lessonID, code: .invalidText, detail: "Invalid adaptive lesson template or fingering") }
         if let failure = error as? ContentFailure { return ContentIssue(lessonID: lessonID, code: failure.code, detail: failure.detail) }
         if let error = error as? MusicError {

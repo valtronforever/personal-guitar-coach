@@ -1,0 +1,196 @@
+{
+  "status": "Illustrative schema-2 fragments; combine with source exercises and metadata. Complete runnable example: Resources/Lessons/same-notes-new-position",
+  "targetSchemaVersion": 2,
+  "sourceLessonID": "c-major",
+  "materials": [
+    {
+      "id": "tonic",
+      "source": {
+        "kind": "events",
+        "exerciseID": "c-major-practice",
+        "eventIDs": [
+          "up-1"
+        ]
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 5,
+        "allowedStarts": {
+          "kind": "auto"
+        },
+        "allowOriginal": true
+      }
+    },
+    {
+      "id": "scale",
+      "source": {
+        "kind": "exercise",
+        "exerciseID": "c-major-practice"
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 5,
+        "allowedStarts": {
+          "kind": "explicit",
+          "frets": [
+            3,
+            7
+          ]
+        },
+        "allowOriginal": true
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "find-tonic",
+      "materialID": "tonic",
+      "positionSelection": {
+        "mode": "learner",
+        "default": {
+          "kind": "original"
+        }
+      }
+    },
+    {
+      "id": "explore-scale",
+      "materialID": "scale",
+      "positionSelection": {
+        "mode": "learner",
+        "default": {
+          "kind": "original"
+        }
+      }
+    },
+    {
+      "id": "play-original",
+      "materialID": "scale",
+      "positionSelection": {
+        "mode": "fixed",
+        "value": {
+          "kind": "original"
+        }
+      }
+    },
+    {
+      "id": "play-near-seven",
+      "materialID": "scale",
+      "positionSelection": {
+        "mode": "fixed",
+        "value": {
+          "kind": "region",
+          "firstFret": 7
+        }
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "find-root",
+      "kind": "events",
+      "activityID": "find-tonic",
+      "exerciseID": "c-major-practice",
+      "eventIDs": [
+        "up-1"
+      ]
+    },
+    {
+      "id": "explore",
+      "kind": "events",
+      "activityID": "explore-scale",
+      "exerciseID": "c-major-practice",
+      "eventIDs": [
+        "up-1",
+        "up-2",
+        "up-3",
+        "up-4"
+      ]
+    },
+    {
+      "id": "original",
+      "kind": "events",
+      "activityID": "play-original",
+      "exerciseID": "c-major-practice",
+      "eventIDs": [
+        "up-1",
+        "up-2",
+        "up-3",
+        "up-4"
+      ]
+    },
+    {
+      "id": "near-seven",
+      "kind": "events",
+      "activityID": "play-near-seven",
+      "exerciseID": "c-major-practice",
+      "eventIDs": [
+        "up-1",
+        "up-2",
+        "up-3",
+        "up-4"
+      ]
+    }
+  ],
+  "practiceEntries": [
+    {
+      "id": "tonic-check",
+      "activityID": "find-tonic",
+      "exerciseID": "c-major-practice"
+    },
+    {
+      "id": "scale-exploration",
+      "activityID": "explore-scale",
+      "exerciseID": "c-major-practice"
+    },
+    {
+      "id": "scale-original",
+      "activityID": "play-original",
+      "exerciseID": "c-major-practice"
+    },
+    {
+      "id": "scale-seven",
+      "activityID": "play-near-seven",
+      "exerciseID": "c-major-practice"
+    }
+  ],
+  "localizedActivities": {
+    "en": {
+      "find-tonic": {
+        "title": "Find the same note",
+        "body": "Find {{first}} in another region. Expected positions: {{positions}}."
+      },
+      "explore-scale": {
+        "title": "Explore the scale",
+        "body": "Choose a position. The notes stay the same. Current example: {{sequence}}."
+      },
+      "play-original": {
+        "title": "Play the original fingering",
+        "body": "Play the scale using the original fingering. Expected positions: {{positions}}."
+      },
+      "play-near-seven": {
+        "title": "Play near fret 7",
+        "body": "Keep the same notes and octaves. Use {{positionLabel}}; the first note may be above its start."
+      }
+    },
+    "uk": {
+      "find-tonic": {
+        "title": "Знайди ту саму ноту",
+        "body": "Знайди {{first}} в іншій ділянці грифа. Очікувані позиції: {{positions}}."
+      },
+      "explore-scale": {
+        "title": "Досліди гаму",
+        "body": "Вибери позицію. Ноти залишаються тими самими. Поточний приклад: {{sequence}}."
+      },
+      "play-original": {
+        "title": "Зіграй початкову аплікатуру",
+        "body": "Зіграй гаму в початковій аплікатурі. Очікувані позиції: {{positions}}."
+      },
+      "play-near-seven": {
+        "title": "Зіграй біля 7-го ладу",
+        "body": "Збережи ті самі ноти й октави. Використай {{positionLabel}}; перша нота може бути вище початку ділянки."
+      }
+    }
+  }
+}

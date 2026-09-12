@@ -122,8 +122,8 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let model = PracticeModel(audio: audio, calibration: calibration)
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let lesson = try #require(LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons.first)
-        let exerciseID = try #require(lesson.manifest.practiceExerciseIDs.first)
-        let practiceRequest: PracticeRequest? = PracticeRequest(lesson: lesson, exerciseID: exerciseID)
+        let exerciseID = try #require(lesson.manifest.practiceEntries.first?.id)
+        let practiceRequest: PracticeRequest? = PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: "lesson", instrument: InstrumentProfile()), entryID: exerciseID)
         let unwrapped = try #require(practiceRequest)
         model.configure(unwrapped); model.physicallyTuned = true
         return Harness(directory: directory, model: model, runtime: runtime, audio: audio)
@@ -146,8 +146,8 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let lessons = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons
         let source = try #require(lessons.first { $0.id == "c-major" })
-        let adapted = try source.adapted(to: .standard), navigation = AppNavigation()
-        navigation.openPractice(try #require(PracticeRequest(lesson: adapted, exerciseID: "c-major-practice", adaptsWithInstrument: true)))
+        let adapted = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile()), navigation = AppNavigation()
+        navigation.openPractice(try #require(PracticeRequest(lesson: source, snapshot: adapted, entryID: "c-major-practice")))
         h.model.configure(navigation.practiceRequest); h.model.physicallyTuned = true
         var attempts: [PracticeEvidence] = []
         h.model.onAttemptFinished = { attempts.append($0) }
@@ -158,7 +158,7 @@ private actor PracticeRuntimeStub: AudioRuntime {
         h.model.configure(navigation.practiceRequest)
         try await wait(h) { !h.model.isBusy && attempts.count == 1 }
         #expect(attempts[0].reason == .changedInstrument)
-        #expect(attempts[0].configuration.exercise == adapted.manifest.exercises[0])
+        #expect(attempts[0].configuration.exercise == adapted.exercises[0])
         #expect(attempts[0].configuration.instrument.tuning == .standard)
         #expect(h.model.request?.exercise.requiredTuning == .cStandard && !h.model.physicallyTuned)
         #expect(h.model.phase == .idle && h.model.latestEvidence == nil)
@@ -169,8 +169,8 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let lessons = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons
         let source = try #require(lessons.first { $0.id == "c-major" })
-        let adapted = try source.adapted(to: .standard), navigation = AppNavigation()
-        navigation.openPractice(try #require(PracticeRequest(lesson: adapted, exerciseID: "c-major-practice", adaptsWithInstrument: true)))
+        let adapted = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile()), navigation = AppNavigation()
+        navigation.openPractice(try #require(PracticeRequest(lesson: source, snapshot: adapted, entryID: "c-major-practice")))
         h.model.configure(navigation.practiceRequest); h.model.physicallyTuned = true
         var attempts: [PracticeEvidence] = []
         h.model.onAttemptFinished = { attempts.append($0) }
@@ -181,7 +181,7 @@ private actor PracticeRuntimeStub: AudioRuntime {
         h.model.configure(navigation.practiceRequest)
         try await wait(h) { !h.model.isBusy && attempts.count == 1 }
         #expect(attempts[0].reason == .changedInstrument)
-        #expect(attempts[0].configuration.exercise == adapted.manifest.exercises[0])
+        #expect(attempts[0].configuration.exercise == adapted.exercises[0])
         #expect(attempts[0].configuration.instrument.frets == .twentyFour)
         #expect(h.model.request?.frets == .nineteen && !h.model.physicallyTuned)
         #expect(h.model.phase == .idle && h.model.latestEvidence == nil)
@@ -192,22 +192,22 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let lessons = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons
         let source = try #require(lessons.first { $0.id == "c-major" })
-        let adapted = try source.adapted(to: .standard), navigation = AppNavigation()
-        navigation.openPractice(try #require(PracticeRequest(lesson: adapted, exerciseID: "c-major-practice", adaptsWithInstrument: true)))
+        let adapted = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile()), navigation = AppNavigation()
+        navigation.openPractice(try #require(PracticeRequest(lesson: source, snapshot: adapted, entryID: "c-major-practice")))
         h.model.configure(navigation.practiceRequest); h.model.physicallyTuned = true
         var attempts: [PracticeEvidence] = []
         h.model.onAttemptFinished = { attempts.append($0) }
         await h.model.start(instrument: InstrumentProfile())
         try await playing(h)
-        let seventh = try LessonPosition(firstFret: 7)
-        let moved = try source.adapted(to: .standard, position: seventh)
-        navigation.openPractice(try #require(PracticeRequest(lesson: moved, exerciseID: "c-major-practice", adaptsWithInstrument: true, position: seventh)))
+        let seventh = PositionChoice.region(firstFret: 7)
+        let moved = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(), choice: seventh)
+        navigation.openPractice(try #require(PracticeRequest(lesson: source, snapshot: moved, entryID: "c-major-practice")))
         h.model.configure(navigation.practiceRequest)
         try await wait(h) { !h.model.isBusy && attempts.count == 1 }
         #expect(attempts[0].reason == .changedExercise)
-        #expect(attempts[0].configuration.exercise == adapted.manifest.exercises[0])
-        #expect(attempts[0].configuration.lesson?.position == nil)
-        #expect(h.model.request?.position == seventh && !h.model.physicallyTuned)
+        #expect(attempts[0].configuration.exercise == adapted.exercises[0])
+        #expect(attempts[0].configuration.lesson?.activity?.choice == .original)
+        #expect(h.model.request?.activityReference?.choice == seventh && !h.model.physicallyTuned)
         #expect(h.model.phase == .idle && h.model.latestEvidence == nil)
         await h.audio.stop(purpose: .practice)
     }

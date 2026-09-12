@@ -130,7 +130,9 @@ public enum PracticeComparison {
         let a = lhs.evidence.configuration, b = rhs.evidence.configuration
         return lhs.validity == rhs.validity && (lhs.validity == .valid || lhs.validity == .uncalibrated)
             && a.exercise == b.exercise && a.instrument.tuning == b.instrument.tuning && a.instrument.source == b.instrument.source && a.instrument.frets == b.instrument.frets
+            && a.lesson?.id == b.lesson?.id && a.lesson?.version == b.lesson?.version
             && a.lesson?.position == b.lesson?.position
+            && ((a.lesson?.activity == nil && b.lesson?.activity == nil) || (a.lesson?.activity.flatMap { left in b.lesson?.activity.map { left.hasSameConditions(as: $0) } } ?? false))
             && a.bpm == b.bpm && a.range == b.range && a.countInBars == b.countInBars
             && a.route == b.route && a.calibration == b.calibration && a.capabilityVersion == b.capabilityVersion
             && lhs.evidence.analysisVersion == rhs.evidence.analysisVersion && lhs.parameters == rhs.parameters

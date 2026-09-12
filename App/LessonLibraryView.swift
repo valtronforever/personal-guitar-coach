@@ -10,7 +10,7 @@ struct LessonLibraryView: View {
     @Environment(LocalDataStore.self) private var data
     @State private var filter = LessonFilter()
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
-    private var filtered: [LoadedLesson] { store.catalogLessons.map { (try? $0.adapted(to: data.preferences.instrument)) ?? $0 }.filter { filter.matches($0, language: language) } }
+    private var filtered: [LoadedLesson] { store.catalogLessons.filter { filter.matches($0, language: language) } }
 
     var body: some View {
         @Bindable var navigation = navigation

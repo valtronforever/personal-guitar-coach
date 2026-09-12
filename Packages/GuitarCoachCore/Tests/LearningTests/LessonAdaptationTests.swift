@@ -9,18 +9,18 @@ struct LessonAdaptationTests {
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
-        let lessons = report.lessons.filter { $0.manifest.adaptation != nil }
+        let lessons = report.lessons.filter { $0.manifest.adaptation != nil && $0.id != "same-notes-new-position" }
         #expect(lessons.count == 6)
         return lessons
     }
     @Test func everyPresetPreservesIntervalsOrTheTaughtPhysicalPatternAndBothTranslations() throws {
         for tuning in TuningProfile.presets {
             for source in try course() {
-                let lesson = try source.adapted(to: tuning)
-                #expect(lesson.id == source.id && lesson.manifest.version > source.manifest.version)
-                #expect(lesson.manifest.steps.map(\.id) == source.manifest.steps.map(\.id))
+                let lesson = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: tuning))
+                #expect(lesson.lessonID == source.id && lesson.lessonVersion == source.manifest.version)
+                #expect(lesson.steps.map(\.id) == source.manifest.steps.map(\.id))
                 let shift = tuning.strings[0].openPitch.midi - 64
-                for (original, exercise) in zip(source.manifest.exercises, lesson.manifest.exercises) {
+                for (original, exercise) in zip(source.manifest.exercises, lesson.exercises) {
                     #expect(exercise.id == original.id && exercise.version == 2 && exercise.requiredTuning == tuning)
                     #expect(exercise.events.map(\.id) == original.events.map(\.id))
                     #expect(exercise.events.map(\.startTick) == original.events.map(\.startTick))
@@ -40,12 +40,12 @@ struct LessonAdaptationTests {
                 }
                 for language in [LessonLanguage.en, .uk] {
                     let text = lesson.text(for: language)
-                    #expect(!text.body.contains("{{") && text.variant != nil)
-                    #expect(text.title == source.templates?.english.title || language == .uk)
-                    #expect(!text.variant!.body.contains("{{"))
-                    #expect(text.lessonVersion == lesson.manifest.version && text.steps.count == lesson.manifest.steps.count)
-                    for step in lesson.manifest.steps {
-                        let visual = try lesson.visual(stepID: step.id, instrument: .standard)
+                    #expect(!text.body.contains("{{") && text.activities["lesson"] != nil)
+                    #expect(text.title == source.text(for: language).title)
+                    #expect(!text.activities["lesson"]!.body.contains("{{"))
+                    #expect(text.lessonVersion == lesson.lessonVersion && text.steps.count == lesson.steps.count)
+                    for step in lesson.steps {
+                        let visual = try lesson.visual(stepID: step.id)
                         #expect(visual.tuning == tuning)
                         let copy = try #require(text.steps[step.id])
                         #expect(!copy.body.contains("{{") && !copy.title.contains("{{"))
@@ -63,9 +63,9 @@ struct LessonAdaptationTests {
             for tuning in TuningProfile.presets {
                 let instrument = InstrumentProfile(tuning: tuning, frets: count)
                 for source in try course() {
-                    let lesson = try source.adapted(to: instrument)
-                    #expect(lesson.manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy(instrument.contains))
-                    #expect(lesson.manifest.steps.compactMap(\.fingering).flatMap(\.positions).allSatisfy(instrument.contains))
+                    let lesson = try source.resolveActivity(id: "lesson", instrument: instrument)
+                    #expect(lesson.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy(instrument.contains))
+                    #expect(lesson.fingerings.map(\.fingering).flatMap(\.positions).allSatisfy(instrument.contains))
                 }
             }
         }
@@ -81,73 +81,56 @@ struct LessonAdaptationTests {
                 return try Exercise(id: original.id, events: events, tuningPolicy: .fixedTuning, requiredTuning: .standard)
             }
             return LoadedLesson(manifest: LessonManifest(id: source.id, steps: source.manifest.steps,
-                exercises: exercises, practiceExerciseIDs: source.manifest.practiceExerciseIDs, adaptation: source.manifest.adaptation),
-                english: source.english, ukrainian: source.ukrainian, templates: source.templates)
+                exercises: exercises, adaptation: source.manifest.adaptation, materials: source.manifest.materials, activities: source.manifest.activities, practiceEntries: source.manifest.practiceEntries),
+                english: source.english, ukrainian: source.ukrainian)
         }
-        let reachable = try highLesson(string: 2).adapted(to: InstrumentProfile(frets: .nineteen))
-        #expect(reachable.manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.string == 1 && $0.fret == 19 })
-        #expect(try reachable.manifest.exercises[0].resolvedEvents(instrument: .standard).flatMap(\.pitches).allSatisfy { $0.midi == 83 })
+        let reachable = try highLesson(string: 2).resolveActivity(id: "lesson", instrument: InstrumentProfile(frets: .nineteen))
+        #expect(reachable.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.string == 1 && $0.fret == 19 })
+        #expect(try reachable.exercises[0].resolvedEvents(instrument: .standard).flatMap(\.pitches).allSatisfy { $0.midi == 83 })
         let unreachable = try highLesson(string: 1)
-        #expect(throws: LessonAdaptationError.unplayable) { try unreachable.adapted(to: InstrumentProfile(frets: .nineteen)) }
-        #expect(try unreachable.adapted(to: InstrumentProfile()).manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.fret == 24 })
+        #expect(throws: PositioningError.regionUnplayable) { try unreachable.resolveActivity(id: "lesson", instrument: InstrumentProfile(frets: .nineteen)) }
+        #expect(try unreachable.resolveActivity(id: "lesson", instrument: InstrumentProfile()).exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.fret == 24 })
     }
     @Test func cStandardAndDropDHaveIndependentGoldenTargetsAndCorrectChordVoicing() throws {
         let lessons = try course()
         let major = try #require(lessons.first { $0.id == "c-major" })
-        let cMajor = try major.adapted(to: .cStandard)
-        #expect(cMajor.english.title == "Major scale" && cMajor.english.variant?.title == "A♭ major")
-        #expect(cMajor.ukrainian.title == "Мажорна гама" && cMajor.ukrainian.variant?.title == "A♭ мажор")
-        #expect(try cMajor.manifest.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [44,46,48,49,51,53,55,56,55,53,51,49,48,46,44])
-        let pent = try #require(lessons.first { $0.id == "a-minor-pentatonic" }).adapted(to: .dropD)
-        let notes = pent.manifest.exercises[0].events.filter { $0.kind == .note }
+        let cMajor = try major.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .cStandard))
+        #expect(cMajor.english.title == "Major scale" && cMajor.english.activities["lesson"]?.title == "A♭ major")
+        #expect(cMajor.ukrainian.title == "Мажорна гама" && cMajor.ukrainian.activities["lesson"]?.title == "A♭ мажор")
+        #expect(try cMajor.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [44,46,48,49,51,53,55,56,55,53,51,49,48,46,44])
+        let pent = try #require(lessons.first { $0.id == "a-minor-pentatonic" }).resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .dropD))
+        let notes = pent.exercises[0].events.filter { $0.kind == .note }
         #expect(notes.prefix(2).flatMap(\.positions).map(\.fret) == [7, 10])
-        #expect(try pent.manifest.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [45,48,50,52,55,57,60,62,64,67,69,72,69,67,64,62,60,57,55,52,50,48,45])
-        let chord = try #require(lessons.first { $0.id == "em-arpeggio" }).adapted(to: .dropD)
-        let shape = try #require(chord.manifest.steps[0].fingering)
+        #expect(try pent.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [45,48,50,52,55,57,60,62,64,67,69,72,69,67,64,62,60,57,55,52,50,48,45])
+        let chord = try #require(lessons.first { $0.id == "em-arpeggio" }).resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .dropD))
+        let shape = try #require(chord.fingerings.first?.fingering)
         #expect(shape.positions.reversed().map(\.fret) == [2,2,2,0,0,0])
         #expect(shape.fingerNumbers.isEmpty)
-        #expect(try chord.manifest.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [40,47,52,55,59,64])
-        #expect(!chord.manifest.practiceExerciseIDs.contains(chord.manifest.exercises[0].id))
+        #expect(try chord.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [40,47,52,55,59,64])
+        #expect(lessons.first { $0.id == "em-arpeggio" }?.manifest.practiceEntries.contains { $0.exerciseID == chord.exercises[0].id } == false)
     }
-    @Test func customNamesAreLiteralAndMissingOrUnknownTemplateTokensFailClosed() throws {
+    @Test func customNamesRemainLiteral() throws {
         let source = try #require(course().first)
         let named = try TuningProfile(id: "literal-name", name: "My {{root}} tuning", strings: TuningProfile.cStandard.strings)
-        let templateSource = try #require(source.templates)
-        let customText = LessonText(lessonID: source.id, lessonVersion: templateSource.english.lessonVersion, locale: "en",
-            title: "Generic", summary: "Generic", goal: "Generic", body: "Generic", steps: templateSource.english.steps,
-            variant: LessonVariantText(title: "{{tuning}}", body: "A4 {{reference}}"))
-        let customLesson = LoadedLesson(manifest: source.manifest, english: source.english, ukrainian: source.ukrainian,
-            templates: AdaptiveLessonText(english: customText, ukrainian: templateSource.ukrainian))
-        #expect(try customLesson.adapted(to: named).english.variant?.title == "My {{root}} tuning")
-        let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
-            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        defer { try? FileManager.default.removeItem(at: directory) }
-        try FileManager.default.copyItem(at: root.appendingPathComponent("Resources/Lessons"), to: directory)
-        let template = directory.appendingPathComponent("open-strings-intro/adaptive.en.json")
-        var text = try String(contentsOf: template, encoding: .utf8)
-        text = text.replacingOccurrences(of: "{{sequence}}", with: "{{unknown}}")
-        try text.write(to: template, atomically: true, encoding: .utf8)
-        var report = LessonCatalogLoader().load(directory: directory)
-        #expect(report.issues.contains { $0.lessonID == "open-strings-intro" && $0.code == .invalidText })
-        #expect(!report.lessons.contains { $0.id == "open-strings-intro" })
-        try FileManager.default.removeItem(at: template)
-        report = LessonCatalogLoader().load(directory: directory)
-        #expect(report.issues.contains { $0.lessonID == "open-strings-intro" && $0.code == .missingTranslation })
+        let copy = LessonText(lessonID: source.id, lessonVersion: source.manifest.version, locale: "en", title: "Generic",
+            summary: "Generic", goal: "Generic", body: "Generic", steps: source.english.steps,
+            activities: ["lesson": LessonActivityText(title: "{{tuning}}", body: "A4 {{reference}}")])
+        let lesson = LoadedLesson(manifest: source.manifest, english: copy, ukrainian: source.ukrainian)
+        #expect(try lesson.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: named)).english.activities["lesson"]?.title == named.name)
     }
     @Test func customReferenceNonuniformTuningAndImpossibleVoicingsAreExplicit() throws {
         let strings = try [64,59,55,48,43,38].enumerated().map { try TunedString(number: $0.offset + 1, openPitch: Pitch(midi: $0.element)) }
         let custom = try TuningProfile(id: "custom-test", name: "My tuning", strings: strings, referenceA4: 442)
         for source in try course() {
-            let lesson = try source.adapted(to: custom)
-            #expect(lesson.english.variant != nil && lesson.ukrainian.variant != nil)
-            for exercise in lesson.manifest.exercises { #expect(exercise.requiredTuning == custom) }
+            let lesson = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: custom))
+            #expect(lesson.english.activities["lesson"] != nil && lesson.ukrainian.activities["lesson"] != nil)
+            for exercise in lesson.exercises { #expect(exercise.requiredTuning == custom) }
         }
         let impossible = try TuningProfile(id: "impossible", name: "Extreme", strings: (1...6).map { try TunedString(number: $0, openPitch: Pitch(midi: $0 == 1 ? 100 : 0)) })
         let major = try #require(course().first { $0.id == "c-major" })
-        #expect(throws: LessonAdaptationError.unplayable) { try major.adapted(to: impossible) }
+        #expect(throws: PositioningError.regionUnplayable) { try major.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: impossible)) }
         // String-pattern lessons can still be visualized; capability gates refuse unsupported grading.
-        let intro = try #require(course().first { $0.id == "open-strings-intro" }).adapted(to: impossible)
-        #expect(throws: (any Error).self) { try intro.manifest.exercises[0].validateForPractice(instrument: impossible, bpm: 60) }
+        let intro = try #require(course().first { $0.id == "open-strings-intro" }).resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: impossible))
+        #expect(throws: (any Error).self) { try intro.exercises[0].validateForPractice(instrument: impossible, bpm: 60) }
     }
 }

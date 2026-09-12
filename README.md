@@ -52,7 +52,7 @@ Instrument settings and immutable practice summaries use atomic, versioned JSON 
 
 ## Lesson authoring
 
-Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The app bundles [six automatically adapted starter lessons](docs/STARTER-COURSE.md), fully readable in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
+Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The app bundles [six automatically adapted starter lessons](docs/STARTER-COURSE.md) plus a guided position-exploration lesson, fully readable in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
 
 ## Musical views and UI-source validation
 

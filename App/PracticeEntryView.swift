@@ -30,7 +30,7 @@ struct PracticeEntryView: View {
     var body: some View {
         if navigation.practiceAdaptationFailed {
             FeatureStateView(title: "navigation.practice", message: "lesson.adaptationUnavailable", symbol: "guitars") {
-                if let request = navigation.practiceRequest, request.position != nil {
+                if let request = navigation.practiceRequest, request.activityReference != nil || request.historicalPosition != nil {
                     Text("lesson.position.unavailable")
                     Button("lesson.position.change") {
                         navigation.lessonPath = [request.lessonID]; navigation.destination = .lessons
@@ -41,10 +41,13 @@ struct PracticeEntryView: View {
         } else if let request = navigation.practiceRequest {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    if let title = ResultPresentation.lessonTitle(id: request.lessonID, version: request.lessonVersion, tuning: tuning, lessons: library.lessons, language: language, frets: request.frets) {
+                    if let title = request.activityReference?.lessonTitles[language.rawValue] ?? ResultPresentation.lessonTitle(id: request.lessonID, version: request.lessonVersion, tuning: tuning, lessons: library.lessons, language: language, frets: request.frets) {
                         Text(verbatim: title).font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise")
                     } else { Text("result.savedExercise").font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise") }
-                    if let position = request.position { Text("lesson.position.from \(position.firstFret)").accessibilityIdentifier("practice.position") }
+                    if let activity = request.activityReference {
+                        Text(verbatim: activity.activityTitles[language.rawValue] ?? activity.activityID)
+                        PositionChoiceLabel(choice: activity.choice).accessibilityIdentifier("practice.position")
+                    } else if let position = request.historicalPosition { Text("lesson.position.from \(position.firstFret)").accessibilityIdentifier("practice.position") }
                     DisclosureGroup("practice.options", isExpanded: $showsOptions) {
                         options(request.exercise).padding(.top, 10)
                     }

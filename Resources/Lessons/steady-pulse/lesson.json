@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "steady-pulse",
-  "version": 1,
+  "version": 2,
   "difficulty": "beginner",
   "topic": "rhythm",
   "steps": [
@@ -14,7 +14,8 @@
         "quarter-rest",
         "quarter-three",
         "quarter-four"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "quarter-space",
@@ -22,7 +23,8 @@
       "exerciseID": "steady-pulse-practice",
       "eventIDs": [
         "quarter-rest"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "eighth-pairs",
@@ -33,7 +35,8 @@
         "eighth-2",
         "eighth-3",
         "eighth-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "eighth-spaces",
@@ -44,7 +47,8 @@
         "eighth-6",
         "eighth-7",
         "eighth-8"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "whole-pattern",
@@ -63,13 +67,14 @@
         "eighth-6",
         "eighth-7",
         "eighth-8"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
     {
       "id": "steady-pulse-practice",
-      "version": 1,
+      "version": 2,
       "ppq": 960,
       "timeSignature": "4/4",
       "defaultBPM": 60,
@@ -249,12 +254,32 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "steady-pulse-practice"
-  ],
   "adaptation": {
-    "policy": "fretPattern",
-    "lessonVersion": 2,
-    "exerciseVersion": 2
-  }
+    "policy": "fretPattern"
+  },
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": false
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material"
+    }
+  ],
+  "fingerings": [],
+  "practiceEntries": [
+    {
+      "id": "steady-pulse-practice",
+      "activityID": "lesson",
+      "exerciseID": "steady-pulse-practice"
+    }
+  ]
 }

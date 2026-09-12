@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "c-major",
-  "version": 1,
+  "version": 2,
   "difficulty": "beginner",
   "topic": "majorScale",
   "steps": [
@@ -11,7 +11,8 @@
       "exerciseID": "c-major-practice",
       "eventIDs": [
         "up-1"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "lower-half",
@@ -22,7 +23,8 @@
         "up-2",
         "up-3",
         "up-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "upper-half",
@@ -33,7 +35,8 @@
         "up-6",
         "up-7",
         "up-8"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "descending",
@@ -47,7 +50,8 @@
         "down-5",
         "down-6",
         "down-7"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "finish",
@@ -55,13 +59,14 @@
       "exerciseID": "c-major-practice",
       "eventIDs": [
         "finish-rest"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
     {
       "id": "c-major-practice",
-      "version": 1,
+      "version": 2,
       "ppq": 960,
       "timeSignature": "4/4",
       "defaultBPM": 60,
@@ -304,12 +309,44 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "c-major-practice"
-  ],
   "adaptation": {
-    "policy": "transposeIntervals",
-    "lessonVersion": 2,
-    "exerciseVersion": 2
-  }
+    "policy": "transposeIntervals"
+  },
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 5,
+        "allowedStarts": {
+          "kind": "auto"
+        },
+        "allowOriginal": true
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material",
+      "positionSelection": {
+        "mode": "learner",
+        "default": {
+          "kind": "original"
+        }
+      }
+    }
+  ],
+  "fingerings": [],
+  "practiceEntries": [
+    {
+      "id": "c-major-practice",
+      "activityID": "lesson",
+      "exerciseID": "c-major-practice"
+    }
+  ]
 }

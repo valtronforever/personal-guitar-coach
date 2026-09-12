@@ -27,5 +27,11 @@
       "title": "5. Practice the complete arpeggio",
       "body": "Choose Practice for these three bars. There are eleven separate expected attacks, then one rest. The result evaluates audible note pitch and attack timing when supported, not whether every finger holds the Cm shape."
     }
+  },
+  "activities": {
+    "lesson": {
+      "title": "From a Cm shape to separate notes · C Standard",
+      "body": "Learn the open Cm shape and play its ascending and descending arpeggio as separate clean notes."
+    }
   }
 }

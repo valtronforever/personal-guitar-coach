@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "f-minor-pentatonic-c-standard",
   "version": 1,
   "difficulty": "beginner",
@@ -14,7 +14,8 @@
         "up-2",
         "up-3",
         "up-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "middle-strings",
@@ -25,7 +26,8 @@
         "up-6",
         "up-7",
         "up-8"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "high-strings",
@@ -36,7 +38,8 @@
         "up-10",
         "up-11",
         "up-12"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "return-high",
@@ -47,7 +50,8 @@
         "down-2",
         "down-3",
         "down-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "return-home",
@@ -62,7 +66,8 @@
         "down-10",
         "down-11",
         "finish-rest"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
@@ -407,7 +412,29 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "f-minor-pentatonic-c-standard-practice"
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": false
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material"
+    }
+  ],
+  "fingerings": [],
+  "practiceEntries": [
+    {
+      "id": "f-minor-pentatonic-c-standard-practice",
+      "activityID": "lesson",
+      "exerciseID": "f-minor-pentatonic-c-standard-practice"
+    }
   ]
 }

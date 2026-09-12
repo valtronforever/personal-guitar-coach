@@ -1,0 +1,133 @@
+{
+  "status": "proposal example checks only; not schema-2 runtime validation",
+  "exampleReferencesValid": true,
+  "bilingualActivityIDsAndTokensValid": true,
+  "monophonicFeasibilityCases": 160,
+  "sourceLesson": "c-major",
+  "sourceExercise": "c-major-practice",
+  "fretCounts": [
+    19,
+    20,
+    21,
+    22,
+    24
+  ],
+  "testedStarts": [
+    3,
+    7
+  ],
+  "windowFrets": [
+    5,
+    6
+  ],
+  "summary": [
+    {
+      "tuning": "E Standard",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3,
+          7
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "Drop D",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "D Standard",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3,
+          7
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "Drop C",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "C Standard",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3,
+          7
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "Drop B♭",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "B Standard",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3,
+          7
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    },
+    {
+      "tuning": "Drop A",
+      "feasibleTestedStartsByWindowWidth": {
+        "5": [
+          3
+        ],
+        "6": [
+          3,
+          7
+        ]
+      },
+      "sameAcrossAllTestedNecks": true
+    }
+  ]
+}

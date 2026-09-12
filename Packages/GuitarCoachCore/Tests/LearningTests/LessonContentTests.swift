@@ -18,17 +18,17 @@ struct LessonContentTests {
                     MusicalEvent(id: "rest", startTick: 960, durationTicks: 960, kind: .rest),
                     MusicalEvent(id: "high", startTick: 1920, durationTicks: 960, kind: .note, positions: [FretPosition(string: 1, fret: 0)])
                 ], tuningPolicy: id == "lesson-two" ? .fixedTuning : .followsInstrument, requiredTuning: id == "lesson-two" ? .standard : nil)
-                let steps = try [LessonStep(id: "intro", kind: .none),
-                                 LessonStep(id: "low-step", kind: .events, exerciseID: exerciseID, eventIDs: ["low"]),
-                                 LessonStep(id: "rest-step", kind: .events, exerciseID: exerciseID, eventIDs: ["rest"]),
-                                 LessonStep(id: "high-step", kind: .events, exerciseID: exerciseID, eventIDs: ["high"]),
+                let steps = [LessonStep(id: "intro", kind: .none, activityID: "lesson"),
+                                 LessonStep(id: "low-step", kind: .events, exerciseID: exerciseID, eventIDs: ["low"], activityID: "lesson"),
+                                 LessonStep(id: "rest-step", kind: .events, exerciseID: exerciseID, eventIDs: ["rest"], activityID: "lesson"),
+                                 LessonStep(id: "high-step", kind: .events, exerciseID: exerciseID, eventIDs: ["high"], activityID: "lesson"),
                                  LessonStep(id: "shape-step", kind: .fingering, exerciseID: exerciseID,
-                                            fingering: Fingering(positions: [FretPosition(string: 5, fret: 2)], mutedStrings: [6], fingerNumbers: [5: 1]))]
-                try write(LessonManifest(id: id, steps: steps, exercises: [exercise], practiceExerciseIDs: [exerciseID]), "\(id)/lesson.json")
+                                            activityID: "lesson", fingeringID: "shape")]
+                try write(LessonManifest(id: id, steps: steps, exercises: [exercise], materials: [LessonMaterial(id: "all", source: LessonMaterialSource(kind: .lesson))], activities: [LessonActivity(id: "lesson", materialID: "all")], practiceEntries: [LessonPracticeEntry(id: "perform", activityID: "lesson", exerciseID: exerciseID)], fingerings: [try LessonSourceFingering(id: "shape", exerciseID: exerciseID, fingering: Fingering(positions: [FretPosition(string: 5, fret: 2)], mutedStrings: [6], fingerNumbers: [5: 1]))]), "\(id)/lesson.json")
                 for locale in ["en", "uk"] {
                     let text = LessonText(lessonID: id, locale: locale, title: locale == "en" ? "Open strings" : "Відкриті струни",
                                           summary: "Summary", goal: "Goal", body: "Text",
-                                          steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Explanation")) }))
+                                          steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Explanation")) }), activities: ["lesson": LessonActivityText(title: "Example", body: "Example")])
                     try write(text, "\(id)/\(locale).json")
                 }
             }
@@ -52,16 +52,16 @@ struct LessonContentTests {
         let follows = try #require(report.lessons.first)
         #expect(follows.text(for: .en).lessonID == follows.text(for: .uk).lessonID)
         #expect(follows.text(for: .en).title != follows.text(for: .uk).title)
-        #expect(try follows.visual(stepID: "low-step", instrument: .dropD).positions.first?.pitch.midi == 38)
-        #expect(try report.lessons[1].visual(stepID: "low-step", instrument: .dropD).positions.first?.pitch.midi == 40)
-        let rest = try follows.visual(stepID: "rest-step", instrument: .standard)
+        #expect(try follows.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .dropD)).visual(stepID: "low-step").positions.first?.pitch.midi == 38)
+        #expect(try report.lessons[1].resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .dropD)).visual(stepID: "low-step").positions.first?.pitch.midi == 40)
+        let rest = try follows.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .standard)).visual(stepID: "rest-step")
         #expect(rest.positions.isEmpty)
         #expect(rest.events.map(\.event.kind) == [.rest])
-        let shape = try follows.visual(stepID: "shape-step", instrument: .standard)
+        let shape = try follows.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .standard)).visual(stepID: "shape-step")
         #expect(shape.positions.first?.pitch.midi == 47)
         #expect(shape.positions.first?.finger == 1)
         #expect(shape.mutedStrings == [6])
-        #expect(try follows.visual(stepID: "intro", instrument: .standard).positions.isEmpty)
+        #expect(try follows.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .standard)).visual(stepID: "intro").positions.isEmpty)
         #expect(try JSONDecoder().decode(LessonManifest.self, from: JSONEncoder().encode(follows.manifest)) == follows.manifest)
         #expect(try JSONDecoder().decode(LessonText.self, from: JSONEncoder().encode(follows.ukrainian)) == follows.ukrainian)
     }
@@ -156,9 +156,9 @@ struct LessonContentTests {
         let lesson = try #require(fixture.load().lessons.first)
         let positions = try [(6, 0), (5, 2), (4, 2), (3, 0), (2, 0), (1, 0)].map { try FretPosition(string: $0.0, fret: $0.1) }
         let chord = try Exercise(id: "lesson-one-chord", events: [MusicalEvent(id: "em", startTick: 0, durationTicks: 960, kind: .note, positions: positions)],
-                                 tuningPolicy: .fixedTuning, requiredTuning: .standard, assessmentMode: .displayOnly)
-        let manifest = LessonManifest(id: lesson.id, steps: lesson.manifest.steps + [LessonStep(id: "chord-step", kind: .events, exerciseID: chord.id, eventIDs: ["em"])],
-                                      exercises: lesson.manifest.exercises + [chord], practiceExerciseIDs: lesson.manifest.practiceExerciseIDs)
+                                 tuningPolicy: .followsInstrument, assessmentMode: .displayOnly)
+        let manifest = LessonManifest(id: lesson.id, steps: lesson.manifest.steps + [LessonStep(id: "chord-step", kind: .events, exerciseID: chord.id, eventIDs: ["em"], activityID: "lesson")],
+                                      exercises: lesson.manifest.exercises + [chord], materials: lesson.manifest.materials, activities: lesson.manifest.activities, practiceEntries: lesson.manifest.practiceEntries, fingerings: lesson.manifest.fingerings)
         try fixture.write(manifest, "lesson-one/lesson.json")
         for locale in ["en", "uk"] {
             try fixture.mutate("lesson-one/\(locale).json") { value in
@@ -170,7 +170,7 @@ struct LessonContentTests {
         let report = fixture.load()
         #expect(report.issues.isEmpty)
         let updated = try #require(report.lessons.first)
-        #expect(try updated.visual(stepID: "chord-step", instrument: .dropD).positions.count == 6)
+        #expect(try updated.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .dropD)).visual(stepID: "chord-step").positions.count == 6)
         #expect(throws: MusicError.displayOnlyExercise) { try chord.validateForPractice(instrument: .standard, bpm: 60) }
     }
 }

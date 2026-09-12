@@ -71,9 +71,10 @@ final class AppNavigation {
         guard let request = practiceRequest, request.adaptsWithInstrument else { return }
         guard practiceAdaptationFailed || request.exercise.requiredTuning != instrument.tuning || request.frets != instrument.frets else { return }
         do {
-            guard let source = lessons.first(where: { $0.id == request.lessonID }) else { return }
-            let adapted = try source.adapted(to: instrument, position: request.position)
-            guard let next = PracticeRequest(lesson: adapted, exerciseID: request.exercise.id, adaptsWithInstrument: true, frets: instrument.frets, position: request.position) else { return }
+            guard let source = lessons.first(where: { $0.id == request.lessonID }) else { throw PracticeError.invalidEvidence }
+            guard let activity = request.activityReference else { throw PracticeError.invalidEvidence }
+            let snapshot = try source.resolveActivity(id: activity.activityID, instrument: instrument, choice: activity.choice)
+            guard let next = PracticeRequest(lesson: source, snapshot: snapshot, entryID: activity.entryID) else { throw PracticeError.invalidEvidence }
             practiceRequest = next; practiceAdaptationFailed = false
         } catch { practiceAdaptationFailed = true }
     }

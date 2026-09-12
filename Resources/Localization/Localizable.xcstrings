@@ -9019,6 +9019,214 @@
           }
         }
       }
+    },
+    "lesson.activity.fixedPosition": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assigned position"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Призначена позиція"
+          }
+        }
+      }
+    },
+    "lesson.activity.window %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Region width: up to %lld frets"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ширина ділянки: до %lld ладів"
+          }
+        }
+      }
+    },
+    "lesson.activity.stepUnavailable": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This example is unavailable for the selected instrument and position. Select this step to review its position choices."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей приклад недоступний для вибраного інструменту й позиції. Оберіть крок, щоб переглянути варіанти позицій."
+          }
+        }
+      }
+    },
+    "lesson.activity.selfConfirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I used the displayed fingering"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Я використав(-ла) показану аплікатуру"
+          }
+        }
+      }
+    },
+    "lesson.activity.selfConfirmHelp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your own report, separate from the pitch and timing assessment. Audio cannot identify the string, fret or finger used."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваше повідомлення, окреме від оцінки висоти й ритму. Звук не визначає використану струну, лад чи палець."
+          }
+        }
+      }
+    },
+    "lesson.activity.selfReported": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fingering use: self-reported by the player"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Використання аплікатури: підтверджено самим виконавцем"
+          }
+        }
+      }
+    },
+    "lesson.activity.error.invalidPolicy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This activity has invalid position rules."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ця дія містить некоректні правила позицій."
+          }
+        }
+      }
+    },
+    "lesson.activity.error.forbiddenChoice": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The author does not allow this position. Choose an available option."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автор не дозволяє цю позицію. Оберіть доступний варіант."
+          }
+        }
+      }
+    },
+    "lesson.activity.error.beyondFretCount": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This position exceeds the fret count selected in Settings."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ця позиція виходить за кількість ладів, вибрану в налаштуваннях."
+          }
+        }
+      }
+    },
+    "lesson.activity.error.regionUnplayable": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The complete material cannot fit this region with the current tuning while keeping every note and octave. Choose another region or step."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Увесь матеріал не вміщується в цій ділянці з поточним строєм зі збереженням усіх нот та октав. Оберіть іншу ділянку або крок."
+          }
+        }
+      }
+    },
+    "lesson.activity.error.incompatibleTuning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This material uses incompatible tuning contexts."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей матеріал використовує несумісні строї."
+          }
+        }
+      }
+    },
+    "staff.fragment": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fragment: the final bar ends with the selected material."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фрагмент: останній такт закінчується разом із вибраним матеріалом."
+          }
+        }
+      }
+    },
+    "lesson.activity.stepNumber %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Step %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крок %lld"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

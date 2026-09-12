@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "c-standard-open-strings",
   "version": 1,
   "difficulty": "beginner",
@@ -11,7 +11,8 @@
       "exerciseID": "c-standard-open-strings-practice",
       "eventIDs": [
         "low-e"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "leave-space",
@@ -19,7 +20,8 @@
       "exerciseID": "c-standard-open-strings-practice",
       "eventIDs": [
         "first-rest"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "hear-high-e",
@@ -27,7 +29,8 @@
       "exerciseID": "c-standard-open-strings-practice",
       "eventIDs": [
         "high-e"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "play-the-bar",
@@ -38,7 +41,8 @@
         "first-rest",
         "high-e",
         "last-rest"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
@@ -138,7 +142,29 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "c-standard-open-strings-practice"
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": false
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material"
+    }
+  ],
+  "fingerings": [],
+  "practiceEntries": [
+    {
+      "id": "c-standard-open-strings-practice",
+      "activityID": "lesson",
+      "exerciseID": "c-standard-open-strings-practice"
+    }
   ]
 }

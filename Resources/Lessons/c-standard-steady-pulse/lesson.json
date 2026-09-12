@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "c-standard-steady-pulse",
   "version": 1,
   "difficulty": "beginner",
@@ -14,7 +14,8 @@
         "quarter-rest",
         "quarter-three",
         "quarter-four"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "quarter-space",
@@ -22,7 +23,8 @@
       "exerciseID": "c-standard-steady-pulse-practice",
       "eventIDs": [
         "quarter-rest"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "eighth-pairs",
@@ -33,7 +35,8 @@
         "eighth-2",
         "eighth-3",
         "eighth-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "eighth-spaces",
@@ -44,7 +47,8 @@
         "eighth-6",
         "eighth-7",
         "eighth-8"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "whole-pattern",
@@ -63,7 +67,8 @@
         "eighth-6",
         "eighth-7",
         "eighth-8"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
@@ -249,7 +254,29 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "c-standard-steady-pulse-practice"
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": false
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material"
+    }
+  ],
+  "fingerings": [],
+  "practiceEntries": [
+    {
+      "id": "c-standard-steady-pulse-practice",
+      "activityID": "lesson",
+      "exerciseID": "c-standard-steady-pulse-practice"
+    }
   ]
 }

@@ -164,7 +164,7 @@ LessonLibraryStore завантажує app-bundle ресурси на worker. R
 
 `reading-progress.json` — envelope v1: last lesson ID, per-lesson version/step bookmark та окремий readVersion. Зміна версії уроку повертає читання до першого кроку, але не позначає нову версію прочитаною. Missing file дає defaults; corrupt/future file зберігається й блокує перезапис із локалізованим повідомленням, не блокуючи уроки. `ReadingProgressStore` серіалізує/coalesces pending snapshots і має явний retry після write failure. Він використовує той самий LocalRepository actor, що preferences/history. Clear practice history не зачіпає читання.
 
-`PracticeRequest` містить lesson ID/version і повний Exercise snapshot із practiceExerciseIDs. Display-only не може створити цей request. Поточний preflight показує policy/стрій/темп та повернення до уроку; transport/session додаються задачами 14–16. Debug UI tests можуть вибрати ізольований тимчасовий repository через UUID `COACH_UI_TEST_STORAGE`; Release ігнорує цей test hook.
+`PracticeRequest` містить lesson ID/version і повний Exercise snapshot із practiceEntries / resolved activity. Display-only не може створити цей request. Поточний preflight показує policy/стрій/темп та повернення до уроку; transport/session додаються задачами 14–16. Debug UI tests можуть вибрати ізольований тимчасовий repository через UUID `COACH_UI_TEST_STORAGE`; Release ігнорує цей test hook.
 
 ## Спільний аудіокоординатор
 
@@ -227,7 +227,7 @@ StaffModel/StaffDrawing — presentation поверх тієї самої Timeli
 
 ## Automatic lesson tuning (2026-09-12)
 
-[The adaptation contract](AUTOMATIC-LESSON-TUNING.md) supersedes the separate C Standard course selection. Learning owns pure position/interval adaptation and localized template rendering; the UI consumes one resolved fixed-tuning snapshot. Source resources remain readable for historical versions. Catalog aliases avoid duplicate live lessons without rewriting stored history. AppNavigation refreshes only fresh adaptive practice; archived retries remain fixed.
+[The adaptation contract](AUTOMATIC-LESSON-TUNING.md) supersedes the separate C Standard course selection. Learning owns pure position/interval adaptation and localized template rendering; the UI consumes one resolved fixed-tuning snapshot. All source resources now use schema 2; saved practice evidence remains readable independently. Catalog aliases avoid duplicate live lessons without rewriting stored history. AppNavigation refreshes only fresh adaptive practice; archived retries remain fixed.
 
 ### Configurable fret count (2026-09-12)
 
@@ -241,4 +241,10 @@ Lesson adaptation takes the complete instrument and filters candidate positions 
 
 ### Lesson fretboard position
 
-Domain's validated optional `LessonPosition` describes up to five consecutive frets. Learning filters the existing target-MIDI candidates by that region as well as the instrument's fret limit. `availablePositions` resolves the whole source lesson; LessonSelection caches options per tuning/fret count and preserves step/event state. Original (nil) retains the existing adaptation contract. The resolver never changes octave to force a fit. The reader, preview and fresh practice consume the same snapshot; unavailable saved regions require an explicit choice. Optional bookmark/practice-reference metadata is backward compatible. Results and retries freeze it with the full exercise; current preflight validates the region and comparison distinguishes selections. No audio pipeline or grading algorithm changes. Details: [position contract](AUTOMATIC-LESSON-TUNING.md#choosing-a-fretboard-position-2026-09-12).
+Domain defines `PositionChoice`, `FretRegion` and validated `PositioningPolicy` (width 1–6, auto/list/range, optional Original). Learning's `resolveActivity` selects a material, establishes tuning-adapted sounding pitches, resolves positions and renders both locales into one immutable snapshot. Materials cover a lesson, exercise, contiguous event fragment or named fingering. Activities share source music with independent learner/fixed choices. Whole-material availability includes linked shapes and arpeggios; no octave substitution is allowed.
+
+`LessonSelection` caches each activity's availability/resolution by instrument and local choices. Step selection chooses its activity; tab events cannot change activity. An unavailable context leaves generic teaching and unrelated activities accessible. Bookmarks persist choices and optional self-reports by activity ID and lesson version. Preview context IDs stop a previous transport even when another activity resolves an identical exercise.
+
+Practice entries freeze resolved exercises, source IDs/tick offset, activity/material/entry IDs, policy, choice, resolver version and localized titles in `PracticeActivityReference`. Domain validates metadata before audio. Partial-bar fragments retain canonical event IDs and normalize their first tick. Self-reported fingering use never affects scoring and is removed from archived retries. Comparison includes activity conditions; retries use saved evidence without current lesson files. Legacy `LessonPosition` exists only to decode historical practice evidence, not as a lesson API.
+
+The sole lesson API uses schema-2 manifests and one en/uk text edition. No schema-1 lesson decoder or `adapted(to:)` facade remains. See [authoring contract](CONTENT-AUTHORING.md), [design](design/lesson-positioning/README.md) and [delivery/verification](../tasks/follow-up/lesson-design-system.md).
