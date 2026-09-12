@@ -8614,17 +8614,18 @@
       }
     },
     "lesson.adaptationUnavailable": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This lesson cannot be played in the selected tuning within six strings and 24 frets. Choose another tuning in Settings. No substitute notes will be played or assessed."
+            "value": "This lesson cannot preserve its notes and supported fingering within the selected tuning and fret count. Choose another instrument profile in Settings."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Цей урок неможливо зіграти у вибраному строї в межах шести струн і 24 ладів. Вибери інший стрій у налаштуваннях. Ноти не підмінятимуться під час відтворення чи оцінювання."
+            "value": "Не вдалося зберегти ноти й підтримувану аплікатуру уроку в межах вибраного строю та кількості ладів. Вибери інший профіль інструмента в налаштуваннях."
           }
         }
       }
@@ -8709,6 +8710,91 @@
           "stringUnit": {
             "state": "translated",
             "value": "Drop A"
+          }
+        }
+      }
+    },
+    "tuning.fretCount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Number of frets"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кількість ладів"
+          }
+        }
+      }
+    },
+    "tuning.fretCountExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Match your guitar. The fretboard and lesson fingerings use this limit. Changing it stops playback and an active practice attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вкажи кількість ладів на своїй гітарі. Гриф та аплікатури уроків враховують цю межу. Зміна зупиняє відтворення й активну спробу практики."
+          }
+        }
+      }
+    },
+    "tuning.instrumentFrets %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six strings · %lld frets · String 1 is the thinnest."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Струн: 6 · Ладів: %lld · Струна 1 — найтонша."
+          }
+        }
+      }
+    },
+    "practice.error.fretCount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This fragment uses frets beyond your guitar’s limit. Choose another fragment or check the fret count in Settings."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей фрагмент використовує лади за межами твоєї гітари. Вибери інший фрагмент або перевір кількість ладів у налаштуваннях."
+          }
+        }
+      }
+    },
+    "result.fretCount %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frets: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кількість ладів: %lld"
           }
         }
       }

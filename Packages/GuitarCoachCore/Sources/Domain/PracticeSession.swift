@@ -67,6 +67,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     }
     /// Starting a restored configuration checks today's capability; reading history does not.
     public func validateForCurrentPractice() throws {
+        guard selectedEvents.flatMap(\.positions).allSatisfy(instrument.contains) else { throw MusicError.invalidFret }
         guard MonophonicCapability.sampleRates.contains(route.input.sampleRate) else { throw PracticeError.unsupportedFormat }
         let selectedIDs = Set(selectedEvents.map(\.id))
         if let limitation = try MonophonicCapability.limitations(exercise: exercise, instrument: instrument.tuning, bpm: bpm)

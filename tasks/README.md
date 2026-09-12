@@ -96,3 +96,5 @@
 [Automatic lesson tuning](follow-up/automatic-lesson-tuning.md): `done`. One catalog follows Settings with transposed, bilingual musical content and immutable historical attempts.
 
 [Standard and drop tuning families](follow-up/standard-drop-presets.md): `done`. Eight shared presets with localized names, persistence and course/tuner checks.
+
+[Configurable fret count](follow-up/fret-count.md): `done`. Shared 19/20/21/22/24 setting for the instrument, adaptive lessons, fretboard and practice; immutable historical conditions.

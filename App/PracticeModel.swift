@@ -89,7 +89,7 @@ final class PracticeModel {
     func setClickVolume(_ value: Double) { guard value.isFinite, !isBusy else { return }; clickVolume = min(1, max(0, value)) }
     func instrumentWillChange(_ value: InstrumentProfile) {
         guard let old = machine.configuration?.instrument else { physicallyTuned = false; return }
-        if old.tuning != value.tuning || old.source != value.source {
+        if old.tuning != value.tuning || old.source != value.source || old.frets != value.frets {
             physicallyTuned = false; stop(.changedInstrument)
         }
     }
@@ -249,6 +249,7 @@ final class PracticeModel {
             switch music {
             case .tuningMismatch: return "practice.error.tuning"
             case .invalidTempo: return "practice.error.tempo"
+            case .invalidFret: return "practice.error.fretCount"
             case .unsupportedPitch, .unsupportedDuration: return "practice.error.capability"
             default: return "practice.error.exercise"
             }

@@ -41,14 +41,14 @@ struct AppRootView: View {
         }
         .frame(minWidth: CoachLayout.minimumWidth, minHeight: CoachLayout.minimumHeight)
         .environment(navigation)
-        .onChange(of: data.preferences.instrument.tuning) { _, _ in refreshPractice() }
+        .onChange(of: data.preferences.instrument) { _, _ in refreshPractice() }
         .onChange(of: library.hasLoaded) { _, _ in refreshPractice() }
         .onChange(of: navigation.practiceRequest) { _, _ in refreshPractice() }
         .sheet(isPresented: $showsAudio) { AudioProbeView().environment(\.locale, settings.locale) }
     }
 
     private func refreshPractice() {
-        navigation.refreshPractice(tuning: data.preferences.instrument.tuning, lessons: library.lessons)
+        navigation.refreshPractice(instrument: data.preferences.instrument, lessons: library.lessons)
         practice.configure(navigation.practiceAdaptationFailed ? nil : navigation.practiceRequest)
     }
 

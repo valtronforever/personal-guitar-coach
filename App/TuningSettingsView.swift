@@ -13,6 +13,12 @@ struct TuningSettingsView: View {
             Picker("tuning.profile", selection: Binding(get: { tuning.id }, set: { id in Task { await store.selectTuning(id: id) } })) {
                 ForEach(store.preferences.availableTunings) { profile in TuningName(profile: profile).tag(profile.id) }
             }.accessibilityIdentifier("tuning.profile")
+            Picker("tuning.fretCount", selection: Binding(get: { store.preferences.instrument.frets }, set: { value in
+                Task { await store.changeFretCount(value) }
+            })) {
+                ForEach(GuitarFretCount.allCases, id: \.self) { value in Text(verbatim: String(value.rawValue)).tag(value) }
+            }.accessibilityIdentifier("tuning.fretCount")
+            Text("tuning.fretCountExplanation").foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             HStack {
                 Button("tuning.customize") { editor = TuningEditorModel(tuning: tuning, editingExisting: false) }
                     .accessibilityIdentifier("tuning.customize")
@@ -45,9 +51,9 @@ struct TuningSettingsView: View {
                     }.accessibilityElement(children: .combine)
                 }
             }
-            Text("tuning.instrumentSize").font(.caption).foregroundStyle(.secondary)
+            Text("tuning.instrumentFrets \(store.preferences.instrument.fretCount)").font(.caption).foregroundStyle(.secondary)
             DisclosureGroup("fretboard.preview") {
-                FretboardView(model: FretboardModel(tuning: tuning, orientation: store.preferences.instrument.orientation,
+                FretboardView(model: FretboardModel(tuning: tuning, orientation: store.preferences.instrument.orientation, frets: store.preferences.instrument.frets,
                     positions: (1...6).compactMap { try? FretPosition(string: $0, fret: 0) }), selected: $selectedPosition)
                     .padding(.vertical, 8)
             }

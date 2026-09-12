@@ -29,7 +29,7 @@ struct FretboardView: View {
             ScrollViewReader { proxy in
                 HStack {
                     Picker("fretboard.jump", selection: $jumpFret) {
-                        ForEach(0...24, id: \.self) { fret in Text("fretboard.fret \(fret)").tag(fret) }
+                        ForEach(0...model.maximumFret, id: \.self) { fret in Text("fretboard.fret \(fret)").tag(fret) }
                     }.frame(maxWidth: 230).accessibilityIdentifier("fretboard.jump")
                     Button("fretboard.show") { proxy.scrollTo(jumpFret, anchor: .center) }
                     Spacer()
@@ -66,6 +66,13 @@ struct FretboardView: View {
                     .background(.background.secondary, in: RoundedRectangle(cornerRadius: 10))
                     .accessibilityIdentifier("fretboard.grid")
                     .onAppear { proxy.scrollTo(selected?.fret ?? model.expected.map(\.fret).min() ?? 0, anchor: .center) }
+                    .onChange(of: model.maximumFret) { _, limit in
+                        jumpFret = min(jumpFret, limit)
+                        if let position = selected, position.fret > limit { selected = nil }
+                        if let position = focused, position.fret > limit { focused = nil }
+                        if let position = hovered, position.fret > limit { hovered = nil }
+                        proxy.scrollTo(jumpFret, anchor: .center)
+                    }
                     .onChange(of: model.orientation) { _, _ in proxy.scrollTo(selected?.fret ?? model.expected.map(\.fret).min() ?? 0, anchor: .center) }
                     .onChange(of: model.expected) { _, positions in
                         if let first = positions.sorted(by: { $0.fret == $1.fret ? $0.string < $1.string : $0.fret < $1.fret }).first {

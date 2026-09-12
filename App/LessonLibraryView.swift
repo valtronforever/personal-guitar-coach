@@ -10,7 +10,7 @@ struct LessonLibraryView: View {
     @Environment(LocalDataStore.self) private var data
     @State private var filter = LessonFilter()
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
-    private var filtered: [LoadedLesson] { store.catalogLessons.map { (try? $0.adapted(to: data.preferences.instrument.tuning)) ?? $0 }.filter { filter.matches($0, language: language) } }
+    private var filtered: [LoadedLesson] { store.catalogLessons.map { (try? $0.adapted(to: data.preferences.instrument)) ?? $0 }.filter { filter.matches($0, language: language) } }
 
     var body: some View {
         @Bindable var navigation = navigation
@@ -68,7 +68,7 @@ struct LessonLibraryView: View {
             .padding(.vertical, CoachLayout.spacing)
             .navigationDestination(for: String.self) { id in
                 if let lesson = store.sourceLesson(id: id) {
-                    LessonTextView(lesson: lesson, bookmark: reading.progress.lessons[lesson.id], tuning: data.preferences.instrument.tuning).id("\(lesson.id):\(lesson.manifest.version)")
+                    LessonTextView(lesson: lesson, bookmark: reading.progress.lessons[lesson.id], tuning: data.preferences.instrument.tuning, frets: data.preferences.instrument.frets).id("\(lesson.id):\(lesson.manifest.version)")
                 } else { FeatureStateView(title: "common.error", message: "content.error.missingFile", symbol: "book") { EmptyView() } }
             }
         }

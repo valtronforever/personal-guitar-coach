@@ -48,7 +48,7 @@ flowchart LR
 | --- | --- |
 | `Pitch` | MIDI note number, octave, optional spelling; реальна висота звучання, C4 = 60 |
 | `TuningProfile` | ID, revision, display name, шість `stringNumber → openMIDINote`, reference A4 |
-| `InstrumentProfile` | tuning ID/revision, 24 лади, orientation; extensible, але MVP має 6 струн |
+| `InstrumentProfile` | tuning ID/revision, GuitarFretCount 19/20/21/22/24, orientation; extensible, але MVP має 6 струн |
 | `FretPosition` | stringNumber 1…6, fret 0…24; muted описується окремо |
 | `Fingering` | позиції й optional finger labels для підказки; не результат audio recognition |
 | `MusicalEvent` | stable ID, startTick, durationTicks, `note` / `rest`; note містить одну чи кілька позицій |
@@ -148,7 +148,7 @@ LessonLibraryStore завантажує app-bundle ресурси на worker. R
 
 ## Реалізований гриф
 
-`FretboardModel` проєктує Domain-позиції через `TuningProfile.pitch(at:)`; не має власної формули нот. `FretboardView` отримує expected positions/mutes/fingers, binding ручного вибору та optional detected pitch. Canvas малює тільки струни/лади; 150 native buttons задають незалежні hit targets і accessibility. Дзеркальність змінює горизонтальний порядок 0…24, а не номери струн або pitches. Клавіатурні стрілки рухають focus за екранним напрямком; Space/Return змінюють selection. Зовнішня зміна expected набору прокручує до його першого ладу. Detected pitch лишається окремим позначенням без атрибуції до струни.
+`FretboardModel` проєктує Domain-позиції через `TuningProfile.pitch(at:)`; не має власної формули нот. `FretboardView` отримує expected positions/mutes/fingers, binding ручного вибору та optional detected pitch. Canvas малює тільки струни/лади; 6 × (fretCount + 1) native buttons задають незалежні hit targets і accessibility. Дзеркальність змінює горизонтальний порядок 0…fretCount, а не номери струн або pitches. Клавіатурні стрілки рухають focus за екранним напрямком; Space/Return змінюють selection. Зовнішня зміна expected набору прокручує до його першого ладу. Detected pitch лишається окремим позначенням без атрибуції до струни.
 
 ## Реалізована табулатура
 
@@ -228,3 +228,9 @@ StaffModel/StaffDrawing — presentation поверх тієї самої Timeli
 ## Automatic lesson tuning (2026-09-12)
 
 [The adaptation contract](AUTOMATIC-LESSON-TUNING.md) supersedes the separate C Standard course selection. Learning owns pure position/interval adaptation and localized template rendering; the UI consumes one resolved fixed-tuning snapshot. Source resources remain readable for historical versions. Catalog aliases avoid duplicate live lessons without rewriting stored history. AppNavigation refreshes only fresh adaptive practice; archived retries remain fixed.
+
+### Configurable fret count (2026-09-12)
+
+`InstrumentProfile.frets` is a constrained `GuitarFretCount`; `fretCount` exposes its integer value. The open string (0) is additional to the selected 19/20/21/22/24 frets. Canonical `FretPosition` remains 0…24 for authoring and historical data. Settings writes preference envelope 3; versions 1/2 remain readable, missing `fretCount` defaults to 24, and invalid explicit counts fail decoding. Reading does not rewrite older files. Historical session envelopes remain additive-compatible and preserve their original geometry.
+
+Lesson adaptation takes the complete instrument and filters candidate positions by its fret limit. Interval lessons may move a pitch to another string; physical-pattern lessons cannot silently change the taught pattern. Unreachable content returns a localized unavailable state. Fretboard cells, jump menus and focus navigation share the same limit. TAB/staff/preview consume the resulting exercise, so no view recomputes an alternative pitch. New practice validates the selected range against the current instrument before capture/transport; archived retries keep historical targets but use the current physical fret limit. Changing frets interrupts active practice with `changedInstrument` and retains old evidence. Comparison requires equal fret counts; the result conditions show the archived count. Open-string tuner and DSP frequency capability are unchanged.

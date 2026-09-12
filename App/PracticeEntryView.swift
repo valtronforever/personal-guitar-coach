@@ -21,6 +21,10 @@ struct PracticeEntryView: View {
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
     private var instrument: InstrumentProfile { model.phase.active ? model.machine.configuration?.instrument ?? data.preferences.instrument : data.preferences.instrument }
     private var tuning: TuningProfile { model.request?.archivedTuning ?? model.request?.exercise.requiredTuning ?? instrument.tuning }
+    private var exceedsFretCount: Bool {
+        guard !model.phase.active, let exercise = model.request?.exercise else { return false }
+        return exercise.events.filter { model.selectedEventIDs.contains($0.id) }.flatMap(\.positions).contains { !instrument.contains($0) }
+    }
     private var detectedPitch: Pitch? { model.latestFrequency.flatMap { try? Pitch.nearest(to: $0, referenceA4: tuning.referenceA4) } }
 
     var body: some View {
@@ -31,19 +35,20 @@ struct PracticeEntryView: View {
         } else if let request = navigation.practiceRequest {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    if let title = ResultPresentation.lessonTitle(id: request.lessonID, version: request.lessonVersion, tuning: tuning, lessons: library.lessons, language: language) {
+                    if let title = ResultPresentation.lessonTitle(id: request.lessonID, version: request.lessonVersion, tuning: tuning, lessons: library.lessons, language: language, frets: request.frets) {
                         Text(verbatim: title).font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise")
                     } else { Text("result.savedExercise").font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise") }
                     DisclosureGroup("practice.options", isExpanded: $showsOptions) {
                         options(request.exercise).padding(.top, 10)
                     }
                     status
+                    if exceedsFretCount { Label("practice.error.fretCount", systemImage: "exclamationmark.triangle").foregroundStyle(.secondary) }
                     Picker("tab.visualMode", selection: $visualMode) {
                         Text("fretboard.title").tag("fretboard")
                         Text("tab.title").tag("tab")
                     }.pickerStyle(.segmented)
                     if visualMode == "fretboard" {
-                        FretboardView(model: FretboardModel(tuning: tuning, orientation: instrument.orientation,
+                        FretboardView(model: FretboardModel(tuning: tuning, orientation: instrument.orientation, frets: instrument.frets,
                             positions: model.expectedPositions), selected: $selectedPosition,
                             detectedPitch: detectedPitch, compact: true)
                     } else if let timeline = try? TimelineModel(exercise: request.exercise, instrument: tuning) {
@@ -117,7 +122,8 @@ struct PracticeEntryView: View {
                 TuningName(profile: tuning)
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
             }
-            Text("practice.stringOrder").font(.caption).foregroundStyle(.secondary)
+            Text("practice.stringOrder").font(.caption)
+            Text("result.fretCount \(instrument.fretCount)")
             Toggle("practice.tunedConfirmation", isOn: Binding(get: { model.physicallyTuned }, set: { model.physicallyTuned = $0 }))
                 .disabled(model.isBusy).accessibilityIdentifier("practice.tuned")
             HStack {
@@ -179,7 +185,7 @@ struct PracticeEntryView: View {
     private var actions: some View {
         HStack {
             Button(model.phase == .paused ? "practice.resume" : "practice.start") { model.start(instrument: data.preferences.instrument) }
-                .disabled(model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
+                .disabled(exceedsFretCount || model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
             Button("playback.pause") { model.pause() }.disabled(!model.phase.active || model.phase == .finalizing)
                 .accessibilityIdentifier("practice.pause")
             Button("playback.stop") { model.stop() }.disabled(!model.isBusy).accessibilityIdentifier("practice.stop")

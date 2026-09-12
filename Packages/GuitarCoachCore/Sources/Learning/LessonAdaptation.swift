@@ -20,21 +20,29 @@ struct AdaptiveLessonText: Sendable, Equatable {
 }
 
 extension LoadedLesson {
+    public func adapted(to instrument: InstrumentProfile) throws -> LoadedLesson {
+        try adapted(to: instrument.tuning, frets: instrument.frets)
+    }
+
     /// String 1 defines the transposition; nonuniform changes are compensated in the fingering.
     /// Basic physical-string lessons deliberately retain their original string/fret pattern.
-    public func adapted(to tuning: TuningProfile) throws -> LoadedLesson {
-        guard let definition = manifest.adaptation, let templates else { return self }
+    public func adapted(to tuning: TuningProfile, frets: GuitarFretCount = .twentyFour) throws -> LoadedLesson {
+        guard let definition = manifest.adaptation, let templates else {
+            guard manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy({ $0.fret <= frets.rawValue }),
+                  manifest.steps.compactMap(\.fingering).flatMap(\.positions).allSatisfy({ $0.fret <= frets.rawValue }) else { throw LessonAdaptationError.unplayable }
+            return self
+        }
         var shapeMappings: [TuningProfile: [FretPosition: FretPosition]] = [:]
         for step in manifest.steps {
             guard let shape = step.fingering, let source = manifest.exercises.first(where: { $0.id == step.exerciseID }) else { continue }
-            let positions = try adaptedPositions(shape.positions, source: source, tuning: tuning, policy: definition.policy)
+            let positions = try adaptedPositions(shape.positions, source: source, tuning: tuning, policy: definition.policy, maximumFret: frets.rawValue)
             shapeMappings[source.requiredTuning ?? .standard] = Dictionary(uniqueKeysWithValues: zip(shape.positions, positions))
         }
         func positions(_ original: [FretPosition], source: Exercise) throws -> [FretPosition] {
             if let mapping = shapeMappings[source.requiredTuning ?? .standard], original.allSatisfy({ mapping[$0] != nil }) {
                 return original.compactMap { mapping[$0] }
             }
-            return try adaptedPositions(original, source: source, tuning: tuning, policy: definition.policy)
+            return try adaptedPositions(original, source: source, tuning: tuning, policy: definition.policy, maximumFret: frets.rawValue)
         }
         let exercises = try manifest.exercises.map { source in
             let events = try source.events.map { event in
@@ -47,7 +55,7 @@ extension LoadedLesson {
         }
         let steps = try manifest.steps.map { step in
             guard let shape = step.fingering, let source = manifest.exercises.first(where: { $0.id == step.exerciseID }) else { return step }
-            let positions = try adaptedPositions(shape.positions, source: source, tuning: tuning, policy: definition.policy)
+            let positions = try adaptedPositions(shape.positions, source: source, tuning: tuning, policy: definition.policy, maximumFret: frets.rawValue)
             let unchanged = Set(positions) == Set(shape.positions)
             let fingering = try Fingering(positions: positions, mutedStrings: Array(Set(1...6).subtracting(positions.map(\.string))).sorted(),
                 fingerNumbers: unchanged ? shape.fingerNumbers : [:])
@@ -62,15 +70,18 @@ extension LoadedLesson {
     }
 
     private func adaptedPositions(_ positions: [FretPosition], source: Exercise, tuning: TuningProfile,
-                                  policy: LessonAdaptationPolicy) throws -> [FretPosition] {
-        guard policy == .transposeIntervals, !positions.isEmpty else { return positions }
+                                  policy: LessonAdaptationPolicy, maximumFret: Int) throws -> [FretPosition] {
+        guard policy == .transposeIntervals, !positions.isEmpty else {
+            guard positions.allSatisfy({ $0.fret <= maximumFret }) else { throw LessonAdaptationError.unplayable }
+            return positions
+        }
         let reference = source.requiredTuning ?? .standard
         let shift = tuning.strings[0].openPitch.midi - reference.strings[0].openPitch.midi
         let candidates = try positions.map { position -> [FretPosition] in
             let midi = try reference.pitch(at: position).midi + shift
             return tuning.strings.compactMap { string in
                 try? FretPosition(string: string.number, fret: midi - string.openPitch.midi)
-            }.sorted {
+            }.filter { $0.fret <= maximumFret }.sorted {
                 let a = abs($0.string - position.string) * 12 + abs($0.fret - position.fret)
                 let b = abs($1.string - position.string) * 12 + abs($1.fret - position.fret)
                 return a == b ? $0.string < $1.string : a < b
