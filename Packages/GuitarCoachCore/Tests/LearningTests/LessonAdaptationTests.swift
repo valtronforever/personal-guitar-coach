@@ -40,8 +40,9 @@ struct LessonAdaptationTests {
                 }
                 for language in [LessonLanguage.en, .uk] {
                     let text = lesson.text(for: language)
-                    #expect(!text.body.contains("{{") && text.body.contains(tuning.name))
-                    #expect(text.body.contains("\(tuning.strings[5].openPitch.name(spelling: tuning.preferredSpelling)) (6/0)"))
+                    #expect(!text.body.contains("{{") && text.variant != nil)
+                    #expect(text.title == source.templates?.english.title || language == .uk)
+                    #expect(!text.variant!.body.contains("{{"))
                     #expect(text.lessonVersion == lesson.manifest.version && text.steps.count == lesson.manifest.steps.count)
                     for step in lesson.manifest.steps {
                         let visual = try lesson.visual(stepID: step.id, instrument: .standard)
@@ -94,8 +95,8 @@ struct LessonAdaptationTests {
         let lessons = try course()
         let major = try #require(lessons.first { $0.id == "c-major" })
         let cMajor = try major.adapted(to: .cStandard)
-        #expect(cMajor.english.title == "A♭ major across the strings")
-        #expect(cMajor.ukrainian.title == "Мажорна гама A♭ через кілька струн")
+        #expect(cMajor.english.title == "Major scale" && cMajor.english.variant?.title == "A♭ major")
+        #expect(cMajor.ukrainian.title == "Мажорна гама" && cMajor.ukrainian.variant?.title == "A♭ мажор")
         #expect(try cMajor.manifest.exercises[0].resolvedEvents(instrument: .dropD).flatMap(\.pitches).map(\.midi) == [44,46,48,49,51,53,55,56,55,53,51,49,48,46,44])
         let pent = try #require(lessons.first { $0.id == "a-minor-pentatonic" }).adapted(to: .dropD)
         let notes = pent.manifest.exercises[0].events.filter { $0.kind == .note }
@@ -111,7 +112,13 @@ struct LessonAdaptationTests {
     @Test func customNamesAreLiteralAndMissingOrUnknownTemplateTokensFailClosed() throws {
         let source = try #require(course().first)
         let named = try TuningProfile(id: "literal-name", name: "My {{root}} tuning", strings: TuningProfile.cStandard.strings)
-        #expect(try source.adapted(to: named).english.body.contains("My {{root}} tuning"))
+        let templateSource = try #require(source.templates)
+        let customText = LessonText(lessonID: source.id, lessonVersion: templateSource.english.lessonVersion, locale: "en",
+            title: "Generic", summary: "Generic", goal: "Generic", body: "Generic", steps: templateSource.english.steps,
+            variant: LessonVariantText(title: "{{tuning}}", body: "A4 {{reference}}"))
+        let customLesson = LoadedLesson(manifest: source.manifest, english: source.english, ukrainian: source.ukrainian,
+            templates: AdaptiveLessonText(english: customText, ukrainian: templateSource.ukrainian))
+        #expect(try customLesson.adapted(to: named).english.variant?.title == "My {{root}} tuning")
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -119,7 +126,7 @@ struct LessonAdaptationTests {
         try FileManager.default.copyItem(at: root.appendingPathComponent("Resources/Lessons"), to: directory)
         let template = directory.appendingPathComponent("open-strings-intro/adaptive.en.json")
         var text = try String(contentsOf: template, encoding: .utf8)
-        text = text.replacingOccurrences(of: "{{openStrings}}", with: "{{unknown}}")
+        text = text.replacingOccurrences(of: "{{sequence}}", with: "{{unknown}}")
         try text.write(to: template, atomically: true, encoding: .utf8)
         var report = LessonCatalogLoader().load(directory: directory)
         #expect(report.issues.contains { $0.lessonID == "open-strings-intro" && $0.code == .invalidText })
@@ -133,7 +140,7 @@ struct LessonAdaptationTests {
         let custom = try TuningProfile(id: "custom-test", name: "My tuning", strings: strings, referenceA4: 442)
         for source in try course() {
             let lesson = try source.adapted(to: custom)
-            #expect(lesson.english.body.contains("442.0") && lesson.ukrainian.body.contains("442,0"))
+            #expect(lesson.english.variant != nil && lesson.ukrainian.variant != nil)
             for exercise in lesson.manifest.exercises { #expect(exercise.requiredTuning == custom) }
         }
         let impossible = try TuningProfile(id: "impossible", name: "Extreme", strings: (1...6).map { try TunedString(number: $0, openPitch: Pitch(midi: $0 == 1 ? 100 : 0)) })

@@ -44,6 +44,8 @@ public struct LessonCatalogLoader: Sendable {
                     templates = try AdaptiveLessonText(english: translation(.en, folder: folder, manifest: adaptedManifest, prefix: "adaptive."),
                         ukrainian: translation(.uk, folder: folder, manifest: adaptedManifest, prefix: "adaptive."))
                 }
+                try validatePresentationParity(en, uk)
+                if let templates { try validatePresentationParity(templates.english, templates.ukrainian) }
                 let lesson = LoadedLesson(manifest: manifest, english: en, ukrainian: uk, templates: templates)
                 if templates != nil { _ = try lesson.adapted(to: manifest.exercises[0].requiredTuning ?? .standard) }
                 lessons.append(lesson)
@@ -107,10 +109,21 @@ public struct LessonCatalogLoader: Sendable {
             throw ContentFailure(.translationMismatch, "Translation IDs/version/steps differ: \(language.rawValue)")
         }
         let strings = [text.title, text.summary, text.goal, text.body] + text.steps.values.flatMap { [$0.title, $0.body] }
+            + (text.variant.map { [$0.title, $0.body] } ?? []) + (text.historicalTitle.map { [$0] } ?? [])
+        if text.variant != nil {
+            guard [text.title, text.summary, text.goal, text.body].allSatisfy({ !$0.contains("{{") && !$0.contains("}}") }) else {
+                throw ContentFailure(.invalidText, "General teaching must be independent of instrument tokens; use variant or steps")
+            }
+        }
         guard strings.allSatisfy({ !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) else {
             throw ContentFailure(.invalidText, "Blank text in \(language.rawValue)")
         }
         return text
+    }
+    private func validatePresentationParity(_ en: LessonText, _ uk: LessonText) throws {
+        guard (en.variant == nil) == (uk.variant == nil), (en.historicalTitle == nil) == (uk.historicalTitle == nil) else {
+            throw ContentFailure(.translationMismatch, "Variant and historical title fields must exist in both languages")
+        }
     }
     private func read(_ url: URL) throws -> Data { try Data(contentsOf: url) }
     private func checkSchema(_ data: Data) throws {

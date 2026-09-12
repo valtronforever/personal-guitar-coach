@@ -102,3 +102,60 @@ Before marking new teaching content complete, inspect both languages in the nati
 ## Adaptive teaching content
 
 Current starter lessons declare optional `adaptation` metadata and provide `adaptive.en.json` / `adaptive.uk.json`. Follow [AUTOMATIC-LESSON-TUNING.md](AUTOMATIC-LESSON-TUNING.md) for policies, allowed tokens and version requirements. Numeric note targets and position explanations must derive from the resolved musical snapshot; do not regex-transpose translated prose or alter immutable historical versions. Unknown tokens, missing translations and invalid versions fail validation.
+
+## Start a new independent lesson
+
+Run the scaffold from the repository root (choose your own stable ID):
+
+```sh
+python3 Scripts/new_lesson.py whole-tone-steps --policy fretPattern
+# For a scale/arpeggio whose intervals must survive Drop tuning:
+python3 Scripts/new_lesson.py major-scale-sequence --policy transposeIntervals
+```
+
+The command copies [the bilingual template](templates/lesson/lesson.json), assigns a globally unique `<lesson-id>-practice` exercise ID, and appends the lesson to the local catalog. It refuses existing IDs/folders and unsafe names. IDs are limited to 55 characters to leave room for the exercise suffix. Use `--catalog /absolute/path/to/a/catalog` for a sandbox with an existing schema-1 `catalog.json`. Run one authoring command at a time. It creates a **draft**, not an approved new course lesson; replace the sample teaching and musical phrase before publishing a build. It neither commits nor pushes changes.
+
+The five generated files have separate jobs:
+
+| File | Author edits |
+| --- | --- |
+| `lesson.json` | Shared E Standard reference positions, rhythm, tempo, step/event IDs and adaptation policy |
+| `adaptive.en.json`, `adaptive.uk.json` | Current generic teaching, resolved example templates and step explanations |
+| `en.json`, `uk.json` | Baseline text matching the base manifest version; retain accurate baseline descriptions alongside the adaptive edition |
+
+### Write the teaching once, describe the example separately
+
+The current text format adds an optional `variant` object to `LessonText`:
+
+```json
+{
+  "title": "Major scale",
+  "summary": "Play a major scale up and down over one octave.",
+  "goal": "Learn the intervals of a major scale and connect notes across strings.",
+  "body": "The major-scale steps are tone, tone, semitone, tone, tone, tone, semitone.",
+  "variant": {
+    "title": "{{root}} major",
+    "body": "Play from {{first}} to {{highest}} and back. Sequence: {{sequence}}."
+  }
+}
+```
+
+This fragment illustrates only the presentation fields; the complete template also supplies IDs, versions and steps. Keep `title`, `summary`, `goal` and `body` independent of the selected tuning. With `variant` present, the loader rejects template tokens in these four generic fields. Place calculated notes/ranges in `variant`, and exact fingering descriptions in step `body` using `{{positions}}`. Both languages must either provide `variant` or omit it; its title/body must be nonempty. Unknown tokens fail validation.
+
+The app's **Your variant / Твій варіант** block adds the selected tuning, fret count, open strings (6 → 1), A4 reference and shared usage guidance. Authors must not copy this boilerplate into each lesson. Its example describes the **first exercise listed by the manifest's exercise order that is also a practice entry**; structure multi-exercise lessons accordingly. Step visuals continue to reference their own explicit exercise/event IDs.
+
+Use `fretPattern` when the taught action is physical: open strings, a fret sequence or rhythm on a chosen string. Standard and Drop keep those positions, and pitches follow the actual tuning. Use `transposeIntervals` for scales and arpeggios: E/D/C/B Standard preserve positions; Drop compensates the sixth-string change, with an alternative supported fingering when needed. The resolver still handles custom six-string tunings and fret limits. Do not maintain a separate copy for each tuning. No generator infers a comfortable hand position from audio, and simultaneous chords remain display-only.
+
+### Editorial compatibility
+
+The starter-course presentation update keeps lesson/exercise versions and all musical manifests unchanged: the teaching goals, steps, reference notes and assessment meaning did not change. Existing bookmarks and read markers remain valid. The optional `historicalTitle` contains the previous title template for the same version; it is rendered for saved-result headings, while current catalog/reader/practice headings use the generic `title`. New lessons omit this field. Both languages must agree on its presence. No attempt is rewritten or regraded.
+
+Use this exception only for editorial reorganizing/renaming with equivalent meaning. Changes to goals, exercise semantics or teaching order still require the version increments above. The original fixed resources remain readable, including historical C Standard variants.
+
+### Before adding a draft to the course
+
+1. Replace sample theory and steps in both languages; set topic, difficulty, timing and positions in the shared manifest.
+2. Keep step and event references exact; choose the policy according to the learning goal, not the currently selected guitar tuning.
+3. Run `ValidateLessonContent Resources/Lessons`, then the Core and App tests and `check_localizations.py` using the commands above. The Core `LessonAuthoringTests` also creates both scaffold policies in a temporary catalog and checks them through the real loader.
+4. Inspect the native lesson in English/Ukrainian, Standard/Drop and a shorter fret count. Check the generic title, Your variant, step markers and TAB against each other. Preview and graded practice have their existing audio capability gates.
+5. Record review and acceptance evidence. A syntactically valid draft is not evidence that its pedagogy or real-guitar scoring has been validated.

@@ -22,7 +22,7 @@ import Persistence
         let ids = selection.selectedIDs, step = selection.stepID
         selection.adapt(to: .cStandard)
         #expect(!selection.adaptationFailed && selection.selectedIDs == ids && selection.stepID == step)
-        #expect(selection.lesson.english.title == "A♭ major across the strings")
+        #expect(selection.lesson.english.title == "Major scale" && selection.lesson.english.variant?.title == "A♭ major")
         let board = selection.fretboard(instrument: InstrumentProfile(tuning: .cStandard))
         #expect(board.tuning == .cStandard)
         selection.adapt(to: .cStandard, frets: .nineteen)
@@ -32,7 +32,20 @@ import Persistence
         #expect(try StaffModel(timeline: timeline, key: .neutral).symbols(in: 0).compactMap(\.pitch).map(\.name) == ["A♭3", "B♭3", "C4", "D♭4"])
         let bookmark = LessonBookmark(lessonVersion: selection.lesson.manifest.version, stepID: step, readVersion: nil)
         let restored = LessonSelection(lesson: source, bookmark: bookmark, tuning: .dropD)
-        #expect(restored.stepID == step && restored.lesson.english.title == "C major across the strings")
+        #expect(restored.stepID == step && restored.lesson.english.title == "Major scale" && restored.lesson.english.variant?.title == "C major")
+    }
+    @Test func editorialTitlesKeepArchivedNamesAndDoNotResetTheLessonSelection() async throws {
+        let library = await library()
+        let source = try #require(library.sourceLesson(id: "c-major"))
+        let version = try #require(source.manifest.adaptation?.lessonVersion)
+        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .en) == "Major scale")
+        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .en, historical: true) == "A♭ major across the strings")
+        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .uk, historical: true) == "Мажорна гама A♭ через кілька струн")
+        let selection = LessonSelection(lesson: source, bookmark: LessonBookmark(lessonVersion: version, stepID: "upper-half", readVersion: version), tuning: .cStandard)
+        #expect(selection.stepID == "upper-half" && selection.lesson.manifest.version == version)
+        selection.adapt(to: .dropD, frets: .nineteen)
+        #expect(selection.stepID == "upper-half" && selection.lesson.english.title == "Major scale")
+        #expect(selection.lesson.english.variant?.title == "C major")
     }
     @Test func everyPresetLessonCanBeSavedAndRetriedOrExplicitlyRejectUnsupportedLowNotes() async throws {
         let library = await library()

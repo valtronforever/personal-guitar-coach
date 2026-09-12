@@ -98,3 +98,5 @@
 [Standard and drop tuning families](follow-up/standard-drop-presets.md): `done`. Eight shared presets with localized names, persistence and course/tuner checks.
 
 [Configurable fret count](follow-up/fret-count.md): `done`. Shared 19/20/21/22/24 setting for the instrument, adaptive lessons, fretboard and practice; immutable historical conditions.
+
+[Independent lesson text and authoring foundation](follow-up/lesson-authoring-foundation.md): `pending_user`. Generic teaching, instrument-specific examples and a bilingual authoring scaffold.

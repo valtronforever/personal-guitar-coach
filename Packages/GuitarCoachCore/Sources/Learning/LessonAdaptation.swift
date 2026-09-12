@@ -115,7 +115,7 @@ extension LoadedLesson {
         let names = events.flatMap(\.pitches).map { $0.name(spelling: tuning.preferredSpelling) }
         let root = names.first.map { String($0.prefix { !$0.isNumber && $0 != "-" }) } ?? ""
         let referenceText = String(format: "%.1f", locale: Locale(identifier: template.locale), tuning.referenceA4)
-        var values = ["tuning": tuning.name, "reference": referenceText,
+        let values = ["tuning": tuning.name, "reference": referenceText,
             "openExample": tuning.strings[5].openPitch.name(spelling: tuning.preferredSpelling),
             "openStrings": tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "),
             "root": root, "first": names.first ?? "", "highest": events.flatMap(\.pitches).max(by: { $0.midi < $1.midi })?.name(spelling: tuning.preferredSpelling) ?? "",
@@ -136,21 +136,24 @@ extension LoadedLesson {
         }
         var texts: [String: LessonStepText] = [:]
         for step in resolved.steps {
-            guard let copy = template.steps[step.id], let exercise = resolved.exercises.first(where: { $0.id == step.exerciseID }) else {
-                throw LessonAdaptationError.invalidTemplate
+            guard let copy = template.steps[step.id] else { throw LessonAdaptationError.invalidTemplate }
+            var stepValues = values
+            if step.kind != .none {
+                guard let exercise = resolved.exercises.first(where: { $0.id == step.exerciseID }) else { throw LessonAdaptationError.invalidTemplate }
+                let positions = step.fingering?.positions ?? exercise.events.filter { step.eventIDs.contains($0.id) }.flatMap(\.positions)
+                let descriptions = try positions.map { position in
+                    let note = try tuning.pitch(at: position).name(spelling: tuning.preferredSpelling)
+                    return "\(note) (\(position.string)/\(position.fret))"
+                }
+                stepValues["positions"] = descriptions.joined(separator: "; ")
+                stepValues["notes"] = try positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: " – ")
             }
-            let positions = step.fingering?.positions ?? exercise.events.filter { step.eventIDs.contains($0.id) }.flatMap(\.positions)
-            let descriptions = try positions.map { position in
-                let note = try tuning.pitch(at: position).name(spelling: tuning.preferredSpelling)
-                return "\(note) (\(position.string)/\(position.fret))"
-            }
-            values["positions"] = descriptions.joined(separator: "; ")
-            values["notes"] = try positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: " – ")
-            texts[step.id] = try LessonStepText(title: fill(copy.title, values: values), body: fill(copy.body, values: values))
+            texts[step.id] = try LessonStepText(title: fill(copy.title, values: stepValues), body: fill(copy.body, values: stepValues))
         }
-        values.removeValue(forKey: "positions"); values.removeValue(forKey: "notes")
         return try LessonText(lessonID: id, lessonVersion: resolved.version, locale: template.locale,
             title: fill(template.title, values: values), summary: fill(template.summary, values: values),
-            goal: fill(template.goal, values: values), body: fill(template.body, values: values), steps: texts)
+            goal: fill(template.goal, values: values), body: fill(template.body, values: values), steps: texts,
+            variant: template.variant.map { try LessonVariantText(title: fill($0.title, values: values), body: fill($0.body, values: values)) },
+            historicalTitle: template.historicalTitle.map { try fill($0, values: values) })
     }
 }
