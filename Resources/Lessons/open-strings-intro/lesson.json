@@ -140,5 +140,10 @@
   ],
   "practiceExerciseIDs": [
     "open-strings-intro-practice"
-  ]
+  ],
+  "adaptation": {
+    "policy": "fretPattern",
+    "lessonVersion": 3,
+    "exerciseVersion": 2
+  }
 }

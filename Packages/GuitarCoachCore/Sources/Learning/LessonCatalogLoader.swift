@@ -33,7 +33,20 @@ public struct LessonCatalogLoader: Sendable {
                     throw ContentFailure(.duplicateIdentifier, "Exercise ID is already used by another lesson")
                 }
                 exerciseIDs.formUnion(manifest.exercises.map(\.id))
-                lessons.append(LoadedLesson(manifest: manifest, english: en, ukrainian: uk))
+                var templates: AdaptiveLessonText?
+                if let adaptation = manifest.adaptation {
+                    guard adaptation.lessonVersion > manifest.version,
+                          manifest.exercises.allSatisfy({ adaptation.exerciseVersion > $0.version }) else {
+                        throw ContentFailure(.invalidText, "Adapted content needs distinct newer versions")
+                    }
+                    let adaptedManifest = LessonManifest(id: manifest.id, version: adaptation.lessonVersion, steps: manifest.steps,
+                        exercises: manifest.exercises, practiceExerciseIDs: manifest.practiceExerciseIDs)
+                    templates = try AdaptiveLessonText(english: translation(.en, folder: folder, manifest: adaptedManifest, prefix: "adaptive."),
+                        ukrainian: translation(.uk, folder: folder, manifest: adaptedManifest, prefix: "adaptive."))
+                }
+                let lesson = LoadedLesson(manifest: manifest, english: en, ukrainian: uk, templates: templates)
+                if templates != nil { _ = try lesson.adapted(to: manifest.exercises[0].requiredTuning ?? .standard) }
+                lessons.append(lesson)
             } catch { issues.append(issue(error, lessonID: id)) }
         }
         return LessonCatalogReport(lessons: lessons, issues: issues)
@@ -84,9 +97,9 @@ public struct LessonCatalogLoader: Sendable {
         }
     }
 
-    private func translation(_ language: LessonLanguage, folder: URL, manifest: LessonManifest) throws -> LessonText {
+    private func translation(_ language: LessonLanguage, folder: URL, manifest: LessonManifest, prefix: String = "") throws -> LessonText {
         let data: Data
-        do { data = try read(folder.appendingPathComponent(language.rawValue + ".json")) }
+        do { data = try read(folder.appendingPathComponent(prefix + language.rawValue + ".json")) }
         catch { throw ContentFailure(.missingTranslation, "Missing/unreadable \(language.rawValue) translation") }
         let text = try JSONDecoder().decode(LessonText.self, from: data)
         guard text.lessonID == manifest.id, text.lessonVersion == manifest.version, text.locale == language.rawValue,
@@ -117,6 +130,7 @@ public struct LessonCatalogLoader: Sendable {
         guard Set(ids).count == ids.count else { throw ContentFailure(.duplicateIdentifier, "Duplicate identifier") }
     }
     private func issue(_ error: Error, lessonID: String?) -> ContentIssue {
+        if error is LessonAdaptationError { return ContentIssue(lessonID: lessonID, code: .invalidText, detail: "Invalid adaptive lesson template or fingering") }
         if let failure = error as? ContentFailure { return ContentIssue(lessonID: lessonID, code: failure.code, detail: failure.detail) }
         if let error = error as? MusicError {
             return ContentIssue(lessonID: lessonID, code: error == .duplicateIdentifier ? .duplicateIdentifier : .invalidMusicalData, detail: String(describing: error))

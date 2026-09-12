@@ -5,19 +5,26 @@ import Persistence
 
 @MainActor @Observable
 final class LessonSelection {
-    let lesson: LoadedLesson
+    let sourceLesson: LoadedLesson
+    private(set) var lesson: LoadedLesson
+    private(set) var adaptationFailed = false
     private(set) var stepID: String?
     private(set) var exerciseID: String?
     private(set) var range = TimelineSelection()
     var selectedPosition: FretPosition?
 
-    init(lesson: LoadedLesson, bookmark: LessonBookmark? = nil) {
-        self.lesson = lesson
-        let restored = bookmark?.lessonVersion == lesson.manifest.version ? bookmark?.stepID : nil
+    init(lesson: LoadedLesson, bookmark: LessonBookmark? = nil, tuning: TuningProfile? = nil) {
+        sourceLesson = lesson; self.lesson = lesson
+        if let tuning { adapt(to: tuning) }
+        let restored = bookmark?.lessonVersion == self.lesson.manifest.version ? bookmark?.stepID : nil
         selectStep(restored.flatMap { id in lesson.manifest.steps.first { $0.id == id } }?.id ?? lesson.manifest.steps[0].id)
     }
 
-    var exercise: Exercise? { lesson.manifest.exercises.first { $0.id == exerciseID } }
+    func adapt(to tuning: TuningProfile) {
+        do { lesson = try sourceLesson.adapted(to: tuning); adaptationFailed = false; selectedPosition = nil }
+        catch { adaptationFailed = true }
+    }
+    var exercise: Exercise? { adaptationFailed ? nil : lesson.manifest.exercises.first { $0.id == exerciseID } }
     var selectedIDs: Set<String> {
         if !range.ids.isEmpty { return range.ids }
         return Set(lesson.manifest.steps.first { $0.id == stepID }?.eventIDs ?? [])
@@ -44,6 +51,7 @@ final class LessonSelection {
     }
 
     func fretboard(instrument: InstrumentProfile) -> FretboardModel {
+        guard !adaptationFailed else { return FretboardModel(tuning: instrument.tuning, orientation: instrument.orientation, positions: []) }
         if !range.ids.isEmpty, let exercise {
             return FretboardModel(tuning: exercise.requiredTuning ?? instrument.tuning, orientation: instrument.orientation,
                 positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.positions))
@@ -79,12 +87,14 @@ struct PracticeRequest: Equatable, Sendable {
     let archivedTuning: TuningProfile?
     let lessonID: String
     let lessonVersion: Int
+    let adaptsWithInstrument: Bool
     let exercise: Exercise
-    init?(lesson: LoadedLesson, exerciseID: String) {
+    init?(lesson: LoadedLesson, exerciseID: String, adaptsWithInstrument: Bool = false) {
         guard lesson.manifest.practiceExerciseIDs.contains(exerciseID),
               let exercise = lesson.manifest.exercises.first(where: { $0.id == exerciseID }),
               exercise.assessmentMode == .monophonic else { return nil }
         lessonID = lesson.id; lessonVersion = lesson.manifest.version; self.exercise = exercise
+        self.adaptsWithInstrument = adaptsWithInstrument
         initialRange = nil; initialBPM = nil; archivedTuning = nil
     }
 }
@@ -94,6 +104,7 @@ extension PracticeRequest {
     func freshSelection() -> PracticeRequest { PracticeRequest(copying: self) }
     private init(copying request: PracticeRequest) {
         lessonID = request.lessonID; lessonVersion = request.lessonVersion; exercise = request.exercise
+        adaptsWithInstrument = request.adaptsWithInstrument
         initialRange = request.initialRange; initialBPM = request.initialBPM; archivedTuning = request.archivedTuning
     }
     init?(result: AssessedPractice, recommendation: PracticeRecommendation) {
@@ -103,6 +114,7 @@ extension PracticeRequest {
               let lesson = result.evidence.configuration.lesson else { return nil }
         let config = result.evidence.configuration
         lessonID = lesson.id; lessonVersion = lesson.version; exercise = config.exercise
+        adaptsWithInstrument = false
         initialBPM = recommendation.bpm
         let bar = exercise.timeSignature.ticksPerBar
         initialRange = Int64(recommendation.firstBar - 1) * bar..<min(Int64(recommendation.lastBar) * bar, exercise.durationTicks)

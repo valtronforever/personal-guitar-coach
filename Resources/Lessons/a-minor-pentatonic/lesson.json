@@ -409,5 +409,10 @@
   ],
   "practiceExerciseIDs": [
     "a-minor-pentatonic-practice"
-  ]
+  ],
+  "adaptation": {
+    "policy": "transposeIntervals",
+    "lessonVersion": 2,
+    "exerciseVersion": 2
+  }
 }

@@ -251,5 +251,10 @@
   ],
   "practiceExerciseIDs": [
     "steady-pulse-practice"
-  ]
+  ],
+  "adaptation": {
+    "policy": "fretPattern",
+    "lessonVersion": 2,
+    "exerciseVersion": 2
+  }
 }

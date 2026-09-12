@@ -1,0 +1,31 @@
+{
+  "lessonID": "a-minor-pentatonic",
+  "lessonVersion": 2,
+  "locale": "en",
+  "title": "{{root}} minor pentatonic",
+  "summary": "Follow a minor pentatonic pattern from {{first}} to {{highest}} and back.",
+  "goal": "Learn the five-note pattern and deliberate string changes in your tuning.",
+  "body": "First practice the major-scale lesson and individual string changes. A minor pentatonic contains root, minor third, fourth, fifth and minor seventh. Start at 50 BPM with quarters; ascend in bars 1–3 and descend in bars 4–6. The highest note is {{highest}}, not necessarily the root. Keep one note sounding at a time; use short fragments before a full repeat at 60 BPM. Sequence: {{sequence}}.\n\nThis musical lesson transposes by the change in string 1 relative to Standard. Uniformly lowered tunings keep the familiar frets. For Drop D or other nonuniform tunings, positions also change to preserve the musical intervals. A tuning change stops playback/practice and needs a fresh attempt.\n\nTuning: {{tuning}}. Strings 6 → 1: {{openStrings}}. Reference A4 = {{reference}} Hz. Select your actual tuning in Settings → Instrument or in Tuner. Changing the profile updates this lesson; it does not physically tune the guitar.\n\nIn the steps, {{openExample}} (6/0) means sounding note {{openExample}}, string 6, fret 0. String 1 is the thinnest; 0 means open. Read the displayed positions for your selected tuning. Pitch labels use chromatic enharmonic names. Audio measures audible pitch and attacks, not your finger or string choice.\n\nUse a clean input from your guitar interface, or choose the acoustic microphone/pickup source explicitly. Play one note at a time and stop the previous string. Choose Practice for a signal check and count-in. Without reliable calibration, rhythm and overall scores remain unavailable. Review measured pitch or missed-attack feedback before increasing the tempo.",
+  "steps": {
+    "low-strings": {
+      "title": "1. Begin the pattern",
+      "body": "Bar 1: {{positions}}."
+    },
+    "middle-strings": {
+      "title": "2. Continue across the strings",
+      "body": "Bar 2: {{positions}}."
+    },
+    "high-strings": {
+      "title": "3. Reach the top",
+      "body": "Bar 3: {{positions}}."
+    },
+    "return-high": {
+      "title": "4. Turn around",
+      "body": "Bar 4 descends without repeating the highest note: {{positions}}."
+    },
+    "return-home": {
+      "title": "5. Return and leave space",
+      "body": "Bars 5–6 return to the first note, followed by a quarter rest: {{positions}}."
+    }
+  }
+}

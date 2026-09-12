@@ -8612,6 +8612,38 @@
           }
         }
       }
+    },
+    "lesson.adaptationUnavailable": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This lesson cannot be played in the selected tuning within six strings and 24 frets. Choose another tuning in Settings. No substitute notes will be played or assessed."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей урок неможливо зіграти у вибраному строї в межах шести струн і 24 ладів. Вибери інший стрій у налаштуваннях. Ноти не підмінятимуться під час відтворення чи оцінювання."
+          }
+        }
+      }
+    },
+    "tuning.lessonAdaptation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lessons adapt automatically. Scales and arpeggios transpose with string 1; positions on other strings adjust to keep the intervals. Open-string, fret and rhythm lessons follow the selected strings directly."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уроки адаптуються автоматично. Гами й арпеджіо транспонуються разом зі струною 1; позиції на інших струнах змінюються для збереження інтервалів. Уроки відкритих струн, ладів і ритму безпосередньо слідують за вибраними струнами."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

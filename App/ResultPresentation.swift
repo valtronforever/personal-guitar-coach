@@ -38,9 +38,15 @@ enum ResultPresentation {
         }
         return annotations
     }
+    static func lessonTitle(id: String, version: Int, tuning: TuningProfile, lessons: [LoadedLesson], language: LessonLanguage) -> String? {
+        guard let source = lessons.first(where: { $0.id == id }) else { return nil }
+        if source.manifest.version == version { return source.text(for: language).title }
+        guard source.manifest.adaptation?.lessonVersion == version else { return nil }
+        return (try? source.adapted(to: tuning))?.text(for: language).title
+    }
     static func title(record: PracticeRecord, lessons: [LoadedLesson], language: LessonLanguage) -> String? {
-        guard let reference = record.assessment?.payload.evidence.configuration.lesson,
-              let lesson = lessons.first(where: { $0.id == reference.id && $0.manifest.version == reference.version }) else { return nil }
-        return lesson.text(for: language).title
+        guard let config = record.assessment?.payload.evidence.configuration, let reference = config.lesson else { return nil }
+        return lessonTitle(id: reference.id, version: reference.version,
+            tuning: config.exercise.requiredTuning ?? config.instrument.tuning, lessons: lessons, language: language)
     }
 }
