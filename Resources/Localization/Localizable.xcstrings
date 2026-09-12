@@ -8798,6 +8798,125 @@
           }
         }
       }
+    },
+    "lesson.variant.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your variant"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Твій варіант"
+          }
+        }
+      }
+    },
+    "lesson.variant.openStrings %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open strings (6 → 1): %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відкриті струни (6 → 1): %@"
+          }
+        }
+      }
+    },
+    "lesson.variant.help": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How to use this example"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Як працювати з цим прикладом"
+          }
+        }
+      }
+    },
+    "lesson.variant.intervals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard tunings keep the same positions and change the sounding key. Drop tunings adjust positions to preserve the intervals; custom tunings follow the same interval rule. Positions must fit your selected fret count. Changing the instrument settings stops playback and an active attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У стандартних строях позиції зберігаються, а тональність звучання змінюється. У Drop-строях позиції коригуються для збереження інтервалів; власні строї використовують те саме правило інтервалів. Позиції мають вкладатися у вибрану кількість ладів. Зміна налаштувань інструмента зупиняє відтворення й активну спробу."
+          }
+        }
+      }
+    },
+    "lesson.variant.pattern": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This lesson teaches a string/fret pattern. The positions stay the same in Standard and Drop tunings; note names follow the selected tuning. Changing the instrument settings stops playback and an active attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей урок навчає послідовності струн і ладів. Позиції зберігаються у стандартних і Drop-строях, а назви нот відповідають вибраному строю. Зміна налаштувань інструмента зупиняє відтворення й активну спробу."
+          }
+        }
+      }
+    },
+    "lesson.variant.notation %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For example, %@ (6/0) means the sounding note on string 6, fret 0. String 1 is the thinnest; fret 0 is an open string. Note labels use chromatic enharmonic names. Select your actual tuning in Settings or Tuner and physically tune the guitar to match."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Наприклад, %@ (6/0) — нота звучання на струні 6, ладі 0. Струна 1 — найтонша; лад 0 означає відкриту струну. Позначення нот використовують хроматичні енгармонічні назви. Вибери фактичний стрій у Налаштуваннях або Тюнері й фізично налаштуй гітару відповідно."
+          }
+        }
+      }
+    },
+    "lesson.variant.practiceGuide": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a clean guitar-interface input, or select an acoustic microphone/pickup explicitly. Practice checks separate notes: pitch and attacks, not your finger, string choice or note length. Start with the signal check and count-in. Without reliable calibration, rhythm and overall scores are unavailable. Review measured errors before increasing tempo."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Використовуй чистий вхід гітарного інтерфейсу або явно вибери акустичний мікрофон чи звукознімач. Практика перевіряє окремі ноти: висоту й атаки, а не пальці, вибір струни чи тривалість звучання. Почни з перевірки сигналу й відліку. Без надійного калібрування ритм і загальний бал недоступні. Переглянь виміряні помилки перед підвищенням темпу."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

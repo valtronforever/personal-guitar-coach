@@ -42,6 +42,10 @@ struct LessonTextView: View {
                                     Text(verbatim: text.goal)
                                 }
                                 Text(verbatim: text.body).textSelection(.enabled)
+                                if let variant = text.variant {
+                                    LessonVariantView(variant: variant, instrument: localData.preferences.instrument,
+                                        policy: selection.sourceLesson.manifest.adaptation?.policy)
+                                }
                                 ForEach(lesson.manifest.steps) { step in
                                     if let copy = text.steps[step.id] {
                                         VStack(alignment: .leading, spacing: 8) {
@@ -121,4 +125,38 @@ struct LessonTextView: View {
             orientation: localData.preferences.instrument.orientation, frets: localData.preferences.instrument.frets, positions: preview.activeEvent()?.positions ?? [])
     }
     private func saveBookmark() { guard !selection.adaptationFailed else { return }; reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID) }
+}
+
+private struct LessonVariantView: View {
+    let variant: LessonVariantText
+    let instrument: InstrumentProfile
+    let policy: LessonAdaptationPolicy?
+    private var openStrings: String {
+        instrument.tuning.strings.reversed().map { $0.openPitch.name(spelling: instrument.tuning.preferredSpelling) }.joined(separator: " · ")
+    }
+    private var openExample: String { instrument.tuning.strings[5].openPitch.name(spelling: instrument.tuning.preferredSpelling) }
+
+    var body: some View {
+        GroupBox {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(verbatim: variant.title).font(.headline).accessibilityIdentifier("lesson.variant.title")
+                HStack {
+                    TuningName(profile: instrument.tuning)
+                    Text("result.fretCount \(instrument.fretCount)")
+                }
+                Text("lesson.variant.openStrings \(openStrings)")
+                LabeledContent("tuning.reference") { Text(instrument.tuning.referenceA4, format: .number.precision(.fractionLength(1))) }
+                Text(verbatim: variant.body).textSelection(.enabled).accessibilityIdentifier("lesson.variant.body")
+                DisclosureGroup("lesson.variant.help") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(LocalizedStringKey(policy == .transposeIntervals ? "lesson.variant.intervals" : "lesson.variant.pattern"))
+                        Text("lesson.variant.notation \(openExample)")
+                        Text("lesson.variant.practiceGuide")
+                    }.font(.callout).padding(.top, 8)
+                }
+            }.frame(maxWidth: .infinity, alignment: .leading)
+        } label: {
+            Text("lesson.variant.title").accessibilityAddTraits(.isHeader)
+        }.accessibilityIdentifier("lesson.variant")
+    }
 }

@@ -30,3 +30,9 @@ The six former C Standard resources remain loadable for history. Their catalog e
 ## Validation
 
 See `docs/reviews/10-automatic-lesson-tuning-review.md` for executed commands, fixes and native evidence. Automated tests cover all presets, nonuniform custom tuning, A4 442, unrepresentable targets, both languages, template failures/literal substitution, independent C Standard/Drop D MIDI sequences, chord/arp mapping, selected steps, versioned bookmarks, 24 saved course attempts/retries and stopping an active synthetic practice with its old snapshot intact. Hardware pitch/onset accuracy and full beginner/VoiceOver acceptance remain open in USER-VALIDATION.md.
+
+## Independent presentation (2026-09-12)
+
+Current adaptive texts keep title, summary, goal and theory independent of instrument settings. The optional `variant` title/body renders the calculated example; a shared native Your variant block displays actual tuning, fret count, open strings and reference pitch, with expandable adaptation/notation/practice guidance. Step text still resolves notes and positions from the same exercise. Generic fields cannot contain tokens when a variant exists. Legacy texts without a variant retain their previous loading contract.
+
+This is an editorial change with unchanged teaching/musical versions and snapshots. `historicalTitle` preserves the prior version's heading for saved results; active catalog/reader/practice headings use generic topic titles. Earlier sections describing note-dependent lesson titles and duplicated tuning guidance describe the previous presentation. The musical contract is unchanged. See [authoring workflow](CONTENT-AUTHORING.md#start-a-new-independent-lesson) for the template and scaffold command.

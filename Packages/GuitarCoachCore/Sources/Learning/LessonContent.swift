@@ -40,6 +40,13 @@ public struct LessonStepText: Codable, Sendable, Equatable {
     public init(title: String, body: String) { self.title = title; self.body = body }
 }
 
+/// Instrument-specific example, rendered from the same musical snapshot as the exercise.
+public struct LessonVariantText: Codable, Sendable, Equatable {
+    public let title: String
+    public let body: String
+    public init(title: String, body: String) { self.title = title; self.body = body }
+}
+
 public struct LessonText: Codable, Sendable, Equatable {
     public let lessonID: String
     public let lessonVersion: Int
@@ -49,10 +56,14 @@ public struct LessonText: Codable, Sendable, Equatable {
     public let goal: String
     public let body: String
     public let steps: [String: LessonStepText]
+    public let variant: LessonVariantText?
+    /// Optional original heading retained for historical result presentation after an editorial rename.
+    public let historicalTitle: String?
     public init(lessonID: String, lessonVersion: Int = 1, locale: String, title: String, summary: String, goal: String,
-                body: String, steps: [String: LessonStepText]) {
+                body: String, steps: [String: LessonStepText], variant: LessonVariantText? = nil, historicalTitle: String? = nil) {
         self.lessonID = lessonID; self.lessonVersion = lessonVersion; self.locale = locale; self.title = title
         self.summary = summary; self.goal = goal; self.body = body; self.steps = steps
+        self.variant = variant; self.historicalTitle = historicalTitle
     }
 }
 
