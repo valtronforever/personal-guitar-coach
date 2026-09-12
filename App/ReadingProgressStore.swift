@@ -1,5 +1,6 @@
 import SwiftUI
 import Persistence
+import Domain
 
 @MainActor @Observable
 final class ReadingProgressStore {
@@ -27,19 +28,19 @@ final class ReadingProgressStore {
         } catch { loadFailed = true }
     }
 
-    func visit(lessonID: String, version: Int, stepID: String?) {
+    func visit(lessonID: String, version: Int, stepID: String?, position: LessonPosition? = nil) {
         guard canEdit else { return }
         var next = progress
         next.lastLessonID = lessonID
         next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID,
-                                              readVersion: progress.lessons[lessonID]?.readVersion)
+                                              readVersion: progress.lessons[lessonID]?.readVersion, position: position)
         update(next)
     }
 
-    func setRead(_ read: Bool, lessonID: String, version: Int, stepID: String?) {
+    func setRead(_ read: Bool, lessonID: String, version: Int, stepID: String?, position: LessonPosition? = nil) {
         guard canEdit else { return }
         var next = progress
-        next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID, readVersion: read ? version : nil)
+        next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID, readVersion: read ? version : nil, position: position)
         update(next)
     }
 

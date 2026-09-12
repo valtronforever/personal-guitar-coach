@@ -100,3 +100,5 @@
 [Configurable fret count](follow-up/fret-count.md): `done`. Shared 19/20/21/22/24 setting for the instrument, adaptive lessons, fretboard and practice; immutable historical conditions.
 
 [Independent lesson text and authoring foundation](follow-up/lesson-authoring-foundation.md): `pending_user`. Generic teaching, instrument-specific examples and a bilingual authoring scaffold.
+
+[Lesson fretboard position](follow-up/lesson-fretboard-position.md): `pending_user`. Move a scale's fingering near a chosen fret while preserving its sounding pitches and key.

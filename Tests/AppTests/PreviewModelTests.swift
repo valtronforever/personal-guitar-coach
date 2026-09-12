@@ -2,6 +2,7 @@ import Foundation
 import Testing
 import Domain
 import Persistence
+import Learning
 @testable import Audio
 @testable import PersonalGuitarCoach
 
@@ -71,4 +72,29 @@ private struct PreviewPermission: AudioPermissionProviding {
         #expect(model.requestID == nil && model.resumeTick == nil && model.cursorTick == nil)
         #expect(await runtime.request == nil)
     }
+    @Test func changingFingeringStopsPreviewAndNextTransportUsesNewPositionsWithSamePitches() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let source = try #require(LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons.first { $0.id == "c-major" })
+        let original = try source.adapted(to: .cStandard).manifest.exercises[0]
+        let moved = try source.adapted(to: .cStandard, position: LessonPosition(firstFret: 7)).manifest.exercises[0]
+        let runtime = PreviewRuntime(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PreviewPermission())
+        let audio = AudioSessionStore(repository: LocalRepository(root: directory), coordinator: coordinator)
+        await audio.load(); await audio.select(outputUID: "output", outputChannel: 2)
+        let model = PreviewModel(); await model.configure(original, audio: audio)
+        await model.start(tuning: .cStandard, audio: audio)
+        let old = try #require(await runtime.request)
+        await model.configure(moved, audio: audio)
+        #expect(model.requestID == nil && model.resumeTick == nil && model.cursorTick == nil)
+        #expect(await runtime.request == nil)
+        await model.start(tuning: .cStandard, audio: audio)
+        let next = try #require(await runtime.request)
+        #expect(next.id != old.id && next.exercise == moved && next.exercise.events != old.exercise.events)
+        #expect(try next.exercise.resolvedEvents(instrument: next.tuning).flatMap(\.pitches) == old.exercise.resolvedEvents(instrument: old.tuning).flatMap(\.pitches))
+        await runtime.emit(tick: 0); await coordinator.poll(); await audio.publish(); model.update(audio.state)
+        #expect(model.activeEvent()?.positions == moved.events[0].positions)
+        await model.stop(audio: audio)
+    }
+
 }

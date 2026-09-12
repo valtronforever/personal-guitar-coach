@@ -7,11 +7,12 @@ public enum PracticeError: Error, Equatable, Sendable {
 public struct PracticeLessonReference: Codable, Equatable, Sendable {
     public let id: String
     public let version: Int
-    public init(id: String, version: Int) throws {
+    public let position: LessonPosition?
+    public init(id: String, version: Int, position: LessonPosition? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, id.utf8.count <= 256, version > 0 else {
             throw PracticeError.invalidEvidence
         }
-        self.id = id; self.version = version
+        self.id = id; self.version = version; self.position = position
     }
 }
 
@@ -68,6 +69,9 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     /// Starting a restored configuration checks today's capability; reading history does not.
     public func validateForCurrentPractice() throws {
         guard selectedEvents.flatMap(\.positions).allSatisfy(instrument.contains) else { throw MusicError.invalidFret }
+        if let position = lesson?.position {
+            guard selectedEvents.flatMap(\.positions).allSatisfy({ position.contains($0, maximumFret: instrument.fretCount) }) else { throw MusicError.invalidFret }
+        }
         guard MonophonicCapability.sampleRates.contains(route.input.sampleRate) else { throw PracticeError.unsupportedFormat }
         let selectedIDs = Set(selectedEvents.map(\.id))
         if let limitation = try MonophonicCapability.limitations(exercise: exercise, instrument: instrument.tuning, bpm: bpm)
@@ -140,11 +144,11 @@ public struct PracticeStateMachine: Sendable {
 }
 
 extension PracticeLessonReference {
-    private enum CodingKeys: String, CodingKey { case id, version }
+    private enum CodingKeys: String, CodingKey { case id, version, position }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: v.decode(String.self, forKey: .id),
-            version: v.decode(Int.self, forKey: .version))
+            version: v.decode(Int.self, forKey: .version), position: v.decodeIfPresent(LessonPosition.self, forKey: .position))
     }
 }
 

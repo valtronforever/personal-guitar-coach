@@ -7,7 +7,7 @@ struct FeedbackTests {
     private func report(count: Int = 16, changes: [Int: Double] = [:], timing: [Int: Double] = [:], missing: Set<Int> = [],
                         uncertain: Set<Int> = [], rests: Bool = false, extras: [Double] = [], calibrated: Bool = true,
                         phase: PracticePhase = .completed, reason: PracticeStopReason? = nil, clipped: Bool = false,
-                        bpm: Double = 60, frets: GuitarFretCount = .twentyFour) throws -> AssessedPractice {
+                        bpm: Double = 60, frets: GuitarFretCount = .twentyFour, position: LessonPosition? = nil) throws -> AssessedPractice {
         var events: [MusicalEvent] = []
         for index in 0..<count {
             let isRest = rests && index % 2 == 1
@@ -23,7 +23,7 @@ struct FeedbackTests {
                 durationSeconds: 25, residualP95Seconds: 0.005, driftSeconds: 0))
         let config = try PracticeConfiguration(exercise: Exercise(id: "feedback-fixture", events: events), instrument: InstrumentProfile(frets: frets),
             bpm: bpm, route: route, calibration: calibrated ? profile : nil,
-            lesson: PracticeLessonReference(id: "lesson", version: 1))
+            lesson: PracticeLessonReference(id: "lesson", version: 1, position: position))
         let start = try config.expectedStart(renderEpochSeconds: 100), step = 60 / bpm
         var attacks: [PracticeAttack] = []
         for (index, event) in events.enumerated() where event.kind == .note && !missing.contains(index) {
@@ -47,6 +47,13 @@ struct FeedbackTests {
         #expect(!PracticeComparison.compatible(original, shorter))
         let snapshot = try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(shorter))
         #expect(snapshot.evidence.configuration.instrument.fretCount == 19)
+    }
+    @Test func comparisonsDistinguishChosenRegionEvenWhenOriginalNotesAlreadyFitIt() throws {
+        let original = try report(calibrated: false)
+        let region = try report(calibrated: false, position: LessonPosition(firstFret: 0))
+        #expect(original.evidence.configuration.exercise == region.evidence.configuration.exercise)
+        #expect(!PracticeComparison.compatible(original, region))
+        #expect(try PracticeComparison.compatible(region, report(calibrated: false, position: LessonPosition(firstFret: 0))))
     }
     private func advice(_ result: AssessedPractice) -> [PracticeRecommendation] { FeedbackEngine.recommendations(for: result) }
     @Test func timingRequiresThreeErrorsInOneDirectionAndReliableCalibration() throws {

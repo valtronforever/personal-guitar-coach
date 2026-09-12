@@ -159,3 +159,7 @@ Use this exception only for editorial reorganizing/renaming with equivalent mean
 3. Run `ValidateLessonContent Resources/Lessons`, then the Core and App tests and `check_localizations.py` using the commands above. The Core `LessonAuthoringTests` also creates both scaffold policies in a temporary catalog and checks them through the real loader.
 4. Inspect the native lesson in English/Ukrainian, Standard/Drop and a shorter fret count. Check the generic title, Your variant, step markers and TAB against each other. Preview and graded practice have their existing audio capability gates.
 5. Record review and acceptance evidence. A syntactically valid draft is not evidence that its pedagogy or real-guitar scoring has been validated.
+
+### Alternate fretboard regions
+
+`transposeIntervals` lessons automatically offer feasible regions of up to five consecutive frets. No per-position resources are needed: author the reference notes/positions once, and use `{{positions}}` in step text. Keep fixed fret numbers out of generic teaching prose. The resolver preserves the tuning-adapted sounding notes **and octaves**, so a lesson with open bass notes or a wide range may have few/no alternate regions. Availability covers every exercise and shape in the lesson, not just the selected fragment. `fretPattern` lessons deliberately keep their physical teaching pattern and do not offer region selection. Verify generated fingerings for educational suitability; pitch correctness alone does not guarantee hand comfort.
