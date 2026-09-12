@@ -8917,6 +8917,108 @@
           }
         }
       }
+    },
+    "lesson.position.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fretboard position"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позиція на грифі"
+          }
+        }
+      }
+    },
+    "lesson.position.original": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original fingering"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Початкова аплікатура"
+          }
+        }
+      }
+    },
+    "lesson.position.from %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From fret %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Від %lld-го ладу"
+          }
+        }
+      }
+    },
+    "lesson.position.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the same notes and octaves in an area of up to five frets. The first note may be above the selected fret. Only positions that fit the complete lesson are offered."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережи ті самі ноти й октави в межах до п’яти ладів. Перша нота може бути вище вибраного ладу. Доступні лише позиції, у яких вміщується весь урок."
+          }
+        }
+      }
+    },
+    "lesson.position.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The saved position cannot fit this lesson with the selected instrument settings. Choose another position or the original fingering in the lesson."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережена позиція не вміщує цей урок із вибраними налаштуваннями інструмента. Вибери іншу позицію або початкову аплікатуру в уроці."
+          }
+        }
+      }
+    },
+    "lesson.position.change": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change position in lesson"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Змінити позицію в уроці"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

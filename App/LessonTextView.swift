@@ -28,6 +28,10 @@ struct LessonTextView: View {
         Group {
             if selection.adaptationFailed {
                 FeatureStateView(title: "navigation.lessons", message: "lesson.adaptationUnavailable", symbol: "guitars") {
+                    if selection.sourceLesson.supportsPositionSelection {
+                        positionPicker
+                        if selection.position != nil { Text("lesson.position.unavailable").font(.callout) }
+                    }
                     SettingsLink { Text("settings.title") }
                 }
             } else {
@@ -42,6 +46,7 @@ struct LessonTextView: View {
                                     Text(verbatim: text.goal)
                                 }
                                 Text(verbatim: text.body).textSelection(.enabled)
+                                if selection.sourceLesson.supportsPositionSelection { positionPicker }
                                 if let variant = text.variant {
                                     LessonVariantView(variant: variant, instrument: localData.preferences.instrument,
                                         policy: selection.sourceLesson.manifest.adaptation?.policy)
@@ -62,11 +67,11 @@ struct LessonTextView: View {
                                 Divider()
                                 Toggle("reading.markRead", isOn: Binding(get: {
                                     reading.progress.lessons[lesson.id]?.readVersion == lesson.manifest.version
-                                }, set: { reading.setRead($0, lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID) }))
+                                }, set: { reading.setRead($0, lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID, position: selection.position) }))
                                     .disabled(!reading.canEdit).accessibilityIdentifier("lesson.markRead")
                                 Text("reading.explanation").font(.caption).foregroundStyle(.secondary)
                                 ForEach(Array(lesson.manifest.practiceExerciseIDs.enumerated()), id: \.element) { index, id in
-                                    if let request = PracticeRequest(lesson: lesson, exerciseID: id, adaptsWithInstrument: selection.sourceLesson.manifest.adaptation != nil, frets: localData.preferences.instrument.frets) {
+                                    if let request = PracticeRequest(lesson: lesson, exerciseID: id, adaptsWithInstrument: selection.sourceLesson.manifest.adaptation != nil, frets: localData.preferences.instrument.frets, position: selection.position) {
                                         TuningRequirementView(exercise: request.exercise, instrument: localData.preferences.instrument.tuning)
                                         Button { navigation.openPractice(request) } label: {
                                             if lesson.manifest.practiceExerciseIDs.count == 1 { Text("lesson.practice") }
@@ -113,18 +118,38 @@ struct LessonTextView: View {
         .onChange(of: localData.preferences.instrument) { _, instrument in
             selection.adapt(to: instrument.tuning, frets: instrument.frets); saveBookmark()
         }
+        .onChange(of: selection.position) { _, _ in
+            saveBookmark()
+            Task { await preview.stop(audio: audio) }
+        }
         .task(id: selection.exercise) { await preview.configure(selection.exercise, audio: audio) }
         .onChange(of: audio.state) { _, state in preview.update(state) }
         .onChange(of: localData.preferences.instrument) { _, _ in Task { await preview.stop(audio: audio) } }
         .onDisappear { Task { await preview.stop(audio: audio) } }
         .navigationTitle(text.title)
     }
+    private var positionPicker: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Picker("lesson.position.label", selection: Binding(get: { selection.position }, set: {
+                selection.selectPosition($0, instrument: localData.preferences.instrument)
+            })) {
+                Text("lesson.position.original").tag(nil as LessonPosition?)
+                ForEach(selection.availablePositions, id: \.self) { position in
+                    Text("lesson.position.from \(position.firstFret)").tag(Optional(position))
+                }
+                if let position = selection.position, !selection.availablePositions.contains(position) {
+                    Text("lesson.position.from \(position.firstFret)").tag(Optional(position)).disabled(true)
+                }
+            }.accessibilityIdentifier("lesson.position")
+            Text("lesson.position.explanation").font(.caption).foregroundStyle(.secondary)
+        }
+    }
     private var playbackFretboard: FretboardModel? {
         guard preview.requestID != nil, let exercise = preview.exercise else { return nil }
         return FretboardModel(tuning: exercise.requiredTuning ?? localData.preferences.instrument.tuning,
             orientation: localData.preferences.instrument.orientation, frets: localData.preferences.instrument.frets, positions: preview.activeEvent()?.positions ?? [])
     }
-    private func saveBookmark() { guard !selection.adaptationFailed else { return }; reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID) }
+    private func saveBookmark() { guard !selection.adaptationFailed else { return }; reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID, position: selection.position) }
 }
 
 private struct LessonVariantView: View {

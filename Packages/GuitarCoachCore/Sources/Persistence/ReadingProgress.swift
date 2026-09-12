@@ -1,12 +1,14 @@
 import Foundation
+import Domain
 
 /// Reading is independent of performed attempts and their assessments.
 public struct LessonBookmark: Codable, Equatable, Sendable {
     public var lessonVersion: Int
     public var stepID: String?
     public var readVersion: Int?
-    public init(lessonVersion: Int, stepID: String?, readVersion: Int? = nil) {
-        self.lessonVersion = lessonVersion; self.stepID = stepID; self.readVersion = readVersion
+    public var position: LessonPosition?
+    public init(lessonVersion: Int, stepID: String?, readVersion: Int? = nil, position: LessonPosition? = nil) {
+        self.lessonVersion = lessonVersion; self.stepID = stepID; self.readVersion = readVersion; self.position = position
     }
 }
 

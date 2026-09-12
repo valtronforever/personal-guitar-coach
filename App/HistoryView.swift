@@ -70,6 +70,9 @@ struct HistoryView: View {
     }
     private func row(_ record: PracticeRecord) -> some View {
         VStack(alignment: .leading, spacing: 8) {
+            if let position = record.assessment?.payload.evidence.configuration.lesson?.position {
+                Text("lesson.position.from \(position.firstFret)").font(.caption).foregroundStyle(.secondary)
+            }
             if let title = ResultPresentation.title(record: record, lessons: library.lessons, language: language) {
                 Text(verbatim: title).font(.headline)
             } else { Text("result.savedExercise").font(.headline) }

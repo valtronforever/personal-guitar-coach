@@ -12,17 +12,31 @@ final class LessonSelection {
     private(set) var exerciseID: String?
     private(set) var range = TimelineSelection()
     var selectedPosition: FretPosition?
+    private(set) var position: LessonPosition?
+    private(set) var availablePositions: [LessonPosition] = []
+    @ObservationIgnored private var positionInstrument: InstrumentProfile?
 
     init(lesson: LoadedLesson, bookmark: LessonBookmark? = nil, tuning: TuningProfile? = nil, frets: GuitarFretCount = .twentyFour) {
         sourceLesson = lesson; self.lesson = lesson
+        if sourceLesson.supportsPositionSelection,
+           bookmark?.lessonVersion == sourceLesson.manifest.adaptation?.lessonVersion { position = bookmark?.position }
         if let tuning { adapt(to: tuning, frets: frets) }
-        let restored = bookmark?.lessonVersion == self.lesson.manifest.version ? bookmark?.stepID : nil
+        let restored = bookmark?.lessonVersion == (sourceLesson.manifest.adaptation?.lessonVersion ?? self.lesson.manifest.version) ? bookmark?.stepID : nil
         selectStep(restored.flatMap { id in lesson.manifest.steps.first { $0.id == id } }?.id ?? lesson.manifest.steps[0].id)
     }
 
     func adapt(to tuning: TuningProfile, frets: GuitarFretCount = .twentyFour) {
-        do { lesson = try sourceLesson.adapted(to: tuning, frets: frets); adaptationFailed = false; selectedPosition = nil }
+        let instrument = InstrumentProfile(tuning: tuning, frets: frets)
+        if positionInstrument != instrument {
+            availablePositions = sourceLesson.availablePositions(instrument: instrument); positionInstrument = instrument
+        }
+        do { lesson = try sourceLesson.adapted(to: tuning, frets: frets, position: position); adaptationFailed = false; selectedPosition = nil }
         catch { adaptationFailed = true }
+    }
+    func selectPosition(_ position: LessonPosition?, instrument: InstrumentProfile) {
+        guard sourceLesson.supportsPositionSelection else { return }
+        self.position = position
+        adapt(to: instrument.tuning, frets: instrument.frets)
     }
     var exercise: Exercise? { adaptationFailed ? nil : lesson.manifest.exercises.first { $0.id == exerciseID } }
     var selectedIDs: Set<String> {
@@ -89,13 +103,14 @@ struct PracticeRequest: Equatable, Sendable {
     let lessonVersion: Int
     let adaptsWithInstrument: Bool
     let frets: GuitarFretCount
+    let position: LessonPosition?
     let exercise: Exercise
-    init?(lesson: LoadedLesson, exerciseID: String, adaptsWithInstrument: Bool = false, frets: GuitarFretCount = .twentyFour) {
+    init?(lesson: LoadedLesson, exerciseID: String, adaptsWithInstrument: Bool = false, frets: GuitarFretCount = .twentyFour, position: LessonPosition? = nil) {
         guard lesson.manifest.practiceExerciseIDs.contains(exerciseID),
               let exercise = lesson.manifest.exercises.first(where: { $0.id == exerciseID }),
               exercise.assessmentMode == .monophonic else { return nil }
         lessonID = lesson.id; lessonVersion = lesson.manifest.version; self.exercise = exercise
-        self.adaptsWithInstrument = adaptsWithInstrument; self.frets = frets
+        self.adaptsWithInstrument = adaptsWithInstrument; self.frets = frets; self.position = position
         initialRange = nil; initialBPM = nil; archivedTuning = nil
     }
 }
@@ -105,7 +120,7 @@ extension PracticeRequest {
     func freshSelection() -> PracticeRequest { PracticeRequest(copying: self) }
     private init(copying request: PracticeRequest) {
         lessonID = request.lessonID; lessonVersion = request.lessonVersion; exercise = request.exercise
-        adaptsWithInstrument = request.adaptsWithInstrument; frets = request.frets
+        adaptsWithInstrument = request.adaptsWithInstrument; frets = request.frets; position = request.position
         initialRange = request.initialRange; initialBPM = request.initialBPM; archivedTuning = request.archivedTuning
     }
     init?(result: AssessedPractice, recommendation: PracticeRecommendation) {
@@ -115,7 +130,7 @@ extension PracticeRequest {
               let lesson = result.evidence.configuration.lesson else { return nil }
         let config = result.evidence.configuration
         lessonID = lesson.id; lessonVersion = lesson.version; exercise = config.exercise
-        adaptsWithInstrument = false; frets = config.instrument.frets
+        adaptsWithInstrument = false; frets = config.instrument.frets; position = config.lesson?.position
         initialBPM = recommendation.bpm
         let bar = exercise.timeSignature.ticksPerBar
         initialRange = Int64(recommendation.firstBar - 1) * bar..<min(Int64(recommendation.lastBar) * bar, exercise.durationTicks)

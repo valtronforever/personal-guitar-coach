@@ -120,7 +120,7 @@ final class PracticeModel {
             configuration = try PracticeConfiguration(exercise: request.exercise, instrument: targetInstrument, bpm: bpm,
                 range: Int64(firstBar - 1) * bar..<endTick,
                 route: route, calibration: calibration.profile(for: route),
-                lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion))
+                lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, position: request.position))
             try machine.begin(configuration)
         } catch { errorKey = Self.configurationError(error); return }
         latestEvidence = nil
