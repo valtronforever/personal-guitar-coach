@@ -4,9 +4,33 @@ import Testing
 
 @Suite("Musical domain invariants")
 struct MusicDomainTests {
+    @Test func standardAndDropFamiliesHaveExactSoundingPitchesAndWholeToneSixthStringDifference() throws {
+        let golden = [[40,45,50,55,59,64], [38,45,50,55,59,64],
+                      [38,43,48,53,57,62], [36,43,48,53,57,62],
+                      [36,41,46,51,55,60], [34,41,46,51,55,60],
+                      [35,40,45,50,54,59], [33,40,45,50,54,59]]
+        #expect(TuningProfile.presets.count == golden.count)
+        for (tuning, midi) in zip(TuningProfile.presets, golden) {
+            #expect(tuning.strings.reversed().map(\.openPitch.midi) == midi)
+            #expect(try JSONDecoder().decode(TuningProfile.self, from: JSONEncoder().encode(tuning)) == tuning)
+            for string in 1...6 {
+                for fret in 0...24 {
+                    #expect(try tuning.pitch(at: FretPosition(string: string, fret: fret)).midi == midi[6 - string] + fret)
+                }
+            }
+        }
+        for index in stride(from: 0, to: 8, by: 2) {
+            let standard = TuningProfile.presets[index], drop = TuningProfile.presets[index + 1]
+            #expect(Array(standard.strings.prefix(5)) == Array(drop.strings.prefix(5)))
+            #expect(standard.strings[5].openPitch.midi - drop.strings[5].openPitch.midi == 2)
+        }
+        #expect(try TuningProfile.dropA.frequency(at: FretPosition(string: 6, fret: 0)) == 55)
+        // Old serialized Standard snapshots still validate without a migration.
+        #expect(TuningProfile.standard.id == "standard" && TuningProfile.standard.name == "Standard" && TuningProfile.standard.revision == 1)
+    }
     @Test func cStandardUsesSoundingPitchesAcrossEveryStringAndFret() throws {
         #expect(TuningProfile.cStandard.strings.map { $0.openPitch.midi } == [60, 55, 51, 46, 41, 36])
-        #expect(TuningProfile.presets.map(\.id) == ["standard", "drop-d", "d-standard", "c-standard"])
+        #expect(TuningProfile.presets.map(\.id) == ["standard", "drop-d", "d-standard", "drop-c", "c-standard", "drop-b-flat", "b-standard", "drop-a"])
         #expect(TuningProfile.cStandard.strings.reversed().map { $0.openPitch.name(spelling: TuningProfile.cStandard.preferredSpelling) } == ["C2", "F2", "B♭2", "E♭3", "G3", "C4"])
         for string in 1...6 {
             for fret in 0...24 {

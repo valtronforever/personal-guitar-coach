@@ -5,17 +5,21 @@ import Persistence
 @testable import PersonalGuitarCoach
 
 @MainActor struct TuningSettingsTests {
-    @Test func cStandardPersistsAcrossRelaunchWithoutReplacingExistingProfiles() async throws {
+    @Test func everyPresetPersistsAcrossRelaunchWithoutReplacingExistingProfiles() async throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }
         let store = LocalDataStore(repository: LocalRepository(root: root)); await store.reload()
         #expect(store.preferences.instrument.tuning == .standard)
-        await store.selectTuning(id: "c-standard")
-        let restored = LocalDataStore(repository: LocalRepository(root: root)); await restored.reload()
-        #expect(restored.preferences.instrument.tuning == .cStandard)
-        #expect(restored.preferences.availableTunings.contains(.cStandard))
-        #expect(throws: StorageError.invalidRecord) { try restored.preferences.savingCustomTuning(.cStandard, expectedRevision: nil) }
-        #expect(try restored.preferences.restoringPitches(from: .cStandard).instrument.tuning == .cStandard)
+        let custom = try TuningProfile(id: "existing-custom", name: "My tuning", strings: TuningProfile.cStandard.strings, referenceA4: 442)
+        #expect(await store.saveTuning(custom, expectedRevision: nil))
+        for tuning in TuningProfile.presets {
+            await store.selectTuning(id: tuning.id)
+            let restored = LocalDataStore(repository: LocalRepository(root: root)); await restored.reload()
+            #expect(restored.preferences.instrument.tuning == tuning)
+            #expect(restored.preferences.availableTunings.count == 9 && restored.preferences.customTunings == [custom])
+            #expect(throws: StorageError.invalidRecord) { try restored.preferences.savingCustomTuning(tuning, expectedRevision: nil) }
+            #expect(try restored.preferences.restoringPitches(from: tuning).instrument.tuning == tuning)
+        }
     }
     @Test func customEditorValidatesNamesNotesAndReference() throws {
         let editor = TuningEditorModel(tuning: .standard, editingExisting: false)

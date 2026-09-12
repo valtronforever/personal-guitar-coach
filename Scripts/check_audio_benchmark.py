@@ -10,7 +10,7 @@ parser.add_argument("report", type=Path)
 parser.add_argument("--compact", type=Path)
 args = parser.parse_args()
 report = json.loads(args.report.read_text())
-assert report["schemaVersion"] == 1 and report["algorithmVersion"] == "mono-mpm-flux-2"
+assert report["schemaVersion"] == 1 and report["algorithmVersion"] == "mono-mpm-flux-3"
 cases = report["cases"]
 assert len(cases) >= (3360 if report["mode"] == "full" else 360)
 assert len({(c["source"], c["method"], c["sampleRate"], c["id"]) for c in cases}) == len(cases)

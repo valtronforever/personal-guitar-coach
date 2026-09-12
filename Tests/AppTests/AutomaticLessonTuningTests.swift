@@ -31,7 +31,7 @@ import Persistence
         let restored = LessonSelection(lesson: source, bookmark: bookmark, tuning: .dropD)
         #expect(restored.stepID == step && restored.lesson.english.title == "C major across the strings")
     }
-    @Test func everyPresetLessonCanBeAssessedSavedAndRetriedWithoutRetuningItsHistory() async throws {
+    @Test func everyPresetLessonCanBeSavedAndRetriedOrExplicitlyRejectUnsupportedLowNotes() async throws {
         let library = await library()
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
@@ -41,6 +41,10 @@ import Persistence
                 let lesson = try source.adapted(to: tuning)
                 let exerciseID = try #require(lesson.manifest.practiceExerciseIDs.first)
                 let request = try #require(PracticeRequest(lesson: lesson, exerciseID: exerciseID, adaptsWithInstrument: true))
+                if try request.exercise.resolvedEvents(instrument: tuning).flatMap(\.pitches).contains(where: { $0.midi < 36 }) {
+                    #expect(throws: MusicError.unsupportedPitch) { try request.exercise.validateForPractice(instrument: tuning, bpm: request.exercise.defaultBPM) }
+                    continue
+                }
                 let endpoint = try CalibrationEndpoint(uid: "adaptive-fixture", channel: 1, sampleRate: 48000, bufferFrames: 512)
                 let config = try PracticeConfiguration(exercise: request.exercise, instrument: InstrumentProfile(tuning: tuning), bpm: request.exercise.defaultBPM,
                     route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "adaptive-test-1"),
@@ -63,7 +67,7 @@ import Persistence
             }
         }
         let data = LocalDataStore(repository: repository); await data.reload()
-        #expect(data.records.count == 24 && data.historyIssues.isEmpty)
+        #expect(data.records.count == 37 && data.historyIssues.isEmpty)
         #expect(data.records.allSatisfy { ResultPresentation.title(record: $0, lessons: library.lessons, language: .uk) != nil })
     }
     @Test func freshPracticeRetunesAndUnplayableTuningRecoversWithoutChangingArchivedRequests() async throws {

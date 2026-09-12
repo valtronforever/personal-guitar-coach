@@ -63,10 +63,16 @@ flowchart LR
 
 Приклади, всі строї в порядку **6 → 1**:
 
-- Standard: E2 A2 D3 G3 B3 E4 → MIDI `[40, 45, 50, 55, 59, 64]`.
+- E Standard: E2 A2 D3 G3 B3 E4 → MIDI `[40, 45, 50, 55, 59, 64]`.
 - Drop D: D2 A2 D3 G3 B3 E4 → `[38, 45, 50, 55, 59, 64]`.
 - D Standard: D2 G2 C3 F3 A3 D4 → `[38, 43, 48, 53, 57, 62]`.
 - C Standard: C2 F2 B♭2 E♭3 G3 C4 → `[36, 41, 46, 51, 55, 60]`.
+- B Standard: B1 E2 A2 D3 F♯3 B3 → `[35, 40, 45, 50, 54, 59]`.
+- Drop C: C2 G2 C3 F3 A3 D4 → `[36, 43, 48, 53, 57, 62]`.
+- Drop B♭: B♭1 F2 B♭2 E♭3 G3 C4 → `[34, 41, 46, 51, 55, 60]`.
+- Drop A: A1 E2 A2 D3 F♯3 B3 → `[33, 40, 45, 50, 54, 59]`.
+
+E Standard keeps the legacy serialized ID `standard`, name `Standard` and revision 1; only its localized UI label changes. New presets are additive. Existing preferences/history need no schema migration.
 
 The tuning’s string-1 transposition selects chromatic sharp/flat display spelling consistently, including equivalent custom profiles. This derived presentation preference adds no serialized field and changes no saved pitch, frequency or assessment. In neutral staff notation these are explicit accidentals, not an inferred key signature.
 

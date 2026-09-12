@@ -77,11 +77,17 @@ public struct TuningProfile: Hashable, Codable, Identifiable, Sendable {
         return try TuningProfile(id: id, revision: revision + 1, name: name, strings: strings, referenceA4: referenceA4)
     }
 
+    // Keep the original serialized name/ID so existing preferences and lesson snapshots remain valid.
+    // The localized UI label is E Standard.
     public static let standard = preset(id: "standard", name: "Standard", lowToHigh: [40, 45, 50, 55, 59, 64])
     public static let dropD = preset(id: "drop-d", name: "Drop D", lowToHigh: [38, 45, 50, 55, 59, 64])
     public static let dStandard = preset(id: "d-standard", name: "D Standard", lowToHigh: [38, 43, 48, 53, 57, 62])
     public static let cStandard = preset(id: "c-standard", name: "C Standard", lowToHigh: [36, 41, 46, 51, 55, 60])
-    public static let presets = [standard, dropD, dStandard, cStandard]
+    public static let bStandard = preset(id: "b-standard", name: "B Standard", lowToHigh: [35, 40, 45, 50, 54, 59])
+    public static let dropC = preset(id: "drop-c", name: "Drop C", lowToHigh: [36, 43, 48, 53, 57, 62])
+    public static let dropBFlat = preset(id: "drop-b-flat", name: "Drop B♭", lowToHigh: [34, 41, 46, 51, 55, 60])
+    public static let dropA = preset(id: "drop-a", name: "Drop A", lowToHigh: [33, 40, 45, 50, 54, 59])
+    public static let presets = [standard, dropD, dStandard, dropC, cStandard, dropBFlat, bStandard, dropA]
 
     /// Chromatic enharmonic labels follow the string-1 transposition, including custom profiles.
     /// Presentation only: the serialized pitches, frequencies and assessment targets do not change.
