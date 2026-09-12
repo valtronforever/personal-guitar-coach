@@ -19,6 +19,9 @@
 
 ```sh
 export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r Scripts/requirements.txt
 swift test --package-path Packages/GuitarCoachCore
 python3 Scripts/build_local.py
 python3 Scripts/build_local.py --configuration release --archive
@@ -52,7 +55,7 @@ Instrument settings and immutable practice summaries use atomic, versioned JSON 
 
 ## Lesson authoring
 
-Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The app bundles [six automatically adapted starter lessons](docs/STARTER-COURSE.md) plus a guided position-exploration lesson, fully readable in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
+Lessons use UTF-8 `.yml`: `catalog.yml` plus `lesson.yml`, `en.yml` and `uk.yml` per lesson. Read [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the manifest, bilingual text, step references, version rules, and validation command. The app bundles [six automatically adapted starter lessons](docs/STARTER-COURSE.md) plus a guided position-exploration lesson, fully readable in English/Ukrainian without audio permission. Run `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons` before changing lesson content.
 
 ## Musical views and UI-source validation
 

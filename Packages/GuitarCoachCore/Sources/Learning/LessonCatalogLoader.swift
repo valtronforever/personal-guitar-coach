@@ -1,5 +1,6 @@
 import Foundation
 import Domain
+import Yams
 
 /// Read-only and synchronous. UI callers run it on a worker; no audio permission or engine is involved.
 public struct LessonCatalogLoader: Sendable {
@@ -8,9 +9,9 @@ public struct LessonCatalogLoader: Sendable {
     public func load(directory: URL) -> LessonCatalogReport {
         let catalog: LessonCatalogManifest
         do {
-            let data = try read(directory.appendingPathComponent("catalog.json"))
+            let data = try read(directory.appendingPathComponent("catalog.yml"))
             try checkSchema(data)
-            catalog = try JSONDecoder().decode(LessonCatalogManifest.self, from: data)
+            catalog = try decode(LessonCatalogManifest.self, from: data)
         } catch { return LessonCatalogReport(lessons: [], issues: [issue(error, lessonID: nil)]) }
         var lessons: [LoadedLesson] = [], issues: [ContentIssue] = []
         var lessonIDs = Set<String>(), exerciseIDs = Set<String>()
@@ -22,9 +23,9 @@ public struct LessonCatalogLoader: Sendable {
                 guard folder.resolvingSymlinksInPath().deletingLastPathComponent().path == directory.resolvingSymlinksInPath().path else {
                     throw ContentFailure(.invalidIdentifier, "Lesson directory escapes the catalog")
                 }
-                let data = try read(folder.appendingPathComponent("lesson.json"))
+                let data = try read(folder.appendingPathComponent("lesson.yml"))
                 try checkSchema(data, allowed: [2])
-                let manifest = try JSONDecoder().decode(LessonManifest.self, from: data)
+                let manifest = try decode(LessonManifest.self, from: data)
                 guard manifest.id == id else { throw ContentFailure(.invalidIdentifier, "Folder and lesson IDs differ: \(id)") }
                 try validate(manifest)
                 let en = try translation(.en, folder: folder, manifest: manifest)
@@ -58,9 +59,9 @@ public struct LessonCatalogLoader: Sendable {
 
     private func translation(_ language: LessonLanguage, folder: URL, manifest: LessonManifest) throws -> LessonText {
         let data: Data
-        do { data = try read(folder.appendingPathComponent(language.rawValue + ".json")) }
+        do { data = try read(folder.appendingPathComponent(language.rawValue + ".yml")) }
         catch { throw ContentFailure(.missingTranslation, "Missing/unreadable \(language.rawValue) translation") }
-        let text = try JSONDecoder().decode(LessonText.self, from: data)
+        let text = try decode(LessonText.self, from: data)
         guard text.lessonID == manifest.id, text.lessonVersion == manifest.version, text.locale == language.rawValue,
               Set(text.steps.keys) == Set(manifest.steps.map(\.id)) else {
             throw ContentFailure(.translationMismatch, "Translation IDs/version/steps differ: \(language.rawValue)")
@@ -106,9 +107,18 @@ public struct LessonCatalogLoader: Sendable {
         }
     }
     private func read(_ url: URL) throws -> Data { try Data(contentsOf: url) }
+    private func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
+        do { return try YAMLDecoder(encoding: .utf8).decode(type, from: data) }
+        catch DecodingError.dataCorrupted(let context) {
+            // Yams wraps errors thrown by Domain's validating Codable initializers.
+            // Preserve musical diagnostics instead of reporting a syntax error.
+            if let underlying = context.underlyingError { throw underlying }
+            throw DecodingError.dataCorrupted(context)
+        }
+    }
     private func checkSchema(_ data: Data, allowed: Set<Int> = [1]) throws {
         struct Header: Decodable { let schemaVersion: Int }
-        let version = try JSONDecoder().decode(Header.self, from: data).schemaVersion
+        let version = try decode(Header.self, from: data).schemaVersion
         guard allowed.contains(version) else { throw ContentFailure(.unsupportedSchema, "Unsupported schema: \(version)") }
     }
     func validateID(_ id: String) throws {
@@ -133,7 +143,7 @@ public struct LessonCatalogLoader: Sendable {
            context.codingPath.contains(where: { ["assessmentMode", "tuningPolicy", "kind"].contains($0.stringValue) }) {
             return ContentIssue(lessonID: lessonID, code: .unsupportedMode, detail: context.debugDescription)
         }
-        let code: ContentIssueCode = error is DecodingError ? .invalidJSON : (lessonID == nil ? .unavailableCatalog : .missingFile)
+        let code: ContentIssueCode = (error is DecodingError || error is YamlError) ? .invalidYAML : (lessonID == nil ? .unavailableCatalog : .missingFile)
         return ContentIssue(lessonID: lessonID, code: code, detail: String(describing: error))
     }
 }

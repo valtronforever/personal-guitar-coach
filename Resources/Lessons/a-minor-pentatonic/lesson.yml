@@ -1,0 +1,281 @@
+schemaVersion: 2
+id: a-minor-pentatonic
+version: 2
+difficulty: beginner
+topic: pentatonic
+steps:
+  - id: low-strings
+    kind: events
+    exerciseID: a-minor-pentatonic-practice
+    eventIDs:
+      - up-1
+      - up-2
+      - up-3
+      - up-4
+    activityID: lesson
+  - id: middle-strings
+    kind: events
+    exerciseID: a-minor-pentatonic-practice
+    eventIDs:
+      - up-5
+      - up-6
+      - up-7
+      - up-8
+    activityID: lesson
+  - id: high-strings
+    kind: events
+    exerciseID: a-minor-pentatonic-practice
+    eventIDs:
+      - up-9
+      - up-10
+      - up-11
+      - up-12
+    activityID: lesson
+  - id: return-high
+    kind: events
+    exerciseID: a-minor-pentatonic-practice
+    eventIDs:
+      - down-1
+      - down-2
+      - down-3
+      - down-4
+    activityID: lesson
+  - id: return-home
+    kind: events
+    exerciseID: a-minor-pentatonic-practice
+    eventIDs:
+      - down-5
+      - down-6
+      - down-7
+      - down-8
+      - down-9
+      - down-10
+      - down-11
+      - finish-rest
+    activityID: lesson
+exercises:
+  - id: a-minor-pentatonic-practice
+    version: 2
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: up-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: up-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: up-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: up-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: up-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: up-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: up-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: up-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: up-9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: up-10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: up-11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: up-12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: down-1
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: down-2
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: down-3
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: down-4
+        startTick: 14400
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: down-5
+        startTick: 15360
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: down-6
+        startTick: 16320
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: down-7
+        startTick: 17280
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: down-8
+        startTick: 18240
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: down-9
+        startTick: 19200
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: down-10
+        startTick: 20160
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: down-11
+        startTick: 21120
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: finish-rest
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: lesson-material
+    source:
+      kind: lesson
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 5
+      allowedStarts:
+        kind: auto
+      allowOriginal: true
+activities:
+  - id: lesson
+    materialID: lesson-material
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+fingerings: []
+practiceEntries:
+  - id: a-minor-pentatonic-practice
+    activityID: lesson
+    exerciseID: a-minor-pentatonic-practice

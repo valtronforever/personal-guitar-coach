@@ -248,3 +248,7 @@ Domain defines `PositionChoice`, `FretRegion` and validated `PositioningPolicy` 
 Practice entries freeze resolved exercises, source IDs/tick offset, activity/material/entry IDs, policy, choice, resolver version and localized titles in `PracticeActivityReference`. Domain validates metadata before audio. Partial-bar fragments retain canonical event IDs and normalize their first tick. Self-reported fingering use never affects scoring and is removed from archived retries. Comparison includes activity conditions; retries use saved evidence without current lesson files. Legacy `LessonPosition` exists only to decode historical practice evidence, not as a lesson API.
 
 The sole lesson API uses schema-2 manifests and one en/uk text edition. No schema-1 lesson decoder or `adapted(to:)` facade remains. See [authoring contract](CONTENT-AUTHORING.md), [design](design/lesson-positioning/README.md) and [delivery/verification](../tasks/follow-up/lesson-design-system.md).
+
+### YAML lesson resources
+
+Learning decodes UTF-8 `.yml` files directly with pinned Yams 6.2.2 (MIT, bundled LibYAML). Domain models and schema versions are unchanged. No runtime Python or JSON conversion is involved. Python author/bundle tools use PyYAML 6.0.3 with safe loading and duplicate-key rejection; install `Scripts/requirements.txt` in `.venv`. JSON remains the persistence and benchmark format. See [dependency notes](DEPENDENCIES.md) and [authoring](CONTENT-AUTHORING.md).

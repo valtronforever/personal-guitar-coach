@@ -1,4 +1,5 @@
 import Foundation
+import Yams
 import Testing
 import Domain
 @testable import Learning
@@ -54,15 +55,15 @@ struct LessonActivityTests {
         let folder = directory.appendingPathComponent(lesson.id)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         let encoder = JSONEncoder()
-        try encoder.encode(LessonCatalogManifest(lessons: [lesson.id])).write(to: directory.appendingPathComponent("catalog.json"))
-        try encoder.encode(lesson.manifest).write(to: folder.appendingPathComponent("lesson.json"))
+        try Data(YAMLEncoder().encode(LessonCatalogManifest(lessons: [lesson.id])).utf8).write(to: directory.appendingPathComponent("catalog.yml"))
+        try Data(YAMLEncoder().encode(lesson.manifest).utf8).write(to: folder.appendingPathComponent("lesson.yml"))
         for (name, text) in [("en",lesson.english),("uk",lesson.ukrainian)] {
-            try encoder.encode(text).write(to: folder.appendingPathComponent("\(name).json"))
+            try Data(YAMLEncoder().encode(text).utf8).write(to: folder.appendingPathComponent("\(name).yml"))
         }
         let report = LessonCatalogLoader().load(directory: directory)
         #expect(report.issues.isEmpty)
         let loaded = try #require(report.lessons.first)
-        let enPath = folder.appendingPathComponent("en.json")
+        let enPath = folder.appendingPathComponent("en.yml")
         let originalText = try String(contentsOf: enPath, encoding: .utf8)
         try originalText.replacingOccurrences(of: "{{notes}}", with: "{{unknown}}").write(to: enPath, atomically: true, encoding: .utf8)
         #expect(LessonCatalogLoader().load(directory: directory).issues.first?.code == .invalidText)
@@ -80,10 +81,10 @@ struct LessonActivityTests {
         // Semantic v2 fields must never be silently ignored by a legacy manifest.
         var json = try #require(JSONSerialization.jsonObject(with: encoder.encode(lesson.manifest)) as? [String: Any])
         json["schemaVersion"] = 1
-        try JSONSerialization.data(withJSONObject: json).write(to: folder.appendingPathComponent("lesson.json"))
+        try Data(Yams.dump(object: json).utf8).write(to: folder.appendingPathComponent("lesson.yml"))
         #expect(LessonCatalogLoader().load(directory: directory).issues.first?.code == .unsupportedSchema)
         json["schemaVersion"] = 99; json["materials"] = "invalid-payload"
-        try JSONSerialization.data(withJSONObject: json).write(to: folder.appendingPathComponent("lesson.json"))
+        try Data(Yams.dump(object: json).utf8).write(to: folder.appendingPathComponent("lesson.yml"))
         #expect(LessonCatalogLoader().load(directory: directory).issues.first?.code == .unsupportedSchema)
     }
     @Test func allTuningsNecksAndWindowWidthsPreserveExactTargetsAndReportAvailability() throws {

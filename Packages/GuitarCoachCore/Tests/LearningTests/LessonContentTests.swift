@@ -1,4 +1,5 @@
 import Foundation
+import Yams
 import Testing
 import Domain
 import Learning
@@ -9,7 +10,7 @@ struct LessonContentTests {
         init() throws {
             root = FileManager.default.temporaryDirectory.appendingPathComponent("lesson-tests-\(UUID().uuidString)", isDirectory: true)
             try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-            try write(LessonCatalogManifest(lessons: ["lesson-one", "lesson-two"]), "catalog.json")
+            try write(LessonCatalogManifest(lessons: ["lesson-one", "lesson-two"]), "catalog.yml")
             for id in ["lesson-one", "lesson-two"] {
                 try FileManager.default.createDirectory(at: root.appendingPathComponent(id), withIntermediateDirectories: true)
                 let exerciseID = id + "-practice"
@@ -24,21 +25,21 @@ struct LessonContentTests {
                                  LessonStep(id: "high-step", kind: .events, exerciseID: exerciseID, eventIDs: ["high"], activityID: "lesson"),
                                  LessonStep(id: "shape-step", kind: .fingering, exerciseID: exerciseID,
                                             activityID: "lesson", fingeringID: "shape")]
-                try write(LessonManifest(id: id, steps: steps, exercises: [exercise], materials: [LessonMaterial(id: "all", source: LessonMaterialSource(kind: .lesson))], activities: [LessonActivity(id: "lesson", materialID: "all")], practiceEntries: [LessonPracticeEntry(id: "perform", activityID: "lesson", exerciseID: exerciseID)], fingerings: [try LessonSourceFingering(id: "shape", exerciseID: exerciseID, fingering: Fingering(positions: [FretPosition(string: 5, fret: 2)], mutedStrings: [6], fingerNumbers: [5: 1]))]), "\(id)/lesson.json")
+                try write(LessonManifest(id: id, steps: steps, exercises: [exercise], materials: [LessonMaterial(id: "all", source: LessonMaterialSource(kind: .lesson))], activities: [LessonActivity(id: "lesson", materialID: "all")], practiceEntries: [LessonPracticeEntry(id: "perform", activityID: "lesson", exerciseID: exerciseID)], fingerings: [try LessonSourceFingering(id: "shape", exerciseID: exerciseID, fingering: Fingering(positions: [FretPosition(string: 5, fret: 2)], mutedStrings: [6], fingerNumbers: [5: 1]))]), "\(id)/lesson.yml")
                 for locale in ["en", "uk"] {
                     let text = LessonText(lessonID: id, locale: locale, title: locale == "en" ? "Open strings" : "Відкриті струни",
                                           summary: "Summary", goal: "Goal", body: "Text",
                                           steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Explanation")) }), activities: ["lesson": LessonActivityText(title: "Example", body: "Example")])
-                    try write(text, "\(id)/\(locale).json")
+                    try write(text, "\(id)/\(locale).yml")
                 }
             }
         }
-        func write<T: Encodable>(_ value: T, _ path: String) throws { try JSONEncoder().encode(value).write(to: root.appendingPathComponent(path)) }
+        func write<T: Encodable>(_ value: T, _ path: String) throws { try Data(YAMLEncoder().encode(value).utf8).write(to: root.appendingPathComponent(path)) }
         func mutate(_ path: String, _ transform: (inout [String: Any]) throws -> Void) throws {
             let url = root.appendingPathComponent(path)
-            var value = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+            var value = try #require(Yams.load(yaml: String(contentsOf: url, encoding: .utf8)) as? [String: Any])
             try transform(&value)
-            try JSONSerialization.data(withJSONObject: value).write(to: url)
+            try Data(Yams.dump(object: value).utf8).write(to: url)
         }
         func remove() { try? FileManager.default.removeItem(at: root) }
         func load() -> LessonCatalogReport { LessonCatalogLoader().load(directory: root) }
@@ -68,7 +69,7 @@ struct LessonContentTests {
 
     @Test func missingTranslationDoesNotHideHealthyLesson() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try FileManager.default.removeItem(at: fixture.root.appendingPathComponent("lesson-one/uk.json"))
+        try FileManager.default.removeItem(at: fixture.root.appendingPathComponent("lesson-one/uk.yml"))
         let report = fixture.load()
         #expect(report.lessons.map(\.id) == ["lesson-two"])
         #expect(report.issues.map(\.code) == [.missingTranslation])
@@ -76,12 +77,12 @@ struct LessonContentTests {
 
     @Test func unknownEventAndDuplicateStepAreRejected() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.mutate("lesson-one/lesson.json") { value in
+        try fixture.mutate("lesson-one/lesson.yml") { value in
             var steps = try #require(value["steps"] as? [[String: Any]])
             steps[1]["eventIDs"] = ["does-not-exist"]; value["steps"] = steps
         }
         #expect(fixture.load().issues.map(\.code) == [.unknownEvent])
-        try fixture.mutate("lesson-one/lesson.json") { value in
+        try fixture.mutate("lesson-one/lesson.yml") { value in
             var steps = try #require(value["steps"] as? [[String: Any]])
             steps.append(steps[0]); value["steps"] = steps
         }
@@ -91,7 +92,7 @@ struct LessonContentTests {
     @Test(arguments: ["bad-fret", "negative-duration", "unsupported-mode", "duplicate-event"])
     func musicalErrorsCannotReachVisualization(kind: String) throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.mutate("lesson-one/lesson.json") { value in
+        try fixture.mutate("lesson-one/lesson.yml") { value in
             var exercises = try #require(value["exercises"] as? [[String: Any]])
             var events = try #require(exercises[0]["events"] as? [[String: Any]])
             switch kind {
@@ -110,24 +111,24 @@ struct LessonContentTests {
 
     @Test func translationParityAndVersionsAreStrict() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.mutate("lesson-one/uk.json") { $0["lessonVersion"] = 2 }
+        try fixture.mutate("lesson-one/uk.yml") { $0["lessonVersion"] = 2 }
         #expect(fixture.load().issues.map(\.code) == [.translationMismatch])
-        try fixture.mutate("lesson-one/uk.json") { $0["lessonVersion"] = 1; $0["steps"] = [:] }
+        try fixture.mutate("lesson-one/uk.yml") { $0["lessonVersion"] = 1; $0["steps"] = [:] }
         #expect(fixture.load().issues.map(\.code) == [.translationMismatch])
-        try fixture.mutate("lesson-two/en.json") { $0["title"] = "  " }
+        try fixture.mutate("lesson-two/en.yml") { $0["title"] = "  " }
         #expect(fixture.load().issues.map(\.code) == [.translationMismatch, .invalidText])
     }
 
     @Test func futureSchemaIsCheckedBeforeUnknownPayload() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.mutate("lesson-one/lesson.json") { $0 = ["schemaVersion": 99, "future": true] }
+        try fixture.mutate("lesson-one/lesson.yml") { $0 = ["schemaVersion": 99, "future": true] }
         #expect(fixture.load().issues.map(\.code) == [.unsupportedSchema])
         #expect(fixture.load().lessons.map(\.id) == ["lesson-two"])
     }
 
     @Test func identifiersCannotEscapeTheCatalog() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.write(LessonCatalogManifest(lessons: ["../escape", "lesson-one\n", "lesson-two"]), "catalog.json")
+        try fixture.write(LessonCatalogManifest(lessons: ["../escape", "lesson-one\n", "lesson-two"]), "catalog.yml")
         let report = fixture.load()
         #expect(report.issues.map(\.code) == [.invalidIdentifier, .invalidIdentifier])
         #expect(report.lessons.map(\.id) == ["lesson-two"])
@@ -135,7 +136,7 @@ struct LessonContentTests {
 
     @Test func explicitChordShapeCannotBecomeAPracticeEntry() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.mutate("lesson-one/lesson.json") { value in
+        try fixture.mutate("lesson-one/lesson.yml") { value in
             var exercises = try #require(value["exercises"] as? [[String: Any]])
             exercises[0]["assessmentMode"] = "displayOnly"; value["exercises"] = exercises
         }
@@ -144,7 +145,7 @@ struct LessonContentTests {
 
     @Test func duplicateCatalogEntriesKeepLoadedIDsUnique() throws {
         let fixture = try Fixture(); defer { fixture.remove() }
-        try fixture.write(LessonCatalogManifest(lessons: ["lesson-one", "lesson-one", "lesson-one", "lesson-two"]), "catalog.json")
+        try fixture.write(LessonCatalogManifest(lessons: ["lesson-one", "lesson-one", "lesson-one", "lesson-two"]), "catalog.yml")
         let report = fixture.load()
         #expect(report.lessons.map(\.id) == ["lesson-one", "lesson-two"])
         #expect(report.issues.map(\.code) == [.duplicateIdentifier, .duplicateIdentifier])
@@ -159,9 +160,9 @@ struct LessonContentTests {
                                  tuningPolicy: .followsInstrument, assessmentMode: .displayOnly)
         let manifest = LessonManifest(id: lesson.id, steps: lesson.manifest.steps + [LessonStep(id: "chord-step", kind: .events, exerciseID: chord.id, eventIDs: ["em"], activityID: "lesson")],
                                       exercises: lesson.manifest.exercises + [chord], materials: lesson.manifest.materials, activities: lesson.manifest.activities, practiceEntries: lesson.manifest.practiceEntries, fingerings: lesson.manifest.fingerings)
-        try fixture.write(manifest, "lesson-one/lesson.json")
+        try fixture.write(manifest, "lesson-one/lesson.yml")
         for locale in ["en", "uk"] {
-            try fixture.mutate("lesson-one/\(locale).json") { value in
+            try fixture.mutate("lesson-one/\(locale).yml") { value in
                 var steps = try #require(value["steps"] as? [String: Any])
                 steps["chord-step"] = ["title": "Em", "body": "Display-only shape"]
                 value["steps"] = steps

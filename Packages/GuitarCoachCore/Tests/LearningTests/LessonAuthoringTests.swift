@@ -1,4 +1,5 @@
 import Foundation
+import Yams
 import Testing
 import Domain
 @testable import Learning
@@ -34,8 +35,8 @@ struct LessonAuthoringTests {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
-        let catalog = directory.appendingPathComponent("catalog.json")
-        try Data(#"{"schemaVersion":1,"lessons":[]}"#.utf8).write(to: catalog)
+        let catalog = directory.appendingPathComponent("catalog.yml")
+        try Data("schemaVersion: 1\nlessons: []\n".utf8).write(to: catalog)
         func scaffold(_ id: String, policy: String = "fretPattern") throws -> Int32 {
             let process = Process()
             process.executableURL = URL(fileURLWithPath: "/usr/bin/env")
@@ -58,16 +59,16 @@ struct LessonAuthoringTests {
             }
         }
         let bytes = try Data(contentsOf: catalog)
-        let manifestURL = directory.appendingPathComponent("physical-draft/lesson.json")
+        let manifestURL = directory.appendingPathComponent("physical-draft/lesson.yml")
         let manifest = try Data(contentsOf: manifestURL)
         #expect(try scaffold("physical-draft") != 0)
         for id in ["../escape", "Uppercase", String(repeating: "a", count: 56)] { #expect(try scaffold(id) != 0) }
         #expect(try Data(contentsOf: catalog) == bytes)
         #expect(try Data(contentsOf: manifestURL) == manifest)
-        var existing = try #require(JSONSerialization.jsonObject(with: manifest) as? [String: Any])
+        var existing = try #require(Yams.load(yaml: String(decoding: manifest, as: UTF8.self)) as? [String: Any])
         var exercises = try #require(existing["exercises"] as? [[String: Any]])
         exercises[0]["id"] = "collision-practice"; existing["exercises"] = exercises
-        try JSONSerialization.data(withJSONObject: existing).write(to: manifestURL)
+        try Data(Yams.dump(object: existing).utf8).write(to: manifestURL)
         #expect(try scaffold("collision") != 0)
         #expect(!FileManager.default.fileExists(atPath: directory.appendingPathComponent("collision").path))
         #expect(try Data(contentsOf: catalog) == bytes)
@@ -77,11 +78,11 @@ struct LessonAuthoringTests {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         try FileManager.default.copyItem(at: root.appendingPathComponent("docs/templates/lesson"), to: directory.appendingPathComponent("lesson-template"))
-        try Data(#"{"schemaVersion":1,"lessons":["lesson-template"]}"#.utf8).write(to: directory.appendingPathComponent("catalog.json"))
-        let file = directory.appendingPathComponent("lesson-template/uk.json")
-        let original = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: file)) as? [String: Any])
+        try Data("schemaVersion: 1\nlessons: [lesson-template]\n".utf8).write(to: directory.appendingPathComponent("catalog.yml"))
+        let file = directory.appendingPathComponent("lesson-template/uk.yml")
+        let original = try #require(Yams.load(yaml: String(contentsOf: file, encoding: .utf8)) as? [String: Any])
         func invalid(_ value: [String: Any], code: ContentIssueCode) throws {
-            try JSONSerialization.data(withJSONObject: value).write(to: file)
+            try Data(Yams.dump(object: value).utf8).write(to: file)
             let report = LessonCatalogLoader().load(directory: directory)
             #expect(report.lessons.isEmpty && report.issues.contains { $0.code == code })
         }

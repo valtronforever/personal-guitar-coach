@@ -108,7 +108,7 @@ public struct LoadedLesson: Identifiable, Sendable, Equatable {
 }
 
 public enum ContentIssueCode: String, Sendable {
-    case unsupportedSchema, missingFile, invalidJSON, invalidIdentifier, duplicateIdentifier, invalidMusicalData
+    case unsupportedSchema, missingFile, invalidYAML, invalidIdentifier, duplicateIdentifier, invalidMusicalData
     case unknownExercise, unknownEvent, unknownStep, invalidStep, missingTranslation, translationMismatch, invalidText, unavailableCatalog, unsupportedMode
 }
 

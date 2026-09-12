@@ -36,7 +36,7 @@ app_sources = sorted(str(p.relative_to(ROOT)) for p in (ROOT / "App").rglob("*.s
 ui_sources = sorted(str(p.relative_to(ROOT)) for p in (ROOT / "Tests/UITests").rglob("*.swift"))
 resource_paths = sorted(str(p.relative_to(ROOT)) for p in (ROOT / "Resources").glob("**/*.xcstrings"))
 resources = [obj("resource:"+p, "PBXBuildFile", fileRef=file(p, "text.json.xcstrings")) for p in resource_paths]
-for directory in ("Resources/Lessons", "Resources/Assets.xcassets"):
+for directory in ("Resources/Lessons", "Resources/Assets.xcassets", "Resources/ThirdPartyLicenses"):
     if (ROOT / directory).exists():
         kind = "folder.assetcatalog" if directory.endswith(".xcassets") else "folder"
         resources.append(obj("resource:"+directory, "PBXBuildFile", fileRef=file(directory, kind)))

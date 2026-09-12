@@ -12,4 +12,4 @@ For the reference major scale in C Standard, width 5 from 7 yields frets 8,10,7,
 
 The reader retains independent activity choices, interrupts preview on context changes, and leaves other activities accessible when one fails. Practice freezes the resolved exercise and authored context; archived retries do not reread current author policy. Old practice evidence remains readable and is never rerated. A manual fingering confirmation is separate from audible pitch/timing evidence.
 
-Complete runnable example: [same-notes-new-position](../Resources/Lessons/same-notes-new-position/lesson.json). Design and acceptance: [lesson positioning](design/lesson-positioning/README.md), [LD01–LD04](../tasks/follow-up/lesson-design-system.md).
+Complete runnable example: [same-notes-new-position](../Resources/Lessons/same-notes-new-position/lesson.yml). Design and acceptance: [lesson positioning](design/lesson-positioning/README.md), [LD01–LD04](../tasks/follow-up/lesson-design-system.md).

@@ -1,4 +1,5 @@
 import Foundation
+import Yams
 import Testing
 import Domain
 import Learning
@@ -11,7 +12,7 @@ import Persistence
         defer { try? FileManager.default.removeItem(at: root) }
         let directory = root.appendingPathComponent("test-lesson")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        func write<T: Encodable>(_ value: T, _ path: URL) throws { try JSONEncoder().encode(value).write(to: path) }
+        func write<T: Encodable>(_ value: T, _ path: URL) throws { try Data(YAMLEncoder().encode(value).utf8).write(to: path) }
         let events = try [MusicalEvent(id: "low", startTick: 0, durationTicks: 960, kind: .note, positions: [FretPosition(string: 6, fret: 0)]),
             MusicalEvent(id: "rest", startTick: 960, durationTicks: 960, kind: .rest),
             MusicalEvent(id: "high", startTick: 1920, durationTicks: 960, kind: .note, positions: [FretPosition(string: 1, fret: 0)])]
@@ -25,11 +26,11 @@ import Persistence
             LessonStep(id: "rest-step", kind: .events, exerciseID: "fixed", eventIDs: ["rest"], activityID: "fixed"),
             LessonStep(id: "alternative", kind: .events, exerciseID: "follows", eventIDs: ["low"], activityID: "follows"),
             LessonStep(id: "shape", kind: .fingering, exerciseID: "display", activityID: "shape", fingeringID: "shape")]
-        try write(LessonCatalogManifest(lessons: ["test-lesson"]), root.appendingPathComponent("catalog.json"))
-        try write(LessonManifest(id: "test-lesson", steps: steps, exercises: [fixed, follows, display], materials: [LessonMaterial(id: "fixed", source: LessonMaterialSource(kind: .exercise, exerciseID: "fixed")), LessonMaterial(id: "follows", source: LessonMaterialSource(kind: .exercise, exerciseID: "follows")), LessonMaterial(id: "shape", source: LessonMaterialSource(kind: .fingering, fingeringID: "shape"))], activities: ["fixed", "follows", "shape"].map { LessonActivity(id: $0, materialID: $0) }, practiceEntries: ["fixed", "follows"].map { LessonPracticeEntry(id: $0, activityID: $0, exerciseID: $0) }, fingerings: [LessonSourceFingering(id: "shape", exerciseID: "display", fingering: shape)]), directory.appendingPathComponent("lesson.json"))
+        try write(LessonCatalogManifest(lessons: ["test-lesson"]), root.appendingPathComponent("catalog.yml"))
+        try write(LessonManifest(id: "test-lesson", steps: steps, exercises: [fixed, follows, display], materials: [LessonMaterial(id: "fixed", source: LessonMaterialSource(kind: .exercise, exerciseID: "fixed")), LessonMaterial(id: "follows", source: LessonMaterialSource(kind: .exercise, exerciseID: "follows")), LessonMaterial(id: "shape", source: LessonMaterialSource(kind: .fingering, fingeringID: "shape"))], activities: ["fixed", "follows", "shape"].map { LessonActivity(id: $0, materialID: $0) }, practiceEntries: ["fixed", "follows"].map { LessonPracticeEntry(id: $0, activityID: $0, exerciseID: $0) }, fingerings: [LessonSourceFingering(id: "shape", exerciseID: "display", fingering: shape)]), directory.appendingPathComponent("lesson.yml"))
         for locale in ["en", "uk"] {
             try write(LessonText(lessonID: "test-lesson", locale: locale, title: locale == "uk" ? "Відкриті струни" : "Open strings", summary: "Summary", goal: "Goal", body: "Body",
-                steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Text")) }), activities: Dictionary(uniqueKeysWithValues: ["fixed", "follows", "shape"].map { ($0, LessonActivityText(title: "Example", body: "Example")) })), directory.appendingPathComponent("\(locale).json"))
+                steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Text")) }), activities: Dictionary(uniqueKeysWithValues: ["fixed", "follows", "shape"].map { ($0, LessonActivityText(title: "Example", body: "Example")) })), directory.appendingPathComponent("\(locale).yml"))
         }
         let report = LessonCatalogLoader().load(directory: root)
         #expect(report.issues.isEmpty)
@@ -118,10 +119,10 @@ import Persistence
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }
         try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-        try JSONEncoder().encode(LessonCatalogManifest(lessons: [])).write(to: root.appendingPathComponent("catalog.json"))
+        try Data(YAMLEncoder().encode(LessonCatalogManifest(lessons: [])).utf8).write(to: root.appendingPathComponent("catalog.yml"))
         let empty = LessonLibraryStore(directory: root); await empty.load()
         #expect(empty.hasLoaded && empty.issues.isEmpty && empty.lessons.isEmpty && !empty.missingBundle)
-        try Data("{broken".utf8).write(to: root.appendingPathComponent("catalog.json"))
+        try Data("{broken".utf8).write(to: root.appendingPathComponent("catalog.yml"))
         await empty.load(force: true)
         #expect(empty.hasLoaded && !empty.isLoading && !empty.issues.isEmpty && empty.lessons.isEmpty)
     }

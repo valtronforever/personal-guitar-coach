@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+from lesson_yaml import loads
 import os
 from pathlib import Path
 import plistlib
@@ -83,12 +84,16 @@ def verify(app, configuration):
         require(bool(reason), "Missing localized microphone purpose")
     require(bool(info.get("NSMicrophoneUsageDescription")), "Missing fallback microphone purpose")
     source_lessons = ROOT / "Resources/Lessons"
+    for license_file in (ROOT / "Resources/ThirdPartyLicenses").glob("*.txt"):
+        require(digest(license_file) == digest(resources / "ThirdPartyLicenses" / license_file.name),
+                f"Missing or changed dependency license: {license_file.name}")
     bundled_lessons = resources / "Lessons"
-    files = sorted(path.relative_to(source_lessons) for path in source_lessons.rglob("*.json"))
-    require(files == sorted(path.relative_to(bundled_lessons) for path in bundled_lessons.rglob("*.json")), "Lesson resource set differs")
+    require(not list(bundled_lessons.rglob("*.json")), "Stale JSON lesson resources in bundle")
+    files = sorted(path.relative_to(source_lessons) for path in source_lessons.rglob("*.yml"))
+    require(files == sorted(path.relative_to(bundled_lessons) for path in bundled_lessons.rglob("*.yml")), "Lesson resource set differs")
     for path in files:
         require(digest(source_lessons / path) == digest(bundled_lessons / path), f"Changed bundled lesson: {path}")
-    lesson_count = len(json.loads((bundled_lessons / "catalog.json").read_text())["lessons"])
+    lesson_count = len(loads((bundled_lessons / "catalog.yml").read_text())["lessons"])
     require(lesson_count >= 6, "Starter course is incomplete")
     linked = run("otool", "-L", str(binary)).splitlines()[1:]
     dependencies = [line.strip().split(" (", 1)[0] for line in linked if line.strip()]
@@ -107,7 +112,7 @@ def verify(app, configuration):
         "configuration": configuration, "version": info["CFBundleShortVersionString"], "build": info["CFBundleVersion"],
         "architectures": architectures, "minimumMacOS": minimums, "binarySHA256": digest(binary),
         "signature": "adhoc", "hardenedRuntime": True, "entitlements": entitlements,
-        "iconRepresentations": len(icon_manifest["images"]), "lessonCount": lesson_count, "lessonJSONFiles": len(files),
+        "iconRepresentations": len(icon_manifest["images"]), "lessonCount": lesson_count, "lessonYAMLFiles": len(files),
         "locales": ["en", "uk"], "systemDynamicDependencies": len(dependencies),
         "offlineResourcesVerified": True, "appLaunchVerified": False, "hardwareVerified": False,
     }

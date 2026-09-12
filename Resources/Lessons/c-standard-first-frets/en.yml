@@ -1,0 +1,41 @@
+lessonID: c-standard-first-frets
+lessonVersion: 1
+locale: en
+title: Your first frets · C Standard
+summary: Move by one fret on the low C string, then return.
+goal: Play C2–D♭2–D2–E♭2 and return on one string with a fresh attack on every beat.
+body: |-
+  This lesson belongs to the C Standard course. For prerequisites, choose lessons marked C Standard.
+
+  Before starting: complete the open-string lesson and tune all six strings to C Standard, A4 = 440 Hz.
+
+  A fret raises a note by one semitone. On string 6, frets 0, 1, 2, 3 give C2, D♭2, D2, E♭2. The ♭ sign means flat: one semitone lower than the named natural note. A chromatic sequence moves one semitone at a time.
+
+  Place a fingertip just behind the required metal fret, toward the headstock, and use only enough pressure for a clear note. Suggested fingers are index for fret 1, middle for fret 2 and ring for fret 3. These are suggestions, not fingers detected by the app. Let the previous note stop before the next attack.
+
+  Start at 60 BPM, one note per click. Use 40–50 BPM if moving between frets feels rushed. After several comfortable repeats at the same tempo, try 70 BPM and treat it as a new practice condition. Open the result to inspect pitch or missed attacks and prepare its suggested fragment.
+steps:
+  open-start:
+    title: 1. Start with open C2
+    body: Pluck string 6 without pressing a fret. The 0 in tablature means open.
+  first-fret:
+    title: 2. Find D♭2 at fret 1
+    body: >-
+      Press string 6 just behind fret 1 and pluck. C2 to D♭2 is already one semitone; there is no extra fret between
+      them.
+  climb:
+    title: 3. Climb to D2 and E♭2
+    body: Play frets 1, 2, 3 on beats 2, 3, 4. Keep one fresh pluck for each written note.
+  return:
+    title: 4. Return to the open string
+    body: >-
+      In bar 2, play frets 3, 2, 1, 0. Pluck fret 3 again on beat 1; it is a new attack, even though the previous
+      bar ended on the same pitch.
+  two-bars:
+    title: 5. Join both bars
+    body: >-
+      Count four beats twice: 0–1–2–3, then 3–2–1–0. Choose Practice and confirm the physical tuning before starting.
+activities:
+  lesson:
+    title: Your first frets · C Standard
+    body: Play C2–D♭2–D2–E♭2 and return on one string with a fresh attack on every beat.
