@@ -1981,13 +1981,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Standard"
+            "value": "E Standard"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Стандартний"
+            "value": "Стандартний E"
           }
         }
       }
@@ -8641,6 +8641,74 @@
           "stringUnit": {
             "state": "translated",
             "value": "Уроки адаптуються автоматично. Гами й арпеджіо транспонуються разом зі струною 1; позиції на інших струнах змінюються для збереження інтервалів. Уроки відкритих струн, ладів і ритму безпосередньо слідують за вибраними струнами."
+          }
+        }
+      }
+    },
+    "tuning.preset.b-standard": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B Standard"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стандартний B"
+          }
+        }
+      }
+    },
+    "tuning.preset.drop-c": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop C"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop C"
+          }
+        }
+      }
+    },
+    "tuning.preset.drop-b-flat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop B♭"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop B♭"
+          }
+        }
+      }
+    },
+    "tuning.preset.drop-a": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop A"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drop A"
           }
         }
       }

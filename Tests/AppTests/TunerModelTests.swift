@@ -5,6 +5,28 @@ import Domain
 @testable import PersonalGuitarCoach
 
 @MainActor struct TunerModelTests {
+    @Test(arguments: [44100.0, 48000.0]) func dropALowStringAcceptsDetuningWithoutChangingTheGradingLimit(sampleRate: Double) throws {
+        for cents in [-75.0, -25, 0, 25, 75] {
+            let frequency = 55 * pow(2, cents / 1200)
+            let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
+            let model = TunerModel(); model.configure(tuning: .dropA, mode: .manual(string: 6))
+            let frames = Int(sampleRate / 20), now = ContinuousClock.now
+            for block in 0..<24 {
+                let pcm = (0..<frames).map { Float(0.2 * sin(2 * .pi * frequency * Double(block * frames + $0) / sampleRate)) }
+                pcm.withUnsafeBufferPointer { analyzer.process($0) }
+                model.consume(analyzer.snapshot(), now: now)
+            }
+            #expect(model.reading.feedback == (cents < 0 ? .flat : cents > 0 ? .sharp : .inTune))
+            #expect(abs(try #require(model.reading.cents) - cents) < 1)
+            #expect(model.reading.targetFrequency == 55)
+            #expect(!Exercise.monophonicMIDITarget.contains(33))
+            #expect(analyzer.snapshot().algorithmVersion == "mono-mpm-flux-3")
+        }
+        let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
+        let low = (0..<Int(sampleRate)).map { Float(0.2 * sin(2 * .pi * 50 * Double($0) / sampleRate)) }
+        low.withUnsafeBufferPointer { analyzer.process($0) }
+        #expect(analyzer.snapshot().latest?.quality == .outOfRange)
+    }
     private func snapshot(_ frame: Int64, spans: [SignalQualitySpan] = [], total: UInt64 = 0) -> AudioAnalysisSnapshot {
         AudioAnalysisSnapshot(algorithmVersion: "test", latest: PitchObservation(time: time(frame), quality: .reliable,
             pitch: DetectedPitch(frequency: 110, clarity: 0.99), rms: 0.1, peak: 0.2, noiseFloor: 0.001, periodEvidence: nil),
@@ -51,11 +73,11 @@ import Domain
         #expect(model.reading.frequency == nil && !model.isStale)
     }
 
-    @Test(arguments: [44100.0, 48000.0]) func cStandardOpenStringsReachManualAndAutomaticTunerThroughPCM(sampleRate: Double) throws {
-        for string in TuningProfile.cStandard.strings {
+    @Test(arguments: [TuningProfile.cStandard, .bStandard, .dropC, .dropBFlat, .dropA], [44100.0, 48000.0]) func lowPresetOpenStringsReachManualAndAutomaticTunerThroughPCM(tuning: TuningProfile, sampleRate: Double) throws {
+        for string in tuning.strings {
             for mode in [TunerMode.automatic, .manual(string: string.number)] {
                 let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
-                let model = TunerModel(); model.configure(tuning: .cStandard, mode: mode)
+                let model = TunerModel(); model.configure(tuning: tuning, mode: mode)
                 let frequency = try string.openPitch.frequency(), now = ContinuousClock.now
                 let frames = Int(sampleRate / 20)
                 for block in 0..<24 {
@@ -63,9 +85,11 @@ import Domain
                     pcm.withUnsafeBufferPointer { analyzer.process($0) }
                     model.consume(analyzer.snapshot(), now: now)
                 }
-                // G3 and C4 can also be harmonics of low C2; automatic mode must ask for a string.
-                let feedback: TunerFeedback = mode == .automatic && string.number <= 2 ? .chooseString : .inTune
-                #expect(model.reading.feedback == feedback)
+                // Uniform profiles: strings 1/2 coincide with lower-string harmonics.
+                // Drop profiles: strings 1/4 do. Never infer the physical string from those pitches.
+                let ambiguousStrings = [TuningProfile.cStandard, .bStandard].contains(tuning) ? [1, 2] : [1, 4]
+                let expected: TunerFeedback = mode == .automatic && ambiguousStrings.contains(string.number) ? .chooseString : .inTune
+                #expect(model.reading.feedback == expected)
                 #expect(model.reading.detectedPitch == string.openPitch && model.reading.targetString == string.number)
             }
         }

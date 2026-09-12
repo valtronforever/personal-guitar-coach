@@ -48,3 +48,5 @@ Bounded native C Standard evidence: [review](reviews/06-c-standard-review.md) re
 
 
 Automatic adaptation follow-up (2026-09-12): use the same six-lesson catalog after selecting C Standard, Drop D or a custom profile. U05/U10 should check teaching clarity and comfort of the generated fingerings, especially Drop D low-string changes and custom chord shapes. Verify the physical guitar with Tuner before a new attempt. Legacy recommendation retries intentionally retain the saved tuning. Software adaptation and synthetic attempt interruption do not establish new hardware accuracy.
+
+Preset-family follow-up: confirm B Standard, Drop B♭ and Drop A low-string tuner feedback on real guitar input, including approaching A1 from below. Software/synthetic checks do not certify this hardware scenario. Grading targets below C2 remain explicitly unsupported.

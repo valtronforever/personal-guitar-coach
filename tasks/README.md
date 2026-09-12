@@ -94,3 +94,5 @@
 [C Standard preset and adapted course](follow-up/c-standard-course.md): `done`. Extends tasks 06/19 with the user's physical tuning and six bilingual course variants. Existing hardware-dependent task statuses remain unchanged.
 
 [Automatic lesson tuning](follow-up/automatic-lesson-tuning.md): `done`. One catalog follows Settings with transposed, bilingual musical content and immutable historical attempts.
+
+[Standard and drop tuning families](follow-up/standard-drop-presets.md): `done`. Eight shared presets with localized names, persistence and course/tuner checks.

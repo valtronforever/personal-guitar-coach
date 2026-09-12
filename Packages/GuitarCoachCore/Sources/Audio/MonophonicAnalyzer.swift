@@ -83,7 +83,7 @@ public struct AudioAnalysisSnapshot: Equatable, Sendable {
 /// Single-worker streaming analyzer. The audio callback only fills the existing bounded PCM ring.
 /// All storage is bounded independently of session length; no raw PCM leaves this object.
 public final class MonophonicAnalyzer {
-    public static let algorithmVersion = "mono-mpm-flux-2"
+    public static let algorithmVersion = "mono-mpm-flux-3"
     public static let eventCapacity = 128
     public static let qualitySpanCapacity = 256
     public let sampleRate: Double
@@ -148,7 +148,7 @@ public final class MonophonicAnalyzer {
     }
 
     public func snapshot() -> AudioAnalysisSnapshot {
-        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-2", latest: latest, events: events,
+        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-3", latest: latest, events: events,
                               totalEvents: totalEvents, invalidSamples: invalidSamples,
                               qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans)
     }
@@ -186,7 +186,9 @@ public final class MonophonicAnalyzer {
         else if let estimate = frame.withUnsafeBufferPointer({ detector.estimate($0) }) {
             evidence = estimate
             if estimate.octaveAmbiguous || estimate.fundamentalFraction < 0.001 { quality = .ambiguous }
-            else if !MonophonicCapability.frequencyRange.contains(estimate.frequency) { quality = .outOfRange }
+            // Observe one semitone below the lowest target so A1 can be tuned from flat.
+            // This does not expand the target/assessment capability or snap measured pitch.
+            else if !(MonophonicCapability.frequencyRange.lowerBound / pow(2, 1.0 / 12)...MonophonicCapability.frequencyRange.upperBound).contains(estimate.frequency) { quality = .outOfRange }
             else if estimate.clarity < 0.9 { quality = .unstable }
             else {
                 trackedPeriod = true

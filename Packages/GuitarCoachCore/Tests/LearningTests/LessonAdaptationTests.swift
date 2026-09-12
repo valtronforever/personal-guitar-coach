@@ -29,10 +29,12 @@ struct LessonAdaptationTests {
                     if source.manifest.adaptation?.policy == .transposeIntervals {
                         #expect(try pitches == original.resolvedEvents(instrument: .standard).flatMap(\.pitches).map { $0.midi + shift })
                     } else { #expect(exercise.events == original.events) }
-                    if tuning != .dropD { #expect(exercise.events == original.events) }
+                    if [TuningProfile.standard, .dStandard, .cStandard, .bStandard].contains(tuning) { #expect(exercise.events == original.events) }
                     if exercise.assessmentMode == .monophonic {
                         for bpm in [exercise.minimumBPM, exercise.defaultBPM, exercise.maximumBPM] {
-                            try exercise.validateForPractice(instrument: tuning, bpm: bpm)
+                            if pitches.contains(where: { $0 < 36 }) {
+                                #expect(throws: MusicError.unsupportedPitch) { try exercise.validateForPractice(instrument: tuning, bpm: bpm) }
+                            } else { try exercise.validateForPractice(instrument: tuning, bpm: bpm) }
                         }
                     }
                 }
