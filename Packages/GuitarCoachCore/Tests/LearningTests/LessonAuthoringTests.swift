@@ -11,17 +11,17 @@ struct LessonAuthoringTests {
     @Test func teachingStaysIndependentAcrossEveryInstrumentWhileExamplesFollowPitches() throws {
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
-        for source in report.lessons where source.manifest.adaptation != nil {
-            let baseline = try source.adapted(to: .standard)
+        for source in report.lessons where source.manifest.adaptation != nil && source.id != "same-notes-new-position" {
+            let baseline = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile())
             for tuning in TuningProfile.presets {
                 for frets in GuitarFretCount.allCases {
-                    let adapted = try source.adapted(to: tuning, frets: frets)
-                    let practice = try #require(adapted.manifest.exercises.first { adapted.manifest.practiceExerciseIDs.contains($0.id) })
+                    let adapted = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: tuning, frets: frets))
+                    let practice = try #require(adapted.exercises.first { source.manifest.practiceEntries.map(\.exerciseID).contains($0.id) })
                     let first = try #require(practice.resolvedEvents(instrument: tuning).flatMap(\.pitches).first)
                     for language in [LessonLanguage.en, .uk] {
                         let text = adapted.text(for: language), original = baseline.text(for: language)
                         #expect([text.title, text.summary, text.goal, text.body] == [original.title, original.summary, original.goal, original.body])
-                        let variant = try #require(text.variant)
+                        let variant = try #require(text.activities["lesson"])
                         #expect(variant.body.contains(first.name(spelling: tuning.preferredSpelling)))
                         #expect(!variant.title.contains("{{") && !variant.body.contains("{{"))
                         #expect(!text.body.contains("A4 =") && !text.body.contains("{{"))
@@ -50,11 +50,11 @@ struct LessonAuthoringTests {
         for source in report.lessons {
             #expect(source.manifest.exercises[0].id == source.id + "-practice")
             for tuning in TuningProfile.presets {
-                let adapted = try source.adapted(to: tuning, frets: .nineteen)
-                #expect(adapted.english.variant != nil && adapted.ukrainian.variant != nil)
-                #expect(try adapted.visual(stepID: "reflect", instrument: tuning).positions.isEmpty)
+                let adapted = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: tuning, frets: .nineteen))
+                #expect(adapted.english.activities["lesson"] != nil && adapted.ukrainian.activities["lesson"] != nil)
+                #expect(try adapted.visual(stepID: "reflect").positions.isEmpty)
                 #expect(adapted.english.steps["reflect"]?.body.contains("{{") == false)
-                #expect(adapted.manifest.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.fret <= 19 })
+                #expect(adapted.exercises.flatMap(\.events).flatMap(\.positions).allSatisfy { $0.fret <= 19 })
             }
         }
         let bytes = try Data(contentsOf: catalog)
@@ -78,23 +78,21 @@ struct LessonAuthoringTests {
         defer { try? FileManager.default.removeItem(at: directory) }
         try FileManager.default.copyItem(at: root.appendingPathComponent("docs/templates/lesson"), to: directory.appendingPathComponent("lesson-template"))
         try Data(#"{"schemaVersion":1,"lessons":["lesson-template"]}"#.utf8).write(to: directory.appendingPathComponent("catalog.json"))
-        let file = directory.appendingPathComponent("lesson-template/adaptive.uk.json")
+        let file = directory.appendingPathComponent("lesson-template/uk.json")
         let original = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: file)) as? [String: Any])
         func invalid(_ value: [String: Any], code: ContentIssueCode) throws {
             try JSONSerialization.data(withJSONObject: value).write(to: file)
             let report = LessonCatalogLoader().load(directory: directory)
             #expect(report.lessons.isEmpty && report.issues.contains { $0.code == code })
         }
-        var changed = original; changed.removeValue(forKey: "variant")
+        var changed = original; changed["activities"] = [:]
         try invalid(changed, code: .translationMismatch)
-        changed = original; changed["variant"] = ["title": " ", "body": "Example"]
+        changed = original; changed["activities"] = ["lesson": ["title": " ", "body": "Example"]]
         try invalid(changed, code: .invalidText)
         changed = original; changed["body"] = "Theory {{root}}"
         try invalid(changed, code: .invalidText)
-        changed = original; changed["variant"] = ["title": "{{unknown}}", "body": "Example"]
+        changed = original; changed["activities"] = ["lesson": ["title": "{{unknown}}", "body": "Example"]]
         try invalid(changed, code: .invalidText)
-        // Existing fixed lessons without the new optional fields keep their original decoding contract.
-        let fixed = try JSONDecoder().decode(LessonText.self, from: Data(contentsOf: directory.appendingPathComponent("lesson-template/en.json")))
-        #expect(fixed.variant == nil && fixed.historicalTitle == nil)
+        #expect(original["activities"] != nil)
     }
 }

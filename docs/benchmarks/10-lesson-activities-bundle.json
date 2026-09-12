@@ -1,0 +1,31 @@
+{
+  "appLaunchVerified": false,
+  "architectures": [
+    "arm64"
+  ],
+  "archiveSHA256": "b1e68982db695003543f08b5940e5b5dc79e2bd21fb058be120df36c92502ab1",
+  "archiveVerified": true,
+  "binarySHA256": "6b76040ff07b1d18c50bf782569c051d52d90a70cb67f6be04c0d3345d68b5fc",
+  "build": "1",
+  "configuration": "release",
+  "entitlements": {
+    "com.apple.security.app-sandbox": true,
+    "com.apple.security.device.audio-input": true
+  },
+  "hardenedRuntime": true,
+  "hardwareVerified": false,
+  "iconRepresentations": 10,
+  "lessonCount": 13,
+  "lessonJSONFiles": 40,
+  "locales": [
+    "en",
+    "uk"
+  ],
+  "minimumMacOS": [
+    "14.0"
+  ],
+  "offlineResourcesVerified": true,
+  "signature": "adhoc",
+  "systemDynamicDependencies": 33,
+  "version": "0.1.0"
+}

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "cm-arpeggio-c-standard",
   "version": 1,
   "difficulty": "beginner",
@@ -10,39 +10,8 @@
       "kind": "fingering",
       "exerciseID": "cm-arpeggio-c-standard-shape",
       "eventIDs": [],
-      "fingering": {
-        "positions": [
-          {
-            "string": 6,
-            "fret": 0
-          },
-          {
-            "string": 5,
-            "fret": 2
-          },
-          {
-            "string": 4,
-            "fret": 2
-          },
-          {
-            "string": 3,
-            "fret": 0
-          },
-          {
-            "string": 2,
-            "fret": 0
-          },
-          {
-            "string": 1,
-            "fret": 0
-          }
-        ],
-        "mutedStrings": [],
-        "fingerNumbers": {
-          "5": 2,
-          "4": 3
-        }
-      }
+      "activityID": "lesson",
+      "fingeringID": "shape-shape"
     },
     {
       "id": "low-notes",
@@ -53,7 +22,8 @@
         "up-2",
         "up-3",
         "up-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "top-and-turn",
@@ -64,7 +34,8 @@
         "up-6",
         "down-1",
         "down-2"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "return-and-rest",
@@ -75,7 +46,8 @@
         "down-4",
         "down-5",
         "finish-rest"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "whole-arpeggio",
@@ -94,7 +66,8 @@
         "down-4",
         "down-5",
         "finish-rest"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
@@ -384,7 +357,67 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "cm-arpeggio-c-standard-practice"
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": false
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material"
+    }
+  ],
+  "fingerings": [
+    {
+      "id": "shape-shape",
+      "exerciseID": "cm-arpeggio-c-standard-shape",
+      "fingering": {
+        "positions": [
+          {
+            "string": 6,
+            "fret": 0
+          },
+          {
+            "string": 5,
+            "fret": 2
+          },
+          {
+            "string": 4,
+            "fret": 2
+          },
+          {
+            "string": 3,
+            "fret": 0
+          },
+          {
+            "string": 2,
+            "fret": 0
+          },
+          {
+            "string": 1,
+            "fret": 0
+          }
+        ],
+        "mutedStrings": [],
+        "fingerNumbers": {
+          "5": 2,
+          "4": 3
+        }
+      }
+    }
+  ],
+  "practiceEntries": [
+    {
+      "id": "cm-arpeggio-c-standard-practice",
+      "activityID": "lesson",
+      "exerciseID": "cm-arpeggio-c-standard-practice"
+    }
   ]
 }

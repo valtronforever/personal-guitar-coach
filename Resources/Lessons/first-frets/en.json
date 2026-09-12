@@ -1,31 +1,38 @@
 {
   "lessonID": "first-frets",
-  "lessonVersion": 1,
+  "lessonVersion": 2,
   "locale": "en",
   "title": "Your first frets",
-  "summary": "Move by one fret on the low E string, then return.",
-  "goal": "Play E2–F2–F♯2–G2 and return on one string with a fresh attack on every beat.",
-  "body": "Before starting: complete the open-string lesson and tune all six strings to Standard, A4 = 440 Hz.\n\nA fret raises a note by one semitone. On string 6, frets 0, 1, 2, 3 give E2, F2, F♯2, G2. The ♯ sign means sharp. A chromatic sequence moves one semitone at a time.\n\nPlace a fingertip just behind the required metal fret, toward the headstock, and use only enough pressure for a clear note. Suggested fingers are index for fret 1, middle for fret 2 and ring for fret 3. These are suggestions, not fingers detected by the app. Let the previous note stop before the next attack.\n\nStart at 60 BPM, one note per click. Use 40–50 BPM if moving between frets feels rushed. After several comfortable repeats at the same tempo, try 70 BPM and treat it as a new practice condition. Open the result to inspect pitch or missed attacks and prepare its suggested fragment.",
+  "summary": "Move by semitones on the lowest string.",
+  "goal": "Play frets 0–1–2–3, then 3–2–1–0 with a fresh pluck on every beat.",
+  "body": "First complete the open-string lesson. A fret raises a note by one semitone. Put your fingertip just behind the metal fret, using only enough pressure for a clear note. Suggested fingers for frets 1/2/3 are index/middle/ring. Start at 60 BPM; 40–50 gives more time. Try 70 only after comfortable repeats.",
   "steps": {
     "open-start": {
-      "title": "1. Start with open E2",
-      "body": "Pluck string 6 without pressing a fret. The 0 in tablature means open."
+      "title": "1. Start open",
+      "body": "Pluck string 6 without fretting: {{positions}}."
     },
     "first-fret": {
-      "title": "2. Find F2 at fret 1",
-      "body": "Press string 6 just behind fret 1 and pluck. E2 to F2 is already one semitone; there is no extra fret between them."
+      "title": "2. Find fret 1",
+      "body": "Move one semitone above the open note: {{positions}}."
     },
     "climb": {
-      "title": "3. Climb to F♯2 and G2",
-      "body": "Play frets 1, 2, 3 on beats 2, 3, 4. Keep one fresh pluck for each written note."
+      "title": "3. Climb in semitones",
+      "body": "Play the remaining beats of bar 1: {{positions}}."
     },
     "return": {
       "title": "4. Return to the open string",
-      "body": "In bar 2, play frets 3, 2, 1, 0. Pluck fret 3 again on beat 1; it is a new attack, even though the previous bar ended on the same pitch."
+      "body": "Bar 2 begins with a new attack on fret 3, then descends: {{positions}}."
     },
     "two-bars": {
       "title": "5. Join both bars",
-      "body": "Count four beats twice: 0–1–2–3, then 3–2–1–0. Choose Practice and confirm the physical tuning before starting."
+      "body": "Count four beats twice. Pluck every note, including the repeated note across the barline. {{positions}}."
+    }
+  },
+  "historicalTitle": "Your first frets",
+  "activities": {
+    "lesson": {
+      "title": "{{first}} to {{highest}}",
+      "body": "Move by semitones on string 6 in your selected tuning.\n\nSequence: {{sequence}}."
     }
   }
 }

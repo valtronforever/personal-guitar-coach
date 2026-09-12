@@ -1,31 +1,38 @@
 {
   "lessonID": "c-major",
-  "lessonVersion": 1,
+  "lessonVersion": 2,
   "locale": "en",
-  "title": "C major across the strings",
-  "summary": "Play one octave from C3 to C4 and return to C3.",
-  "goal": "Play C–D–E–F–G–A–B–C with the written open-position fingering, then descend.",
-  "body": "Before starting: complete First frets and Steady pulse. Tune to Standard, A4 = 440 Hz.\n\nC major uses C, D, E, F, G, A, B. From one C to the next, its steps are tone, tone, semitone, tone, tone, tone, semitone. E–F and B–C are the semitone pairs. This exercise covers C3 to C4, so the two Cs are one octave apart.\n\nThe fingering stays near frets 0–3. Suggested fingers: index for fret 1, middle for fret 2, ring for fret 3; 0 is open. Follow the written string as well as the fret number. The same pitch can exist elsewhere, but the fretboard is showing the intended path. Audio cannot prove which string you used.\n\nStart at 60 BPM, one quarter note per click. Learn the first two bars ascending, then bars 3–4 descending. The top C4 is played once before descending to B3. After a comfortable full repeat, 70 BPM is a useful next tempo. Use the result to choose a smaller fragment when a transition needs more time.",
+  "title": "Major scale",
+  "summary": "Play a major scale up and down over one octave.",
+  "goal": "Learn the intervals of a major scale and connect notes across strings.",
+  "body": "First practice First frets and Steady pulse. The major-scale steps are tone, tone, semitone, tone, tone, tone, semitone. Play one quarter per click at 60 BPM. Learn bars 1–2 ascending and bars 3–4 descending; play the top once. Try 70 BPM after comfortable repeats.",
   "steps": {
     "root-c": {
-      "title": "1. Find the root C3",
-      "body": "String 5, fret 3 gives C3. This is the first and last sounding note of the exercise."
+      "title": "1. Find the root",
+      "body": "The first and last sounding note: {{positions}}."
     },
     "lower-half": {
-      "title": "2. Play C3, D3, E3, F3",
-      "body": "Bar 1: string 5 fret 3; string 4 frets 0, 2, 3. Count one note on each beat."
+      "title": "2. Play the lower half",
+      "body": "Bar 1, one note per beat: {{positions}}."
     },
     "upper-half": {
-      "title": "3. Play G3, A3, B3, C4",
-      "body": "Bar 2: string 3 frets 0, 2; string 2 frets 0, 1. The last note is C4."
+      "title": "3. Play the upper half",
+      "body": "Bar 2 reaches the octave: {{positions}}."
     },
     "descending": {
-      "title": "4. Descend to C3",
-      "body": "Bars 3–4: B3, A3, G3, F3, E3, D3, C3. Reverse the same positions; let only the current note sound."
+      "title": "4. Descend to the root",
+      "body": "Bars 3–4 reverse the path without repeating the top note: {{positions}}."
     },
     "finish": {
       "title": "5. Finish with a rest",
-      "body": "The final beat of bar 4 is a rest. Stop the last C3 and keep counting. Prepare a new practice attempt to repeat the same four bars."
+      "body": "Stop the last note on the final beat of bar 4 and keep counting."
+    }
+  },
+  "historicalTitle": "{{root}} major across the strings",
+  "activities": {
+    "lesson": {
+      "title": "{{root}} major",
+      "body": "Play one octave from {{first}} to {{highest}} and return.\n\nSequence: {{sequence}}."
     }
   }
 }

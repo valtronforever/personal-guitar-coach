@@ -60,7 +60,7 @@ struct StaffTests {
     }
     @Test func unsupportedMusicFailsExplicitlyInsteadOfInventingNotation() throws {
         let partial = try TimelineModel(exercise: Exercise(id:"partial",events:[note("one",0,midi:40)]),instrument:tuning)
-        #expect(throws: StaffLimitation.partialBar) { try StaffModel(timeline:partial,key:.neutral).symbols(in:0) }
+        #expect(try StaffModel(timeline:partial,key:.neutral).symbols(in:0).map(\.id) == ["one"])
         let across = try TimelineModel(exercise: Exercise(id:"tie",events:[note("long",0,midi:40,duration:4320)]),instrument:tuning)
         #expect(throws: StaffLimitation.crossBar) { try StaffModel(timeline:across,key:.neutral).symbols(in:0) }
         let dotted = try TimelineModel(exercise: Exercise(id:"dotted",events:[note("dot",0,midi:40,duration:1440)]),instrument:tuning)
@@ -74,10 +74,13 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 12)
+        #expect(library.lessons.count == 13)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
-            for exercise in lesson.manifest.exercises where exercise.assessmentMode == .monophonic {
+            for entry in lesson.manifest.practiceEntries {
+                let step = try #require(lesson.manifest.steps.first { $0.activityID == entry.activityID && $0.exerciseID == entry.exerciseID })
+                selection.selectStep(step.id)
+                let exercise = try #require(selection.exercise)
                 let timeline = try TimelineModel(exercise:exercise,instrument:.dropD)
                 let staff = StaffModel(timeline:timeline,key:.neutral)
                 let symbols = try (0..<timeline.barCount).flatMap { try staff.symbols(in:$0) }

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "a-minor-pentatonic",
-  "version": 1,
+  "version": 2,
   "difficulty": "beginner",
   "topic": "pentatonic",
   "steps": [
@@ -14,7 +14,8 @@
         "up-2",
         "up-3",
         "up-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "middle-strings",
@@ -25,7 +26,8 @@
         "up-6",
         "up-7",
         "up-8"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "high-strings",
@@ -36,7 +38,8 @@
         "up-10",
         "up-11",
         "up-12"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "return-high",
@@ -47,7 +50,8 @@
         "down-2",
         "down-3",
         "down-4"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "return-home",
@@ -62,13 +66,14 @@
         "down-10",
         "down-11",
         "finish-rest"
-      ]
+      ],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
     {
       "id": "a-minor-pentatonic-practice",
-      "version": 1,
+      "version": 2,
       "ppq": 960,
       "timeSignature": "4/4",
       "defaultBPM": 50,
@@ -407,12 +412,44 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "a-minor-pentatonic-practice"
-  ],
   "adaptation": {
-    "policy": "transposeIntervals",
-    "lessonVersion": 2,
-    "exerciseVersion": 2
-  }
+    "policy": "transposeIntervals"
+  },
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 5,
+        "allowedStarts": {
+          "kind": "auto"
+        },
+        "allowOriginal": true
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material",
+      "positionSelection": {
+        "mode": "learner",
+        "default": {
+          "kind": "original"
+        }
+      }
+    }
+  ],
+  "fingerings": [],
+  "practiceEntries": [
+    {
+      "id": "a-minor-pentatonic-practice",
+      "activityID": "lesson",
+      "exerciseID": "a-minor-pentatonic-practice"
+    }
+  ]
 }

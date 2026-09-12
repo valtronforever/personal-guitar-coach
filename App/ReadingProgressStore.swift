@@ -28,19 +28,19 @@ final class ReadingProgressStore {
         } catch { loadFailed = true }
     }
 
-    func visit(lessonID: String, version: Int, stepID: String?, position: LessonPosition? = nil) {
+    func visit(lessonID: String, version: Int, stepID: String?, activityChoices: [String: PositionChoice] = [:], activityConfirmations: [String: PositionSelfConfirmation] = [:]) {
         guard canEdit else { return }
         var next = progress
         next.lastLessonID = lessonID
         next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID,
-                                              readVersion: progress.lessons[lessonID]?.readVersion, position: position)
+                                              readVersion: progress.lessons[lessonID]?.readVersion, activityChoices: activityChoices, activityConfirmations: activityConfirmations)
         update(next)
     }
 
-    func setRead(_ read: Bool, lessonID: String, version: Int, stepID: String?, position: LessonPosition? = nil) {
+    func setRead(_ read: Bool, lessonID: String, version: Int, stepID: String?, activityChoices: [String: PositionChoice] = [:], activityConfirmations: [String: PositionSelfConfirmation] = [:]) {
         guard canEdit else { return }
         var next = progress
-        next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID, readVersion: read ? version : nil, position: position)
+        next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID, readVersion: read ? version : nil, activityChoices: activityChoices, activityConfirmations: activityConfirmations)
         update(next)
     }
 

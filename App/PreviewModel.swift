@@ -5,6 +5,7 @@ import Audio
 @MainActor @Observable
 final class PreviewModel {
     private var generation = 0
+    private var contextID: UUID?
     var bpm = 60.0
     var countInBars = 1
     var loops = false
@@ -29,8 +30,9 @@ final class PreviewModel {
         return lower..<max(lower, upper)
     }
 
-    func configure(_ exercise: Exercise?, audio: AudioSessionStore) async {
-        guard self.exercise != exercise else { return }
+    func configure(_ exercise: Exercise?, contextID: UUID? = nil, audio: AudioSessionStore) async {
+        guard self.exercise != exercise || self.contextID != contextID else { return }
+        self.contextID = contextID
         self.exercise = exercise; bpm = exercise?.defaultBPM ?? 60; firstBar = 1; lastBar = barCount
         errorKey = nil
         await stop(audio: audio)

@@ -1,31 +1,38 @@
 {
   "lessonID": "em-arpeggio",
-  "lessonVersion": 1,
+  "lessonVersion": 2,
   "locale": "en",
-  "title": "From an Em shape to separate notes",
-  "summary": "See the E minor chord, then practice its notes one at a time.",
-  "goal": "Learn the open Em shape and play its ascending and descending arpeggio as separate clean notes.",
-  "body": "Before starting: complete the open-string and first-fret lessons, and practice steady quarter notes. Tune to Standard, A4 = 440 Hz.\n\nEm means E minor. Its pitch names are E, G, B. The open shape, strings 6 → 1, uses frets 0–2–2–0–0–0 and sounds E2, B2, E3, G3, B3, E4. Suggested fingers are middle finger on string 5 fret 2 and ring finger on string 4 fret 2. The remaining strings are open.\n\nA chord can sound several notes together; an arpeggio plays its notes in sequence. Select the shape to see all its positions or listen to the example. The chord example is for listening and visualization only. This practice does not grade a simultaneous chord.\n\nFor the scored arpeggio, stop each previous string before plucking the next one. You may keep the fretting shape while gently damping with your plucking hand, but avoid overlapping notes. Start at 60 BPM; 40–50 BPM gives more time for damping and string changes. After a comfortable repeat, try 70 BPM. If the result reports uncertain signal, check for overlapping strings and input quality before drawing conclusions about the notes.",
+  "title": "Minor chord and arpeggio",
+  "summary": "Connect a minor chord shape with separate ascending and descending notes.",
+  "goal": "Connect a minor chord shape with an ascending and descending arpeggio.",
+  "body": "First complete open strings, first frets and steady quarters. A minor chord contains root, minor third and fifth. The shown shape is calculated for the selected tuning. A changed shape may require a different hand position; no finger numbers are inferred from audio. The chord example is for display/listening only; simultaneous chords are not graded. For practice, damp the previous note before every new pluck. Start at 60 BPM or 40–50 for slower changes; try 70 after comfortable repeats.",
   "steps": {
     "shape": {
-      "title": "1. Explore the Em shape",
-      "body": "Only strings 5 and 4 are fretted, both at fret 2. All six strings belong to the shape. The finger numbers are a suggested fingering; they are not measured from audio."
+      "title": "1. Explore the chord shape",
+      "body": "These positions sound together in the example only: {{positions}}. Check comfort before playing; the app cannot measure your hand position."
     },
     "low-notes": {
-      "title": "2. Play the low four notes",
-      "body": "Bar 1: strings 6, 5, 4, 3 give E2, B2, E3, G3. Pluck one note per click and stop the previous one."
+      "title": "2. Play the first four notes",
+      "body": "Bar 1, one separate note per click: {{positions}}."
     },
     "top-and-turn": {
-      "title": "3. Reach E4 and turn back",
-      "body": "Bar 2: strings 2, 1, 2, 3 give B3, E4, B3, G3. The top E4 is played once."
+      "title": "3. Reach the top and turn",
+      "body": "Bar 2 plays the highest note once and starts descending: {{positions}}."
     },
     "return-and-rest": {
-      "title": "4. Return to E2 and rest",
-      "body": "Bar 3: strings 4, 5, 6 give E3, B2, E2. Beat 4 is a rest. Stop the final note and keep counting."
+      "title": "4. Return and rest",
+      "body": "Bar 3 returns to the low note, then rests on beat 4: {{positions}}."
     },
     "whole-arpeggio": {
       "title": "5. Practice the complete arpeggio",
-      "body": "Choose Practice for these three bars. There are eleven separate expected attacks, then one rest. The result evaluates audible note pitch and attack timing when supported, not whether every finger holds the Em shape."
+      "body": "Eleven separate attacks, followed by one rest. Avoid overlapping strings: {{positions}}."
+    }
+  },
+  "historicalTitle": "From the {{root}}m shape to separate notes",
+  "activities": {
+    "lesson": {
+      "title": "{{root}} minor",
+      "body": "Explore {{root}} minor, then play each note separately.\n\nSequence: {{sequence}}."
     }
   }
 }

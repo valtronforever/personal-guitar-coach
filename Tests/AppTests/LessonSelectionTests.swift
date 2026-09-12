@@ -19,17 +19,17 @@ import Persistence
         let follows = try Exercise(id: "follows", events: events)
         let shape = try Fingering(positions: [FretPosition(string: 1, fret: 0), FretPosition(string: 4, fret: 2)], mutedStrings: [6], fingerNumbers: [4: 2])
         let display = try Exercise(id: "display", events: [MusicalEvent(id: "chord", startTick: 0, durationTicks: 960, kind: .note, positions: shape.positions)], assessmentMode: .displayOnly)
-        let steps = [LessonStep(id: "intro", kind: .none),
-            LessonStep(id: "single", kind: .events, exerciseID: "fixed", eventIDs: ["low"]),
-            LessonStep(id: "group", kind: .events, exerciseID: "fixed", eventIDs: ["low", "high"]),
-            LessonStep(id: "rest-step", kind: .events, exerciseID: "fixed", eventIDs: ["rest"]),
-            LessonStep(id: "alternative", kind: .events, exerciseID: "follows", eventIDs: ["low"]),
-            LessonStep(id: "shape", kind: .fingering, exerciseID: "display", fingering: shape)]
+        let steps = [LessonStep(id: "intro", kind: .none, activityID: "fixed"),
+            LessonStep(id: "single", kind: .events, exerciseID: "fixed", eventIDs: ["low"], activityID: "fixed"),
+            LessonStep(id: "group", kind: .events, exerciseID: "fixed", eventIDs: ["low", "high"], activityID: "fixed"),
+            LessonStep(id: "rest-step", kind: .events, exerciseID: "fixed", eventIDs: ["rest"], activityID: "fixed"),
+            LessonStep(id: "alternative", kind: .events, exerciseID: "follows", eventIDs: ["low"], activityID: "follows"),
+            LessonStep(id: "shape", kind: .fingering, exerciseID: "display", activityID: "shape", fingeringID: "shape")]
         try write(LessonCatalogManifest(lessons: ["test-lesson"]), root.appendingPathComponent("catalog.json"))
-        try write(LessonManifest(id: "test-lesson", steps: steps, exercises: [fixed, follows, display], practiceExerciseIDs: ["fixed", "follows"]), directory.appendingPathComponent("lesson.json"))
+        try write(LessonManifest(id: "test-lesson", steps: steps, exercises: [fixed, follows, display], materials: [LessonMaterial(id: "fixed", source: LessonMaterialSource(kind: .exercise, exerciseID: "fixed")), LessonMaterial(id: "follows", source: LessonMaterialSource(kind: .exercise, exerciseID: "follows")), LessonMaterial(id: "shape", source: LessonMaterialSource(kind: .fingering, fingeringID: "shape"))], activities: ["fixed", "follows", "shape"].map { LessonActivity(id: $0, materialID: $0) }, practiceEntries: ["fixed", "follows"].map { LessonPracticeEntry(id: $0, activityID: $0, exerciseID: $0) }, fingerings: [LessonSourceFingering(id: "shape", exerciseID: "display", fingering: shape)]), directory.appendingPathComponent("lesson.json"))
         for locale in ["en", "uk"] {
             try write(LessonText(lessonID: "test-lesson", locale: locale, title: locale == "uk" ? "Відкриті струни" : "Open strings", summary: "Summary", goal: "Goal", body: "Body",
-                steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Text")) })), directory.appendingPathComponent("\(locale).json"))
+                steps: Dictionary(uniqueKeysWithValues: steps.map { ($0.id, LessonStepText(title: $0.id, body: "Text")) }), activities: Dictionary(uniqueKeysWithValues: ["fixed", "follows", "shape"].map { ($0, LessonActivityText(title: "Example", body: "Example")) })), directory.appendingPathComponent("\(locale).json"))
         }
         let report = LessonCatalogLoader().load(directory: root)
         #expect(report.issues.isEmpty)
@@ -45,6 +45,8 @@ import Persistence
         state.selectEvent("low", exerciseID: "fixed", extending: false)
         #expect(state.stepID == "single")
         state.selectEvent("low", exerciseID: "follows", extending: false)
+        #expect(state.stepID == "single") // Tab clicks cannot cross activity context.
+        state.selectStep("alternative")
         #expect(state.stepID == "alternative" && state.exerciseID == "follows")
         state.selectEvent("unknown", exerciseID: "fixed", extending: false)
         #expect(state.stepID == "alternative" && state.exerciseID == "follows")
@@ -63,8 +65,8 @@ import Persistence
         state.selectStep("shape")
         let board = state.fretboard(instrument: InstrumentProfile())
         #expect(board.expected.count == 2 && board.mutedStrings == [6] && board.fingers == [4: 2])
-        state.selectEvent("chord", exerciseID: "display", extending: false)
-        #expect(state.stepID == nil && state.selectedIDs == ["chord"])
+        state.selectEvent("shape", exerciseID: "display", extending: false)
+        #expect(state.stepID == "shape" && state.selectedIDs == ["shape"])
         #expect(state.fretboard(instrument: InstrumentProfile()).mutedStrings.isEmpty)
         state.selectStep("intro")
         #expect(state.exercise == nil && state.selectedIDs.isEmpty && state.fretboard(instrument: InstrumentProfile()).expected.isEmpty)
@@ -92,15 +94,15 @@ import Persistence
 
     @Test func practiceHandoffPreservesExerciseAndTuningAndRejectsDisplayOnly() throws {
         let lesson = try lesson()
-        let fixed = try #require(PracticeRequest(lesson: lesson, exerciseID: "fixed"))
-        let follows = try #require(PracticeRequest(lesson: lesson, exerciseID: "follows"))
+        let fixed = try #require(PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: "fixed", instrument: InstrumentProfile()), entryID: "fixed"))
+        let follows = try #require(PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: "follows", instrument: InstrumentProfile(tuning: .dropD)), entryID: "follows"))
         #expect(fixed.exercise == lesson.manifest.exercises[0])
         #expect(fixed.exercise.requiredTuning == .standard)
-        #expect(follows.exercise.tuningPolicy == .followsInstrument && follows.exercise.requiredTuning == nil)
-        #expect(PracticeRequest(lesson: lesson, exerciseID: "display") == nil)
+        #expect(follows.exercise.tuningPolicy == .fixedTuning && follows.exercise.requiredTuning == .dropD)
+        #expect(PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: "shape", instrument: InstrumentProfile()), entryID: "display") == nil)
         let navigation = AppNavigation(); navigation.openPractice(fixed)
         #expect(navigation.destination == .practice && navigation.practiceRequest == fixed)
-        let state = LessonSelection(lesson: lesson)
+        let state = LessonSelection(lesson: lesson, tuning: .dropD)
         state.selectStep("single")
         #expect(state.fretboard(instrument: InstrumentProfile(tuning: .dropD)).tuning == .standard)
         state.selectStep("alternative")

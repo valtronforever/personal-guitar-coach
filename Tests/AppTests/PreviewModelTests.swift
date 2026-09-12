@@ -77,8 +77,8 @@ private struct PreviewPermission: AudioPermissionProviding {
         defer { try? FileManager.default.removeItem(at: directory) }
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let source = try #require(LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons.first { $0.id == "c-major" })
-        let original = try source.adapted(to: .cStandard).manifest.exercises[0]
-        let moved = try source.adapted(to: .cStandard, position: LessonPosition(firstFret: 7)).manifest.exercises[0]
+        let original = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .cStandard)).exercises[0]
+        let moved = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: .cStandard), choice: .region(firstFret: 7)).exercises[0]
         let runtime = PreviewRuntime(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PreviewPermission())
         let audio = AudioSessionStore(repository: LocalRepository(root: directory), coordinator: coordinator)
         await audio.load(); await audio.select(outputUID: "output", outputChannel: 2)
@@ -94,7 +94,10 @@ private struct PreviewPermission: AudioPermissionProviding {
         #expect(try next.exercise.resolvedEvents(instrument: next.tuning).flatMap(\.pitches) == old.exercise.resolvedEvents(instrument: old.tuning).flatMap(\.pitches))
         await runtime.emit(tick: 0); await coordinator.poll(); await audio.publish(); model.update(audio.state)
         #expect(model.activeEvent()?.positions == moved.events[0].positions)
-        await model.stop(audio: audio)
+        // Reusing an identical exercise in another activity still ends the previous transport.
+        await model.configure(moved, contextID: UUID(), audio: audio)
+        #expect(model.requestID == nil && model.cursorTick == nil && model.resumeTick == nil)
+        #expect(await runtime.request == nil)
     }
 
 }

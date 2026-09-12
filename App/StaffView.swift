@@ -33,6 +33,7 @@ struct StaffView: View {
                 Button("tab.next") { bar = min(timeline.barCount - 1, currentBar + 1) }.disabled(currentBar + 1 >= timeline.barCount)
                 Spacer()
             }
+            if timeline.exercise.durationTicks % timeline.ticksPerBar != 0 { Text("staff.fragment").font(.caption).foregroundStyle(.secondary) }
             if let symbols {
                 ScrollViewReader { proxy in
                     ScrollView(.horizontal) {

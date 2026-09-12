@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "lesson-template",
   "version": 1,
   "difficulty": "beginner",
@@ -12,7 +12,8 @@
       "eventIDs": [
         "start",
         "step-up"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "play-bar",
@@ -23,12 +24,14 @@
         "step-up",
         "return",
         "rest"
-      ]
+      ],
+      "activityID": "lesson"
     },
     {
       "id": "reflect",
       "kind": "none",
-      "eventIDs": []
+      "eventIDs": [],
+      "activityID": "lesson"
     }
   ],
   "exercises": [
@@ -133,12 +136,29 @@
       ]
     }
   ],
-  "practiceExerciseIDs": [
-    "lesson-template-practice"
-  ],
   "adaptation": {
-    "policy": "fretPattern",
-    "lessonVersion": 2,
-    "exerciseVersion": 2
-  }
+    "policy": "fretPattern"
+  },
+  "materials": [
+    {
+      "id": "lesson-material",
+      "source": {
+        "kind": "lesson"
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "lesson",
+      "materialID": "lesson-material"
+    }
+  ],
+  "practiceEntries": [
+    {
+      "id": "lesson-template-practice",
+      "activityID": "lesson",
+      "exerciseID": "lesson-template-practice"
+    }
+  ],
+  "fingerings": []
 }

@@ -9,15 +9,21 @@
   "steps": {
     "hear-notes": {
       "title": "1. Hear the two notes",
-      "body": "Play the first two notes separately: E2 (6/0); F♯2 (6/2)."
+      "body": "Play the first two notes separately: {{positions}}."
     },
     "play-bar": {
       "title": "2. Play the bar",
-      "body": "Play three attacks, then rest for one beat: E2 (6/0); F♯2 (6/2); E2 (6/0)."
+      "body": "Play three attacks, then rest for one beat: {{positions}}."
     },
     "reflect": {
       "title": "3. Listen before repeating",
       "body": "Were the attacks separate and the rest quiet? Repeat at the same tempo before speeding up."
+    }
+  },
+  "activities": {
+    "lesson": {
+      "title": "{{first}} to {{highest}}",
+      "body": "Sequence: {{sequence}}."
     }
   }
 }

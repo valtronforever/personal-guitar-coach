@@ -89,7 +89,11 @@ struct ResultDetailView: View {
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
                 Text("practice.stringOrder").font(.caption)
                 Text("result.fretCount \(config.instrument.fretCount)")
-                if let position = config.lesson?.position { Text("lesson.position.from \(position.firstFret)") }
+                if let activity = config.lesson?.activity {
+                    Text(verbatim: activity.activityTitles[settings.language.resolvedCode()] ?? activity.activityID)
+                    PositionChoiceLabel(choice: activity.choice)
+                    if activity.selfConfirmation != nil { Text("lesson.activity.selfReported") }
+                } else if let position = config.lesson?.position { Text("lesson.position.from \(position.firstFret)") }
                 Text("result.reference \(number(tuning.referenceA4))")
                 Text(LocalizedStringKey(config.instrument.source.titleKey))
                 DisclosureGroup("result.versions") {

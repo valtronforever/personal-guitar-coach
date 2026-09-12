@@ -13,39 +13,39 @@ import Persistence
     }
     @Test func oneCatalogAndLegacyBookmarksReachTheSameAdaptiveCourse() async throws {
         let library = await library()
-        #expect(library.catalogLessons.count == 6 && library.lessons.count == 12)
+        #expect(library.catalogLessons.count == 7 && library.lessons.count == 13)
         #expect(library.sourceLesson(id: "ab-major-c-standard")?.id == "c-major")
         let source = try #require(library.sourceLesson(id: "c-major"))
         let selection = LessonSelection(lesson: source, tuning: .standard)
         selection.selectStep("lower-half")
         selection.selectEvent("up-2", exerciseID: "c-major-practice", extending: true)
         let ids = selection.selectedIDs, step = selection.stepID
-        selection.adapt(to: .cStandard)
-        #expect(!selection.adaptationFailed && selection.selectedIDs == ids && selection.stepID == step)
-        #expect(selection.lesson.english.title == "Major scale" && selection.lesson.english.variant?.title == "A♭ major")
+        selection.updateInstrument(InstrumentProfile(tuning: .cStandard))
+        #expect(selection.failure == nil && selection.selectedIDs == ids && selection.stepID == step)
+        #expect(selection.snapshot!.english.title == "Major scale" && selection.snapshot!.english.activities["lesson"]?.title == "A♭ major")
         let board = selection.fretboard(instrument: InstrumentProfile(tuning: .cStandard))
         #expect(board.tuning == .cStandard)
-        selection.adapt(to: .cStandard, frets: .nineteen)
+        selection.updateInstrument(InstrumentProfile(tuning: .cStandard, frets: .nineteen))
         #expect(selection.stepID == step && selection.selectedIDs == ids)
         #expect(selection.fretboard(instrument: InstrumentProfile(tuning: .cStandard, frets: .nineteen)).maximumFret == 19)
         let exercise = try #require(selection.exercise), timeline = try TimelineModel(exercise: exercise, instrument: .standard)
         #expect(try StaffModel(timeline: timeline, key: .neutral).symbols(in: 0).compactMap(\.pitch).map(\.name) == ["A♭3", "B♭3", "C4", "D♭4"])
-        let bookmark = LessonBookmark(lessonVersion: selection.lesson.manifest.version, stepID: step, readVersion: nil)
+        let bookmark = LessonBookmark(lessonVersion: selection.sourceLesson.manifest.version, stepID: step, readVersion: nil)
         let restored = LessonSelection(lesson: source, bookmark: bookmark, tuning: .dropD)
-        #expect(restored.stepID == step && restored.lesson.english.title == "Major scale" && restored.lesson.english.variant?.title == "C major")
+        #expect(restored.stepID == step && restored.snapshot!.english.title == "Major scale" && restored.snapshot!.english.activities["lesson"]?.title == "C major")
     }
     @Test func editorialTitlesKeepArchivedNamesAndDoNotResetTheLessonSelection() async throws {
         let library = await library()
         let source = try #require(library.sourceLesson(id: "c-major"))
-        let version = try #require(source.manifest.adaptation?.lessonVersion)
+        let version = source.manifest.version
         #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .en) == "Major scale")
-        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .en, historical: true) == "A♭ major across the strings")
-        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .uk, historical: true) == "Мажорна гама A♭ через кілька струн")
+        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .en, historical: true) == "Major scale")
+        #expect(ResultPresentation.lessonTitle(id: source.id, version: version, tuning: .cStandard, lessons: library.lessons, language: .uk, historical: true) == "Мажорна гама")
         let selection = LessonSelection(lesson: source, bookmark: LessonBookmark(lessonVersion: version, stepID: "upper-half", readVersion: version), tuning: .cStandard)
-        #expect(selection.stepID == "upper-half" && selection.lesson.manifest.version == version)
-        selection.adapt(to: .dropD, frets: .nineteen)
-        #expect(selection.stepID == "upper-half" && selection.lesson.english.title == "Major scale")
-        #expect(selection.lesson.english.variant?.title == "C major")
+        #expect(selection.stepID == "upper-half" && selection.sourceLesson.manifest.version == version)
+        selection.updateInstrument(InstrumentProfile(tuning: .dropD, frets: .nineteen))
+        #expect(selection.stepID == "upper-half" && selection.snapshot!.english.title == "Major scale")
+        #expect(selection.snapshot!.english.activities["lesson"]?.title == "C major")
     }
     @Test func everyPresetLessonCanBeSavedAndRetriedOrExplicitlyRejectUnsupportedLowNotes() async throws {
         let library = await library()
@@ -53,10 +53,10 @@ import Persistence
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), store = AssessmentStore(repository: repository)
         for tuning in TuningProfile.presets {
-            for source in library.catalogLessons {
-                let lesson = try source.adapted(to: tuning)
-                let exerciseID = try #require(lesson.manifest.practiceExerciseIDs.first)
-                let request = try #require(PracticeRequest(lesson: lesson, exerciseID: exerciseID, adaptsWithInstrument: true))
+            for source in library.catalogLessons where source.id != "same-notes-new-position" {
+                let lesson = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: tuning))
+                let exerciseID = try #require(source.manifest.practiceEntries.first?.id)
+                let request = try #require(PracticeRequest(lesson: source, snapshot: lesson, entryID: exerciseID))
                 if try request.exercise.resolvedEvents(instrument: tuning).flatMap(\.pitches).contains(where: { $0.midi < 36 }) {
                     #expect(throws: MusicError.unsupportedPitch) { try request.exercise.validateForPractice(instrument: tuning, bpm: request.exercise.defaultBPM) }
                     continue
@@ -64,7 +64,7 @@ import Persistence
                 let endpoint = try CalibrationEndpoint(uid: "adaptive-fixture", channel: 1, sampleRate: 48000, bufferFrames: 512)
                 let config = try PracticeConfiguration(exercise: request.exercise, instrument: InstrumentProfile(tuning: tuning), bpm: request.exercise.defaultBPM,
                     route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "adaptive-test-1"),
-                    lesson: PracticeLessonReference(id: lesson.id, version: lesson.manifest.version))
+                    lesson: PracticeLessonReference(id: source.id, version: source.manifest.version, activity: request.activityReference))
                 let evidence = try PracticeEvidence(id: UUID(), configuration: config, startedAt: Date(timeIntervalSince1970: 1),
                     finishedAt: Date(timeIntervalSince1970: 60), phase: .completed, reason: nil, signalConfirmed: true,
                     renderEpochSeconds: 100, maximumClockDriftSeconds: 0, attacks: [], clipping: [], analysisVersion: "synthetic-events")
@@ -80,7 +80,7 @@ import Persistence
                 navigation.refreshPractice(tuning: .dropD, lessons: library.lessons)
                 #expect(navigation.practiceRequest == retry && retry.archivedTuning == tuning && !retry.adaptsWithInstrument)
                 for language in [LessonLanguage.en, .uk] {
-                    #expect(ResultPresentation.lessonTitle(id: lesson.id, version: lesson.manifest.version, tuning: tuning,
+                    #expect(ResultPresentation.lessonTitle(id: source.id, version: source.manifest.version, tuning: tuning,
                         lessons: library.lessons, language: language) == lesson.text(for: language).title)
                 }
             }
@@ -92,8 +92,8 @@ import Persistence
     @Test func freshPracticeRetunesAndUnplayableTuningRecoversWithoutChangingArchivedRequests() async throws {
         let library = await library(), navigation = AppNavigation()
         let source = try #require(library.sourceLesson(id: "em-arpeggio"))
-        let lesson = try source.adapted(to: .standard)
-        navigation.openPractice(try #require(PracticeRequest(lesson: lesson, exerciseID: "em-arpeggio-practice", adaptsWithInstrument: true)))
+        let lesson = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile())
+        navigation.openPractice(try #require(PracticeRequest(lesson: source, snapshot: lesson, entryID: "em-arpeggio-practice")))
         navigation.refreshPractice(instrument: InstrumentProfile(frets: .nineteen), lessons: library.lessons)
         #expect(navigation.practiceRequest?.frets == .nineteen)
         let old = navigation.practiceRequest
@@ -106,10 +106,10 @@ import Persistence
         navigation.refreshPractice(tuning: .cStandard, lessons: library.lessons)
         #expect(!navigation.practiceAdaptationFailed && navigation.practiceRequest?.exercise.requiredTuning == .cStandard)
         let selection = LessonSelection(lesson: source, tuning: .standard); selection.selectStep("top-and-turn")
-        selection.adapt(to: impossible)
-        #expect(selection.adaptationFailed && selection.exercise == nil)
+        selection.updateInstrument(InstrumentProfile(tuning: impossible))
+        #expect(selection.failure != nil && selection.exercise == nil)
         #expect(selection.fretboard(instrument: InstrumentProfile(tuning: impossible)).expected.isEmpty)
-        selection.adapt(to: .cStandard)
-        #expect(!selection.adaptationFailed && selection.stepID == "top-and-turn")
+        selection.updateInstrument(InstrumentProfile(tuning: .cStandard))
+        #expect(selection.failure == nil && selection.stepID == "top-and-turn")
     }
 }

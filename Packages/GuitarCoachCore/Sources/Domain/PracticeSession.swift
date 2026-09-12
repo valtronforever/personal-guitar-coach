@@ -8,11 +8,14 @@ public struct PracticeLessonReference: Codable, Equatable, Sendable {
     public let id: String
     public let version: Int
     public let position: LessonPosition?
-    public init(id: String, version: Int, position: LessonPosition? = nil) throws {
+    public let activity: PracticeActivityReference?
+    public init(id: String, version: Int, position: LessonPosition? = nil, activity: PracticeActivityReference? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, id.utf8.count <= 256, version > 0 else {
             throw PracticeError.invalidEvidence
         }
-        self.id = id; self.version = version; self.position = position
+        guard position == nil || activity == nil else { throw PracticeError.invalidEvidence }
+        try activity?.validate()
+        self.id = id; self.version = version; self.position = position; self.activity = activity
     }
 }
 
@@ -46,6 +49,10 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
                  capabilityVersion: String, validateCurrentCapability: Bool) throws {
         guard !capabilityVersion.isEmpty, capabilityVersion.utf8.count <= 256 else { throw PracticeError.invalidEvidence }
         try exercise.validatePracticeSnapshot(instrument: instrument.tuning, bpm: bpm)
+        try lesson?.activity?.validate(exercise: exercise)
+        if let confirmation = lesson?.activity?.selfConfirmation {
+            guard confirmation.frets == instrument.frets, confirmation.tuning.hasSamePitches(as: exercise.requiredTuning ?? instrument.tuning) else { throw PracticeError.invalidEvidence }
+        }
         let range = range ?? 0..<exercise.durationTicks
         let bar = exercise.timeSignature.ticksPerBar
         guard range.lowerBound >= 0, range.lowerBound < range.upperBound, range.upperBound <= exercise.durationTicks,
@@ -144,11 +151,11 @@ public struct PracticeStateMachine: Sendable {
 }
 
 extension PracticeLessonReference {
-    private enum CodingKeys: String, CodingKey { case id, version, position }
+    private enum CodingKeys: String, CodingKey { case id, version, position, activity }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: v.decode(String.self, forKey: .id),
-            version: v.decode(Int.self, forKey: .version), position: v.decodeIfPresent(LessonPosition.self, forKey: .position))
+            version: v.decode(Int.self, forKey: .version), position: v.decodeIfPresent(LessonPosition.self, forKey: .position), activity: v.decodeIfPresent(PracticeActivityReference.self, forKey: .activity))
     }
 }
 

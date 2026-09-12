@@ -10,10 +10,33 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def create(lesson_id: str, catalog_root: Path, policy: str) -> Path:
+def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None = None, starts: str = "auto") -> Path:
     # Leave nine characters for the globally unique exercise suffix '-practice'.
     if not re.fullmatch(r"[a-z][a-z0-9-]{0,54}", lesson_id):
         raise ValueError("Use 1–55 lowercase ASCII letters, digits or hyphens, starting with a letter")
+    position_policy = None
+    if window is not None:
+        if not 1 <= window <= 6:
+            raise ValueError("Position window must contain 1–6 frets")
+        allowed = {"kind": "auto"}
+        if starts != "auto":
+            if ":" in starts:
+                parts = [int(x) for x in starts.split(":")]
+                if len(parts) not in (2, 3):
+                    raise ValueError("Use min:max[:step] for a range")
+                low, high, step = *parts[:2], parts[2] if len(parts) == 3 else 1
+                if not 0 <= low <= high <= 24 or not 1 <= step <= 24:
+                    raise ValueError("Invalid fret range")
+                allowed = {"kind": "range", "minimum": low, "maximum": high, "step": step}
+            else:
+                values = [int(x) for x in starts.split(",")]
+                if not values or values != sorted(set(values)) or not all(0 <= x <= 24 for x in values):
+                    raise ValueError("Use sorted unique fret starts from 0 to 24")
+                allowed = {"kind": "explicit", "frets": values}
+        position_policy = {"enabled": True, "preserve": "soundingPitch", "windowFrets": window,
+                           "allowedStarts": allowed, "allowOriginal": True}
+    elif starts != "auto":
+        raise ValueError("--starts needs --positioning-window")
     catalog_root = catalog_root.resolve()
     catalog_path = catalog_root / "catalog.json"
     catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
@@ -46,11 +69,14 @@ def create(lesson_id: str, catalog_root: Path, policy: str) -> Path:
     created = False
     catalog_temp = None
     try:
-        for filename in ["lesson.json", "en.json", "uk.json", "adaptive.en.json", "adaptive.uk.json"]:
+        for filename in ["lesson.json", "en.json", "uk.json"]:
             source = ROOT / "docs/templates/lesson" / filename
             data = rename(json.loads(source.read_text(encoding="utf-8")))
             if source.name == "lesson.json":
                 data["adaptation"]["policy"] = policy
+                if position_policy:
+                    data["materials"][0]["positioning"] = position_policy
+                    data["activities"][0]["positionSelection"] = {"mode": "learner", "default": {"kind": "original"}}
             (staged / source.name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         destination.mkdir()  # Fails if another author created this ID in the meantime.
         created = True
@@ -77,9 +103,11 @@ def main():
     parser.add_argument("lesson_id", help="Stable ID, at most 55 characters")
     parser.add_argument("--catalog", type=Path, default=ROOT / "Resources/Lessons", help="Existing lesson catalog directory")
     parser.add_argument("--policy", choices=["fretPattern", "transposeIntervals"], default="fretPattern")
+    parser.add_argument("--positioning-window", type=int, help="Opt into positioning, width 1–6 frets")
+    parser.add_argument("--starts", default="auto", help="Allowed starts: auto, 3,7 or 3:12:1")
     args = parser.parse_args()
     try:
-        result = create(args.lesson_id, args.catalog, args.policy)
+        result = create(args.lesson_id, args.catalog, args.policy, args.positioning_window, args.starts)
     except (OSError, ValueError) as error:
         parser.exit(1, f"Cannot create lesson: {error}\n")
     print(f"Created draft: {result}\nEdit both languages and the musical exercise, then run ValidateLessonContent before building.")

@@ -40,7 +40,7 @@ struct StaffSymbol: Identifiable, Sendable {
     var hasStem: Bool { resolved.event.durationTicks != 3840 && pitch != nil }
 }
 struct StaffBeam: Equatable, Sendable { let ids: [String]; let flags: Int; let stemsUp: Bool }
-enum StaffLimitation: String, Error { case range, polyphony, duration, gaps, crossBar, partialBar }
+enum StaffLimitation: String, Error { case range, polyphony, duration, gaps, crossBar }
 
 struct StaffModel: Sendable {
     let timeline: TimelineModel
@@ -75,7 +75,7 @@ struct StaffModel: Sendable {
         let start = timeline.startTick(of: bar)
         let expectedEnd = start + min(timeline.ticksPerBar, timeline.exercise.durationTicks - start)
         guard end == expectedEnd else { throw StaffLimitation.gaps }
-        guard expectedEnd - start == timeline.ticksPerBar else { throw StaffLimitation.partialBar }
+        // The last bar may end with the authored fragment; do not fabricate trailing rests.
         return result
     }
     /// Uniform eighth/sixteenth runs within a quarter beat; no rest or gap is bridged.

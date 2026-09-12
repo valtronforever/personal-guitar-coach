@@ -1,0 +1,76 @@
+{
+  "status": "alternative material fragments; each needs its own activity and step in a complete schema-2 lesson",
+  "sourceLessonID": "c-major",
+  "materials": [
+    {
+      "id": "entire-lesson",
+      "source": {
+        "kind": "lesson"
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 5,
+        "allowedStarts": {
+          "kind": "auto"
+        },
+        "allowOriginal": true
+      }
+    },
+    {
+      "id": "lower-phrase",
+      "source": {
+        "kind": "events",
+        "exerciseID": "c-major-practice",
+        "eventIDs": [
+          "up-1",
+          "up-2",
+          "up-3",
+          "up-4"
+        ]
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 5,
+        "allowedStarts": {
+          "kind": "range",
+          "minimum": 3,
+          "maximum": 9,
+          "step": 2
+        },
+        "allowOriginal": true
+      }
+    },
+    {
+      "id": "scale-with-drop-room",
+      "source": {
+        "kind": "exercise",
+        "exerciseID": "c-major-practice"
+      },
+      "positioning": {
+        "enabled": true,
+        "preserve": "soundingPitch",
+        "windowFrets": 6,
+        "allowedStarts": {
+          "kind": "explicit",
+          "frets": [
+            3,
+            7
+          ]
+        },
+        "allowOriginal": true
+      }
+    },
+    {
+      "id": "scale-positioning-disabled",
+      "source": {
+        "kind": "exercise",
+        "exerciseID": "c-major-practice"
+      },
+      "positioning": {
+        "enabled": false
+      }
+    }
+  ]
+}

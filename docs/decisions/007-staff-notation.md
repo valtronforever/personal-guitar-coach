@@ -38,3 +38,6 @@ The prototype adds only presentation types and view state; existing exercise/les
 5. **Techniques:** bend target/curve, slide endpoints, hammer-on and pull-off links need explicit authored relations. Display support and assessment capability are independent. Continuous pitch and legato/onset/offset validation require a new detector/evaluator contract and annotated corpus; existing onset grading must not pretend to understand these techniques.
 
 Current techniques outside the prototype are neither represented nor assessed. A future display-only notation release may show them with explicit non-assessed status while retaining conservative practice gates. No 7/8-string/capo/import/song-library scope is added. The [conditional notation backlog](../../tasks/follow-up/notation.md) lists separate future implementation tasks.
+
+
+LD02 follow-up (2026-09-12): lesson activities can derive a single-note or short fragment. StaffModel now accepts a contiguous partial final bar and displays only authored events, with an en/uk fragment label. Other gaps, cross-bar notes/ties, unsupported durations and polyphony retain their explicit limitations. This adds no notes, rests, source MIDI or duration changes.

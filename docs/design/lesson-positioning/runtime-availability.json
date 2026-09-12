@@ -1,0 +1,5968 @@
+{
+  "lessonID": "same-notes-new-position",
+  "lessonVersion": 1,
+  "resolverVersion": "lesson-activity-1",
+  "rows": [
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 19,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 20,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 21,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 22,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "note",
+      "fretCount": 24,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "regionUnplayable": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "drop-d",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "d-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "drop-c",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "c-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "b-standard",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 19,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 20,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 21,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 22,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "explore",
+      "fretCount": 24,
+      "tuningID": "drop-a",
+      "available": [
+        "original",
+        3,
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "drop-d",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "drop-d",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "drop-d",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "drop-d",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "drop-d",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "d-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "d-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "d-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "d-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "d-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "drop-c",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "drop-c",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "drop-c",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "drop-c",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "drop-c",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "c-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "c-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "c-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "c-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "c-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "drop-b-flat",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "b-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "b-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "b-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "b-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "b-standard",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 19,
+      "tuningID": "drop-a",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 20,
+      "tuningID": "drop-a",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 21,
+      "tuningID": "drop-a",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 22,
+      "tuningID": "drop-a",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "original",
+      "fretCount": 24,
+      "tuningID": "drop-a",
+      "available": [
+        "original"
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "drop-d",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "drop-d",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "drop-d",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "drop-d",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "drop-d",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "d-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "d-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "d-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "d-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "d-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "drop-c",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "drop-c",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "drop-c",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "drop-c",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "drop-c",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "c-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "c-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "c-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "c-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "c-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "drop-b-flat",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "drop-b-flat",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "drop-b-flat",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "drop-b-flat",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "drop-b-flat",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "b-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "b-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "b-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "b-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "b-standard",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 19,
+      "tuningID": "drop-a",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 20,
+      "tuningID": "drop-a",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 21,
+      "tuningID": "drop-a",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 22,
+      "tuningID": "drop-a",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "activityID": "seven",
+      "fretCount": 24,
+      "tuningID": "drop-a",
+      "available": [
+        7
+      ],
+      "unavailable": {
+        "forbiddenChoice": [
+          "original",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      }
+    }
+  ],
+  "choiceEncoding": "original or integer region start; condensed from ValidateLessonContent --positions"
+}

@@ -1,27 +1,34 @@
 {
   "lessonID": "open-strings-intro",
-  "lessonVersion": 2,
+  "lessonVersion": 3,
   "locale": "en",
   "title": "Meet your open strings",
-  "summary": "Find low E2 and high E4, with a beat of silence between them.",
-  "goal": "Play two open E strings at a steady pulse and leave the rests quiet.",
-  "body": "Before starting: have your guitar ready and know which end of the strings is thickest. No fretting experience is needed.\n\nAn open string rings without pressing a fret. String 6 is the thickest and sounds E2 in Standard tuning. String 1 is the thinnest and sounds E4. They share the name E, but E4 is two octaves higher.\n\nSelect Standard in Instrument settings and physically tune your guitar before practicing. Use a clean, comfortable sound. The numbers on tablature identify frets: 0 means an open string.\n\nIn Standard tuning, strings 6 → 1 are E2, A2, D3, G3, B3, E4. The octave number distinguishes low and high notes. This course uses Standard with A4 = 440 Hz. In the tuner, select a string, pluck it alone, and gently adjust its tuning machine until the pitch settles near the target. Selecting a tuning in the app does not tune the guitar.\n\nFor an electric guitar, select the interface and its guitar input channel in Audio setup. Choose Acoustic guitar · Microphone or Acoustic guitar · Pickup when that is your source. Keep the sound clean and use headphones for the metronome. Start this exercise at 60 BPM; 40 BPM is available if you need more time.\n\nPractice begins with a short signal check and a count-in. After the attempt, open the result and prepare a suggested repeat. Without reliable timing calibration, the app can give pitch feedback while rhythm and the overall score remain unavailable. Listen to the written rests yourself: this version checks note pitch and new attacks, not how long every note rings.",
+  "summary": "Explore open strings and leave space between attacks.",
+  "goal": "Play the two outer open strings with a rest between attacks.",
+  "body": "No fretting experience is needed. Start at 60 BPM, or 40 BPM for more time. The outer strings do not necessarily share a pitch name or an octave relationship in a custom tuning. Listen for quiet rests: the assessment checks attacks and pitch, not how long every note rings.",
   "steps": {
     "hear-low-e": {
-      "title": "1. Hear the low E",
-      "body": "On beat 1, pluck string 6 without pressing a fret. Listen to E2. One relaxed pluck is enough."
+      "title": "1. Hear string 6",
+      "body": "On beat 1, pluck the thickest open string once. {{positions}}."
     },
     "leave-space": {
       "title": "2. Leave a beat of silence",
-      "body": "Beat 2 is a rest. Gently stop the low string with a comfortable touch and keep counting. Do not pluck another note."
+      "body": "Beat 2 is a rest. Gently stop the low string and keep counting without a new attack."
     },
     "hear-high-e": {
-      "title": "3. Hear the high E",
-      "body": "On beat 3, pluck open string 1. It sounds E4, two octaves above the low E. You do not need to press the fingerboard."
+      "title": "3. Hear string 1",
+      "body": "On beat 3, pluck the thinnest open string. {{positions}}."
     },
     "play-the-bar": {
-      "title": "4. Put the four beats together",
-      "body": "Count 1, 2, 3, 4: low E, rest, high E, rest. Start at 60 BPM or choose a slower tempo. Aim for a clear note on each playing beat and silence on each rest."
+      "title": "4. Play the four beats",
+      "body": "Count 1, 2, 3, 4: string 6, rest, string 1, rest. Notes: {{positions}}."
+    }
+  },
+  "historicalTitle": "Meet your open strings",
+  "activities": {
+    "lesson": {
+      "title": "Open strings 6 and 1",
+      "body": "Learn the open strings in your selected tuning.\n\nSequence: {{sequence}}."
     }
   }
 }
