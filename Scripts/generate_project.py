@@ -47,6 +47,8 @@ product_names = re.findall(r'\.library\(name: "([^"]+)"', manifest)
 package_products = [obj("product:"+p, "XCSwiftPackageProductDependency", package=package, productName=p) for p in product_names]
 frameworks = [obj("framework:"+p, "PBXBuildFile", productRef=ref) for p,ref in zip(product_names, package_products)]
 app_product = obj("app-product", "PBXFileReference", explicitFileType="wrapper.application", path="PersonalGuitarCoach.app", sourceTree="BUILT_PRODUCTS_DIR")
+service_product = obj("service-product", "PBXFileReference", explicitFileType="wrapper.xpc-service", path="CoachAgentService.xpc", sourceTree="BUILT_PRODUCTS_DIR")
+service_copy = obj("service-copy", "PBXBuildFile", fileRef=service_product, settings=dict(ATTRIBUTES=["CodeSignOnCopy", "RemoveHeadersOnCopy"]))
 ui_product = obj("ui-product", "PBXFileReference", explicitFileType="wrapper.cfbundle", path="PersonalGuitarCoachUITests.xctest", sourceTree="BUILT_PRODUCTS_DIR")
 
 def phase(name, isa, files):
@@ -57,6 +59,9 @@ app_phases = [
     phase("app-frameworks", "PBXFrameworksBuildPhase", frameworks),
     phase("app-resources", "PBXResourcesBuildPhase", resources),
 ]
+app_phases.append(obj("embed-service", "PBXCopyFilesBuildPhase", buildActionMask="2147483647", dstPath="Contents/XPCServices", dstSubfolderSpec="1", files=[service_copy], runOnlyForDeploymentPostprocessing="0"))
+service_phases = [phase("service-sources", "PBXSourcesBuildPhase", build_files(["AgentService/main.swift"], "service")),
+                  phase("service-frameworks", "PBXFrameworksBuildPhase", [obj("service-framework", "PBXBuildFile", productRef=ident("product:AgentBridge"))])]
 ui_phases = [
     phase("ui-sources", "PBXSourcesBuildPhase", build_files(ui_sources, "ui")),
     phase("ui-frameworks", "PBXFrameworksBuildPhase", []),
@@ -92,19 +97,26 @@ ui_configs = configurations("ui", dict(
     GENERATE_INFOPLIST_FILE="YES", TEST_TARGET_NAME="PersonalGuitarCoach"))
 proxy = obj("ui-proxy", "PBXContainerItemProxy", containerPortal=ident("project"), proxyType="1", remoteGlobalIDString=ident("app-target"), remoteInfo="PersonalGuitarCoach")
 dependency = obj("ui-dependency", "PBXTargetDependency", target=ident("app-target"), targetProxy=proxy)
+service_configs = configurations("service", dict(PRODUCT_NAME="CoachAgentService", PRODUCT_BUNDLE_IDENTIFIER="com.valtronforever.PersonalGuitarCoach.AgentService",
+    INFOPLIST_FILE="AgentService/Info.plist", ENABLE_HARDENED_RUNTIME="YES", SKIP_INSTALL="YES"))
+service_target = obj("service-target", "PBXNativeTarget", name="CoachAgentService", productName="CoachAgentService",
+    buildConfigurationList=service_configs, buildPhases=service_phases, buildRules=[], dependencies=[],
+    packageProductDependencies=[ident("product:AgentBridge")], productReference=service_product, productType="com.apple.product-type.xpc-service")
+service_proxy = obj("service-proxy", "PBXContainerItemProxy", containerPortal=ident("project"), proxyType="1", remoteGlobalIDString=service_target, remoteInfo="CoachAgentService")
+service_dependency = obj("service-dependency", "PBXTargetDependency", target=service_target, targetProxy=service_proxy)
 app_target = obj("app-target", "PBXNativeTarget", name="PersonalGuitarCoach", productName="PersonalGuitarCoach",
-                 buildConfigurationList=app_configs, buildPhases=app_phases, buildRules=[], dependencies=[],
+                 buildConfigurationList=app_configs, buildPhases=app_phases, buildRules=[], dependencies=[service_dependency],
                  packageProductDependencies=package_products, productReference=app_product, productType="com.apple.product-type.application")
 ui_target = obj("ui-target", "PBXNativeTarget", name="PersonalGuitarCoachUITests", productName="PersonalGuitarCoachUITests",
                 buildConfigurationList=ui_configs, buildPhases=ui_phases, buildRules=[], dependencies=[dependency],
                 productReference=ui_product, productType="com.apple.product-type.bundle.ui-testing")
-source_group = obj("sources-group", "PBXGroup", name="Sources", sourceTree="<group>", children=[ident("file:"+p) for p in app_sources+ui_sources])
+source_group = obj("sources-group", "PBXGroup", name="Sources", sourceTree="<group>", children=[ident("file:"+p) for p in app_sources+ui_sources+["AgentService/main.swift"]])
 resource_group = obj("resources-group", "PBXGroup", name="Resources", sourceTree="<group>", children=[objects[r]["fileRef"] for r in resources])
-product_group = obj("products-group", "PBXGroup", name="Products", sourceTree="<group>", children=[app_product,ui_product])
+product_group = obj("products-group", "PBXGroup", name="Products", sourceTree="<group>", children=[app_product,ui_product,service_product])
 main_group = obj("main-group", "PBXGroup", sourceTree="<group>", children=[source_group,resource_group,product_group])
 project_ref = obj("project", "PBXProject", buildConfigurationList=project_configs, compatibilityVersion="Xcode 14.0",
                   developmentRegion="en", knownRegions=["en","uk","Base"], mainGroup=main_group, productRefGroup=product_group,
-                  projectDirPath="", projectRoot="", targets=[app_target,ui_target], packageReferences=[package],
+                  projectDirPath="", projectRoot="", targets=[app_target,ui_target,service_target], packageReferences=[package],
                   attributes=dict(LastUpgradeCheck="1600", BuildIndependentTargetsInParallel="YES",
                                   TargetAttributes={ui_target:dict(TestTargetID=app_target)}))
 document = dict(archiveVersion="1", classes={}, objectVersion="56", objects=objects, rootObject=project_ref)

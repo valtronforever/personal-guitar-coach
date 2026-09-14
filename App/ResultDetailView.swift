@@ -33,6 +33,7 @@ struct ResultDetailView: View {
                 if tunerFailed { Text("result.tunerPreparationFailed").foregroundStyle(.red) }
                 conditions
                 comparison
+                CoachResultSection(result: result)
                 GroupBox("result.nextSteps") {
                     VStack(alignment: .leading, spacing: 16) {
                         if let preparedAdvice {

@@ -36,6 +36,7 @@ struct CoachSettingsView: View {
                 Text("welcome.acoustic").foregroundStyle(.secondary)
                 Button("audio.title") { showsAudio = true }
                 }.formStyle(.grouped).tabItem { Label("audio.title", systemImage: "waveform") }
+                AgentCoachSettings().tabItem { Label("coach.title", systemImage: "sparkles") }
             }
             if store.isSaving { ProgressView("storage.saving") }
         }

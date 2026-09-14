@@ -186,6 +186,19 @@ public actor AudioSessionCoordinator {
         await stop()
     }
 
+    public func beginRecording(requestID: UUID) async throws {
+        guard captureRequestID == requestID, phase == .running, purpose == .practice else { throw AudioBackendError.cancelled }
+        let runtime = runtime
+        try await enqueue { try await runtime.beginRecording() }.value
+        guard captureRequestID == requestID, phase == .running else { throw AudioBackendError.cancelled }
+    }
+    public func endRecording(requestID: UUID) async throws -> PracticeRecording {
+        guard captureRequestID == requestID, phase == .running, purpose == .practice else { throw AudioBackendError.cancelled }
+        let value = try await runtime.endRecording()
+        guard captureRequestID == requestID, phase == .running else { throw AudioBackendError.cancelled }
+        return value
+    }
+
     public func stop(reason: AudioBackendError? = nil) async {
         generation &+= 1; clickGeneration &+= 1
         phase = reason.map(AudioSessionPhase.interrupted) ?? .idle

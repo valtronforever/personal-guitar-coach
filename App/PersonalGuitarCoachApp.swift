@@ -30,6 +30,10 @@ struct PersonalGuitarCoachApp: App {
         practice.onAttemptFinished = { [weak practice, weak assessment, weak data] evidence in
             guard let assessment else { practice?.setRepeat(false); return }
             if await !assessment.receive(evidence) { practice?.setRepeat(false) }
+            if let practice, let take = practice.takeRecording(), let result = assessment.latest, result.id == evidence.id {
+                AgentCoachStore.shared.analyze(practice: result, take: take, language: practice.coachLanguage,
+                                               lessonContext: practice.coachLesson)
+            }
             await data?.refreshHistory()
         }
         _assessment = State(initialValue: assessment)

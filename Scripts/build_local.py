@@ -60,6 +60,11 @@ with tempfile.TemporaryDirectory(prefix=".bundle-", dir=app.parent) as temporary
             shutil.copytree(directory, resources / directory.name)
     for bundle in binary_directory.glob("*.bundle"):
         shutil.copytree(bundle, resources / bundle.name)
+    service = contents / "XPCServices/CoachAgentService.xpc/Contents"
+    (service / "MacOS").mkdir(parents=True)
+    shutil.copy2(binary_directory / "CoachAgentService", service / "MacOS/CoachAgentService")
+    shutil.copy2(ROOT / "AgentService/Info.plist", service / "Info.plist")
+    run("codesign", "--force", "--sign", "-", "--options", "runtime", str(service.parent))
     run("codesign", "--force", "--sign", "-", "--options", "runtime", "--entitlements",
         str(ROOT / "App/PersonalGuitarCoach.entitlements"), str(staging))
     run("codesign", "--verify", "--strict", str(staging))

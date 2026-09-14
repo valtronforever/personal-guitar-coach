@@ -9,6 +9,7 @@ let package = Package(
         .library(name: "Audio", targets: ["Audio"]),
         .library(name: "Persistence", targets: ["Persistence"]),
         .library(name: "Learning", targets: ["Learning"]),
+        .library(name: "AgentBridge", targets: ["AgentBridge"]),
         .executable(name: "ValidateLessonContent", targets: ["ValidateLessonContent"]),
         .executable(name: "BenchmarkAudio", targets: ["BenchmarkAudio"]),
         .executable(name: "BenchmarkPractice", targets: ["BenchmarkPractice"]),
@@ -17,6 +18,7 @@ let package = Package(
     dependencies: [.package(url: "https://github.com/jpsim/Yams.git", exact: "6.2.2")],
     targets: [
         .target(name: "Domain"),
+        .target(name: "AgentBridge"),
         .target(name: "RealtimeAudio", linkerSettings: [.linkedFramework("AudioToolbox")]),
         .target(name: "Audio", dependencies: ["Domain", "RealtimeAudio"]),
         .target(name: "AudioTestSupport"),
@@ -27,6 +29,7 @@ let package = Package(
         .executableTarget(name: "BenchmarkPractice", dependencies: ["Domain", "Audio", "Learning", "Persistence"]),
         .executableTarget(name: "BenchmarkChords", dependencies: ["Audio"]),
         .testTarget(name: "DomainTests", dependencies: ["Domain"]),
+        .testTarget(name: "AgentBridgeTests", dependencies: ["AgentBridge"]),
         .testTarget(name: "AudioTests", dependencies: ["Audio", "RealtimeAudio", "AudioTestSupport", "Learning"]),
         .testTarget(name: "PersistenceTests", dependencies: ["Persistence", "Domain"], resources: [.copy("Fixtures")]),
         .testTarget(name: "LearningTests", dependencies: ["Learning", "Domain", .product(name: "Yams", package: "Yams")])
