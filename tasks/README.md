@@ -109,4 +109,4 @@
 
 ## Follow-ups
 
-- [Personal timing synchronization wizard](personal-sync-wizard.md) — `in_progress`; two guitar-playing passes, no cable calibration UI.
+- [Personal timing synchronization wizard](personal-sync-wizard.md) — `pending_user`; two guitar-playing passes, no cable calibration UI.

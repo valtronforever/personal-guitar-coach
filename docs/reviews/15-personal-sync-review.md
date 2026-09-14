@@ -15,6 +15,8 @@ Two-pass runtime ownership and failure paths; repeatability estimator; calibrati
 5. Delayed trailing attacks and cursor position need different corrections. Extend evidence drain for reported output delay and positive residual; only shift cursor by output metadata, never by personal residual. The existing final-drain assertion was updated from 1.41 to 1.42 seconds for a fixture with 10-ms input and output latency.
 6. New approximate tolerance must not silently change saved results. Scoring v2 permits a maximum 200-ms personal tolerance (still interval/uncertainty gated), retains existing measured behavior, and decodes v1 without rerating. Calibration documents read schema 1 and write schema 2 on mutation.
 
+7. During asynchronous capture cleanup the UI can briefly show ready/between/result while the lease is still active. Added localized messages for these transient stages so raw localization keys cannot flash onscreen.
+
 ## Verification
 
 Final command results are recorded in tasks/personal-sync-wizard.md. Core suite, app suite, targeted new persistence/scoring/lifecycle regressions, localization validation, generated-project consistency and UI-source typecheck are required. Local Release bundle validation and GitHub CI are tracked there.

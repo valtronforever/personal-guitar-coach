@@ -9754,6 +9754,57 @@
           }
         }
       }
+    },
+    "sync.stage.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopping synchronization…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупиняємо синхронізацію…"
+          }
+        }
+      }
+    },
+    "sync.stage.between": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First pass complete. Stopping input…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перший прохід завершено. Зупиняємо вхід…"
+          }
+        }
+      }
+    },
+    "sync.stage.result": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Both passes complete. Preparing the result…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обидва проходи завершено. Готуємо результат…"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
