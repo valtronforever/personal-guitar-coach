@@ -4,7 +4,7 @@ The practice screen has an explicit **Record & analyze** action. Normal Start do
 
 ## Audio and timing
 
-The existing AUHAL callback still writes only its bounded C ring. Opt-in PCM collection runs on PCMReader with a reserved maximum of 150 seconds of mono samples (28.8 MB at 48 kHz). Invalid timestamps/samples, loss, discontinuity or capacity overflow reject the recording. File I/O and offline DSP run outside capture/MainActor. The capture coordinator remains the sole owner of input.
+The existing AUHAL callback still writes only its bounded C ring. Opt-in PCM collection runs on PCMReader with a reserved maximum of 150 seconds of mono samples (28.8 MB at 48 kHz). Invalid timestamps/samples, loss, discontinuity or capacity overflow reject the recording. Recording file creation and offline DSP run outside capture/MainActor. The capture coordinator remains the sole owner of input.
 
 WAV channel 1 is the selected guitar input. Channel 2 is reconstructed using the same TransportPlan, BPM, count-in, range and click gain, aligned using capture and render host timestamps. It is **not a loopback measurement** and does not reveal actual Bluetooth/headphone latency. Personal calibration still includes player bias. AI analysis never changes a score or asserts string/finger recognition.
 
