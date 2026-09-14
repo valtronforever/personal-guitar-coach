@@ -9805,6 +9805,516 @@
           }
         }
       }
+    },
+    "coach.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI coach"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI-тренер"
+          }
+        }
+      }
+    },
+    "coach.provider": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local agent"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальний агент"
+          }
+        }
+      }
+    },
+    "coach.recordAndAnalyze": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record & analyze"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записати й проаналізувати"
+          }
+        }
+      }
+    },
+    "coach.actionExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record & analyze saves this take and asks your selected AI agent for feedback after practice. Up to 2 minutes; one take, no repeat."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Записати й проаналізувати» зберігає цю спробу та запитує поради в обраного AI-агента після практики. До 2 хвилин; одна спроба, без повторення."
+          }
+        }
+      }
+    },
+    "coach.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The agent interprets local audio measurements and lesson context. Your CLI may send this data to its cloud provider. AI advice is separate from your score; it does not prove fingering or exact latency."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент інтерпретує локальні вимірювання звуку та контекст уроку. Ваш CLI може надсилати ці дані своєму хмарному провайдеру. AI-поради відокремлені від оцінки; вони не доводять аплікатуру чи точну затримку."
+          }
+        }
+      }
+    },
+    "coach.setup": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install Codex or Claude Code and sign in from Terminal first. Supported locations: Homebrew, /usr/local/bin, ~/.local/bin, and the Codex app CLI. Analysis runs automatically through a separate helper; no API key is stored in this app."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спочатку встановіть Codex або Claude Code та увійдіть через Terminal. Підтримуються Homebrew, /usr/local/bin, ~/.local/bin і CLI додатка Codex. Аналіз запускається автоматично через окремий процес; цей додаток не зберігає API-ключів."
+          }
+        }
+      }
+    },
+    "coach.retention": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recording is off for ordinary practice. AI takes, context and advice stay on this Mac until deleted in the result. WAV channel 1 contains guitar; channel 2 contains the scheduled metronome reference, not the sound actually heard in headphones."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звичайна практика не записується. AI-записи, контекст і поради зберігаються на цьому Mac до видалення в результаті. Канал 1 WAV містить гітару, канал 2 — запланований метроном, а не звук, фактично почутий у навушниках."
+          }
+        }
+      }
+    },
+    "coach.analyzing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyzing with your agent…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент аналізує практику…"
+          }
+        }
+      }
+    },
+    "coach.cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel analysis"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасувати аналіз"
+          }
+        }
+      }
+    },
+    "coach.evidence": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured evidence"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряні дані"
+          }
+        }
+      }
+    },
+    "coach.audioEvent %lf %lf": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio: %.2f s, %.2f Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіо: %.2f с, %.2f Гц"
+          }
+        }
+      }
+    },
+    "coach.channel %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File channel: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Канал файлу: %lld"
+          }
+        }
+      }
+    },
+    "coach.import": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyze WAV / MP3…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аналізувати WAV / MP3…"
+          }
+        }
+      }
+    },
+    "coach.importLimits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional: choose an existing file (44.1/48 kHz, up to 150 s and 100 MB). Its correspondence and timing alignment with this practice are unverified."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Додатково: виберіть готовий файл (44,1/48 кГц, до 150 с і 100 МБ). Його відповідність цій практиці та часове вирівнювання не перевірені."
+          }
+        }
+      }
+    },
+    "coach.delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete AI recording and advice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видалити AI-запис і поради"
+          }
+        }
+      }
+    },
+    "coach.error.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a practice fragment up to 2 minutes, or an audio file up to 150 seconds and 100 MB."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть фрагмент практики до 2 хвилин або аудіофайл до 150 секунд і 100 МБ."
+          }
+        }
+      }
+    },
+    "coach.error.recording": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recording was interrupted or lost audio. No AI analysis was started. Try another take."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запис перервано або втрачено аудіодані. AI-аналіз не запускався. Спробуйте ще раз."
+          }
+        }
+      }
+    },
+    "coach.error.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analysis cancelled. Saved audio can be deleted below."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аналіз скасовано. Збережене аудіо можна видалити нижче."
+          }
+        }
+      }
+    },
+    "coach.error.missingCLI": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected agent was not found. Install it and sign in from Terminal, then try again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обраний агент не знайдений. Установіть його та увійдіть через Terminal, потім спробуйте знову."
+          }
+        }
+      }
+    },
+    "coach.error.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The agent could not complete analysis. Check its Terminal sign-in, network and available usage. Your practice score is preserved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент не зміг завершити аналіз. Перевірте вхід через Terminal, мережу та доступний ліміт. Оцінку практики збережено."
+          }
+        }
+      }
+    },
+    "coach.error.timeout": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The agent exceeded the five-minute limit. Try again later."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент перевищив ліміт у п’ять хвилин. Спробуйте пізніше."
+          }
+        }
+      }
+    },
+    "coach.error.invalidResponse": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio or agent response could not be validated. No new AI advice was accepted."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося перевірити аудіо чи відповідь агента. Нові AI-поради не прийнято."
+          }
+        }
+      }
+    },
+    "coach.error.invalidRequest": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The analysis request or recording is invalid. Record another take."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Некоректний запит аналізу або запис. Запишіть іншу спробу."
+          }
+        }
+      }
+    },
+    "coach.error.unsupported": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a WAV or MP3 file at 44.1 or 48 kHz."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть WAV або MP3 з частотою 44,1 чи 48 кГц."
+          }
+        }
+      }
+    },
+    "coach.error.channel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This file does not contain the selected channel."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цей файл не містить вибраного каналу."
+          }
+        }
+      }
+    },
+    "coach.error.delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not delete AI files. Try again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося видалити AI-файли. Спробуйте знову."
+          }
+        }
+      }
+    },
+    "coach.retry": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyze saved take again"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторити аналіз збереженої спроби"
+          }
+        }
+      }
+    },
+    "coach.deleteAll": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all AI recordings and advice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видалити всі AI-записи й поради"
+          }
+        }
+      }
+    },
+    "coach.error.authentication": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your agent session expired or could not authenticate. Sign in again in Terminal (codex login or claude auth login), then retry the saved take."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сесія агента прострочена або вхід не вдався. Увійдіть знову через Terminal (codex login або claude auth login), потім повторіть аналіз збереженої спроби."
+          }
+        }
+      }
+    },
+    "coach.audioEventUncertain %lf": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio: %.2f s, pitch uncertain"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіо: %.2f с, висота невизначена"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

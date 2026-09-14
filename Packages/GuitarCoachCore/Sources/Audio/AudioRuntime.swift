@@ -33,6 +33,8 @@ public protocol AudioRuntime: Sendable {
     func startInput(device: AudioDeviceDescriptor, channel: Int) async throws -> AudioStreamFormat
     func stopInput() async
     func readInput() async -> CaptureSnapshot?
+    func beginRecording() async throws
+    func endRecording() async throws -> PracticeRecording
     func startClick(device: AudioDeviceDescriptor, channel: Int) async throws
     func stopClick() async
     func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws
@@ -45,6 +47,8 @@ public protocol AudioRuntime: Sendable {
 }
 
 public extension AudioRuntime {
+    func beginRecording() async throws { throw AudioBackendError.invalidFormat }
+    func endRecording() async throws -> PracticeRecording { throw AudioBackendError.invalidFormat }
     func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) async -> AudioDeviceTiming { AudioDeviceTiming() }
     func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws { throw AudioBackendError.unavailableDevice }
     func readTransport() async -> TransportPlaybackSnapshot? { nil }
@@ -67,6 +71,8 @@ public actor LiveAudioRuntime: AudioRuntime {
     }
     public func stopInput() async { await capture.stop() }
     public func readInput() async -> CaptureSnapshot? { await capture.snapshot() }
+    public func beginRecording() async throws { try await capture.beginRecording() }
+    public func endRecording() async throws -> PracticeRecording { try await capture.endRecording() }
     public func startClick(device: AudioDeviceDescriptor, channel: Int) async throws { try await click.start(device: device, channel: channel) }
     public func stopClick() async { await click.stop() }
     public func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) async throws {

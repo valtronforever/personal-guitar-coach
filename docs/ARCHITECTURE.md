@@ -252,3 +252,7 @@ The sole lesson API uses schema-2 manifests and one en/uk text edition. No schem
 ### YAML lesson resources
 
 Learning decodes UTF-8 `.yml` files directly with pinned Yams 6.2.2 (MIT, bundled LibYAML). Domain models and schema versions are unchanged. No runtime Python or JSON conversion is involved. Python author/bundle tools use PyYAML 6.0.3 with safe loading and duplicate-key rejection; install `Scripts/requirements.txt` in `.venv`. JSON remains the persistence and benchmark format. See [dependency notes](DEPENDENCIES.md) and [authoring](CONTENT-AUTHORING.md).
+
+## Optional audio-file AI coaching
+
+[Audio-file AI coach](AUDIO-AGENT-COACH.md) adds an explicit one-take recording action. PCMReader collects bounded opt-in mono PCM; file creation, stereo metronome reference rendering and offline analysis run outside capture. The app's separate AgentCoach store retains versioned audio/context/advice without mutating the assessment repository. A packaged, application-private XPC service invokes installed Codex/Claude CLI using CLI-owned auth. The main app remains sandboxed; this helper deliberately runs outside that sandbox to support local CLI authentication. No localhost server or general shell RPC is introduced.

@@ -36,6 +36,11 @@ final class PracticeModel {
     private(set) var completedCount = 0
     private(set) var errorKey: String?
     private(set) var backendError: AudioBackendError?
+    private(set) var recordedTake: CoachRecordedTake?
+    private(set) var recordsForCoach = false
+    private(set) var coachLanguage = "en"
+    private(set) var coachProvider = CoachProvider.codex
+    private(set) var coachLesson = ""
     var physicallyTuned = false
     var phase: PracticePhase { machine.phase }
     var barCount: Int { max(1, Int(((request?.exercise.durationTicks ?? 1) - 1) / (request?.exercise.timeSignature.ticksPerBar ?? 3840)) + 1) }
@@ -52,6 +57,7 @@ final class PracticeModel {
         return exercise.events.first { $0.startTick >= lower && $0.startTick < end && $0.kind == .note }?.positions ?? []
     }
     init(audio: AudioSessionStore, calibration: CalibrationStore) { self.audio = audio; self.calibration = calibration }
+    func takeRecording() -> CoachRecordedTake? { defer { recordedTake = nil }; return recordedTake }
 
     func configure(_ request: PracticeRequest?) {
         guard self.request != request else { return }
@@ -87,7 +93,7 @@ final class PracticeModel {
         let end = upper.overflow ? exercise.durationTicks : min(exercise.durationTicks, upper.partialValue)
         return Set(exercise.events.filter { $0.startTick >= lower && $0.startTick < end }.map(\.id))
     }
-    func setRepeat(_ value: Bool) { repeatEnabled = value }
+    func setRepeat(_ value: Bool) { repeatEnabled = recordsForCoach && isBusy ? false : value }
     func setClickVolume(_ value: Double) { guard value.isFinite, !isBusy else { return }; clickVolume = min(1, max(0, value)) }
     func instrumentWillChange(_ value: InstrumentProfile) {
         guard let old = machine.configuration?.instrument else { physicallyTuned = false; return }
@@ -107,7 +113,7 @@ final class PracticeModel {
         if let id = captureID { Task { await audio.stopCapture(id: id) } }
     }
 
-    func start(instrument: InstrumentProfile) {
+    func start(instrument: InstrumentProfile, recordForCoach: Bool = false, language: String = "en", lessonContext: String = "", provider: CoachProvider = .codex) {
         guard !isBusy, let request else { return }
         errorKey = nil; backendError = nil
         let targetInstrument: InstrumentProfile
@@ -123,10 +129,15 @@ final class PracticeModel {
                 range: Int64(firstBar - 1) * bar..<endTick,
                 route: route, calibration: calibration.usableProfile(audio: audio, instrument: targetInstrument),
                 lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, position: request.historicalPosition, activity: request.activityReference))
+            if recordForCoach && (configuration.durationSeconds > 120 || configuration.countInSeconds + configuration.durationSeconds + configuration.finalDrainSeconds > 145) {
+                errorKey = "coach.error.tooLarge"; return
+            }
             try machine.begin(configuration)
         } catch { errorKey = Self.configurationError(error); return }
         latestEvidence = nil
         guard physicallyTuned else { machine.stop(.tuningNotConfirmed); return }
+        recordsForCoach = recordForCoach; recordedTake = nil; coachLanguage = language; coachLesson = lessonContext; coachProvider = provider
+        if recordForCoach { repeatEnabled = false }
         synchronizationSession = audio.synchronizationSession; synchronizationRevision = audio.state?.routeRevision
         let id = UUID(); captureID = id; isBusy = true; signalConfirmed = false
         cursorTick = nil; countInBeat = nil; latestFrequency = nil; latestEvidence = nil; completedCount = 0
@@ -192,7 +203,8 @@ final class PracticeModel {
         collector = PracticeEvidenceCollector(configuration: configuration, baseline: baseline)
         let transport = try TransportRequest(exercise: configuration.exercise, tuning: configuration.instrument.tuning,
             bpm: configuration.bpm, range: configuration.range, countInBars: configuration.countInBars,
-            loops: false, mode: .practice, clickVolume: clickVolume, toneVolume: 0)
+            loops: false, mode: .practice, clickVolume: recordsForCoach ? max(0.1, clickVolume) : clickVolume, toneVolume: 0)
+        if recordsForCoach { try await audio.coordinator.beginRecording(requestID: captureID) }
         try machine.preflightPassed()
         try await audio.coordinator.startTransport(transport)
         let displayPlan = try TransportPlan(request: transport, sampleRate: configuration.route.output.sampleRate)
@@ -216,6 +228,12 @@ final class PracticeModel {
                 if let completedAt, completedAt.duration(to: .now) >= .seconds(configuration.finalDrainSeconds),
                    let renderEpoch, try collector?.hasResolvedTail(renderEpochSeconds: renderEpoch) == true {
                     try machine.complete(); completedCount += 1
+                    if recordsForCoach {
+                        do {
+                            let recording = try await audio.coordinator.endRecording(requestID: captureID)
+                            recordedTake = CoachRecordedTake(recording: recording, renderEpoch: renderEpoch, transport: transport)
+                        } catch { errorKey = "coach.error.recording" }
+                    }
                     await publishEvidence()
                     await audio.stopTransport(id: transport.id, keepingCapture: true)
                     return

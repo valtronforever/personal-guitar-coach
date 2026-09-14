@@ -106,3 +106,13 @@ Settings → Instrument offers eight paired presets: **E Standard / Drop D, D St
 Settings → Instrument also offers **19, 20, 21, 22 or 24 frets** (default 24). The choice limits the fretboard and lesson fingerings, propagates to TAB/notation and preview, and gates practice. Saved attempts retain their original count. See the [fret-count follow-up](tasks/follow-up/fret-count.md).
 
 Lesson topic titles and theory stay the same across tunings. **Your variant** contains the calculated example and instrument conditions. Authors can create a bilingual draft with `python3 Scripts/new_lesson.py my-lesson --policy fretPattern`; see the [authoring guide](docs/CONTENT-AUTHORING.md#start-a-new-independent-lesson) for interval-based lessons, validation and the complete template.
+
+Optional AI coaching: Settings → AI coach selects an already installed/authenticated Codex or Claude Code. **Record & analyze** saves one take and automatically requests lesson-specific advice. WAV channel 1 is guitar; channel 2 is the scheduled metronome reference. Normal practice remains offline and does not record. See [setup, limits and retention](docs/AUDIO-AGENT-COACH.md).
+
+The signed XPC boundary can be checked without a provider call after packaging:
+
+```sh
+python3 Scripts/check_agent_xpc.py --configuration release
+```
+
+Only when explicitly testing a configured account, `--live-synthetic codex` or `--live-synthetic claude` sends a generated sine test's metadata to that provider and may consume account usage; it never uses a personal recording.

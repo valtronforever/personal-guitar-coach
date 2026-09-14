@@ -74,3 +74,7 @@
 Уроки з інтервальною адаптацією дозволяють вибрати початкову аплікатуру або ділянку від певного ладу (до п'яти послідовних ладів). Тональність, ноти й октави зберігаються; перша нота може бути вище обраного ладу. Доступні лише ділянки, в яких поміщається весь урок з урахуванням строю та кількості ладів. Наприклад, мажорна гама у C Standard від 7-го ладу лишається A♭ major, починається на 6-й струні/8-му ладі та використовує лади 7–10. Текст кроків, гриф, TAB, нотний стан, preview і практика отримують одну аплікатуру. Вибір зберігається для уроку та в умовах спроби; історія не змінюється. Аудіооцінка перевіряє висоту й час, а не фактичне місце руки.
 
 Персональна синхронізація таймінгу: два проходи під метроном з відкритою струною поточного строю, незалежні вхід/вихід (зокрема Bluetooth), явна приблизна оцінка та повторна перевірка після зміни підключення. Кабельного калібрування в поточному UI немає. [Поведінка й обмеження](PERSONAL-SYNCHRONIZATION.md).
+
+## Optional AI coach
+
+The user can explicitly record and analyze one practice take with installed Codex or Claude Code. The button includes recording, metronome reference, lesson-specific context and automatic supplemental recommendations; ordinary practice remains offline and records no raw audio. Existing WAV/MP3 can also be analyzed from results. Account/network access belongs to the selected CLI; AI advice never replaces measured scores. Details: [Audio-file AI coach](AUDIO-AGENT-COACH.md).

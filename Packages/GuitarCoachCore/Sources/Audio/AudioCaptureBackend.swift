@@ -66,6 +66,20 @@ actor PCMReader {
     var discontinuities: UInt64 = 0
     let analyzer: MonophonicAnalyzer
     var latest: CaptureSnapshot?
+    var recording: RecordingBuffer?
+    var recordingDroppedBaseline: UInt64 = 0
+    var recordingDiscontinuityBaseline: UInt64 = 0
+
+    func beginRecording() {
+        recording = RecordingBuffer(sampleRate: analyzer.sampleRate)
+        recordingDroppedBaseline = GCRingDropped(storage.handle)
+        recordingDiscontinuityBaseline = discontinuities
+    }
+    func endRecording() throws -> PracticeRecording {
+        defer { recording = nil }
+        guard let recording else { throw AudioBackendError.cancelled }
+        return try recording.finish()
+    }
 
     init(storage: PCMStorage, sampleRate: Double) throws {
         self.storage = storage; analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
@@ -104,6 +118,9 @@ actor PCMReader {
                 } else { invalidSamples += 1 }
             }
             scratch.withUnsafeBufferPointer { samples in
+                recording?.append(.init(rebasing: samples[0..<Int(info.frame_count)]),
+                    hostSeconds: info.host_time_valid ? AVAudioTime.seconds(forHostTime: info.host_time) : nil,
+                    healthy: GCRingDropped(storage.handle) == recordingDroppedBaseline && discontinuities == recordingDiscontinuityBaseline)
                 analyzer.process(.init(rebasing: samples[0..<Int(info.frame_count)]),
                     startHostSeconds: info.host_time_valid ? AVAudioTime.seconds(forHostTime: info.host_time) : nil)
             }
@@ -152,6 +169,15 @@ public actor AudioCaptureBackend {
     }
 
     public func snapshot() async -> CaptureSnapshot? { await reader?.snapshot() }
+
+    public func beginRecording() async throws {
+        guard let reader else { throw AudioBackendError.cancelled }
+        await reader.beginRecording()
+    }
+    public func endRecording() async throws -> PracticeRecording {
+        guard let reader else { throw AudioBackendError.cancelled }
+        return try await reader.endRecording()
+    }
 
     public func stop() {
         worker?.cancel(); worker = nil

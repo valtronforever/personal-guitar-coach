@@ -18,6 +18,7 @@ struct PracticeEntryView: View {
     @State private var showsOptions = true
     @State private var visualMode = "fretboard"
     @State private var selectedPosition: FretPosition?
+    @State private var coach = AgentCoachStore.shared
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
     private var instrument: InstrumentProfile { model.phase.active ? model.machine.configuration?.instrument ?? data.preferences.instrument : data.preferences.instrument }
     private var tuning: TuningProfile { model.request?.archivedTuning ?? model.request?.exercise.requiredTuning ?? instrument.tuning }
@@ -72,6 +73,7 @@ struct PracticeEntryView: View {
                     Text("practice.expectedExplanation").font(.caption).foregroundStyle(.secondary)
                     if let result = assessment.latest, result.id == model.latestEvidence?.id {
                         AssessmentSummaryView(result: result)
+                        if model.recordsForCoach { CoachResultSection(result: result) }
                         Button("result.viewDetails") {
                             model.setRepeat(false); model.stop(); detailResult = result
                         }.accessibilityIdentifier("result.viewDetails")
@@ -193,9 +195,20 @@ struct PracticeEntryView: View {
         }.frame(maxWidth: .infinity, alignment: .leading).accessibilityElement(children: .contain)
     }
     private var actions: some View {
+        VStack(alignment: .leading, spacing: 8) {
+        Text("coach.actionExplanation").font(.caption).foregroundStyle(.secondary)
         HStack {
             Button(model.phase == .paused ? "practice.resume" : "practice.start") { model.start(instrument: data.preferences.instrument) }
                 .disabled(exceedsFretCount || model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
+            Button("coach.recordAndAnalyze") {
+                guard coach.busyAttempt == nil else { return }
+                let context = CoachLessonContext.make(request: model.request, lessons: library.lessons,
+                    instrument: data.preferences.instrument, language: language)
+                model.start(instrument: data.preferences.instrument, recordForCoach: true,
+                            language: language.rawValue, lessonContext: context, provider: coach.provider)
+                if model.isBusy, let id = model.machine.attemptID { coach.reserveRecording(id) }
+            }.disabled(exceedsFretCount || model.isBusy || coach.busyAttempt != nil || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil)
+                .accessibilityIdentifier("coach.recordAndAnalyze")
             Button("playback.pause") { model.pause() }.disabled(!model.phase.active || model.phase == .finalizing)
                 .accessibilityIdentifier("practice.pause")
             Button("playback.stop") { model.stop() }.disabled(!model.isBusy).accessibilityIdentifier("practice.stop")
@@ -206,6 +219,7 @@ struct PracticeEntryView: View {
                 if let request = navigation.practiceRequest { navigation.lessonPath = [request.lessonID] }
                 navigation.destination = .lessons
             }
+        }
         }.padding(.horizontal, CoachLayout.padding).padding(.vertical, 12).background(.bar)
     }
 }

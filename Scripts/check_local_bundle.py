@@ -52,8 +52,15 @@ def verify(app, configuration):
     entitlements = plistlib.loads(run("codesign", "-d", "--entitlements", "-", "--xml", str(app)).encode())
     expected_entitlements = plistlib.loads((ROOT / "App/PersonalGuitarCoach.entitlements").read_bytes())
     require(entitlements == expected_entitlements == {
-        "com.apple.security.app-sandbox": True, "com.apple.security.device.audio-input": True
+        "com.apple.security.app-sandbox": True, "com.apple.security.device.audio-input": True,
+        "com.apple.security.files.user-selected.read-only": True
     }, "Unexpected sandbox/audio entitlements")
+    service = contents / "XPCServices/CoachAgentService.xpc"
+    require((service / "Contents/MacOS/CoachAgentService").is_file(), "Missing agent XPC executable")
+    service_info = plistlib.loads((service / "Contents/Info.plist").read_bytes())
+    require(service_info.get("CFBundleIdentifier") == "com.valtronforever.PersonalGuitarCoach.AgentService", "Invalid agent service identity")
+    require(service_info.get("XPCService", {}).get("ServiceType") == "Application", "Agent service must be application-private")
+    run("codesign", "--verify", "--strict", str(service))
     require(info.get("CFBundleIconFile") == "AppIcon.icns", "Missing app icon metadata")
     icon = resources / "AppIcon.icns"
     header, length = struct.unpack(">4sI", icon.read_bytes()[:8])

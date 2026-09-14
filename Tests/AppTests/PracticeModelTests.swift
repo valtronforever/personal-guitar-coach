@@ -25,6 +25,9 @@ private actor PracticeRuntimeStub: AudioRuntime {
     var silentPractice = false
     var inputStarts = 0
     var transportStarts = 0
+    var recordingsStarted = 0
+    func beginRecording() { recordingsStarted += 1 }
+    func endRecording() -> PracticeRecording { PracticeRecording(samples: [0, 0.1, 0], sampleRate: 48000, firstHostSeconds: epoch - 0.1) }
     func devices() -> [AudioDeviceDescriptor] {
         available ? [AudioDeviceDescriptor(hardwareID: 1, uid: "practice-test", name: "Synthetic practice route", inputChannels: 1,
             outputChannels: 1, sampleRate: 48000, bufferFrames: 512)] : []
@@ -141,6 +144,26 @@ private actor PracticeRuntimeStub: AudioRuntime {
         try await wait(harness) { (await harness.runtime.request != nil) && harness.model.phase == .countIn }
         try await harness.runtime.advance(.playing)
         try await wait(harness) { harness.model.phase == .running }
+    }
+    @Test func explicitCoachActionRecordsOneTakeWhileOrdinaryPracticeDoesNot() async throws {
+        let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
+        h.model.setRepeat(true)
+        h.model.start(instrument: InstrumentProfile(), recordForCoach: true, language: "uk", lessonContext: "Goal")
+        try await playing(h)
+        #expect(await h.runtime.recordingsStarted == 1)
+        h.model.setRepeat(true)
+        #expect(!h.model.repeatEnabled)
+        try await h.runtime.advance(.completed)
+        try await wait(h) { !h.model.isBusy }
+        #expect(h.model.completedCount == 1 && h.model.recordedTake != nil)
+        #expect(h.model.coachLanguage == "uk" && h.model.coachLesson == "Goal")
+        #expect(h.model.takeRecording() != nil && h.model.recordedTake == nil)
+        h.model.start(instrument: InstrumentProfile())
+        try await playing(h)
+        #expect(await h.runtime.recordingsStarted == 1)
+        h.model.stop()
+        try await wait(h) { !h.model.isBusy }
+        #expect(h.model.recordedTake == nil)
     }
     @Test func activePersonalPracticeStopsAfterSynchronizationSessionInvalidation() async throws {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
