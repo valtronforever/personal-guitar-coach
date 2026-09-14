@@ -8,6 +8,7 @@ private enum AudioWorkspaceEvent: Sendable { case sleep, wake }
 
 @MainActor @Observable
 final class AudioSessionStore {
+    private(set) var synchronizationSession = UUID()
     let coordinator: AudioSessionCoordinator
     @ObservationIgnored private let repository: (any AudioSettingsRepository)?
     @ObservationIgnored private var monitor: AudioHardwareMonitor?
@@ -29,6 +30,8 @@ final class AudioSessionStore {
     init(repository: (any AudioSettingsRepository)?, coordinator: AudioSessionCoordinator = AudioSessionCoordinator()) {
         self.repository = repository; self.coordinator = coordinator
     }
+
+    func invalidateSynchronization() { synchronizationSession = UUID() }
 
     func load() async {
         guard !isBusy, !hasLoaded || loadFailed else { return }
@@ -64,6 +67,7 @@ final class AudioSessionStore {
         let changes = Task { [weak self, coordinator] in
             for await _ in monitor.changes {
                 guard !Task.isCancelled else { break }
+                self?.invalidateSynchronization()
                 await coordinator.refresh(); await self?.publish()
             }
         }
@@ -79,6 +83,7 @@ final class AudioSessionStore {
         let powerEvents = Task { [weak self, coordinator] in
             for await event in events.stream {
                 guard !Task.isCancelled else { break }
+                self?.invalidateSynchronization()
                 await coordinator.suspend()
                 if event == .wake { await coordinator.refresh() }
                 await self?.publish() // Explicit Start is required after wake.

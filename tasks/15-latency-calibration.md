@@ -8,6 +8,8 @@ GitHub: [#15](https://github.com/valtronforever/personal-guitar-coach/issues/15)
 
 Контекст: [правила](../AGENTS.md), [продукт](../docs/PRODUCT.md), [архітектура](../docs/ARCHITECTURE.md), [аудіоконтракт](../docs/AUDIO-AND-ASSESSMENT.md).
 
+Поточний follow-up: [персональний майстер](personal-sync-wizard.md). Кабельний UI виключено за запитом користувача; попередній loopback evidence нижче є історичним.
+
 ## Мета
 
 Не штрафувати користувача за затримку інтерфейсу й аналізатора.

@@ -9,6 +9,22 @@ struct CalibrationStorageTests {
         return try CalibrationProfile(route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "test"),
                                       method: .manual, residualOffsetSeconds: offset, uncertaintySeconds: 0.2)
     }
+    @Test func legacyProfilesMigrateOnWriteWithoutInventingPersonalEvidence() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        let first = try profile(), url = root.appendingPathComponent("calibration-profiles.json")
+        try JSONEncoder().encode(DocumentEnvelope(schemaVersion: 1, payload: [first])).write(to: url)
+        let repository = LocalRepository(root: root)
+        #expect(try await repository.loadCalibrationProfiles() == [first])
+        let sync = try PersonalSyncEvidence(instrument: InstrumentProfile(), string: 3, offsets: [0.1, 0.1], spreads: [0, 0], drifts: [0, 0])
+        let personal = try CalibrationProfile(route: first.route, method: .personal, residualOffsetSeconds: sync.offset,
+                                             uncertaintySeconds: sync.uncertainty, personalEvidence: sync)
+        try await repository.saveCalibration(personal, replacing: first.id)
+        #expect(try await repository.loadCalibrationProfiles() == [personal])
+        let document = try JSONDecoder().decode(DocumentEnvelope<[CalibrationProfile]>.self, from: Data(contentsOf: url))
+        #expect(document.schemaVersion == 2 && document.payload[0].method == .personal)
+    }
     @Test func restoreReplaceAndForgetPreserveOtherDocuments() async throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }

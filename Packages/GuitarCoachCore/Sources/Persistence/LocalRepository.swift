@@ -57,7 +57,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         do {
             let data = try Data(contentsOf: calibrationURL)
             let version = try JSONDecoder().decode(VersionHeader.self, from: data).schemaVersion
-            guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+            guard version == 1 || version == 2 else { throw StorageError.unsupportedVersion(version) }
             let profiles = try JSONDecoder().decode(DocumentEnvelope<[CalibrationProfile]>.self, from: data).payload
             try validateCalibrationProfiles(profiles)
             return profiles
@@ -78,13 +78,13 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         }
         try validateCalibrationProfiles(profiles)
         try prepare()
-        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: profiles)), calibrationURL)
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 2, payload: profiles)), calibrationURL)
     }
     public func removeCalibration(id: UUID) throws {
         let profiles = try loadCalibrationProfiles(), remaining = profiles.filter { $0.id != id }
         guard profiles.count != remaining.count else { return }
         try prepare()
-        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: remaining)), calibrationURL)
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 2, payload: remaining)), calibrationURL)
     }
     private func validateCalibrationProfiles(_ profiles: [CalibrationProfile]) throws {
         guard profiles.count <= 128, Set(profiles.map(\.id)).count == profiles.count,

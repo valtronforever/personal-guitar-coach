@@ -36,7 +36,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     public var selectedEvents: [MusicalEvent] { exercise.events.filter { range.contains($0.startTick) } }
     public var durationSeconds: Double { Double(range.count) / 960 * 60 / bpm }
     public var countInSeconds: Double { Double(countInBars * exercise.timeSignature.beatsPerBar) * 60 / bpm }
-    public var finalDrainSeconds: Double { 1.4 + (route.input.hardwareLatencySeconds ?? 0) }
+    public var finalDrainSeconds: Double { 1.4 + (route.input.hardwareLatencySeconds ?? 0) + (route.output.hardwareLatencySeconds ?? 0) + max(0, calibration?.residualOffsetSeconds ?? 0) }
 
     public init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>? = nil,
                 countInBars: Int = 1, route: CalibrationRoute, calibration: CalibrationProfile? = nil, lesson: PracticeLessonReference? = nil) throws {
@@ -69,6 +69,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
             throw PracticeError.unsupportedSize
         }
         if let calibration, calibration.route != route { throw CalibrationError.invalidRoute }
+        if let personal = calibration?.personalEvidence, personal.instrument != instrument { throw CalibrationError.invalidProfile }
         self.capabilityVersion = capabilityVersion; self.lesson = lesson; self.exercise = exercise; self.instrument = instrument; self.bpm = bpm; self.range = range
         self.countInBars = countInBars; self.route = route; self.calibration = calibration
         if validateCurrentCapability { try validateForCurrentPractice() }

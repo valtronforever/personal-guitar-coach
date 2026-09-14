@@ -166,3 +166,11 @@ public struct TransportPlan: Sendable {
         }
     }
 }
+
+extension TransportPlan {
+    /// Display only. A personal input/player offset cannot identify output latency and is never used here.
+    public func audiblePosition(renderedFrames: Int64, outputLatencySeconds: Double) -> TransportPosition {
+        let delay = outputLatencySeconds.isFinite ? min(10, max(0, outputLatencySeconds)) : 0
+        return position(at: max(0, renderedFrames - Int64((delay * sampleRate).rounded())))
+    }
+}

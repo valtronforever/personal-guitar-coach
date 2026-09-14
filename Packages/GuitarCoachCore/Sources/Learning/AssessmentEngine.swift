@@ -11,7 +11,7 @@ public enum AssessmentEngine {
         let secondsPerTick = 60 / config.bpm / Double(config.exercise.ppq)
         let relative = expected.map { Double($0.startTick - config.range.lowerBound) * secondsPerTick }
         let intervals = zip(relative, relative.dropFirst()).map { $1 - $0 }
-        let tolerance = min(parameters.rhythmToleranceSeconds, (intervals.min() ?? .infinity) * parameters.rhythmIntervalFraction)
+        let tolerance = min(parameters.maximumRhythmTolerance(personal: config.calibration?.method == .personal), (intervals.min() ?? .infinity) * parameters.rhythmIntervalFraction)
         let capability = config.calibration?.rhythmCapability(route: config.route, toleranceSeconds: tolerance,
             durationSeconds: config.durationSeconds, clockDriftSeconds: evidence.maximumClockDriftSeconds,
             onsetUncertaintySeconds: parameters.onsetUncertaintySeconds) ?? .unmeasured
@@ -57,7 +57,7 @@ public enum AssessmentEngine {
                 // Subtract logarithms to keep very small finite input frequencies from underflowing a ratio.
                 cents = 1200 * (log2(frequency) - log2(frequencies[i]))
             } else { cents = nil }
-            let timing = !uncertain && capability == .available ? index.map { observed[$0] - expectedTimes[i] } : nil
+            let timing = !uncertain && capability.allowsTiming ? index.map { observed[$0] - expectedTimes[i] } : nil
             if let cents { pitchPoints += max(0, 1 - abs(cents) / parameters.pitchToleranceCents) }
             if let timing { rhythmPoints += max(0, 1 - abs(timing) / tolerance) }
             notes.append(try AssessedNote(id: expected[i].id, attackID: attack?.id, targetFrequency: frequencies[i],
@@ -71,7 +71,7 @@ public enum AssessmentEngine {
         if !evidence.signalConfirmed { validity = .insufficientSignal }
         else if evidence.phase != .completed { validity = .interrupted }
         else if Double(uncertain) / Double(expected.count) > parameters.uncertaintyFraction { validity = .insufficientSignal }
-        else { validity = capability == .available ? .valid : .uncalibrated }
+        else { validity = capability.allowsTiming ? .valid : .uncalibrated }
         let pitch = 100 * pitchPoints / Double(expected.count), rhythm = 100 * rhythmPoints / Double(expected.count)
         let overall = min(100, max(0, (parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
             - parameters.extraPenalty * Double(extras.count) / Double(expected.count + extras.count)).rounded()))

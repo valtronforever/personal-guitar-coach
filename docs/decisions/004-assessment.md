@@ -1,5 +1,8 @@
 # ADR 004 — Deterministic monophonic assessment
 
+
+2026-09-14 update: scoring v2 adds `personal` profiles with explicit `approximate` capability and a maximum 200-ms tolerance, still limited by neighboring intervals and the half-tolerance uncertainty gate. Other behavior below remains unchanged. v1 records decode without rerating. See [personal synchronization](../PERSONAL-SYNCHRONIZATION.md).
+
 Status: implemented software contract; real electric-interface/held-out validation remains U02/U03/U10.
 
 ## Assignment and timing

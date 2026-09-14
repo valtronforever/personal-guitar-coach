@@ -70,6 +70,7 @@ struct HistoryView: View {
     }
     private func row(_ record: PracticeRecord) -> some View {
         VStack(alignment: .leading, spacing: 8) {
+            if record.calibration?.method == .personal { Text("calibration.method.personal").font(.caption) }
             if let activity = record.assessment?.payload.evidence.configuration.lesson?.activity {
                 Text(verbatim: activity.activityTitles[language.rawValue] ?? activity.activityID).font(.caption)
                 PositionChoiceLabel(choice: activity.choice).font(.caption).foregroundStyle(.secondary)

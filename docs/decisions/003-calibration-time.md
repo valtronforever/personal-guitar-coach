@@ -2,6 +2,8 @@
 
 2026-09-10. Implemented software; physical validation remains U03/U08/U09.
 
+Current UI update (2026-09-14): [personal synchronization](../PERSONAL-SYNCHRONIZATION.md) supersedes the loopback/manual UI described below. The timestamp formula and historical measured-profile gates remain. Cable procedures below are archived engineering notes, not a current user requirement.
+
 ## Timestamp contract
 
 The AUHAL callback forwards its timestamp to `AudioUnitRender` and copies the returned channel with that same host timestamp. The analyzer labels onsets from the first packet host origin plus its capture-local frame offset; resolution time is separate from onset time. Apple's [TN2091](https://developer.apple.com/library/archive/technotes/tn2091/_index.html) demonstrates the timestamp handoff and single-device AUHAL topology. The installed macOS SDK's `AudioHardware.h` distinguishes input acquisition and output delivery timestamps from callback wakeup time. We never timestamp attacks with a UI timer or the time an analysis result arrives.

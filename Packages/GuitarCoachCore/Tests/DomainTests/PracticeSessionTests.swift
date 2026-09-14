@@ -48,7 +48,7 @@ struct PracticeSessionTests {
             range: 3840..<7680, route: original.route)
         #expect(selected.selectedEvents.count == 4 && selected.durationSeconds == 2)
         #expect(abs(try selected.expectedStart(renderEpochSeconds: 100) - 102.01) < 0.000001)
-        #expect(abs(selected.finalDrainSeconds - 1.41) < 0.000001)
+        #expect(abs(selected.finalDrainSeconds - 1.42) < 0.000001)
         #expect(throws: PracticeError.invalidRange) {
             try PracticeConfiguration(exercise: original.exercise, instrument: original.instrument, bpm: 60,
                 range: 960..<7680, route: original.route)
