@@ -17,10 +17,12 @@ Explicit recording lifecycle, callback/worker separation, PCM/time alignment, of
 7. Prompts need actual selected lesson content. Snapshot goal, rendered activity/steps, sounding note names, exact exercise/range/BPM/tuning and scoring/calibration evidence. Unknown historical text uses frozen exercise evidence rather than silently using a newer lesson version.
 8. File import/copy must be bounded and cancellable. Require a regular WAV/MP3, stream-copy in chunks with a hard 100 MiB limit, analyze the copied bytes, verify the hash again before XPC, and mark imported timing correspondence unverified. Unknown pitch is displayed as uncertain, not 0 Hz.
 
+9. Concurrent import during an in-progress AI take could occupy the only analysis slot and drop the automatic follow-up. Reserve the slot from the initial action, release on interruption, and freeze provider/language/lesson context at that action. Added reservation regression coverage.
+
 ## Verification
 
 - Core: full 173 tests / 36 suites passed; focused four AgentBridge tests passed again after diagnostic handling changes.
-- App: full 90 tests / 23 suites passed; five focused audio/one-action tests passed after subsequent bounded-copy/cancellation changes.
+- App: full 90 tests / 23 suites passed; six focused audio/one-action/reservation tests passed after subsequent bounded-copy/cancellation changes.
 - EN/UK: 605 keys validated. Generated project current; Python author tests pass; UI-test API sources type-check (not UI execution).
 - Signed debug app: XPC transport validation passed without a provider call. Codex 0.154.0 also passed a real synthetic provider call and returned structured Ukrainian output.
 - Claude Code 2.1.236 launches, but its existing OAuth session is expired and cannot refresh. The same failure is reproducible from Terminal; reauthentication is pending_user, not a completed coaching test.

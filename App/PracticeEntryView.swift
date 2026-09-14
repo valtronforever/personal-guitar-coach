@@ -201,10 +201,12 @@ struct PracticeEntryView: View {
             Button(model.phase == .paused ? "practice.resume" : "practice.start") { model.start(instrument: data.preferences.instrument) }
                 .disabled(exceedsFretCount || model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
             Button("coach.recordAndAnalyze") {
+                guard coach.busyAttempt == nil else { return }
                 let context = CoachLessonContext.make(request: model.request, lessons: library.lessons,
                     instrument: data.preferences.instrument, language: language)
                 model.start(instrument: data.preferences.instrument, recordForCoach: true,
-                            language: language.rawValue, lessonContext: context)
+                            language: language.rawValue, lessonContext: context, provider: coach.provider)
+                if model.isBusy, let id = model.machine.attemptID { coach.reserveRecording(id) }
             }.disabled(exceedsFretCount || model.isBusy || coach.busyAttempt != nil || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil)
                 .accessibilityIdentifier("coach.recordAndAnalyze")
             Button("playback.pause") { model.pause() }.disabled(!model.phase.active || model.phase == .finalizing)

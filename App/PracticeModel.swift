@@ -39,6 +39,7 @@ final class PracticeModel {
     private(set) var recordedTake: CoachRecordedTake?
     private(set) var recordsForCoach = false
     private(set) var coachLanguage = "en"
+    private(set) var coachProvider = CoachProvider.codex
     private(set) var coachLesson = ""
     var physicallyTuned = false
     var phase: PracticePhase { machine.phase }
@@ -112,7 +113,7 @@ final class PracticeModel {
         if let id = captureID { Task { await audio.stopCapture(id: id) } }
     }
 
-    func start(instrument: InstrumentProfile, recordForCoach: Bool = false, language: String = "en", lessonContext: String = "") {
+    func start(instrument: InstrumentProfile, recordForCoach: Bool = false, language: String = "en", lessonContext: String = "", provider: CoachProvider = .codex) {
         guard !isBusy, let request else { return }
         errorKey = nil; backendError = nil
         let targetInstrument: InstrumentProfile
@@ -135,7 +136,7 @@ final class PracticeModel {
         } catch { errorKey = Self.configurationError(error); return }
         latestEvidence = nil
         guard physicallyTuned else { machine.stop(.tuningNotConfirmed); return }
-        recordsForCoach = recordForCoach; recordedTake = nil; coachLanguage = language; coachLesson = lessonContext
+        recordsForCoach = recordForCoach; recordedTake = nil; coachLanguage = language; coachLesson = lessonContext; coachProvider = provider
         if recordForCoach { repeatEnabled = false }
         synchronizationSession = audio.synchronizationSession; synchronizationRevision = audio.state?.routeRevision
         let id = UUID(); captureID = id; isBusy = true; signalConfirmed = false

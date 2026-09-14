@@ -5,10 +5,10 @@ import CryptoKit
 // Run only as the executable of a temporary signed sandboxed .app containing the XPC service.
 let connection = NSXPCConnection(serviceName: CoachAgentContract.serviceName)
 connection.remoteObjectInterface = NSXPCInterface(with: CoachAgentProtocol.self)
-connection.invalidationHandler = { fputs("XPC invalidated\n", stderr); exit(1) }
+connection.invalidationHandler = { FileHandle.standardError.write(Data("XPC invalidated\n".utf8)); exit(1) }
 connection.resume()
 let proxy = connection.remoteObjectProxyWithErrorHandler { error in
-    fputs("XPC connection failed: \(error)\n", stderr); exit(2)
+    FileHandle.standardError.write(Data("XPC connection failed: \(error)\n".utf8)); exit(2)
 } as! CoachAgentProtocol
 let live = CommandLine.arguments.contains("--live-synthetic")
 let provider = CommandLine.arguments.last == "claude" ? "claude" : "codex"

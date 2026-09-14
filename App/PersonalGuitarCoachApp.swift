@@ -32,8 +32,8 @@ struct PersonalGuitarCoachApp: App {
             if await !assessment.receive(evidence) { practice?.setRepeat(false) }
             if let practice, let take = practice.takeRecording(), let result = assessment.latest, result.id == evidence.id {
                 AgentCoachStore.shared.analyze(practice: result, take: take, language: practice.coachLanguage,
-                                               lessonContext: practice.coachLesson)
-            }
+                                               lessonContext: practice.coachLesson, provider: practice.coachProvider)
+            } else { AgentCoachStore.shared.releaseRecording(evidence.id) }
             await data?.refreshHistory()
         }
         _assessment = State(initialValue: assessment)

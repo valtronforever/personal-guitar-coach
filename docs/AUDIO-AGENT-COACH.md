@@ -1,6 +1,6 @@
 # Audio-file AI coach
 
-The practice screen has an explicit **Record & analyze** action. Normal Start does not record. After the usual tuning confirmation/signal preflight, the action records one take, runs the existing assessment, and automatically requests supplemental advice from the provider selected in Settings → AI coach. Repeats are disabled for this action; select a fragment up to 120 seconds.
+The practice screen has an explicit **Record & analyze** action. Normal Start does not record. After the usual tuning confirmation/signal preflight, the action records one take, runs the existing assessment, and automatically requests supplemental advice from the provider selected in Settings → AI coach. The action reserves its analysis slot and freezes provider/language/context at the start. Repeats are disabled for this action; select a fragment up to 120 seconds.
 
 ## Audio and timing
 

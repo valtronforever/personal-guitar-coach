@@ -1,6 +1,6 @@
 # Audio-file AI coach
 
-Status: `pending_user` (software verification complete; PR/CI completion recorded below).
+Status: `pending_user` (implemented; real guitar/UI and Claude reauthentication remain open).
 
 ## Scope
 
@@ -19,11 +19,11 @@ Opt-in **Record & analyze** action for one practice take (up to 120 seconds), WA
 ## Validation
 
 - Full Core suite: 173 tests / 36 suites passed; final focused runner suite: 4 tests passed.
-- Full App suite: 90 tests / 23 suites passed; final focused audio/one-action suite: 5 tests passed.
+- Full App suite: 90 tests / 23 suites passed; final focused audio/one-action/reservation suite: 6 tests passed.
 - Localization: 605 EN/UK keys; generated project, Python author tests and UI API type-check passed.
 - Local signed Release .app and ZIP built and verified: [bundle evidence](../docs/benchmarks/audio-agent-coach-bundle.json).
 - Actual signed sandbox-to-XPC probe passed without provider calls; Codex 0.154.0 returned structured Ukrainian feedback on a generated sine through the real CLI integration.
 - Claude 2.1.236 starts but its current OAuth session is expired and cannot refresh (also reproduced directly from Terminal). Reauthentication is pending_user.
 - Native UI automation could not inspect the app: `Sky Computer Use native pipe closed before response`. Hardware, EN/UK visual/VoiceOver acceptance and coaching quality remain explicitly open in [USER-VALIDATION](../docs/USER-VALIDATION.md).
 - Same-agent [local review](../docs/reviews/audio-agent-coach-review.md); [design and usage](../docs/AUDIO-AGENT-COACH.md).
-- PR/CI: pending publication. No private recordings or credentials used in tests.
+- [PR #55 and CI checks](https://github.com/valtronforever/personal-guitar-coach/pull/55). No private recordings or credentials used in tests.

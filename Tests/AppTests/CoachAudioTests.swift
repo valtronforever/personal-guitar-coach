@@ -5,6 +5,17 @@ import Testing
 @testable import PersonalGuitarCoach
 
 struct CoachAudioTests {
+    @MainActor @Test func recordingReservationPreventsAnotherJobFromTakingItsSlot() throws {
+        let root = try directory(); defer { try? FileManager.default.removeItem(at: root) }
+        let store = AgentCoachStore(root: root), first = UUID(), other = UUID()
+        #expect(store.reserveRecording(first))
+        #expect(!store.reserveRecording(other))
+        store.releaseRecording(other)
+        #expect(store.busyAttempt == first)
+        store.releaseRecording(first)
+        #expect(store.busyAttempt == nil && store.reserveRecording(other))
+        store.releaseRecording(other)
+    }
     private func directory() throws -> URL {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)

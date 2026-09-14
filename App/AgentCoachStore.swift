@@ -15,6 +15,7 @@ import SwiftUI
     @ObservationIgnored private var continuation: CheckedContinuation<Data, Error>?
     @ObservationIgnored private var timeoutTask: Task<Void, Never>?
     @ObservationIgnored private var generation = UUID()
+    @ObservationIgnored private var reservedAttempt: UUID?
     @ObservationIgnored private let root: URL
     var provider: CoachProvider {
         get { CoachProvider(rawValue: UserDefaults.standard.string(forKey: "coach.provider") ?? "codex") ?? .codex }
@@ -25,6 +26,15 @@ import SwiftUI
             .appendingPathComponent("PersonalGuitarCoach/AgentCoach", isDirectory: true)
     }
     func directory(_ id: UUID) -> URL { root.appendingPathComponent(id.uuidString, isDirectory: true) }
+    @discardableResult func reserveRecording(_ id: UUID) -> Bool {
+        guard busyAttempt == nil else { return false }
+        reservedAttempt = id; busyAttempt = id
+        return true
+    }
+    func releaseRecording(_ id: UUID) {
+        guard reservedAttempt == id else { return }
+        reservedAttempt = nil; busyAttempt = nil
+    }
     func load(_ practice: AssessedPractice) async {
         guard busyAttempt != practice.id else { return }
         let token = generation
@@ -97,9 +107,11 @@ import SwiftUI
     }
 
     func analyze(practice: AssessedPractice, take: CoachRecordedTake? = nil, file: URL? = nil,
-                 channel: Int = 1, language: String, lessonContext: String = "", previous: CoachAnalysisRequest? = nil) {
-        guard busyAttempt == nil else { return }
-        let id = practice.id, attemptDirectory = directory(practice.id), provider = provider, jobID = UUID()
+                 channel: Int = 1, language: String, lessonContext: String = "", previous: CoachAnalysisRequest? = nil,
+                 provider selectedProvider: CoachProvider? = nil) {
+        guard busyAttempt == nil || reservedAttempt == practice.id else { return }
+        reservedAttempt = nil
+        let id = practice.id, attemptDirectory = directory(practice.id), provider = selectedProvider ?? provider, jobID = UUID()
         let directory = attemptDirectory.appendingPathComponent(jobID.uuidString, isDirectory: true)
         busyAttempt = id; errors[id] = nil; generation = UUID()
         task = Task {
