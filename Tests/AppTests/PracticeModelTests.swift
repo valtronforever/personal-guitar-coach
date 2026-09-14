@@ -111,6 +111,7 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let model: PracticeModel
         let runtime: PracticeRuntimeStub
         let audio: AudioSessionStore
+        let calibration: CalibrationStore
     }
     private func harness() async throws -> Harness {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -126,7 +127,7 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let practiceRequest: PracticeRequest? = PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: "lesson", instrument: InstrumentProfile()), entryID: exerciseID)
         let unwrapped = try #require(practiceRequest)
         model.configure(unwrapped); model.physicallyTuned = true
-        return Harness(directory: directory, model: model, runtime: runtime, audio: audio)
+        return Harness(directory: directory, model: model, runtime: runtime, audio: audio, calibration: calibration)
     }
     private func wait(_ harness: Harness, seconds: Double = 5, until condition: () async -> Bool) async throws {
         let deadline = ContinuousClock.now.advanced(by: .seconds(seconds))
@@ -140,6 +141,25 @@ private actor PracticeRuntimeStub: AudioRuntime {
         try await wait(harness) { (await harness.runtime.request != nil) && harness.model.phase == .countIn }
         try await harness.runtime.advance(.playing)
         try await wait(harness) { harness.model.phase == .running }
+    }
+    @Test func activePersonalPracticeStopsAfterSynchronizationSessionInvalidation() async throws {
+        let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
+        let instrument = InstrumentProfile(), route = try #require(h.audio.state?.calibrationRoute)
+        let sync = try PersonalSyncEvidence(instrument: instrument, string: 3, offsets: [0, 0], spreads: [0, 0], drifts: [0, 0])
+        let profile = try CalibrationProfile(route: route, method: .personal, residualOffsetSeconds: 0,
+            uncertaintySeconds: sync.uncertainty, personalEvidence: sync)
+        #expect(await h.calibration.save(profile))
+        h.calibration.confirm(profile, session: h.audio.synchronizationSession, revision: try #require(h.audio.state?.routeRevision))
+        var attempts: [PracticeEvidence] = []
+        h.model.onAttemptFinished = { attempts.append($0) }
+        await h.model.start(instrument: instrument)
+        try await playing(h)
+        #expect(h.model.machine.configuration?.calibration == profile)
+        h.audio.invalidateSynchronization()
+        try await wait(h) { !h.model.isBusy && attempts.count == 1 }
+        #expect(attempts[0].phase == .interrupted && attempts[0].reason == .routeChanged)
+        #expect(attempts[0].configuration.calibration == profile)
+        #expect(h.calibration.usableProfile(audio: h.audio, instrument: instrument) == nil)
     }
     @Test func changingAdaptiveTuningStopsOldAttemptAndKeepsItsOriginalEvidence() async throws {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }

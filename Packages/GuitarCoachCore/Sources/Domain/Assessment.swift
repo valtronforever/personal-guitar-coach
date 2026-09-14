@@ -16,10 +16,13 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public let extraPenalty: Double
     public let onsetUncertaintySeconds: Double
     public static let current = AssessmentParameters()
-    private init() {
-        version = "monophonic-assessment-1"; pitchToleranceCents = 50; rhythmToleranceSeconds = 0.1
+    private init(version: String = "monophonic-assessment-2") {
+        self.version = version; pitchToleranceCents = 50; rhythmToleranceSeconds = 0.1
         rhythmIntervalFraction = 0.45; maximumMatchSeconds = 0.3; matchIntervalFraction = 0.49
         uncertaintyFraction = 0.2; pitchWeight = 0.6; extraPenalty = 20; onsetUncertaintySeconds = 0.03
+    }
+    public func maximumRhythmTolerance(personal: Bool) -> Double {
+        rhythmToleranceSeconds * (personal && version == "monophonic-assessment-2" ? 2 : 1)
     }
     private enum CodingKeys: String, CodingKey {
         case version, pitchToleranceCents, rhythmToleranceSeconds, rhythmIntervalFraction, maximumMatchSeconds
@@ -28,8 +31,8 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         let version = try v.decode(String.self, forKey: .version)
-        guard version == Self.current.version else { throw AssessmentError.unsupportedVersion(version) }
-        self.init()
+        guard ["monophonic-assessment-1", Self.current.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
+        self.init(version: version)
         let fields: [(CodingKeys, Double)] = [(.pitchToleranceCents, pitchToleranceCents), (.rhythmToleranceSeconds, rhythmToleranceSeconds),
             (.rhythmIntervalFraction, rhythmIntervalFraction), (.maximumMatchSeconds, maximumMatchSeconds),
             (.matchIntervalFraction, matchIntervalFraction), (.uncertaintyFraction, uncertaintyFraction),
@@ -96,12 +99,16 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         let attacks = Set(evidence.attacks.map(\.id))
         guard notes.map(\.id) == expected.map(\.id), !notes.isEmpty,
               Set(ids).count == ids.count, Set(ids).isSubset(of: attacks),
-              rhythmToleranceSeconds.isFinite, rhythmToleranceSeconds > 0, rhythmToleranceSeconds <= parameters.rhythmToleranceSeconds,
+              rhythmToleranceSeconds.isFinite, rhythmToleranceSeconds > 0, rhythmToleranceSeconds <= parameters.maximumRhythmTolerance(personal: evidence.configuration.calibration?.method == .personal),
               [overallScore, pitchScore, timingScore].compactMap({ $0 }).allSatisfy({ $0.isFinite && (0...100).contains($0) }),
-              rhythmCapability == .available || notes.allSatisfy({ $0.timingErrorSeconds == nil }),
+              rhythmCapability.allowsTiming || notes.allSatisfy({ $0.timingErrorSeconds == nil }),
               extras.allSatisfy({ extra in extra.restID.map { id in evidence.configuration.selectedEvents.contains { $0.id == id && $0.kind == .rest } } ?? true }) else {
             throw AssessmentError.invalidResult
         }
+        if rhythmCapability == .approximate {
+            guard evidence.configuration.calibration?.method == .personal else { throw AssessmentError.invalidResult }
+        }
+        if rhythmCapability == .available, evidence.configuration.calibration?.method == .personal { throw AssessmentError.invalidResult }
         let tuning = evidence.configuration.exercise.requiredTuning ?? evidence.configuration.instrument.tuning
         let targets = try expected.map { try tuning.pitch(at: $0.positions[0]).frequency(referenceA4: tuning.referenceA4) }
         guard notes.map(\.targetFrequency) == targets else { throw AssessmentError.invalidResult }
@@ -116,10 +123,10 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         } else if !ids.isEmpty { throw AssessmentError.invalidResult }
         switch validity {
         case .valid:
-            guard evidence.phase == .completed, rhythmCapability == .available,
+            guard evidence.phase == .completed, rhythmCapability.allowsTiming,
                   overallScore != nil, pitchScore != nil, timingScore != nil else { throw AssessmentError.invalidResult }
         case .uncalibrated:
-            guard evidence.phase == .completed, rhythmCapability != .available,
+            guard evidence.phase == .completed, !rhythmCapability.allowsTiming,
                   overallScore == nil, timingScore == nil, pitchScore != nil else { throw AssessmentError.invalidResult }
         case .insufficientSignal, .interrupted:
             guard overallScore == nil, pitchScore == nil, timingScore == nil else { throw AssessmentError.invalidResult }

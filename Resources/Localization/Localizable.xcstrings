@@ -5220,13 +5220,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Latency calibration"
+            "value": "Timing synchronization"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Калібрування затримки"
+            "value": "Синхронізація таймінгу"
           }
         }
       }
@@ -9224,6 +9224,584 @@
           "stringUnit": {
             "state": "translated",
             "value": "Крок %lld"
+          }
+        }
+      }
+    },
+    "calibration.method.personal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal synchronization · approximate timing"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Персональна синхронізація · приблизний таймінг"
+          }
+        }
+      }
+    },
+    "sync.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play one open string to the metronome to set your personal timing compensation. This includes audio latency and your own timing tendency; it does not measure hardware latency separately."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте одну відкриту струну під метроном, щоб визначити персональну компенсацію таймінгу. Вона включає затримку аудіо та вашу звичку грати раніше чи пізніше; окрему затримку обладнання так виміряти неможливо."
+          }
+        }
+      }
+    },
+    "sync.bluetooth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can use a guitar interface for input and Bluetooth headphones for output. Keep the guitar input selected. Repeat synchronization after reconnecting, changing devices, or restarting the app. Variable Bluetooth delay cannot be removed with a constant offset."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Можна вибрати гітарний інтерфейс для входу, а Bluetooth-навушники — для виходу. Залиште гітарний вхід обраним. Повторюйте синхронізацію після перепідключення, зміни пристроїв або перезапуску додатка. Сталий зсув не усуває мінливу затримку Bluetooth."
+          }
+        }
+      }
+    },
+    "sync.headphones": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use headphones so the microphone cannot mistake the click for a guitar attack. This setting does not remove audible delay when monitoring your guitar through Bluetooth."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Користуйтеся навушниками, щоб мікрофон не приймав клік за атаку гітари. Це налаштування не усуває чутну затримку моніторингу гітари через Bluetooth."
+          }
+        }
+      }
+    },
+    "sync.prepare": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare your guitar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підготуйте гітару"
+          }
+        }
+      }
+    },
+    "sync.string": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open string"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відкрита струна"
+          }
+        }
+      }
+    },
+    "sync.stringNote %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "String %1$lld · %2$@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Струна %1$lld · %2$@"
+          }
+        }
+      }
+    },
+    "sync.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tune the selected string and mute the others. After Start, pluck and sustain it for the signal check. Listen to four clicks without playing, then play one short note on each of the next sixteen clicks. Follow the sound, not the progress bar. Repeat for the second pass."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Налаштуйте обрану струну й приглушіть інші. Після початку зіграйте її та дайте звучати для перевірки сигналу. Прослухайте чотири кліки без гри, потім зіграйте по одній короткій ноті на кожен із наступних шістнадцяти кліків. Орієнтуйтеся на звук, а не індикатор прогресу. Повторіть у другому проході."
+          }
+        }
+      }
+    },
+    "sync.source": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signal source from instrument settings:"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Джерело сигналу з налаштувань інструменту:"
+          }
+        }
+      }
+    },
+    "sync.pass %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pass %lld of 2 · 60 BPM"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прохід %lld із 2 · 60 BPM"
+          }
+        }
+      }
+    },
+    "sync.stage.signal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluck and sustain the selected open string. Waiting for a clean, in-tune signal…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте обрану відкриту струну й дайте їй звучати. Очікуємо чистий, налаштований сигнал…"
+          }
+        }
+      }
+    },
+    "sync.stage.listening": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen to four clicks. Do not play yet."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухайте чотири кліки. Поки не грайте."
+          }
+        }
+      }
+    },
+    "sync.stage.playing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play sixteen short notes, one on each click."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте шістнадцять коротких нот, по одній на кожен клік."
+          }
+        }
+      }
+    },
+    "sync.progress": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pass progress"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогрес проходу"
+          }
+        }
+      }
+    },
+    "sync.between": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First pass accepted. Rest briefly, then repeat the same pattern to check consistency."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перший прохід прийнято. Трохи відпочиньте й повторіть той самий малюнок для перевірки стабільності."
+          }
+        }
+      }
+    },
+    "sync.secondPass": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start second pass"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати другий прохід"
+          }
+        }
+      }
+    },
+    "sync.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start two-pass synchronization"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати синхронізацію з двох проходів"
+          }
+        }
+      }
+    },
+    "sync.audioInUse": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop the other audio activity before starting synchronization."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупиніть іншу аудіоактивність перед початком синхронізації."
+          }
+        }
+      }
+    },
+    "sync.result": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review your compensation"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірте компенсацію"
+          }
+        }
+      }
+    },
+    "sync.resultExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Both passes agreed. Apply to use this fixed offset in subsequent practice. Positive means detected attacks arrived later than the clicks. Repeatability describes variation, not absolute hardware accuracy."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обидва проходи узгоджені. Застосуйте цей сталий зсув для наступних вправ. Додатне значення означає, що виявлені атаки надходили пізніше кліків. Повторюваність описує коливання, а не абсолютну точність обладнання."
+          }
+        }
+      }
+    },
+    "sync.eligible": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approximate rhythm scoring is available for sufficiently spaced notes while the audio clock remains stable. Try a familiar exercise after applying."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приблизна оцінка ритму доступна для достатньо розділених нот за стабільного аудіогодинника. Після застосування спробуйте знайому вправу."
+          }
+        }
+      }
+    },
+    "sync.uncertain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These passes are too variable for rhythm scoring. Repeat synchronization with steadier playing or another output. Pitch practice remains available."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ці проходи надто мінливі для оцінки ритму. Повторіть синхронізацію зі стабільнішою грою або іншим виходом. Практика висоти нот залишається доступною."
+          }
+        }
+      }
+    },
+    "sync.apply": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply compensation"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати компенсацію"
+          }
+        }
+      }
+    },
+    "sync.repeatability": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeatability allowance (ms)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Допуск повторюваності (мс)"
+          }
+        }
+      }
+    },
+    "sync.recheck": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved profile needs a new two-pass check for this session and instrument before it can affect practice."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережений профіль потребує нової перевірки з двох проходів для цього сеансу й інструменту, перш ніж його буде застосовано у практиці."
+          }
+        }
+      }
+    },
+    "sync.routeChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio or instrument settings changed. Start synchronization again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Змінилися налаштування аудіо або інструменту. Почніть синхронізацію знову."
+          }
+        }
+      }
+    },
+    "sync.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronization cancelled. No new compensation was applied."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Синхронізацію скасовано. Нову компенсацію не застосовано."
+          }
+        }
+      }
+    },
+    "sync.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not obtain two consistent passes. Check the selected string and input level; avoid distortion and click leakage. Play all sixteen notes per pass. Timing must stay within 400 ms of each click. Retry or try a wired output if delay varies."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося отримати два узгоджені проходи. Перевірте обрану струну та рівень входу; уникайте дисторшну й потрапляння кліків у вхід. Зіграйте всі шістнадцять нот у кожному проході з відхиленням до 400 мс від кліку. Повторіть або спробуйте дротовий вихід, якщо затримка змінюється."
+          }
+        }
+      }
+    },
+    "sync.approximateResult": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approximate rhythm and overall scores using personal synchronization. Consistent personal timing bias may be included in the compensation."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приблизні оцінки ритму та загального результату з персональною синхронізацією. Компенсація може включати вашу сталу звичку грати раніше чи пізніше."
+          }
+        }
+      }
+    },
+    "sync.tolerance %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rhythm tolerance: ±%lld ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Допуск ритму: ±%lld мс"
+          }
+        }
+      }
+    },
+    "assessment.rhythmReason.approximate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal synchronization provides approximate timing."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Персональна синхронізація дає приблизний таймінг."
+          }
+        }
+      }
+    },
+    "sync.stage.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopping synchronization…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупиняємо синхронізацію…"
+          }
+        }
+      }
+    },
+    "sync.stage.between": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First pass complete. Stopping input…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перший прохід завершено. Зупиняємо вхід…"
+          }
+        }
+      }
+    },
+    "sync.stage.result": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Both passes complete. Preparing the result…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обидва проходи завершено. Готуємо результат…"
           }
         }
       }

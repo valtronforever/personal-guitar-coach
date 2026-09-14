@@ -152,7 +152,7 @@ struct PracticeEntryView: View {
                 Button("audio.title") { showsAudio = true }
                 Button("navigation.tuner") { model.stop(); navigation.destination = .tuner }
             }
-            Text(LocalizedStringKey("calibration.method." + ((model.phase.active ? model.machine.configuration?.calibration : calibration.profile(for: audio.state?.calibrationRoute))?.method.rawValue ?? "none")))
+            Text(LocalizedStringKey("calibration.method." + ((model.phase.active ? model.machine.configuration?.calibration : calibration.usableProfile(audio: audio, instrument: instrument))?.method.rawValue ?? "none")))
             Text("practice.pitchOnlyExplanation").font(.callout).foregroundStyle(.secondary)
         }
     }

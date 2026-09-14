@@ -7,7 +7,7 @@ struct AssessmentTests {
     private func input(count: Int = 8, bpm: Double = 60, ticks: Int64 = 960, rests: Bool = false,
                        shifts: [Int: Double] = [:], semitones: [Int: Double] = [:], missing: Set<Int> = [],
                        unreliable: Set<Int> = [], extras: [Double] = [], offset: Double = 0,
-                       calibrated: Bool = true, drift: Double? = 0, phase: PracticePhase = .completed,
+                       calibrated: Bool = true, personal: Bool = false, drift: Double? = 0, phase: PracticePhase = .completed,
                        confirmed: Bool = true, clipped: Bool = false, noisy: Bool = false) throws -> PracticeEvidence {
         var events: [MusicalEvent] = []
         for index in 0..<count {
@@ -21,9 +21,14 @@ struct AssessmentTests {
         let endpoint = try CalibrationEndpoint(uid: "usb", channel: 1, sampleRate: 48000, bufferFrames: 512,
             deviceLatencyFrames: 240, streamLatencyFrames: 240)
         let route = try CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "fixture")
-        let calibration = try calibrated ? CalibrationProfile(route: route, method: .measured, residualOffsetSeconds: offset,
+        var calibration = try calibrated ? CalibrationProfile(route: route, method: .measured, residualOffsetSeconds: offset,
             uncertaintySeconds: 0.015, evidence: CalibrationEvidence(algorithmVersion: "fixture", matchedPulses: 12,
                 missedPulses: 0, extraPulses: 0, durationSeconds: 25, residualP95Seconds: 0.005, driftSeconds: 0)) : nil
+        if personal {
+            let sync = try PersonalSyncEvidence(instrument: InstrumentProfile(), string: 3, offsets: [offset, offset], spreads: [0.015, 0.015], drifts: [0, 0])
+            calibration = try CalibrationProfile(route: route, method: .personal, residualOffsetSeconds: sync.offset,
+                                                uncertaintySeconds: sync.uncertainty, personalEvidence: sync)
+        }
         let configuration = try PracticeConfiguration(exercise: Exercise(id: "golden", events: events),
             instrument: InstrumentProfile(), bpm: bpm, route: route, calibration: calibration)
         let start = try configuration.expectedStart(renderEpochSeconds: 100)
@@ -46,6 +51,29 @@ struct AssessmentTests {
             signalConfirmed: confirmed, renderEpochSeconds: confirmed ? 100 : nil, maximumClockDriftSeconds: drift,
             attacks: attacks, clipping: clipped ? [interval] : [],
             uncertainSignal: noisy ? [PracticeUncertainSpan(interval: interval, reason: .ambiguous)] : [], analysisVersion: "fixture-analysis-1")
+    }
+    @Test func v1ResultsRemainReadableWithoutRerating() throws {
+        let result = try AssessmentEngine.evaluate(input(shifts: [0: 0.05]))
+        var document = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(result)) as? [String: Any])
+        var parameters = try #require(document["parameters"] as? [String: Any])
+        parameters["version"] = "monophonic-assessment-1"; document["parameters"] = parameters
+        let restored = try JSONDecoder().decode(AssessedPractice.self, from: JSONSerialization.data(withJSONObject: document))
+        #expect(restored.parameters.version == "monophonic-assessment-1")
+        #expect(restored.notes == result.notes && restored.overallScore == result.overallScore)
+    }
+    @Test func personalTimingIsApproximateFrozenAndRoundTrips() throws {
+        for offset in [-0.15, 0.15] {
+            let perfect = try AssessmentEngine.evaluate(input(offset: offset, personal: true))
+            #expect(perfect.rhythmCapability == .approximate && perfect.overallScore == 100)
+            #expect(perfect.rhythmToleranceSeconds == 0.2)
+            let late = try AssessmentEngine.evaluate(input(shifts: [0: 0.1], offset: offset, personal: true))
+            #expect(abs((late.notes[0].timingErrorSeconds ?? 0) - 0.1) < 1e-9)
+            #expect(late.timingScore! < perfect.timingScore!)
+            #expect(late.evidence.configuration.calibration?.residualOffsetSeconds == offset)
+            #expect(try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(late)) == late)
+        }
+        let drifting = try AssessmentEngine.evaluate(input(personal: true, drift: 0.2))
+        #expect(drifting.validity == .uncalibrated && drifting.timingScore == nil)
     }
     @Test func perfectAndCompensatedSignedLatencyReach100WithoutDoubleCompensation() throws {
         for offset in [-0.05, 0, 0.05] {

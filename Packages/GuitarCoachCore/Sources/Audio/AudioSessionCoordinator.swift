@@ -170,6 +170,7 @@ public actor AudioSessionCoordinator {
     }
 
     public func suspend() async {
+        routeRevision &+= 1 // Even an idle personal synchronization needs rechecking after sleep.
         guard phase == .running || phase.isStarting || isClicking || isStartingClick else { return }
         await stop(reason: .suspended)
     }

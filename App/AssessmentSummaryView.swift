@@ -13,6 +13,10 @@ struct AssessmentSummaryView: View {
                     metric("assessment.pitch", result.pitchScore)
                     metric("assessment.rhythm", result.timingScore)
                 }
+                if result.rhythmCapability == .approximate {
+                    Text("sync.approximateResult").foregroundStyle(.secondary)
+                    Text("sync.tolerance \(Int((result.rhythmToleranceSeconds * 1000).rounded()))").font(.caption)
+                }
                 if result.validity == .uncalibrated {
                     Text(LocalizedStringKey("assessment.rhythmReason." + result.rhythmCapability.rawValue)).foregroundStyle(.secondary)
                 }

@@ -8,6 +8,8 @@ final class PracticeModel {
     @ObservationIgnored private let calibration: CalibrationStore
     @ObservationIgnored private var task: Task<Void, Never>?
     @ObservationIgnored private var captureID: UUID?
+    @ObservationIgnored private var synchronizationSession: UUID?
+    @ObservationIgnored private var synchronizationRevision: UInt64?
     @ObservationIgnored private var collector: PracticeEvidenceCollector?
     @ObservationIgnored private var renderEpoch: Double?
     @ObservationIgnored private var startedAt = Date()
@@ -38,7 +40,7 @@ final class PracticeModel {
     var phase: PracticePhase { machine.phase }
     var barCount: Int { max(1, Int(((request?.exercise.durationTicks ?? 1) - 1) / (request?.exercise.timeSignature.ticksPerBar ?? 3840)) + 1) }
     var activeEvent: MusicalEvent? {
-        guard phase == .running, let cursorTick else { return nil }
+        guard (phase == .running || phase == .finalizing), let cursorTick else { return nil }
         return machine.configuration?.selectedEvents.first { $0.startTick <= cursorTick && cursorTick < $0.endTick }
     }
     var expectedPositions: [FretPosition] {
@@ -119,12 +121,13 @@ final class PracticeModel {
             let endTick = upper.overflow ? request.exercise.durationTicks : min(request.exercise.durationTicks, upper.partialValue)
             configuration = try PracticeConfiguration(exercise: request.exercise, instrument: targetInstrument, bpm: bpm,
                 range: Int64(firstBar - 1) * bar..<endTick,
-                route: route, calibration: calibration.profile(for: route),
+                route: route, calibration: calibration.usableProfile(audio: audio, instrument: targetInstrument),
                 lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, position: request.historicalPosition, activity: request.activityReference))
             try machine.begin(configuration)
         } catch { errorKey = Self.configurationError(error); return }
         latestEvidence = nil
         guard physicallyTuned else { machine.stop(.tuningNotConfirmed); return }
+        synchronizationSession = audio.synchronizationSession; synchronizationRevision = audio.state?.routeRevision
         let id = UUID(); captureID = id; isBusy = true; signalConfirmed = false
         cursorTick = nil; countInBeat = nil; latestFrequency = nil; latestEvidence = nil; completedCount = 0
         resetAttempt()
@@ -166,6 +169,11 @@ final class PracticeModel {
             if state.phase == .idle { throw AudioBackendError.cancelled }
             throw AudioBackendError.routeChanged
         }
+        if configuration.calibration?.method == .personal {
+            guard synchronizationSession == audio.synchronizationSession, synchronizationRevision == state.routeRevision else {
+                throw AudioBackendError.routeChanged
+            }
+        }
         return state
     }
     private func preflight(configuration: PracticeConfiguration, captureID: UUID) async throws {
@@ -187,6 +195,7 @@ final class PracticeModel {
             loops: false, mode: .practice, clickVolume: clickVolume, toneVolume: 0)
         try machine.preflightPassed()
         try await audio.coordinator.startTransport(transport)
+        let displayPlan = try TransportPlan(request: transport, sampleRate: configuration.route.output.sampleRate)
         let deadline = ContinuousClock.now.advanced(by: .seconds(configuration.countInSeconds + configuration.durationSeconds + 30))
         var completedAt: ContinuousClock.Instant?
         while true {
@@ -194,8 +203,10 @@ final class PracticeModel {
             updateLive(state)
             guard let playback = state.transport, playback.requestID == transport.id else { throw AudioBackendError.invalidFormat }
             if renderEpoch == nil { renderEpoch = playback.renderAnchorHostSeconds }
-            cursorTick = playback.position.tick; countInBeat = playback.position.countInBeat
-            if playback.position.countInBeat == nil && phase == .countIn { try machine.beginPlaying() }
+            let audible = displayPlan.audiblePosition(renderedFrames: playback.renderedFrames,
+                outputLatencySeconds: configuration.route.output.hardwareLatencySeconds ?? playback.presentationLatency)
+            cursorTick = audible.tick; countInBeat = audible.countInBeat
+            if audible.countInBeat == nil && phase == .countIn { try machine.beginPlaying() }
             if let renderEpoch, let analysis = state.meters?.analysis { try collector?.consume(analysis, renderEpochSeconds: renderEpoch) }
             if let drift = state.clock?.validatedDriftSeconds { maximumDrift = max(maximumDrift ?? 0, abs(drift)) }
             else if maximumDrift != nil { clockInvalid = true }

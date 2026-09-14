@@ -199,7 +199,7 @@ Coordinator резервує preview як output-only purpose, без microphone
 
 ## Калібрування (задача 15)
 
-`CalibrationRoute` і `CalibrationProfile` у Domain визначають host normalization та умови rhythm capability. Audio читає selected-stream metadata, контролює drift і виконує irregular-pulse loopback; Persistence атомарно зберігає профілі; спільний `CalibrationStore` та `CalibrationModel` керують нативним екраном. Capture UUID lease захищає асинхронний start/stop. Деталі та невиміряні hardware припущення — [ADR 003](decisions/003-calibration-time.md).
+`CalibrationRoute` і `CalibrationProfile` у Domain визначають host normalization та умови rhythm capability. Audio читає selected-stream metadata, контролює drift і рендерить кліки для двох персональних проходів; Persistence атомарно зберігає профілі schema 2 (schema 1 читається); спільний `CalibrationStore` та `CalibrationModel` керують нативним екраном. Capture UUID lease захищає асинхронний start/stop. Деталі — [персональна синхронізація](PERSONAL-SYNCHRONIZATION.md); timestamp contract і старий loopback — [ADR 003](decisions/003-calibration-time.md). Personal receipt живе лише в поточному аудіосеансі/route revision, історія зберігає профіль повністю.
 
 
 ## Практика (задача 16)

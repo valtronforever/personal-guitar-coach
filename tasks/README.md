@@ -106,3 +106,7 @@
 [Lesson fretboard position](follow-up/lesson-fretboard-position.md): `pending_user`. Move a scale's fingering near a chosen fret while preserving its sounding pitches and key.
 
 [Author-controlled lesson design](follow-up/lesson-design-system.md): `done` (design only). Schema-2 material permissions, allowed regions and guided activities implemented atomically; LD01 `done`; LD02–LD04 `pending_user` for deferred native/physical acceptance. Full Core/App, content, localization and signed bundle evidence is linked from the task.
+
+## Follow-ups
+
+- [Personal timing synchronization wizard](personal-sync-wizard.md) — `pending_user`; two guitar-playing passes, no cable calibration UI.
