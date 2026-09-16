@@ -18,3 +18,9 @@ Replace the linear unlabeled guitar-input meter with one shared dBFS scale in Au
 ## Validation
 
 Pending automated checks and same-agent review. Native UI bridge currently fails with “Sky Computer Use native pipe closed before response”; physical guitar, native layout and VoiceOver acceptance remain open.
+
+- Four production-model smoke scenarios pass locally: dB conversion/geometry, thresholds including 0.995 clipping, inactive/missing/invalid input, and amplitude versus preflight readiness.
+- 626 English/Ukrainian keys, generated project and whitespace checks pass.
+- Offline SwiftUI rendering inspected in both languages and themes; fixed a truncated paragraph and re-rendered. Artifacts are local generated files in `build/input-level-renders/`.
+- Full Xcode locally requires user acceptance of its updated license; existing Release app remains untouched. CLT builds the app with SDK 26.5 but lacks Swift Testing.
+- [PR #56](https://github.com/valtronforever/personal-guitar-coach/pull/56) tracks CI, including the corrected optional-renderer macro compile issue. [Same-agent review](../../docs/reviews/input-level-guidance-review.md).

@@ -10655,6 +10655,23 @@
           }
         }
       }
+    },
+    "audio.meter.rms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average (RMS)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Середній (RMS)"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

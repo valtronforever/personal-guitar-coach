@@ -29,11 +29,12 @@ struct InputLevelMeter: View {
                 label(reading.statusKey, icon: statusIcon)
                     .font(.callout.bold())
                 Spacer()
-                text("audio.rmsDB").font(.caption)
+                text("audio.meter.rms").font(.caption)
                 decibels(reading.rmsDB).font(.caption)
             }
-            text(reading.hintKey).font(.caption)
+            text(reading.hintKey).font(.caption).fixedSize(horizontal: false, vertical: true)
             text("audio.meter.guidance").font(.caption).foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("audio.levelMeter")

@@ -40,7 +40,8 @@ import Audio
                     .environment(\.locale, Locale(identifier: language))
                 let renderer = ImageRenderer(content: view); renderer.scale = 2
                 let image = try #require(renderer.nsImage)
-                let bitmap = try #require(NSBitmapImageRep(data: #require(image.tiffRepresentation)))
+                let tiff = try #require(image.tiffRepresentation)
+                let bitmap = try #require(NSBitmapImageRep(data: tiff))
                 let png = try #require(bitmap.representation(using: .png, properties: [:]))
                 try png.write(to: root.appendingPathComponent("meter-\(language)-\(dark ? "dark" : "light").png"))
             }
