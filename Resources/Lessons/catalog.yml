@@ -38,6 +38,7 @@ lessons:
   - first-rhythm-study
   - minor-chord-shapes
   - major-chord-shapes
+  - down-up-strumming
 modules:
   - id: getting-started
     order: 1

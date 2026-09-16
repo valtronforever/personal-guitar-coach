@@ -407,7 +407,8 @@ lessons:
       uk: Базовий бій вниз–вгору
     outcomeUK: Зіграти рівний акомпанемент
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 29
     moduleID: first-chords
     lessonID: chord-string-selection

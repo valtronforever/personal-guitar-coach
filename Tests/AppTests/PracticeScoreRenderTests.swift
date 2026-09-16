@@ -31,10 +31,13 @@ import Domain
                 let duration: Int64 = [240, 240, 480, 960, 1920, 480, 480, 960][i % 8]
                 events.append(try MusicalEvent(id: "n\(i)", startTick: tick, durationTicks: duration,
                     kind: i % 7 == 6 ? .rest : .note,
-                    positions: i % 7 == 6 ? [] : [FretPosition(string: i % 6 + 1, fret: i % 20)], accented: i % 4 == 0 && i % 7 != 6))
+                    positions: i % 7 == 6 ? [] : i % 4 == 0
+                        ? [FretPosition(string: 3, fret: 2), FretPosition(string: 2, fret: 1), FretPosition(string: 1, fret: 0)]
+                        : [FretPosition(string: i % 6 + 1, fret: i % 20)], accented: i % 4 == 0 && i % 7 != 6,
+                    strum: i % 4 == 0 && i % 7 != 6 ? StrumPattern(direction: i % 8 == 0 ? .down : .up) : nil))
                 tick += duration
             }
-            let model = try TimelineModel(exercise: Exercise(id: "score-render", events: events), instrument: .cStandard)
+            let model = try TimelineModel(exercise: Exercise(id: "score-render", events: events, assessmentMode: .displayOnly), instrument: .cStandard)
             for dark in [false, true] { for width in [600.0, 980.0] {
                 let view = PracticeScoreFixture(model: model, width: width - 40, bundle: bundle,
                     tick: width == 600 ? -480 : 1200)

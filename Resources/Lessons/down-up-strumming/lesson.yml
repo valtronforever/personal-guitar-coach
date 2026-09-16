@@ -1,0 +1,777 @@
+schemaVersion: 3
+id: down-up-strumming
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: down-pulse
+  kind: events
+  eventIDs:
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - n-5
+  - n-6
+  - n-7
+  - n-8
+  exerciseID: down-up-strumming-down-pulse
+  activityID: down-pulse
+- id: alternate
+  kind: events
+  eventIDs:
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - n-5
+  - n-6
+  - n-7
+  - n-8
+  - n-9
+  - n-10
+  - n-11
+  - n-12
+  - n-13
+  - n-14
+  - n-15
+  - n-16
+  exerciseID: down-up-strumming-alternate
+  activityID: alternate
+- id: air-stroke
+  kind: events
+  eventIDs:
+  - n-1
+  - n-3
+  - n-4
+  - n-6
+  - n-7
+  - n-8
+  - n-9
+  - n-11
+  - n-12
+  - n-14
+  - n-15
+  - n-16
+  exerciseID: down-up-strumming-air-stroke
+  activityID: air-stroke
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: down-up-strumming-down-pulse
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: n-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: true
+  - id: n-2
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-3
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-4
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-5
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: true
+  - id: n-6
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-7
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-8
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+- id: down-up-strumming-alternate
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: n-1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: true
+  - id: n-2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-3
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-4
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-5
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-6
+    startTick: 2400
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-7
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-8
+    startTick: 3360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-9
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: true
+  - id: n-10
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-11
+    startTick: 4800
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-12
+    startTick: 5280
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-13
+    startTick: 5760
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-14
+    startTick: 6240
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-15
+    startTick: 6720
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-16
+    startTick: 7200
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+- id: down-up-strumming-air-stroke
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: n-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: true
+  - id: n-3
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-4
+    startTick: 1440
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-6
+    startTick: 2400
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-7
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-8
+    startTick: 3360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-9
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: true
+  - id: n-11
+    startTick: 4800
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-12
+    startTick: 5280
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-14
+    startTick: 6240
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+  - id: n-15
+    startTick: 6720
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: n-16
+    startTick: 7200
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: up
+      spreadTicks: 120
+adaptation:
+  policy: transposeIntervals
+materials:
+- id: down-pulse
+  source:
+    kind: exercise
+    exerciseID: down-up-strumming-down-pulse
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 45
+- id: alternate
+  source:
+    kind: exercise
+    exerciseID: down-up-strumming-alternate
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 45
+- id: air-stroke
+  source:
+    kind: exercise
+    exerciseID: down-up-strumming-air-stroke
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 45
+activities:
+- id: down-pulse
+  materialID: down-pulse
+- id: alternate
+  materialID: alternate
+- id: air-stroke
+  materialID: air-stroke
+fingerings: []
+practiceEntries: []
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - motion
+  - pulse
+  - strings
+  - gap
+curriculum:
+  moduleID: first-chords
+  ordinal: 28
+  durationMinutes: 20
+  prerequisites:
+  - minor-chord-shapes
+  - beat-accents
+  keywords:
+  - strumming
+  - downstroke
+  - upstroke
+  - бій
+  - вниз
+  - вгору

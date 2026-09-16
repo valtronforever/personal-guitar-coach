@@ -13638,6 +13638,86 @@
           }
         }
       }
+    },
+    "tab.strumDown": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downstroke, from lower to higher sounding strings"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удар вниз, від нижчих до вищих за звучанням струн"
+          }
+        }
+      }
+    },
+    "tab.strumUp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upstroke, from higher to lower sounding strings"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удар вгору, від вищих до нижчих за звучанням струн"
+          }
+        }
+      }
+    },
+    "tab.strumAccented": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accented"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "З акцентом"
+          }
+        }
+      }
+    },
+    "tab.strumNormal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal emphasis"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звичайна сила"
+          }
+        }
+      }
+    },
+    "tab.strumDescription %lld %@ %@ %@ %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bar %lld, beat %@, duration %@, %@. %@. %@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Такт %lld, доля %@, тривалість %@, %@. %@. %@."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

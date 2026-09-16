@@ -95,8 +95,8 @@ struct PracticeScoreRow: View {
                 }
                 durationMark(event.durationTicks, continuation: segment.isContinuation)
                     .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
-                if event.accented && !segment.isContinuation {
-                    Text(verbatim: ">").font(.system(size: 12 * zoom, weight: .bold))
+                if (event.accented || event.strum != nil) && !segment.isContinuation {
+                    Text(verbatim: (event.accented ? ">" : "") + (event.strum.map { $0.direction == .down ? "↓" : "↑" } ?? "")).font(.system(size: (event.accented && event.strum != nil ? 9 : 12) * zoom, weight: .bold))
                         .position(x: min(8 * zoom, width / 2), y: 151 * zoom).accessibilityHidden(true)
                 }
                 if event.kind == .rest {
@@ -145,6 +145,11 @@ struct PracticeScoreRow: View {
         let notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if let strum = event.strum, !segment.isContinuation {
+            let direction = localizationBundle.localizedString(forKey: strum.direction == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)
+            let emphasis = localizationBundle.localizedString(forKey: event.accented ? "tab.strumAccented" : "tab.strumNormal", value: nil, table: nil)
+            return Text("tab.strumDescription \(segment.bar + 1) \(beat) \(duration) \(notes) \(direction) \(emphasis)", bundle: localizationBundle)
+        }
         if event.accented && !segment.isContinuation { return Text("tab.accentedNoteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)", bundle: localizationBundle) }
         return Text("tab.noteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)", bundle: localizationBundle)
     }
