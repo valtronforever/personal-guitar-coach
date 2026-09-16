@@ -80,7 +80,7 @@ struct SyncTimelineView: View {
         }
     }
     private func label(_ key: String) -> Text { Text(LocalizedStringKey(key), bundle: bundle) }
-    static func signedMilliseconds(_ seconds: Double) -> String {
+    nonisolated static func signedMilliseconds(_ seconds: Double) -> String {
         guard seconds.isFinite, abs(seconds) < 86400 else { return "—" }
         let value = Int((seconds * 1000).rounded()); return value > 0 ? "+\(value)" : "\(value)"
     }

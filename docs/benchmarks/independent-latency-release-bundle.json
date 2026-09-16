@@ -3,7 +3,7 @@
   "architectures": [
     "arm64"
   ],
-  "archiveSHA256": "7b8387f8bc2723dff5cc24cfc94156b2d29be0d41507127a778b1a7ad45ddc78",
+  "archiveSHA256": "646f9266bf647b42ecdd16ce1183499a364a65d95eb51caa3f25e3fd62e504ab",
   "archiveVerified": true,
   "binarySHA256": "7d8e4b2932af464943fc163096580206f59cb6a2941bdac30cefa08375419db1",
   "build": "1",
