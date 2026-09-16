@@ -109,7 +109,7 @@
 
 ## Follow-ups
 
-- [Personal timing synchronization wizard](personal-sync-wizard.md) — `pending_user`; two guitar-playing passes, no cable calibration UI.
+- [Personal timing synchronization wizard](personal-sync-wizard.md) — `pending_user`; original two-pass implementation; current flow superseded by independent settings below.
 - [Audio-file AI coach](audio-agent-coach.md) — `pending_user`; one-action recording, separate metronome reference, Codex/Claude XPC integration.
 
 - [Input signal level guidance](follow-up/input-level-guidance.md) — `pending_user`; shared dBFS zones and gain advice.
@@ -117,3 +117,5 @@
 - [Practice tablature read-ahead](follow-up/practice-tablature-lookahead.md) — `pending_user`; compact rows, visible count-in and smooth audio-driven cursor/following.
 
 - `pending_user` — [Calibration failure diagnostics](follow-up/calibration-failure-diagnostics.md): specific first-pass rejection reasons and retained measurements; real-device diagnosis pending.
+
+- `pending_user` — [Independent output and instrument latency settings](follow-up/independent-latency-settings.md): default-zero output, optional taps, separate instrument measurement, signed manual settings with approximate scoring and retained diagnostic timelines.

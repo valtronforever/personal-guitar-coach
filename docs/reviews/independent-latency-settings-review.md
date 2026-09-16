@@ -1,0 +1,23 @@
+# Independent latency settings — same-agent review
+
+Scope: independent output/instrument state machines, manual settings and approximate assessment, host-time normalization, cursor, retained timelines, persistence/provenance, localization and lifecycle. Reviewed by the implementation agent; this is not an independent review.
+
+## Findings and fixes
+
+- A mandatory first tapping pass would contradict the user's clarification. Output-only preview now needs no input/microphone; instrument measurement independently consumes the saved output value or zero. Both have explicit Apply; manual entries use the same independent settings.
+- Summing output and instrument offsets in the wrong place could apply output delay twice. Instrument evidence stores its remaining offset and immutable output snapshot; scoring consumes the total once, whereas the cursor consumes only output alignment. Unknown endpoint hardware delay already included in a measured/entered output alignment no longer gets a second renderer-presentation fallback. Total specification entry subtracts reported hardware delay before saving its correction.
+- A manually entered value must not fabricate a successful 16-note pass. Separate `manualPersonal` / `ManualInstrumentSyncEvidence` provenance enables approximate scores by explicit user choice; legacy `manual` stays unmeasured. A fixed 50 ms scoring allowance is policy, not measured accuracy. Invalid audio, lost clocks, clipping and stale session receipts still prevent valid rhythm results. Summary/history/details identify Manual setting.
+- Callback-delivery time can bias keyboard/mouse calibration. Use native key-down/mouse-down event uptime converted to host time; suppress repeat keys. Invalid/reversed/old timestamps and bounded history overflow reject instead of silently discarding data. No audio callback changes or raw audio storage were introduced.
+- A sheet-owned model erased diagnostic charts. The store now retains two timelines through completion/failure/cancel/close/reopen in the current session. Retry replaces only the corresponding source. Context is revalidated on reopening, including changes made while the sheet was closed. Failed traces remain unchanged when the user applies a manual estimate.
+- Several events under one beat could overlap adjacent millisecond labels. Stack up to three labels vertically; retain all events, including out-of-window and uncertain/wrong events, in the accessible detail list. Respect Reduce Motion for sheet scrolling.
+- Persistence review caught accidental acceptance of schema 3 for unrelated session records while raising only calibration schema to 3. Session schema support remains 1/2. Reset of a nonexistent output setting is idempotent; store replacement follows repository endpoint/ID identity rules. Future schema/failed writes preserve existing bytes.
+
+## Validation and limits
+
+Full Core/App suites, focused lifecycle/persistence/assessment checks, EN/UK catalogs, generated project and UI-source typecheck are run; final counts/bundle evidence are recorded in the task. Tests distinguish synthetic DTOs/PCM from physical guitar evidence. Manual histories round-trip without rerating, total specification conversion is checked, signed offsets are compensated once, and output-only measurement cannot enable instrument scoring.
+
+Eight offline production timeline renders cover English/Ukrainian, light/dark and 600/940-point widths. Inspected Ukrainian narrow/light and English wide/dark renders; stacked duplicate-event labels remain readable. Native computer-use retry returned `timeoutReached` while selecting the Release app. Live sheet focus, VoiceOver, manual-control layout and real Scarlett/Bluetooth accuracy remain `pending_user`; no live microphone capture was started by the agent and the original physical first-pass failure is not declared fixed.
+
+Final local evidence: 185 Core tests and 112 App tests passed; five storage tests rechecked the final reset change. 719 localized UI keys, generated project, UI-source typecheck and author-tool tests pass. The signed Release app/ZIP passed [bundle verification](../benchmarks/independent-latency-release-bundle.json), including the 13 bilingual lessons and packaged XPC helper. No Debug app was rebuilt. Existing running Release processes are not treated as proof that the new executable has been loaded.
+
+CI compatibility follow-up: the older SwiftUI SDK on macOS CI inferred MainActor isolation for the pure timeline millisecond formatter, while the local SDK allowed the test calls. Marked the stateless formatter explicitly `nonisolated`; focused local tests recheck it and the PR reruns CI. This changes no audio/UI behavior.

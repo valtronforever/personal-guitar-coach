@@ -33,19 +33,24 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     public let countInBars: Int
     public let route: CalibrationRoute
     public let calibration: CalibrationProfile?
+    public let outputAlignment: OutputAlignmentProfile?
     public var selectedEvents: [MusicalEvent] { exercise.events.filter { range.contains($0.startTick) } }
     public var durationSeconds: Double { Double(range.count) / 960 * 60 / bpm }
     public var countInSeconds: Double { Double(countInBars * exercise.timeSignature.beatsPerBar) * 60 / bpm }
+    /// A measured output offset already contains unreported presentation delay. Do not add the fallback again.
+    public func visualOutputLatency(fallback: Double) -> Double {
+        route.output.hardwareLatencySeconds ?? (outputAlignment == nil ? fallback : 0)
+    }
     public var finalDrainSeconds: Double { 1.4 + (route.input.hardwareLatencySeconds ?? 0) + (route.output.hardwareLatencySeconds ?? 0) + max(0, calibration?.residualOffsetSeconds ?? 0) }
 
     public init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>? = nil,
-                countInBars: Int = 1, route: CalibrationRoute, calibration: CalibrationProfile? = nil, lesson: PracticeLessonReference? = nil) throws {
+                countInBars: Int = 1, route: CalibrationRoute, calibration: CalibrationProfile? = nil, outputAlignment: OutputAlignmentProfile? = nil, lesson: PracticeLessonReference? = nil) throws {
         try self.init(exercise: exercise, instrument: instrument, bpm: bpm, range: range, countInBars: countInBars,
-            route: route, calibration: calibration, lesson: lesson, capabilityVersion: MonophonicCapability.version,
+            route: route, calibration: calibration, outputAlignment: outputAlignment, lesson: lesson, capabilityVersion: MonophonicCapability.version,
             validateCurrentCapability: true)
     }
     private init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>?, countInBars: Int,
-                 route: CalibrationRoute, calibration: CalibrationProfile?, lesson: PracticeLessonReference?,
+                 route: CalibrationRoute, calibration: CalibrationProfile?, outputAlignment: OutputAlignmentProfile?, lesson: PracticeLessonReference?,
                  capabilityVersion: String, validateCurrentCapability: Bool) throws {
         guard !capabilityVersion.isEmpty, capabilityVersion.utf8.count <= 256 else { throw PracticeError.invalidEvidence }
         try exercise.validatePracticeSnapshot(instrument: instrument.tuning, bpm: bpm)
@@ -69,7 +74,12 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
             throw PracticeError.unsupportedSize
         }
         if let calibration, calibration.route != route { throw CalibrationError.invalidRoute }
-        if let personal = calibration?.personalEvidence, personal.instrument != instrument { throw CalibrationError.invalidProfile }
+        if let personal = calibration?.personalInstrument, personal != instrument { throw CalibrationError.invalidProfile }
+        if let outputAlignment, outputAlignment.output != route.output { throw CalibrationError.invalidRoute }
+        if let calibration, calibration.instrumentEvidence != nil || calibration.manualInstrumentEvidence != nil {
+            guard calibration.outputSetting == outputAlignment else { throw CalibrationError.invalidProfile }
+        }
+        self.outputAlignment = outputAlignment
         self.capabilityVersion = capabilityVersion; self.lesson = lesson; self.exercise = exercise; self.instrument = instrument; self.bpm = bpm; self.range = range
         self.countInBars = countInBars; self.route = route; self.calibration = calibration
         if validateCurrentCapability { try validateForCurrentPractice() }
@@ -161,7 +171,7 @@ extension PracticeLessonReference {
 }
 
 extension PracticeConfiguration {
-    private enum CodingKeys: String, CodingKey { case exercise, instrument, bpm, range, countInBars, route, calibration, lesson, capabilityVersion }
+    private enum CodingKeys: String, CodingKey { case exercise, instrument, bpm, range, countInBars, route, calibration, outputAlignment, lesson, capabilityVersion }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(exercise: v.decode(Exercise.self, forKey: .exercise),
@@ -171,6 +181,7 @@ extension PracticeConfiguration {
             countInBars: v.decode(Int.self, forKey: .countInBars),
             route: v.decode(CalibrationRoute.self, forKey: .route),
             calibration: v.decodeIfPresent(CalibrationProfile.self, forKey: .calibration),
+            outputAlignment: v.decodeIfPresent(OutputAlignmentProfile.self, forKey: .outputAlignment),
             lesson: v.decodeIfPresent(PracticeLessonReference.self, forKey: .lesson),
             capabilityVersion: v.decode(String.self, forKey: .capabilityVersion), validateCurrentCapability: false)
     }

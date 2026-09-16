@@ -9591,13 +9591,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "These passes are too variable for rhythm scoring. Repeat synchronization with steadier playing or another output. Pitch practice remains available."
+            "value": "This measurement is too variable for rhythm scoring. Retry with steadier timing or another output. Pitch practice remains available."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ці проходи надто мінливі для оцінки ритму. Повторіть синхронізацію зі стабільнішою грою або іншим виходом. Практика висоти нот залишається доступною."
+            "value": "Це вимірювання надто мінливе для оцінювання ритму. Повторіть із рівнішим таймінгом або іншим виходом. Практика висоти нот залишається доступною."
           }
         }
       }
@@ -10934,13 +10934,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The pass did not contain exactly 16 detected attacks in the measurement window. Compare the count below: missing attacks may be undetected notes; extra attacks may be string noise or click leakage."
+            "value": "Exactly 16 events were not detected in the measurement window. Check the timeline for missing or extra events. For guitar, undetected notes, string noise or click leakage may affect the count."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "У вікні вимірювання розпізнано не рівно 16 атак. Перевірте кількість нижче: пропуски можуть бути нерозпізнаними нотами, зайві атаки — шумом струн або потраплянням кліків у вхід."
+            "value": "У вікні вимірювання зареєстровано не рівно 16 подій. Перевірте пропуски та зайві події на шкалі. Для гітари на кількість можуть впливати нерозпізнані ноти, шум струн або потрапляння кліків у вхід."
           }
         }
       }
@@ -10951,13 +10951,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "At least one attack was more than 400 ms from its click. Listen to four clicks, then play on each of the next sixteen. A large output delay can also exceed this measurement window."
+            "value": "Some taps or notes were more than 400 ms from their clicks. Repeat the measurement, following the sound."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Принаймні одна атака віддалена від кліку більш ніж на 400 мс. Прослухайте чотири кліки, потім грайте на кожен із наступних шістнадцяти. Велика затримка виходу також може перевищувати це вікно вимірювання."
+            "value": "Деякі натискання або ноти відхилилися від кліків більш ніж на 400 мс. Повторіть вимірювання, орієнтуючись на звук."
           }
         }
       }
@@ -11019,13 +11019,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Synchronization could not finish. The measurements below are from the unsuccessful pass; no calibration was saved."
+            "value": "The measurement could not finish. The retained timeline shows the available evidence; nothing was applied."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося завершити синхронізацію. Нижче наведено вимірювання невдалого проходу; калібрування не збережено."
+            "value": "Не вдалося завершити вимірювання. Збережена шкала показує наявні дані; нічого не застосовано."
           }
         }
       }
@@ -11298,6 +11298,942 @@
           "stringUnit": {
             "state": "translated",
             "value": "Гра нот"
+          }
+        }
+      }
+    },
+    "sync.independent.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output and instrument timing are independent settings. Output alignment starts at 0 ms; measuring it is optional. Each measurement has its own retained timeline and Apply button."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймінг виходу й інструмента — незалежні налаштування. Початковий зсув виходу — 0 мс; вимірювати його необов’язково. Кожне вимірювання має власну шкалу та кнопку застосування."
+          }
+        }
+      }
+    },
+    "sync.setting.taps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output delay"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Затримка виходу"
+          }
+        }
+      }
+    },
+    "sync.setting.guitar": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrument delay"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Затримка інструмента"
+          }
+        }
+      }
+    },
+    "sync.output.value": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output alignment, ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зсув виходу, мс"
+          }
+        }
+      }
+    },
+    "sync.output.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional alignment of the visual cursor to the sound. Reported system latency is handled automatically. Keyboard/mouse tapping also includes your timing and input-device delay, so this is approximate, not a hardware measurement."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Додаткове вирівнювання візуального курсора зі звуком. Відома системна затримка враховується автоматично. Натискання клавіатурою чи мишкою включають ваш таймінг і затримку пристрою введення, тому це приблизне вирівнювання, а не вимірювання обладнання."
+          }
+        }
+      }
+    },
+    "sync.output.measure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measure output with taps"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряти вихід натисканнями"
+          }
+        }
+      }
+    },
+    "sync.output.reset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset output to 0 ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скинути вихід до 0 мс"
+          }
+        }
+      }
+    },
+    "sync.output.measured": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured output alignment, ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряний зсув виходу, мс"
+          }
+        }
+      }
+    },
+    "sync.output.apply": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply output alignment"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати зсув виходу"
+          }
+        }
+      }
+    },
+    "sync.output.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen to four clicks, then tap Space, Return or this button on each of the next sixteen audible clicks. Follow the sound, not the moving line. Hold neither key; repeated key-down events are ignored."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухайте чотири кліки, потім натискайте пробіл, Return або цю кнопку на кожен із наступних шістнадцяти чутних кліків. Орієнтуйтеся на звук, а не рухому лінію. Не утримуйте клавішу; автоматичні повтори ігноруються."
+          }
+        }
+      }
+    },
+    "sync.output.count %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detected taps: %lld / 16 measured clicks."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зареєстровані натискання: %lld / 16 вимірюваних кліків."
+          }
+        }
+      }
+    },
+    "sync.tap.button": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap here · Space / Return"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Натискайте тут · Пробіл / Return"
+          }
+        }
+      }
+    },
+    "sync.instrument.value": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrument residual, ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Залишковий зсув інструмента, мс"
+          }
+        }
+      }
+    },
+    "sync.instrument.unset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrument timing has not been calibrated. Output alignment can remain at 0 ms."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймінг інструмента ще не відкалібровано. Зсув виходу може залишатися 0 мс."
+          }
+        }
+      }
+    },
+    "sync.instrument.recheck": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remeasure or reapply a manual value for this instrument and audio connection."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторіть вимірювання або застосуйте ручне значення для цього інструменту й аудіопідключення."
+          }
+        }
+      }
+    },
+    "sync.instrument.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose and tune one open string. After Start, let it ring for the signal check. Listen to four clicks, then play one note on each of the next sixteen clicks, letting it ring for about half a second before muting. The saved output alignment is already applied to this timeline; 0 ms works without a separate output measurement."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виберіть і налаштуйте одну відкриту струну. Після початку дайте їй звучати для перевірки сигналу. Прослухайте чотири кліки, потім грайте одну ноту на кожен із наступних шістнадцяти, даючи їй звучати приблизно пів секунди перед глушінням. Збережений зсув виходу вже застосовано до цієї шкали; значення 0 мс працює без окремого вимірювання виходу."
+          }
+        }
+      }
+    },
+    "sync.instrument.measure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measure instrument"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряти інструмент"
+          }
+        }
+      }
+    },
+    "sync.instrument.measured": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured instrument residual, ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряний залишковий зсув інструмента, мс"
+          }
+        }
+      }
+    },
+    "sync.instrument.total": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total timing compensation, ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загальна компенсація таймінгу, мс"
+          }
+        }
+      }
+    },
+    "sync.timeline.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing timelines"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Часові шкали"
+          }
+        }
+      }
+    },
+    "sync.timeline.retained": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timelines remain after completion, failure or cancellation, and when reopening this window in this app session. Take a screenshot for diagnosis. Measuring again replaces only that setting’s timeline."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шкали залишаються після завершення, помилки або скасування та при повторному відкритті цього вікна в поточній сесії додатка. Можна зробити скриншот для діагностики. Нове вимірювання замінює лише шкалу відповідного налаштування."
+          }
+        }
+      }
+    },
+    "sync.timeline.status.running": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measuring"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вимірювання"
+          }
+        }
+      }
+    },
+    "sync.timeline.status.completed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measurement complete"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вимірювання завершено"
+          }
+        }
+      }
+    },
+    "sync.timeline.status.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measurement rejected"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вимірювання відхилено"
+          }
+        }
+      }
+    },
+    "sync.timeline.status.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelled · partial data"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасовано · часткові дані"
+          }
+        }
+      }
+    },
+    "sync.timeline.status.stale": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous settings"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Попередні налаштування"
+          }
+        }
+      }
+    },
+    "sync.timeline.alignment %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output alignment already applied: %lld ms."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уже застосований зсув виходу: %lld мс."
+          }
+        }
+      }
+    },
+    "sync.timeline.diagram": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metronome beats and detected events. Exact values are available in Event details."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удари метронома та зареєстровані події. Точні значення доступні в розділі «Події»."
+          }
+        }
+      }
+    },
+    "sync.timeline.legend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lines: clicks. ·1–·4: listen only; 1–16: measured beats. ● detected · △ other pitch · ? uncertain · ○ no detected event. Values: ms from the nearest click; + means later. This visual association is not a success score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лінії — кліки. ·1–·4 — лише слухати; 1–16 — вимірювані удари. ● зареєстровано · △ інша висота · ? невизначено · ○ немає події. Значення — мс від найближчого кліку; + означає пізніше. Візуальне зіставлення не є оцінкою успішності."
+          }
+        }
+      }
+    },
+    "sync.timeline.outside %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Events outside the visible range: %lld. See Events below."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Події поза видимим діапазоном: %lld. Дивіться розділ «Події»."
+          }
+        }
+      }
+    },
+    "sync.timeline.details": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event details"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Події"
+          }
+        }
+      }
+    },
+    "sync.timeline.event %lld %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event %1$lld · click %2$lld · %3$@ ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подія %1$lld · клік %2$lld · %3$@ мс"
+          }
+        }
+      }
+    },
+    "sync.timeline.outsideEvent %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event %1$lld · %2$@ ms from the start · outside the chart"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подія %1$lld · %2$@ мс від початку · поза шкалою"
+          }
+        }
+      }
+    },
+    "sync.timeline.unknownTime %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event %lld · audio start time unavailable"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подія %lld · час початку аудіо недоступний"
+          }
+        }
+      }
+    },
+    "sync.timeline.warmup": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listening"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відлік"
+          }
+        }
+      }
+    },
+    "sync.timeline.measured": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вимірювання"
+          }
+        }
+      }
+    },
+    "sync.timeline.kind.tap": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Натискання"
+          }
+        }
+      }
+    },
+    "sync.timeline.kind.matching": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цільова висота"
+          }
+        }
+      }
+    },
+    "sync.timeline.kind.wrong": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Інша висота"
+          }
+        }
+      }
+    },
+    "sync.timeline.kind.uncertain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uncertain pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невизначена висота"
+          }
+        }
+      }
+    },
+    "calibration.method.manualPersonal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual setting · approximate timing"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ручне налаштування · приблизний таймінг"
+          }
+        }
+      }
+    },
+    "sync.manual.badge": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manual setting · accuracy not measured"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ручне налаштування · точність не виміряно"
+          }
+        }
+      }
+    },
+    "sync.manual.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter manually"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ввести вручну"
+          }
+        }
+      }
+    },
+    "sync.manual.outputReference": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Value type"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип значення"
+          }
+        }
+      }
+    },
+    "sync.manual.additional": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional correction"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Додаткова поправка"
+          }
+        }
+      }
+    },
+    "sync.manual.total": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total delay from specification"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повна затримка зі специфікації"
+          }
+        }
+      }
+    },
+    "sync.manual.milliseconds": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delay in ms, e.g. +120 or −25"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Затримка в мс, наприклад +120 або −25"
+          }
+        }
+      }
+    },
+    "sync.manual.applyOutput": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply manual output delay"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати ручну затримку виходу"
+          }
+        }
+      }
+    },
+    "sync.manual.applyInstrument": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply manual instrument delay"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати ручну затримку інструменту"
+          }
+        }
+      }
+    },
+    "sync.manual.totalHelp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter the full output delay from the specification (0–1000 ms). The app subtracts the hardware delay already reported by this output to avoid counting it twice. Specifications may not match the current Bluetooth connection."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введіть повну затримку виходу зі специфікації (0–1000 мс). Програма відніме апаратну затримку, яку вже повідомляє цей вихід, щоб не врахувати її двічі. Специфікація може не відповідати поточному Bluetooth-підключенню."
+          }
+        }
+      }
+    },
+    "sync.manual.additionalHelp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a signed correction in addition to the delay already reported by the output. Positive values move the cursor later; negative values move it earlier."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введіть поправку зі знаком до затримки, яку вже повідомляє вихід. Додатні значення зміщують курсор пізніше, від’ємні — раніше."
+          }
+        }
+      }
+    },
+    "sync.manual.instrumentHelp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter the remaining guitar offset relative to the current output setting. Use the timeline values you consider representative. The original events stay visible. Rhythm scores use this value and are labeled Manual setting; accuracy has not been measured. Reapply after restarting or changing the audio connection."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введіть залишковий зсув гітари відносно поточного налаштування виходу. Орієнтуйтеся на значення шкали, які вважаєте показовими. Початкові події залишаються видимими. Оцінка ритму використовуватиме це значення з позначкою «Ручне налаштування»; точність не виміряно. Застосуйте повторно після перезапуску чи зміни аудіопідключення."
+          }
+        }
+      }
+    },
+    "sync.manual.range": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signed values: −1000…+1000 ms. Total output + instrument compensation must also stay within this range. A decimal dot or comma is accepted."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Значення зі знаком: −1000…+1000 мс. Сума поправок виходу й інструменту також має бути в цих межах. Дозволено десяткову крапку або кому."
+          }
+        }
+      }
+    },
+    "sync.manual.invalid": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a valid delay between −1000 and +1000 ms; the combined compensation must be in the same range."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Введіть коректну затримку від −1000 до +1000 мс; сумарна поправка має бути в тих самих межах."
+          }
+        }
+      }
+    },
+    "sync.manual.value": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delay (ms)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Затримка (мс)"
+          }
+        }
+      }
+    },
+    "sync.manual.placeholder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+120 or −25"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+120 або −25"
           }
         }
       }

@@ -11,7 +11,7 @@ public enum AssessmentEngine {
         let secondsPerTick = 60 / config.bpm / Double(config.exercise.ppq)
         let relative = expected.map { Double($0.startTick - config.range.lowerBound) * secondsPerTick }
         let intervals = zip(relative, relative.dropFirst()).map { $1 - $0 }
-        let tolerance = min(parameters.maximumRhythmTolerance(personal: config.calibration?.method == .personal), (intervals.min() ?? .infinity) * parameters.rhythmIntervalFraction)
+        let tolerance = min(parameters.maximumRhythmTolerance(personal: config.calibration?.method.isPersonal == true), (intervals.min() ?? .infinity) * parameters.rhythmIntervalFraction)
         let capability = config.calibration?.rhythmCapability(route: config.route, toleranceSeconds: tolerance,
             durationSeconds: config.durationSeconds, clockDriftSeconds: evidence.maximumClockDriftSeconds,
             onsetUncertaintySeconds: parameters.onsetUncertaintySeconds) ?? .unmeasured

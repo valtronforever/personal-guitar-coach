@@ -91,3 +91,17 @@ extension TransportTests {
         #expect(plan.audibleTimelineTick(renderedFrames: 0, outputLatencySeconds: .nan) == 0)
     }
 }
+
+extension TransportTests {
+    @Test func outputAlignmentShiftsOnlyTheDisplayWithSignedBoundedValues() throws {
+        let plan = try TransportPlan(request: TransportRequest(exercise: exercise(), tuning: .standard, bpm: 60, mode: .practice), sampleRate: 48000)
+        let frames = plan.practiceStartFrame + 24000
+        let baseline = plan.audibleTimelineTick(renderedFrames: frames, outputLatencySeconds: 0.1)
+        for alignment in [-0.2, 0, 0.2] {
+            #expect(abs(plan.audibleTimelineTick(renderedFrames: frames, outputLatencySeconds: 0.1, visualAlignmentSeconds: alignment) - (baseline - alignment * 960)) < 1e-9)
+        }
+        #expect(plan.audibleTimelineTick(renderedFrames: frames, outputLatencySeconds: 0.1, visualAlignmentSeconds: .nan) == baseline)
+        #expect(plan.audibleTimelineTick(renderedFrames: frames, outputLatencySeconds: 0.1, visualAlignmentSeconds: 100) == plan.audibleTimelineTick(renderedFrames: frames, outputLatencySeconds: 0.1, visualAlignmentSeconds: 1))
+        #expect(plan.audiblePosition(renderedFrames: frames, outputLatencySeconds: 0.1, visualAlignmentSeconds: 0.2).tick == 192)
+    }
+}

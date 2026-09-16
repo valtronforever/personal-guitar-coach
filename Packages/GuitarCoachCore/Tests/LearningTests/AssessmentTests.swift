@@ -7,7 +7,7 @@ struct AssessmentTests {
     private func input(count: Int = 8, bpm: Double = 60, ticks: Int64 = 960, rests: Bool = false,
                        shifts: [Int: Double] = [:], semitones: [Int: Double] = [:], missing: Set<Int> = [],
                        unreliable: Set<Int> = [], extras: [Double] = [], offset: Double = 0,
-                       calibrated: Bool = true, personal: Bool = false, drift: Double? = 0, phase: PracticePhase = .completed,
+                       calibrated: Bool = true, personal: Bool = false, manualPersonal: Bool = false, drift: Double? = 0, phase: PracticePhase = .completed,
                        confirmed: Bool = true, clipped: Bool = false, noisy: Bool = false) throws -> PracticeEvidence {
         var events: [MusicalEvent] = []
         for index in 0..<count {
@@ -28,6 +28,11 @@ struct AssessmentTests {
             let sync = try PersonalSyncEvidence(instrument: InstrumentProfile(), string: 3, offsets: [offset, offset], spreads: [0.015, 0.015], drifts: [0, 0])
             calibration = try CalibrationProfile(route: route, method: .personal, residualOffsetSeconds: sync.offset,
                                                 uncertaintySeconds: sync.uncertainty, personalEvidence: sync)
+        }
+        if manualPersonal {
+            let manual = try ManualInstrumentSyncEvidence(instrument: InstrumentProfile(), outputSetting: nil, remainingOffset: offset)
+            calibration = try CalibrationProfile(route: route, method: .manualPersonal, residualOffsetSeconds: manual.offset,
+                uncertaintySeconds: ManualInstrumentSyncEvidence.scoringAllowance, manualInstrumentEvidence: manual)
         }
         let configuration = try PracticeConfiguration(exercise: Exercise(id: "golden", events: events),
             instrument: InstrumentProfile(), bpm: bpm, route: route, calibration: calibration)
@@ -74,6 +79,22 @@ struct AssessmentTests {
         }
         let drifting = try AssessmentEngine.evaluate(input(personal: true, drift: 0.2))
         #expect(drifting.validity == .uncalibrated && drifting.timingScore == nil)
+    }
+    @Test func manualTimingIsExplicitlyApproximateAndStillRequiresValidAudioAndClocks() throws {
+        for offset in [-0.15, 0.15] {
+            let result = try AssessmentEngine.evaluate(input(offset: offset, manualPersonal: true))
+            #expect(result.rhythmCapability == .approximate && result.overallScore == 100)
+            #expect(result.evidence.configuration.calibration?.method == .manualPersonal)
+            #expect(result.evidence.configuration.calibration?.personalEvidence == nil)
+            #expect(result.evidence.configuration.calibration?.instrumentEvidence == nil)
+            #expect(try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(result)) == result)
+            let late = try AssessmentEngine.evaluate(input(shifts: [0: 0.1], offset: offset, manualPersonal: true))
+            #expect(abs((late.notes[0].timingErrorSeconds ?? 0) - 0.1) < 1e-9)
+        }
+        #expect(throws: PracticeError.invalidEvidence) { try AssessmentEngine.evaluate(input(manualPersonal: true, confirmed: false)) }
+        #expect(try AssessmentEngine.evaluate(input(manualPersonal: true, drift: nil)).timingScore == nil)
+        #expect(try AssessmentEngine.evaluate(input(manualPersonal: true, drift: 0.03)).timingScore == nil)
+        #expect(try AssessmentEngine.evaluate(input(manualPersonal: true, clipped: true)).overallScore == nil)
     }
     @Test func perfectAndCompensatedSignedLatencyReach100WithoutDoubleCompensation() throws {
         for offset in [-0.05, 0, 0.05] {
