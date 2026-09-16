@@ -16,13 +16,13 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public let extraPenalty: Double
     public let onsetUncertaintySeconds: Double
     public static let current = AssessmentParameters()
-    private init(version: String = "monophonic-assessment-2") {
+    private init(version: String = "monophonic-assessment-3") {
         self.version = version; pitchToleranceCents = 50; rhythmToleranceSeconds = 0.1
         rhythmIntervalFraction = 0.45; maximumMatchSeconds = 0.3; matchIntervalFraction = 0.49
         uncertaintyFraction = 0.2; pitchWeight = 0.6; extraPenalty = 20; onsetUncertaintySeconds = 0.03
     }
     public func maximumRhythmTolerance(personal: Bool) -> Double {
-        rhythmToleranceSeconds * (personal && version == "monophonic-assessment-2" ? 2 : 1)
+        rhythmToleranceSeconds * (personal && version != "monophonic-assessment-1" ? 2 : 1)
     }
     private enum CodingKeys: String, CodingKey {
         case version, pitchToleranceCents, rhythmToleranceSeconds, rhythmIntervalFraction, maximumMatchSeconds
@@ -31,7 +31,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         let version = try v.decode(String.self, forKey: .version)
-        guard ["monophonic-assessment-1", Self.current.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
+        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
         self.init(version: version)
         let fields: [(CodingKeys, Double)] = [(.pitchToleranceCents, pitchToleranceCents), (.rhythmToleranceSeconds, rhythmToleranceSeconds),
             (.rhythmIntervalFraction, rhythmIntervalFraction), (.maximumMatchSeconds, maximumMatchSeconds),
@@ -82,6 +82,8 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
     public let overallScore: Double?
     public let pitchScore: Double?
     public let timingScore: Double?
+    public let sustain: SustainAssessment?
+    public var sustainScore: Double? { validity == .valid || validity == .uncalibrated ? sustain?.score : nil }
     public var expectedCount: Int { notes.count }
     public var matchedCount: Int { notes.filter { $0.attackID != nil }.count }
     public var missedCount: Int { expectedCount - matchedCount }
@@ -93,10 +95,16 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
 
     public init(evidence: PracticeEvidence, parameters: AssessmentParameters = .current, validity: AssessmentValidity,
                 rhythmCapability: RhythmCapability, rhythmToleranceSeconds: Double, notes: [AssessedNote], extras: [AssessedExtra],
-                overallScore: Double?, pitchScore: Double?, timingScore: Double?) throws {
+                overallScore: Double?, pitchScore: Double?, timingScore: Double?, sustain: SustainAssessment? = nil) throws {
         let expected = evidence.configuration.selectedEvents.filter { $0.kind == .note }
         let ids = notes.compactMap(\.attackID) + extras.map(\.id)
         let attacks = Set(evidence.attacks.map(\.id))
+        let sustainIDs = expected.filter(\.assessSustain).map(\.id)
+        guard sustain.map({ $0.notes.map(\.id) == sustainIDs }) ?? true,
+              sustain == nil || !sustainIDs.isEmpty,
+              ![AssessmentValidity.valid, .uncalibrated].contains(validity) || sustainIDs.isEmpty || sustain?.score != nil else {
+            throw AssessmentError.invalidResult
+        }
         guard notes.map(\.id) == expected.map(\.id), !notes.isEmpty,
               Set(ids).count == ids.count, Set(ids).isSubset(of: attacks),
               rhythmToleranceSeconds.isFinite, rhythmToleranceSeconds > 0, rhythmToleranceSeconds <= parameters.maximumRhythmTolerance(personal: evidence.configuration.calibration?.method.isPersonal == true),
@@ -134,6 +142,7 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         self.evidence = evidence; self.parameters = parameters; self.validity = validity; self.rhythmCapability = rhythmCapability
         self.rhythmToleranceSeconds = rhythmToleranceSeconds; self.notes = notes; self.extras = extras
         self.overallScore = overallScore; self.pitchScore = pitchScore; self.timingScore = timingScore
+        self.sustain = sustain
     }
     private static func mean(_ values: [Double]) -> Double? { values.isEmpty ? nil : values.reduce(0, +) / Double(values.count) }
     private static func median(_ values: [Double]) -> Double? {
@@ -166,7 +175,7 @@ extension AssessedExtra {
 }
 
 extension AssessedPractice {
-    private enum CodingKeys: String, CodingKey { case evidence, parameters, validity, rhythmCapability, rhythmToleranceSeconds, notes, extras, overallScore, pitchScore, timingScore }
+    private enum CodingKeys: String, CodingKey { case evidence, parameters, validity, rhythmCapability, rhythmToleranceSeconds, notes, extras, overallScore, pitchScore, timingScore, sustain }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(evidence: v.decode(PracticeEvidence.self, forKey: .evidence),
@@ -178,6 +187,7 @@ extension AssessedPractice {
             extras: v.decode([AssessedExtra].self, forKey: .extras),
             overallScore: v.decodeIfPresent(Double.self, forKey: .overallScore),
             pitchScore: v.decodeIfPresent(Double.self, forKey: .pitchScore),
-            timingScore: v.decodeIfPresent(Double.self, forKey: .timingScore))
+            timingScore: v.decodeIfPresent(Double.self, forKey: .timingScore),
+            sustain: v.decodeIfPresent(SustainAssessment.self, forKey: .sustain))
     }
 }

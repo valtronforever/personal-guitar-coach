@@ -12,6 +12,11 @@ struct AssessmentSummaryView: View {
                     metric("assessment.overall", result.overallScore)
                     metric("assessment.pitch", result.pitchScore)
                     metric("assessment.rhythm", result.timingScore)
+                    if result.sustain != nil { metric("assessment.sustain", result.sustainScore) }
+                }
+                if result.sustain != nil {
+                    Text("assessment.sustainExplanation").font(.caption).foregroundStyle(.secondary)
+                    if result.sustain?.score == nil { Text("assessment.sustainUnavailable").foregroundStyle(.secondary) }
                 }
                 if result.evidence.configuration.calibration?.method == .manualPersonal {
                     Text("calibration.method.manualPersonal").foregroundStyle(.secondary)

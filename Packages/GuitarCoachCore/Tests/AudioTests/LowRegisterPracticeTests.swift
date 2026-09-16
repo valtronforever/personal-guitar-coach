@@ -42,7 +42,7 @@ struct LowRegisterPracticeTests {
             #expect(report.notes.allSatisfy { abs($0.centsError ?? 1000) < 15 && abs($0.timingErrorSeconds ?? 1) <= 0.03 })
             // Estimated pitch has finite error; the score is continuous, not rounded to 100.
             #expect(try #require(report.pitchScore) >= 95)
-            #expect(config.capabilityVersion == "mono-capability-2" && evidence.analysisVersion == "mono-mpm-flux-4")
+            #expect(config.capabilityVersion == MonophonicCapability.version && evidence.analysisVersion == "mono-mpm-flux-4")
         }
     }
 }

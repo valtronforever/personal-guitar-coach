@@ -10,8 +10,8 @@ struct StaffView: View {
     let onSelect: (String, Bool) -> Void
     @State private var key: StaffKey = .neutral
     @State private var bar: Int64 = 0
-    @FocusState private var focusedID: String?
-    @State private var requestedFocus: String?
+    @FocusState private var focusedID: NotationFragmentID?
+    @State private var requestedFocus: NotationFragmentID?
     private let leading = 96.0
     private var model: StaffModel { StaffModel(timeline: timeline, key: key) }
     private var currentBar: Int64 { min(max(0, bar), timeline.barCount - 1) }
@@ -42,8 +42,8 @@ struct StaffView: View {
                                 StaffDrawing(model: model, bar: currentBar, selectedIDs: selectedIDs, focusedID: focusedID, cursorTick: cursorTick).draw(symbols, context: &context)
                             }.accessibilityHidden(true)
                             ForEach(symbols) { symbol in
-                                Button { onSelect(symbol.id, NSEvent.modifierFlags.contains(.shift)) } label: {
-                                    Rectangle().fill(.clear).frame(width: 44, height: 248).contentShape(Rectangle())
+                                Button { onSelect(symbol.eventID, NSEvent.modifierFlags.contains(.shift)) } label: {
+                                    Rectangle().fill(.clear).frame(width: 44, height: StaffModel.canvasHeight).contentShape(Rectangle())
                                 }.buttonStyle(.plain).offset(x: x(symbol) - 22)
                                     .focusable()
                                     // Canvas draws focus at the note; the native ring uses the unoffset button frame.
@@ -51,12 +51,12 @@ struct StaffView: View {
                                     .focused($focusedID, equals: symbol.id)
                                     .onAppear { if requestedFocus == symbol.id { focusedID = symbol.id } }
                                     .onKeyPress(keys: [.space, .return]) { event in
-                                        onSelect(requestedFocus ?? symbol.id, event.modifiers.contains(.shift)); return .handled
+                                        onSelect((requestedFocus ?? symbol.id).eventID, event.modifiers.contains(.shift)); return .handled
                                     }
-                                    .accessibilityIdentifier("staff.event.\(symbol.id)")
+                                    .accessibilityIdentifier("staff.event.\(symbol.eventID).tick.\(symbol.startTick)")
                                     .accessibilityLabel(accessibility(symbol))
-                                    .accessibilityValue(Text(LocalizedStringKey(selectedIDs.contains(symbol.id) ? "fretboard.selected" : "fretboard.unmarked")))
-                                    .accessibilityHint(Text("staff.selectHint"))
+                                    .accessibilityValue(Text(LocalizedStringKey(selectedIDs.contains(symbol.eventID) ? "fretboard.selected" : "fretboard.unmarked")))
+                                    .accessibilityHint(Text(LocalizedStringKey(symbol.hintKey)))
                                     .id(symbol.id)
                             }
                             // Real layout frames give ScrollViewReader distinct beat targets.
@@ -69,8 +69,8 @@ struct StaffView: View {
                                 Color.clear.frame(width: 1, height: 1)
                                     .id(TimelineFollowTarget(bar: currentBar, halfBeat: timeline.exercise.timeSignature.beatsPerBar * 2))
                             }.allowsHitTesting(false).accessibilityHidden(true)
-                        }.frame(width: width, height: 248)
-                    }.frame(height: 260).background(.background.secondary, in: RoundedRectangle(cornerRadius: 8))
+                        }.frame(width: width, height: StaffModel.canvasHeight)
+                    }.frame(height: StaffModel.canvasHeight + 12).background(.background.secondary, in: RoundedRectangle(cornerRadius: 8))
                         .accessibilityIdentifier("staff.timeline")
                         .onChange(of: focusedID) { _, id in
                             if id == requestedFocus { requestedFocus = nil }
@@ -82,9 +82,9 @@ struct StaffView: View {
                         .onAppear { reveal(using: proxy) }
                         .onMoveCommand { direction in
                             guard let focusedID = requestedFocus ?? focusedID, direction == .left || direction == .right,
-                                  let next = timeline.adjacent(to: focusedID, offset: direction == .left ? -1 : 1) else { return }
+                                  let next = model.adjacent(to: focusedID, offset: direction == .left ? -1 : 1) else { return }
                             requestedFocus = next.id
-                            bar = timeline.bar(containing: next.event.startTick)
+                            bar = timeline.bar(containing: next.startTick)
                             Task { @MainActor in await Task.yield(); self.focusedID = next.id }
                         }
                 }
@@ -99,28 +99,31 @@ struct StaffView: View {
         .onChange(of: timeline.cursorBar(cursorTick)) { _, value in if let value { bar = value } }
     }
     private func x(_ symbol: StaffSymbol) -> Double {
-        leading + timeline.x(tick: symbol.resolved.event.startTick, bar: currentBar, zoom: 1) + 24
+        leading + timeline.x(tick: symbol.startTick, bar: currentBar, zoom: 1) + 24
     }
     private func followSelection() {
         if let cursor = timeline.cursorBar(cursorTick) { bar = cursor }
-        else if let first = timeline.events.first(where: { selectedIDs.contains($0.id) }) { bar = timeline.bar(containing: first.event.startTick) }
+        else if symbols?.contains(where: { selectedIDs.contains($0.eventID) }) != true,
+                let first = timeline.events.first(where: { selectedIDs.contains($0.id) }) { bar = timeline.bar(containing: first.event.startTick) }
     }
     private func reveal(using proxy: ScrollViewProxy) {
         if let target = timeline.followTarget(cursorTick), target.bar == currentBar {
             proxy.scrollTo(target, anchor: .center)
-        } else if let first = symbols?.first(where: { selectedIDs.contains($0.id) }) { revealEvent(first.id, using: proxy) }
+        } else if let first = symbols?.first(where: { selectedIDs.contains($0.eventID) }) { revealEvent(first.id, using: proxy) }
     }
-    private func revealEvent(_ id: String, using proxy: ScrollViewProxy) {
-        if let event = timeline.events.first(where: { $0.id == id }), let target = timeline.followTarget(event.event.startTick) {
+    private func revealEvent(_ id: NotationFragmentID, using proxy: ScrollViewProxy) {
+        if let target = timeline.followTarget(id.startTick) {
             proxy.scrollTo(target, anchor: .center)
         }
     }
     private func accessibility(_ symbol: StaffSymbol) -> Text {
-        let duration = TimelineModel.durationLabel(symbol.resolved.event.durationTicks)
+        let duration = TimelineModel.durationLabel(symbol.fragment.duration.ticks)
         if let pitch = symbol.pitch {
             let sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
+            if symbol.fragment.duration.dotted { return Text("staff.dottedNote \(pitch.name) \(sounding) \(duration)") }
             return Text("staff.note \(pitch.name) \(sounding) \(duration)")
         }
+        if symbol.fragment.duration.dotted { return Text("staff.dottedRest \(duration)") }
         return Text("staff.rest \(duration)")
     }
 }
@@ -130,7 +133,7 @@ struct StaffDrawing {
     let model: StaffModel
     let bar: Int64
     let selectedIDs: Set<String>
-    var focusedID: String? = nil
+    var focusedID: NotationFragmentID? = nil
     var cursorTick: Int64? = nil
     private let leading = 96.0
     private var timeline: TimelineModel { model.timeline }
@@ -138,7 +141,7 @@ struct StaffDrawing {
     private var currentBar: Int64 { bar }
     var width: Double { leading + timeline.barWidth(zoom: 1) + 36 }
     private func x(_ symbol: StaffSymbol) -> Double {
-        leading + timeline.x(tick: symbol.resolved.event.startTick, bar: currentBar, zoom: 1) + 24
+        leading + timeline.x(tick: symbol.startTick, bar: currentBar, zoom: 1) + 24
     }
     func draw(_ symbols: [StaffSymbol], context: inout GraphicsContext) {
         let ink = Color.primary, lineEnd = width - 12
@@ -159,10 +162,10 @@ struct StaffDrawing {
         line(CGPoint(x: lineEnd, y: 112), CGPoint(x: lineEnd, y: 160))
         let beams = model.beams(symbols)
         for symbol in symbols {
-            let position = x(symbol), event = symbol.resolved.event
-            let selected = selectedIDs.contains(symbol.id), focused = focusedID == symbol.id
+            let position = x(symbol), duration = symbol.fragment.duration
+            let selected = selectedIDs.contains(symbol.eventID), focused = focusedID == symbol.id
             if selected || focused {
-                let rect = CGRect(x: position - 21, y: 8, width: 42, height: 226)
+                let rect = CGRect(x: position - 21, y: 8, width: 42, height: StaffModel.canvasHeight - 22)
                 context.stroke(Path(roundedRect: rect, cornerRadius: 5), with: .color(selected ? .accentColor : .primary),
                                style: StrokeStyle(lineWidth: 2, dash: focused ? [3, 3] : []))
             }
@@ -190,13 +193,13 @@ struct StaffDrawing {
                     }
                 }
             } else {
-                if event.durationTicks >= 1920 {
+                if duration.baseTicks >= 1920 {
                     // Whole rest hangs from D5; half rest sits on B4.
-                    let y = event.durationTicks == 3840 ? 124.0 : 130.0
+                    let y = duration.baseTicks == 3840 ? 124.0 : 130.0
                     context.fill(Path(CGRect(x: position - 8, y: y, width: 16, height: 6)), with: .color(ink))
                 } else {
                     let y = 136.0
-                    if event.durationTicks == 960 {
+                    if duration.baseTicks == 960 {
                         var rest = Path()
                         rest.move(to: CGPoint(x: position - 4, y: y - 19))
                         rest.addLine(to: CGPoint(x: position + 5, y: y - 10))
@@ -205,7 +208,7 @@ struct StaffDrawing {
                         rest.addQuadCurve(to: CGPoint(x: position - 5, y: y + 17), control: CGPoint(x: position - 10, y: y + 5))
                         context.stroke(rest, with: .color(ink), style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                     } else {
-                        let hooks = event.durationTicks == 240 ? 2 : 1
+                        let hooks = duration.baseTicks == 240 ? 2 : 1
                         var stem = Path(); stem.move(to: CGPoint(x: position + 7, y: y - 14))
                         stem.addQuadCurve(to: CGPoint(x: position - 3, y: y + (hooks == 2 ? 22 : 14)), control: CGPoint(x: position + 3, y: y + 6))
                         context.stroke(stem, with: .color(ink), lineWidth: 2)
@@ -219,7 +222,12 @@ struct StaffDrawing {
                     }
                 }
             }
-            context.draw(Text(verbatim: TimelineModel.durationLabel(event.durationTicks)).font(.system(size: 10)), at: CGPoint(x: position, y: 238))
+            if duration.dotted {
+                let step = symbol.pitch?.step
+                let y = step.map { StaffModel.y(step: $0.isMultiple(of: 2) ? $0 + 1 : $0) } ?? 136
+                context.fill(Path(ellipseIn: CGRect(x: position + 13, y: y - 2, width: 4, height: 4)), with: .color(ink))
+            }
+            context.draw(Text(verbatim: duration.label).font(.system(size: 10)), at: CGPoint(x: position, y: StaffModel.canvasHeight - 10))
         }
         for beam in beams {
             let members = symbols.filter { beam.ids.contains($0.id) }
@@ -231,9 +239,28 @@ struct StaffDrawing {
                 line(CGPoint(x: x(first) + stemOffset, y: y + offset), CGPoint(x: x(last) + stemOffset, y: y + offset), thickness: 4)
             }
         }
+        for (index, symbol) in symbols.enumerated() {
+            guard let pitch = symbol.pitch else { continue }
+            let noteY = StaffModel.y(step: pitch.step)
+            let direction = pitch.step < 34 ? 1.0 : -1.0
+            let y = noteY + direction * 9
+            func tie(from start: Double, to end: Double) {
+                guard end > start else { return }
+                var path = Path(); path.move(to: CGPoint(x: start, y: y))
+                path.addQuadCurve(to: CGPoint(x: end, y: y), control: CGPoint(x: (start + end) / 2, y: y + direction * min(16, (end - start) * 0.2)))
+                context.stroke(path, with: .color(ink), style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
+            }
+            if symbol.fragment.tieFromPrevious && (index == 0 || symbols[index - 1].eventID != symbol.eventID) {
+                tie(from: leading - 5, to: x(symbol) - 8)
+            }
+            if symbol.fragment.tieToNext {
+                let next = symbols.dropFirst(index + 1).first { $0.eventID == symbol.eventID }
+                tie(from: x(symbol) + 8, to: next.map { x($0) - 8 } ?? lineEnd - 4)
+            }
+        }
         if let tick = cursorTick, timeline.cursorBar(tick) == currentBar {
             let cursorX = leading + timeline.x(tick: tick, bar: currentBar, zoom: 1) + 24
-            line(CGPoint(x: cursorX, y: 8), CGPoint(x: cursorX, y: 228), thickness: 2, color: .accentColor)
+            line(CGPoint(x: cursorX, y: 8), CGPoint(x: cursorX, y: StaffModel.canvasHeight - 20), thickness: 2, color: .accentColor)
         }
     }
 }

@@ -343,7 +343,8 @@ lessons:
       uk: 'Подовження нот: крапка й ліга'
     outcomeUK: Читати та виконувати довгі й зв’язані тривалості
     originalAssessment: Р
-    status: todo
+    status: authored
+    evidence: Bilingual worked examples and sustain practice; software evidence in docs/reviews/rhythm-duration-review.md. Full course acceptance remains pending.
   - number: 23
     moduleID: basic-rhythm
     lessonID: simple-meters

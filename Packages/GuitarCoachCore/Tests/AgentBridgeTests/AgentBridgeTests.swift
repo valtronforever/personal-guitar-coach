@@ -4,6 +4,13 @@ import Testing
 @testable import AgentBridge
 
 struct AgentBridgeTests {
+    @Test func coachingPromptKeepsSustainSummaryWithoutDumpingEveryFrame() throws {
+        let source: [String: Any] = ["practice": ["sustain": ["notes": [["id": "held", "heldFraction": 0.5]]],
+            "evidence": ["sustainTrace": ["frames": [["state": "pitched"]]], "analysisVersion": "fixture"]]]
+        let text = try CoachAgentContract.coachingData(source)
+        #expect(!text.contains("sustainTrace") && text.contains("heldFraction") && text.contains("analysisVersion"))
+        #expect((source["practice"] as? [String: Any])?["evidence"] != nil)
+    }
     private func request(_ audio: Data) throws -> Data {
         try JSONSerialization.data(withJSONObject: ["schemaVersion": 1, "audioFile": "audio.wav",
             "audio": ["sha256": SHA256.hash(data: audio).map { String(format: "%02x", $0) }.joined()]])

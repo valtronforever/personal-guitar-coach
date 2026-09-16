@@ -130,7 +130,7 @@ struct ResultDetailView: View {
             switch advice.kind {
             case .inputLevel: Text("feedback.clippingEvidence \(advice.evidenceCount)")
             case .signal: Text("feedback.signalEvidence \(advice.evidenceCount) \(advice.denominator)")
-            case .early, .late, .missed, .pitch, .tuning:
+            case .early, .late, .missed, .pitch, .tuning, .sustain:
                 Text("feedback.noteEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .rests: Text("feedback.restEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .repeatFragment: Text("feedback.repeatEvidence \(advice.denominator)")
@@ -180,6 +180,12 @@ struct ResultDetailView: View {
                         if let cents = note.centsError { Text("result.pitchError \(number(cents))") }
                         if let timing = note.timingErrorSeconds { Text("result.timingError \(number(timing * 1000))") }
                         if let attackID = note.attackID, let attack = result.evidence.attacks.first(where: { $0.id == attackID }) { observed(attack) }
+                        if let sustain = result.sustain?.notes.first(where: { $0.id == id }) {
+                            if let held = sustain.heldFraction, result.sustainScore != nil {
+                                Text("result.sustainHeld \(Int((held * 100).rounded()))")
+                                if let silence = sustain.silentFraction { Text("result.sustainSilent \(Int((silence * 100).rounded()))") }
+                            } else { Text("assessment.sustainUnavailable") }
+                        }
                     }
                     if event.kind == .rest && config.range.contains(event.startTick) {
                         Text("result.restAttacks \(result.extras.filter { $0.restID == id }.count)")

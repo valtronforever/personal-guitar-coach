@@ -27,7 +27,18 @@ import Learning
         let cMajor = try #require(library.lessons.first { $0.id == "c-major" }?.manifest.exercises.first { $0.id == "c-major-practice" })
         let low = try Exercise(id: "low-a1", events: [MusicalEvent(id: "r0", startTick: 0, durationTicks: 3840, kind: .note,
             positions: [FretPosition(string: 6, fret: 0)])], tuningPolicy: .fixedTuning, requiredTuning: .dropA)
-        for example in [exercise,half,whole,cMajor,low] {
+        let dotsAndTies = try Exercise(id: "dots-ties", events: [
+            MusicalEvent(id: "r0", startTick: 0, durationTicks: 1440, kind: .note, positions: [FretPosition(string: 3, fret: 1)]),
+            MusicalEvent(id: "short", startTick: 1440, durationTicks: 480, kind: .note, positions: [FretPosition(string: 2, fret: 0)]),
+            MusicalEvent(id: "held", startTick: 1920, durationTicks: 2880, kind: .note, positions: [FretPosition(string: 3, fret: 1)]),
+            MusicalEvent(id: "again", startTick: 4800, durationTicks: 960, kind: .note, positions: [FretPosition(string: 3, fret: 1)]),
+            MusicalEvent(id: "rest", startTick: 5760, durationTicks: 720, kind: .rest),
+            MusicalEvent(id: "sixteenth", startTick: 6480, durationTicks: 240, kind: .note, positions: [FretPosition(string: 1, fret: 3)]),
+            MusicalEvent(id: "finish", startTick: 6720, durationTicks: 960, kind: .rest)
+        ])
+        let lowTies = try Exercise(id: "low-ties", events: [MusicalEvent(id: "r0", startTick: 0, durationTicks: 4800,
+            kind: .note, positions: [FretPosition(string: 6, fret: 0)])], tuningPolicy: .fixedTuning, requiredTuning: .dropA)
+        for example in [exercise,half,whole,cMajor,low,dotsAndTies,lowTies] {
         let timeline = try TimelineModel(exercise:example,instrument:.standard)
         for bar in 0..<timeline.barCount {
         for key in StaffKey.allCases {
@@ -35,14 +46,14 @@ import Learning
             for dark in [false,true] {
                 let drawing = StaffDrawing(model:model,bar:bar,selectedIDs:["r0"],cursorTick:960)
                 let content = Canvas { context,_ in drawing.draw(symbols,context:&context) }
-                    .frame(width:drawing.width,height:248).background(dark ? Color.black : Color.white)
+                    .frame(width:drawing.width,height:StaffModel.canvasHeight).background(dark ? Color.black : Color.white)
                     .environment(\.colorScheme,dark ? .dark : .light)
                 let renderer = ImageRenderer(content:content);renderer.scale=2
                 let image = try #require(renderer.nsImage)
                 let tiff = try #require(image.tiffRepresentation)
                 let bitmap = try #require(NSBitmapImageRep(data:tiff))
                 let png = try #require(bitmap.representation(using:.png,properties:[:]))
-                #expect(bitmap.pixelsWide == Int(drawing.width * 2) && bitmap.pixelsHigh == 496)
+                #expect(bitmap.pixelsWide == Int(drawing.width * 2) && bitmap.pixelsHigh == Int(StaffModel.canvasHeight * 2))
                 try png.write(to:root.appendingPathComponent("\(example.id)-\(bar)-\(key.rawValue)-\(dark ? "dark" : "light").png"))
             }
         }

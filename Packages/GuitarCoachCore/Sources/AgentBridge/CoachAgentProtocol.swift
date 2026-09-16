@@ -6,6 +6,18 @@ import Foundation
 }
 
 public enum CoachAgentContract {
+    // A 900-second derived sustain trace can exceed the former 2 MB envelope.
+    // Retain bounded local evidence, but send only its per-note assessment to the CLI.
+    public static let maximumRequestBytes = 16_000_000
+    public static let maximumEnvelopeBytes = 18_000_000
+    public static func coachingData(_ request: [String: Any]) throws -> String {
+        var value = request
+        if var practice = value["practice"] as? [String: Any], var evidence = practice["evidence"] as? [String: Any] {
+            evidence.removeValue(forKey: "sustainTrace")
+            practice["evidence"] = evidence; value["practice"] = practice
+        }
+        return String(decoding: try JSONSerialization.data(withJSONObject: value, options: [.sortedKeys]), as: UTF8.self)
+    }
     public static let serviceName = "com.valtronforever.PersonalGuitarCoach.AgentService"
     public static let schema = #"""
     {"type":"object","additionalProperties":false,"required":["schemaVersion","requestID","language","summary","findings"],"properties":{"schemaVersion":{"type":"integer","enum":[1]},"requestID":{"type":"string"},"language":{"type":"string","enum":["en","uk"]},"summary":{"type":"string","maxLength":2000},"findings":{"type":"array","minItems":1,"maxItems":8,"items":{"type":"object","additionalProperties":false,"required":["text","evidenceIDs"],"properties":{"text":{"type":"string","maxLength":1000},"evidenceIDs":{"type":"array","minItems":1,"maxItems":12,"items":{"type":"string"}}}}}}}
@@ -22,6 +34,7 @@ public enum CoachAgentContract {
         scheduled on render host time, NOT a measurement of the sound heard through headphones.
         All audio event seconds are relative to the file start. Honor alignment metadata: imported files
         have unverified correspondence/start offset and cannot be used to recompute practice timing.
+        Sustain summaries measure stable target-pitch coverage, not an exact release time. The raw sustain trace is omitted.
         Interpret practice calibration, validity, rhythmCapability, uncertainty and algorithm versions.
         Personal synchronization is approximate and includes player bias. Bluetooth output delay is
         not independently measured. Never invent an exact latency, new score or reliable rhythm evidence.

@@ -207,3 +207,22 @@ python3 Scripts/check_curriculum.py --complete  # Fails until all 128 topics are
 ```
 
 These commands do not replace the Swift content validator, musical golden tests, editorial review, UI inspection or hardware checks. Adding 128 filenames alone is not course completion.
+
+### Dotted/tied durations and optional sustain assessment
+
+Keep one `MusicalEvent` for a continuous note, including one that crosses a barline. Do not create a second attack for the written continuation of a tie. At PPQ 960, a dotted quarter is `durationTicks: 1440`; a half tied to a quarter is `2880`. Staff notation splits the canonical event into written fragments on the sixteenth-note grid, adding dots/ties; TAB, preview and assessment retain the original ID and one attack. Notes/rests outside this notation grid still have an explicit staff limitation. This stage does not add triplets, compound time, slurs or polyphonic staff notation.
+
+For a clean single-note exercise, an author can opt into stable-pitch coverage:
+
+```yaml
+- id: across
+  startTick: 1920
+  durationTicks: 2880
+  kind: note
+  positions:
+    - string: 3
+      fret: 0
+  assessSustain: true
+```
+
+The flag defaults to false and survives tuning/position resolution. It is invalid on rests, chords and display-only exercises. A marked note must last at least 0.5 seconds at the selected tempo; ordinary attack-only notes retain the 0.2-second gate. Prefer long beginner targets with a clear release/rest. A half-second A1 note stopped halfway can leave too much ambiguous release evidence to score; the app must show insufficient signal rather than guess. This is stable target-pitch coverage, not exact note-off timing, palm-mute quality, finger/string recognition or legato detection. Existing lessons are not silently regraded. The bilingual `dotted-tied-notes` lesson is the reference implementation with separate dots/ties practice entries and a duration quiz.

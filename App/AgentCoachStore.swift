@@ -46,7 +46,7 @@ import SwiftUI
         let request = await Task.detached { () -> CoachAnalysisRequest? in
             guard let handle = try? FileHandle(forReadingFrom: requestURL) else { return nil }
             defer { try? handle.close() }
-            guard let data = try? handle.read(upToCount: 2_000_001), data.count <= 2_000_000 else { return nil }
+            guard let data = try? handle.read(upToCount: CoachAgentContract.maximumRequestBytes + 1), data.count <= CoachAgentContract.maximumRequestBytes else { return nil }
             let decoder = JSONDecoder(); decoder.dateDecodingStrategy = .iso8601
             guard let value = try? decoder.decode(CoachAnalysisRequest.self, from: data),
                   value.practiceDigest == (try? CoachExchange.digest(practice)),

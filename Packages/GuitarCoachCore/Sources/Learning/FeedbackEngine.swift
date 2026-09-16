@@ -2,13 +2,13 @@ import Foundation
 import Domain
 
 public enum FeedbackKind: String, Sendable {
-    case inputLevel, signal, interrupted, restart, calibration, early, late, missed, pitch, tuning, rests, repeatFragment
+    case inputLevel, signal, interrupted, restart, calibration, early, late, missed, pitch, tuning, rests, sustain, repeatFragment
 }
 public enum FeedbackAction: Sendable { case audioSetup, tuner, repeatFragment }
 
 /// Advice is derived from archived measurements, never from an inferred hand, finger, or string.
 public struct PracticeRecommendation: Equatable, Sendable, Identifiable {
-    public static let ruleVersion = "feedback-1"
+    public static let ruleVersion = "feedback-2"
     public var id: String { kind.rawValue }
     public let sourceAttemptID: UUID
     public let kind: FeedbackKind
@@ -41,8 +41,9 @@ public enum FeedbackEngine {
             if !result.evidence.clipping.isEmpty {
                 return [advice(.inputLevel, .audioSetup, count: result.evidence.clipping.count)]
             }
-            return [advice(.signal, .audioSetup, events: result.notes.filter(\.uncertain).map(\.id),
-                attacks: result.extras.filter(\.uncertain).map(\.id), count: result.uncertainCount + result.uncertainExtraCount,
+            let uncertainIDs = Set(result.notes.filter(\.uncertain).map(\.id) + (result.sustain?.notes.filter { $0.state == .uncertain }.map(\.id) ?? []))
+            return [advice(.signal, .audioSetup, events: result.notes.filter { uncertainIDs.contains($0.id) }.map(\.id),
+                attacks: result.extras.filter(\.uncertain).map(\.id), count: uncertainIDs.count + result.uncertainExtraCount,
                 denominator: result.expectedCount)]
         }
         if result.validity == .interrupted {
@@ -63,6 +64,9 @@ public enum FeedbackEngine {
                 windows.append(start...end)
             }
         }
+        // Very long ties may span more than the normal four-bar suggestion limit.
+        // Keep a legal repeat available instead of dropping measured sustain advice.
+        if windows.isEmpty { windows.append(first...last) }
         func best(_ candidates: [AssessedNote], minimum: Int, kind: FeedbackKind, action: FeedbackAction = .repeatFragment) -> PracticeRecommendation? {
             var chosen: PracticeRecommendation?
             for window in windows {
@@ -86,6 +90,8 @@ public enum FeedbackEngine {
             }
         }
         if let missed = best(result.notes.filter { !$0.uncertain && $0.attackID == nil }, minimum: 2, kind: .missed) { answer.append(missed) }
+        let sustainIDs = Set(result.sustain?.notes.filter { $0.state == .measured && ($0.heldFraction ?? 1) < 0.8 }.map(\.id) ?? [])
+        if let held = best(result.notes.filter { sustainIDs.contains($0.id) }, minimum: 1, kind: .sustain) { answer.append(held) }
         let wrong = result.notes.filter { !$0.uncertain && abs($0.centsError ?? 0) >= result.parameters.pitchToleranceCents }
         let pitchGroups = Dictionary(grouping: wrong, by: \.targetFrequency)
         let pitchAdvice = pitchGroups.values.compactMap { best($0, minimum: 2, kind: .pitch) }.sorted {

@@ -9,6 +9,9 @@ public struct PracticeEvidenceCollector: Sendable {
     public private(set) var clipping: [PracticeClippingInterval] = []
     public private(set) var uncertainSignal: [PracticeUncertainSpan] = []
     public private(set) var latestNormalizedTime: Double?
+    public private(set) var sustainFrames: [SustainFrame] = []
+    private let collectsSustain: Bool
+    private var lastSustainFrame: UInt64
     private var lastEvent: UInt64
     private var lastSpan: UInt64
     private var clippingID: UInt64?
@@ -17,6 +20,8 @@ public struct PracticeEvidenceCollector: Sendable {
     public init(configuration: PracticeConfiguration, baseline: AudioAnalysisSnapshot) {
         self.configuration = configuration; analysisVersion = baseline.algorithmVersion
         lastEvent = baseline.totalEvents; lastSpan = baseline.totalQualitySpans
+        collectsSustain = configuration.selectedEvents.contains(where: \.assessSustain)
+        lastSustainFrame = baseline.sustainTrace?.totalFrames ?? 0
     }
 
     public mutating func consume(_ analysis: AudioAnalysisSnapshot, renderEpochSeconds: Double) throws {
@@ -70,6 +75,29 @@ public struct PracticeEvidenceCollector: Sendable {
             }
         }
         lastEvent = analysis.totalEvents; lastSpan = analysis.totalQualitySpans
+        if collectsSustain {
+            guard let trace = analysis.sustainTrace, trace.version == SustainTrace.currentVersion,
+                  trace.totalFrames >= lastSustainFrame else { throw AudioBackendError.dataLoss }
+            let frames = trace.frames.filter { $0.id > lastSustainFrame }
+            guard trace.totalFrames - lastSustainFrame == UInt64(frames.count) else { throw AudioBackendError.dataLoss }
+            for frame in frames {
+                guard let host = frame.time.hostSeconds else { throw AudioBackendError.invalidFormat }
+                let time = try route.observedTime(inputHostSeconds: host)
+                guard time - offset >= window.lowerBound,
+                      time - offset < window.upperBound + PracticeConfiguration.resolutionAllowanceSeconds else { continue }
+                guard sustainFrames.count < SustainTrace.maximumFrames else { throw PracticeError.unsupportedSize }
+                if let previous = sustainFrames.last {
+                    guard previous.id < UInt64.max, frame.id == previous.id + 1,
+                          (0.018...0.022).contains(time - previous.normalizedTime) else { throw AudioBackendError.dataLoss }
+                }
+                sustainFrames.append(try SustainFrame(id: frame.id, normalizedTime: time, state: frame.state, frequency: frame.frequency))
+            }
+            lastSustainFrame = trace.totalFrames
+        }
+    }
+
+    public func sustainTrace() throws -> SustainTrace? {
+        collectsSustain ? try SustainTrace(frames: sustainFrames) : nil
     }
 
     public func hasResolvedTail(renderEpochSeconds: Double) throws -> Bool {

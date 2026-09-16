@@ -57,14 +57,16 @@ struct AssessmentTests {
             attacks: attacks, clipping: clipped ? [interval] : [],
             uncertainSignal: noisy ? [PracticeUncertainSpan(interval: interval, reason: .ambiguous)] : [], analysisVersion: "fixture-analysis-1")
     }
-    @Test func v1ResultsRemainReadableWithoutRerating() throws {
+    @Test(arguments: ["monophonic-assessment-1", "monophonic-assessment-2"])
+    func historicalResultsRemainReadableWithoutRerating(version: String) throws {
         let result = try AssessmentEngine.evaluate(input(shifts: [0: 0.05]))
         var document = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(result)) as? [String: Any])
         var parameters = try #require(document["parameters"] as? [String: Any])
-        parameters["version"] = "monophonic-assessment-1"; document["parameters"] = parameters
+        parameters["version"] = version; document["parameters"] = parameters
         let restored = try JSONDecoder().decode(AssessedPractice.self, from: JSONSerialization.data(withJSONObject: document))
-        #expect(restored.parameters.version == "monophonic-assessment-1")
+        #expect(restored.parameters.version == version && restored.sustain == nil)
         #expect(restored.notes == result.notes && restored.overallScore == result.overallScore)
+        #expect(try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(restored)) == restored)
     }
     @Test func personalTimingIsApproximateFrozenAndRoundTrips() throws {
         for offset in [-0.15, 0.15] {

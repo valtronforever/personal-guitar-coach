@@ -67,19 +67,22 @@ public enum AssessmentEngine {
             try AssessedExtra(id: attacks[$0].id, restID: restIDs[$0], uncertain: !attacks[$0].reliable)
         }
         let uncertain = notes.filter(\.uncertain).count + extras.filter(\.uncertain).count
+        let sustain = try SustainEvaluator.evaluate(evidence, notes: notes)
         let validity: AssessmentValidity
         if !evidence.signalConfirmed { validity = .insufficientSignal }
         else if evidence.phase != .completed { validity = .interrupted }
+        else if sustain != nil && sustain?.score == nil { validity = .insufficientSignal }
         else if Double(uncertain) / Double(expected.count) > parameters.uncertaintyFraction { validity = .insufficientSignal }
         else { validity = capability.allowsTiming ? .valid : .uncalibrated }
         let pitch = 100 * pitchPoints / Double(expected.count), rhythm = 100 * rhythmPoints / Double(expected.count)
-        let overall = min(100, max(0, (parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
-            - parameters.extraPenalty * Double(extras.count) / Double(expected.count + extras.count)).rounded()))
+        let attackScore = parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
+        let combined = sustain?.score.map { 0.8 * attackScore + 0.2 * $0 } ?? attackScore
+        let overall = min(100, max(0, (combined - parameters.extraPenalty * Double(extras.count) / Double(expected.count + extras.count)).rounded()))
         return try AssessedPractice(evidence: evidence, validity: validity, rhythmCapability: capability,
             rhythmToleranceSeconds: tolerance, notes: notes, extras: extras,
             overallScore: validity == .valid ? overall : nil,
             pitchScore: validity == .valid || validity == .uncalibrated ? pitch : nil,
-            timingScore: validity == .valid ? rhythm : nil)
+            timingScore: validity == .valid ? rhythm : nil, sustain: sustain)
     }
 
     private static func align(expected: [Double], observed: [Double], radii: [Double], restIDs: [String?]) -> [Int?] {
