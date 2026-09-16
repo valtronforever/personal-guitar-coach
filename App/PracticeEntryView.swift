@@ -178,7 +178,7 @@ struct PracticeEntryView: View {
             if let error = model.backendError { AudioErrorView(error: error) }
             if model.phase == .preflight {
                 Text("practice.pluckForCheck")
-                ProgressView(value: Double(min(audio.state?.meters?.peak ?? 0, 1))) { Text("audio.level") }
+                InputLevelMeter(snapshot: audio.state?.meters, active: audio.state?.phase == .running)
             }
             if let beat = model.countInBeat, model.phase == .countIn { Text("practice.countInBeat \(beat)").font(.title.bold()).monospacedDigit() }
             if model.phase == .running {

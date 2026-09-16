@@ -65,13 +65,8 @@ struct AudioProbeView: View {
                     if model.state?.phase.isStarting == true && !previewActive { ProgressView("audio.waitingInput") }
                     if previewActive { Text("audio.previewActive").foregroundStyle(.secondary) }
                     if model.state?.isStartingClick == true { ProgressView("audio.waitingOutput") }
+                    InputLevelMeter(snapshot: model.state?.meters, active: model.state?.phase == .running && !previewActive)
                     if let snapshot = model.state?.meters {
-                        ProgressView(value: Double(min(snapshot.peak, 1))) { Text("audio.level") }
-                        Text(snapshot.peak >= 0.99 ? "audio.clipping" : snapshot.peak < 0.001 ? "audio.noSignal" : "audio.signalPresent")
-                        LabeledContent("audio.rmsDB") {
-                            if snapshot.rms > 0 { Text(20 * log10(Double(snapshot.rms)), format: .number.precision(.fractionLength(1))) }
-                            else { Text("audio.noSignal") }
-                        }
                         LabeledContent("audio.frames", value: snapshot.totalFrames.formatted())
                         LabeledContent("audio.drops", value: snapshot.droppedPackets.formatted())
                         LabeledContent("audio.discontinuities", value: snapshot.discontinuities.formatted())

@@ -35,9 +35,7 @@ struct CalibrationView: View {
                     Text("sync.instructions")
                     Text("sync.source").font(.caption)
                     Text(LocalizedStringKey(instrument.source.titleKey)).font(.caption)
-                    if let meters = audio.state?.meters, model.running {
-                        ProgressView(value: Double(min(meters.peak, 1))) { Text("audio.level") }
-                    }
+                    InputLevelMeter(snapshot: audio.state?.meters, active: model.running && audio.state?.phase == .running)
                     if model.running {
                         Text("sync.pass \(model.passNumber)").font(.headline)
                         Text(LocalizedStringKey("sync.stage." + model.stage.rawValue))
