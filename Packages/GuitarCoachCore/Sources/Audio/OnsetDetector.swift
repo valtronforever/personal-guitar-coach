@@ -11,7 +11,11 @@ final class OnsetDetector {
     private var outputImaginary = [Float](repeating: 0, count: size)
     private var previous = [Float](repeating: 0, count: size / 2)
     private let window: [Float]
-    private var recentFlux = [Double](repeating: 0, count: 8)
+    // Eight background hops, separated from the candidate by two hops. The rising
+    // edge of a broad low-frequency transient must not raise its own threshold.
+    private static let backgroundHops = 8
+    private static let candidateHops = 2
+    private var recentFlux = [Double](repeating: 0, count: backgroundHops + candidateHops)
     private var fluxIndex = 0
     private var previousRMS = 0.0
     private var lastOnset: Int64?
@@ -42,11 +46,12 @@ final class OnsetDetector {
             previous[i] = magnitude
         }
         let flux = increase / max(1e-8, magnitudeSum)
-        let baseline = recentFlux.sorted()[recentFlux.count / 2]
+        let background = (0..<Self.backgroundHops).map { recentFlux[(fluxIndex + $0) % recentFlux.count] }
+        let baseline = background.sorted()[Self.backgroundHops / 2]
         recentFlux[fluxIndex] = flux; fluxIndex = (fluxIndex + 1) % recentFlux.count
         let energyRise = smoothRMS > max(0.0015, previousRMS * 1.8)
         previousRMS = max(smoothRMS, previousRMS * 0.75)
-        guard endFrame >= max(Self.size, hop * recentFlux.count), smoothRMS > max(0.0015, noiseFloor * 3),
+        guard endFrame >= max(Self.size, hop * Self.backgroundHops), smoothRMS > max(0.0015, noiseFloor * 3),
               energyRise || (flux > max(0.16, baseline * 3 + 0.06) && rms >= smoothRMS * 0.7),
               lastOnset == nil || endFrame - lastOnset! >= Int64(sampleRate * 0.08) else { return nil }
         let onset = max(0, endFrame - Int64(energyRise ? hop : Self.size / 2))

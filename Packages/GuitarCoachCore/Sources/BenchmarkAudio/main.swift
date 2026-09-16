@@ -146,7 +146,7 @@ let quick = arguments.contains("--quick")
 var results: [CaseResult] = []
 for method in PitchMethod.allCases {
     for rate in [44100.0, 48000] {
-        let pitches = quick ? [36, 38, 40, 55, 64, 76, 88] : Array(36...88)
+        let pitches = quick ? [33, 34, 35, 36, 38, 40, 55, 64, 76, 88] : Array(33...88)
         for midi in pitches {
             for (kind, harmonics) in [("sine", [1.0]), ("harmonic", [1, 0.4, 0.2, 0.1]), ("second", [0.25, 1, 0.1])] {
                 let hz = try Pitch(midi: midi).frequency()
@@ -166,6 +166,23 @@ for method in PitchMethod.allCases {
                     references: notes.map { ($0.onset + min(0.16, duration * 0.8), $0.onset + duration - 0.02, hz) }))
             }
         }
+        }
+        // The new target floor needs event-level evidence, not just a settled tuner estimate.
+        for midi in 33...36 {
+            for reference in (quick ? [440.0] : [400.0, 440.0, 480.0]) {
+                let hz = try Pitch(midi: midi).frequency(referenceA4: reference)
+                guard MonophonicCapability.frequencyRange.contains(hz) else { continue }
+                for duration in [0.2, 0.3, 0.5] {
+                    for start in (quick ? [0.2] : [0.1013, 0.1179, 0.2]) {
+                        for (kind, harmonics) in [("sine", [1.0]), ("harmonic", [1, 0.4, 0.2, 0.1]), ("second", [0.25, 1, 0.1])] {
+                            let notes = (0..<4).map { SyntheticNote(onset: start + Double($0) * duration, duration: duration, frequency: hz, harmonics: harmonics) }
+                            results.append(try analyze(id: "repeat-midi\(midi)-a4-\(reference)-duration\(duration)-start\(start)-\(kind)", source: "lowRegister", method: method, rate: rate,
+                                signal: SyntheticAudio.render(rate: rate, duration: start + duration * 4 + 0.4, notes: notes), onsets: notes.map(\.onset),
+                                references: notes.map { ($0.onset + 0.16, $0.onset + duration - 0.02, hz) }))
+                        }
+                    }
+                }
+            }
         }
         for hz in [65.4064, 82.4069, 146.8324, 329.6276, 1318.5102] {
             for (name, amplitude, noise, attack) in [("quiet", 0.008, 0.0001, 0.003), ("noisy", 0.15, 0.005, 0.003),
@@ -201,7 +218,7 @@ for method in PitchMethod.allCases {
             references: [(clip.stableStart, clip.stableEnd, clip.referenceHz)]))
     }
 }
-let summaries = ["synthetic", "durationMatrix", "robustness", "negative", "recorded"].flatMap { source in
+let summaries = ["synthetic", "durationMatrix", "lowRegister", "robustness", "negative", "recorded"].flatMap { source in
     PitchMethod.allCases.map { method in Summary(source: source, method: method, values: results.filter { $0.source == source && $0.method == method }) }
 }
 let report = Report(mode: quick ? "quick" : "full", summaries: summaries, cases: results)

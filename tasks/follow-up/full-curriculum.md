@@ -8,7 +8,7 @@ Implement all 128 lessons from [the original agreed table](../../docs/CURRICULUM
 
 ## Delivery and audit
 
-1. **Curriculum/library foundation + modules 1–2** — in progress. Stable 16-module organization, ordering, prerequisites/duration, reading progress, continue, combined search/filter/sort, lesson navigation. Preserve exact 128-topic inventory in a coverage ledger.
+1. **Curriculum/library foundation + modules 1–2** — authored; full acceptance audit pending. Stable 16-module organization, ordering, prerequisites/duration, reading progress, continue, combined search/filter/sort, lesson navigation. Preserve exact 128-topic inventory in a coverage ledger.
 2. **Modules 3–6** — todo. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
 3. **Modules 7–10** — todo. Articulation-aware lesson/notation and measurable pitch-contour practice for slides/legato/bends/vibrato; scales; compound/odd time, triplets/shuffle, missing clicks; harmony.
 4. **Modules 11–14** — todo. Listen/reproduce tasks, guided improvisation; advanced guitar techniques and original genre studies. Add required functionality rather than silently reducing R lessons to generic checklists.
@@ -25,4 +25,4 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 
 - 2026-09-16: recovered the exact 128-lesson/16-module proposal from the current conversation. Baseline main 514ebaf; repository clean. Previous learning-mode implementation is complete software work, not completion of this new full-curriculum goal.
 - Stage 1 authored: 16 introductory topics (13 new bundles, expanded posture lesson, existing two first-note studies); 23 visible lessons/29 total including historical aliases. Course metadata and UI/query implementation complete, software checks passed; see [same-agent review](../../docs/reviews/full-curriculum-stage-1-review.md). Coverage intentionally remains authored, with 7 later baseline topics needing editorial review and 105 todo. Partial inventory audit passes; full acceptance correctly fails. Native Ukrainian/dark filter/search verified; remaining reader/minimum-window/VoiceOver checks open after UI automation service failure.
-- Known functional follow-up: expand and validate low-register graded pitch support for B Standard/Drop A and other targets below C2. Do not equate successful tuner/visual adaptation with graded support.
+- Stage 1 merged in PR #64 (3ebb81e). Low-register follow-up adds A1–B1 grading, fixes repeated low-note onset suppression, and enables graded Standard/Drop practice. See the [same-agent review](../../docs/reviews/low-register-practice-review.md); real-guitar validation stays pending. Full course remains in progress.

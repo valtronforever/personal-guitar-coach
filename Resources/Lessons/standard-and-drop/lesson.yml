@@ -1,6 +1,6 @@
 schemaVersion: 3
 id: standard-and-drop
-version: 1
+version: 2
 difficulty: beginner
 topic: basics
 steps:
@@ -36,7 +36,7 @@ steps:
     tool: tuner
 exercises:
   - id: standard-and-drop-practice
-    version: 1
+    version: 2
     ppq: 960
     timeSignature: 4/4
     defaultBPM: 60
@@ -67,7 +67,7 @@ exercises:
         - number: 6
           openPitch:
             midi: 40
-    assessmentMode: displayOnly
+    assessmentMode: monophonic
     events:
       - id: n-1
         startTick: 0
@@ -125,7 +125,10 @@ materials:
 activities:
   - id: example
     materialID: example
-practiceEntries: []
+practiceEntries:
+  - id: play
+    activityID: example
+    exerciseID: standard-and-drop-practice
 fingerings: []
 learningTasks:
   - id: review

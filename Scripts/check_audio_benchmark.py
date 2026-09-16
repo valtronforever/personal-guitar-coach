@@ -10,16 +10,16 @@ parser.add_argument("report", type=Path)
 parser.add_argument("--compact", type=Path)
 args = parser.parse_args()
 report = json.loads(args.report.read_text())
-assert report["schemaVersion"] == 1 and report["algorithmVersion"] == "mono-mpm-flux-3"
+assert report["schemaVersion"] == 1 and report["algorithmVersion"] == "mono-mpm-flux-4"
 cases = report["cases"]
-assert len(cases) >= (3360 if report["mode"] == "full" else 360)
+assert len(cases) >= (4476 if report["mode"] == "full" else 540)
 assert len({(c["source"], c["method"], c["sampleRate"], c["id"]) for c in cases}) == len(cases)
 summaries = {s["source"]: s for s in report["summaries"] if s["method"] == "mpm"}
 synthetic = summaries["synthetic"]
 assert synthetic["pitchErrorCents"]["median"] <= 5 and synthetic["pitchErrorCents"]["p95"] <= 10
 assert synthetic["fractionWithin15Cents"] >= .99 and synthetic["extraOnsets"] == 0
 assert synthetic["onsetRecall"] == 1
-for source in ["synthetic", "durationMatrix", "recorded"]:
+for source in ["synthetic", "durationMatrix", "lowRegister", "recorded"]:
     summary = summaries[source]
     assert summary["onsetErrorMs"]["median"] <= 15.001 and summary["onsetErrorMs"]["p95"] <= 30.001, source
     assert summary["noteResolutionMs"]["p95"] <= 300, source
@@ -33,10 +33,18 @@ for case in cases:
     if case["source"] == "negative":
         assert case["reliableFrames"] == 0, case["id"]
         assert all(event["quality"] != "reliable" for event in case["events"]), case["id"]
-    if case["source"] == "durationMatrix" and "duration0.125" not in case["id"]:
+    if case["source"] in {"durationMatrix", "lowRegister"} and "duration0.125" not in case["id"]:
         assert case["missedOnsets"] == 0 and case["extraOnsets"] == 0, (case["id"], case["sampleRate"])
         assert case["reliableFrames"] >= case["stableFrames"] * .95, case["id"]
         assert all(event["quality"] == "reliable" for event in case["events"]), case["id"]
+        if case["source"] == "lowRegister":
+            assert case["expectedOnsets"] == 4 and len(case["events"]) == 4, case["id"]
+            midi = int(case["id"].split("midi")[1].split("-")[0])
+            reference = float(case["id"].split("-a4-")[1].split("-")[0])
+            target = reference * 2 ** ((midi - 69) / 12)
+            assert all(abs(1200 * math.log2(event["pitch"]["frequency"] / target)) <= 15 for event in case["events"]), case["id"]
+low = [c for c in cases if c["source"] == "lowRegister" and c["method"] == "mpm"]
+assert len(low) >= (540 if report["mode"] == "full" else 72) and {c["sampleRate"] for c in low} == {44100, 48000}
 
 def metrics(values):
     ordered = sorted(values)

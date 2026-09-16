@@ -27,6 +27,14 @@ struct StaffTests {
         #expect(StaffPitch(sounding: try Pitch(midi: 58), key: .fMajor).name == "B♭4")
         #expect(StaffPitch(sounding: try Pitch(midi: 58), key: .neutral).name == "A♯4")
     }
+    @Test func lowestPresetNoteFitsTheWrittenStaffWithoutChangingTheTarget() throws {
+        let event = try MusicalEvent(id: "a1", startTick: 0, durationTicks: 960, kind: .note, positions: [FretPosition(string: 6, fret: 0)])
+        let model = try StaffModel(timeline: TimelineModel(exercise: Exercise(id: "low", events: [event]), instrument: .dropA), key: .neutral)
+        let symbol = try #require(model.symbols(in: 0).first), pitch = try #require(symbol.pitch)
+        #expect(pitch.soundingMIDI == 33 && pitch.writtenMIDI == 45 && pitch.name == "A2")
+        #expect(StaffModel.ledgerSteps(for: pitch.step) == [28, 26, 24, 22, 20])
+        #expect(StaffModel.y(step: pitch.step) + 12 < 248)
+    }
     @Test func keyAccidentalsPersistAtSameOctaveAndResetAtBarline() throws {
         let events = try [note("fSharp",0,midi:54), note("fNatural",960,midi:53), note("sameNatural",1920,midi:53),
                           note("sharpAgain",2880,midi:54), note("nextBar",3840,midi:54), MusicalEvent(id:"r1",startTick:4800,durationTicks:960,kind:.rest), MusicalEvent(id:"r2",startTick:5760,durationTicks:1920,kind:.rest)]

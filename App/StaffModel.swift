@@ -65,7 +65,7 @@ struct StaffModel: Sendable {
             let pitch = resolved.pitches.first.map { StaffPitch(sounding: $0, key: key, preferredSpelling: timeline.tuning.preferredSpelling) }
             var accidental: String?
             if let pitch {
-                guard (36...88).contains(pitch.soundingMIDI) else { throw StaffLimitation.range }
+                guard (33...88).contains(pitch.soundingMIDI) else { throw StaffLimitation.range }
                 let current = accidentals[pitch.step] ?? key.alteration(letter: pitch.letter)
                 if current != pitch.alteration { accidental = pitch.alteration == 0 ? "♮" : pitch.alteration == 1 ? "♯" : "♭" }
                 accidentals[pitch.step] = pitch.alteration

@@ -63,6 +63,41 @@ import AudioTestSupport
         }
     }
 
+    @Test(arguments: [44100.0, 48000.0])
+    func lowRegisterReattacksRemainIndependentOfPitchChanges(rate: Double) throws {
+        for midi in [33, 34, 35, 36] {
+            let hz = try Pitch(midi: midi).frequency()
+            for duration in [0.2, 0.3, 0.5] {
+                for harmonics in [[1.0], [1, 0.4, 0.2, 0.1], [0.25, 1, 0.1]] {
+                    let notes = (0..<4).map { SyntheticNote(onset: 0.2 + Double($0) * duration, duration: duration, frequency: hz, harmonics: harmonics) }
+                    let (snapshot, _) = try run(rate: rate, notes: notes, duration: duration * 4 + 0.6, chunk: 769)
+                    #expect(snapshot.events.count == 4, "\(rate) Hz, MIDI \(midi), duration \(duration), harmonics \(harmonics)")
+                    for (event, note) in zip(snapshot.events, notes) {
+                        #expect(abs(event.onset.streamSeconds - note.onset) <= 0.03)
+                        #expect(event.quality == .reliable)
+                        let pitch = try #require(event.pitch)
+                        #expect(abs(1200 * log2(pitch.frequency / hz)) <= 15)
+                    }
+                }
+            }
+        }
+    }
+
+    @Test(arguments: [44100.0, 48000.0])
+    func lowSustainsDoNotInventReattacksAndUnsupportedSubBassIsNotReliable(rate: Double) throws {
+        for midi in 33...35 {
+            for harmonics in [[1.0], [0.25, 1, 0.1]] {
+                let hz = try Pitch(midi: midi).frequency()
+                let (snapshot, _) = try run(rate: rate, notes: [.init(onset: 0.1179, duration: 2.3, frequency: hz, harmonics: harmonics)], duration: 2.7)
+                #expect(snapshot.events.count == 1 && snapshot.events[0].quality == .reliable)
+                #expect(snapshot.algorithmVersion == MonophonicAnalyzer.algorithmVersion)
+            }
+        }
+        let (below, observations) = try run(rate: rate, notes: [.init(frequency: 50)], duration: 1)
+        #expect(observations.allSatisfy { $0.quality != .reliable })
+        #expect(below.events.allSatisfy { $0.quality != .reliable })
+    }
+
     @Test func arbitraryPacketBoundariesDoNotChangeEvidence() throws {
         let notes = [SyntheticNote(frequency: 146.83)]
         let a = try run(notes: notes, chunk: 1).0

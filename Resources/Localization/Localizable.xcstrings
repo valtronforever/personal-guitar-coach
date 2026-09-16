@@ -1845,13 +1845,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Some open strings are outside the initial audio target range C2–E6. They remain available for display, but are not eligible for audio assessment."
+            "value": "Some open-string targets are outside the audio assessment range A1–E6 or 55–1500 Hz at this A4 reference. They remain available for display."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Деякі відкриті струни поза початковим діапазоном аудіоаналізу C2–E6. Вони доступні для перегляду, але не для оцінювання зі звуку."
+            "value": "Деякі цілі відкритих струн поза діапазоном аудіооцінювання A1–E6 або 55–1500 Гц за цієї еталонної A4. Вони залишаються доступними для перегляду."
           }
         }
       }
@@ -8586,13 +8586,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This bar uses notation outside the prototype: chords, ties across bars, gaps, incomplete bars, unusual durations or pitches outside C2–E6. Use Tablature to see the complete sequence."
+            "value": "This bar uses notation outside the prototype: chords, ties across bars, gaps, incomplete bars, unusual durations or pitches outside A1–E6. Use Tablature to see the complete sequence."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Цей такт виходить за межі прототипу: акорди, ліги через тактові риски, проміжки, неповні такти, нестандартні тривалості або ноти поза C2–E6. Повна послідовність доступна в табулатурі."
+            "value": "Цей такт виходить за межі прототипу: акорди, ліги через тактові риски, проміжки, неповні такти, нестандартні тривалості або ноти поза A1–E6. Повна послідовність доступна в табулатурі."
           }
         }
       }

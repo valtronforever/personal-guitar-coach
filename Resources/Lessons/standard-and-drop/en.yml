@@ -1,5 +1,5 @@
 lessonID: standard-and-drop
-lessonVersion: 1
+lessonVersion: 2
 locale: en
 title: Standard and drop tunings
 summary: Explain why a drop tuning changes low-string shapes differently from standard-family transposition.
@@ -25,7 +25,9 @@ steps:
     body: >-
       In a drop tuning, fret 2 on string 6 sounds at the pitch that the open sixth string had in the corresponding
       standard tuning. Compare the open and second-fret positions in the example; do not change Settings without
-      matching the physical guitar. {{positions}}
+      matching the physical guitar. {{positions}} Start audio practice from this step to compare your notes with
+      the selected tuning. Pitch and attack timing can be assessed; the app cannot determine which string you actually
+      used.
   review:
     title: Describe the shape change
     body: >-

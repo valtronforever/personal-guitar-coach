@@ -32,9 +32,7 @@ struct LessonAdaptationTests {
                     if [TuningProfile.standard, .dStandard, .cStandard, .bStandard].contains(tuning) { #expect(exercise.events == original.events) }
                     if exercise.assessmentMode == .monophonic {
                         for bpm in [exercise.minimumBPM, exercise.defaultBPM, exercise.maximumBPM] {
-                            if pitches.contains(where: { $0 < 36 }) {
-                                #expect(throws: MusicError.unsupportedPitch) { try exercise.validateForPractice(instrument: tuning, bpm: bpm) }
-                            } else { try exercise.validateForPractice(instrument: tuning, bpm: bpm) }
+                            try exercise.validateForPractice(instrument: tuning, bpm: bpm)
                         }
                     }
                 }

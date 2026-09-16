@@ -83,7 +83,7 @@ public struct AudioAnalysisSnapshot: Equatable, Sendable {
 /// Single-worker streaming analyzer. The audio callback only fills the existing bounded PCM ring.
 /// All storage is bounded independently of session length; no raw PCM leaves this object.
 public final class MonophonicAnalyzer {
-    public static let algorithmVersion = "mono-mpm-flux-3"
+    public static let algorithmVersion = "mono-mpm-flux-4"
     public static let eventCapacity = 128
     public static let qualitySpanCapacity = 256
     public let sampleRate: Double
@@ -148,7 +148,7 @@ public final class MonophonicAnalyzer {
     }
 
     public func snapshot() -> AudioAnalysisSnapshot {
-        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-3", latest: latest, events: events,
+        AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-4", latest: latest, events: events,
                               totalEvents: totalEvents, invalidSamples: invalidSamples,
                               qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans)
     }
