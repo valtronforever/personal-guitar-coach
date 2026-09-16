@@ -665,7 +665,8 @@ lessons:
       uk: Перший bend
     outcomeUK: Підтягувати струну до заданої висоти
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 55
     moduleID: lead-foundations
     lessonID: bend-target-and-release
@@ -674,7 +675,8 @@ lessons:
       uk: Точність bend і повернення ноти
     outcomeUK: Порівнювати підтягування з еталонною нотою
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 56
     moduleID: lead-foundations
     lessonID: vibrato

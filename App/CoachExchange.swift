@@ -18,6 +18,7 @@ struct CoachAnalysisRequest: Codable, Sendable {
     let recordingStartHostSeconds: Double?
     let renderEpochHostSeconds: Double?
     let expectedNotes: [String]
+    let unscoredBendObservationIDs: [UInt64]?
 
     var evidenceIDs: Set<String> {
         Set(["audio:summary", "practice:summary"] + audio.events.map(\.id) + audio.pitchSamples.map(\.id) + practice.notes.map { "practice:" + $0.id })
@@ -52,6 +53,12 @@ enum CoachExchange {
         return try encoder.encode(value)
     }
 
+    private static func unscoredBendIDs(_ practice: AssessedPractice) -> [UInt64]? {
+        guard practice.bends != nil else { return nil }
+        let scored = Set(practice.scoredExtras.map(\.id))
+        return practice.extras.filter { !scored.contains($0.id) }.map(\.id)
+    }
+
     static func digest(_ practice: AssessedPractice) throws -> String { CoachAudioFile.hash(try encode(practice)) }
 
     static func prepare(audio: URL, channel: Int, practice: AssessedPractice, language: String,
@@ -65,13 +72,14 @@ enum CoachExchange {
             let names = try event.positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: ", ")
             return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)"
         }
-        return CoachAnalysisRequest(schemaVersion: 1, promptVersion: "file-coach-1", id: id,
+        return CoachAnalysisRequest(schemaVersion: 1, promptVersion: practice.bends == nil ? "file-coach-1" : "file-coach-2", id: id,
             language: language == "uk" ? "uk" : "en", practiceDigest: try digest(practice),
             audioFile: "audio." + audio.pathExtension.lowercased(), audio: report, practice: practice,
             alignment: previous?.alignment ?? (take == nil ? "user-supplied-file; correspondence-and-start-offset-unverified" : "capture-host-time; metronome-render-reference; audible-output-delay-not-measured"),
             lessonContext: String((previous?.lessonContext ?? lessonContext).prefix(20_000)),
             recordingStartHostSeconds: take?.recording.firstHostSeconds ?? previous?.recordingStartHostSeconds,
-            renderEpochHostSeconds: take?.renderEpoch ?? previous?.renderEpochHostSeconds, expectedNotes: expected)
+            renderEpochHostSeconds: take?.renderEpoch ?? previous?.renderEpochHostSeconds, expectedNotes: expected,
+            unscoredBendObservationIDs: unscoredBendIDs(practice))
     }
 
     static func readResponse(_ url: URL, practice: AssessedPractice) throws -> CoachAnalysisResponse {
@@ -81,7 +89,8 @@ enum CoachExchange {
         let decoder = JSONDecoder(); decoder.dateDecodingStrategy = .iso8601
         let value = try decoder.decode(CoachAnalysisResponse.self, from: data)
         let request = value.request, feedback = value.feedback
-        guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == "file-coach-1",
+        guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == (practice.bends == nil ? "file-coach-1" : "file-coach-2"),
+              request.unscoredBendObservationIDs == (unscoredBendIDs(practice)),
               request.practice.id == practice.id, request.practiceDigest == (try digest(practice)),
               (try digest(request.practice)) == request.practiceDigest,
               ["user-supplied-file; correspondence-and-start-offset-unverified", "capture-host-time; metronome-render-reference; audible-output-delay-not-measured"].contains(request.alignment),

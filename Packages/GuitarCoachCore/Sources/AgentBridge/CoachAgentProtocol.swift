@@ -6,14 +6,15 @@ import Foundation
 }
 
 public enum CoachAgentContract {
-    // A 900-second derived sustain trace can exceed the former 2 MB envelope.
+    // Two bounded 900-second derived traces can exceed the former 16 MB envelope.
     // Retain bounded local evidence, but send only its per-note assessment to the CLI.
-    public static let maximumRequestBytes = 16_000_000
-    public static let maximumEnvelopeBytes = 18_000_000
+    public static let maximumRequestBytes = 24_000_000
+    public static let maximumEnvelopeBytes = 28_000_000
     public static func coachingData(_ request: [String: Any]) throws -> String {
         var value = request
         if var practice = value["practice"] as? [String: Any], var evidence = practice["evidence"] as? [String: Any] {
             evidence.removeValue(forKey: "sustainTrace")
+            evidence.removeValue(forKey: "pitchContour")
             practice["evidence"] = evidence; value["practice"] = practice
         }
         return String(decoding: try JSONSerialization.data(withJSONObject: value, options: [.sortedKeys]), as: UTF8.self)
@@ -34,7 +35,9 @@ public enum CoachAgentContract {
         scheduled on render host time, NOT a measurement of the sound heard through headphones.
         All audio event seconds are relative to the file start. Honor alignment metadata: imported files
         have unverified correspondence/start offset and cannot be used to recompute practice timing.
-        Sustain summaries measure stable target-pitch coverage, not an exact release time. The raw sustain trace is omitted.
+        Sustain summaries measure stable target-pitch coverage, not an exact release time. Raw sustain and moving-pitch traces are omitted.
+        Bend summaries measure the audible base/rise/target/release/return against an authored path, not finger motion.
+        Spectral events inside bends are retained observations, not scored extra pick attacks. Honor the request’s unscoredBendObservationIDs; never diagnose an extra physical pick stroke from those events.
         Interpret practice calibration, validity, rhythmCapability, uncertainty and algorithm versions.
         Personal synchronization is approximate and includes player bias. Bluetooth output delay is
         not independently measured. Never invent an exact latency, new score or reliable rhythm evidence.

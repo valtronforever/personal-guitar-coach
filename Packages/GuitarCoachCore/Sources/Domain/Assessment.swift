@@ -16,6 +16,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public let extraPenalty: Double
     public let onsetUncertaintySeconds: Double
     public static let current = AssessmentParameters()
+    public static let withBends = AssessmentParameters(version: "monophonic-assessment-4")
     private init(version: String = "monophonic-assessment-3") {
         self.version = version; pitchToleranceCents = 50; rhythmToleranceSeconds = 0.1
         rhythmIntervalFraction = 0.45; maximumMatchSeconds = 0.3; matchIntervalFraction = 0.49
@@ -31,7 +32,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         let version = try v.decode(String.self, forKey: .version)
-        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
+        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version, Self.withBends.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
         self.init(version: version)
         let fields: [(CodingKeys, Double)] = [(.pitchToleranceCents, pitchToleranceCents), (.rhythmToleranceSeconds, rhythmToleranceSeconds),
             (.rhythmIntervalFraction, rhythmIntervalFraction), (.maximumMatchSeconds, maximumMatchSeconds),
@@ -83,22 +84,35 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
     public let pitchScore: Double?
     public let timingScore: Double?
     public let sustain: SustainAssessment?
+    public let bends: BendAssessment?
+    public var bendScore: Double? { validity == .valid || validity == .uncalibrated ? bends?.score : nil }
+    private let unscoredBendIDs: Set<UInt64>
+    public var scoredExtras: [AssessedExtra] { extras.filter { !unscoredBendIDs.contains($0.id) } }
     public var sustainScore: Double? { validity == .valid || validity == .uncalibrated ? sustain?.score : nil }
     public var expectedCount: Int { notes.count }
     public var matchedCount: Int { notes.filter { $0.attackID != nil }.count }
     public var missedCount: Int { expectedCount - matchedCount }
     public var uncertainCount: Int { notes.filter(\.uncertain).count }
-    public var uncertainExtraCount: Int { extras.filter(\.uncertain).count }
+    public var uncertainExtraCount: Int { scoredExtras.filter(\.uncertain).count }
     public var meanSignedTimingSeconds: Double? { Self.mean(notes.compactMap(\.timingErrorSeconds)) }
     public var medianSignedTimingSeconds: Double? { Self.median(notes.compactMap(\.timingErrorSeconds)) }
     public var medianAbsolutePitchCents: Double? { Self.median(notes.compactMap(\.centsError).map(abs)) }
 
     public init(evidence: PracticeEvidence, parameters: AssessmentParameters = .current, validity: AssessmentValidity,
                 rhythmCapability: RhythmCapability, rhythmToleranceSeconds: Double, notes: [AssessedNote], extras: [AssessedExtra],
-                overallScore: Double?, pitchScore: Double?, timingScore: Double?, sustain: SustainAssessment? = nil) throws {
+                overallScore: Double?, pitchScore: Double?, timingScore: Double?, sustain: SustainAssessment? = nil, bends: BendAssessment? = nil) throws {
         let expected = evidence.configuration.selectedEvents.filter { $0.kind == .note }
         let ids = notes.compactMap(\.attackID) + extras.map(\.id)
         let attacks = Set(evidence.attacks.map(\.id))
+        let bendEvents = expected.filter { $0.bend != nil }
+        guard bends.map({ $0.notes.map(\.id) == bendEvents.map(\.id) }) ?? true,
+              bends == nil || (!bendEvents.isEmpty && parameters.version == AssessmentParameters.withBends.version),
+              ![AssessmentValidity.valid, .uncalibrated].contains(validity) || bendEvents.isEmpty || bends?.score != nil else { throw AssessmentError.invalidResult }
+        if let bends {
+            for (event, note) in zip(bendEvents, bends.notes) {
+                guard note.phases.count == (event.bend?.releaseEndTick == nil ? 3 : 5) else { throw AssessmentError.invalidResult }
+            }
+        }
         let sustainIDs = expected.filter(\.assessSustain).map(\.id)
         guard sustain.map({ $0.notes.map(\.id) == sustainIDs }) ?? true,
               sustain == nil || !sustainIDs.isEmpty,
@@ -142,7 +156,8 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         self.evidence = evidence; self.parameters = parameters; self.validity = validity; self.rhythmCapability = rhythmCapability
         self.rhythmToleranceSeconds = rhythmToleranceSeconds; self.notes = notes; self.extras = extras
         self.overallScore = overallScore; self.pitchScore = pitchScore; self.timingScore = timingScore
-        self.sustain = sustain
+        self.sustain = sustain; self.bends = bends
+        self.unscoredBendIDs = bends == nil ? [] : evidence.bendObservationIDs(notes: notes)
     }
     private static func mean(_ values: [Double]) -> Double? { values.isEmpty ? nil : values.reduce(0, +) / Double(values.count) }
     private static func median(_ values: [Double]) -> Double? {
@@ -175,7 +190,7 @@ extension AssessedExtra {
 }
 
 extension AssessedPractice {
-    private enum CodingKeys: String, CodingKey { case evidence, parameters, validity, rhythmCapability, rhythmToleranceSeconds, notes, extras, overallScore, pitchScore, timingScore, sustain }
+    private enum CodingKeys: String, CodingKey { case evidence, parameters, validity, rhythmCapability, rhythmToleranceSeconds, notes, extras, overallScore, pitchScore, timingScore, sustain, bends }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(evidence: v.decode(PracticeEvidence.self, forKey: .evidence),
@@ -188,6 +203,7 @@ extension AssessedPractice {
             overallScore: v.decodeIfPresent(Double.self, forKey: .overallScore),
             pitchScore: v.decodeIfPresent(Double.self, forKey: .pitchScore),
             timingScore: v.decodeIfPresent(Double.self, forKey: .timingScore),
-            sustain: v.decodeIfPresent(SustainAssessment.self, forKey: .sustain))
+            sustain: v.decodeIfPresent(SustainAssessment.self, forKey: .sustain),
+            bends: v.decodeIfPresent(BendAssessment.self, forKey: .bends))
     }
 }

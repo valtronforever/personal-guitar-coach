@@ -13752,6 +13752,431 @@
           }
         }
       }
+    },
+    "bend.assessmentLimits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each bend phase contributes equally to the path score. The overall score combines attacks/rhythm and this path equally. This measures audible pitch, not finger movement; attacks within the bend are not graded."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кожна фаза bend має однакову вагу в оцінці траєкторії. Загальна оцінка порівну враховує атаки/ритм і траєкторію. Вимірюється чутна висота, а не рух пальців; атаки всередині bend не оцінюються."
+          }
+        }
+      }
+    },
+    "bend.axes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizontal: beats from this note’s attack. Vertical: cents above the starting pitch."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Горизонтально: долі від початку цієї ноти. Вертикально: центи відносно початкової висоти."
+          }
+        }
+      }
+    },
+    "bend.coverage %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silence: %lld%% · Uncertain: %lld%%"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тиша: %lld%% · Невизначено: %lld%%"
+          }
+        }
+      }
+    },
+    "bend.curveTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch path"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траєкторія висоти"
+          }
+        }
+      }
+    },
+    "bend.error %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Median pitch error: %lld cents (positive = sharp)."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Медіанна похибка висоти: %lld центів (додатна = вище цілі)."
+          }
+        }
+      }
+    },
+    "bend.expected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target · dashed"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ціль · пунктир"
+          }
+        }
+      }
+    },
+    "bend.matched %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Within 35 cents of the path: %lld%%"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У межах 35 центів від траєкторії: %lld%%"
+          }
+        }
+      }
+    },
+    "bend.observed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Played · solid"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграно · суцільна"
+          }
+        }
+      }
+    },
+    "bend.phase.base": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Початкова нота"
+          }
+        }
+      }
+    },
+    "bend.phase.release": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Release"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Опускання"
+          }
+        }
+      }
+    },
+    "bend.phase.returned": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Returned note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повернута нота"
+          }
+        }
+      }
+    },
+    "bend.phase.rise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rise"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підйом"
+          }
+        }
+      }
+    },
+    "bend.phase.target": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target hold"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утримання цілі"
+          }
+        }
+      }
+    },
+    "bend.practiceInstructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a clean tone. Pick the starting note, follow the shown rise/hold/return, then mute in the rest. Bend scoring requires 196–880 Hz starting notes, targets up to 1100 Hz, each phase at least 0.4 seconds, and movement no faster than 400 cents/second."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Використовуйте чистий звук. Зіграйте початкову ноту, виконайте показані підйом/утримання/повернення, потім заглушіть у паузі. Для оцінювання bend потрібні початкові ноти 196–880 Гц, цілі до 1100 Гц, кожна фаза від 0,4 с і рух не швидше 400 центів/с."
+          }
+        }
+      }
+    },
+    "bend.resultTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bend measurements"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вимірювання bend"
+          }
+        }
+      }
+    },
+    "bend.score": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bend path"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траєкторія bend"
+          }
+        }
+      }
+    },
+    "bend.spoken %@ %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, bend up %2$lld cents"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, bend вгору на %2$lld центів"
+          }
+        }
+      }
+    },
+    "bend.targetSemitones %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rise: %lld × 100 cents. b1 = half-step, b2 = whole-step; r = return."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підйом: %lld × 100 центів. b1 = півтону, b2 = тон; r = повернення."
+          }
+        }
+      }
+    },
+    "bend.traceGaps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gaps mean silence or uncertain pitch, not a connected glide. The measured path stays available in this saved result."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогалини означають тишу або невизначену висоту, а не суцільне ковзання. Виміряна траєкторія залишається в цьому збереженому результаті."
+          }
+        }
+      }
+    },
+    "bend.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enough reliable pitch for a bend score."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недостатньо надійних даних висоти для оцінки bend."
+          }
+        }
+      }
+    },
+    "bend.unscoredObservations %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld signal changes inside bends were retained as observations and excluded from extra-attack penalties."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld змін сигналу всередині bend збережено як спостереження та виключено зі штрафів за зайві атаки."
+          }
+        }
+      }
+    },
+    "feedback.bend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compare the measured bend path with the target; repeat the marked phrase more slowly."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Порівняйте виміряну траєкторію bend із ціллю; повторіть позначену фразу повільніше."
+          }
+        }
+      }
+    },
+    "result.annotation.bend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bend path differs from the target"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Траєкторія bend відрізняється від цілі"
+          }
+        }
+      }
+    },
+    "bend.spokenRelease %@ %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, bend up %2$lld cents and return to the starting note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, bend вгору на %2$lld центів із поверненням до початкової ноти"
+          }
+        }
+      }
+    },
+    "bend.assessmentMixedLimits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The overall score uses 40% starting notes/rhythm, 40% bend paths and 20% held-note coverage. This measures sound, not finger motion; attacks inside bends are not graded."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загальна оцінка враховує 40% початкових нот/ритму, 40% траєкторій bend і 20% утримання нот. Вимірюється звук, а не рух пальців; атаки всередині bend не оцінюються."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -50,3 +50,7 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - PR #70 merged as 8873e61 after full CI 35156066168 passed. PR #71 was reopened and retargeted to main after GitHub closed it on deletion of its former base branch; its current head is rebased onto the accepted open-bass implementation and awaits replacement CI.
 
 - Lead-foundation introduction: single-note picking cues implemented and topics 49–50 authored. 60 bundles/54 visible, 50 authored topics; [same-agent review](../../docs/reviews/picking-directions-review.md) records cue, encoding, audio invariance and visual checks. All 237 Core/136 App tests, signed 60-bundle Release/XPC and content/localization/UI checks pass; PR/CI pending. Slides/legato/bends/vibrato still require their expressive analysis extensions.
+
+- PRs #71–73 merged after exact-head CI runs 35157894822, 35159108366 and 35159113227 passed. Merge commits retained stack ancestry; main is 45861d5.
+
+- Bend extension and topics 54–55 authored: timed half/whole-step pitch bends/returns, continuous reference, bounded moving-pitch evidence, phase assessment and retained diagnostic graph. 62 bundles/56 visible, 52 authored topics, 4 needing review, 72 todo. [Same-agent review](../../docs/reviews/bend-assessment-review.md) tracks validation; final Release/CI and real-guitar acceptance remain pending. Topics 51–53/56 require their own slide/legato/vibrato extensions and are not relabeled as completed self-practice.

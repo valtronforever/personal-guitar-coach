@@ -1,0 +1,72 @@
+lessonID: bend-target-and-release
+lessonVersion: 1
+locale: en
+title: Bend accuracy and release
+summary: Reach a reference pitch, hold it and return to the original note.
+goal: Control both destinations of a bend without an extra pick attack during the return.
+body: 'A bend with release has two pitch destinations: the raised target and the original note. Reaching the top
+  does not finish the phrase. Keep the string controlled as tension decreases so the pitch returns deliberately
+  rather than collapsing, and keep fretting contact until the return has sounded.
+
+
+  First refresh the ordinary fretted whole-step reference. In the next exercise, a three-beat note contains five
+  stages: base, rise, target, release and returned base. The r after b2 means return while the note is still sounding.
+  It does not mean lift the finger off the string or play a pull-off. Mute only at the following rest.
+
+
+  Start at 60 BPM. Read the curve to distinguish a sharp top, a flat top, an early return and a return that never
+  reaches the original pitch. The graph remains in the saved result, so compare attempts or capture it for discussion.
+  Dashed lines are the authored path; the solid line is measured pitch, with gaps for silence or uncertain signal.
+
+
+  The score allows a 35-cent band around the intended path. It ignores short detector-settling intervals around
+  changes and gives each phase equal weight, so a long correct hold cannot hide an absent return. Reliable silence
+  is a musical miss; unreliable input does not earn a pitch-path score. The measurement cannot prove finger motion
+  or the absence of a second pick stroke inside the bend: observe those separately.'
+steps:
+  prepare:
+    title: Separate release from lifting off
+    body: Sound the starting fret. Make a small bend and reduce its tension while keeping the finger down. Hear
+      the original note again, then mute. The goal is controlled pitch descent, not an open-string note.
+  target-comparison:
+    title: Refresh the whole-step destination
+    body: 'Play root, target two frets higher, root, rest. Listen to both destinations: {{sequence}}. Keep that
+      sound in mind for the returning bend; do not move to the target fret while performing it.'
+  return-bend:
+    title: Five phases in one sustained note
+    body: Pick on 1; begin rising on & of 1; arrive at the whole-step target on 2. Hold until 3, return smoothly
+      by & of 3, and hold the original pitch until muting on 4. Repeat two bars. Let the original attack sustain
+      through the return; do not repick to rescue a weak note.
+  half-step-return:
+    title: Reduce the distance, keep the control
+    body: 'Use the identical rhythm for four half-step bends. Reach only 100 cents, then return to zero. The smaller
+      movement tests precision: avoid using the whole-step motion by habit. Listen particularly to the final returned
+      note of each bar.'
+  review:
+    title: Choose one measurable correction
+    body: If Target hold is sharp or flat, adjust the height of the bend. If Returned note is sharp, fully restore
+      the starting tension while keeping contact. If the trace has gaps, check the clean signal and sustain before
+      interpreting a score. Repeat one bar slowly, then the complete phrase.
+activities:
+  target-comparison:
+    title: Refresh the whole-step destination
+    body: 'Play root, target two frets higher, root, rest. Listen to both destinations: {{sequence}}. Keep that
+      sound in mind for the returning bend; do not move to the target fret while performing it.'
+  return-bend:
+    title: Five phases in one sustained note
+    body: Pick on 1; begin rising on & of 1; arrive at the whole-step target on 2. Hold until 3, return smoothly
+      by & of 3, and hold the original pitch until muting on 4. Repeat two bars. Let the original attack sustain
+      through the return; do not repick to rescue a weak note.
+  half-step-return:
+    title: Reduce the distance, keep the control
+    body: 'Use the identical rhythm for four half-step bends. Reach only 100 cents, then return to zero. The smaller
+      movement tests precision: avoid using the whole-step motion by habit. Listen particularly to the final returned
+      note of each bar.'
+learningTasks:
+  technique-review:
+    title: Check the physical technique
+    body: The pitch trace measures sound. Confirm these observations yourself.
+    items:
+      motion: I kept the finger down while reducing tension and did not turn the return into a pull-off.
+      sound: I let the initial attack sustain through the bend and return without repicking.
+      repeat: I compared the raised and returned pitches with the fretted reference and inspected both phases.

@@ -6,10 +6,23 @@ import Testing
 struct AgentBridgeTests {
     @Test func coachingPromptKeepsSustainSummaryWithoutDumpingEveryFrame() throws {
         let source: [String: Any] = ["practice": ["sustain": ["notes": [["id": "held", "heldFraction": 0.5]]],
-            "evidence": ["sustainTrace": ["frames": [["state": "pitched"]]], "analysisVersion": "fixture"]]]
+            "evidence": ["pitchContour": ["frames": [["state": "pitched"]]], "sustainTrace": ["frames": [["state": "pitched"]]], "analysisVersion": "fixture"]]]
         let text = try CoachAgentContract.coachingData(source)
-        #expect(!text.contains("sustainTrace") && text.contains("heldFraction") && text.contains("analysisVersion"))
+        #expect(!text.contains("pitchContour") && !text.contains("sustainTrace") && text.contains("heldFraction") && text.contains("analysisVersion"))
         #expect((source["practice"] as? [String: Any])?["evidence"] != nil)
+    }
+    @Test func bothMaximumTracesFitLocallyAndAreOmittedFromTheCLIPrompt() throws {
+        let frames: [[String: Any]] = (0..<45_100).map { index in
+            ["id": UInt64.max - UInt64(45_100 - index), "normalizedTime": 12345678.123456 + Double(index) * 0.02,
+             "state": "pitched", "frequency": 329.6275569128699]
+        }
+        let source: [String: Any] = ["practice": ["bends": ["version": "bend-assessment-1"],
+            "evidence": ["pitchContour": ["version": "periodic-window-center-1", "frames": frames],
+                         "sustainTrace": ["version": "sustain-window-center-1", "frames": frames]]]]
+        let bytes = try JSONSerialization.data(withJSONObject: source, options: [.prettyPrinted, .sortedKeys])
+        #expect(bytes.count > 16_000_000 && bytes.count < CoachAgentContract.maximumRequestBytes - 3_000_000)
+        let prompt = try CoachAgentContract.coachingData(source)
+        #expect(prompt.utf8.count < 200 && prompt.contains("bend-assessment-1") && !prompt.contains("frames"))
     }
     private func request(_ audio: Data) throws -> Data {
         try JSONSerialization.data(withJSONObject: ["schemaVersion": 1, "audioFile": "audio.wav",

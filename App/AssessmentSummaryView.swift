@@ -8,12 +8,14 @@ struct AssessmentSummaryView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(LocalizedStringKey("assessment.validity." + result.validity.rawValue)).font(.headline)
                     .accessibilityIdentifier("assessment.validity")
-                HStack(alignment: .top, spacing: 24) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 110), alignment: .leading)], alignment: .leading, spacing: 16) {
                     metric("assessment.overall", result.overallScore)
                     metric("assessment.pitch", result.pitchScore)
                     metric("assessment.rhythm", result.timingScore)
+                    if result.bends != nil { metric("bend.score", result.bendScore) }
                     if result.sustain != nil { metric("assessment.sustain", result.sustainScore) }
                 }
+                if result.bends != nil { Text(LocalizedStringKey(result.sustain == nil ? "bend.assessmentLimits" : "bend.assessmentMixedLimits")).font(.caption).foregroundStyle(.secondary) }
                 if result.sustain != nil {
                     Text("assessment.sustainExplanation").font(.caption).foregroundStyle(.secondary)
                     if result.sustain?.score == nil { Text("assessment.sustainUnavailable").foregroundStyle(.secondary) }
@@ -31,7 +33,7 @@ struct AssessmentSummaryView: View {
                 Text("assessment.expected \(result.expectedCount)")
                 Text("assessment.matched \(result.matchedCount)")
                 Text("assessment.missed \(result.missedCount)")
-                Text("assessment.extra \(result.extras.count)")
+                Text("assessment.extra \(result.scoredExtras.count)")
                 if result.uncertainCount + result.uncertainExtraCount > 0 {
                     Text("assessment.uncertain \(result.uncertainCount) \(result.uncertainExtraCount)")
                     Text("assessment.uncertainExplanation").font(.caption).foregroundStyle(.secondary)

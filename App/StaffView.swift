@@ -125,6 +125,7 @@ struct StaffView: View {
                 let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
+            if let bend = symbol.resolved.event.bend { sounding = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, sounding, bend.semitones * 100) }
             if symbol.resolved.event.palmMuted { sounding = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, sounding) }
             if symbol.accentedAttack {
                 return symbol.fragment.duration.dotted
@@ -236,6 +237,10 @@ struct StaffDrawing {
             if let stroke = symbol.resolved.event.pickStroke, !symbol.fragment.tieFromPrevious {
                 context.draw(Text(verbatim: stroke == .down ? "↓" : "↑").font(.system(size: 12, weight: .bold)),
                     at: CGPoint(x: position, y: StaffModel.canvasHeight - 42))
+            }
+            if let bend = symbol.resolved.event.bend {
+                context.draw(Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r")).font(.system(size: 10, weight: .bold)),
+                    at: CGPoint(x: position, y: StaffModel.canvasHeight - 26))
             }
             if symbol.resolved.event.palmMuted {
                 context.draw(Text(verbatim: "P.M.").font(.system(size: 10, weight: .bold)),

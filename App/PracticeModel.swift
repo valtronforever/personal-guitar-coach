@@ -276,7 +276,7 @@ final class PracticeModel {
                 phase: phase, reason: machine.reason, signalConfirmed: signalConfirmed, renderEpochSeconds: renderEpoch,
                 maximumClockDriftSeconds: clockInvalid ? nil : maximumDrift, attacks: collector?.attacks ?? [],
                 clipping: collector?.clipping ?? [], uncertainSignal: collector?.uncertainSignal ?? [],
-                sustainTrace: collector?.sustainTrace(), analysisVersion: collector?.analysisVersion ?? MonophonicAnalyzer.algorithmVersion)
+                sustainTrace: collector?.sustainTrace(), pitchContour: collector?.pitchContourTrace(), analysisVersion: collector?.analysisVersion ?? MonophonicAnalyzer.algorithmVersion)
             publishedAttemptID = id
             if !pendingConfigurationReset { latestEvidence = value }
             await onAttemptFinished?(value)

@@ -41,11 +41,12 @@ public struct PracticeEvidence: Codable, Equatable, Sendable, Identifiable {
     public let uncertainSignal: [PracticeUncertainSpan]
     /// Nil for historical/ordinary attempts that did not collect sustain evidence.
     public let sustainTrace: SustainTrace?
+    public let pitchContour: PitchContourTrace?
     public let analysisVersion: String
     public init(id: UUID, configuration: PracticeConfiguration, startedAt: Date, finishedAt: Date,
                 phase: PracticePhase, reason: PracticeStopReason?, signalConfirmed: Bool, renderEpochSeconds: Double?,
                 maximumClockDriftSeconds: Double?, attacks: [PracticeAttack], clipping: [PracticeClippingInterval], uncertainSignal: [PracticeUncertainSpan] = [],
-                sustainTrace: SustainTrace? = nil, analysisVersion: String) throws {
+                sustainTrace: SustainTrace? = nil, pitchContour: PitchContourTrace? = nil, analysisVersion: String) throws {
         guard !phase.active, phase != .idle, startedAt.timeIntervalSinceReferenceDate.isFinite,
               finishedAt.timeIntervalSinceReferenceDate.isFinite, finishedAt >= startedAt,
               renderEpochSeconds.map({ $0.isFinite && $0 >= 0 }) ?? true,
@@ -59,7 +60,7 @@ public struct PracticeEvidence: Codable, Equatable, Sendable, Identifiable {
         self.id = id; self.configuration = configuration; self.startedAt = startedAt; self.finishedAt = finishedAt
         self.phase = phase; self.reason = reason; self.signalConfirmed = signalConfirmed; self.renderEpochSeconds = renderEpochSeconds
         self.maximumClockDriftSeconds = maximumClockDriftSeconds; self.attacks = attacks; self.clipping = clipping
-        self.uncertainSignal = uncertainSignal; self.sustainTrace = sustainTrace; self.analysisVersion = analysisVersion
+        self.uncertainSignal = uncertainSignal; self.sustainTrace = sustainTrace; self.pitchContour = pitchContour; self.analysisVersion = analysisVersion
     }
 }
 
@@ -85,7 +86,7 @@ extension PracticeClippingInterval {
 }
 
 extension PracticeEvidence {
-    private enum CodingKeys: String, CodingKey { case id, configuration, startedAt, finishedAt, phase, reason, signalConfirmed, renderEpochSeconds, maximumClockDriftSeconds, attacks, clipping, uncertainSignal, sustainTrace, analysisVersion }
+    private enum CodingKeys: String, CodingKey { case id, configuration, startedAt, finishedAt, phase, reason, signalConfirmed, renderEpochSeconds, maximumClockDriftSeconds, attacks, clipping, uncertainSignal, sustainTrace, pitchContour, analysisVersion }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: v.decode(UUID.self, forKey: .id),
@@ -101,6 +102,7 @@ extension PracticeEvidence {
             clipping: v.decode([PracticeClippingInterval].self, forKey: .clipping),
             uncertainSignal: v.decodeIfPresent([PracticeUncertainSpan].self, forKey: .uncertainSignal) ?? [],
             sustainTrace: v.decodeIfPresent(SustainTrace.self, forKey: .sustainTrace),
+            pitchContour: v.decodeIfPresent(PitchContourTrace.self, forKey: .pitchContour),
             analysisVersion: v.decode(String.self, forKey: .analysisVersion))
     }
 }

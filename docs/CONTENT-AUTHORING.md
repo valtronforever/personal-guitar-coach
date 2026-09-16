@@ -279,3 +279,31 @@ Preview applies a fixed 90 ms exponential decay to each reference voice from its
 A single note may declare pickStroke: down or up. Use strum.direction for a multi-string chord; do not declare both. Rests cannot carry a picking cue. TAB/staff show the arrow only at the attack, and localized accessibility names it. Tuning/position resolution and frozen practice snapshots retain the cue.
 
 This is an authored physical instruction, not an inferred stroke direction. The reference waveform and automatic pitch/attack assessment remain identical to an unmarked note. For alternate picking, explicitly label the authored sequence and include a separate self-observation criterion. An upstroke-start group is valid. See alternate-picking and hand-synchronization.
+
+### Timed bends and returning bends
+
+One sustained, fretted single note may declare a bend in event-relative ticks:
+
+```yaml
+- id: returning-bend
+  startTick: 0
+  durationTicks: 2880
+  kind: note
+  positions: [{string: 3, fret: 9}]
+  bend:
+    semitones: 2
+    riseStartTick: 480
+    riseEndTick: 960
+    releaseStartTick: 1920
+    releaseEndTick: 2400
+```
+
+The first plateau starts at zero cents. The rise reaches `semitones × 100` cents; omit both release fields to hold that pitch until the note ends. Include both to return to zero cents before the end. All boundaries must be strictly increasing and inside the event. Supported amounts are one or two semitones; bends on rests, open strings, chords, palm-muted or `assessSustain` notes are rejected. Other ordinary notes/rests may share the exercise. The starting fret remains the physical contact; no duplicated target MIDI is authored. Transposition/relocation retain the relative bend and exclude open-string relocation candidates.
+
+TAB/staff use `b1`/`b2` for the semitone amount and `r` for an audible return. Selecting a bend shows an authored pitch curve with beat/cents axes. Preview renders a phase-continuous synthesized pitch path, including seek/chunk continuity; practice output still contains clicks only. These are audible pitch references, not realistic string or finger mechanics. Author a separate fretted target comparison and self-observation criteria; an audio match cannot establish that the player bent instead of changing frets.
+
+Initial automatic capability is deliberately bounded: base approximately G3 (195.9 Hz) through A5 (880 Hz), destination ≤1100 Hz, every phase ≥0.4 seconds, and rising/falling speed ≤400 cents/second. Range/tempo gates evaluate the resolved tuning and A4 reference, never silently change tempo or pitch. The two bundled lessons use 40–60 BPM and feasible positions in all eight preset tunings and all five neck sizes. This does not prove hand comfort or hardware performance.
+
+`periodic-window-center-1` captures moving periodic estimates separately from stable-note sustain. Results retain the curve and per-phase ±35-cent coverage, silence, unknown coverage and signed median pitch error. Every phase must have ≥80% known evidence. Each phase contributes equally to the bend score; scoring v4 combines that score and existing attack/rhythm score equally before extra-attack penalties (mixed sustain exercises subsequently retain their existing 80/20 sustain weighting). Uncalibrated rhythm still has no overall/timing score. Flux observations inside the bend are kept but are not scored as additional pick attacks. The graph uses the observed initial attack when available, with archived latency applied only once.
+
+`first-bend` and `bend-target-and-release` are complete examples. Slide, hammer-on/pull-off links and vibrato are separate authoring/analysis extensions; do not substitute a bend field for those techniques.

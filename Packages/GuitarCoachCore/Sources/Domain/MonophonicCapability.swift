@@ -32,6 +32,14 @@ public enum MonophonicCapability {
             if !supportsTarget(pitch, referenceA4: tuning.referenceA4) {
                 return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
             }
+            if let bend = resolved.event.bend {
+                if !BendCapability.baseFrequencyRange.contains(hz) || hz * pow(2, Double(bend.semitones) / 12) > BendCapability.maximumTargetFrequency {
+                    return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
+                }
+                if !BendCapability.supports(bend: bend, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz) {
+                    return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
+                }
+            }
             if duration + 1e-9 < (resolved.event.assessSustain ? SustainTrace.minimumNoteSeconds : minimumNoteSeconds) {
                 return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
             }

@@ -136,6 +136,7 @@ struct PracticeEntryView: View {
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
             }
             Text("practice.stringOrder").font(.caption)
+            if exercise.events.contains(where: { $0.bend != nil }) { Text("bend.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: \.assessSustain) {
                 Text("practice.sustainRequirement").font(.caption).foregroundStyle(.secondary)
             }
