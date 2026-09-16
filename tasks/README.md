@@ -123,3 +123,5 @@
 - `done` — [Visible manual latency inputs](follow-up/latency-field-affordance.md): explicit native field borders and separate examples for both latency settings.
 
 - `pending_user` — [Neutral initial focus in timing settings](follow-up/latency-initial-focus.md): start at the title without automatically editing a latency value; live focus verification pending.
+
+- `done` — [Compact manual latency editor](follow-up/latency-editor-layout.md): grouped label, numeric value, unit and short Apply action; EN/UK light/dark rendering verified.

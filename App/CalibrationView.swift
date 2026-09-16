@@ -55,12 +55,10 @@ struct CalibrationView: View {
                             Text("sync.manual.additional").tag(ManualOutputReference.additional)
                             Text("sync.manual.total").tag(ManualOutputReference.total)
                         }.disabled(!canEdit)
-                        HStack {
-                            Text("sync.manual.value")
-                            ManualDelayField(value: $manualOutputText, identifier: "sync.output.manualValue", enabled: canEdit)
-                            Button("sync.manual.applyOutput") {
-                                if let value = manualOutput { Task { await model.applyManualOutput(value, audio: audio, store: store) } }
-                            }.disabled(!canEdit || manualOutput == nil).accessibilityIdentifier("sync.output.manualApply")
+                        ManualDelayField(value: $manualOutputText, identifier: "sync.output.manualValue", enabled: canEdit,
+                                         canApply: manualOutput != nil, applyLabel: "sync.manual.applyOutput",
+                                         applyIdentifier: "sync.output.manualApply") {
+                            if let value = manualOutput { Task { await model.applyManualOutput(value, audio: audio, store: store) } }
                         }
                         Text(manualOutputReference == .total ? "sync.manual.totalHelp" : "sync.manual.additionalHelp").font(.caption)
                         Text("sync.manual.range").font(.caption).foregroundStyle(.secondary)
@@ -90,14 +88,12 @@ struct CalibrationView: View {
                         }
                         Divider()
                         Text("sync.manual.title").font(.headline)
-                        HStack {
-                            Text("sync.manual.value")
-                            ManualDelayField(value: $manualInstrumentText, identifier: "sync.instrument.manualValue", enabled: canEdit)
-                            Button("sync.manual.applyInstrument") {
-                                if let offset = LatencyEntryParser.seconds(manualInstrumentText) {
-                                    Task { await model.applyManualInstrument(offset, audio: audio, store: store, instrument: instrument) }
-                                }
-                            }.disabled(!canEdit || !canApplyManualInstrument).accessibilityIdentifier("sync.instrument.manualApply")
+                        ManualDelayField(value: $manualInstrumentText, identifier: "sync.instrument.manualValue", enabled: canEdit,
+                                         canApply: canApplyManualInstrument, applyLabel: "sync.manual.applyInstrument",
+                                         applyIdentifier: "sync.instrument.manualApply") {
+                            if let offset = LatencyEntryParser.seconds(manualInstrumentText) {
+                                Task { await model.applyManualInstrument(offset, audio: audio, store: store, instrument: instrument) }
+                            }
                         }
                         Text("sync.manual.instrumentHelp").font(.caption)
                         Text("sync.manual.range").font(.caption).foregroundStyle(.secondary)

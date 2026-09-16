@@ -12211,13 +12211,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Delay (ms)"
+            "value": "Delay"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Затримка (мс)"
+            "value": "Затримка"
           }
         }
       }
@@ -12227,13 +12227,45 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "+120 or −25"
+            "value": "Example: +120 or −25"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "+120 або −25"
+            "value": "Наприклад: +120 або −25"
+          }
+        }
+      }
+    },
+    "sync.manual.unit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "мс"
+          }
+        }
+      }
+    },
+    "sync.manual.apply": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати"
           }
         }
       }
