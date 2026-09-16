@@ -54,6 +54,32 @@ struct CalibrationView: View {
                         }
                     }
                 }
+                if let key = model.messageKey { Text(LocalizedStringKey(key)).accessibilityIdentifier("calibration.result") }
+                if let error = model.audioError { AudioErrorView(error: error) }
+                if let report = model.diagnostics {
+                    Section("sync.diagnostics.title") {
+                        Text("sync.pass \(report.passNumber)").font(.headline)
+                        LabeledContent("sync.diagnostics.phase") { Text(LocalizedStringKey("sync.diagnostics.phase." + report.phase.rawValue)) }
+                        if !model.running { Text("sync.diagnostics.stopped").font(.caption).foregroundStyle(.secondary) }
+                        LabeledContent("sync.diagnostics.target") { Text(report.targetFrequency, format: .number.precision(.fractionLength(1))) }
+                        if let hz = report.lastFrequency {
+                            LabeledContent("sync.diagnostics.detected") { Text(hz, format: .number.precision(.fractionLength(1))) }
+                        }
+                        if let peak = report.peakDB {
+                            LabeledContent("sync.diagnostics.peak") { Text(peak, format: .number.precision(.fractionLength(1))) }
+                        }
+                        if let count = report.measuredAttacks {
+                            Text("sync.diagnostics.attacks \(count) \(report.matchingAttacks) \(report.wrongAttacks) \(report.uncertainAttacks)")
+                        }
+                        if let timing = report.timing {
+                            if let value = timing.maximumOffset { milliseconds("sync.diagnostics.maximumOffset", value) }
+                            if let value = timing.spread { milliseconds("sync.diagnostics.spread", value) }
+                            if let value = timing.drift { milliseconds("sync.diagnostics.drift", value) }
+                        }
+                        if let value = report.clockDrift { milliseconds("sync.diagnostics.clock", value) }
+                        if let value = report.betweenPassDifference { milliseconds("sync.diagnostics.agreement", value) }
+                    }.accessibilityIdentifier("sync.diagnostics")
+                }
                 if let candidate = model.candidate {
                     Section("sync.result") {
                         measurements(candidate)
@@ -75,8 +101,6 @@ struct CalibrationView: View {
                             .disabled(model.running || store.busy)
                     }
                 }
-                if let key = model.messageKey { Text(LocalizedStringKey(key)).accessibilityIdentifier("calibration.result") }
-                if let error = model.audioError { AudioErrorView(error: error) }
                 if let key = store.errorKey {
                     Text(LocalizedStringKey(key)).foregroundStyle(.red)
                     if !store.loaded { Button("common.retry") { Task { await store.load() } } }
@@ -113,6 +137,10 @@ struct CalibrationView: View {
                 ForEach(1...max(audio.selection.outputChannel, audio.selectedOutput?.outputChannels ?? 1), id: \.self) { Text($0, format: .number).tag($0) }
             }
         }
+    }
+    private func milliseconds(_ key: String, _ seconds: Double) -> some View {
+        LabeledContent { Text(seconds * 1000, format: .number.precision(.fractionLength(1))) }
+            label: { Text(LocalizedStringKey(key)) }
     }
     private func measurements(_ profile: CalibrationProfile) -> some View {
         Group {

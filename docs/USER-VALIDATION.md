@@ -79,3 +79,8 @@ Personal synchronization follow-up (2026-09-14): U03/U09/U10 must verify real si
 - Verify the full native scroll viewport (offline row images cannot establish this), 4/4 and 3/4 count-in, current-line visibility at row changes, manual reading with Follow playback disabled, zoom/resize, and repeated/pause/retry/subrange attempts.
 - Compare the display with the real wired metronome; Bluetooth remains subject to unreported output delay. No sound recognition/scoring thresholds changed.
 - Check EN/UK, light/dark, VoiceOver, keyboard event navigation across lazy rows and Reduce Motion. Native computer-use access timed out during implementation; these checks remain pending.
+
+### Calibration first-pass rejection follow-up
+
+- Repeat the reported first-pass failure with normal input level on the saved Scarlett input / separate headphone output. Inspect the new localized failure reason and pass diagnostics (counts, pitch quality, spread/window/drift and clock evidence); do not infer the old failure's cause from synthetic tests.
+- Confirm the retained report is readable after input stops, clears on retry/cancel/route change, and English/Ukrainian plus VoiceOver expose the reason and values. Complete and explicitly apply two valid real passes before marking physical calibration successful.

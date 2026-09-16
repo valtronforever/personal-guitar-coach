@@ -37,3 +37,9 @@ Practice and wizard progress subtract the reported output hardware latency from 
 ## Physical acceptance still open
 
 Verify two complete passes and a familiar rhythm lesson through a real interface with wired headphones, then with separate Bluetooth output. Repeat after reconnect/sleep/format changes, and test microphone click leakage, clipping, missing notes and cancellation. Confirm English/Ukrainian layout, keyboard focus and VoiceOver on the native sheet. Automated synthetic DTO/PCM tests cannot close these gates.
+
+## Failure diagnostics
+
+Each failure identifies the actual gate rather than claiming that two passes disagreed. The sheet retains a transient report after capture stops: pass number/stage, target and last detected frequency, maximum observed input peak, measured/matching/wrong/uncertain attack counts, and available timing/clock measurements with their limits. Counts refer only to the ±450 ms measurement window; missing detections are not asserted to be missed playing. Wrong detected pitch may reflect tuning, another string or a detector error. The peak is the maximum observed meter reading, not a guaranteed sample-by-sample peak hold.
+
+The report contains no recorded audio, is not persisted, and is cleared on retry, cancellation or route/instrument change. Failures never create or apply a compensation. A normal level does not establish pitch/onset quality; a passed signal check followed by a failed first pass must be diagnosed from that pass. Play each note for about half a second before muting to allow pitch settling. The acceptance thresholds remain unchanged.
