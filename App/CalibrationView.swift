@@ -53,9 +53,7 @@ struct CalibrationView: View {
                         }.disabled(!canEdit)
                         HStack {
                             Text("sync.manual.value")
-                            TextField("sync.manual.placeholder", text: $manualOutputText).frame(width: 110)
-                                .accessibilityLabel(Text("sync.manual.milliseconds"))
-                                .accessibilityIdentifier("sync.output.manualValue").disabled(!canEdit)
+                            ManualDelayField(value: $manualOutputText, identifier: "sync.output.manualValue", enabled: canEdit)
                             Button("sync.manual.applyOutput") {
                                 if let value = manualOutput { Task { await model.applyManualOutput(value, audio: audio, store: store) } }
                             }.disabled(!canEdit || manualOutput == nil).accessibilityIdentifier("sync.output.manualApply")
@@ -90,9 +88,7 @@ struct CalibrationView: View {
                         Text("sync.manual.title").font(.headline)
                         HStack {
                             Text("sync.manual.value")
-                            TextField("sync.manual.placeholder", text: $manualInstrumentText).frame(width: 110)
-                                .accessibilityLabel(Text("sync.manual.milliseconds"))
-                                .accessibilityIdentifier("sync.instrument.manualValue").disabled(!canEdit)
+                            ManualDelayField(value: $manualInstrumentText, identifier: "sync.instrument.manualValue", enabled: canEdit)
                             Button("sync.manual.applyInstrument") {
                                 if let offset = LatencyEntryParser.seconds(manualInstrumentText) {
                                     Task { await model.applyManualInstrument(offset, audio: audio, store: store, instrument: instrument) }
