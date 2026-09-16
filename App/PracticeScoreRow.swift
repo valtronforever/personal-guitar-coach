@@ -95,6 +95,11 @@ struct PracticeScoreRow: View {
                 }
                 durationMark(event.durationTicks, continuation: segment.isContinuation)
                     .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
+                if event.palmMuted {
+                    Text(verbatim: "P.M.").font(.system(size: 8 * zoom, weight: .bold))
+                        .frame(width: max(1, width - 2), alignment: .leading).lineLimit(1).minimumScaleFactor(0.7)
+                        .offset(x: 1, y: 139 * zoom).accessibilityHidden(true)
+                }
                 if (event.accented || event.strum != nil) && !segment.isContinuation {
                     Text(verbatim: (event.accented ? ">" : "") + (event.strum.map { $0.direction == .down ? "↓" : "↑" } ?? "")).font(.system(size: (event.accented && event.strum != nil ? 9 : 12) * zoom, weight: .bold))
                         .position(x: min(8 * zoom, width / 2), y: 151 * zoom).accessibilityHidden(true)
@@ -142,9 +147,10 @@ struct PracticeScoreRow: View {
         let duration = TimelineModel.durationLabel(event.durationTicks)
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)", bundle: localizationBundle) }
         let format = localizationBundle.localizedString(forKey: "tab.position %lld %lld %@", value: nil, table: nil)
-        let notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
+        var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if event.palmMuted { notes = String(format: localizationBundle.localizedString(forKey: "tab.palmMutedNotes %@", value: nil, table: nil), locale: locale, notes) }
         if let strum = event.strum, !segment.isContinuation {
             let direction = localizationBundle.localizedString(forKey: strum.direction == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)
             let emphasis = localizationBundle.localizedString(forKey: event.accented ? "tab.strumAccented" : "tab.strumNormal", value: nil, table: nil)

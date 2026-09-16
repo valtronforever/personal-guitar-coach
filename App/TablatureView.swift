@@ -187,6 +187,7 @@ struct TablatureView: View {
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 3) {
+                        if event.palmMuted { Text(verbatim: "P.M.").bold() }
                         if event.accented && !segment.isContinuation { Text(verbatim: ">").bold() }
                         if let strum = event.strum, !segment.isContinuation { Text(verbatim: strum.direction == .down ? "↓" : "↑").bold() }
                         if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
@@ -236,10 +237,11 @@ struct TablatureView: View {
         let duration = TimelineModel.durationLabel(event.durationTicks)
         let beat = beatText(segment.startTick, bar: segment.bar)
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)") }
-        let notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
+        var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if event.palmMuted { notes = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, notes) }
         if let strum = event.strum, !segment.isContinuation {
             let direction = settings.localized(strum.direction == .down ? "tab.strumDown" : "tab.strumUp")
             let emphasis = settings.localized(event.accented ? "tab.strumAccented" : "tab.strumNormal")

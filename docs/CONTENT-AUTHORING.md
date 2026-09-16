@@ -252,7 +252,7 @@ For a lesson with several chords, use separate named materials/activities with t
 
 ### Strummed reference chords
 
-A multi-string note may declare `strum: { direction: down, spreadTicks: 120 }` (or `up`). Down sounds lower strings before higher strings; up reverses the order, independently of the order of `positions`. `spreadTicks` is the time between the first and last string in the exercise PPQ; default 120, range 1…960, strictly shorter than the event. Omitted strings do not sound. Specify a smaller set of positions for a partial upstroke. A rest cannot carry a strum; use a real rest for an omitted stroke.
+A multi-string note may declare `strum: { direction: down, spreadTicks: 120 }` (or `up`). Down sounds lower strings before higher strings; up reverses the order, independently of the order of `positions`. `spreadTicks` is the time between the first and last string in the exercise PPQ; default 120, range 1…960, strictly shorter than the event. Omitted strings do not sound. Specify a smaller set of positions for a partial upstroke. A rest cannot carry a strum. An omitted stroke is not necessarily silence: extend the preceding event if it should keep ringing, or write a rest if the sound must stop.
 
 TAB displays ↓/↑ as picking-hand directions; these are not instructions to move vertically through the TAB drawing. Preview staggers synthetic voices within one canonical event. Chord events remain `displayOnly`; this metadata does not introduce polyphonic scoring or prove the player's physical stroke direction. For author-guided practice, pair the timed reference with a specific `selfPractice` task. Omitted `strum` keeps prior playback and encoding unchanged.
 
@@ -267,3 +267,9 @@ adaptation:
 ```
 
 All voices and material `tonalRoot` use this same offset. An E-rooted source becomes D-rooted in Drop D, with its root/fifth/octave shape changing from 6/0–5/2–4/2 to 6/0–5/0–4/0. This deliberately changes the key when the bass is dropped. Omit the field for established-key lessons, whose default string-1 behavior remains unchanged. Valid anchors are 1–6; `fretPattern` may only retain the default anchor because it does not transpose intervals. Increment the lesson version when changing an existing lesson's anchor. Relocation remains an independent pitch-preserving operation and cannot promise an open bass in a higher fret region.
+
+### Palm-muted reference notes
+
+Use optional event field palmMuted: true to mark P.M. in normal/compact TAB and staff, with localized accessibility descriptions. It survives tuning/position resolution and frozen exercise serialization; false is omitted from old canonical JSON. Rests and assessSustain notes cannot carry this field. Exercises containing it must be displayOnly: short muted-input pitch/timbre grading has not been validated.
+
+Preview applies a fixed 90 ms exponential decay to each reference voice from its original onset (including staggered strum voices), without changing musical duration, frequencies or attacks. Seeking preserves decay age. This is a synthetic short-versus-ringing comparison, not realistic guitar/amp modeling or evidence of hand technique. Practice continues to emit only clicks. Teach contact, pitch clarity and damping through specific listening/self-practice criteria. See palm-muting and first-overdriven-riff for complete examples.

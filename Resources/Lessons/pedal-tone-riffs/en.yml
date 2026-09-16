@@ -1,0 +1,49 @@
+lessonID: pedal-tone-riffs
+lessonVersion: 1
+locale: en
+title: Riffs with a pedal tone
+summary: Return to one open bass between changing fretted notes.
+goal: Play a changing phrase while preserving the repeated bass and its rhythm.
+body: 'A pedal tone is a repeated or held reference pitch around which other notes move. Here the lowest open string
+  returns between fretted notes on that same string. The lesson follows string 6 when tuning changes, so the open
+  bass remains the anchor in Standard and Drop. Follow the current sounding names rather than memorizing one letter
+  name.
+
+
+  The first two-bar phrase alternates the open note with frets 3, 5, 7 and 5. Hear the fretted contour while keeping
+  every return to the bass equally deliberate. Release toward the open note without accidentally pulling the string
+  sideways; pick each written attack, including repeated bass notes.
+
+
+  The four-bar variation compresses the first four notes into eighths, then leaves a quarter-note bass and a full
+  beat of silence. This clean, unmuted version is graded for separate pitch and attacks. Muting technique, pick
+  direction and tone quality remain your observations. Learn the pitch/rhythm target first; a later personal palm-muted
+  variation is not the scored target.'
+steps:
+  prepare:
+    title: Hear the anchor
+    body: Tune the lowest open string and play it four times evenly. Find frets 3, 5 and 7 without changing the
+      selected instrument settings.
+  quarter-pedal: &id001
+    title: Alternate open and fretted quarters
+    body: At 50 BPM play eight notes across two bars. Every other note is the open bass. Repeat three scored attempts;
+      compare errors on the outward move with errors on the return. {{sequence}}.
+  eighth-pedal: &id002
+    title: Keep the returning bass in time
+    body: 'Count 1 & 2 & 3 4: four eighths, one quarter and a quarter rest. Complete all four different bars before
+      looping. Do not rush the bass on beat 3 or omit the silent fourth beat.'
+  review:
+    title: Separate a pitch error from a rush
+    body: Use the note results to choose one troublesome bar. Repeat it slowly, then restore the complete phrase.
+      Listen yourself for an unintended extra pull-off attack between the written notes.
+activities:
+  quarter-pedal: *id001
+  eighth-pedal: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      anchor: The open bass returned consistently between the changing targets.
+      rests: I kept the final silent beat in each variation bar.
+      attacks: Each target had its own deliberate pick attack without an extra pull-off.

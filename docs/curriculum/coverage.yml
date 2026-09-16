@@ -468,7 +468,8 @@ lessons:
       uk: Переміщення power chords
     outcomeUK: Зіграти послідовність без зайвого шуму
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 35
     moduleID: rock-rhythm
     lessonID: palm-muting
@@ -477,7 +478,8 @@ lessons:
       uk: Palm muting
     outcomeUK: Керувати ступенем приглушення біля бриджа
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 36
     moduleID: rock-rhythm
     lessonID: fretting-hand-muting
@@ -486,7 +488,8 @@ lessons:
       uk: Глушіння лівою рукою
     outcomeUK: Зупиняти акорди й контролювати паузи
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 37
     moduleID: rock-rhythm
     lessonID: two-hand-muting
@@ -495,7 +498,8 @@ lessons:
       uk: Глушіння обома руками
     outcomeUK: Прибирати резонанс сусідніх струн
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 38
     moduleID: rock-rhythm
     lessonID: pedal-tone-riffs
@@ -504,7 +508,8 @@ lessons:
       uk: Риф із педальним тоном
     outcomeUK: Чергувати повторювану басову ноту з іншими нотами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 39
     moduleID: rock-rhythm
     lessonID: drop-tuning-riffs
@@ -523,7 +528,8 @@ lessons:
       uk: Перший риф із перевантаженням
     outcomeUK: Поєднати power chords, паузи та palm muting
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 41
     moduleID: fretboard-theory
     lessonID: fretboard-note-names

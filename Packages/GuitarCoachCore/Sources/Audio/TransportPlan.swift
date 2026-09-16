@@ -161,16 +161,18 @@ public struct TransportPlan: Sendable {
                         for sample in voiceStart..<b {
                             let age = Double(sample - voiceOnset), remaining = Double(offset - sample - 1)
                             let envelope = min(1, min(age / voiceFade, remaining / voiceFade))
-                            output[Int(sample - startFrame)] += Float(sin(2 * .pi * frequency * age / sampleRate) * gain * envelope)
+                            output[Int(sample - startFrame)] += Float(sin(2 * .pi * frequency * age / sampleRate) * gain * envelope * (item.event.palmMuted ? exp(-age / (sampleRate * 0.09)) : 1))
                         }
                     }
                     continue
                 }
+                // Muted references keep their decay age when seeking into an existing note.
+                let toneOnset = item.event.palmMuted ? frame(at: epoch + item.event.startTick - sourceStart) : onset
                 for sample in a..<b {
-                    let age = Double(sample - onset), remaining = Double(offset - sample - 1)
+                    let age = Double(sample - toneOnset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))
                     let tone = frequencies[index].reduce(0.0) { $0 + sin(2 * .pi * $1 * age / sampleRate) }
-                    output[Int(sample - startFrame)] += Float(tone * gain * envelope)
+                    output[Int(sample - startFrame)] += Float(tone * gain * envelope * (item.event.palmMuted ? exp(-age / (sampleRate * 0.09)) : 1))
                 }
             }
         }

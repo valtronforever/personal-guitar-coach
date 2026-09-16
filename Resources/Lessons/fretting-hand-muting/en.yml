@@ -1,0 +1,48 @@
+lessonID: fretting-hand-muting
+lessonVersion: 1
+locale: en
+title: Fretting-hand muting
+summary: Release the fret pressure while maintaining quiet string contact.
+goal: Stop fretted power chords on the written rests without exposing open strings.
+body: 'A fretted note needs enough pressure to hold the string against a fret. Releasing that pressure while lightly
+  touching the string can stop the note. Lifting the finger completely is a different action: it may expose an open
+  string or create a pull-off. Use the hand on the neck, whichever side that is for your playing orientation.
+
+
+  Try the shown two-string power chord. Sound it, relax the fretting pressure, and leave enough contact to damp
+  both strings. If a high harmonic remains, broaden the light contact or add another relaxed finger; a single touch
+  near a harmonic node may not silence it. Do not press harder to solve a muting problem. Open strings need another
+  contact, often the picking hand.
+
+
+  The rests in these examples mean silence, not merely no new pick stroke. Synthetic references stop at the note
+  boundary. Listen for your real chord tail, open-string leakage and release noises. These simultaneous chords and
+  their physical stop technique are self-practice; the app does not grade a fretting-hand gesture.'
+steps:
+  prepare:
+    title: Separate pressure from contact
+    body: Without a metronome, alternate a sounding shape and a light silent contact four times. Check that both
+      sounding strings stop.
+  release-pressure: &id001
+    title: Sound on 1 and 3
+    body: Pick on beats 1 and 3; release pressure exactly on 2 and 4. Count through the silence. Repeat the two
+      bars three times at 50 BPM, retaining quiet contact until the next attack.
+  short-changes: &id002
+    title: A short stop before a longer note
+    body: Each bar has an eighth note on 1, an eighth rest on &, a quarter on 2, then two quiet beats. Stop twice
+      and use beats 3–4 to change shape. Do not turn the first release into a pull-off.
+  review:
+    title: Listen inside the rests
+    body: If a string rings, stop the pattern and identify it alone. Add a light damping contact, then retry one
+      bar before the full four-bar route.
+activities:
+  release-pressure: *id001
+  short-changes: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      rests: Both fretted voices stopped on the marked rests.
+      open: Releasing pressure did not reveal an open note or pull-off.
+      count: I counted the silent beats and arrived at the next shape in time.

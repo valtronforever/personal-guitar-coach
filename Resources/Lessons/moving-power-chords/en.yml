@@ -1,0 +1,48 @@
+lessonID: moving-power-chords
+lessonVersion: 1
+locale: en
+title: Moving power chords
+summary: Release pressure, move the shape and arrive on the next beat.
+goal: Play a four-bar route without stopping the pulse or dragging a squeezed shape.
+body: 'A movable power chord keeps the root–fifth interval while its root changes. In this study the source roots
+  move by two semitones, two more, then back four. The current TAB already adjusts the low-string geometry for your
+  tuning; keep the shown relationship rather than assuming a fixed two-fret offset in Drop.
+
+
+  Separate release from travel. Stop the old chord, reduce fretting pressure while retaining light contact where
+  useful, move toward the next marks, then press just before the pick arrives. Dragging a firmly squeezed shape
+  creates a slide and friction; lifting every contact away can expose open strings. Listen for those two different
+  noises.
+
+
+  Begin at 50 BPM. The first four bars give two sounding beats and two quiet travel beats. The second uses four
+  quarter-note downstrokes per bar. The synthetic reference demonstrates destinations and timing; it does not reproduce
+  finger noise. Full chords are self-practice, not automatically graded.'
+steps:
+  prepare:
+    title: Map the route
+    body: Find each root and fifth in TAB before starting. Form each pair silently, then check its two strings separately.
+      Keep every unused string quiet.
+  release-move: &id001
+    title: Two beats to sound, two to move
+    body: Attack on 1, sustain through 2, stop on 3 and prepare during 3–4. Arrive at the next shape for its first
+      beat. Repeat all four bars twice; count the quiet beats.
+  keep-pulse: &id002
+    title: Four strokes before each change
+    body: Play four quarters on each shape, changing at the barline. Use only the necessary release between the
+      fourth stroke and the next first beat. If a change is late, keep counting and rejoin on the next bar.
+  review:
+    title: Isolate one noisy direction
+    body: Compare upward and return moves. Repeat the noisier pair four times with preparation beats, then replay
+      the complete route. Raise tempo by 5 BPM only after three steady repetitions.
+activities:
+  release-move: *id001
+  keep-pulse: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      pulse: The first stroke of each new shape arrived on the barline.
+      release: I heard no accidental slide or open-string burst between shapes.
+      route: I completed both directions without stopping to rebuild the shape.

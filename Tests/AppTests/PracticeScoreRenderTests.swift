@@ -34,7 +34,7 @@ import Domain
                     positions: i % 7 == 6 ? [] : i % 4 == 0
                         ? [FretPosition(string: 3, fret: 2), FretPosition(string: 2, fret: 1), FretPosition(string: 1, fret: 0)]
                         : [FretPosition(string: i % 6 + 1, fret: i % 20)], accented: i % 4 == 0 && i % 7 != 6,
-                    strum: i % 4 == 0 && i % 7 != 6 ? StrumPattern(direction: i % 8 == 0 ? .down : .up) : nil))
+                    strum: i % 4 == 0 && i % 7 != 6 ? StrumPattern(direction: i % 8 == 0 ? .down : .up) : nil, palmMuted: i % 3 == 0 && i % 7 != 6))
                 tick += duration
             }
             let model = try TimelineModel(exercise: Exercise(id: "score-render", events: events, assessmentMode: .displayOnly), instrument: .cStandard)

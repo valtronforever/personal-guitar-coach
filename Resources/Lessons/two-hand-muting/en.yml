@@ -1,0 +1,48 @@
+lessonID: two-hand-muting
+lessonVersion: 1
+locale: en
+title: Two-hand muting
+summary: Pass the sounding note between strings while damping the others.
+goal: Keep neighboring strings quiet during a three-string phrase.
+body: 'Two-hand muting assigns silence as deliberately as notes. The picking-hand edge can damp lower unused strings;
+  spare fretting fingers or the side of a playing finger can lightly contact nearby unused strings. These are options,
+  not one mandatory grip: use contacts that leave the target free and the hand comfortable.
+
+
+  Start with one note and listen after the pick has passed. A neighboring string may resonate even without being
+  picked. Then change strings: stop the previous string at the handover rather than letting two pitches overlap.
+  On the return to a lower string, make sure the picking-hand contact moves out of its way before the attack.
+
+
+  These exercises use ordinary pitched notes as the reference. Their aim is unwanted-string control, so practice
+  remains self-assessed even if the intended pitches sound correct. A monophonic pitch result alone would not prove
+  that all other strings were silent. Work clean first; modest drive can then reveal extra noise more clearly without
+  changing the target pattern.'
+steps:
+  prepare:
+    title: Audit one target
+    body: Play the first marked note, then gently touch each unused string to find any resonance. Plan a light contact
+      for the noisy string before adding movement.
+  handover: &id001
+    title: Change strings in both directions
+    body: Two quarter notes are followed by two resting beats. Stop the first string as the second starts, then
+      stop all sound on beat 3. The second bar reverses the direction. Repeat three times at 50 BPM.
+  adjacent-strings: &id002
+    title: Three targets, one complete stop
+    body: Play the three quarter-note targets and make beat 4 silent. Keep only one target sounding at a time. In
+      four repetitions, listen especially when returning from the third target to the first.
+  review:
+    title: Name the remaining noise
+    body: Distinguish a blocked target, a previous note that continues, and an unused string ringing. Change one
+      contact for that specific problem, then replay two bars at the same tempo.
+activities:
+  handover: *id001
+  adjacent-strings: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      free: My damping contacts left the current target free to sound.
+      handover: The previous string stopped as the next target began.
+      quiet: I checked the unused strings by listening, including the final rest.

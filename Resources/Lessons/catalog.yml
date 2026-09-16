@@ -44,6 +44,12 @@ lessons:
   - small-barre
   - first-song-form
   - drop-tuning-riffs
+  - moving-power-chords
+  - palm-muting
+  - fretting-hand-muting
+  - two-hand-muting
+  - pedal-tone-riffs
+  - first-overdriven-riff
 modules:
   - id: getting-started
     order: 1

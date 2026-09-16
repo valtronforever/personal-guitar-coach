@@ -13718,6 +13718,23 @@
           }
         }
       }
+    },
+    "tab.palmMutedNotes %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Palm muting: %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушення долонею: %@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
