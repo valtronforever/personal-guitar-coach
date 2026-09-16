@@ -24,7 +24,7 @@ jobs:
       - name: Type-check UI test sources
         run: python3 Scripts/check_ui_sources.py
       - name: Package tests
-        run: swift test --package-path Packages/GuitarCoachCore
+        run: swift test --package-path Packages/GuitarCoachCore --no-parallel
       - name: App state tests
         # These tests share MainActor and include real-time polling deadlines.
         run: swift test --no-parallel

@@ -22,7 +22,7 @@ export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r Scripts/requirements.txt
-swift test --package-path Packages/GuitarCoachCore
+swift test --package-path Packages/GuitarCoachCore --no-parallel
 swift test --no-parallel
 python3 Scripts/build_local.py --configuration release --archive
 python3 Scripts/check_local_bundle.py build/release/PersonalGuitarCoach.app --archive build/release/PersonalGuitarCoach.zip
@@ -31,7 +31,7 @@ open build/release/PersonalGuitarCoach.app
 
 `build_local.py` збирає ті самі App-джерела через SwiftPM, компілює String Catalogs, пакує нативну .app та ставить локальний ad-hoc підпис. Перед заміною попередньої .app перевіряє staged bundle, уроки, переклади, іконку та підпис. `--archive` також створює локальний ZIP. Production-сертифікати не потрібні. Наведені команди створюють `build/release/PersonalGuitarCoach.app`.
 
-App state tests запускаються з явним `--no-parallel`: вони спільно використовують MainActor, а важкі перевірки каталогу не мають затримувати часові очікування тестів калібрування. Їхні тайм-аути та перевірки лишаються чинними; тести конкурентного аудіобуфера виконують власні паралельні операції.
+Набори тестів запускаються з явним `--no-parallel`: важкі DSP/каталогові перевірки не мають затримувати планування тестових producer/consumer чи часові очікування калібрування на спільному MainActor. Їхні тайм-аути та перевірки лишаються чинними; тести конкурентного аудіобуфера виконують власні паралельні операції.
 
 ## Xcode-проєкт
 
