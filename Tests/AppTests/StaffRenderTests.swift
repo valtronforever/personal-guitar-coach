@@ -38,7 +38,13 @@ import Learning
         ])
         let lowTies = try Exercise(id: "low-ties", events: [MusicalEvent(id: "r0", startTick: 0, durationTicks: 4800,
             kind: .note, positions: [FretPosition(string: 6, fret: 0)])], tuningPolicy: .fixedTuning, requiredTuning: .dropA)
-        for example in [exercise,half,whole,cMajor,low,dotsAndTies,lowTies] {
+        let accents = try Exercise(id: "accents", events: [
+            MusicalEvent(id: "low", startTick: 0, durationTicks: 960, kind: .note, positions: [FretPosition(string: 6, fret: 0)], accented: true),
+            MusicalEvent(id: "high", startTick: 960, durationTicks: 960, kind: .note, positions: [FretPosition(string: 1, fret: 24)], accented: true),
+            MusicalEvent(id: "dotted", startTick: 1920, durationTicks: 1440, kind: .note, positions: [FretPosition(string: 3, fret: 0)], accented: true),
+            MusicalEvent(id: "rest", startTick: 3360, durationTicks: 480, kind: .rest)
+        ], tuningPolicy: .fixedTuning, requiredTuning: .dropA)
+        for example in [exercise,half,whole,cMajor,low,dotsAndTies,lowTies,accents] {
         let timeline = try TimelineModel(exercise:example,instrument:.standard)
         for bar in 0..<timeline.barCount {
         for key in StaffKey.allCases {

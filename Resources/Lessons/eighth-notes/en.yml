@@ -1,0 +1,47 @@
+lessonID: eighth-notes
+lessonVersion: 1
+locale: en
+title: Eighth notes
+summary: Divide each beat into two equal attacks.
+goal: Play straight eighth notes without speeding up between clicks.
+body: |-
+  A quarter-note click marks a whole beat. Two eighths fit inside that beat: the first on the click, the second exactly halfway to the next click. Count “1 and 2 and 3 and 4 and”. Keep the spoken syllables equally spaced. Straight eighths are equal; a long-short swing feel belongs to a later lesson.
+
+  Use a clean open string and a small relaxed picking motion. Alternating down/up strokes can help divide the beat, but the audio score checks pitch and attack timing, not pick direction.
+steps:
+  count:
+    title: Speak before playing
+    body: >-
+      Listen to four clicks, then say the count over two more bars without the guitar. Each “and” must sit between
+      clicks, never on a click.
+  quarters:
+    title: Establish the beat
+    body: >-
+      Play four separate quarter-note attacks on open string 3. Keep counting the silent “and” between them. {{positions}}.
+  eighths:
+    title: Fill the spaces evenly
+    body: >-
+      In bar 2, also pluck each “and”. Eight attacks take the same time as the four quarters in bar 1. Listen for
+      every second attack drifting toward the next click.
+  connect:
+    title: Change density, keep tempo
+    body: >-
+      Practice both bars at 60 BPM. Finish the last “and”, then restart after the app’s count-in. Aim for three
+      even repetitions before adding 5 BPM.
+  review:
+    title: Review before increasing tempo
+    body: >-
+      If the eighth-note bar rushes, speak the count while playing only quarters, then restore the missing attacks.
+      Compare the second half of each beat with the metronome.
+activities:
+  divide:
+    title: From quarters to eighths on {{first}}
+    body: Bar 1 has four attacks; bar 2 has eight. Keep the click unchanged. {{sequence}}.
+learningTasks:
+  review:
+    title: Check your practice
+    body: Mark only what you actually checked; self-reports do not change audio scores.
+    items:
+      count: I count all eight subdivisions evenly.
+      sound: The eighth-note bar lasts the same four clicks as the quarter bar.
+      repeat: Three repetitions keep the offbeat halfway between clicks.

@@ -1,0 +1,378 @@
+schemaVersion: 3
+id: first-rhythm-study
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: first-pair
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+      - n-9
+      - n-10
+    exerciseID: first-rhythm-study-study
+    activityID: study
+  - id: second-pair
+    kind: events
+    eventIDs:
+      - n-11
+      - n-12
+      - n-13
+      - n-14
+      - n-15
+      - n-16
+      - n-17
+    exerciseID: first-rhythm-study-study
+    activityID: study
+  - id: third-pair
+    kind: events
+    eventIDs:
+      - n-18
+      - n-19
+      - n-20
+      - n-21
+      - n-22
+      - n-23
+      - n-24
+      - n-25
+      - n-26
+      - n-27
+    exerciseID: first-rhythm-study-study
+    activityID: study
+  - id: ending
+    kind: events
+    eventIDs:
+      - n-28
+      - n-29
+      - n-30
+      - n-31
+    exerciseID: first-rhythm-study-study
+    activityID: study
+  - id: perform
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+      - n-9
+      - n-10
+      - n-11
+      - n-12
+      - n-13
+      - n-14
+      - n-15
+      - n-16
+      - n-17
+      - n-18
+      - n-19
+      - n-20
+      - n-21
+      - n-22
+      - n-23
+      - n-24
+      - n-25
+      - n-26
+      - n-27
+      - n-28
+      - n-29
+      - n-30
+      - n-31
+    exerciseID: first-rhythm-study-study
+    activityID: study
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: first-rhythm-study-study
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+        accented: true
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-5
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-6
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-7
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-8
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: n-9
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: n-10
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-11
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-12
+        startTick: 8640
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-13
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-14
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: n-15
+        startTick: 11520
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+        assessSustain: true
+      - id: n-16
+        startTick: 12960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: n-17
+        startTick: 13440
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+        assessSustain: true
+      - id: n-18
+        startTick: 15360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+        accented: true
+      - id: n-19
+        startTick: 15840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-20
+        startTick: 16320
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-21
+        startTick: 17280
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: n-22
+        startTick: 18240
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-23
+        startTick: 19200
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: n-24
+        startTick: 20160
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-25
+        startTick: 21120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 0
+      - id: n-26
+        startTick: 21600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-27
+        startTick: 22080
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-28
+        startTick: 23040
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-29
+        startTick: 24960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-30
+        startTick: 25920
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-31
+        startTick: 26880
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+        assessSustain: true
+materials:
+  - id: study
+    source:
+      kind: exercise
+      exerciseID: first-rhythm-study-study
+    positioning:
+      enabled: false
+activities:
+  - id: study
+    materialID: study
+practiceEntries:
+  - id: study
+    activityID: study
+    exerciseID: first-rhythm-study-study
+fingerings: []
+adaptation:
+  policy: fretPattern
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - count
+      - sound
+      - repeat
+curriculum:
+  moduleID: basic-rhythm
+  ordinal: 24
+  durationMinutes: 20
+  prerequisites:
+    - eighth-notes
+    - rhythm-rests
+    - dotted-tied-notes
+    - simple-meters
+  keywords:
+    - Your first rhythm study
+    - Перший ритмічний етюд

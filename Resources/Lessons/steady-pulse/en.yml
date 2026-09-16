@@ -4,14 +4,18 @@ locale: en
 title: Keep a steady pulse
 summary: Practice quarters, eighths and rests on one open string.
 goal: Place separate attacks on written beats and half-beats while counting through rests.
-body: >-
-  First practice open strings. Use open string 6 throughout. Count “1 and 2 and 3 and 4 and”; the metronome marks
-  the numbers. A quarter takes one beat and an eighth half a beat. A rest still takes time. Start at 60 BPM, count
-  aloud, then play. Repeat at the same tempo before trying 70 BPM.
+body: |-
+  A pulse is a sequence of equally spaced beats. The click gives an external reference; your count continues even when the guitar is silent. Begin with quarter notes: one attack occupies one beat. Use open string 6 and a clean signal.
+
+  Listen to four clicks before playing, then count “1 and 2 and 3 and 4 and”. The numbers coincide with clicks; each “and” falls halfway between them. Bar 1 introduces quarter-note attacks and a rest. Bar 2 is a first contrast with eighths; the next lesson develops those subdivisions. Start at 60 BPM and keep this speed until the two bars feel controlled.
+
+  The app measures audible pitch and attack timing. Listen yourself to whether the string really stops during a rest: no extra attack does not prove silence. Keep the pick motion small and stop if the hand becomes tense.
 steps:
   quarter-pulse:
     title: 1. Count the quarter-note bar
-    body: 'Bar 1: play on 1, rest on 2, play on 3 and 4. {{positions}}.'
+    body: >-
+      Count four beats. Play on 1, rest on 2, then play on 3 and 4. Keep the silent second beat the same length
+      as the others. {{positions}}.
   quarter-space:
     title: 2. Count through the rest
     body: Beat 2 lasts one complete click interval. Stop the sound and do not pluck.
@@ -23,7 +27,10 @@ steps:
     body: 'Finish bar 2: play on “3”, rest on “and”, play on “4”, rest on “and”. {{positions}}.'
   whole-pattern:
     title: 5. Play both bars
-    body: Eight attacks, including repeated notes; every written note needs a fresh pluck. {{positions}}.
+    body: >-
+      Play both bars: eight attacks in total, with a fresh pluck for every written note. Do not speed up when the
+      attacks become closer. After the take, choose one early/late group to repeat. Aim for three controlled takes
+      at 60 BPM before trying 65 BPM. {{positions}}.
 historicalTitle: Keep a steady pulse
 activities:
   lesson:

@@ -143,7 +143,7 @@ public struct TransportPlan: Sendable {
                 let a = max(startFrame, onset), b = min(end, offset)
                 guard a < b else { continue }
                 let fade = max(1, min(sampleRate * 0.005, Double(offset - onset) / 2))
-                let gain = request.toneVolume * 0.2 / Double(max(1, frequencies[index].count))
+                let gain = request.toneVolume * (item.event.accented ? 0.3 : 0.2) / Double(max(1, frequencies[index].count))
                 for sample in a..<b {
                     let age = Double(sample - onset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))

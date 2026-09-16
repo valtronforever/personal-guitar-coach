@@ -1,0 +1,51 @@
+lessonID: simple-meters
+lessonVersion: 1
+locale: en
+title: 4/4 and 3/4
+summary: Group the same quarter-note pulse into four or three beats.
+goal: Locate beat 1 in both simple meters.
+body: |-
+  In 4/4 a bar contains four quarter-note beats; in 3/4 it contains three. The lower 4 identifies the quarter note as the beat unit. Changing the meter does not automatically change BPM: at 60 BPM, a quarter still lasts one second. What changes is where the next bar begins.
+
+  Count 1–2–3–4 in the first example and 1–2–3 in the second. The metronome accents the start of each bar; the > signs reinforce those attacks in preview. Do not add an imaginary fourth beat to 3/4. This lesson does not introduce 6/8, which has different grouping.
+steps:
+  four:
+    title: Count four before restarting
+    body: >-
+      Preview then play the 4/4 example. Say “ONE two three four, ONE two three four”. Alternate the two shown frets
+      while keeping the click steady. {{positions}}.
+  three:
+    title: Restart after three
+    body: >-
+      Choose the 3/4 practice entry. Its count-in has three clicks. Say “ONE two three, ONE two three”; the new
+      bar starts immediately after beat 3. The two adjacent open-string notes across the barline need separate attacks.
+  compare:
+    title: Compare duration, not speed
+    body: >-
+      At 60 BPM, two 4/4 bars last eight seconds and two 3/4 bars six seconds, excluding count-in. Keep the same
+      click speed and notice the sooner return of beat 1 in 3/4.
+  practice:
+    title: Stay in the chosen meter
+    body: >-
+      Repeat three times in 3/4, then return to 4/4 at the same BPM. Read the meter before starting so the count-in
+      prepares the correct grouping.
+  review:
+    title: Review before increasing tempo
+    body: >-
+      If 3/4 gains an extra beat, stop and count two bars aloud. Then play only the first note of each bar before
+      restoring all notes.
+activities:
+  four:
+    title: Four-beat groups from {{first}}
+    body: Two bars, eight quarter-note attacks. {{sequence}}.
+  three:
+    title: Three-beat groups from {{first}}
+    body: Two bars, six quarter-note attacks. {{sequence}}.
+learningTasks:
+  review:
+    title: Check your practice
+    body: Mark only what you actually checked; self-reports do not change audio scores.
+    items:
+      count: I restart 3/4 after three beats and 4/4 after four.
+      sound: Every written note has its own attack, including repeated pitches.
+      repeat: I can switch examples without changing BPM.

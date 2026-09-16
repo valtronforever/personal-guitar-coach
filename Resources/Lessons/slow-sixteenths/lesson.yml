@@ -1,0 +1,294 @@
+schemaVersion: 3
+id: slow-sixteenths
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: speak
+    kind: none
+    eventIDs: []
+  - id: density
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+    exerciseID: slow-sixteenths-divide
+    activityID: divide
+  - id: four
+    kind: events
+    eventIDs:
+      - n-7
+      - n-8
+      - n-9
+      - n-10
+      - n-11
+      - n-12
+      - n-13
+      - n-14
+      - n-15
+      - n-16
+      - n-17
+      - n-18
+      - n-19
+      - n-20
+      - n-21
+      - n-22
+    exerciseID: slow-sixteenths-divide
+    activityID: divide
+  - id: connect
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+      - n-9
+      - n-10
+      - n-11
+      - n-12
+      - n-13
+      - n-14
+      - n-15
+      - n-16
+      - n-17
+      - n-18
+      - n-19
+      - n-20
+      - n-21
+      - n-22
+    exerciseID: slow-sixteenths-divide
+    activityID: divide
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: slow-sixteenths-divide
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 70
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-3
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-4
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-5
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-6
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-7
+        startTick: 3840
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-8
+        startTick: 4080
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-9
+        startTick: 4320
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-10
+        startTick: 4560
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-11
+        startTick: 4800
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-12
+        startTick: 5040
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-13
+        startTick: 5280
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-14
+        startTick: 5520
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-15
+        startTick: 5760
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-16
+        startTick: 6000
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-17
+        startTick: 6240
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-18
+        startTick: 6480
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-19
+        startTick: 6720
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-20
+        startTick: 6960
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-21
+        startTick: 7200
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-22
+        startTick: 7440
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+materials:
+  - id: divide
+    source:
+      kind: exercise
+      exerciseID: slow-sixteenths-divide
+    positioning:
+      enabled: false
+activities:
+  - id: divide
+    materialID: divide
+practiceEntries:
+  - id: divide
+    activityID: divide
+    exerciseID: slow-sixteenths-divide
+fingerings: []
+adaptation:
+  policy: fretPattern
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - count
+      - sound
+      - repeat
+curriculum:
+  moduleID: basic-rhythm
+  ordinal: 20
+  durationMinutes: 12
+  prerequisites:
+    - eighth-notes
+  keywords:
+    - Slow sixteenth notes
+    - Повільні шістнадцяті

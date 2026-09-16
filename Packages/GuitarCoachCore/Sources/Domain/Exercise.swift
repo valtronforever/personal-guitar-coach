@@ -10,11 +10,13 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let durationTicks: Int64
     public let kind: MusicalEventKind
     public let positions: [FretPosition]
+    /// Attack emphasis for notation and reference playback; not a measured dynamics target.
+    public let accented: Bool
     /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
     public let assessSustain: Bool
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
@@ -22,6 +24,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         guard (kind == .rest && positions.isEmpty) || (kind == .note && !positions.isEmpty),
               Set(positions.map(\.string)).count == positions.count else { throw MusicError.invalidEvent }
         guard !assessSustain || (kind == .note && positions.count == 1) else { throw MusicError.invalidEvent }
+        guard !accented || kind == .note else { throw MusicError.invalidEvent }
+        self.accented = accented
         self.id = id; self.startTick = startTick; self.durationTicks = durationTicks
         self.kind = kind; self.positions = positions; self.assessSustain = assessSustain
     }
@@ -33,15 +37,17 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         try values.encode(positions, forKey: .positions)
         // Preserve pre-extension canonical JSON and archived coach digests.
         if assessSustain { try values.encode(true, forKey: .assessSustain) }
+        if accented { try values.encode(true, forKey: .accented) }
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain }
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
             durationTicks: values.decode(Int64.self, forKey: .durationTicks), kind: values.decode(MusicalEventKind.self, forKey: .kind),
             positions: values.decodeIfPresent([FretPosition].self, forKey: .positions) ?? [],
-            assessSustain: values.decodeIfPresent(Bool.self, forKey: .assessSustain) ?? false)
+            assessSustain: values.decodeIfPresent(Bool.self, forKey: .assessSustain) ?? false,
+            accented: values.decodeIfPresent(Bool.self, forKey: .accented) ?? false)
     }
 }
 

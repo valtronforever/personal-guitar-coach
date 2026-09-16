@@ -128,4 +128,4 @@
 
 - `pending_user` — [Lesson learning modes](follow-up/lesson-learning-modes.md): theory, self-assessment and listening questions alongside scored practice.
 
-- `in_progress` — [Full curriculum and library UX](follow-up/full-curriculum.md): all 128 agreed lessons, required functional extensions, course organization and discovery. Modules 1–2 and dotted/tied-note topic authored; low-register and opt-in sustain extensions implemented, remaining course and hardware validation pending.
+- `in_progress` — [Full curriculum and library UX](follow-up/full-curriculum.md): all 128 agreed lessons, required functional extensions, course organization and discovery. Modules 1–3 authored; low-register, opt-in sustain and accent-reference extensions implemented, remaining course and hardware validation pending.

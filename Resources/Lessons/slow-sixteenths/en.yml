@@ -1,0 +1,48 @@
+lessonID: slow-sixteenths
+lessonVersion: 1
+locale: en
+title: Slow sixteenth notes
+summary: Fit four evenly spaced attacks inside each beat.
+goal: Count four subdivisions while keeping the beat unchanged.
+body: |-
+  Four sixteenths occupy one quarter-note beat. Count “1 e and a, 2 e and a, 3 e and a, 4 e and a”. Each syllable gets the same amount of time. At 50 BPM each sixteenth lasts 0.3 seconds: there is room to hear and correct uneven spacing.
+
+  Use alternating strokes with a small motion; the click stays on the numbers. The score checks separate audible attacks, not your hand direction. Keep this exercise at 40–70 BPM so every note stays within the validated attack-duration range.
+steps:
+  speak:
+    title: Make four equal syllables
+    body: >-
+      Say one full bar without playing. If “a” arrives late, lower to 40 BPM and check that “e”, “and” and “a” are
+      evenly spaced. Do not treat the last two syllables as a rushed pair.
+  density:
+    title: Change the subdivision
+    body: >-
+      Play quarters on beats 1–2, then two attacks per beat on 3–4. Keep counting all four syllables internally.
+      {{positions}}.
+  four:
+    title: Sixteen attacks, four clicks
+    body: >-
+      Play every syllable in bar 2. Keep the first attack of each group aligned with its click and make the three
+      gaps inside each beat equal. If the hand tightens, stop and restart slower.
+  connect:
+    title: Move between note values
+    body: >-
+      Practice both bars at 50 BPM. Changing from eighths to sixteenths doubles the number of attacks, not the metronome
+      speed. Repeat three times before adding 5 BPM.
+  review:
+    title: Review before increasing tempo
+    body: >-
+      Use the timing result to identify an uneven group, then repeat one bar. The goal is control at a slow tempo
+      before speed.
+activities:
+  divide:
+    title: One, two, then four on {{first}}
+    body: Bar 1 changes quarters into eighths; bar 2 uses sixteenths on every beat. {{sequence}}.
+learningTasks:
+  review:
+    title: Check your practice
+    body: Mark only what you actually checked; self-reports do not change audio scores.
+    items:
+      count: I can say four evenly spaced syllables per beat.
+      sound: Each sixteenth has a separate clear attack.
+      repeat: The first note of every group stays on the click.

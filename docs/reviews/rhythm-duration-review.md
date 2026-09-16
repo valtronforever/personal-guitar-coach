@@ -26,3 +26,5 @@
 ## Remaining validation
 
 Native minimum-window, VoiceOver and real clean-guitar sustain checks remain pending_user in USER-VALIDATION. No new real recording or CLI-provider analysis is claimed. The full curriculum still requires remaining rhythm/chord/articulation/harmony/genre lessons and their functionality; the ledger intentionally does not report them as done.
+
+Merged as PR #66 (`c53e040`) after clean CI run 35145635285, including full Core/App suites, DSP/soak/bundle/XPC checks and both Xcode configurations. Native/physical acceptance remains separate.

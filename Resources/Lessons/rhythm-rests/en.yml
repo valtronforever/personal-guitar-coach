@@ -1,0 +1,48 @@
+lessonID: rhythm-rests
+lessonVersion: 1
+locale: en
+title: Rests and re-entry
+summary: Keep counting when the guitar stops.
+goal: Restart on the correct beat or half-beat after a rest.
+body: |-
+  A rest occupies time just as a note does. Stop the string, but keep the count and the relaxed picking-hand motion. A rest is not permission to wait until you feel ready. In this lesson the app checks the next attack; listen yourself for lingering sound during the silence.
+
+  Distinguish a missed note from an intentional rest. The TAB rest symbol tells you when no attack is expected. Do not compensate for a late re-entry by rushing the following notes.
+steps:
+  quarter:
+    title: Stop the sound, not the count
+    body: >-
+      Play on 1, mute on 2, play on 3, mute on 4. Count “and” between every click. Touch the string gently so stopping
+      it does not create another attack.
+  entry:
+    title: Begin after half a beat
+    body: >-
+      At the next barline, say 1 without playing. Pluck on “and”, then again on 2. Preview this bar to locate the
+      re-entry, then try it without preview. {{positions}}.
+  late-rest:
+    title: Leave beat 3 empty
+    body: >-
+      Stop at 3, count “3 and”, then restart exactly on 4. Prepare the pick during the rest without touching the
+      string early.
+  whole:
+    title: Connect both bars
+    body: >-
+      Repeat at 60 BPM. If re-entry fails, select the second bar and speak its count twice before playing. Restore
+      the full pair after two controlled re-entries.
+  review:
+    title: Review before increasing tempo
+    body: >-
+      Check both attack timing and the actual silence. An absence of extra attacks does not prove that the previous
+      note stopped.
+activities:
+  gaps:
+    title: Quarter and eighth rests on {{first}}
+    body: 'Bar 1: sound on 1 and 3. Bar 2 starts with an eighth rest; enter on “and” of 1. {{sequence}}.'
+learningTasks:
+  review:
+    title: Check your practice
+    body: Mark only what you actually checked; self-reports do not change audio scores.
+    items:
+      count: I count through every rest.
+      sound: The string is actually quiet during the rests.
+      repeat: I enter on the “and” of 1 without waiting for click 2.
