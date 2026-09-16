@@ -168,6 +168,20 @@ public struct TransportPlan: Sendable {
 }
 
 extension TransportPlan {
+    /// Display-only continuous score coordinate. Count-in occupies ticks before the selected start.
+    /// Unlike `position`, this retains sub-tick precision and exposes movement during the count-in.
+    public func audibleTimelineTick(renderedFrames: Int64, outputLatencySeconds: Double) -> Double {
+        let delay = outputLatencySeconds.isFinite ? min(10, max(0, outputLatencySeconds)) : 0
+        let frames = max(0, renderedFrames - Int64((delay * sampleRate).rounded()))
+        let elapsed = Double(frames) * request.bpm * Double(MusicalTime.ppq) / (60 * sampleRate)
+        let offset = elapsed - Double(countInTicks)
+        if offset < Double(firstTicks) { return Double(request.startTick) + offset }
+        if request.loops {
+            return Double(request.range.lowerBound) + (offset - Double(firstTicks)).truncatingRemainder(dividingBy: Double(cycleTicks))
+        }
+        return Double(request.range.upperBound)
+    }
+
     /// Display only. A personal input/player offset cannot identify output latency and is never used here.
     public func audiblePosition(renderedFrames: Int64, outputLatencySeconds: Double) -> TransportPosition {
         let delay = outputLatencySeconds.isFinite ? min(10, max(0, outputLatencySeconds)) : 0

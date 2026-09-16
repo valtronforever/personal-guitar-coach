@@ -73,3 +73,9 @@ Personal synchronization follow-up (2026-09-14): U03/U09/U10 must verify real si
 - With the real selected guitar input, vary physical gain while plucking: verify weak/working/high/overload hints in Audio setup, Timing synchronization and practice preflight. Lower gain before continuing after clipping. Confirm pauses/decay are not confused with a gain target.
 - Verify English/Ukrainian layouts, light/dark contrast, scrolling of the synchronization sheet and VoiceOver reading of level/status/hint. No second capture stream is introduced.
 - Working amplitude alone must not imply successful synchronization: selected-string pitch, clean/stable signal, timing repeatability and healthy clocks are still required.
+
+### Practice score read-ahead (2026-09-16)
+
+- Verify the full native scroll viewport (offline row images cannot establish this), 4/4 and 3/4 count-in, current-line visibility at row changes, manual reading with Follow playback disabled, zoom/resize, and repeated/pause/retry/subrange attempts.
+- Compare the display with the real wired metronome; Bluetooth remains subject to unreported output delay. No sound recognition/scoring thresholds changed.
+- Check EN/UK, light/dark, VoiceOver, keyboard event navigation across lazy rows and Reduce Motion. Native computer-use access timed out during implementation; these checks remain pending.

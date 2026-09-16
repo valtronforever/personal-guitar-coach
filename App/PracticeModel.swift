@@ -30,6 +30,7 @@ final class PracticeModel {
     private(set) var clickVolume = 0.3
     private(set) var isBusy = false
     private(set) var cursorTick: Int64?
+    private(set) var displayTick: Double?
     private(set) var countInBeat: Int?
     private(set) var latestFrequency: Double?
     private(set) var latestEvidence: PracticeEvidence?
@@ -108,6 +109,7 @@ final class PracticeModel {
         if let resumeBar { firstBar = min(lastBar, max(firstBar, resumeBar)) }
     }
     func stop(_ reason: PracticeStopReason = .userCancelled) {
+        displayTick = nil
         guard isBusy else { return }
         machine.stop(reason); task?.cancel()
         if let id = captureID { Task { await audio.stopCapture(id: id) } }
@@ -140,7 +142,7 @@ final class PracticeModel {
         if recordForCoach { repeatEnabled = false }
         synchronizationSession = audio.synchronizationSession; synchronizationRevision = audio.state?.routeRevision
         let id = UUID(); captureID = id; isBusy = true; signalConfirmed = false
-        cursorTick = nil; countInBeat = nil; latestFrequency = nil; latestEvidence = nil; completedCount = 0
+        cursorTick = nil; displayTick = nil; countInBeat = nil; latestFrequency = nil; latestEvidence = nil; completedCount = 0
         resetAttempt()
         task = Task {
             do {
@@ -163,11 +165,12 @@ final class PracticeModel {
             }
             await audio.stopCapture(id: id)
             if pendingConfigurationReset { machine = PracticeStateMachine(); latestEvidence = nil; pendingConfigurationReset = false }
-            if captureID == id { captureID = nil; isBusy = false; task = nil; cursorTick = nil; countInBeat = nil; latestFrequency = nil }
+            if captureID == id { captureID = nil; isBusy = false; task = nil; cursorTick = nil; displayTick = nil; countInBeat = nil; latestFrequency = nil }
         }
     }
 
     private func resetAttempt() {
+        displayTick = nil
         collector = nil; renderEpoch = nil; startedAt = Date(); maximumDrift = nil; clockInvalid = false
         publishedAttemptID = nil; lastLiveFrame = nil; lastLiveUpdate = nil
     }
@@ -218,6 +221,10 @@ final class PracticeModel {
             let audible = displayPlan.audiblePosition(renderedFrames: playback.renderedFrames,
                 outputLatencySeconds: configuration.route.output.hardwareLatencySeconds ?? playback.presentationLatency)
             cursorTick = audible.tick; countInBeat = audible.countInBeat
+            if phase == .countIn || phase == .running || phase == .finalizing {
+                displayTick = displayPlan.audibleTimelineTick(renderedFrames: playback.renderedFrames,
+                    outputLatencySeconds: configuration.route.output.hardwareLatencySeconds ?? playback.presentationLatency)
+            }
             if audible.countInBeat == nil && phase == .countIn { try machine.beginPlaying() }
             if let renderEpoch, let analysis = state.meters?.analysis { try collector?.consume(analysis, renderEpochSeconds: renderEpoch) }
             if let drift = state.clock?.validatedDriftSeconds { maximumDrift = max(maximumDrift ?? 0, abs(drift)) }

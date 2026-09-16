@@ -65,3 +65,29 @@ struct TransportTests {
         #expect(throws: MusicError.invalidTime) { try TransportRequest(exercise: item, tuning: .standard, bpm: 60, clickVolume: .nan) }
     }
 }
+
+extension TransportTests {
+    @Test func continuousScorePositionIncludesCountInAndKnownOutputLatency() throws {
+        for signature in [TimeSignature.fourFour, .threeFour] {
+            let request = try TransportRequest(exercise: exercise(signature: signature), tuning: .standard, bpm: 60, mode: .practice)
+            let plan = try TransportPlan(request: request, sampleRate: 48000)
+            let countIn = Double(signature.ticksPerBar)
+            #expect(plan.audibleTimelineTick(renderedFrames: 0, outputLatencySeconds: 0.25) == -countIn)
+            #expect(plan.audibleTimelineTick(renderedFrames: 12000, outputLatencySeconds: 0.25) == -countIn)
+            #expect(plan.audibleTimelineTick(renderedFrames: 36000, outputLatencySeconds: 0.25) == -countIn + 480)
+            #expect(plan.audibleTimelineTick(renderedFrames: plan.practiceStartFrame + 12000, outputLatencySeconds: 0.25) == 0)
+            let a = plan.audibleTimelineTick(renderedFrames: plan.practiceStartFrame + 12001, outputLatencySeconds: 0.25)
+            #expect(a > 0 && a < 1)
+            #expect(plan.audibleTimelineTick(renderedFrames: (plan.endFrame ?? 0) + 48000, outputLatencySeconds: 0.25) == Double(request.range.upperBound))
+        }
+    }
+    @Test func continuousScorePositionUsesSelectedStartAndResetsOnANewPlan() throws {
+        let events = try (0..<12).map { i in try MusicalEvent(id: "n\(i)", startTick: Int64(i) * 960, durationTicks: 960, kind: .note, positions: [FretPosition(string: 1, fret: 0)]) }
+        let exercise = try Exercise(id: "range", events: events)
+        let plan = try TransportPlan(request: TransportRequest(exercise: exercise, tuning: .standard, bpm: 120, range: 3840..<7680, mode: .practice), sampleRate: 44100)
+        #expect(plan.audibleTimelineTick(renderedFrames: 0, outputLatencySeconds: 0) == 0)
+        #expect(plan.audibleTimelineTick(renderedFrames: plan.practiceStartFrame, outputLatencySeconds: 0) == 3840)
+        #expect(plan.audibleTimelineTick(renderedFrames: plan.endFrame!, outputLatencySeconds: 0) == 7680)
+        #expect(plan.audibleTimelineTick(renderedFrames: 0, outputLatencySeconds: .nan) == 0)
+    }
+}

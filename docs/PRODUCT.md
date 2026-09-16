@@ -78,3 +78,7 @@
 ## Optional AI coach
 
 The user can explicitly record and analyze one practice take with installed Codex or Claude Code. The button includes recording, metronome reference, lesson-specific context and automatic supplemental recommendations; ordinary practice remains offline and records no raw audio. Existing WAV/MP3 can also be analyzed from results. Account/network access belongs to the selected CLI; AI advice never replaces measured scores. Details: [Audio-file AI coach](AUDIO-AGENT-COACH.md).
+
+### Practice tablature read-ahead
+
+Practice opens in compact TAB by default, with a fretboard switch still available. Whole bars wrap into responsive rows, with upcoming rows visible before playback reaches them. A separate count-in bar appears immediately before the selected practice range. A vertical line smoothly follows the audio transport across beats and neighboring bars; automatic vertical following can be disabled for manual reading. Zoom changes both spacing and glyph sizes; Reduce Motion is respected. Selecting a note still selects its bar (Shift extends the range) and stops an active attempt.

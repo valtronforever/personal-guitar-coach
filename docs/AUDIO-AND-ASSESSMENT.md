@@ -147,3 +147,7 @@ The Record & analyze action records exactly one bounded practice take via the ex
 ## Input-level display guidance
 
 Audio setup, personal synchronization and practice preflight share a −60…0 dBFS peak meter with RMS readout. Zones are presentation guidance: weak below −30 dBFS, working from −30 to below −6 dBFS, high from −6 dBFS, and overload at the existing 0.995 peak-amplitude guard (about −0.044 dBFS). These gain guides apply while plucking, not to pauses or note decay; they do not change DSP silence/quiet thresholds, pitch confidence or calibration eligibility. Stopped/missing/invalid capture never displays a live working-level status. English/Ukrainian text and symbols supplement colored zones.
+
+## Practice score display
+
+Practice TAB uses a continuous fractional display coordinate from the existing transport sample count, with the same bounded reported-output-latency subtraction. One visual count-in bar precedes the selected range (three beats in 3/4, four in 4/4); it adds no exercise/assessment events. SwiftUI interpolates incoming cursor positions over 55 ms and scrolls wrapped rows over 400 ms. These are display animations, never audio clocks or timing evidence. Personal input/player compensation is not applied as an output-only offset; unknown Bluetooth latency remains unknown. Stopped/stale transport data cannot autonomously advance the cursor.
