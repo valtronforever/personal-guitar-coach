@@ -177,3 +177,33 @@ Increment lesson `version` and both text `lessonVersion` fields for meaningful t
 Practice freezes activity/material/entry IDs, choice, full policy, resolver version, source event IDs/tick offset, localized lesson/activity titles and the actual exercise/instrument. Historical retry uses this evidence without rerunning current author rules. Comparison requires matching activity conditions. Existing saved practice records remain readable without rerating; this is independent of supporting an old lesson API. Prior records without frozen titles may show a generic current title or the saved-exercise fallback.
 
 Manual fingering confirmation is an explicit self-report, separate from audio scoring. It is scoped to activity, choice, tuning and neck, and is cleared for an archived retry. Audio establishes pitch/timing evidence, never which string, fret or finger was used.
+
+## Course modules, library placement and tool links
+
+The runtime catalog can declare `modules`, each with a stable `id`, unique `order` (1–64), and exact `en`/`uk` `titles` and `summaries`. Module names describe learning goals. Keep technical mechanisms out of learner-facing labels. Empty modules are not shown in the library.
+
+A lesson can declare editorial placement independently of its musical revision:
+
+```yaml
+curriculum:
+  moduleID: first-notes
+  ordinal: 16
+  durationMinutes: 15
+  prerequisites: [reading-tab, adjacent-strings]
+  keywords: [melody, мелодія]
+```
+
+`ordinal` is a unique global course number (1–1024). Duration is an estimate for one visit (1–120 minutes), not a deadline or unlock condition. Prerequisites and keywords are optional lists, defaulting to empty. Prerequisites must reference other catalog lessons; cycles are rejected. They are suggested preparation, not access restrictions. Standalone author templates may omit curriculum entirely; the library places them after the organized course. Editorial rearrangement alone does not invalidate musical results; changes to teaching/task meaning still require a lesson-version bump.
+
+Search matches every query term against both language editions' title, summary and goal, musical keywords and module titles. Module, difficulty, topic, practice mode and reading-state filters combine with search. Course order is the default, with title and estimated duration alternatives. Reading progress means reading only, never successful playing. Continue restores the unfinished last lesson, or offers the next unread available lesson after a read one. The reader offers step navigation and the next available course lesson.
+
+A step may also specify `tool: tuner`, `tool: audioSetup`, or `tool: settings`. The selected step shows an explicit action to the existing app tool. Text must explain what to check there. Opening a tool does not mark a task complete, start capture automatically, or fabricate a measurement. Audio setup stops lesson preview before opening the shared audio controls.
+
+The full editorial inventory is [coverage.yml](curriculum/coverage.yml), anchored to the [accepted 128 topics](CURRICULUM-SCOPE.md). Delivery states are `todo`, `needs_review`, `authored`, and `verified`. A verified topic needs a checked-in review and, for an extension topic, explicit capability evidence. Run:
+
+```sh
+python3 Scripts/check_curriculum.py             # Partial structural/traceability audit
+python3 Scripts/check_curriculum.py --complete  # Fails until all 128 topics are verified
+```
+
+These commands do not replace the Swift content validator, musical golden tests, editorial review, UI inspection or hardware checks. Adding 128 filenames alone is not course completion.

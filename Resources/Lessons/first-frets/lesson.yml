@@ -153,3 +153,12 @@ practiceEntries:
   - id: first-frets-practice
     activityID: lesson
     exerciseID: first-frets-practice
+curriculum:
+  moduleID: first-notes
+  ordinal: 10
+  durationMinutes: 10
+  prerequisites:
+    - open-strings-intro
+  keywords:
+    - First frets
+    - Перші лади

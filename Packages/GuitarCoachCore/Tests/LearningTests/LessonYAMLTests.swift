@@ -13,7 +13,7 @@ struct LessonYAMLTests {
                                             to: root.appendingPathComponent("lesson-template"))
             try FileManager.default.copyItem(at: repository.appendingPathComponent("Resources/Lessons/c-major"),
                                             to: root.appendingPathComponent("c-major"))
-            try write("catalog.yml", "# Display order\nschemaVersion: 1\nlessons: [lesson-template, c-major]\n")
+            try write("catalog.yml", "# Display order\nschemaVersion: 1\nlessons: [lesson-template, c-major]\nmodules:\n  - id: scales-positions\n    order: 8\n    titles: {en: Scales, uk: Гами}\n    summaries: {en: Scales, uk: Гами}\n")
         }
         func write(_ path: String, _ text: String) throws {
             try text.write(to: root.appendingPathComponent(path), atomically: true, encoding: .utf8)

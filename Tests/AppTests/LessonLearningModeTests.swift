@@ -50,11 +50,11 @@ import Persistence
         await reading.load()
         let lesson = try lesson("guitar-foundations"), selection = LessonSelection(lesson: lesson)
         let task = try #require(selection.tasks.first), context = selection.taskContext(task)
-        reading.visit(lessonID: lesson.id, version: 1, stepID: selection.stepID)
+        reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID)
         let value = LessonTaskProgress(context: context, checkedIDs: Set(task.itemIDs))
         reading.setTask(value, taskID: task.id, lessonID: lesson.id)
-        reading.setRead(true, lessonID: lesson.id, version: 1, stepID: "check-understanding")
-        reading.visit(lessonID: lesson.id, version: 1, stepID: "prepare")
+        reading.setRead(true, lessonID: lesson.id, version: lesson.manifest.version, stepID: "check-understanding")
+        reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: "prepare")
         for _ in 0..<1000 {
             await reading.flush()
             if !reading.isSaving { break }
@@ -63,13 +63,13 @@ import Persistence
         #expect(!reading.isSaving && !reading.saveFailed)
         let restored = ReadingProgressStore(repository: LocalRepository(root: directory)); await restored.load()
         #expect(restored.progress.lessons[lesson.id]?.learningTasks[task.id] == value)
-        #expect(restored.progress.lessons[lesson.id]?.readVersion == 1)
+        #expect(restored.progress.lessons[lesson.id]?.readVersion == lesson.manifest.version)
         #expect(try await repo.history().records.isEmpty)
         selection.updateInstrument(InstrumentProfile(tuning: .bStandard, frets: .nineteen))
         #expect(task.isComplete(value, context: selection.taskContext(task))) // Theory is independent of the instrument.
-        reading.visit(lessonID: lesson.id, version: 2, stepID: "prepare")
+        reading.visit(lessonID: lesson.id, version: lesson.manifest.version + 1, stepID: "prepare")
         #expect(reading.progress.lessons[lesson.id]?.learningTasks[task.id] == value) // Keep old evidence, but not current completion.
-        #expect(!task.isComplete(value, context: LessonTaskContext(lessonVersion: 2)))
+        #expect(!task.isComplete(value, context: LessonTaskContext(lessonVersion: lesson.manifest.version + 1)))
     }
 
     @Test func selfAssessmentBecomesStaleAfterTuningFretsOrPositionChange() throws {

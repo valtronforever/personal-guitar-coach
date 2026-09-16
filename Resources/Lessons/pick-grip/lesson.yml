@@ -1,0 +1,122 @@
+schemaVersion: 3
+id: pick-grip
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: grip
+    kind: none
+    eventIDs: []
+  - id: contact
+    kind: none
+    eventIDs: []
+  - id: sound
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+    exerciseID: pick-grip-practice
+    activityID: example
+  - id: review
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+    exerciseID: pick-grip-practice
+    activityID: example
+exercises:
+  - id: pick-grip-practice
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+materials:
+  - id: example
+    source:
+      kind: exercise
+      exerciseID: pick-grip-practice
+activities:
+  - id: example
+    materialID: example
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+curriculum:
+  moduleID: getting-started
+  ordinal: 3
+  durationMinutes: 8
+  prerequisites:
+    - guitar-anatomy
+  keywords:
+    - Holding the pick
+    - Як тримати медіатор
+adaptation:
+  policy: fretPattern

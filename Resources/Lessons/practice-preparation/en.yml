@@ -1,0 +1,43 @@
+lessonID: practice-preparation
+lessonVersion: 1
+locale: en
+title: Preparing for practice
+summary: Run a short repeatable check before starting a scored practice session.
+goal: Run a short repeatable check before starting a scored practice session.
+body: >-
+  A useful session begins with a matching instrument profile, a healthy input and an audible pulse. The input/player
+  timing setting and the output alignment setting have different roles. Prepare them before interpreting timing
+  feedback.
+steps:
+  instrument:
+    title: Confirm instrument conditions
+    body: >-
+      Check tuning profile and fret count in Settings, then verify the physical strings with the tuner. The selected
+      profile is a software target, not evidence that the guitar is tuned.
+  route:
+    title: Check today’s route
+    body: >-
+      Select the connected input channel and the headphones you are actually using. Pluck four notes and check for
+      a usable level without overload. If a device or Bluetooth route changed, revisit timing settings before judging
+      rhythm.
+  timing:
+    title: Understand the two delays
+    body: >-
+      Output alignment places the visible cursor relative to the sound you hear. Instrument synchronization compensates
+      the measured or manually estimated playing/input offset for rhythm assessment. A manual value is explicitly
+      approximate; never interpret it as a lab measurement.
+  routine:
+    title: Choose one small target
+    body: >-
+      Choose one lesson, a slow starting tempo and one concrete target such as four clean entries after rests. Listen
+      to the count-in, complete one take, then read the feedback before repeating. A failed signal check asks for
+      setup work, not harder playing.
+activities: {}
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: My profile and physical tuning agree.
+      criterion-2: Input, output and timing settings fit today’s route.
+      criterion-3: I chose one specific practice target and a manageable tempo.

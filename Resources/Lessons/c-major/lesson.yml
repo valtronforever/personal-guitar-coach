@@ -216,3 +216,11 @@ practiceEntries:
   - id: c-major-practice
     activityID: lesson
     exerciseID: c-major-practice
+curriculum:
+  moduleID: scales-positions
+  ordinal: 57
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - The major scale
+    - Мажорна гама

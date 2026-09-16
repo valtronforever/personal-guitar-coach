@@ -181,3 +181,11 @@ practiceEntries:
   - id: steady-pulse-practice
     activityID: lesson
     exerciseID: steady-pulse-practice
+curriculum:
+  moduleID: basic-rhythm
+  ordinal: 17
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - A steady pulse
+    - Рівний пульс

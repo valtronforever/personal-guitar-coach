@@ -1,0 +1,42 @@
+schemaVersion: 3
+id: signal-chain
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: map
+    kind: none
+    eventIDs: []
+  - id: input
+    kind: none
+    eventIDs: []
+    tool: audioSetup
+  - id: output
+    kind: none
+    eventIDs: []
+  - id: verify
+    kind: none
+    eventIDs: []
+    tool: audioSetup
+exercises: []
+materials: []
+activities: []
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: verify
+    kind: checklist
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+curriculum:
+  moduleID: getting-started
+  ordinal: 4
+  durationMinutes: 12
+  prerequisites:
+    - guitar-anatomy
+  keywords:
+    - Guitar, interface, amplifier and headphones
+    - Гітара, інтерфейс, підсилювач і навушники

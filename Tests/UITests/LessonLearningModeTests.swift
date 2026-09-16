@@ -25,6 +25,8 @@ final class LessonLearningModeUITests: XCTestCase {
         app.buttons["lesson.task.string-order.thin"].click()
         XCTAssertTrue(app.buttons["lesson.task.retry"].waitForExistence(timeout: 5))
         app.terminate(); app.launch()
+        let continuation = app.buttons["library.continue"]
+        XCTAssertTrue(continuation.waitForExistence(timeout: 10)); continuation.click()
         let first = app.buttons["lesson.step.prepare"]
         XCTAssertTrue(first.waitForExistence(timeout: 10)); first.click()
         XCTAssertTrue(check.waitForExistence(timeout: 5))

@@ -1,0 +1,54 @@
+lessonID: reading-tab
+lessonVersion: 1
+locale: en
+title: Reading tablature
+summary: Read string, fret, order and rests from a short TAB example.
+goal: Read string, fret, order and rests from a short TAB example.
+body: >-
+  TAB uses six lines in the app: string 1 at the top, string 6 at the bottom. A number says which fret to play on
+  that line; it does not say which finger to use. Read events from left to right, using the beat spacing and duration
+  marks for timing.
+steps:
+  zero:
+    title: Read an open-string zero
+    body: >-
+      Select the first event in TAB. Find the same expected position on the fretboard. A 0 on line 2 means open
+      string 2; do not press fret 0 as though it were a metal fret. {{positions}}
+  numbers:
+    title: Read fretted notes
+    body: >-
+      The next numbers are 1 and 3 on string 2. Say “string two, fret one; string two, fret three” before playing.
+      Notice that the fret number stays the same when the selected tuning changes, while the pitch name may change.
+      {{positions}}
+  read-bar:
+    title: Follow the bar and the rest
+    body: >-
+      Read bar 1 as open–1–3–rest on string 2. Bar 2 begins on open string 1, returns to string 2 at fret 3, then
+      fret 1, then rests. Count each of the four beats even when there is no fret number. {{positions}}
+  review:
+    title: Read before the cursor arrives
+    body: >-
+      Preview the example once, then play it slowly. Look one event ahead while the current note sounds. If you
+      lose your place, stop at the barline, name the next string/fret and restart that bar instead of guessing.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I can distinguish string numbers from fret numbers.
+      criterion-2: I counted the rests instead of skipping them.
+      criterion-3: I can name the next string/fret before playing it.
+  knowledge:
+    title: What does a 3 on the second TAB line mean?
+    body: Choose one answer, then compare with the explanation.
+    items:
+      answer-1: Use finger 3 anywhere
+      answer-2: Play fret 3 on string 2
+      answer-3: Play string 3 open
+    explanation: >-
+      The line identifies the string and the number identifies the fret. Fingering suggestions are separate information.

@@ -1,0 +1,156 @@
+schemaVersion: 3
+id: stop-a-note
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+  - id: open
+    kind: events
+    eventIDs:
+      - n-1
+    exerciseID: stop-a-note-practice
+    activityID: example
+  - id: fretted
+    kind: events
+    eventIDs:
+      - n-5
+    exerciseID: stop-a-note-practice
+    activityID: example
+  - id: rests
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+    exerciseID: stop-a-note-practice
+    activityID: example
+  - id: review
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+    exerciseID: stop-a-note-practice
+    activityID: example
+exercises:
+  - id: stop-a-note-practice
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-6
+        startTick: 4800
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n-8
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+materials:
+  - id: example
+    source:
+      kind: exercise
+      exerciseID: stop-a-note-practice
+activities:
+  - id: example
+    materialID: example
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+curriculum:
+  moduleID: first-notes
+  ordinal: 14
+  durationMinutes: 10
+  prerequisites:
+    - clean-fretted-note
+  keywords:
+    - Stopping a note
+    - Як зупинити звучання ноти
+adaptation:
+  policy: fretPattern

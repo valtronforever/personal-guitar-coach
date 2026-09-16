@@ -80,3 +80,11 @@ learningTasks:
       - release
 adaptation:
   policy: transposeIntervals
+curriculum:
+  moduleID: rock-rhythm
+  ordinal: 33
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - 'Power chords: root and fifth'
+    - 'Power chord: основний тон і квінта'

@@ -12,9 +12,12 @@ public struct LessonCatalogLoader: Sendable {
             let data = try read(directory.appendingPathComponent("catalog.yml"))
             try checkSchema(data)
             catalog = try decode(LessonCatalogManifest.self, from: data)
+            try validateModules(catalog.modules ?? [])
+            guard catalog.lessons.count <= 1024 else { throw ContentFailure(.invalidCurriculum, "Too many lessons") }
         } catch { return LessonCatalogReport(lessons: [], issues: [issue(error, lessonID: nil)]) }
         var lessons: [LoadedLesson] = [], issues: [ContentIssue] = []
         var lessonIDs = Set<String>(), exerciseIDs = Set<String>()
+        var ordinals = Set<Int>()
         for id in catalog.lessons {
             do {
                 try validateID(id)
@@ -28,18 +31,26 @@ public struct LessonCatalogLoader: Sendable {
                 let manifest = try decode(LessonManifest.self, from: data)
                 guard manifest.id == id else { throw ContentFailure(.invalidIdentifier, "Folder and lesson IDs differ: \(id)") }
                 try validate(manifest)
+                if let placement = manifest.curriculum {
+                    try validatePlacement(placement, lessonID: id, catalog: catalog)
+                    guard !ordinals.contains(placement.ordinal) else { throw ContentFailure(.invalidCurriculum, "Duplicate curriculum ordinal") }
+                }
                 let en = try translation(.en, folder: folder, manifest: manifest)
                 let uk = try translation(.uk, folder: folder, manifest: manifest)
                 guard exerciseIDs.isDisjoint(with: Set(manifest.exercises.map(\.id))) else {
                     throw ContentFailure(.duplicateIdentifier, "Exercise ID is already used by another lesson")
                 }
-                exerciseIDs.formUnion(manifest.exercises.map(\.id))
                 try validatePresentationParity(en, uk)
+                exerciseIDs.formUnion(manifest.exercises.map(\.id))
                 let lesson = LoadedLesson(manifest: manifest, english: en, ukrainian: uk)
                 lessons.append(lesson)
+                if let placement = manifest.curriculum { ordinals.insert(placement.ordinal) }
             } catch { issues.append(issue(error, lessonID: id)) }
         }
-        return LessonCatalogReport(lessons: lessons, issues: issues)
+        let cycles = curriculumCycles(lessons)
+        for id in cycles.sorted() { issues.append(issue(ContentFailure(.invalidCurriculum, "Prerequisite cycle: \(id)"), lessonID: id)) }
+        return LessonCatalogReport(lessons: lessons.filter { !cycles.contains($0.id) }, issues: issues,
+                                   modules: (catalog.modules ?? []).sorted { $0.order < $1.order })
     }
 
     public func validate(_ manifest: LessonManifest) throws {

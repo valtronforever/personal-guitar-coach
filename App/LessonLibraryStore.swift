@@ -10,6 +10,7 @@ final class LessonLibraryStore {
     private(set) var hasLoaded = false
     private(set) var missingBundle = false
     var lessons: [LoadedLesson] { report?.lessons ?? [] }
+    var modules: [LessonModule] { report?.modules ?? [] }
     var issues: [ContentIssue] { report?.issues ?? [] }
     /// Legacy fixed C Standard copies stay loadable for history, but do not duplicate the live course.
     static let legacyAliases = ["c-standard-open-strings": "open-strings-intro", "c-standard-first-frets": "first-frets",

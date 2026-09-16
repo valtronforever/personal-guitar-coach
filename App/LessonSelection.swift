@@ -128,21 +128,6 @@ final class LessonSelection {
     }
 }
 
-struct LessonFilter {
-    var query = ""
-    var difficulty: LessonDifficulty?
-    var topic: LessonTopic?
-    func matches(_ lesson: LoadedLesson, language: LessonLanguage) -> Bool {
-        guard difficulty == nil || lesson.manifest.difficulty == difficulty,
-              topic == nil || lesson.manifest.topic == topic else { return false }
-        let query = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        let text = lesson.text(for: language)
-        return query.isEmpty || [text.title, text.summary].contains {
-            $0.range(of: query, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: language.rawValue)) != nil
-        }
-    }
-}
-
 struct PracticeRequest: Equatable, Sendable {
     let selectionID = UUID()
     let initialRange: Range<Int64>?

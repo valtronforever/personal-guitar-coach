@@ -79,3 +79,11 @@ learningTasks:
     stimulusExerciseID: hear-pitch-direction-practice
 adaptation:
   policy: transposeIntervals
+curriculum:
+  moduleID: ear-improvisation
+  ordinal: 82
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - Intervals by ear
+    - Інтервали на слух

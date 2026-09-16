@@ -82,3 +82,7 @@ The user can explicitly record and analyze one practice take with installed Code
 ### Practice tablature read-ahead
 
 Practice opens in compact TAB by default, with a fretboard switch still available. Whole bars wrap into responsive rows, with upcoming rows visible before playback reaches them. A separate count-in bar appears immediately before the selected practice range. A vertical line smoothly follows the audio transport across beats and neighboring bars; automatic vertical following can be disabled for manual reading. Zoom changes both spacing and glyph sizes; Reduce Motion is respected. Selecting a note still selects its bar (Shift extends the range) and stops an active attempt.
+
+### Full electric-guitar curriculum (implementation in progress)
+
+The accepted scope is 128 lessons in 16 modules, recorded in `CURRICULUM-SCOPE.md`; `curriculum/coverage.yml` distinguishes planned, authored and verified delivery. The library groups available lessons by module, with bilingual search, combined filters, visible active filters, reading progress, Continue and explicit next-lesson navigation. Prerequisites guide preparation without locking lessons. Read status, self-check responses and audio assessment remain separate. Modules 1–2 are authored in the first delivery stage; this does not claim the full course or advanced-technique assessment is complete.

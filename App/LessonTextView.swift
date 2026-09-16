@@ -10,11 +10,13 @@ struct LessonTextView: View {
     @State private var selection: LessonSelection
     @State private var preview = PreviewModel()
     @Environment(AudioSessionStore.self) private var audio
+    @State private var showsLessonAudio = false
     @State private var visualMode = "fretboard"
     @Environment(AppSettings.self) private var settings
     @Environment(LocalDataStore.self) private var localData
     @Environment(ReadingProgressStore.self) private var reading
     @Environment(AppNavigation.self) private var navigation
+    @Environment(LessonLibraryStore.self) private var library
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
 
     init(lesson: LoadedLesson, bookmark: LessonBookmark?, tuning: TuningProfile = .standard, frets: GuitarFretCount = .twentyFour) {
@@ -28,6 +30,7 @@ struct LessonTextView: View {
         Group {
                 VStack(spacing: 0) {
                     ReadingProgressNotice()
+                    stepNavigation
                     ScrollViewReader { proxy in
                         ScrollView {
                             VStack(alignment: .leading, spacing: CoachLayout.padding) {
@@ -68,6 +71,7 @@ struct LessonTextView: View {
                     }
                 }
         }
+        .sheet(isPresented: $showsLessonAudio) { AudioProbeView().environment(\.locale, settings.locale) }
         .onAppear { saveBookmark() }
         .onChange(of: localData.preferences.instrument) { _, instrument in
             selection.updateInstrument(instrument); saveBookmark()
@@ -83,12 +87,25 @@ struct LessonTextView: View {
     private var lessonContent: some View {
         let text = lesson.text(for: language)
         return VStack(alignment: .leading, spacing: CoachLayout.padding) {
+        courseContext
         Text(verbatim: text.title).font(.largeTitle.bold()).accessibilityAddTraits(.isHeader).accessibilityIdentifier("lesson.title")
         VStack(alignment: .leading, spacing: 8) {
             Text("content.goal").font(.headline)
             Text(verbatim: text.goal)
         }
         Text(verbatim: text.body).textSelection(.enabled)
+        if let placement = lesson.manifest.curriculum, !placement.prerequisites.isEmpty {
+            DisclosureGroup("library.prerequisites") {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("library.prerequisitesHelp").font(.caption).foregroundStyle(.secondary)
+                    ForEach(placement.prerequisites, id: \.self) { id in
+                        if let previous = library.sourceLesson(id: id) {
+                            Button { navigation.lessonPath = [previous.id] } label: { Text(verbatim: previous.text(for: language).title) }
+                        }
+                    }
+                }.padding(.top, 6)
+            }
+        }
         if selection.policy?.enabled == true { positionPicker }
         if let failure = selection.failure {
             Label(LocalizedStringKey("lesson.activity.error." + failure.rawValue), systemImage: "exclamationmark.triangle")
@@ -122,6 +139,15 @@ struct LessonTextView: View {
                 }.accessibilityIdentifier("lesson.practice.\(entry.id)")
             }
         }
+        if let next = library.nextLesson(after: lesson.id) {
+            Divider()
+            Button { navigation.lessonPath = [next.id] } label: {
+                VStack(alignment: .leading, spacing: 4) {
+                    Label("library.nextAvailable", systemImage: "arrow.right")
+                    Text(verbatim: next.text(for: language).title).font(.headline)
+                }
+            }.accessibilityIdentifier("lesson.next")
+        }
         }
     }
     private var lessonSteps: some View {
@@ -144,6 +170,7 @@ struct LessonTextView: View {
                     if let copy { Text(verbatim: copy.body).textSelection(.enabled) }
                     else { Text("lesson.activity.stepUnavailable").foregroundStyle(.secondary) }
                     if selection.stepID == step.id {
+                        if let tool = step.tool { lessonTool(tool) }
                         ForEach(selection.tasks) { task in
                             if let copy = text.taskTexts[task.id] {
                                 LessonTaskView(task: task, copy: copy, context: selection.taskContext(task),
@@ -158,6 +185,46 @@ struct LessonTextView: View {
             }
         }
 
+        }
+    }
+    @ViewBuilder private func lessonTool(_ tool: LessonTool) -> some View {
+        switch tool {
+        case .tuner:
+            Button("lesson.tool.tuner", systemImage: "tuningfork") { navigation.destination = .tuner }
+        case .audioSetup:
+            Button("lesson.tool.audioSetup", systemImage: "waveform") {
+                Task { await preview.stop(audio: audio); showsLessonAudio = true }
+            }
+        case .settings:
+            SettingsLink { Label("lesson.tool.settings", systemImage: "gearshape") }
+        }
+    }
+    private var stepNavigation: some View {
+        let steps = lesson.manifest.steps
+        let index = steps.firstIndex { $0.id == selection.stepID } ?? 0
+        return HStack(spacing: 12) {
+            Button("library.previousStep", systemImage: "chevron.left") {
+                guard index > 0 else { return }; selection.selectStep(steps[index - 1].id); saveBookmark()
+            }.labelStyle(.iconOnly).disabled(index == 0).help(Text("library.previousStep"))
+                .accessibilityIdentifier("lesson.previousStep")
+            Text("library.stepCount \(index + 1) \(steps.count)").font(.caption).monospacedDigit()
+            Spacer()
+            Button("library.nextStep", systemImage: "chevron.right") {
+                guard index + 1 < steps.count else { return }; selection.selectStep(steps[index + 1].id); saveBookmark()
+            }.disabled(index + 1 == steps.count).accessibilityIdentifier("lesson.nextStep")
+        }.padding(.horizontal, 24).padding(.vertical, 8)
+    }
+    @ViewBuilder private var courseContext: some View {
+        if let placement = lesson.manifest.curriculum {
+            HStack {
+                if let module = library.modules.first(where: { $0.id == placement.moduleID }) {
+                    Button("library.course") { navigation.lessonPath = [] }
+                    Text(verbatim: module.title(language)).lineLimit(2)
+                }
+                Spacer()
+                Text("library.lessonNumber \(placement.ordinal)")
+                Label("library.minutes \(placement.durationMinutes)", systemImage: "clock")
+            }.font(.caption).foregroundStyle(.secondary)
         }
     }
     private var positionPicker: some View {

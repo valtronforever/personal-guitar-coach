@@ -1,0 +1,28 @@
+# Full electric-guitar curriculum and library UX
+
+Status: `in_progress`
+
+## Authorized objective
+
+Implement all 128 lessons from [the original agreed table](../../docs/CURRICULUM-SCOPE.md), including functional extensions needed to teach/practice them, and improve structure, presentation and filters. The scope is the full course, not a count of placeholder files. Every lesson needs original bilingual teaching, a specific worked example, progressive practice and relevant feedback/self-reflection. Existing history, tuning/fret adaptation, accessibility and honest assessment rules remain in force.
+
+## Delivery and audit
+
+1. **Curriculum/library foundation + modules 1–2** — in progress. Stable 16-module organization, ordering, prerequisites/duration, reading progress, continue, combined search/filter/sort, lesson navigation. Preserve exact 128-topic inventory in a coverage ledger.
+2. **Modules 3–6** — todo. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
+3. **Modules 7–10** — todo. Articulation-aware lesson/notation and measurable pitch-contour practice for slides/legato/bends/vibrato; scales; compound/odd time, triplets/shuffle, missing clicks; harmony.
+4. **Modules 11–14** — todo. Listen/reproduce tasks, guided improvisation; advanced guitar techniques and original genre studies. Add required functionality rather than silently reducing R lessons to generic checklists.
+5. **Modules 15–16** — todo. Sound/recording and repertoire/composition workflow, original complete studies, self-practice recording support where required.
+6. **Full acceptance audit** — todo. 128-topic mapping, bilingual/content/musical review, all presets/fret counts, functionality-specific DSP/notation/transport checks, library/filter/reader tests and rendered UX evidence, signed Release, review/PR/merge. Hardware-dependent proof stays explicitly pending_user and never becomes fabricated success.
+
+## UX decisions
+
+Use a grouped, ordered course library rather than a flat list of 128 cards. Let learners choose freely; prerequisites are guidance, not locks. Keep read state separate from assessed/self-reported mastery. Provide continue, visible active filters, clear-all, useful empty states and stable IDs across language changes. Search both localized names and musical keywords. Keep filter controls compact at the minimum window size.
+
+Primary references: [Apple Searching](https://developer.apple.com/design/human-interface-guidelines/searching), [Lists and tables](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables), [SwiftUI search placement](https://developer.apple.com/documentation/SwiftUI/Adding-a-search-interface-to-your-app). These inform placement/scannability; app-specific choices will be verified with rendered/interaction evidence.
+
+## Progress log
+
+- 2026-09-16: recovered the exact 128-lesson/16-module proposal from the current conversation. Baseline main 514ebaf; repository clean. Previous learning-mode implementation is complete software work, not completion of this new full-curriculum goal.
+- Stage 1 authored: 16 introductory topics (13 new bundles, expanded posture lesson, existing two first-note studies); 23 visible lessons/29 total including historical aliases. Course metadata and UI/query implementation complete, software checks passed; see [same-agent review](../../docs/reviews/full-curriculum-stage-1-review.md). Coverage intentionally remains authored, with 7 later baseline topics needing editorial review and 105 todo. Partial inventory audit passes; full acceptance correctly fails. Native Ukrainian/dark filter/search verified; remaining reader/minimum-window/VoiceOver checks open after UI automation service failure.
+- Known functional follow-up: expand and validate low-register graded pitch support for B Standard/Drop A and other targets below C2. Do not equate successful tuner/visual adaptation with graded support.

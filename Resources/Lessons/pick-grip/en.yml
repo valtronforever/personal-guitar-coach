@@ -1,0 +1,44 @@
+lessonID: pick-grip
+lessonVersion: 1
+locale: en
+title: Holding the pick
+summary: Play eight small, controlled pick strokes without losing the pick.
+goal: Play eight small, controlled pick strokes without losing the pick.
+body: >-
+  The grip should stabilize the pick while leaving the hand able to move. Start with the pick between thumb and
+  the side of the curled index finger, exposing a small tip. This is a starting point, not a rule about one exact
+  angle for every hand.
+steps:
+  grip:
+    title: Find a stable contact
+    body: >-
+      Hold the pick, then loosen the squeeze until it nearly slips. Add just enough pressure to keep its direction.
+      Open the other fingers briefly: they should not need to clamp the pick in place.
+  contact:
+    title: Brush one string
+    body: >-
+      Lightly rest the fretting hand across the strings to quiet them. Brush string 3 downward four times. If the
+      tip digs deeply and catches, expose less tip or reduce the stroke distance before trying again.
+  sound:
+    title: Let one string ring
+    body: >-
+      Release string 3 and play one open note per click at 60 BPM. Use the example for pitch and pulse only; it
+      cannot show your pick direction or grip. Pause after four notes and reset if the pick has rotated. {{positions}}
+  review:
+    title: Two short rounds
+    body: >-
+      Play two groups of four strokes with a breath between groups. Judge whether the grip stays stable and whether
+      each stroke clears the string. Do not solve slipping by squeezing the whole hand harder.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: The pick keeps a usable direction through four strokes.
+      criterion-2: The tip clears the string without a large swing.
+      criterion-3: I can release excess grip pressure between groups.

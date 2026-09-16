@@ -53,6 +53,7 @@ struct LessonLearningTaskTests {
         let manifestURL = directory.appendingPathComponent("\(id)/lesson.yml")
         let textURL = directory.appendingPathComponent("\(id)/uk.yml")
         var manifest = try #require(Yams.load(yaml: String(contentsOf: manifestURL, encoding: .utf8)) as? [String: Any])
+        manifest.removeValue(forKey: "curriculum") // Isolate task validation from course placement.
         var tasks = try #require(manifest["learningTasks"] as? [[String: Any]])
         var text = try #require(Yams.load(yaml: String(contentsOf: textURL, encoding: .utf8)) as? [String: Any])
         var copies = try #require(text["learningTasks"] as? [String: [String: Any]])

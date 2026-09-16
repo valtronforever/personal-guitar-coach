@@ -1,0 +1,50 @@
+schemaVersion: 3
+id: clean-input
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: baseline
+    kind: none
+    eventIDs: []
+    tool: audioSetup
+  - id: peaks
+    kind: none
+    eventIDs: []
+  - id: adjust
+    kind: none
+    eventIDs: []
+  - id: check
+    kind: none
+    eventIDs: []
+    tool: audioSetup
+exercises: []
+materials: []
+activities: []
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: check
+    kind: checklist
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+  - id: knowledge
+    stepID: check
+    kind: quiz
+    itemIDs:
+      - answer-1
+      - answer-2
+      - answer-3
+    correctOptionID: answer-2
+curriculum:
+  moduleID: getting-started
+  ordinal: 5
+  durationMinutes: 10
+  prerequisites:
+    - signal-chain
+  keywords:
+    - Clean input and signal level
+    - Чистий вхід і рівень сигналу

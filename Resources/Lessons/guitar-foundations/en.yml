@@ -1,9 +1,9 @@
 lessonID: guitar-foundations
-lessonVersion: 1
+lessonVersion: 2
 locale: en
 title: Before the first note
-summary: Set up a comfortable practice position and learn string numbering.
-goal: Prepare your instrument and identify string 1.
+summary: Find a stable sitting position, adjust the strap and check your reach.
+goal: Support the instrument sitting and standing while keeping both hands free to play.
 body: >-
   A stable guitar and a relaxed position make short practice sessions easier. String numbers stay the same in every
   six-string tuning: 1 is the thinnest and 6 is the thickest. Fret 0 means an open string.
@@ -18,6 +18,18 @@ steps:
     body: >-
       Changing from a standard tuning to a drop tuning changes pitches, but does it change the string numbering?
       Choose the description of string 1.
+  standing:
+    title: Stand with the strap
+    body: >-
+      Attach the strap securely, support the guitar as you stand and adjust its length so the instrument stays near
+      the playing position you just found sitting. Release the fretting-hand grip briefly: the strap, not your thumb,
+      should support the weight.
+  reach:
+    title: Check both hands
+    body: >-
+      Reach strings 6 and 1 near the first few frets, then move the picking hand across the strings. Change the
+      guitar angle or strap height if you need to hunch or clamp the neck just to reach. Compare seated and standing
+      positions without playing faster. Stop and readjust if the position feels uncomfortable.
 activities: {}
 learningTasks:
   setup:

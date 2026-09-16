@@ -1,0 +1,44 @@
+schemaVersion: 3
+id: tune-six-strings
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: profile
+    kind: none
+    eventIDs: []
+    tool: settings
+  - id: one-string
+    kind: none
+    eventIDs: []
+    tool: tuner
+  - id: six-strings
+    kind: none
+    eventIDs: []
+    tool: tuner
+  - id: recheck
+    kind: none
+    eventIDs: []
+    tool: tuner
+exercises: []
+materials: []
+activities: []
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: recheck
+    kind: checklist
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+curriculum:
+  moduleID: getting-started
+  ordinal: 6
+  durationMinutes: 12
+  prerequisites:
+    - clean-input
+  keywords:
+    - Tuning all six strings
+    - Налаштування гітари тюнером
