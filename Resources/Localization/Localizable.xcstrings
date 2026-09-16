@@ -10672,6 +10672,74 @@
           }
         }
       }
+    },
+    "practice.score.follow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow playback"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стежити за грою"
+          }
+        }
+      }
+    },
+    "practice.score.countIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Count-in"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відлік"
+          }
+        }
+      }
+    },
+    "practice.score.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read upcoming bars on the next row. Turn off Follow playback to scroll freely. Select a note to choose its bar; Shift-click extends the range. Selecting during playback stops the attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Читай наступні такти в наступному рядку. Вимкни «Стежити за грою» для вільного прокручування. Натисни ноту, щоб вибрати такт; Shift-клік розширює фрагмент. Вибір під час гри зупиняє спробу."
+          }
+        }
+      }
+    },
+    "practice.score.selectHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select this bar; Shift extends the practice range. Stops an active attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрати цей такт; Shift розширює фрагмент практики. Активна спроба зупиниться."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

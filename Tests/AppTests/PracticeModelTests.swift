@@ -286,12 +286,16 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }
         h.model.start(instrument: InstrumentProfile()); try await playing(h)
         let previousID = h.model.machine.attemptID
-        h.model.pause(); try await wait(h) { !h.model.isBusy }
+        h.model.pause(); #expect(h.model.displayTick == nil)
+        try await wait(h) { !h.model.isBusy }
         let previous = try #require(h.model.latestEvidence)
         #expect(previous.phase == .paused && previous.attacks.count == 1)
         h.model.start(instrument: InstrumentProfile())
         try await wait(h) { (await h.runtime.request != nil) && h.model.phase == .countIn }
         #expect(h.model.machine.attemptID != previousID)
+        try await wait(h) { h.model.displayTick != nil }
+        let countInTick = try #require(h.model.displayTick)
+        #expect(countInTick < Double(h.model.firstBar - 1) * Double(h.model.request!.exercise.timeSignature.ticksPerBar))
         h.model.instrumentWillChange(InstrumentProfile(tuning: .dropD))
         try await wait(h) { !h.model.isBusy }
         #expect(h.model.latestEvidence?.phase == .interrupted && h.model.latestEvidence?.reason == .changedInstrument)

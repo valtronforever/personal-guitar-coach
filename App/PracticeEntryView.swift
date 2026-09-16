@@ -16,7 +16,7 @@ struct PracticeEntryView: View {
     @State private var detailResult: AssessedPractice?
     @State private var pendingAudioSetup = false
     @State private var showsOptions = true
-    @State private var visualMode = "fretboard"
+    @State private var visualMode = "tab"
     @State private var selectedPosition: FretPosition?
     @State private var coach = AgentCoachStore.shared
     private var language: LessonLanguage { LessonLanguage(rawValue: settings.language.resolvedCode()) ?? .en }
@@ -63,8 +63,9 @@ struct PracticeEntryView: View {
                             positions: model.expectedPositions), selected: $selectedPosition,
                             detectedPitch: detectedPitch, compact: true)
                     } else if let timeline = try? TimelineModel(exercise: request.exercise, instrument: tuning) {
-                        TablatureView(model: timeline, selectedIDs: model.selectedEventIDs,
-                            cursorTick: model.countInBeat == nil ? model.cursorTick : nil, instructionsKey: "practice.tabInstructions") { id, extending in
+                        PracticeTablatureView(model: timeline, selectedIDs: model.selectedEventIDs,
+                            firstBar: model.firstBar, lastBar: model.lastBar, displayTick: model.displayTick,
+                            attemptID: model.machine.attemptID, playing: model.phase == .countIn || model.phase == .running) { id, extending in
                                 guard let event = request.exercise.events.first(where: { $0.id == id }) else { return }
                                 let bar = Int(event.startTick / request.exercise.timeSignature.ticksPerBar) + 1
                                 model.seekBar(bar, extending: extending)
