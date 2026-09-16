@@ -23,7 +23,7 @@ struct CalibrationStorageTests {
         try await repository.saveCalibration(personal, replacing: first.id)
         #expect(try await repository.loadCalibrationProfiles() == [personal])
         let document = try JSONDecoder().decode(DocumentEnvelope<[CalibrationProfile]>.self, from: Data(contentsOf: url))
-        #expect(document.schemaVersion == 2 && document.payload[0].method == .personal)
+        #expect(document.schemaVersion == 3 && document.payload[0].method == .personal)
     }
     @Test func restoreReplaceAndForgetPreserveOtherDocuments() async throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -50,5 +50,40 @@ struct CalibrationStorageTests {
         let repo = LocalRepository(root: root)
         await #expect(throws: StorageError.unsupportedVersion(20)) { try await repo.saveCalibration(profile(), replacing: nil) }
         #expect(try Data(contentsOf: url) == bytes)
+    }
+}
+
+extension CalibrationStorageTests {
+    @Test func independentOutputDefaultsToZeroReplacesAndResetsWithoutTouchingInstrument() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let repo = LocalRepository(root: root), old = try profile()
+        #expect(try await repo.loadOutputAlignments().isEmpty)
+        try await repo.removeOutputAlignment(id: UUID()) // Reset is idempotent before any settings directory exists.
+        try await repo.saveCalibration(old, replacing: nil)
+        let first = try OutputAlignmentProfile(output: old.route.output, evidence: SyncPassEvidence(offset: 0.2, spread: 0, drift: 0))
+        let second = try OutputAlignmentProfile(output: old.route.output, evidence: SyncPassEvidence(offset: 0.1, spread: 0, drift: 0))
+        try await repo.saveOutputAlignment(first); try await repo.saveOutputAlignment(second)
+        #expect(try await LocalRepository(root: root).loadOutputAlignments() == [second])
+        let evidence = try InstrumentSyncEvidence(instrument: InstrumentProfile(), string: 3, outputSetting: second, guitar: SyncPassEvidence(offset: 0.05, spread: 0, drift: 0))
+        let instrument = try CalibrationProfile(route: old.route, method: .personal, residualOffsetSeconds: evidence.offset, uncertaintySeconds: evidence.uncertainty, instrumentEvidence: evidence)
+        try await repo.saveCalibration(instrument, replacing: old.id)
+        try await repo.removeOutputAlignment(id: second.id)
+        #expect(try await repo.loadOutputAlignments().isEmpty)
+        #expect(try await repo.loadCalibrationProfiles() == [instrument])
+    }
+    @Test func outputWriteFailureAndFutureSchemaPreserveExistingBytes() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let repo = LocalRepository(root: root)
+        let first = try OutputAlignmentProfile(output: profile().route.output, evidence: SyncPassEvidence(offset: 0.2, spread: 0, drift: 0))
+        try await repo.saveOutputAlignment(first)
+        let url = root.appendingPathComponent("output-alignment.json"), original = try Data(contentsOf: url)
+        let failing = LocalRepository(root: root, writer: AtomicDocumentWriter { _, _ in throw CocoaError(.fileWriteOutOfSpace) })
+        await #expect(throws: CocoaError.self) { try await failing.removeOutputAlignment(id: first.id) }
+        #expect(try Data(contentsOf: url) == original)
+        let future = Data("{\"schemaVersion\":99}".utf8); try future.write(to: url)
+        await #expect(throws: StorageError.unsupportedVersion(99)) { try await repo.saveOutputAlignment(first) }
+        #expect(try Data(contentsOf: url) == future)
     }
 }

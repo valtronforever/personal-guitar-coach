@@ -2,18 +2,18 @@ import Foundation
 import Domain
 
 public enum PersonalSyncProbe {
-    public static let algorithmVersion = PersonalSyncEvidence.currentAlgorithmVersion
+    public static let algorithmVersion = "personal-sync-clicks-20-v1"
     public static let warmupBeats = 4
     public static let measuredBeats = 16
     /// Audio-rendered clicks; the first four are listening only. There are no reference guitar tones.
-    public static func request(instrument: InstrumentProfile, string: Int) throws -> TransportRequest {
+    public static func request(instrument: InstrumentProfile, string: Int, mode: TransportMode = .calibration) throws -> TransportRequest {
         let position = try FretPosition(string: string, fret: 0)
         let events = try (0..<20).map { index in
             try MusicalEvent(id: "sync-\(index)", startTick: Int64(index) * 960, durationTicks: 240,
                              kind: .note, positions: [position])
         }
         return try TransportRequest(exercise: Exercise(id: algorithmVersion, events: events), tuning: instrument.tuning,
-                                    bpm: 60, countInBars: 0, mode: .calibration, accent: false, clickVolume: 0.2, toneVolume: 0)
+                                    bpm: 60, countInBars: 0, mode: mode, accent: false, clickVolume: 0.2, toneVolume: 0)
     }
 }
 

@@ -118,7 +118,10 @@ public struct CalibrationSnapshot: Codable, Equatable, Sendable {
     public let residualOffsetSeconds: Double
     public let uncertaintySeconds: Double
     public let method: Method
-    public enum Method: String, Codable, Sendable { case measured, estimated, manual, personal }
+    public enum Method: String, Codable, Sendable {
+        case measured, estimated, manual, personal, manualPersonal
+        public var isPersonal: Bool { self == .personal || self == .manualPersonal }
+    }
 
     public init(id: UUID, revision: Int, routeSignature: String, residualOffsetSeconds: Double,
                 uncertaintySeconds: Double, method: Method) throws {

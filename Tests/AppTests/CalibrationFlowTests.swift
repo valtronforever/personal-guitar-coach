@@ -7,7 +7,8 @@ import Persistence
 @testable import PersonalGuitarCoach
 
 private struct CalibrationPermission: AudioPermissionProviding {
-    func status() -> AudioPermissionStatus { .authorized }
+    var denied = false
+    func status() -> AudioPermissionStatus { denied ? .denied : .authorized }
     func request() -> Bool { false }
 }
 private actor CalibrationRuntime: AudioRuntime {
@@ -22,6 +23,7 @@ private actor CalibrationRuntime: AudioRuntime {
     var clockDrift = 0.0
     var playedOffset = 0.05
     var dataLost = false
+    var inputStarts = 0
     func devices() -> [AudioDeviceDescriptor] {
         [AudioDeviceDescriptor(hardwareID: 1, uid: "test", name: "Synthetic interface", inputChannels: 1, outputChannels: 1,
             sampleRate: 48000, bufferFrames: changed ? 256 : 512)]
@@ -33,7 +35,7 @@ private actor CalibrationRuntime: AudioRuntime {
     func timing(device: AudioDeviceDescriptor, channel: Int, input: Bool) -> AudioDeviceTiming {
         AudioDeviceTiming(deviceLatencyFrames: input ? 4800 : 0, streamLatencyFrames: 0, safetyOffsetFrames: 0)
     }
-    func startInput(device: AudioDeviceDescriptor, channel: Int) -> AudioStreamFormat { complete = false; reads = 0; return AudioStreamFormat(sampleRate: 48000, inputChannels: 1) }
+    func startInput(device: AudioDeviceDescriptor, channel: Int) -> AudioStreamFormat { inputStarts += 1; complete = false; reads = 0; return AudioStreamFormat(sampleRate: 48000, inputChannels: 1) }
     func stopInput() {}
     func readInput() -> CaptureSnapshot? {
         reads += 1
@@ -59,7 +61,7 @@ private actor CalibrationRuntime: AudioRuntime {
     func setSampleRate(_ rate: Double, device: AudioDeviceDescriptor) {}
     func setBufferFrames(_ frames: UInt32, device: AudioDeviceDescriptor) {}
     func setInputGain(_ value: Float, device: AudioDeviceDescriptor, element: UInt32) {}
-    func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) { self.request = request }
+    func startTransport(device: AudioDeviceDescriptor, channel: Int, request: TransportRequest) { self.request = request; if request.mode == .preview { complete = false } }
     func stopTransport() { request = nil }
     func readTransport() -> TransportPlaybackSnapshot? {
         guard let request else { return nil }
@@ -90,10 +92,10 @@ private actor SynchronizationRepository: CalibrationRepository {
 }
 
 @MainActor struct CalibrationFlowTests {
-    private func setup(_ directory: URL) async -> (CalibrationRuntime, AudioSessionStore, CalibrationStore) {
+    private func setup(_ directory: URL, outputOnly: Bool = false) async -> (CalibrationRuntime, AudioSessionStore, CalibrationStore) {
         let repository = LocalRepository(root: directory), runtime = CalibrationRuntime()
-        let audio = AudioSessionStore(repository: repository, coordinator: AudioSessionCoordinator(runtime: runtime, permissions: CalibrationPermission()))
-        await audio.load(); await audio.select(inputUID: "test", outputUID: "test")
+        let audio = AudioSessionStore(repository: repository, coordinator: AudioSessionCoordinator(runtime: runtime, permissions: CalibrationPermission(denied: outputOnly)))
+        await audio.load(); await audio.select(inputUID: outputOnly ? "" : "test", outputUID: "test")
         let store = CalibrationStore(repository: repository); await store.load()
         return (runtime, audio, store)
     }
@@ -107,130 +109,187 @@ private actor SynchronizationRepository: CalibrationRepository {
         while model.running, ContinuousClock.now < deadline { try await Task.sleep(for: .milliseconds(10)) }
         #expect(!model.running)
     }
-    @Test func twoPassesRequireApplyAndFreshnessDoesNotSurviveRelaunchOrSleep() async throws {
+    private func outputMeasurement(_ runtime: CalibrationRuntime, audio: AudioSessionStore, store: CalibrationStore, offset: Double = 0.2) async throws {
+        store.wizard.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3, source: .taps)
+        try await waitForRequest(runtime, model: store.wizard)
+        for beat in 4..<20 { store.wizard.tap(hostSeconds: 100 + Double(beat) + offset) }
+        await runtime.finish(); try await waitForCompletion(store.wizard)
+    }
+    @Test func instrumentWorksWithDefaultZeroOutputAndNeedsExplicitApply() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let (runtime, audio, store) = await setup(directory)
-        let model = CalibrationModel(), instrument = InstrumentProfile()
-        for pass in 1...2 {
-            model.start(audio: audio, store: store, instrument: instrument, string: 3)
-            try await waitForRequest(runtime, model: model)
-            await runtime.finish(); try await waitForCompletion(model)
-            #expect(store.profiles.isEmpty)
-            #expect(model.stage == (pass == 1 ? .between : .result))
-            #expect(await audio.coordinator.snapshot().captureRequestID == nil)
-        }
+        let model = store.wizard, instrument = InstrumentProfile()
+        #expect(store.outputProfile(for: audio.state?.outputEndpoint) == nil)
+        model.start(audio: audio, store: store, instrument: instrument, string: 3)
+        try await waitForRequest(runtime, model: model)
+        await runtime.finish(); try await waitForCompletion(model)
         let candidate = try #require(model.candidate)
-        #expect(candidate.method == .personal && abs(candidate.residualOffsetSeconds - 0.05) < 0.001)
-        #expect(candidate.evidence == nil && candidate.personalEvidence != nil)
+        #expect(candidate.instrumentEvidence?.outputSetting == nil)
+        #expect(abs(candidate.residualOffsetSeconds - 0.05) < 0.001)
+        #expect(store.profiles.isEmpty && model.stage == .result)
+        #expect(model.timelines.count == 1 && model.timelines[0].events.count == 20)
         await model.apply(audio: audio, store: store, instrument: instrument)
         #expect(store.usableProfile(audio: audio, instrument: instrument) == candidate)
-        #expect(store.usableProfile(audio: audio, instrument: InstrumentProfile(tuning: .cStandard)) == nil)
+        model.cancel(audio: audio)
+        #expect(store.wizard.timelines[0].status == .completed) // Closing/reopening uses the same model.
         let reopened = CalibrationStore(repository: LocalRepository(root: directory)); await reopened.load()
         #expect(reopened.profile(for: candidate.route) == candidate)
         #expect(reopened.usableProfile(audio: audio, instrument: instrument) == nil)
         await audio.coordinator.suspend(); await audio.publish()
         #expect(store.usableProfile(audio: audio, instrument: instrument) == nil)
+        model.refreshContext(audio: audio, store: store, instrument: instrument, string: 3)
+        #expect(model.timelines[0].status == .stale && model.candidate == nil)
+    }
+    @Test func outputOnlyNeedsNeitherGuitarNorMicrophoneAndDoesNotEnableInstrumentScoring() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (runtime, audio, store) = await setup(directory, outputOnly: true)
+        #expect(audio.state?.calibrationRoute == nil && audio.state?.outputEndpoint != nil)
+        try await outputMeasurement(runtime, audio: audio, store: store)
+        let candidate = try #require(store.wizard.outputCandidate)
+        #expect(abs(candidate.seconds - 0.2) < 0.001)
+        #expect(await runtime.inputStarts == 0 && store.profiles.isEmpty && store.outputProfiles.isEmpty)
+        await store.wizard.applyOutput(audio: audio, store: store)
+        #expect(store.outputProfiles == [candidate] && store.profiles.isEmpty)
+        let reopened = CalibrationStore(repository: LocalRepository(root: directory)); await reopened.load()
+        #expect(reopened.outputProfile(for: audio.state?.outputEndpoint) == candidate)
+        #expect(store.wizard.timelines[0].events.count == 16)
+    }
+    @Test func separateOutputAndInstrumentOffsetsAreCombinedExactlyOnceAndResetInvalidatesInstrument() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (runtime, audio, store) = await setup(directory)
+        try await outputMeasurement(runtime, audio: audio, store: store, offset: 0.18)
+        await store.wizard.applyOutput(audio: audio, store: store)
+        let output = try #require(store.outputProfiles.first), model = store.wizard
+        model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+        try await waitForRequest(runtime, model: model)
+        await runtime.finish(offset: 0.23); try await waitForCompletion(model)
+        let candidate = try #require(model.candidate)
+        #expect(abs(candidate.instrumentEvidence!.guitar.offset - 0.05) < 0.001)
+        #expect(abs(candidate.residualOffsetSeconds - 0.23) < 0.001)
+        #expect(candidate.instrumentEvidence?.outputSetting == output)
+        #expect(model.timelines.count == 2 && model.timelines[0].source == .taps)
+        let guitar = try #require(model.timelines.last)
+        let first = try #require(guitar.events.first { $0.id == 5 })
+        #expect(abs(guitar.position(first)!.delta - 0.05) < 0.001)
+        await model.apply(audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(store.usableProfile(audio: audio, instrument: InstrumentProfile()) != nil)
+        await store.resetOutput(audio.state?.outputEndpoint)
+        #expect(store.outputProfiles.isEmpty && store.usableProfile(audio: audio, instrument: InstrumentProfile()) == nil)
+        #expect(store.profiles == [candidate]) // No rewriting historical instrument evidence.
+        #expect(model.timelines.count == 2)
     }
     @Test func failedApplyCanRetryButCandidateCannotCrossRouteRevision() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let (runtime, audio, _) = await setup(directory)
         let repository = SynchronizationRepository(), store = CalibrationStore(repository: repository)
-        await store.load()
-        let model = CalibrationModel(), instrument = InstrumentProfile()
-        for _ in 1...2 {
-            model.start(audio: audio, store: store, instrument: instrument, string: 3)
-            try await waitForRequest(runtime, model: model)
-            await runtime.finish(); try await waitForCompletion(model)
-        }
-        #expect(model.candidate != nil)
-        await model.apply(audio: audio, store: store, instrument: instrument)
-        #expect(store.profiles.isEmpty && store.usableProfile(audio: audio, instrument: instrument) == nil)
-        #expect(model.messageKey == "calibration.storageSave")
-        await repository.allowWrites()
-        await model.apply(audio: audio, store: store, instrument: instrument)
-        #expect(store.usableProfile(audio: audio, instrument: instrument) != nil)
-        await audio.coordinator.suspend(); await audio.publish()
-        await model.apply(audio: audio, store: store, instrument: instrument)
-        #expect(model.messageKey == "sync.routeChanged" && model.candidate == nil)
-        #expect(store.usableProfile(audio: audio, instrument: instrument) == nil)
-    }
-    @Test func firstPassCannotBeReusedWithChangedRoute() async throws {
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        defer { try? FileManager.default.removeItem(at: directory) }
-        let (runtime, audio, store) = await setup(directory)
-        let model = CalibrationModel()
+        await store.load(); let model = store.wizard
         model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
         try await waitForRequest(runtime, model: model)
         await runtime.finish(); try await waitForCompletion(model)
-        #expect(model.stage == .between)
-        await runtime.changeRoute(); await audio.refresh()
-        model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
-        #expect(!model.running && model.stage == .ready && model.messageKey == "sync.routeChanged")
-        #expect(store.profiles.isEmpty)
+        await model.apply(audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(store.profiles.isEmpty && model.messageKey == "calibration.storageSave")
+        await repository.allowWrites(); await model.apply(audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(store.usableProfile(audio: audio, instrument: InstrumentProfile()) != nil)
+        await audio.coordinator.suspend(); await audio.publish()
+        await model.apply(audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(model.messageKey == "sync.routeChanged" && model.candidate == nil)
+        #expect(!model.timelines.isEmpty)
     }
-    @Test func secondPassDisagreementPreservesItsMeasuredDifferenceWithoutSaving() async throws {
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        defer { try? FileManager.default.removeItem(at: directory) }
-        let (runtime, audio, store) = await setup(directory)
-        let model = CalibrationModel()
-        for offset in [0.05, 0.12] {
-            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
-            try await waitForRequest(runtime, model: model)
-            await runtime.finish(offset: offset); try await waitForCompletion(model)
-        }
-        #expect(model.failure?.reason == .disagreement && model.diagnostics?.passNumber == 2)
-        #expect(abs((model.diagnostics?.betweenPassDifference ?? 0) - 0.07) < 0.001)
-        #expect(model.candidate == nil && store.profiles.isEmpty)
-    }
-    @Test func failedFirstPassRetainsSpecificDiagnosticsAndRetryClearsThem() async throws {
-        for kind in ["count", "spread", "clock"] {
+    @Test func failedInstrumentDiagnosticsAndTimelinesSurviveStopAndCancellation() async throws {
+        for kind in ["count", "spread", "clock", "pitch", "clip", "data", "route", "cancel"] {
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
             defer { try? FileManager.default.removeItem(at: directory) }
-            let (runtime, audio, store) = await setup(directory)
-            let model = CalibrationModel()
+            let (runtime, audio, store) = await setup(directory); let model = store.wizard
             model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
             try await waitForRequest(runtime, model: model)
-            await runtime.failPass(kind); try await waitForCompletion(model)
-            #expect(model.messageKey == "sync.failure." + (kind == "clock" ? "clockDrift" : kind))
-            #expect(model.diagnostics?.passNumber == 1 && model.diagnostics?.maximumPeak == 0.2)
-            #expect(model.diagnostics?.measuredAttacks == (kind == "count" ? 15 : 16))
-            #expect(store.profiles.isEmpty && model.candidate == nil)
-            if kind == "spread" { #expect((model.diagnostics?.timing?.spread ?? 0) > 0.06) }
-            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
-            #expect(model.messageKey == nil && model.diagnostics == nil)
-            model.cancel(audio: audio); try await waitForCompletion(model)
-            #expect(model.diagnostics == nil)
-        }
-    }
-    @Test func routeChangeBadPitchClippingAndCancellationCannotSave() async throws {
-        for mode in ["route", "pitch", "clip", "data", "cancel"] {
-            let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-            defer { try? FileManager.default.removeItem(at: directory) }
-            let (runtime, audio, store) = await setup(directory)
-            let old = try CalibrationProfile(route: #require(audio.state?.calibrationRoute), method: .manual, residualOffsetSeconds: 0.02, uncertaintySeconds: 1)
-            #expect(await store.save(old))
-            let model = CalibrationModel()
-            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
-            try await waitForRequest(runtime, model: model)
-            switch mode {
-            case "route": await runtime.changeRoute(); await audio.refresh()
+            switch kind {
             case "pitch": await runtime.finish(wrongPitch: true)
             case "clip": await runtime.finish(clipped: true)
-            case "data": await runtime.failPass("data")
-            default: model.cancel(audio: audio)
+            case "route": await runtime.changeRoute(); await audio.refresh()
+            case "cancel": model.cancel(audio: audio)
+            default: await runtime.failPass(kind)
             }
             try await waitForCompletion(model)
-            #expect(model.candidate == nil && model.stage == .ready)
-            #expect(store.profiles == [old])
-            if mode == "pitch" {
-                #expect(model.failure?.reason == .wrongNotes && model.diagnostics?.wrongAttacks == 16)
+            #expect(model.candidate == nil && store.profiles.isEmpty && model.stage == .ready)
+            #expect(!model.timelines.isEmpty && model.timelines[0].cursor == nil)
+            if ["count", "spread", "clock"].contains(kind) {
+                #expect(model.failure?.reason.rawValue == (kind == "clock" ? "clockDrift" : kind))
+                #expect(model.diagnostics?.measuredAttacks == (kind == "count" ? 15 : 16))
             }
-            if mode == "clip" { #expect(model.failure?.reason == .clipping) }
-            if mode == "route" { #expect(model.audioError == .routeChanged) }
-            if mode == "data" { #expect(model.audioError == .dataLoss) }
+            if kind == "pitch" { #expect(model.failure?.reason == .wrongNotes && model.diagnostics?.wrongAttacks == 16) }
+            if kind == "clip" { #expect(model.failure?.reason == .clipping) }
+            if kind == "data" { #expect(model.audioError == .dataLoss) }
+            if kind == "route" { #expect(model.audioError == .routeChanged) }
+            if kind == "cancel" { #expect(model.timelines[0].status == .cancelled) }
             #expect(await audio.coordinator.snapshot().captureRequestID == nil)
         }
     }
+    @Test func changingOutputAfterMeasurementCannotApplyAStaleInstrumentCandidate() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (runtime, audio, store) = await setup(directory); let model = store.wizard
+        model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+        try await waitForRequest(runtime, model: model); await runtime.finish(); try await waitForCompletion(model)
+        let output = try OutputAlignmentProfile(output: try #require(audio.state?.outputEndpoint), evidence: try SyncPassEvidence(offset: 0.1, spread: 0, drift: 0))
+        #expect(await store.saveOutput(output))
+        await model.apply(audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(model.candidate == nil && model.messageKey == "sync.routeChanged" && store.profiles.isEmpty)
+    }
+    @Test func rejectedOrCancelledOutputKeepsTraceWithoutSaving() async throws {
+        for failure in ["missing", "extra", "timestamp", "cancel", "overflow"] {
+            let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+            defer { try? FileManager.default.removeItem(at: directory) }
+            let (runtime, audio, store) = await setup(directory, outputOnly: true), model = store.wizard
+            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3, source: .taps)
+            try await waitForRequest(runtime, model: model)
+            let count = failure == "missing" ? 15 : failure == "overflow" ? 129 : 16
+            for beat in 0..<count { model.tap(hostSeconds: 104.1 + Double(beat)) }
+            switch failure {
+            case "extra": model.tap(hostSeconds: 119.3)
+            case "timestamp": model.tap(hostSeconds: 119)
+            case "cancel": model.cancel(audio: audio)
+            default: break
+            }
+            await runtime.finish(); try await waitForCompletion(model)
+            #expect(model.outputCandidate == nil && store.outputProfiles.isEmpty && store.profiles.isEmpty)
+            #expect(!model.timelines[0].events.isEmpty && model.timelines[0].events.count <= 128)
+            if failure == "missing" || failure == "extra" { #expect(model.failure?.reason == .count) }
+            if failure == "timestamp" { #expect(model.failure?.reason == .timestamps) }
+            if failure == "overflow" { #expect(model.failure?.reason == .dataLoss) }
+            if failure == "cancel" { #expect(model.timelines[0].status == .cancelled) }
+            #expect(await runtime.inputStarts == 0)
+        }
+    }
+
+    @Test func manualValuesApplyWithoutARecordedPassAndRetainFailureDiagnostics() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (runtime, audio, store) = await setup(directory), model = store.wizard
+        let output = try OutputAlignmentProfile(output: #require(audio.state?.outputEndpoint), manual: ManualOutputAlignment(seconds: 0.2, reference: .additional))
+        await model.applyManualOutput(output, audio: audio, store: store)
+        #expect(store.outputProfiles == [output])
+        #expect(await runtime.inputStarts == 0)
+        model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+        try await waitForRequest(runtime, model: model)
+        await runtime.failPass("count"); try await waitForCompletion(model)
+        let trace = model.timelines
+        #expect(model.candidate == nil && model.failure?.reason == .count)
+        await model.applyManualInstrument(-0.05, audio: audio, store: store, instrument: InstrumentProfile())
+        let profile = try #require(store.usableProfile(audio: audio, instrument: InstrumentProfile()))
+        #expect(profile.method == .manualPersonal && abs(profile.residualOffsetSeconds - 0.15) < 1e-9)
+        #expect(profile.manualInstrumentEvidence?.outputSetting == output && profile.instrumentEvidence == nil)
+        #expect(model.timelines == trace && model.failure?.reason == .count)
+        let reopened = CalibrationStore(repository: LocalRepository(root: directory)); await reopened.load()
+        #expect(reopened.profiles == [profile] && reopened.outputProfiles == [output])
+        #expect(reopened.usableProfile(audio: audio, instrument: InstrumentProfile()) == nil)
+        await reopened.wizard.applyManualInstrument(-0.05, audio: audio, store: reopened, instrument: InstrumentProfile())
+        #expect(reopened.usableProfile(audio: audio, instrument: InstrumentProfile())?.method == .manualPersonal)
+        await reopened.resetOutput(audio.state?.outputEndpoint)
+        #expect(reopened.usableProfile(audio: audio, instrument: InstrumentProfile()) == nil)
+    }
+
 }

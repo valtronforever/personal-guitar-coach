@@ -130,6 +130,7 @@ final class PracticeModel {
             configuration = try PracticeConfiguration(exercise: request.exercise, instrument: targetInstrument, bpm: bpm,
                 range: Int64(firstBar - 1) * bar..<endTick,
                 route: route, calibration: calibration.usableProfile(audio: audio, instrument: targetInstrument),
+                outputAlignment: calibration.outputProfile(for: route.output),
                 lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, position: request.historicalPosition, activity: request.activityReference))
             if recordForCoach && (configuration.durationSeconds > 120 || configuration.countInSeconds + configuration.durationSeconds + configuration.finalDrainSeconds > 145) {
                 errorKey = "coach.error.tooLarge"; return
@@ -183,7 +184,7 @@ final class PracticeModel {
             if state.phase == .idle { throw AudioBackendError.cancelled }
             throw AudioBackendError.routeChanged
         }
-        if configuration.calibration?.method == .personal {
+        if configuration.calibration?.method.isPersonal == true {
             guard synchronizationSession == audio.synchronizationSession, synchronizationRevision == state.routeRevision else {
                 throw AudioBackendError.routeChanged
             }
@@ -219,11 +220,13 @@ final class PracticeModel {
             guard let playback = state.transport, playback.requestID == transport.id else { throw AudioBackendError.invalidFormat }
             if renderEpoch == nil { renderEpoch = playback.renderAnchorHostSeconds }
             let audible = displayPlan.audiblePosition(renderedFrames: playback.renderedFrames,
-                outputLatencySeconds: configuration.route.output.hardwareLatencySeconds ?? playback.presentationLatency)
+                outputLatencySeconds: configuration.visualOutputLatency(fallback: playback.presentationLatency),
+                visualAlignmentSeconds: configuration.outputAlignment?.seconds ?? 0)
             cursorTick = audible.tick; countInBeat = audible.countInBeat
             if phase == .countIn || phase == .running || phase == .finalizing {
                 displayTick = displayPlan.audibleTimelineTick(renderedFrames: playback.renderedFrames,
-                    outputLatencySeconds: configuration.route.output.hardwareLatencySeconds ?? playback.presentationLatency)
+                    outputLatencySeconds: configuration.visualOutputLatency(fallback: playback.presentationLatency),
+                    visualAlignmentSeconds: configuration.outputAlignment?.seconds ?? 0)
             }
             if audible.countInBeat == nil && phase == .countIn { try machine.beginPlaying() }
             if let renderEpoch, let analysis = state.meters?.analysis { try collector?.consume(analysis, renderEpochSeconds: renderEpoch) }

@@ -18,6 +18,7 @@ public struct AudioCoordinatorSnapshot: Sendable, Equatable {
     public let isClicking: Bool
     public let isStartingClick: Bool
     public let clock: ClockDriftSnapshot?
+    public let outputEndpoint: CalibrationEndpoint?
     public let calibrationRoute: CalibrationRoute?
     public let captureRequestID: UUID?
     public let transportRequestID: UUID?
@@ -51,6 +52,7 @@ public actor AudioSessionCoordinator {
     private var isReading = false
     private var clockTracker = ClockDriftTracker()
     private var clock: ClockDriftSnapshot?
+    private var outputEndpoint: CalibrationEndpoint?
     private var calibrationRoute: CalibrationRoute?
     private var captureRequestID: UUID?
     private var transportRequestID: UUID?
@@ -63,7 +65,7 @@ public actor AudioSessionCoordinator {
     public func snapshot() -> AudioCoordinatorSnapshot {
         AudioCoordinatorSnapshot(selection: selection, devices: devices, capabilities: capabilities, permission: permission,
             phase: phase, purpose: purpose, meters: meters, isClicking: isClicking,
-            isStartingClick: isStartingClick, clock: clock, calibrationRoute: calibrationRoute, captureRequestID: captureRequestID, transportRequestID: transportRequestID, transport: transport, routeRevision: routeRevision)
+            isStartingClick: isStartingClick, clock: clock, outputEndpoint: outputEndpoint, calibrationRoute: calibrationRoute, captureRequestID: captureRequestID, transportRequestID: transportRequestID, transport: transport, routeRevision: routeRevision)
     }
 
     public func configure(_ next: AudioRouteSelection) async {
@@ -96,18 +98,23 @@ public actor AudioSessionCoordinator {
                 guard ticket == refreshGeneration, selected == selection else { return }
                 capabilities = value
             } else { capabilities = nil }
+            var nextOutput: CalibrationEndpoint?
+            if let output = found.first(where: { $0.uid == selected.outputUID && $0.isAlive }), selected.outputChannel <= output.outputChannels {
+                let timing = await runtime.timing(device: output, channel: selected.outputChannel, input: false)
+                guard ticket == refreshGeneration, selected == selection else { return }
+                nextOutput = try? CalibrationEndpoint(uid: output.uid, channel: selected.outputChannel, sampleRate: output.sampleRate, bufferFrames: output.bufferFrames,
+                    deviceLatencyFrames: timing.deviceLatencyFrames, streamLatencyFrames: timing.streamLatencyFrames, safetyOffsetFrames: timing.safetyOffsetFrames)
+            }
+            if nextOutput != outputEndpoint { outputEndpoint = nextOutput; routeRevision &+= 1 }
             var nextRoute: CalibrationRoute?
             if let input = found.first(where: { $0.uid == selected.inputUID && $0.isAlive }),
-               let output = found.first(where: { $0.uid == selected.outputUID && $0.isAlive }),
-               selected.inputChannel <= input.inputChannels, selected.outputChannel <= output.outputChannels {
-                let inputTiming = await runtime.timing(device: input, channel: selected.inputChannel, input: true)
-                let outputTiming = await runtime.timing(device: output, channel: selected.outputChannel, input: false)
+               let nextOutput, selected.inputChannel <= input.inputChannels {
+                let timing = await runtime.timing(device: input, channel: selected.inputChannel, input: true)
                 guard ticket == refreshGeneration, selected == selection else { return }
                 nextRoute = try? CalibrationRoute(
                     input: CalibrationEndpoint(uid: input.uid, channel: selected.inputChannel, sampleRate: input.sampleRate, bufferFrames: input.bufferFrames,
-                        deviceLatencyFrames: inputTiming.deviceLatencyFrames, streamLatencyFrames: inputTiming.streamLatencyFrames, safetyOffsetFrames: inputTiming.safetyOffsetFrames),
-                    output: CalibrationEndpoint(uid: output.uid, channel: selected.outputChannel, sampleRate: output.sampleRate, bufferFrames: output.bufferFrames,
-                        deviceLatencyFrames: outputTiming.deviceLatencyFrames, streamLatencyFrames: outputTiming.streamLatencyFrames, safetyOffsetFrames: outputTiming.safetyOffsetFrames),
+                        deviceLatencyFrames: timing.deviceLatencyFrames, streamLatencyFrames: timing.streamLatencyFrames, safetyOffsetFrames: timing.safetyOffsetFrames),
+                    output: nextOutput,
                     backendVersion: "auhal-avplayer-hardware-1:" + MonophonicAnalyzer.algorithmVersion + ":" + ProcessInfo.processInfo.operatingSystemVersionString)
             }
             if nextRoute != calibrationRoute {

@@ -98,7 +98,10 @@ public struct CalibrationEvidence: Codable, Equatable, Sendable {
     }
 }
 
-public enum CalibrationMethod: String, Codable, Sendable { case estimated, manual, measured, personal }
+public enum CalibrationMethod: String, Codable, Sendable {
+    case estimated, manual, measured, personal, manualPersonal
+    public var isPersonal: Bool { self == .personal || self == .manualPersonal }
+}
 public enum RhythmCapability: String, Codable, Sendable {
     case available, approximate, routeMismatch, unmeasured, durationUnverified, missingClock, uncertain
     public var allowsTiming: Bool { self == .available || self == .approximate }
@@ -144,12 +147,19 @@ public struct CalibrationProfile: Codable, Equatable, Sendable, Identifiable {
     public let uncertaintySeconds: Double
     public let evidence: CalibrationEvidence?
     public let personalEvidence: PersonalSyncEvidence?
+    public let instrumentEvidence: InstrumentSyncEvidence?
+    public let manualInstrumentEvidence: ManualInstrumentSyncEvidence?
+    public var personalInstrument: InstrumentProfile? { personalEvidence?.instrument ?? instrumentEvidence?.instrument ?? manualInstrumentEvidence?.instrument }
+    public var outputSetting: OutputAlignmentProfile? { instrumentEvidence?.outputSetting ?? manualInstrumentEvidence?.outputSetting }
+    public var remainingInstrumentOffset: Double { instrumentEvidence?.guitar.offset ?? manualInstrumentEvidence?.remainingOffset ?? residualOffsetSeconds }
 
     public init(id: UUID = UUID(), revision: Int = 1, route: CalibrationRoute, createdAt: Date = Date(), method: CalibrationMethod,
-                residualOffsetSeconds: Double, uncertaintySeconds: Double, evidence: CalibrationEvidence? = nil, personalEvidence: PersonalSyncEvidence? = nil) throws {
+                residualOffsetSeconds: Double, uncertaintySeconds: Double, evidence: CalibrationEvidence? = nil, personalEvidence: PersonalSyncEvidence? = nil, instrumentEvidence: InstrumentSyncEvidence? = nil, manualInstrumentEvidence: ManualInstrumentSyncEvidence? = nil) throws {
         guard revision > 0, createdAt.timeIntervalSinceReferenceDate.isFinite, residualOffsetSeconds.isFinite,
               (-1...1).contains(residualOffsetSeconds), uncertaintySeconds.isFinite, (0...5).contains(uncertaintySeconds),
-              (method == .measured) == (evidence != nil), (method == .personal) == (personalEvidence != nil) else { throw CalibrationError.invalidProfile }
+              (method == .measured) == (evidence != nil), (method == .personal) == (personalEvidence != nil || instrumentEvidence != nil),
+              (personalEvidence == nil || instrumentEvidence == nil),
+              (method == .manualPersonal) == (manualInstrumentEvidence != nil) else { throw CalibrationError.invalidProfile }
         if let evidence {
             // Keep a 10-ms calibration-detector allowance in addition to measured residual jitter.
             guard uncertaintySeconds >= evidence.residualP95Seconds + 0.01 else { throw CalibrationError.invalidProfile }
@@ -158,6 +168,18 @@ public struct CalibrationProfile: Codable, Equatable, Sendable, Identifiable {
             guard abs(residualOffsetSeconds - personalEvidence.offset) < 1e-9,
                   uncertaintySeconds >= personalEvidence.uncertainty else { throw CalibrationError.invalidProfile }
         }
+        if let instrumentEvidence {
+            guard instrumentEvidence.outputSetting == nil || instrumentEvidence.outputSetting?.output == route.output,
+                  abs(residualOffsetSeconds - instrumentEvidence.offset) < 1e-9,
+                  uncertaintySeconds >= instrumentEvidence.uncertainty else { throw CalibrationError.invalidProfile }
+        }
+        if let manualInstrumentEvidence {
+            guard manualInstrumentEvidence.outputSetting == nil || manualInstrumentEvidence.outputSetting?.output == route.output,
+                  abs(residualOffsetSeconds - manualInstrumentEvidence.offset) < 1e-9,
+                  uncertaintySeconds == ManualInstrumentSyncEvidence.scoringAllowance else { throw CalibrationError.invalidProfile }
+        }
+        self.manualInstrumentEvidence = manualInstrumentEvidence
+        self.instrumentEvidence = instrumentEvidence
         self.personalEvidence = personalEvidence
         self.id = id; self.revision = revision; self.route = route; self.createdAt = createdAt; self.method = method
         self.residualOffsetSeconds = residualOffsetSeconds; self.uncertaintySeconds = uncertaintySeconds; self.evidence = evidence
@@ -171,21 +193,23 @@ public struct CalibrationProfile: Codable, Equatable, Sendable, Identifiable {
     public func rhythmCapability(route current: CalibrationRoute, toleranceSeconds: Double, durationSeconds: Double,
                                  clockDriftSeconds: Double?, onsetUncertaintySeconds: Double = 0.03) -> RhythmCapability {
         guard current == route else { return .routeMismatch }
-        guard method == .measured || method == .personal else { return .unmeasured }
+        guard method == .measured || method.isPersonal else { return .unmeasured }
         guard toleranceSeconds.isFinite, toleranceSeconds > 0, durationSeconds.isFinite, (0...86400).contains(durationSeconds),
               onsetUncertaintySeconds.isFinite, onsetUncertaintySeconds >= 0 else { return .uncertain }
         if let evidence, current.usesSeparateDevices && durationSeconds > evidence.durationSeconds { return .durationUnverified }
         guard let clockDriftSeconds, clockDriftSeconds.isFinite else { return .missingClock }
         let uncertainty = uncertaintySeconds + onsetUncertaintySeconds + abs(clockDriftSeconds)
-        return uncertainty <= toleranceSeconds / 2 ? (method == .personal ? .approximate : .available) : .uncertain
+        return uncertainty <= toleranceSeconds / 2 ? (method.isPersonal ? .approximate : .available) : .uncertain
     }
-    private enum CodingKeys: String, CodingKey { case id, revision, route, createdAt, method, residualOffsetSeconds, uncertaintySeconds, evidence, personalEvidence }
+    private enum CodingKeys: String, CodingKey { case id, revision, route, createdAt, method, residualOffsetSeconds, uncertaintySeconds, evidence, personalEvidence, instrumentEvidence, manualInstrumentEvidence }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: v.decode(UUID.self, forKey: .id), revision: v.decode(Int.self, forKey: .revision),
             route: v.decode(CalibrationRoute.self, forKey: .route), createdAt: v.decode(Date.self, forKey: .createdAt),
             method: v.decode(CalibrationMethod.self, forKey: .method), residualOffsetSeconds: v.decode(Double.self, forKey: .residualOffsetSeconds),
             uncertaintySeconds: v.decode(Double.self, forKey: .uncertaintySeconds), evidence: v.decodeIfPresent(CalibrationEvidence.self, forKey: .evidence),
-            personalEvidence: v.decodeIfPresent(PersonalSyncEvidence.self, forKey: .personalEvidence))
+            personalEvidence: v.decodeIfPresent(PersonalSyncEvidence.self, forKey: .personalEvidence),
+            instrumentEvidence: v.decodeIfPresent(InstrumentSyncEvidence.self, forKey: .instrumentEvidence),
+            manualInstrumentEvidence: v.decodeIfPresent(ManualInstrumentSyncEvidence.self, forKey: .manualInstrumentEvidence))
     }
 }

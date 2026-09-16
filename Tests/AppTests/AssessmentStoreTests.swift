@@ -19,18 +19,34 @@ private actor AssessmentRepositoryStub: PracticeRepository {
 }
 
 @MainActor struct AssessmentStoreTests {
-    private func input() throws -> PracticeEvidence {
+    private func input(manual: Bool = false) throws -> PracticeEvidence {
         let endpoint = try CalibrationEndpoint(uid: "test", channel: 1, sampleRate: 48000, bufferFrames: 512)
+        let route = try CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "test")
+        let manualEvidence = try ManualInstrumentSyncEvidence(instrument: InstrumentProfile(), outputSetting: nil, remainingOffset: 0.08)
+        let profile = try manual ? CalibrationProfile(route: route, method: .manualPersonal, residualOffsetSeconds: 0.08,
+            uncertaintySeconds: ManualInstrumentSyncEvidence.scoringAllowance, manualInstrumentEvidence: manualEvidence) : nil
         let config = try PracticeConfiguration(exercise: Exercise(id: "store-test", events: [MusicalEvent(id: "first", startTick: 0,
             durationTicks: 960, kind: .note, positions: [FretPosition(string: 6, fret: 0)])]), instrument: InstrumentProfile(), bpm: 60,
-            route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "test"),
+            route: route, calibration: profile,
             lesson: PracticeLessonReference(id: "original-lesson", version: 2))
         let time = try config.expectedStart(renderEpochSeconds: 100)
         return try PracticeEvidence(id: UUID(), configuration: config, startedAt: Date(timeIntervalSince1970: 1),
             finishedAt: Date(timeIntervalSince1970: 10), phase: .completed, reason: nil, signalConfirmed: true,
             renderEpochSeconds: 100, maximumClockDriftSeconds: 0,
-            attacks: [PracticeAttack(id: 1, normalizedOnset: time, frequency: Pitch(midi: 40).frequency(referenceA4: 440), clarity: 0.99, reliable: true)],
+            attacks: [PracticeAttack(id: 1, normalizedOnset: time + (profile?.residualOffsetSeconds ?? 0), frequency: Pitch(midi: 40).frequency(referenceA4: 440), clarity: 0.99, reliable: true)],
             clipping: [], analysisVersion: "fixture-1")
+    }
+    @Test func manualTimingHistoryKeepsTheApproximateMethodAndImmutableEnteredOffset() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let input = try input(manual: true), store = AssessmentStore(repository: LocalRepository(root: root))
+        #expect(await store.receive(input))
+        let record = try #require(try await LocalRepository(root: root).history().records.first)
+        #expect(record.calibration?.method == .manualPersonal)
+        #expect(record.assessment?.payload.rhythmCapability == .approximate)
+        #expect(record.assessment?.payload.timingScore == 100)
+        #expect(record.assessment?.payload.evidence.configuration.calibration?.manualInstrumentEvidence?.remainingOffset == 0.08)
+        #expect(try JSONDecoder().decode(PracticeRecord.self, from: JSONEncoder().encode(record)) == record)
     }
     @Test func failedSaveRetainsExactAttemptAndRetryDoesNotDuplicateOrOverwriteIt() async throws {
         let repository = AssessmentRepositoryStub(), store = AssessmentStore(repository: repository), first = try input()

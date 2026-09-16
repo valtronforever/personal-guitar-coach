@@ -99,16 +99,16 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         let attacks = Set(evidence.attacks.map(\.id))
         guard notes.map(\.id) == expected.map(\.id), !notes.isEmpty,
               Set(ids).count == ids.count, Set(ids).isSubset(of: attacks),
-              rhythmToleranceSeconds.isFinite, rhythmToleranceSeconds > 0, rhythmToleranceSeconds <= parameters.maximumRhythmTolerance(personal: evidence.configuration.calibration?.method == .personal),
+              rhythmToleranceSeconds.isFinite, rhythmToleranceSeconds > 0, rhythmToleranceSeconds <= parameters.maximumRhythmTolerance(personal: evidence.configuration.calibration?.method.isPersonal == true),
               [overallScore, pitchScore, timingScore].compactMap({ $0 }).allSatisfy({ $0.isFinite && (0...100).contains($0) }),
               rhythmCapability.allowsTiming || notes.allSatisfy({ $0.timingErrorSeconds == nil }),
               extras.allSatisfy({ extra in extra.restID.map { id in evidence.configuration.selectedEvents.contains { $0.id == id && $0.kind == .rest } } ?? true }) else {
             throw AssessmentError.invalidResult
         }
         if rhythmCapability == .approximate {
-            guard evidence.configuration.calibration?.method == .personal else { throw AssessmentError.invalidResult }
+            guard evidence.configuration.calibration?.method.isPersonal == true else { throw AssessmentError.invalidResult }
         }
-        if rhythmCapability == .available, evidence.configuration.calibration?.method == .personal { throw AssessmentError.invalidResult }
+        if rhythmCapability == .available, evidence.configuration.calibration?.method.isPersonal == true { throw AssessmentError.invalidResult }
         let tuning = evidence.configuration.exercise.requiredTuning ?? evidence.configuration.instrument.tuning
         let targets = try expected.map { try tuning.pitch(at: $0.positions[0]).frequency(referenceA4: tuning.referenceA4) }
         guard notes.map(\.targetFrequency) == targets else { throw AssessmentError.invalidResult }
