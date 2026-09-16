@@ -1,0 +1,49 @@
+lessonID: palm-muting
+lessonVersion: 1
+locale: en
+title: 'Palm muting: contact and release'
+summary: Compare ringing notes with a shorter, still pitched attack.
+goal: Adjust the picking-hand contact near the bridge while keeping an even pulse.
+body: 'Palm muting uses the edge of the picking hand near the string saddles. Start with the low open string. Touch
+  lightly near the bridge and pick; move the contact a little toward the neck to damp more, or toward the saddles
+  to let more pitch and sustain through. Excess pressure or contact too far from the bridge can leave only a dull
+  click. The useful point depends on the guitar and your hand.
+
+
+  P.M. marks the notes intended for this technique. Their notated durations still organize time; the sound decays
+  inside that interval. The synthetic preview uses a shortened envelope as a contrast with ringing notes, not a
+  realistic recording of a palm-muted guitar. Match a controlled attack and audible pitch, not its exact electronic
+  tone.
+
+
+  Compare on a clean sound first, then on modest drive at a comfortable level. Let the pick move without locking
+  the wrist against the guitar. There is no automatic palm-muting score: these short muted sounds are outside the
+  validated pitch-grading contract. Your listening decides whether pitch, evenness and damping are useful.'
+steps:
+  prepare:
+    title: Find a light contact
+    body: Check the open target in the tuner. Play one ringing note, then one with light contact near the saddle.
+      Change only the contact position, keeping picking force similar.
+  compare: &id001
+    title: One bar ringing, one bar muted
+    body: At 50 BPM play four ringing quarters, then four marked P.M. quarters. Repeat twice. Seek a clear difference
+      in decay without losing the pitch or delaying the next attack.
+  controlled-eighths: &id002
+    title: Six eighths, one quiet beat
+    body: Count 1 & 2 & 3 & 4. Pick the first six counts with the same contact; beat 4 is silent and lets the hand
+      relax. Repeat four bars, using small downstrokes at this slow tempo.
+  review:
+    title: Compare three contact positions
+    body: Try slightly closer to the saddle, your starting point, and slightly farther away. Choose the position
+      with the most useful pitch/decay balance, then repeat the two-bar contrast.
+activities:
+  compare: *id001
+  controlled-eighths: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      contrast: The muted notes decayed faster but kept an audible pitch.
+      even: Six eighth-note attacks stayed even without increasing hand pressure.
+      rest: Beat 4 was quiet and I released unnecessary effort.

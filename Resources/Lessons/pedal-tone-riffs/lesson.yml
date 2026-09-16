@@ -1,0 +1,363 @@
+schemaVersion: 3
+id: pedal-tone-riffs
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: quarter-pedal
+  kind: events
+  exerciseID: pedal-tone-riffs-quarter-pedal
+  activityID: quarter-pedal
+  eventIDs:
+  - b1-e1
+  - b1-e2
+  - b1-e3
+  - b1-e4
+  - b2-e1
+  - b2-e2
+  - b2-e3
+  - b2-e4
+- id: eighth-pedal
+  kind: events
+  exerciseID: pedal-tone-riffs-eighth-pedal
+  activityID: eighth-pedal
+  eventIDs:
+  - b1-e1
+  - b1-e2
+  - b1-e3
+  - b1-e4
+  - b1-e5
+  - b1-e6
+  - b2-e1
+  - b2-e2
+  - b2-e3
+  - b2-e4
+  - b2-e5
+  - b2-e6
+  - b3-e1
+  - b3-e2
+  - b3-e3
+  - b3-e4
+  - b3-e5
+  - b3-e6
+  - b4-e1
+  - b4-e2
+  - b4-e3
+  - b4-e4
+  - b4-e5
+  - b4-e6
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: pedal-tone-riffs-quarter-pedal
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: b1-e1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b1-e2
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: b1-e3
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b1-e4
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: b2-e1
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b2-e2
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+  - id: b2-e3
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b2-e4
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+- id: pedal-tone-riffs-eighth-pedal
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: b1-e1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b1-e2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: b1-e3
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b1-e4
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: b1-e5
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b1-e6
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b2-e1
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b2-e2
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+  - id: b2-e3
+    startTick: 4800
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b2-e4
+    startTick: 5280
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: b2-e5
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b2-e6
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b3-e1
+    startTick: 7680
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b3-e2
+    startTick: 8160
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: b3-e3
+    startTick: 8640
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b3-e4
+    startTick: 9120
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+  - id: b3-e5
+    startTick: 9600
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b3-e6
+    startTick: 10560
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b4-e1
+    startTick: 11520
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b4-e2
+    startTick: 12000
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: b4-e3
+    startTick: 12480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b4-e4
+    startTick: 12960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: b4-e5
+    startTick: 13440
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: b4-e6
+    startTick: 14400
+    durationTicks: 960
+    kind: rest
+    positions: []
+adaptation:
+  policy: transposeIntervals
+  anchorString: 6
+materials:
+- id: quarter-pedal
+  source:
+    kind: exercise
+    exerciseID: pedal-tone-riffs-quarter-pedal
+  positioning:
+    enabled: false
+- id: eighth-pedal
+  source:
+    kind: exercise
+    exerciseID: pedal-tone-riffs-eighth-pedal
+  positioning:
+    enabled: false
+activities:
+- id: quarter-pedal
+  materialID: quarter-pedal
+- id: eighth-pedal
+  materialID: eighth-pedal
+fingerings: []
+practiceEntries:
+- id: quarter-pedal
+  activityID: quarter-pedal
+  exerciseID: pedal-tone-riffs-quarter-pedal
+- id: eighth-pedal
+  activityID: eighth-pedal
+  exerciseID: pedal-tone-riffs-eighth-pedal
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - anchor
+  - rests
+  - attacks
+curriculum:
+  moduleID: rock-rhythm
+  ordinal: 38
+  durationMinutes: 20
+  prerequisites:
+  - first-frets
+  - eighth-notes
+  keywords:
+  - Riffs with a pedal tone
+  - Рифи з педальним тоном

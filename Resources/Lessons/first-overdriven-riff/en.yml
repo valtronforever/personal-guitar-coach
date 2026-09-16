@@ -1,0 +1,49 @@
+lessonID: first-overdriven-riff
+lessonVersion: 1
+locale: en
+title: Your first overdriven riff
+summary: Combine muted bass, ringing fifths and deliberate silence.
+goal: Play an original eight-bar study with clear contrast and a controlled ending.
+body: 'Overdrive makes small details of muting more noticeable. Set a comfortable output level and begin with less
+  gain than you would use for a finished sound. Learn the notes on clean guitar first, then add drive without changing
+  the rhythm or gripping harder. The app does not supply an amplifier effect; use your existing amp, pedal or monitoring
+  setup if desired.
+
+
+  This original riff combines two muted open eighths, a ringing power chord, a quarter rest and one muted open quarter.
+  P.M. applies only to the marked bass notes. Lift the picking-hand damping contact enough to let the power chord
+  ring, then stop both voices for the rest. The final bar replaces the cell with an open-root power chord lasting
+  two beats and two silent beats.
+
+
+  The preview is a synthetic pitch/time reference with a short envelope for P.M., not an overdriven-guitar recording.
+  The complete piece is self-practice: it includes simultaneous chords and muted notes with no validated automatic
+  grading. If you want measured pitch/rhythm feedback first, use the earlier clean pedal-tone exercise.'
+steps:
+  prepare:
+    title: Set the contrast on one string
+    body: Compare a muted bass and a ringing chord at the same comfortable volume. Check the unused strings with
+      drive on, then reduce gain if the attacks are indistinct.
+  main-cell: &id001
+    title: Two-bar building block
+    body: Count 1 & 2 3 4. Play the two P.M. eighths, the ringing chord on 2, silence on 3 and muted bass on 4.
+      Repeat both bars three times at 50 BPM before adding the full form.
+  eight-bar-study: &id002
+    title: Play through to the ending
+    body: Follow seven cells with changing fretted chords, then the two-beat final power chord. Stop on beat 3 of
+      the last bar and count through 4. Complete two uninterrupted performances; keep going after a small error.
+  review:
+    title: Choose one improvement for the next take
+    body: Decide whether the main issue was muted-note definition, ringing-chord noise, a rushed rest or the final
+      cutoff. Return to the relevant earlier exercise, then replay the whole study at the same tempo.
+activities:
+  main-cell: *id001
+  eight-bar-study: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      contrast: Muted bass and ringing chords were clearly different.
+      silence: The third-beat rests were silent despite the drive.
+      form: I completed all eight bars and the two-beat final silence.

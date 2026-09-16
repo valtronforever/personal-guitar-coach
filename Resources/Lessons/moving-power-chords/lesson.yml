@@ -1,0 +1,392 @@
+schemaVersion: 3
+id: moving-power-chords
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: release-move
+  kind: events
+  exerciseID: moving-power-chords-release-move
+  activityID: release-move
+  eventIDs:
+  - b1-e1
+  - b1-e2
+  - b2-e1
+  - b2-e2
+  - b3-e1
+  - b3-e2
+  - b4-e1
+  - b4-e2
+- id: keep-pulse
+  kind: events
+  exerciseID: moving-power-chords-keep-pulse
+  activityID: keep-pulse
+  eventIDs:
+  - b1-e1
+  - b1-e2
+  - b1-e3
+  - b1-e4
+  - b2-e1
+  - b2-e2
+  - b2-e3
+  - b2-e4
+  - b3-e1
+  - b3-e2
+  - b3-e3
+  - b3-e4
+  - b4-e1
+  - b4-e2
+  - b4-e3
+  - b4-e4
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: moving-power-chords-release-move
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: b1-e1
+    startTick: 0
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b1-e2
+    startTick: 1920
+    durationTicks: 1920
+    kind: rest
+    positions: []
+  - id: b2-e1
+    startTick: 3840
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e2
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+  - id: b3-e1
+    startTick: 7680
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b3-e2
+    startTick: 9600
+    durationTicks: 1920
+    kind: rest
+    positions: []
+  - id: b4-e1
+    startTick: 11520
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b4-e2
+    startTick: 13440
+    durationTicks: 1920
+    kind: rest
+    positions: []
+- id: moving-power-chords-keep-pulse
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: b1-e1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b1-e2
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b1-e3
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b1-e4
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e1
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e2
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e3
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e4
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b3-e1
+    startTick: 7680
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b3-e2
+    startTick: 8640
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b3-e3
+    startTick: 9600
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b3-e4
+    startTick: 10560
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b4-e1
+    startTick: 11520
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b4-e2
+    startTick: 12480
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b4-e3
+    startTick: 13440
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b4-e4
+    startTick: 14400
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: release-move
+  source:
+    kind: exercise
+    exerciseID: moving-power-chords-release-move
+  positioning:
+    enabled: false
+- id: keep-pulse
+  source:
+    kind: exercise
+    exerciseID: moving-power-chords-keep-pulse
+  positioning:
+    enabled: false
+activities:
+- id: release-move
+  materialID: release-move
+- id: keep-pulse
+  materialID: keep-pulse
+fingerings: []
+practiceEntries: []
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - pulse
+  - release
+  - route
+curriculum:
+  moduleID: rock-rhythm
+  ordinal: 34
+  durationMinutes: 20
+  prerequisites:
+  - power-chord-self-practice
+  keywords:
+  - Moving power chords
+  - Переміщення павер-акордів

@@ -8,6 +8,7 @@ struct StaffView: View {
     let selectedIDs: Set<String>
     var cursorTick: Int64?
     let onSelect: (String, Bool) -> Void
+    @Environment(AppSettings.self) private var settings
     @State private var key: StaffKey = .neutral
     @State private var bar: Int64 = 0
     @FocusState private var focusedID: NotationFragmentID?
@@ -119,7 +120,8 @@ struct StaffView: View {
     private func accessibility(_ symbol: StaffSymbol) -> Text {
         let duration = TimelineModel.durationLabel(symbol.fragment.duration.ticks)
         if let pitch = symbol.pitch {
-            let sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
+            var sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
+            if symbol.resolved.event.palmMuted { sounding = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, sounding) }
             if symbol.accentedAttack {
                 return symbol.fragment.duration.dotted
                     ? Text("staff.accentedDottedNote \(pitch.name) \(sounding) \(duration)")
@@ -226,6 +228,10 @@ struct StaffDrawing {
                         }
                     }
                 }
+            }
+            if symbol.resolved.event.palmMuted {
+                context.draw(Text(verbatim: "P.M.").font(.system(size: 10, weight: .bold)),
+                    at: CGPoint(x: position, y: StaffModel.canvasHeight - 26))
             }
             if symbol.accentedAttack, let pitch = symbol.pitch {
                 context.draw(Text(verbatim: ">").font(.system(size: 18, weight: .bold)),

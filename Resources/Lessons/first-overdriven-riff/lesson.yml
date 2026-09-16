@@ -1,0 +1,545 @@
+schemaVersion: 3
+id: first-overdriven-riff
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: main-cell
+  kind: events
+  exerciseID: first-overdriven-riff-main-cell
+  activityID: main-cell
+  eventIDs:
+  - b1-e1
+  - b1-e2
+  - b1-e3
+  - b1-e4
+  - b1-e5
+  - b2-e1
+  - b2-e2
+  - b2-e3
+  - b2-e4
+  - b2-e5
+- id: eight-bar-study
+  kind: events
+  exerciseID: first-overdriven-riff-eight-bar-study
+  activityID: eight-bar-study
+  eventIDs:
+  - b1-e1
+  - b1-e2
+  - b1-e3
+  - b1-e4
+  - b1-e5
+  - b2-e1
+  - b2-e2
+  - b2-e3
+  - b2-e4
+  - b2-e5
+  - b3-e1
+  - b3-e2
+  - b3-e3
+  - b3-e4
+  - b3-e5
+  - b4-e1
+  - b4-e2
+  - b4-e3
+  - b4-e4
+  - b4-e5
+  - b5-e1
+  - b5-e2
+  - b5-e3
+  - b5-e4
+  - b5-e5
+  - b6-e1
+  - b6-e2
+  - b6-e3
+  - b6-e4
+  - b6-e5
+  - b7-e1
+  - b7-e2
+  - b7-e3
+  - b7-e4
+  - b7-e5
+  - b8-e1
+  - b8-e2
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: first-overdriven-riff-main-cell
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: b1-e1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b1-e2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b1-e3
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b1-e4
+    startTick: 1920
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b1-e5
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b2-e1
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b2-e2
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b2-e3
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e4
+    startTick: 5760
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b2-e5
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+- id: first-overdriven-riff-eight-bar-study
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: b1-e1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b1-e2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b1-e3
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b1-e4
+    startTick: 1920
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b1-e5
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b2-e1
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b2-e2
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b2-e3
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b2-e4
+    startTick: 5760
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b2-e5
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b3-e1
+    startTick: 7680
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b3-e2
+    startTick: 8160
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b3-e3
+    startTick: 8640
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b3-e4
+    startTick: 9600
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b3-e5
+    startTick: 10560
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b4-e1
+    startTick: 11520
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b4-e2
+    startTick: 12000
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b4-e3
+    startTick: 12480
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b4-e4
+    startTick: 13440
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b4-e5
+    startTick: 14400
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b5-e1
+    startTick: 15360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b5-e2
+    startTick: 15840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b5-e3
+    startTick: 16320
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b5-e4
+    startTick: 17280
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b5-e5
+    startTick: 18240
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b6-e1
+    startTick: 19200
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b6-e2
+    startTick: 19680
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b6-e3
+    startTick: 20160
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b6-e4
+    startTick: 21120
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b6-e5
+    startTick: 22080
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b7-e1
+    startTick: 23040
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b7-e2
+    startTick: 23520
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b7-e3
+    startTick: 24000
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    - string: 5
+      fret: 9
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b7-e4
+    startTick: 24960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: b7-e5
+    startTick: 25920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    palmMuted: true
+  - id: b8-e1
+    startTick: 26880
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    - string: 5
+      fret: 2
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: b8-e2
+    startTick: 28800
+    durationTicks: 1920
+    kind: rest
+    positions: []
+adaptation:
+  policy: transposeIntervals
+  anchorString: 6
+materials:
+- id: main-cell
+  source:
+    kind: exercise
+    exerciseID: first-overdriven-riff-main-cell
+  positioning:
+    enabled: false
+- id: eight-bar-study
+  source:
+    kind: exercise
+    exerciseID: first-overdriven-riff-eight-bar-study
+  positioning:
+    enabled: false
+activities:
+- id: main-cell
+  materialID: main-cell
+- id: eight-bar-study
+  materialID: eight-bar-study
+fingerings: []
+practiceEntries: []
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - contrast
+  - silence
+  - form
+curriculum:
+  moduleID: rock-rhythm
+  ordinal: 40
+  durationMinutes: 25
+  prerequisites:
+  - moving-power-chords
+  - palm-muting
+  - two-hand-muting
+  - pedal-tone-riffs
+  - drop-tuning-riffs
+  keywords:
+  - Your first overdriven riff
+  - Перший риф із перевантаженням
