@@ -1,0 +1,486 @@
+schemaVersion: 3
+id: major-pentatonic
+version: 1
+difficulty: beginner
+topic: pentatonic
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: major-pattern
+    kind: events
+    exerciseID: major-pentatonic-major-pattern
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+    activityID: major-pattern
+  - id: same-tonic-contrast
+    kind: events
+    exerciseID: major-pentatonic-same-tonic-contrast
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+    activityID: same-tonic-contrast
+  - id: melodic-answer
+    kind: events
+    exerciseID: major-pentatonic-melodic-answer
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+    activityID: melodic-answer
+  - id: knowledge-check
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: major-pentatonic-major-pattern
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: major-pentatonic-same-tonic-contrast
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 6
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+  - id: major-pentatonic-melodic-answer
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: major-pattern
+    source:
+      kind: exercise
+      exerciseID: major-pentatonic-major-pattern
+    tonalRoot:
+      midi: 48
+  - id: same-tonic-contrast
+    source:
+      kind: exercise
+      exerciseID: major-pentatonic-same-tonic-contrast
+    tonalRoot:
+      midi: 48
+  - id: melodic-answer
+    source:
+      kind: exercise
+      exerciseID: major-pentatonic-melodic-answer
+    tonalRoot:
+      midi: 48
+activities:
+  - id: major-pattern
+    materialID: major-pattern
+  - id: same-tonic-contrast
+    materialID: same-tonic-contrast
+  - id: melodic-answer
+    materialID: melodic-answer
+fingerings: []
+practiceEntries:
+  - id: major-pattern
+    activityID: major-pattern
+    exerciseID: major-pentatonic-major-pattern
+  - id: same-tonic-contrast
+    activityID: same-tonic-contrast
+    exerciseID: major-pentatonic-same-tonic-contrast
+  - id: melodic-answer
+    activityID: melodic-answer
+    exerciseID: major-pentatonic-melodic-answer
+learningTasks:
+  - id: knowledge-check
+    stepID: knowledge-check
+    kind: quiz
+    itemIDs:
+      - four-seven
+      - two-six
+      - three-five
+    correctOptionID: four-seven
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - degrees
+      - contrast
+      - phrase
+curriculum:
+  moduleID: scales-positions
+  ordinal: 60
+  durationMinutes: 25
+  prerequisites:
+    - a-minor-pentatonic
+    - c-major
+  keywords:
+    - scale
+    - position
+    - гама
+    - позиція

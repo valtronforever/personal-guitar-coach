@@ -1,0 +1,78 @@
+lessonID: blues-scale
+lessonVersion: 1
+locale: en
+title: The blues scale
+summary: Add the chromatic passing note between the fourth and fifth of minor pentatonic.
+goal: Play a six-note blues scale and resolve its added note deliberately.
+body: |-
+  The minor blues scale adds one pitch to minor pentatonic: the note between 4 and 5. Its degrees are 1, flat 3, 4, flat 5, 5 and flat 7; the added pitch is also called sharp 4. Flat 5 and sharp 4 are enharmonic names for the same fret in this exercise. The semitone offsets are 0, 3, 5, 6, 7 and 10.
+
+  Hear the difference between a stable landing and a passing tone. Begin by moving 4–flat 5–5, letting the added note connect its neighbors. Then reverse 5–flat 5–4. You can use tension deliberately, but simply stopping on the added note does not explain where the phrase is going. Follow it with a clear destination and compare the effect by ear.
+
+  The first exercise ascends and descends through one octave. The top occurs once; three final beats are silent. The second compresses the two chromatic steps into eighth notes and gives the tonic two beats. These are ordinary straight eighths, not swing. The final three-bar phrase adds the blue note to a short minor-pentatonic thought and leaves a complete silent bar to hear its ending.
+
+  Practice clean at 50 BPM so each written pitch and attack can be measured. Add expressive timing or drive later, outside this exact-note attempt. A correct pitch score does not measure whether a blues phrase feels convincing. Your task is to hear the added tension, choose its resolution and leave intentional space. The scale’s intervals transpose with the instrument settings.
+steps:
+  prepare:
+    title: Locate three neighboring frets
+    body: >-
+      Find 4, the added chromatic pitch and 5 on the same string in the TAB. Play each slowly and hear the two consecutive
+      semitone steps. Recall the five-note minor-pentatonic sound before adding this sixth pitch.
+  six-note-route:
+    title: Six pitch classes through an octave
+    body: >-
+      Play quarters at 50 BPM: ascend seven attacks including the octave, descend six, then keep the final three
+      beats silent. Say the degrees on a separate pass. The complete sounding route is {{sequence}}.
+  passing-tone:
+    title: Pass upward, then downward
+    body: >-
+      In bar 1 count 1 & 2 3 4: play 4 and flat 5 as eighths, 5 as a quarter, and hold 1 for two beats. Bar 2 reverses
+      the approach: 5–flat 5–4, then the same tonic. Keep both eighths even and make the final tonic clear.
+  blues-phrase:
+    title: A phrase followed by space
+    body: >-
+      Play 1–flat 3–4–flat 5 in bar 1 and 5–4–flat 3–1 in bar 2, all quarters. Bar 3 is entirely silent. Listen
+      through the rest before repeating; do not fill it with extra exploratory notes during the scored attempt.
+  review:
+    title: Hear where the added note goes
+    body: >-
+      Compare the upward and downward passing examples, then play the phrase without the added note outside the
+      scored exercise. Restore it and notice the extra tension. Choose one measured timing/pitch error to practice
+      separately before returning to the complete phrase.
+  knowledge-check:
+    title: Check the musical relationship
+    body: Answer from the structure you practiced.
+activities:
+  six-note-route:
+    title: Six pitch classes through an octave
+    body: >-
+      Play quarters at 50 BPM: ascend seven attacks including the octave, descend six, then keep the final three
+      beats silent. Say the degrees on a separate pass. The complete sounding route is {{sequence}}.
+  passing-tone:
+    title: Pass upward, then downward
+    body: >-
+      In bar 1 count 1 & 2 3 4: play 4 and flat 5 as eighths, 5 as a quarter, and hold 1 for two beats. Bar 2 reverses
+      the approach: 5–flat 5–4, then the same tonic. Keep both eighths even and make the final tonic clear.
+  blues-phrase:
+    title: A phrase followed by space
+    body: >-
+      Play 1–flat 3–4–flat 5 in bar 1 and 5–4–flat 3–1 in bar 2, all quarters. Bar 3 is entirely silent. Listen
+      through the rest before repeating; do not fill it with extra exploratory notes during the scored attempt.
+learningTasks:
+  knowledge-check:
+    title: The added blues pitch
+    body: Where is the extra pitch that turns minor pentatonic into this blues scale?
+    items:
+      between: Between degrees 4 and 5
+      above: One semitone above degree 5
+      below: One semitone below the tonic
+    explanation: The added pitch lies between 4 and 5, creating two adjacent semitone steps. It can be named flat
+      5 or sharp 4.
+  review:
+    title: Review the phrase
+    body: Mark only observations you made yourself.
+    items:
+      pitch: I can hear the added note and distinguish it from the fourth and fifth.
+      resolution: I compared upward and downward resolutions rather than treating every note as the same kind of
+        landing.
+      space: I let the complete silent bar remain silent and listened to the phrase ending.

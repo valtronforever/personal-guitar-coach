@@ -62,6 +62,11 @@ lessons:
   - hand-synchronization
   - first-bend
   - bend-target-and-release
+  - natural-minor
+  - major-pentatonic
+  - blues-scale
+  - connect-scale-positions
+  - scale-sequences
 modules:
   - id: getting-started
     order: 1

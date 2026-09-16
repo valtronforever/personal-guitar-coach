@@ -1,0 +1,565 @@
+schemaVersion: 3
+id: natural-minor
+version: 1
+difficulty: beginner
+topic: majorScale
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: up-and-down
+    kind: events
+    exerciseID: natural-minor-up-and-down
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+    activityID: up-and-down
+  - id: parallel-comparison
+    kind: events
+    exerciseID: natural-minor-parallel-comparison
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+    activityID: parallel-comparison
+  - id: tonic-phrase
+    kind: events
+    exerciseID: natural-minor-tonic-phrase
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+    activityID: tonic-phrase
+  - id: knowledge-check
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: natural-minor-up-and-down
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: natural-minor-parallel-comparison
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 9
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 9
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 6
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e17
+        startTick: 15360
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e18
+        startTick: 16320
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+      - id: e19
+        startTick: 17280
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e20
+        startTick: 18240
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: e21
+        startTick: 19200
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e22
+        startTick: 20160
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e23
+        startTick: 21120
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e24
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: natural-minor-tonic-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: up-and-down
+    source:
+      kind: exercise
+      exerciseID: natural-minor-up-and-down
+    tonalRoot:
+      midi: 45
+  - id: parallel-comparison
+    source:
+      kind: exercise
+      exerciseID: natural-minor-parallel-comparison
+    tonalRoot:
+      midi: 45
+  - id: tonic-phrase
+    source:
+      kind: exercise
+      exerciseID: natural-minor-tonic-phrase
+    tonalRoot:
+      midi: 45
+activities:
+  - id: up-and-down
+    materialID: up-and-down
+  - id: parallel-comparison
+    materialID: parallel-comparison
+  - id: tonic-phrase
+    materialID: tonic-phrase
+fingerings: []
+practiceEntries:
+  - id: up-and-down
+    activityID: up-and-down
+    exerciseID: natural-minor-up-and-down
+  - id: parallel-comparison
+    activityID: parallel-comparison
+    exerciseID: natural-minor-parallel-comparison
+  - id: tonic-phrase
+    activityID: tonic-phrase
+    exerciseID: natural-minor-tonic-phrase
+learningTasks:
+  - id: knowledge-check
+    stepID: knowledge-check
+    kind: quiz
+    itemIDs:
+      - three
+      - two
+      - all
+    correctOptionID: three
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - steps
+      - contrast
+      - phrase
+curriculum:
+  moduleID: scales-positions
+  ordinal: 58
+  durationMinutes: 25
+  prerequisites:
+    - c-major
+  keywords:
+    - scale
+    - position
+    - гама
+    - позиція

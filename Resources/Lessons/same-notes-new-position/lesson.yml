@@ -1,6 +1,6 @@
 schemaVersion: 3
 id: same-notes-new-position
-version: 1
+version: 2
 difficulty: beginner
 topic: majorScale
 steps:
@@ -74,6 +74,9 @@ steps:
       - finish-rest
     activityID: seven
   - id: reflect
+    kind: none
+    eventIDs: []
+  - id: position-question
     kind: none
     eventIDs: []
 exercises:
@@ -297,8 +300,26 @@ practiceEntries:
 curriculum:
   moduleID: scales-positions
   ordinal: 63
-  durationMinutes: 10
-  prerequisites: []
+  durationMinutes: 25
+  prerequisites:
+    - connect-scale-positions
+    - c-major
   keywords:
     - The same notes in another position
     - Ті самі ноти в іншій позиції
+learningTasks:
+  - id: position-question
+    stepID: position-question
+    kind: quiz
+    itemIDs:
+      - same
+      - transpose
+      - first
+    correctOptionID: same
+  - id: reflect
+    stepID: reflect
+    kind: selfPractice
+    itemIDs:
+      - octave
+      - route
+      - comparison
