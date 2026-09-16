@@ -1,90 +1,350 @@
 schemaVersion: 3
 id: power-chord-self-practice
-version: 1
+version: 2
 difficulty: beginner
 topic: chords
 steps:
-  - id: play
-    kind: events
-    exerciseID: power-chord-self-practice-practice
-    eventIDs:
-      - chord
-      - rest
-    activityID: example
+- id: play
+  kind: events
+  exerciseID: power-chord-self-practice-practice
+  eventIDs:
+  - chord
+  - rest
+  activityID: example
+- id: understand
+  kind: none
+  eventIDs: []
+- id: move
+  kind: events
+  exerciseID: power-chord-moved
+  eventIDs:
+  - chord
+  - rest
+  activityID: move
+- id: octave
+  kind: events
+  exerciseID: power-chord-octave
+  eventIDs:
+  - chord
+  - rest
+  activityID: octave
+- id: separate
+  kind: events
+  exerciseID: power-chord-separate-notes
+  eventIDs:
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - n-5
+  - n-6
+  - n-7
+  - n-8
+  activityID: separate
+- id: review
+  kind: none
+  eventIDs: []
 exercises:
-  - id: power-chord-self-practice-practice
-    version: 1
-    ppq: 960
-    timeSignature: 4/4
-    defaultBPM: 60
-    minimumBPM: 40
-    maximumBPM: 100
-    tuningPolicy: fixedTuning
-    requiredTuning:
-      id: standard
-      revision: 1
-      name: Standard
-      referenceA4: 440
-      strings:
-        - number: 1
-          openPitch:
-            midi: 64
-        - number: 2
-          openPitch:
-            midi: 59
-        - number: 3
-          openPitch:
-            midi: 55
-        - number: 4
-          openPitch:
-            midi: 50
-        - number: 5
-          openPitch:
-            midi: 45
-        - number: 6
-          openPitch:
-            midi: 40
-    assessmentMode: displayOnly
-    events:
-      - id: chord
-        startTick: 0
-        durationTicks: 1920
-        kind: note
-        positions:
-          - string: 6
-            fret: 3
-          - string: 5
-            fret: 5
-      - id: rest
-        startTick: 1920
-        durationTicks: 1920
-        kind: rest
-        positions: []
+- id: power-chord-self-practice-practice
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: chord
+    startTick: 0
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+  - id: rest
+    startTick: 1920
+    durationTicks: 1920
+    kind: rest
+    positions: []
+- id: power-chord-moved
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: chord
+    startTick: 0
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+  - id: rest
+    startTick: 1920
+    durationTicks: 1920
+    kind: rest
+    positions: []
+- id: power-chord-octave
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: chord
+    startTick: 0
+    durationTicks: 1920
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    - string: 4
+      fret: 5
+  - id: rest
+    startTick: 1920
+    durationTicks: 1920
+    kind: rest
+    positions: []
+- id: power-chord-separate-notes
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: n-2
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n-3
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: n-4
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n-5
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n-6
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n-7
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n-8
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
 materials:
-  - id: example
-    source:
-      kind: exercise
-      exerciseID: power-chord-self-practice-practice
+- id: example
+  source:
+    kind: exercise
+    exerciseID: power-chord-self-practice-practice
+  tonalRoot:
+    midi: 43
+- id: move
+  source:
+    kind: exercise
+    exerciseID: power-chord-moved
+  tonalRoot:
+    midi: 45
+- id: octave
+  source:
+    kind: exercise
+    exerciseID: power-chord-octave
+  tonalRoot:
+    midi: 43
+- id: separate
+  source:
+    kind: exercise
+    exerciseID: power-chord-separate-notes
+  tonalRoot:
+    midi: 43
 activities:
-  - id: example
-    materialID: example
-practiceEntries: []
+- id: example
+  materialID: example
+- id: move
+  materialID: move
+- id: octave
+  materialID: octave
+- id: separate
+  materialID: separate
+practiceEntries:
+- id: separate-notes
+  activityID: separate
+  exerciseID: power-chord-separate-notes
 fingerings: []
 learningTasks:
-  - id: clean-chord
-    stepID: play
-    kind: selfPractice
-    itemIDs:
-      - both-notes
-      - unused-strings
-      - release
+- id: clean-chord
+  stepID: play
+  kind: selfPractice
+  itemIDs:
+  - both-notes
+  - unused-strings
+  - release
+- id: fifth-check
+  stepID: understand
+  kind: quiz
+  itemIDs:
+  - fifth
+  - major-third
+  - minor-third
+  correctOptionID: fifth
 adaptation:
   policy: transposeIntervals
 curriculum:
   moduleID: rock-rhythm
   ordinal: 33
-  durationMinutes: 10
-  prerequisites: []
+  durationMinutes: 20
+  prerequisites:
+  - chord-string-selection
+  - stop-a-note
   keywords:
-    - 'Power chords: root and fifth'
-    - 'Power chord: основний тон і квінта'
+  - 'Power chords: root and fifth'
+  - 'Power chord: основний тон і квінта'

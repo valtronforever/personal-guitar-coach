@@ -1,26 +1,66 @@
 lessonID: power-chord-self-practice
-lessonVersion: 1
+lessonVersion: 2
 locale: en
-title: 'Power chord: sound and silence'
-summary: Listen to a two-note power chord and assess your own sound.
-goal: Play two intended notes together, then stop their sound deliberately.
-body: >-
-  A power chord combines a root and a perfect fifth. It does not contain a major or minor third. Begin with a clean
-  sound so unintended ringing is easy to hear. The example follows your tuning; drop tunings can require a different
-  fingering.
+title: 'Power chords: root and fifth'
+summary: Build two-note power chords, move the shape and add an optional octave.
+goal: Keep a root and perfect fifth clear while controlling the unused strings.
+body: 'A basic two-note power chord contains a root and a perfect fifth seven semitones above it. It has no third,
+  so the voicing itself does not specify major or minor. Adding an octave reinforces the root without introducing
+  a third. This compact sound is useful in rock and metal, but first learn it with a clean input so each intended
+  tone is audible.
+
+
+  The first example uses two lower strings. In Standard presets its fretted positions are offset; a Drop preset
+  changes the lower-string position to preserve the same intended notes. Follow the actual markers. The second example
+  moves the root two frets higher and preserves the fifth. Avoid pulling the strings sideways as you make the change.
+
+
+  Play the chord references together for listening and controlled stopping. The scored entry alternates their roots
+  and fifths as separate quarter notes: stop each previous string before the next attack. That score measures individual
+  pitches and timing, while clarity of a complete chord and silence of unused strings remain your own observations.'
 steps:
   play:
-    title: Play, listen, then stop
-    body: >-
-      Use the highlighted positions. Pick only the two intended strings together, let them ring for two beats, then
-      stop the sound for two beats. Repeat slowly. Use playback as a pitch and timing reference; its synthesized
-      sound does not demonstrate picking or muting technique.
+    title: '{{root}} — hear two notes together'
+    body: Use the two marked positions. Pick only these strings, let both ring for two beats, then stop them for
+      two beats. Repeat four times at 60 BPM. If either note buzzes, test the strings separately and adjust its
+      contact before adding force. {{positions}}.
+  understand:
+    title: Know which interval you are building
+    body: Compare the two sounding targets in the first example. Their spacing is a perfect fifth, not a major or
+      minor third. Answer the short question before moving the shape.
+  move:
+    title: '{{root}} — keep the fifth while moving'
+    body: The source shape moves two frets higher. Check both destinations before playing and keep the same two-beat
+      sound/two-beat rest. Move during the rest without losing the count. In Drop the marker alignment changes;
+      use the displayed positions. {{positions}}.
+  octave:
+    title: '{{root}} — add the root again'
+    body: Add the third lower string shown in the diagram. It doubles the root one octave higher, so there is still
+      no third. Compare two-string and three-string versions at similar volume. Leave the remaining upper strings
+      quiet. {{positions}}.
+  separate:
+    title: Score the roots and fifths separately
+    body: 'Play eight quarter-note attacks over two bars: root–fifth twice, then the moved root–fifth twice. Damp
+      the previous string before every new note. Start at 60 BPM or reduce to 40–50 for cleaner changes. Review
+      repeated pitch errors before trying a faster pass. {{sequence}}.'
+  review:
+    title: Join pitch knowledge and sound control
+    body: Return to the first full chord and repeat four sound/rest cycles. Then compare the moved chord and optional
+      octave. If individual pitches pass but the complete chord is noisy, reduce the stroke depth and check unused-string
+      contact; do not treat the pitch score as a full-chord certificate.
 activities:
   example:
-    title: Your power-chord example
-    body: >-
-      Expected notes and positions: {{positions}}. Use the preview options to loop, change tempo or silence the
-      example tone while keeping the metronome.
+    title: '{{root}} power chord'
+    body: Two notes together, then a rest. {{positions}}.
+  move:
+    title: '{{root}} power chord, moved'
+    body: The same root–fifth interval from a different root. {{positions}}.
+  octave:
+    title: '{{root}} power chord with octave'
+    body: Root, fifth and octave; no third. {{notes}}.
+  separate:
+    title: Roots and fifths, one at a time
+    body: Eight separated quarter notes. {{sequence}}.
 learningTasks:
   clean-chord:
     title: Assess your attempt
@@ -29,3 +69,12 @@ learningTasks:
       both-notes: I can hear both intended notes clearly.
       unused-strings: The unused strings do not ring unintentionally.
       release: I can stop the sound during the rest.
+  fifth-check:
+    title: Identify the interval
+    body: Which interval above the root forms the basic two-note power chord?
+    items:
+      fifth: Perfect fifth
+      major-third: Major third
+      minor-third: Minor third
+    explanation: A perfect fifth is seven semitones. A third would add major or minor quality, which this basic
+      voicing omits.

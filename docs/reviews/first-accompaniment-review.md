@@ -19,3 +19,5 @@
 A fresh attempt to inspect the native app via the computer-use service returned timeoutReached (-10005); no native window interaction was established, and no UI acceptance was inferred from the signed bundle checks.
 
 Consolidated delivery in PR #69 together with strum support. Final explicit-serial Learning run: all 80 tests passed in 30.533 seconds. Together with the unchanged 23 Persistence /38 Domain /78 Audio /5 AgentBridge suites, 224 Core tests are covered; all 136 App tests also pass explicitly serially. Full consolidated CI remains required.
+
+Consolidated full CI run 35153895995 passed. PR #69 merged as 0f79d54be92a8c0c3ffae166ed7debcda310053e. Native/hardware acceptance remains pending_user.

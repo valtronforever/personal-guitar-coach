@@ -19,7 +19,7 @@ struct LessonLearningTaskTests {
         #expect(theory.manifest.exercises.isEmpty && theory.manifest.activities.isEmpty && theory.manifest.practiceEntries.isEmpty)
         #expect(theory.manifest.tasks.map(\.kind) == [.checklist, .quiz])
         let chord = try lesson("power-chord-self-practice")
-        #expect(chord.manifest.practiceEntries.isEmpty)
+        #expect(chord.manifest.practiceEntries.allSatisfy { $0.activityID != "example" })
         let exercise = try #require(chord.manifest.exercises.first)
         #expect(exercise.assessmentMode == .displayOnly && exercise.events[0].positions.count == 2)
         #expect(throws: (any Error).self) { try exercise.validateForPractice(instrument: .standard, bpm: 60) }

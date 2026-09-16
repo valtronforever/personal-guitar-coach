@@ -34,9 +34,9 @@ extension LoadedLesson {
             }
             let reference: TuningProfile
             let shift: Int
-            if manifest.adaptation?.policy == .transposeIntervals {
+            if let adaptation = manifest.adaptation, adaptation.policy == .transposeIntervals {
                 reference = source.requiredTuning ?? .standard
-                shift = tuning.strings[0].openPitch.midi - reference.strings[0].openPitch.midi
+                shift = adaptation.transposition(from: reference, to: tuning)
             } else { reference = tuning; shift = 0 }
             do {
                 return try LessonFingeringResolver.resolve(positions, sourceTuning: reference, tuning: tuning, shift: shift,
@@ -85,10 +85,10 @@ extension LoadedLesson {
         }
         let tonalRoot: Pitch?
         if let sourceRoot = material.tonalRoot {
-            guard manifest.adaptation?.policy == .transposeIntervals, let reference = first.requiredTuning else {
+            guard let adaptation = manifest.adaptation, adaptation.policy == .transposeIntervals, let reference = first.requiredTuning else {
                 throw PositioningError.incompatibleTuning
             }
-            let shift = tuning.strings[0].openPitch.midi - reference.strings[0].openPitch.midi
+            let shift = adaptation.transposition(from: reference, to: tuning)
             do { tonalRoot = try Pitch(midi: sourceRoot.midi + shift) }
             catch { throw PositioningError.regionUnplayable }
         } else { tonalRoot = nil }

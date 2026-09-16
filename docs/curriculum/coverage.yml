@@ -458,7 +458,8 @@ lessons:
       uk: 'Power chord: основний тон і квінта'
     outcomeUK: Будувати двозвучні форми від різних нот
     originalAssessment: Н+С
-    status: needs_review
+    status: authored
+    acceptance: pending
   - number: 34
     moduleID: rock-rhythm
     lessonID: moving-power-chords
@@ -512,7 +513,8 @@ lessons:
       uk: Рифи в Drop-строї
     outcomeUK: Використовувати характерні форми та відкриту нижню струну
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 40
     moduleID: rock-rhythm
     lessonID: first-overdriven-riff
