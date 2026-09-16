@@ -232,3 +232,20 @@ The flag defaults to false and survives tuning/position resolution. It is invali
 `accented: true` is an optional attack emphasis on a note (including a chord); it is invalid on rests and defaults to false. It survives activity/tuning/position resolution and is omitted from JSON when false to preserve archived digests. Staff and both TAB views show `>` only at the initial attack, never at tied continuations. Accessibility descriptions name the accent.
 
 The synthesized preview renders accented notes at 1.5 times the ordinary reference amplitude with identical onset/duration/frequency. Practice emits no reference guitar tone. This is an audible grouping guide, not an emulation of a pick attack or a measured target loudness. Current automatic scores remain pitch/timing/sustain only; author accent-specific listening criteria for self-assessment, as in `beat-accents`. The low-level bound is 0.3 × toneVolume for an accented reference chord/note, plus at most 0.25 × clickVolume, so default full-volume rendering retains headroom.
+
+### Explicit harmonic root
+
+An activity material can declare a source-tuning harmonic root independently of voice order or bass inversion:
+
+```yaml
+- id: minor-shape
+  source:
+    kind: fingering
+    fingeringID: minor-shape
+  tonalRoot:
+    midi: 45
+```
+
+`tonalRoot` requires `adaptation.policy: transposeIntervals` and an explicit source tuning on every source exercise. The resolver transposes this pitch by the same first-string shift used for the sounding material, then renders `{{root}}` using the active tuning's spelling. Fret-region changes preserve it. The root need not be the first/lowest/highest chord voice; MIDI specifies the source root while the current `root` text token shows its pitch class. `{{first}}` still means the first sounding voice and is unchanged. Without the optional field, existing first-note naming behavior remains compatible. Unsupported root transpositions fail explicitly. Changing the musical meaning of an existing published root requires a lesson version bump; saved activity titles remain frozen.
+
+For a lesson with several chords, use separate named materials/activities with their own roots. `minor-chord-shapes` and `major-chord-shapes` demonstrate a named fingering preview plus an independent monophonic arpeggio for each form. A named fingering may reference the arpeggio's source exercise: its shape activity resolves to a display-only chord, while its note activity remains assessable. Do not infer the harmonic root from the sorted string positions of `Fingering`.

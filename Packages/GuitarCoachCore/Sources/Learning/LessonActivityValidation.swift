@@ -41,6 +41,10 @@ extension LessonCatalogLoader {
             let ids = material.exerciseIDs(in: manifest)
             let contexts = ids.compactMap { exercises[$0] }
             try require(!contexts.isEmpty, "Material needs a source exercise")
+            if material.tonalRoot != nil {
+                try require(manifest.adaptation?.policy == .transposeIntervals && contexts.allSatisfy { $0.requiredTuning != nil },
+                    "Explicit tonal root requires interval-preserving adaptation and a source tuning")
+            }
             if material.policy.enabled && source.kind != .fingering {
                 try require(contexts.contains { exercise in
                     exercise.events.contains { material.eventIDs(in: exercise).contains($0.id) && !$0.positions.isEmpty }

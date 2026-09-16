@@ -83,9 +83,18 @@ extension LoadedLesson {
             LessonStep(id: step.id, kind: step.kind, exerciseID: step.exerciseID, eventIDs: step.eventIDs,
                 activityID: step.activityID, fingeringID: step.fingeringID, tool: step.tool)
         }
+        let tonalRoot: Pitch?
+        if let sourceRoot = material.tonalRoot {
+            guard manifest.adaptation?.policy == .transposeIntervals, let reference = first.requiredTuning else {
+                throw PositioningError.incompatibleTuning
+            }
+            let shift = tuning.strings[0].openPitch.midi - reference.strings[0].openPitch.midi
+            do { tonalRoot = try Pitch(midi: sourceRoot.midi + shift) }
+            catch { throw PositioningError.regionUnplayable }
+        } else { tonalRoot = nil }
         let version = manifest.version
         let renderer = ActivityTextRenderer(lessonID: id, version: version, activityID: activityID, choice: choice, region: region,
-            tuning: tuning, exercises: exercises, fingerings: resolvedShapes, steps: steps)
+            tuning: tuning, tonalRoot: tonalRoot, exercises: exercises, fingerings: resolvedShapes, steps: steps)
         return try ResolvedLessonActivity(lessonID: id, lessonVersion: version, activity: activity, material: material, choice: choice,
             instrument: instrument, exercises: exercises, fingerings: resolvedShapes, sourceMappings: mappings, steps: steps,
             english: renderer.render(english), ukrainian: renderer.render(ukrainian))

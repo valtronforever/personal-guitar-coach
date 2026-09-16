@@ -118,3 +118,9 @@ Open “Hear pitch direction / Почути напрямок мелодії”, 
 - Read and practice all eight basic-rhythm topics in English/Ukrainian, including sixteenth-note counting at 40–70 BPM and the original eight-bar study. Verify count-in changes to three beats for the 3/4 entry.
 - Listen to the two accent examples: expected emphasis moves from 1/3 to 2/4 without moving the pulse. In scored practice, verify only the metronome is audible and dynamics remains explicitly self-assessed.
 - Inspect `>` markers in normal TAB, compact practice TAB and staff in both themes and with VoiceOver; tied continuation must not announce a second accented attack. Offline images are not this native accessibility verification.
+
+### First chord forms and root labels — pending_user
+
+- Compare six-, five- and four-string minor forms and their major variants in all intended instrument presets. Check the named harmonic root against the actual chord; top voice/order must not rename it.
+- Inspect × silent strings and suggested finger numbers, including their intentional removal when Drop adaptation changes a shape. Try each full chord acoustically, then its separated-note scored entry with the preceding string stopped.
+- In both languages, move between chord preview and note practice; confirm full simultaneous chords are never presented as automatically graded. Real hand comfort and clarity are user evidence, not inferred from the pitch-class tests.
