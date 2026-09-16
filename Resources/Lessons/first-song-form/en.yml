@@ -1,0 +1,66 @@
+lessonID: first-song-form
+lessonVersion: 1
+locale: en
+title: Your first verse and chorus
+summary: Join two contrasting eight-bar sections into one original sixteen-bar study.
+goal: Play a complete verse–chorus form without losing the section boundary or final cadence.
+body: 'A song form gives a listener recognizable sections. This original study uses eight bars of verse followed
+  by eight bars of chorus. Both follow the same chord route, but the verse lets one downstroke ring for each whole
+  bar while the chorus uses four quarter-note downstrokes. The contrast comes from rhythmic activity, not from rushing
+  the tempo.
+
+
+  The route is two bars of the five-string minor form, two of the four-string minor form, two of the four-string
+  major form, then two back at the opening minor. Use the upper four strings of the earlier six-string major shape
+  for the major chord: strings 4–1 only. The note names transpose with your tuning; the form and chord relationships
+  remain consistent.
+
+
+  Learn each section separately at 50 BPM. In the complete version the chorus starts at bar 9, and the ending returns
+  to the opening minor sound at bars 15–16. Keep counting the held verse bars; a long chord is not empty time. The
+  synthetic reference and metronome support self-practice. No simultaneous-chord score is assigned.'
+steps:
+  prepare:
+    title: Map the sixteen bars
+    body: 'Locate the three chord shapes before playing. Say the route for eight bars aloud: first minor, second
+      minor, major, first minor — each lasting two bars. The major uses only strings 4–1. Check each shape once
+      with separated notes if needed.'
+  verse:
+    title: 'Verse: let each bar breathe'
+    body: Play one downstroke on beat 1 of each bar and let it ring for four counts. Keep the hand relaxed while
+      preparing the next shape. Count the two bars of each chord; do not change after just one. Repeat the eight-bar
+      verse twice.
+  chorus:
+    title: 'Chorus: increase activity, keep tempo'
+    body: Play four quarter-note downstrokes per bar. Give the first beat a modest emphasis, as the > mark indicates,
+      while retaining the same 50 BPM. Changes still occur every two bars. Work on the move into the four-string
+      major and back to the first minor before joining the sections.
+  complete:
+    title: Join verse and chorus
+    body: Listen to the count-in, then play bars 1–8 as the verse. Start quarter strokes exactly at bar 9. Continue
+      through bar 16 and let the final written chord duration finish. If you lose the place, keep counting to the
+      next two-bar boundary rather than starting the piece again mid-bar.
+  review:
+    title: Name one musical improvement
+    body: 'After one complete pass, identify one location: a chord change, the bar-9 entrance, or the ending. Repeat
+      the relevant section once and then the entire sixteen bars. Aim for a complete calm performance before adding
+      5 BPM or more expressive contrast.'
+activities:
+  verse:
+    title: Verse — eight bars
+    body: One downstroke per bar; each chord lasts two bars in the form.
+  chorus:
+    title: Chorus — eight bars
+    body: Four quarter strokes per bar with a modest first-beat accent.
+  complete:
+    title: Complete study — sixteen bars
+    body: Verse in bars 1–8; chorus in bars 9–16. Same tempo throughout.
+learningTasks:
+  review:
+    title: Review the complete performance
+    body: This is a form and accompaniment self-check, not a polyphonic detector result.
+    items:
+      form: I changed the stroke pattern at bar 9 without changing the tempo.
+      changes: Each chord stayed for two complete bars before the next change.
+      ending: I reached the final return and allowed the last written duration to finish.
+      plan: I identified one specific bar or transition for the next repetition.

@@ -1,0 +1,70 @@
+lessonID: small-barre
+lessonVersion: 1
+locale: en
+title: Your first small barre
+summary: Use one finger across two neighboring strings, then try three.
+goal: Sound the intended notes with a small barre while keeping the other strings quiet.
+body: 'A barre means one finger stops more than one string at the same fret. Start with two thin strings at fret
+  5, where a small experiment is easier to isolate than a six-string chord. The repeated finger number 1 on the
+  diagram is intentional: one index finger contacts both positions. This lesson preserves the physical fret pattern
+  when tuning changes; the note labels and sound targets follow your instrument.
+
+
+  Place the index close behind the fret wire, then pluck each string lightly. Try a small change of angle to avoid
+  placing a string in a finger crease. Use only enough pressure for a clear sound. Support the neck comfortably;
+  do not force the wrist or keep squeezing through discomfort. Release between short attempts.
+
+
+  The full two- or three-string shape is a listening example. Scored practice checks its notes separately, with
+  the previous note stopped before the next attack. The app cannot tell whether you used one finger or several,
+  so the barre itself remains a self-check.'
+steps:
+  prepare:
+    title: Begin with a short contact
+    body: Keep the instrument supported so the fretting hand does not have to hold up the neck. Find fret 5 on strings
+      1–2, without pressing yet. Rest briefly after each few attempts; stop if there is pain.
+  two-strings-shape:
+    title: One finger, two strings
+    body: Lay the index across strings 1–2 at fret 5. Pluck string 2, then string 1. If one is dull, change the
+      contact angle slightly before adding pressure. The other four strings stay silent. {{positions}}.
+  two-strings:
+    title: Alternate the two target notes
+    body: Keep the barre placed and play the six quarter-note targets at 50 BPM. Stop the previous string with the
+      picking hand so the detector hears one note at a time. Rest for the last two beats, release the barre, then
+      repeat. {{sequence}}.
+  three-strings-shape:
+    title: Extend only when two strings are clear
+    body: Use the same index to cover strings 1–3 at fret 5. Check each separately, then gently brush the three
+      together. Do not flatten the finger farther than needed or include a bass string. Return to two strings if
+      the extra contact is uncomfortable. {{positions}}.
+  three-strings:
+    title: Check three contacts in order
+    body: Play the three targets twice, one note per click, damping the previous string. The final two beats are
+      rest and release. A correct pitch score supports the audible notes, while your own observation confirms the
+      single-finger barre.
+  review:
+    title: Keep the useful adjustment
+    body: Compare two short attempts with slightly different contact angles. Choose the one that gives clarity with
+      less effort, then finish with two clean two-string repetitions. More pressure or a longer hold is not the
+      goal.
+activities:
+  two-strings-shape:
+    title: Two-string barre
+    body: Finger 1 is shared by both marked strings; the rest remain silent.
+  two-strings:
+    title: Two notes, separate attacks
+    body: Six attacks and a two-beat rest. {{sequence}}.
+  three-strings-shape:
+    title: Three-string barre
+    body: One finger covers three adjacent strings at the same fret.
+  three-strings:
+    title: Three notes, separate attacks
+    body: The three contacts repeat twice, then release during the rest. {{sequence}}.
+learningTasks:
+  review:
+    title: Review contact and effort
+    body: Only your observation confirms the physical barre; the score checks audible notes.
+    items:
+      finger: I used one index finger across the intended strings.
+      clear: Each intended string sounded clearly when tested separately.
+      release: I released between attempts and avoided unnecessary pressure.

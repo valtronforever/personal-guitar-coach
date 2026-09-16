@@ -92,3 +92,5 @@ Rhythm extension: the staff prototype now renders dotted durations and ties with
 The authored basic-rhythm module now covers all eight planned topics: pulse, eighths, rests/re-entry, slow sixteenths, accents, dots/ties, 4/4 versus 3/4, and an original eight-bar study. Accents have visible `>` markers and a louder synthesized reference; dynamics remains a listening/self-assessment criterion. The full course inventory remains distinct from software/hardware acceptance.
 
 Chord lesson materials may explicitly declare a source harmonic root, so chord names remain correct across inversions, fret positions and tuning adaptation. Initial minor/major lessons separate complete chord references from graded, deliberately separated arpeggios; simultaneous chord clarity is a listening self-check.
+
+Accompaniment references support down/up strum direction and a short ordered spread between sounding strings. TAB arrows describe picking-hand motion; graded monophonic practice remains separate. The first strumming lesson supplies timed downstroke, alternating and omitted-stroke examples, with continuing chord durations over skipped contacts.

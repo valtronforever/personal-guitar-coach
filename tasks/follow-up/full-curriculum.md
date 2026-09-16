@@ -31,4 +31,10 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 
 - Basic-rhythm continuation: six new bilingual lessons plus expanded pulse guidance complete authored topics 17–24. Added explicit accent notation/reference dynamics, conservative sixteenth tempos and original eight-bar study. See [same-agent review](../../docs/reviews/basic-rhythm-review.md). Inventory: 24 authored, 6 needing review, 98 todo; remaining modules and full acceptance stay open.
 
-- Module 4 in progress: explicit material harmonic roots avoid naming a chord from its first voice; topics 25–26 now have reviewed minor/major forms, chord previews and separated-note practice. [Review/evidence](../../docs/reviews/first-chord-forms-review.md); 77 Learning /136 App tests and signed local Release checks pass; PR/CI/merge pending.
+- Module 4 in progress: explicit material harmonic roots avoid naming a chord from its first voice; topics 25–26 now have reviewed minor/major forms, chord previews and separated-note practice. [Review/evidence](../../docs/reviews/first-chord-forms-review.md); 77 Learning /136 App tests and signed local Release checks pass; PR #68 merged after full CI.
+
+- Strum extension and topic 28 authored: direction/spread metadata, ordered reference voices and accessible TAB arrows; skipped contacts extend the preceding chord. 39 bundles/27 authored topics. Core/App/content/render checks pass as detailed in [local review](../../docs/reviews/strum-reference-review.md); signed local Release passes; PR/CI pending.
+
+- First accompaniment continuation: topics 27, 29, 31 and 32 authored; topic 30 arpeggio guidance expanded. All modules 1–4 now authored (32 topics), 43 total bundles/37 visible. Independent musical checks and editorial findings: [local review](../../docs/reviews/first-accompaniment-review.md). 43-bundle signed Release/XPC, 80 Learning tests and both parallel/explicit-serial 136-App-test runs pass. PR/CI and hardware acceptance remain open; modules 5–16 still require implementation.
+
+- The strum and first-accompaniment changes are consolidated in PR #69. Explicit serial Core/App runs avoid unrelated fixture starvation without changing any deadlines or assertions; final CI is pending.

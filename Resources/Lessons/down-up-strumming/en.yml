@@ -1,0 +1,66 @@
+lessonID: down-up-strumming
+lessonVersion: 1
+locale: en
+title: Basic down–up strumming
+summary: Keep the hand moving while changing which strokes touch the strings.
+goal: Play an even two-bar accompaniment and preserve the pulse through an omitted stroke.
+body: 'A downstroke travels from the lower-sounding strings toward the thinner ones; an upstroke returns toward
+  the bass. The ↓ and ↑ marks describe the picking hand, not the vertical order of strings in TAB. The reference
+  sounds the strings one after another across a short spread, so you can hear the direction. It is a synthetic timing
+  example, not a recording of a guitar or a model of your tone.
+
+
+  Start with a relaxed, shallow pick contact. The downstrokes in this lesson use strings 5–1 of a minor chord, while
+  upstrokes brush only strings 3–1. Keep string 6 silent. The smaller return stroke is intentional: an accompaniment
+  does not need all strings on every attack. The chord name changes with tuning; use the current positions.
+
+
+  Count aloud before adding the chord. Practice with the example and metronome at 50 BPM; repeat the two bars four
+  times, then use the metronome alone. These chord patterns are reference/self-practice activities. The app cannot
+  certify stroke direction or chord clarity from its monophonic detector.'
+steps:
+  prepare:
+    title: Set the motion first
+    body: Hold the five-string minor shape from the previous chord lesson. Touch each sounding string once to check
+      it, then relax the picking hand. Listen at a comfortable level; the > mark emphasizes the first beat of a
+      bar.
+  down-pulse:
+    title: '{{root}} minor — steady downstrokes'
+    body: 'Play one ↓ on each click: 1, 2, 3, 4. Return the hand upward without touching the strings between clicks.
+      Keep the motion small and the beat uninterrupted. Repeat both bars four times before moving on. {{positions}}.'
+  alternate:
+    title: '{{root}} minor — add the return stroke'
+    body: Count 1 & 2 & 3 & 4 &. Play ↓ on each number using strings 5–1 and ↑ on each & using strings 3–1. The
+      hand now sounds both halves of its continuous motion. Keep the & exactly between clicks; do not rush the upstroke.
+      Preview slowly, then play four repetitions.
+  air-stroke:
+    title: Keep moving through a silent stroke
+    body: 'The hand contacts the strings on ↓, skip, ↓, ↑, skip, ↑, ↓, ↑. Miss the strings on the & after 1 and
+      on beat 3, but keep the hand traveling in its down–up cycle. The preceding chord continues across each skipped
+      contact: its longer written duration means let it ring, without a new attack. First say every number and &,
+      then play both bars four times.'
+  review:
+    title: Listen for an even accompaniment
+    body: Use the metronome alone and alternate two bars of continuous down–up strokes with two bars of the omitted-stroke
+      pattern. If the pulse breaks, return to silent hand motion and counting. If unwanted bass strings ring, reduce
+      the stroke depth. Increase by 5 BPM only after four calm repetitions.
+activities:
+  down-pulse:
+    title: '{{root}} minor — quarter-note downstrokes'
+    body: ↓ means low-to-high sounding strings. Count four beats per bar.
+  alternate:
+    title: '{{root}} minor — eighth-note down–up strokes'
+    body: ↓ uses five strings; ↑ uses the three upper strings. Count every half-beat.
+  air-stroke:
+    title: '{{root}} minor — continuous motion, selected contacts'
+    body: Keep counting through the longer notes without adding a new attack. The two-bar reference repeats the
+      same pattern.
+learningTasks:
+  review:
+    title: Self-check the accompaniment
+    body: These observations are yours; no automatic chord or hand-motion score is produced.
+    items:
+      motion: I kept the hand moving through the omitted strokes.
+      pulse: I completed four two-bar repetitions without stopping the pulse.
+      strings: The lowest string stayed quiet and upstrokes touched only the intended upper strings.
+      gap: The & remained halfway between clicks when I returned to the metronome alone.

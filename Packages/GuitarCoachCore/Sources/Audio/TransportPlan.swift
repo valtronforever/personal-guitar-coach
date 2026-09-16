@@ -50,6 +50,7 @@ public struct TransportPlan: Sendable {
     public let countInTicks: Int64
     private let events: [ResolvedEvent]
     private let frequencies: [[Double]]
+    private let strumOffsets: [[Int64]]
     private var firstTicks: Int64 { request.range.upperBound - request.startTick }
     private var cycleTicks: Int64 { request.range.upperBound - request.range.lowerBound }
     public var endFrame: Int64? { request.loops ? nil : frame(at: countInTicks + firstTicks) }
@@ -62,6 +63,13 @@ public struct TransportPlan: Sendable {
         events = try request.exercise.resolvedEvents(instrument: request.tuning)
         let reference = (request.exercise.requiredTuning ?? request.tuning).referenceA4
         frequencies = try events.map { try $0.pitches.map { try $0.frequency(referenceA4: reference) } }
+        strumOffsets = events.map { item in
+            guard let pattern = item.event.strum else { return [] }
+            let strings = item.event.positions.map(\.string).sorted(by: pattern.direction == .down ? (>) : (<))
+            return item.event.positions.map { position in
+                Int64(strings.firstIndex(of: position.string)!) * pattern.spreadTicks / Int64(strings.count - 1)
+            }
+        }
         if request.mode == .preview && frequencies.joined().contains(where: { $0 >= sampleRate * 0.45 }) {
             throw AudioBackendError.invalidFormat
         }
@@ -144,6 +152,20 @@ public struct TransportPlan: Sendable {
                 guard a < b else { continue }
                 let fade = max(1, min(sampleRate * 0.005, Double(offset - onset) / 2))
                 let gain = request.toneVolume * (item.event.accented ? 0.3 : 0.2) / Double(max(1, frequencies[index].count))
+                if item.event.strum != nil {
+                    for (voice, frequency) in frequencies[index].enumerated() {
+                        let voiceOnset = frame(at: epoch + item.event.startTick + strumOffsets[index][voice] - sourceStart)
+                        let voiceStart = max(a, voiceOnset)
+                        guard voiceStart < b else { continue }
+                        let voiceFade = max(1, min(sampleRate * 0.005, Double(offset - voiceOnset) / 2))
+                        for sample in voiceStart..<b {
+                            let age = Double(sample - voiceOnset), remaining = Double(offset - sample - 1)
+                            let envelope = min(1, min(age / voiceFade, remaining / voiceFade))
+                            output[Int(sample - startFrame)] += Float(sin(2 * .pi * frequency * age / sampleRate) * gain * envelope)
+                        }
+                    }
+                    continue
+                }
                 for sample in a..<b {
                     let age = Double(sample - onset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))

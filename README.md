@@ -2,7 +2,7 @@
 
 Нативний macOS-додаток для навчання гри на гітарі українською та англійською: уроки → інтерактивний гриф і табулатура → тюнер → практика під метроном → оцінка та рекомендації.
 
-**Стан:** реалізовано навчальний цикл, тюнер, практику, оцінки й історію, шість двомовних уроків, що автоматично адаптуються до вибраного строю та обмежений нотний стан. Локальні Debug/Release .app доступні; фізичне приймання на гітарі та фінальні UI/VoiceOver перевірки залишаються відкритими.
+**Стан:** реалізовано навчальний цикл, тюнер, практику, оцінки й історію. Двомовний курс та система уроків розширюються; актуальний обсяг і перевірки наведено в [плані курсу](tasks/follow-up/full-curriculum.md). Для локального використання збираємо Release .app; фізичне приймання та фінальні UI/VoiceOver перевірки залишаються відкритими.
 
 - [AGENTS.md](AGENTS.md) — правила для агентів і розробників.
 - [Опис продукту](docs/PRODUCT.md) — сценарії, межі MVP, інтерфейс.
@@ -22,14 +22,16 @@ export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r Scripts/requirements.txt
-swift test --package-path Packages/GuitarCoachCore
-python3 Scripts/build_local.py
+swift test --package-path Packages/GuitarCoachCore --no-parallel
+swift test --no-parallel
 python3 Scripts/build_local.py --configuration release --archive
 python3 Scripts/check_local_bundle.py build/release/PersonalGuitarCoach.app --archive build/release/PersonalGuitarCoach.zip
-open build/debug/PersonalGuitarCoach.app
+open build/release/PersonalGuitarCoach.app
 ```
 
-`build_local.py` збирає ті самі App-джерела через SwiftPM, компілює String Catalogs, пакує нативну .app та ставить локальний ad-hoc підпис. Перед заміною попередньої .app перевіряє staged bundle, уроки, переклади, іконку та підпис. `--archive` також створює локальний ZIP. Production-сертифікати не потрібні. Результат — `build/debug/PersonalGuitarCoach.app` або `build/release/PersonalGuitarCoach.app`.
+`build_local.py` збирає ті самі App-джерела через SwiftPM, компілює String Catalogs, пакує нативну .app та ставить локальний ad-hoc підпис. Перед заміною попередньої .app перевіряє staged bundle, уроки, переклади, іконку та підпис. `--archive` також створює локальний ZIP. Production-сертифікати не потрібні. Наведені команди створюють `build/release/PersonalGuitarCoach.app`.
+
+Набори тестів запускаються з явним `--no-parallel`: важкі DSP/каталогові перевірки не мають затримувати планування тестових producer/consumer чи часові очікування калібрування на спільному MainActor. Їхні тайм-аути та перевірки лишаються чинними; тести конкурентного аудіобуфера виконують власні паралельні операції.
 
 ## Xcode-проєкт
 

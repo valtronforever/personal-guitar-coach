@@ -1,5 +1,23 @@
 import Foundation
 
+/// Reference articulation: direction follows the picking hand, not the vertical TAB axis.
+public enum StrumDirection: String, Codable, Sendable { case down, up }
+public struct StrumPattern: Hashable, Codable, Sendable {
+    public let direction: StrumDirection
+    /// Time from the first to the last sounding string, in the exercise PPQ.
+    public let spreadTicks: Int64
+    public init(direction: StrumDirection, spreadTicks: Int64 = 120) throws {
+        guard (1...MusicalTime.ppq).contains(spreadTicks) else { throw MusicError.invalidTime }
+        self.direction = direction; self.spreadTicks = spreadTicks
+    }
+    private enum CodingKeys: String, CodingKey { case direction, spreadTicks }
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        try self.init(direction: values.decode(StrumDirection.self, forKey: .direction),
+                      spreadTicks: values.decodeIfPresent(Int64.self, forKey: .spreadTicks) ?? 120)
+    }
+}
+
 public enum MusicalEventKind: String, Codable, Sendable { case note, rest }
 public enum AssessmentMode: String, Codable, Sendable { case monophonic, displayOnly }
 public enum TuningPolicy: String, Codable, Sendable { case fixedTuning, followsInstrument }
@@ -12,11 +30,12 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let positions: [FretPosition]
     /// Attack emphasis for notation and reference playback; not a measured dynamics target.
     public let accented: Bool
+    public let strum: StrumPattern?
     /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
     public let assessSustain: Bool
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
@@ -25,6 +44,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
               Set(positions.map(\.string)).count == positions.count else { throw MusicError.invalidEvent }
         guard !assessSustain || (kind == .note && positions.count == 1) else { throw MusicError.invalidEvent }
         guard !accented || kind == .note else { throw MusicError.invalidEvent }
+        guard strum == nil || (kind == .note && positions.count >= 2 && strum!.spreadTicks < durationTicks) else { throw MusicError.invalidEvent }
+        self.strum = strum
         self.accented = accented
         self.id = id; self.startTick = startTick; self.durationTicks = durationTicks
         self.kind = kind; self.positions = positions; self.assessSustain = assessSustain
@@ -38,16 +59,18 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         // Preserve pre-extension canonical JSON and archived coach digests.
         if assessSustain { try values.encode(true, forKey: .assessSustain) }
         if accented { try values.encode(true, forKey: .accented) }
+        try values.encodeIfPresent(strum, forKey: .strum)
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented }
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
             durationTicks: values.decode(Int64.self, forKey: .durationTicks), kind: values.decode(MusicalEventKind.self, forKey: .kind),
             positions: values.decodeIfPresent([FretPosition].self, forKey: .positions) ?? [],
             assessSustain: values.decodeIfPresent(Bool.self, forKey: .assessSustain) ?? false,
-            accented: values.decodeIfPresent(Bool.self, forKey: .accented) ?? false)
+            accented: values.decodeIfPresent(Bool.self, forKey: .accented) ?? false,
+            strum: values.decodeIfPresent(StrumPattern.self, forKey: .strum))
     }
 }
 

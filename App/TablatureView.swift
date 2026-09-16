@@ -188,6 +188,7 @@ struct TablatureView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 3) {
                         if event.accented && !segment.isContinuation { Text(verbatim: ">").bold() }
+                        if let strum = event.strum, !segment.isContinuation { Text(verbatim: strum.direction == .down ? "↓" : "↑").bold() }
                         if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
                         if event.kind == .rest { Image(systemName: "pause.fill") }
                         Text(verbatim: TimelineModel.durationLabel(event.durationTicks)).monospacedDigit()
@@ -239,6 +240,11 @@ struct TablatureView: View {
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if let strum = event.strum, !segment.isContinuation {
+            let direction = settings.localized(strum.direction == .down ? "tab.strumDown" : "tab.strumUp")
+            let emphasis = settings.localized(event.accented ? "tab.strumAccented" : "tab.strumNormal")
+            return Text("tab.strumDescription \(segment.bar + 1) \(beat) \(duration) \(notes) \(direction) \(emphasis)")
+        }
         if event.accented && !segment.isContinuation { return Text("tab.accentedNoteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)") }
         return Text("tab.noteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)")
     }

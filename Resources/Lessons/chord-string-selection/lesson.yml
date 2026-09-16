@@ -1,0 +1,367 @@
+schemaVersion: 3
+id: chord-string-selection
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: five-strings-shape
+  kind: fingering
+  exerciseID: chord-string-selection-five-strings
+  eventIDs: []
+  activityID: five-strings-shape
+  fingeringID: five-strings-shape
+- id: five-strings
+  kind: events
+  exerciseID: chord-string-selection-five-strings
+  activityID: five-strings
+  eventIDs:
+  - n-0
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - rest
+- id: four-strings-shape
+  kind: fingering
+  exerciseID: chord-string-selection-four-strings
+  eventIDs: []
+  activityID: four-strings-shape
+  fingeringID: four-strings-shape
+- id: four-strings
+  kind: events
+  exerciseID: chord-string-selection-four-strings
+  activityID: four-strings
+  eventIDs:
+  - n-0
+  - n-1
+  - n-2
+  - n-3
+  - rest
+- id: bass-comparison
+  kind: events
+  exerciseID: chord-string-selection-bass-comparison
+  activityID: bass-comparison
+  eventIDs:
+  - example-0
+  - example-1
+  - example-2
+  - example-3
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: chord-string-selection-five-strings
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n-0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+  - id: n-1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 2
+  - id: n-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+  - id: n-3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 1
+  - id: n-4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 0
+  - id: rest
+    startTick: 4800
+    durationTicks: 2880
+    kind: rest
+    positions: []
+- id: chord-string-selection-four-strings
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n-0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 0
+  - id: n-1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+  - id: n-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 3
+  - id: n-3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 1
+  - id: rest
+    startTick: 3840
+    durationTicks: 3840
+    kind: rest
+    positions: []
+- id: chord-string-selection-bass-comparison
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: example-0
+    startTick: 0
+    durationTicks: 3840
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: example-1
+    startTick: 3840
+    durationTicks: 3840
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: example-2
+    startTick: 7680
+    durationTicks: 3840
+    kind: note
+    positions:
+    - string: 4
+      fret: 0
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 3
+    - string: 1
+      fret: 1
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: example-3
+    startTick: 11520
+    durationTicks: 3840
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 0
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 3
+    - string: 1
+      fret: 1
+    strum:
+      direction: down
+      spreadTicks: 120
+adaptation:
+  policy: transposeIntervals
+materials:
+- id: five-strings-shape
+  source:
+    kind: fingering
+    fingeringID: five-strings-shape
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 45
+- id: five-strings
+  source:
+    kind: exercise
+    exerciseID: chord-string-selection-five-strings
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 45
+- id: four-strings-shape
+  source:
+    kind: fingering
+    fingeringID: four-strings-shape
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 50
+- id: four-strings
+  source:
+    kind: exercise
+    exerciseID: chord-string-selection-four-strings
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 50
+- id: bass-comparison
+  source:
+    kind: exercise
+    exerciseID: chord-string-selection-bass-comparison
+  positioning:
+    enabled: false
+activities:
+- id: five-strings-shape
+  materialID: five-strings-shape
+- id: five-strings
+  materialID: five-strings
+- id: four-strings-shape
+  materialID: four-strings-shape
+- id: four-strings
+  materialID: four-strings
+- id: bass-comparison
+  materialID: bass-comparison
+fingerings:
+- id: five-strings-shape
+  exerciseID: chord-string-selection-five-strings
+  fingering:
+    positions:
+    - string: 5
+      fret: 0
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 1
+    - string: 1
+      fret: 0
+    mutedStrings:
+    - 6
+    fingerNumbers: {}
+- id: four-strings-shape
+  exerciseID: chord-string-selection-four-strings
+  fingering:
+    positions:
+    - string: 4
+      fret: 0
+    - string: 3
+      fret: 2
+    - string: 2
+      fret: 3
+    - string: 1
+      fret: 1
+    mutedStrings:
+    - 5
+    - 6
+    fingerNumbers: {}
+practiceEntries:
+- id: five-strings
+  activityID: five-strings
+  exerciseID: chord-string-selection-five-strings
+- id: four-strings
+  activityID: four-strings
+  exerciseID: chord-string-selection-four-strings
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - markers
+  - bass
+  - silence
+curriculum:
+  moduleID: first-chords
+  ordinal: 29
+  durationMinutes: 20
+  prerequisites:
+  - minor-chord-shapes
+  - down-up-strumming
+  keywords:
+  - Choosing which chord strings sound
+  - Які струни мають звучати в акорді

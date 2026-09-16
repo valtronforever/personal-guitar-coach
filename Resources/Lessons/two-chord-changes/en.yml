@@ -1,0 +1,54 @@
+lessonID: two-chord-changes
+lessonVersion: 1
+locale: en
+title: Changing between two chords
+summary: Prepare the next shape while keeping the bar moving.
+goal: Alternate a five-string and a four-string minor shape at a steady pulse.
+body: 'Chord changes combine three decisions: where the fretting hand goes, which strings the pick touches, and
+  when the new sound begins. Practice these separately before expecting speed. Use the five-string and four-string
+  minor forms from the earlier chord lesson; their letter names adapt with tuning.
+
+
+  First form each shape silently and check its strings individually. Lift fingers only far enough to release the
+  old contact, then move them toward the next positions as a group. The two shapes use different bass strings: begin
+  the five-string stroke on string 5 and the four-string stroke on string 4. The top-string finger changes as well;
+  do not drag it sideways while gripping hard.
+
+
+  The first example leaves a real silent fourth beat for preparation. The second keeps all four beats sounding and
+  asks the new shape to be ready for the next bar. The synthetic chord sequence is a timing reference. Its simultaneous
+  chords are not graded by the monophonic detector; judge pulse and string clarity by listening.'
+steps:
+  prepare:
+    title: Know both destinations
+    body: Return to the minor-chord lesson if either shape is unclear. Alternate making the shapes without strumming,
+      then pluck each sounding string once. Do not add a speed target until both can be held comfortably.
+  prepare-change:
+    title: Use a preparation beat
+    body: Strum the displayed shape on beat 1, let it ring through beats 2–3, then stop it on beat 4 and prepare
+      the next shape. Count all four beats aloud. Four bars alternate the five-string and four-string forms. Repeat
+      the four-bar example twice at 50 BPM.
+  steady-change:
+    title: Change on the next first beat
+    body: Now strum every quarter note. The shape changes at each bar line, not after the first click of the new
+      bar. If you miss a change, keep counting to the next bar instead of squeezing or chasing the tempo. Loop four
+      bars three times; return to the preparation-beat example if the pulse repeatedly stops.
+  review:
+    title: Find the specific delay
+    body: Name the troublesome change direction and one string that is late or blocked. Work on that transition
+      for four slow changes, then return to the complete four bars. Add only 5 BPM after three uninterrupted repetitions.
+activities:
+  prepare-change:
+    title: Four bars with a preparation beat
+    body: One three-beat chord and one silent beat per bar; alternate five-string and four-string forms.
+  steady-change:
+    title: Four bars of continuous quarters
+    body: Four downstrokes per bar; the next chord starts on the next bar line.
+learningTasks:
+  review:
+    title: Review both change directions
+    body: Your listening observations stay separate from automatic note scores.
+    items:
+      ready: Both shapes were ready on the first beat in three complete repetitions.
+      pulse: I kept counting even when a change was imperfect.
+      bass: My first picked string matched the intended bass for each shape.

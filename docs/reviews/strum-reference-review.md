@@ -1,0 +1,24 @@
+# Strum references — local review
+
+2026-09-17. Same-agent review. Scope: author-controlled chord strum direction/spread, deterministic preview, accessible TAB notation and topic 28's bilingual progressive accompaniment lesson. No polyphonic score or physical hand inference.
+
+- Canonical events stay intact. Direction follows string number, not source array order or TAB screen coordinates. Spread is validated against event duration; single notes/rests cannot carry it. Practice mode emits no reference tones.
+- Preview uses individually scheduled voices, preserves age across seeking and stops at the event boundary. Tests compare against independently calculated reference waves at 44.1/48 kHz and split render chunks. Initial exact seek equality exposed absolute rounding at 44.1 kHz; the test now allows only the analytically bounded one-sample phase difference, while rejecting envelope/strum restart.
+- Compact accent+direction symbols use smaller type in the existing metadata lane. Continuations do not show a second attack symbol; direction and emphasis are included in both localized descriptions.
+- The lesson teaches quarter downstrokes, eighth down/up strokes and a timed omitted-stroke pattern with different string sets, audible previews and specific self-reflection. Scoring remains honestly unavailable for these simultaneous chords.
+- Editorial review distinguished an omitted stroke from silence: the preceding chord now has an extended duration over skipped contacts. The text explicitly asks it to ring without a new attack; literal rests are reserved for actual silence.
+- Content validation caught a malformed catalog insertion and a missing required `fingerings` array during authoring. Fixed both; repeat validation and affected catalog tests required before acceptance.
+
+Verification: 222 Core tests covered: 23 Persistence, 38 Domain, 78 Audio and 5 AgentBridge pass in the full run; after fixing the authoring fixture, all 78 Learning tests pass on repeat (including the new 8-tuning ×5-neck strum matrix). All 136 App tests pass. The earlier full Learning run failed only on the malformed lesson resource; it is not reported as passing. Content validator accepts 39 bilingual bundles; all 807 UI keys and partial 128-topic inventory pass (27 authored, 6 needing review, 95 todo). UI test sources type-check.
+
+Offline compact-TAB renders reviewed at 600px Ukrainian/light and 980px English/dark: markers fit the metadata lane without colliding with fret numbers. Artifacts in `docs/reviews/strum-reference/`. These renders do not establish native reader or VoiceOver operation. Local Release/archive built in the original workspace path; signed bundle report `docs/benchmarks/strum-reference-release-bundle.json` confirms 39 bundles/118 YAML files. XPC invalid-request probe passes without invoking a provider. PR/CI remain pending; native/hardware validation remains pending_user.
+
+CI run 35151292605 passed package tests but failed App state tests: multiple calibration request/completion waits and one practice transition exhausted their existing five-second deadlines while concurrent catalog/position tests occupied MainActor (~121 s suite contention). The runner now explicitly uses `swift test --no-parallel` for App tests. No production timing, assertions or deadlines were relaxed; Core/DSP concurrency tests keep their own scheduling. Local serial reproduction and replacement CI are tracked below. README now documents this invocation and the requested Release-only local app workflow.
+
+Local explicit serial run: all 136 App tests passed in 119.975 seconds, including all calibration/practice transitions with the original deadlines. Replacement CI remains required. Release binary is unchanged by this runner/documentation-only fix.
+
+Replacement run 35152431688 failed earlier in the Core suite: the concurrent ring test produced/read 3,792 matching packets before its unchanged five-second worker deadlines expired under concurrent synchronous DSP load; no sequence mismatch was reported. Explicit serial scheduling now also applies to Core suites, retaining the ring test's two independently queued workers and every 10,000-packet/ordering assertion. This removes unrelated fixture contention from a bounded concurrency test. A local full serial Core run and a new full CI run are required.
+
+All 222 Core tests pass in the explicit serial run (23 Persistence, 78 Learning, 38 Domain, 78 Audio, 5 AgentBridge). The two-worker 10,000-packet ring test passes in 0.001 s with the original five-second guard and no order errors. Audio-suite runtime was 228.614 s; unrelated test bodies no longer contend with its bounded handoff test.
+
+The final PR also includes the reviewed first-accompaniment course (topics 27, 29–32); its separate review and 43-bundle signed Release report supersede the earlier 39-bundle artifact for current delivery. The full course remains in progress.
