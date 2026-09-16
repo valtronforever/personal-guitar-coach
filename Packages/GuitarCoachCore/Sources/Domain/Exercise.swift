@@ -10,8 +10,9 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let durationTicks: Int64
     public let kind: MusicalEventKind
     public let positions: [FretPosition]
-    /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
+    /// Attack emphasis for notation and reference playback; not a measured dynamics target.
     public let accented: Bool
+    /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
     public let assessSustain: Bool
     public var endTick: Int64 { startTick + durationTicks }
 

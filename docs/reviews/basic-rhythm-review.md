@@ -16,7 +16,7 @@
 - App: **136 tests passed**, including independent rhythm-count goldens, 3/4 count/grouping, shifted accent positions and all preset/fret/tempo variants. Final two render tests passed with both languages/themes and compact/wide layouts.
 - Core: **216 tests passed** in the final full run (23 Persistence, 74 Learning, 38 Domain, 76 Audio, 5 AgentBridge), including the concurrency test under simultaneous DSP load. Two focused accent tests also passed (44.1/48 kHz sample-for-sample amplitude ratio, unchanged frame timing, silent practice reference and legacy encoding/rest rejection).
 - **36 bilingual lesson bundles**, **802 localized UI keys**, generated project current. Partial inventory: **24 authored, 6 needing review, 98 todo**. No claim of full-course acceptance.
-- Release/artifact checks pending.
+- Local Release/archive built at the original build/release path and ad-hoc signature/resources verified: [bundle report](../benchmarks/basic-rhythm-release-bundle.json). Signed sandbox-to-XPC probe passed without calling a provider. Four Python author-tool tests and UI source typechecking passed. No local Debug .app was created; native app launch/hardware acceptance is not claimed.
 
 ## Remaining validation
 
