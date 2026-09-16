@@ -119,3 +119,5 @@
 - `pending_user` — [Calibration failure diagnostics](follow-up/calibration-failure-diagnostics.md): specific first-pass rejection reasons and retained measurements; real-device diagnosis pending.
 
 - `pending_user` — [Independent output and instrument latency settings](follow-up/independent-latency-settings.md): default-zero output, optional taps, separate instrument measurement, signed manual settings with approximate scoring and retained diagnostic timelines.
+
+- `done` — [Visible manual latency inputs](follow-up/latency-field-affordance.md): explicit native field borders and separate examples for both latency settings.
