@@ -41,7 +41,13 @@ public enum FeedbackEngine {
             if !result.evidence.clipping.isEmpty {
                 return [advice(.inputLevel, .audioSetup, count: result.evidence.clipping.count)]
             }
-            let uncertainIDs = Set(result.notes.filter(\.uncertain).map(\.id) + (result.sustain?.notes.filter { $0.state == .uncertain }.map(\.id) ?? []) + (result.bends?.notes.filter { $0.score == nil }.map(\.id) ?? []))
+            var uncertainIDs = Set(result.notes.filter(\.uncertain).map(\.id))
+            if let sustain = result.sustain {
+                uncertainIDs.formUnion(sustain.notes.filter { $0.state == .uncertain }.map(\.id))
+            }
+            if let bends = result.bends {
+                uncertainIDs.formUnion(bends.notes.filter { $0.score == nil }.map(\.id))
+            }
             return [advice(.signal, .audioSetup, events: result.notes.filter { uncertainIDs.contains($0.id) }.map(\.id),
                 attacks: result.scoredExtras.filter(\.uncertain).map(\.id), count: uncertainIDs.count + result.uncertainExtraCount,
                 denominator: result.expectedCount)]
