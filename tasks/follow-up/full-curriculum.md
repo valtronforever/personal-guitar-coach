@@ -43,4 +43,4 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 
 - PR #69 merged as 0f79d54 after complete CI run 35153895995 passed (both Core/App suites explicitly serial, DSP regression, synthetic soak, signed bundle/XPC and CI builds).
 
-- Rock-rhythm module continuation: topics 34–38 and 40 authored, completing authored modules 1–5 (40 topics). Added validated P.M. notation/reference metadata, display-only guard, decay-preserving seeking and English/Ukrainian accessibility. Total 50 bundles/44 visible; final software/release and physical acceptance remain open.
+- Rock-rhythm module continuation: topics 34–38 and 40 authored, completing authored modules 1–5 (40 topics). Added validated P.M. notation/reference metadata, display-only guard, decay-preserving seeking and English/Ukrainian accessibility. Total 50 bundles/44 visible. All 231 Core/136 App tests, content/localization/UI-source checks and signed Release/XPC pass; CI and physical acceptance remain open.
