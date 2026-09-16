@@ -14,4 +14,6 @@
 
 - All 43 bilingual bundles validate; partial curriculum audit has 32 authored, 5 needing review, 91 todo. Modules 1–4 are authored, with acceptance still pending.
 - 80 Learning tests pass, including independent bass MIDI goldens, all chord intervals, exact section boundaries, bar lengths, string counts, single-finger barres and practice eligibility across eight tunings × five neck lengths.
-- All 136 App tests pass. After the lesson-version update, all 80 Learning tests pass again and all 43 bundles validate. 807 UI keys and the generated project pass their checks. Signed root-path Release and PR/CI remain in progress. Native en/uk reader/VoiceOver and real instrument comfort/clarity remain pending_user.
+- All 136 App tests pass. After the lesson-version update, all 80 Learning tests pass again and all 43 bundles validate. 807 UI keys and the generated project pass their checks. The explicit serial App run also passes all 136 tests in 123.065 seconds. Signed Release/archive and XPC checks pass in the original root path; report `docs/benchmarks/first-accompaniment-release-bundle.json` covers 43 bundles/130 YAML files. PR/CI remain pending. Native en/uk reader/VoiceOver and real instrument comfort/clarity remain pending_user.
+
+A fresh attempt to inspect the native app via the computer-use service returned timeoutReached (-10005); no native window interaction was established, and no UI acceptance was inferred from the signed bundle checks.
