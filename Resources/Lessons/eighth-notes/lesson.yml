@@ -1,62 +1,57 @@
 schemaVersion: 3
-id: steady-pulse
-version: 2
+id: eighth-notes
+version: 1
 difficulty: beginner
 topic: rhythm
 steps:
-  - id: quarter-pulse
+  - id: count
+    kind: none
+    eventIDs: []
+  - id: quarters
     kind: events
-    exerciseID: steady-pulse-practice
     eventIDs:
-      - quarter-one
-      - quarter-rest
-      - quarter-three
-      - quarter-four
-    activityID: lesson
-  - id: quarter-space
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+    exerciseID: eighth-notes-divide
+    activityID: divide
+  - id: eighths
     kind: events
-    exerciseID: steady-pulse-practice
     eventIDs:
-      - quarter-rest
-    activityID: lesson
-  - id: eighth-pairs
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+      - n-9
+      - n-10
+      - n-11
+      - n-12
+    exerciseID: eighth-notes-divide
+    activityID: divide
+  - id: connect
     kind: events
-    exerciseID: steady-pulse-practice
     eventIDs:
-      - eighth-1
-      - eighth-2
-      - eighth-3
-      - eighth-4
-    activityID: lesson
-  - id: eighth-spaces
-    kind: events
-    exerciseID: steady-pulse-practice
-    eventIDs:
-      - eighth-5
-      - eighth-6
-      - eighth-7
-      - eighth-8
-    activityID: lesson
-  - id: whole-pattern
-    kind: events
-    exerciseID: steady-pulse-practice
-    eventIDs:
-      - quarter-one
-      - quarter-rest
-      - quarter-three
-      - quarter-four
-      - eighth-1
-      - eighth-2
-      - eighth-3
-      - eighth-4
-      - eighth-5
-      - eighth-6
-      - eighth-7
-      - eighth-8
-    activityID: lesson
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+      - n-9
+      - n-10
+      - n-11
+      - n-12
+    exerciseID: eighth-notes-divide
+    activityID: divide
+  - id: review
+    kind: none
+    eventIDs: []
 exercises:
-  - id: steady-pulse-practice
-    version: 2
+  - id: eighth-notes-divide
+    version: 1
     ppq: 960
     timeSignature: 4/4
     defaultBPM: 60
@@ -89,104 +84,121 @@ exercises:
             midi: 40
     assessmentMode: monophonic
     events:
-      - id: quarter-one
+      - id: n-1
         startTick: 0
         durationTicks: 960
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: quarter-rest
+      - id: n-2
         startTick: 960
         durationTicks: 960
-        kind: rest
-        positions: []
-      - id: quarter-three
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-3
         startTick: 1920
         durationTicks: 960
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: quarter-four
+      - id: n-4
         startTick: 2880
         durationTicks: 960
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: eighth-1
+      - id: n-5
         startTick: 3840
         durationTicks: 480
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: eighth-2
+      - id: n-6
         startTick: 4320
         durationTicks: 480
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: eighth-3
+      - id: n-7
         startTick: 4800
         durationTicks: 480
-        kind: rest
-        positions: []
-      - id: eighth-4
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-8
         startTick: 5280
         durationTicks: 480
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: eighth-5
+      - id: n-9
         startTick: 5760
         durationTicks: 480
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: eighth-6
+      - id: n-10
         startTick: 6240
         durationTicks: 480
-        kind: rest
-        positions: []
-      - id: eighth-7
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-11
         startTick: 6720
         durationTicks: 480
         kind: note
         positions:
-          - string: 6
+          - string: 3
             fret: 0
-      - id: eighth-8
+      - id: n-12
         startTick: 7200
         durationTicks: 480
-        kind: rest
-        positions: []
-adaptation:
-  policy: fretPattern
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
 materials:
-  - id: lesson-material
+  - id: divide
     source:
-      kind: lesson
+      kind: exercise
+      exerciseID: eighth-notes-divide
     positioning:
       enabled: false
 activities:
-  - id: lesson
-    materialID: lesson-material
-fingerings: []
+  - id: divide
+    materialID: divide
 practiceEntries:
-  - id: steady-pulse-practice
-    activityID: lesson
-    exerciseID: steady-pulse-practice
+  - id: divide
+    activityID: divide
+    exerciseID: eighth-notes-divide
+fingerings: []
+adaptation:
+  policy: fretPattern
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - count
+      - sound
+      - repeat
 curriculum:
   moduleID: basic-rhythm
-  ordinal: 17
-  durationMinutes: 10
+  ordinal: 18
+  durationMinutes: 12
   prerequisites:
-    - open-strings-intro
+    - steady-pulse
   keywords:
-    - A steady pulse
-    - Рівний пульс
+    - Eighth notes
+    - Восьмі ноти

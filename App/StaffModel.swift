@@ -37,6 +37,7 @@ struct StaffSymbol: Identifiable, Sendable {
     let accidental: String?
     var id: NotationFragmentID { fragment.id }
     var eventID: String { resolved.id }
+    var accentedAttack: Bool { resolved.event.accented && !fragment.tieFromPrevious }
     var startTick: Int64 { fragment.startTick }
     var endTick: Int64 { fragment.endTick }
     var flags: Int { fragment.duration.flags }

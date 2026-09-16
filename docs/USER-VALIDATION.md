@@ -112,3 +112,9 @@ Open “Hear pitch direction / Почути напрямок мелодії”, 
 - On a clean real guitar/interface, play the dotted and tied examples at 60 BPM. Verify one attack across the barline, full vs early release, wrong sustained pitch, muted/noisy input and calibration on/off. Record device/rate/channel/tuning/gain; synthetic fixtures are not this evidence.
 - Select only the second tied bar, then pause during a tie and resume: confirm the range expands to a complete note and no hidden reattack is required.
 - Check results, archived replay/retry and the optional Record & analyze path with a sustain lesson. Confirm uncertain capture never shows a successful duration score.
+
+### Basic rhythm module and accents — pending_user
+
+- Read and practice all eight basic-rhythm topics in English/Ukrainian, including sixteenth-note counting at 40–70 BPM and the original eight-bar study. Verify count-in changes to three beats for the 3/4 entry.
+- Listen to the two accent examples: expected emphasis moves from 1/3 to 2/4 without moving the pulse. In scored practice, verify only the metronome is audible and dynamics remains explicitly self-assessed.
+- Inspect `>` markers in normal TAB, compact practice TAB and staff in both themes and with VoiceOver; tied continuation must not announce a second accented attack. Offline images are not this native accessibility verification.

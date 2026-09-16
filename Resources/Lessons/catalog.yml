@@ -30,6 +30,12 @@ lessons:
   - reading-tab
   - first-melody
   - dotted-tied-notes
+  - eighth-notes
+  - rhythm-rests
+  - slow-sixteenths
+  - beat-accents
+  - simple-meters
+  - first-rhythm-study
 modules:
   - id: getting-started
     order: 1

@@ -31,7 +31,7 @@ import Domain
                 let duration: Int64 = [240, 240, 480, 960, 1920, 480, 480, 960][i % 8]
                 events.append(try MusicalEvent(id: "n\(i)", startTick: tick, durationTicks: duration,
                     kind: i % 7 == 6 ? .rest : .note,
-                    positions: i % 7 == 6 ? [] : [FretPosition(string: i % 6 + 1, fret: i % 20)]))
+                    positions: i % 7 == 6 ? [] : [FretPosition(string: i % 6 + 1, fret: i % 20)], accented: i % 4 == 0 && i % 7 != 6))
                 tick += duration
             }
             let model = try TimelineModel(exercise: Exercise(id: "score-render", events: events), instrument: .cStandard)

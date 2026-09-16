@@ -95,6 +95,10 @@ struct PracticeScoreRow: View {
                 }
                 durationMark(event.durationTicks, continuation: segment.isContinuation)
                     .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
+                if event.accented && !segment.isContinuation {
+                    Text(verbatim: ">").font(.system(size: 12 * zoom, weight: .bold))
+                        .position(x: min(8 * zoom, width / 2), y: 151 * zoom).accessibilityHidden(true)
+                }
                 if event.kind == .rest {
                     Image(systemName: "pause.fill").font(.caption)
                         .frame(width: width, height: 6 * stringSpacing).offset(y: gridTop)
@@ -105,7 +109,7 @@ struct PracticeScoreRow: View {
                             .position(x: min(8 * zoom, width / 2), y: gridTop + (Double(position.string) - 0.5) * stringSpacing)
                     }
                 }
-            }.frame(width: width, height: 144 * zoom, alignment: .topLeading).contentShape(Rectangle())
+            }.frame(width: width, height: 160 * zoom, alignment: .topLeading).contentShape(Rectangle())
         }
         .buttonStyle(.plain).focusable().focused($focus, equals: target)
         .onAppear { if requestedFocus == target { focus = target } }
@@ -141,6 +145,7 @@ struct PracticeScoreRow: View {
         let notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if event.accented && !segment.isContinuation { return Text("tab.accentedNoteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)", bundle: localizationBundle) }
         return Text("tab.noteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)", bundle: localizationBundle)
     }
 }

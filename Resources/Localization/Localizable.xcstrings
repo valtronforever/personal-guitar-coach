@@ -13589,6 +13589,55 @@
           }
         }
       }
+    },
+    "staff.accentedNote %@ %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accented note: written %@, sounding %@, duration %@ of a whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Акцентована нота: записана %@, звучить %@, тривалість %@ від цілої ноти."
+          }
+        }
+      }
+    },
+    "staff.accentedDottedNote %@ %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accented dotted note: written %@, sounding %@, duration %@ of a whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Акцентована нота з крапкою: записана %@, звучить %@, тривалість %@ від цілої ноти."
+          }
+        }
+      }
+    },
+    "tab.accentedNoteDescription %lld %@ %@ %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accented attack. Bar %lld, beat %@, duration %@ of a whole note: %@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Акцентована атака. Такт %lld, доля %@, тривалість %@ цілої ноти: %@."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

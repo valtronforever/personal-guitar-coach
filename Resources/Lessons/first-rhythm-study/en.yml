@@ -1,0 +1,55 @@
+lessonID: first-rhythm-study
+lessonVersion: 1
+locale: en
+title: Your first rhythm study
+summary: Connect eight original bars into one musical phrase.
+goal: Play an eight-bar study with quarters, eighths, rests and a sustained ending.
+body: |-
+  This original study combines the rhythms from the module. Think in two four-bar phrases: bars 1–4 ask a question, bars 5–8 answer and settle on a long final note. Use strings 3 and 2 and the displayed frets. Keep counting through rests, and let the marked long notes ring.
+
+  Begin at 50 BPM. Work in two-bar sections, join four bars, then play all eight without stopping. A mistake is a reason to review afterward, not to restart the middle of a scored take. Preview is a synthesized pitch/rhythm guide; the > signs make phrase starts louder.
+steps:
+  first-pair:
+    title: 'Bars 1–2: quarters into eighths'
+    body: >-
+      Start with three quarter notes and a rest. In bar 2, play eighths on beats 1–2, a quarter on 3, then rest
+      on 4. Count the full rest before the next phrase. {{positions}}.
+  second-pair:
+    title: 'Bars 3–4: space and a dotted rhythm'
+    body: >-
+      Bar 3 leaves beat 2 empty. In bar 4, hold the first note for “1 and 2”, play the short note on “and” of 2,
+      then hold the next note through beats 3–4. Select these two bars and repeat slowly.
+  third-pair:
+    title: 'Bars 5–6: answer with a changed rhythm'
+    body: >-
+      Bar 5 begins with two eighths, then quarters on 2 and 3 and a rest on 4. Bar 6 has a quarter on 1, a rest
+      on 2, two eighths on 3 and a quarter on 4. Keep the silent beat from pulling the next eighths late.
+  ending:
+    title: 'Bars 7–8: make a complete ending'
+    body: >-
+      In bar 7 hold for two beats, play on 3, then rest on 4. Play the final whole note once and count all four
+      beats while it rings. Do not stop just because the attack was correct.
+  perform:
+    title: Perform the full eight bars
+    body: >-
+      Return to the full range and perform once without stopping. Review one measured timing/pitch/sustain issue,
+      practice its two-bar section, then play the full study again at the same tempo.
+  review:
+    title: Review before increasing tempo
+    body: >-
+      A complete controlled performance matters more than a fast fragment. After three full takes with steady counting
+      and clear rests, try 55 BPM. Keep the long final note audible to the end.
+activities:
+  study:
+    title: Eight-bar phrase from {{first}}
+    body: >-
+      Play in two four-bar phrases. {{sequence}}. Long marked notes include sustain assessment; exact muting during
+      rests and accent contrast are listening checks.
+learningTasks:
+  review:
+    title: Check your practice
+    body: Mark only what you actually checked; self-reports do not change audio scores.
+    items:
+      count: I reach all eight bars without losing the count.
+      sound: Rests are quiet and the long final note keeps sounding.
+      repeat: I can name and improve one specific weak section.

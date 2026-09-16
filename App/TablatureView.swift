@@ -187,6 +187,7 @@ struct TablatureView: View {
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 3) {
+                        if event.accented && !segment.isContinuation { Text(verbatim: ">").bold() }
                         if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
                         if event.kind == .rest { Image(systemName: "pause.fill") }
                         Text(verbatim: TimelineModel.durationLabel(event.durationTicks)).monospacedDigit()
@@ -238,6 +239,7 @@ struct TablatureView: View {
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if event.accented && !segment.isContinuation { return Text("tab.accentedNoteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)") }
         return Text("tab.noteDescription \(segment.bar + 1) \(beat) \(duration) \(notes)")
     }
 }

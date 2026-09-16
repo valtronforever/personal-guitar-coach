@@ -226,3 +226,9 @@ For a clean single-note exercise, an author can opt into stable-pitch coverage:
 ```
 
 The flag defaults to false and survives tuning/position resolution. It is invalid on rests, chords and display-only exercises. A marked note must last at least 0.5 seconds at the selected tempo; ordinary attack-only notes retain the 0.2-second gate. Prefer long beginner targets with a clear release/rest. A half-second A1 note stopped halfway can leave too much ambiguous release evidence to score; the app must show insufficient signal rather than guess. This is stable target-pitch coverage, not exact note-off timing, palm-mute quality, finger/string recognition or legato detection. Existing lessons are not silently regraded. The bilingual `dotted-tied-notes` lesson is the reference implementation with separate dots/ties practice entries and a duration quiz.
+
+### Accents
+
+`accented: true` is an optional attack emphasis on a note (including a chord); it is invalid on rests and defaults to false. It survives activity/tuning/position resolution and is omitted from JSON when false to preserve archived digests. Staff and both TAB views show `>` only at the initial attack, never at tied continuations. Accessibility descriptions name the accent.
+
+The synthesized preview renders accented notes at 1.5 times the ordinary reference amplitude with identical onset/duration/frequency. Practice emits no reference guitar tone. This is an audible grouping guide, not an emulation of a pick attack or a measured target loudness. Current automatic scores remain pitch/timing/sustain only; author accent-specific listening criteria for self-assessment, as in `beat-accents`. The low-level bound is 0.3 × toneVolume for an accented reference chord/note, plus at most 0.25 × clickVolume, so default full-volume rendering retains headroom.

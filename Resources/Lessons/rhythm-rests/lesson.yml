@@ -1,0 +1,172 @@
+schemaVersion: 3
+id: rhythm-rests
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: quarter
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+    exerciseID: rhythm-rests-gaps
+    activityID: gaps
+  - id: entry
+    kind: events
+    eventIDs:
+      - n-5
+      - n-6
+      - n-7
+    exerciseID: rhythm-rests-gaps
+    activityID: gaps
+  - id: late-rest
+    kind: events
+    eventIDs:
+      - n-8
+      - n-9
+    exerciseID: rhythm-rests-gaps
+    activityID: gaps
+  - id: whole
+    kind: events
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - n-7
+      - n-8
+      - n-9
+    exerciseID: rhythm-rests-gaps
+    activityID: gaps
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: rhythm-rests-gaps
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-5
+        startTick: 3840
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: n-6
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-7
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n-8
+        startTick: 5760
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: n-9
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+materials:
+  - id: gaps
+    source:
+      kind: exercise
+      exerciseID: rhythm-rests-gaps
+    positioning:
+      enabled: false
+activities:
+  - id: gaps
+    materialID: gaps
+practiceEntries:
+  - id: gaps
+    activityID: gaps
+    exerciseID: rhythm-rests-gaps
+fingerings: []
+adaptation:
+  policy: fretPattern
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - count
+      - sound
+      - repeat
+curriculum:
+  moduleID: basic-rhythm
+  ordinal: 19
+  durationMinutes: 12
+  prerequisites:
+    - eighth-notes
+    - stop-a-note
+  keywords:
+    - Rests and re-entry
+    - Паузи та повернення до гри

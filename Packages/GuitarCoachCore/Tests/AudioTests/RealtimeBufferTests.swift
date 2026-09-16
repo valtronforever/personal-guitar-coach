@@ -1,4 +1,6 @@
 import Testing
+import Foundation
+import Darwin
 import RealtimeAudio
 @testable import Audio
 
@@ -6,17 +8,20 @@ import RealtimeAudio
 struct RealtimeBufferTests {
     @Test func concurrentProducerConsumerPreserveSequence() async throws {
         let storage = try TestRing()
-        let producer = Task.detached {
+        // Dedicated queues model the separate capture/worker threads. Cooperative
+        // Tasks can be starved by concurrent synchronous DSP fixtures, exhausting
+        // the deadline before the other half of the ring test can run.
+        async let produced = onQueue {
             var index = 0
             let deadline = ContinuousClock.now + .seconds(5)
             while index < 10_000 && ContinuousClock.now < deadline {
                 var value = Float(index)
                 if GCRingWrite(storage.handle, &value, 1, 1, GCPacketInfo()) { index += 1 }
-                else { await Task.yield() }
+                else { sched_yield() }
             }
             return index
         }
-        let consumer = Task.detached {
+        async let consumed = onQueue {
             var index = 0
             var mismatches = 0
             let deadline = ContinuousClock.now + .seconds(5)
@@ -26,15 +31,22 @@ struct RealtimeBufferTests {
                 if GCRingRead(storage.handle, &value, 1, &info) {
                     if value != Float(index) { mismatches += 1 }
                     index += 1
-                } else { await Task.yield() }
+                } else { sched_yield() }
             }
             return (index, mismatches)
         }
-        let produced = await producer.value
-        let consumed = await consumer.value
-        #expect(produced == 10_000)
-        #expect(consumed.0 == 10_000)
-        #expect(consumed.1 == 0)
+        let (writes, reads) = await (produced, consumed)
+        #expect(writes == 10_000)
+        #expect(reads.0 == 10_000)
+        #expect(reads.1 == 0)
+    }
+
+    private func onQueue<T: Sendable>(_ body: @escaping @Sendable () -> T) async -> T {
+        await withCheckedContinuation { continuation in
+            DispatchQueue(label: "ring-test-" + UUID().uuidString, qos: .userInitiated).async {
+                continuation.resume(returning: body())
+            }
+        }
     }
 
     @Test func selectsOneInterleavedChannelAndPreservesTime() throws {

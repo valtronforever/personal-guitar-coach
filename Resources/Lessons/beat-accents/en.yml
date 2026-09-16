@@ -1,0 +1,51 @@
+lessonID: beat-accents
+lessonVersion: 1
+locale: en
+title: Strong beats and accents
+summary: Emphasize selected attacks without changing their time.
+goal: Move the accent while maintaining an even pulse.
+body: |-
+  An accent is a more prominent attack, not a longer beat or an earlier note. In 4/4, beat 1 introduces the bar; beat 3 is often a secondary point of support. Musicians can also deliberately emphasize other beats. The > sign marks an accented attack.
+
+  Preview makes marked notes louder so you can hear the grouping. During scored practice only the metronome plays: the score checks pitch and timing. Compare the loudness contrast by ear; this lesson does not claim an automatic dynamics score. Leave headroom at the interface so the strongest attack does not clip.
+steps:
+  listen:
+    title: Hear the grouping
+    body: >-
+      Preview the quarter-note example once. Listen for the louder 1 and 3. Tap all four beats at one speed; the
+      accent does not create a pause after itself.
+  play:
+    title: Make contrast with a small motion
+    body: >-
+      Play the two bars at 60 BPM. Make unaccented notes slightly quieter instead of attacking accented notes with
+      excessive force. Keep every onset on its click. {{positions}}.
+  shift:
+    title: Move the emphasis
+    body: >-
+      Count “1 and TWO and 3 and FOUR and”. Play all eight attacks equally spaced. Keep the wrist motion regular
+      while the volume changes. Preview demonstrates the new grouping.
+  repeat:
+    title: Check the accent without rushing
+    body: >-
+      Play both bars, then listen to yourself with the metronome. If accented notes arrive early, reduce the loudness
+      difference and rebuild it gradually. Do not turn timing errors into a dynamics judgment.
+  review:
+    title: Review before increasing tempo
+    body: >-
+      First establish audible contrast at the same tempo. Increase speed only after you can change from 1/3 to 2/4
+      without moving the pulse.
+activities:
+  strong:
+    title: Accent beats 1 and 3 on {{first}}
+    body: The > marks beats 1 and 3 in each bar. Keep 2 and 4 quieter but clear. {{sequence}}.
+  backbeat:
+    title: Accent beats 2 and 4 on {{first}}
+    body: Keep eight equal attacks; emphasize the numbered 2 and 4, not their following “and”. {{sequence}}.
+learningTasks:
+  review:
+    title: Check your practice
+    body: Mark only what you actually checked; self-reports do not change audio scores.
+    items:
+      count: Accented notes are neither early nor longer beats.
+      sound: I hear a controlled loudness contrast without clipping.
+      repeat: I can emphasize either 1/3 or 2/4 at the same tempo.

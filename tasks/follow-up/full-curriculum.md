@@ -9,7 +9,7 @@ Implement all 128 lessons from [the original agreed table](../../docs/CURRICULUM
 ## Delivery and audit
 
 1. **Curriculum/library foundation + modules 1–2** — authored; full acceptance audit pending. Stable 16-module organization, ordering, prerequisites/duration, reading progress, continue, combined search/filter/sort, lesson navigation. Preserve exact 128-topic inventory in a coverage ledger.
-2. **Modules 3–6** — in progress. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
+2. **Modules 3–6** — in progress; all eight module-3 topics now authored. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
 3. **Modules 7–10** — todo. Articulation-aware lesson/notation and measurable pitch-contour practice for slides/legato/bends/vibrato; scales; compound/odd time, triplets/shuffle, missing clicks; harmony.
 4. **Modules 11–14** — todo. Listen/reproduce tasks, guided improvisation; advanced guitar techniques and original genre studies. Add required functionality rather than silently reducing R lessons to generic checklists.
 5. **Modules 15–16** — todo. Sound/recording and repertoire/composition workflow, original complete studies, self-practice recording support where required.
@@ -28,3 +28,5 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - Stage 1 merged in PR #64 (3ebb81e). Low-register follow-up adds A1–B1 grading, fixes repeated low-note onset suppression, and enables graded Standard/Drop practice. See the [same-agent review](../../docs/reviews/low-register-practice-review.md); real-guitar validation stays pending. Full course remains in progress.
 
 - Rhythm extension implemented: dotted/tied staff fragments retain one canonical attack; selected/resumed ranges include whole events. Opt-in sustained-note coverage has bounded trace evidence, honest uncertainty and versioned scoring. Topic 22 now has a substantive bilingual lesson with two practice entries. Software/release evidence: [local review](../../docs/reviews/rhythm-duration-review.md). Native/hardware checks remain pending; other module 3–6 topics remain open.
+
+- Basic-rhythm continuation: six new bilingual lessons plus expanded pulse guidance complete authored topics 17–24. Added explicit accent notation/reference dynamics, conservative sixteenth tempos and original eight-bar study. See [same-agent review](../../docs/reviews/basic-rhythm-review.md). Inventory: 24 authored, 6 needing review, 98 todo; remaining modules and full acceptance stay open.

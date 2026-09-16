@@ -298,7 +298,8 @@ lessons:
       uk: Рівний пульс
     outcomeUK: Грати четверті під метроном
     originalAssessment: Н
-    status: needs_review
+    status: authored
+    evidence: Expanded pulse/counting and feedback guidance in both languages; existing musical versions preserved.
   - number: 18
     moduleID: basic-rhythm
     lessonID: eighth-notes
@@ -307,7 +308,8 @@ lessons:
       uk: Восьмі ноти
     outcomeUK: Утримувати два рівні звуки на долю
     originalAssessment: Н
-    status: todo
+    status: authored
+    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
   - number: 19
     moduleID: basic-rhythm
     lessonID: rhythm-rests
@@ -316,7 +318,8 @@ lessons:
       uk: Паузи та точний початок після паузи
     outcomeUK: Зберігати внутрішній рахунок під час мовчання
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
   - number: 20
     moduleID: basic-rhythm
     lessonID: slow-sixteenths
@@ -325,7 +328,8 @@ lessons:
       uk: Шістнадцяті в повільному темпі
     outcomeUK: Рахувати й грати чотири поділи долі
     originalAssessment: Н
-    status: todo
+    status: authored
+    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
   - number: 21
     moduleID: basic-rhythm
     lessonID: beat-accents
@@ -334,7 +338,8 @@ lessons:
       uk: Сильні долі та акценти
     outcomeUK: Змінювати акценти, зберігаючи пульс
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
   - number: 22
     moduleID: basic-rhythm
     lessonID: dotted-tied-notes
@@ -353,7 +358,8 @@ lessons:
       uk: Розміри 4/4 та 3/4
     outcomeUK: Відчувати початок такту й різне групування долей
     originalAssessment: Н
-    status: todo
+    status: authored
+    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
   - number: 24
     moduleID: basic-rhythm
     lessonID: first-rhythm-study
@@ -362,7 +368,8 @@ lessons:
       uk: Перший ритмічний етюд
     outcomeUK: Зіграти вісім тактів із нотами та паузами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
   - number: 25
     moduleID: first-chords
     lessonID: minor-chord-shapes

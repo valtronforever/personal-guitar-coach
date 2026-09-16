@@ -120,6 +120,11 @@ struct StaffView: View {
         let duration = TimelineModel.durationLabel(symbol.fragment.duration.ticks)
         if let pitch = symbol.pitch {
             let sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
+            if symbol.accentedAttack {
+                return symbol.fragment.duration.dotted
+                    ? Text("staff.accentedDottedNote \(pitch.name) \(sounding) \(duration)")
+                    : Text("staff.accentedNote \(pitch.name) \(sounding) \(duration)")
+            }
             if symbol.fragment.duration.dotted { return Text("staff.dottedNote \(pitch.name) \(sounding) \(duration)") }
             return Text("staff.note \(pitch.name) \(sounding) \(duration)")
         }
@@ -221,6 +226,10 @@ struct StaffDrawing {
                         }
                     }
                 }
+            }
+            if symbol.accentedAttack, let pitch = symbol.pitch {
+                context.draw(Text(verbatim: ">").font(.system(size: 18, weight: .bold)),
+                    at: CGPoint(x: position, y: max(12, min(98, StaffModel.y(step: pitch.step) - 44))))
             }
             if duration.dotted {
                 let step = symbol.pitch?.step
