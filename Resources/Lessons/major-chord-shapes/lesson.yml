@@ -1,0 +1,724 @@
+schemaVersion: 3
+id: major-chord-shapes
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: em-shape
+    kind: fingering
+    exerciseID: major-chord-shapes-em
+    eventIDs: []
+    activityID: em-shape
+    fingeringID: em-shape
+  - id: em-notes
+    kind: events
+    exerciseID: major-chord-shapes-em
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - reset
+    activityID: em-notes
+  - id: e-shape
+    kind: fingering
+    exerciseID: major-chord-shapes-e
+    eventIDs: []
+    activityID: e-shape
+    fingeringID: e-shape
+  - id: e-notes
+    kind: events
+    exerciseID: major-chord-shapes-e
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - n-6
+      - reset
+    activityID: e-notes
+  - id: am-shape
+    kind: fingering
+    exerciseID: major-chord-shapes-am
+    eventIDs: []
+    activityID: am-shape
+    fingeringID: am-shape
+  - id: am-notes
+    kind: events
+    exerciseID: major-chord-shapes-am
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - reset
+    activityID: am-notes
+  - id: a-shape
+    kind: fingering
+    exerciseID: major-chord-shapes-a
+    eventIDs: []
+    activityID: a-shape
+    fingeringID: a-shape
+  - id: a-notes
+    kind: events
+    exerciseID: major-chord-shapes-a
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - n-5
+      - reset
+    activityID: a-notes
+  - id: dm-shape
+    kind: fingering
+    exerciseID: major-chord-shapes-dm
+    eventIDs: []
+    activityID: dm-shape
+    fingeringID: dm-shape
+  - id: dm-notes
+    kind: events
+    exerciseID: major-chord-shapes-dm
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - reset
+    activityID: dm-notes
+  - id: d-shape
+    kind: fingering
+    exerciseID: major-chord-shapes-d
+    eventIDs: []
+    activityID: d-shape
+    fingeringID: d-shape
+  - id: d-notes
+    kind: events
+    exerciseID: major-chord-shapes-d
+    eventIDs:
+      - n-1
+      - n-2
+      - n-3
+      - n-4
+      - reset
+    activityID: d-notes
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: major-chord-shapes-em
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning: &id001
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id002
+            string: 6
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id003
+            string: 5
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id004
+            string: 4
+            fret: 2
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id005
+            string: 3
+            fret: 0
+      - id: n-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id006
+            string: 2
+            fret: 0
+      - id: n-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id007
+            string: 1
+            fret: 0
+      - id: reset
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: major-chord-shapes-e
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning: *id001
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id008
+            string: 6
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id009
+            string: 5
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id010
+            string: 4
+            fret: 2
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id011
+            string: 3
+            fret: 1
+      - id: n-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id012
+            string: 2
+            fret: 0
+      - id: n-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id013
+            string: 1
+            fret: 0
+      - id: reset
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: major-chord-shapes-am
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning: *id001
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id014
+            string: 5
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id015
+            string: 4
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id016
+            string: 3
+            fret: 2
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id017
+            string: 2
+            fret: 1
+      - id: n-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id018
+            string: 1
+            fret: 0
+      - id: reset
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: major-chord-shapes-a
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning: *id001
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id019
+            string: 5
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id020
+            string: 4
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id021
+            string: 3
+            fret: 2
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id022
+            string: 2
+            fret: 2
+      - id: n-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id023
+            string: 1
+            fret: 0
+      - id: reset
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: major-chord-shapes-dm
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning: *id001
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id024
+            string: 4
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id025
+            string: 3
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id026
+            string: 2
+            fret: 3
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id027
+            string: 1
+            fret: 1
+      - id: reset
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: major-chord-shapes-d
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning: *id001
+    assessmentMode: monophonic
+    events:
+      - id: n-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id028
+            string: 4
+            fret: 0
+      - id: n-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id029
+            string: 3
+            fret: 2
+      - id: n-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id030
+            string: 2
+            fret: 3
+      - id: n-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - &id031
+            string: 1
+            fret: 2
+      - id: reset
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: em-shape
+    source:
+      kind: fingering
+      fingeringID: em-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: em-notes
+    source:
+      kind: exercise
+      exerciseID: major-chord-shapes-em
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: e-shape
+    source:
+      kind: fingering
+      fingeringID: e-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: e-notes
+    source:
+      kind: exercise
+      exerciseID: major-chord-shapes-e
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: am-shape
+    source:
+      kind: fingering
+      fingeringID: am-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: am-notes
+    source:
+      kind: exercise
+      exerciseID: major-chord-shapes-am
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: a-shape
+    source:
+      kind: fingering
+      fingeringID: a-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: a-notes
+    source:
+      kind: exercise
+      exerciseID: major-chord-shapes-a
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: dm-shape
+    source:
+      kind: fingering
+      fingeringID: dm-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: dm-notes
+    source:
+      kind: exercise
+      exerciseID: major-chord-shapes-dm
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: d-shape
+    source:
+      kind: fingering
+      fingeringID: d-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: d-notes
+    source:
+      kind: exercise
+      exerciseID: major-chord-shapes-d
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+activities:
+  - id: em-shape
+    materialID: em-shape
+  - id: em-notes
+    materialID: em-notes
+  - id: e-shape
+    materialID: e-shape
+  - id: e-notes
+    materialID: e-notes
+  - id: am-shape
+    materialID: am-shape
+  - id: am-notes
+    materialID: am-notes
+  - id: a-shape
+    materialID: a-shape
+  - id: a-notes
+    materialID: a-notes
+  - id: dm-shape
+    materialID: dm-shape
+  - id: dm-notes
+    materialID: dm-notes
+  - id: d-shape
+    materialID: d-shape
+  - id: d-notes
+    materialID: d-notes
+fingerings:
+  - id: em-shape
+    exerciseID: major-chord-shapes-em
+    fingering:
+      positions:
+        - *id002
+        - *id003
+        - *id004
+        - *id005
+        - *id006
+        - *id007
+      mutedStrings: []
+      fingerNumbers:
+        '5': 2
+        '4': 3
+  - id: e-shape
+    exerciseID: major-chord-shapes-e
+    fingering:
+      positions:
+        - *id008
+        - *id009
+        - *id010
+        - *id011
+        - *id012
+        - *id013
+      mutedStrings: []
+      fingerNumbers:
+        '5': 2
+        '4': 3
+        '3': 1
+  - id: am-shape
+    exerciseID: major-chord-shapes-am
+    fingering:
+      positions:
+        - *id014
+        - *id015
+        - *id016
+        - *id017
+        - *id018
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '4': 2
+        '3': 3
+        '2': 1
+  - id: a-shape
+    exerciseID: major-chord-shapes-a
+    fingering:
+      positions:
+        - *id019
+        - *id020
+        - *id021
+        - *id022
+        - *id023
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '4': 1
+        '3': 2
+        '2': 3
+  - id: dm-shape
+    exerciseID: major-chord-shapes-dm
+    fingering:
+      positions:
+        - *id024
+        - *id025
+        - *id026
+        - *id027
+      mutedStrings:
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 3
+        '1': 1
+  - id: d-shape
+    exerciseID: major-chord-shapes-d
+    fingering:
+      positions:
+        - *id028
+        - *id029
+        - *id030
+        - *id031
+      mutedStrings:
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 1
+        '2': 3
+        '1': 2
+practiceEntries:
+  - id: em-notes
+    activityID: em-notes
+    exerciseID: major-chord-shapes-em
+  - id: e-notes
+    activityID: e-notes
+    exerciseID: major-chord-shapes-e
+  - id: am-notes
+    activityID: am-notes
+    exerciseID: major-chord-shapes-am
+  - id: a-notes
+    activityID: a-notes
+    exerciseID: major-chord-shapes-a
+  - id: dm-notes
+    activityID: dm-notes
+    exerciseID: major-chord-shapes-dm
+  - id: d-notes
+    activityID: d-notes
+    exerciseID: major-chord-shapes-d
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - strings
+      - clear
+      - compare
+curriculum:
+  moduleID: first-chords
+  ordinal: 26
+  durationMinutes: 25
+  prerequisites:
+    - minor-chord-shapes
+  keywords:
+    - Simple major chords
+    - Прості мажорні акорди

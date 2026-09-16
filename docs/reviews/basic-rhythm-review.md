@@ -21,3 +21,5 @@
 ## Remaining validation
 
 Real-guitar timing/cleanliness, audible accent contrast through the user's output, minimum-window keyboard/VoiceOver behavior and complete course acceptance remain pending_user. Dynamics is deliberately self-assessed; automatic grading still follows measured pitch/timing/opt-in sustain evidence.
+
+PR #67 merged as cff38cd after full macOS CI run 35147604913 passed (13m49s), including Core/App tests, DSP, simulated soak and signed bundle checks. Hardware/native reader acceptance remains open.

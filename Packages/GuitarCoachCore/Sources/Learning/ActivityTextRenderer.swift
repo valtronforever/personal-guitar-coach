@@ -8,6 +8,7 @@ struct ActivityTextRenderer {
     let choice: PositionChoice
     let region: FretRegion?
     let tuning: TuningProfile
+    let tonalRoot: Pitch?
     let exercises: [Exercise]
     let fingerings: [LessonSourceFingering]
     let steps: [LessonStep]
@@ -47,7 +48,8 @@ struct ActivityTextRenderer {
         values["reference"] = String(format: "%.1f", locale: Locale(identifier: text.locale), tuning.referenceA4)
         values["openExample"] = tuning.strings[5].openPitch.name(spelling: tuning.preferredSpelling)
         values["openStrings"] = tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · ")
-        values["root"] = names.first.map { String($0.prefix { !$0.isNumber && $0 != "-" }) } ?? ""
+        let rootName = tonalRoot?.name(spelling: tuning.preferredSpelling) ?? names.first
+        values["root"] = rootName.map { String($0.prefix { !$0.isNumber && $0 != "-" }) } ?? ""
         values["first"] = names.first ?? ""
         values["highest"] = pitches.max(by: { $0.midi < $1.midi })?.name(spelling: tuning.preferredSpelling) ?? ""
         values["sequence"] = names.joined(separator: " – ")

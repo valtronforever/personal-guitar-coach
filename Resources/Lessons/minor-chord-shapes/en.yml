@@ -1,0 +1,95 @@
+lessonID: minor-chord-shapes
+lessonVersion: 1
+locale: en
+title: Simple minor chords
+summary: Build three minor shapes and check their strings individually.
+goal: Find clear chord tones while controlling which strings sound.
+body: |-
+  A minor triad contains a root, a minor third three semitones above it, and a fifth seven semitones above it. Guitar shapes often repeat these tones in different octaves. The lowest or highest visible note need not always be the root; the variant title names the harmonic root explicitly.
+
+  This lesson gives six-, five- and four-string forms. Build one at a time, listen to the complete reference chord, then pluck each string to locate a buzz or an accidentally muted neighbor. Move the fingertip closer behind the fret before adding pressure. Keep the wrist comfortable and stop if a position causes pain.
+
+  The complete chord is a listening/self-check example. Scored practice uses its notes one at a time with deliberate separation. A passing arpeggio is useful evidence about audible pitches, not proof that all strings ring cleanly together. Names and positions adapt to the selected tuning; follow the current diagram rather than memorizing a fixed letter name.
+steps:
+  prepare:
+    title: Set up a clear comparison
+    body: >-
+      Use a clean input and tune first. Fingering numbers are suggestions, not detected fingers: 1 index, 2 middle,
+      3 ring, 4 little. × means a string must stay silent. Changed tuning can change a shape and remove an unsuitable
+      finger suggestion; follow the actual fret markers.
+  em-shape:
+    title: '{{root}} minor: build and hear'
+    body: >-
+      This six-string shape contains a root, minor third and fifth across several octaves. Place the fretted notes,
+      then check that the adjacent open strings still ring. In a Drop tuning the lowest-string position may move;
+      do not assume it stays open. If the adapted shape is awkward, begin with the five- or four-string example
+      and return here. {{positions}}.
+  em-notes:
+    title: '{{root}} minor: check each string'
+    body: >-
+      Keep the shape ready and play its sounding strings from low to high, one note per click at 50 BPM. Lightly
+      stop each previous string with the picking hand so the scored input remains monophonic. Rest through the remaining
+      beats. The score checks these individual notes; it does not certify the full chord. {{positions}}.
+  am-shape:
+    title: '{{root}} minor: build and hear'
+    body: >-
+      Use only strings 5 through 1; keep string 6 quiet. Curve the fretting fingers enough to avoid touching the
+      next thinner string. Check the top open string last: it is easy to block with the finger on string 2. Preview
+      the complete shape, then strum it gently once. {{positions}}.
+  am-notes:
+    title: '{{root}} minor: check each string'
+    body: >-
+      Keep the shape ready and play its sounding strings from low to high, one note per click at 50 BPM. Lightly
+      stop each previous string with the picking hand so the scored input remains monophonic. Rest through the remaining
+      beats. The score checks these individual notes; it does not certify the full chord. {{positions}}.
+  dm-shape:
+    title: '{{root}} minor: build and hear'
+    body: >-
+      Use strings 4 through 1 and avoid strings 5–6. Place the fingertip on the thinnest string carefully, without
+      pulling the string sideways. Check the three fretted upper notes one at a time before adding the open bass.
+      The smaller shape needs accurate picking, not more force. {{positions}}.
+  dm-notes:
+    title: '{{root}} minor: check each string'
+    body: >-
+      Keep the shape ready and play its sounding strings from low to high, one note per click at 50 BPM. Lightly
+      stop each previous string with the picking hand so the scored input remains monophonic. Rest through the remaining
+      beats. The score checks these individual notes; it does not certify the full chord. {{positions}}.
+  review:
+    title: Compare and repeat
+    body: >-
+      Choose the least clear string in one shape, adjust only its contact and check again. Then compare the three
+      complete chord examples at a similar volume. Practice each separated-note entry at 50 BPM before adding 5
+      BPM. End with one gentle chord strum and your own listening check.
+activities:
+  em-shape:
+    title: '{{root}} minor shape'
+    body: 'The harmonic root is {{root}} even if the highest shown note is different. Sounding targets: {{notes}}.'
+  em-notes:
+    title: '{{root}} minor — separate-note check'
+    body: >-
+      Play each string separately, stopping the previous note before the next attack. {{sequence}}. The silent remainder
+      completes two bars.
+  am-shape:
+    title: '{{root}} minor shape'
+    body: 'The harmonic root is {{root}} even if the highest shown note is different. Sounding targets: {{notes}}.'
+  am-notes:
+    title: '{{root}} minor — separate-note check'
+    body: >-
+      Play each string separately, stopping the previous note before the next attack. {{sequence}}. The silent remainder
+      completes two bars.
+  dm-shape:
+    title: '{{root}} minor shape'
+    body: 'The harmonic root is {{root}} even if the highest shown note is different. Sounding targets: {{notes}}.'
+  dm-notes:
+    title: '{{root}} minor — separate-note check'
+    body: >-
+      Play each string separately, stopping the previous note before the next attack. {{sequence}}. The silent remainder
+      completes two bars.
+learningTasks:
+  review:
+    title: Review the chord sound
+    body: This is your listening check, independent of the individual-note score.
+    items:
+      strings: Only the intended strings sound; × strings stay quiet.
+      clear: I can hear each chord tone without a buzz or a blocked neighbor.
+      compare: I compared the examples at a similar volume and can describe the difference.

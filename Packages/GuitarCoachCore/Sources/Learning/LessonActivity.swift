@@ -15,9 +15,11 @@ public struct LessonMaterial: Codable, Equatable, Sendable, Identifiable {
     public let id: String
     public let source: LessonMaterialSource
     public let positioning: PositioningPolicy?
+    /// Harmonic root in the source tuning, independent of inversion or event order.
+    public let tonalRoot: Pitch?
     public var policy: PositioningPolicy { positioning ?? .disabled }
-    public init(id: String, source: LessonMaterialSource, positioning: PositioningPolicy? = nil) {
-        self.id = id; self.source = source; self.positioning = positioning
+    public init(id: String, source: LessonMaterialSource, positioning: PositioningPolicy? = nil, tonalRoot: Pitch? = nil) {
+        self.id = id; self.source = source; self.positioning = positioning; self.tonalRoot = tonalRoot
     }
 }
 public struct ActivityPositionSelection: Codable, Equatable, Sendable {

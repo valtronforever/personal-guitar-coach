@@ -36,6 +36,8 @@ lessons:
   - beat-accents
   - simple-meters
   - first-rhythm-study
+  - minor-chord-shapes
+  - major-chord-shapes
 modules:
   - id: getting-started
     order: 1

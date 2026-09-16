@@ -378,7 +378,8 @@ lessons:
       uk: Прості мінорні акорди
     outcomeUK: Зібрати кілька форм і перевірити кожну струну
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    evidence: Chord forms and separated-note practice authored; interval/tuning/editorial acceptance pending.
   - number: 26
     moduleID: first-chords
     lessonID: major-chord-shapes
@@ -387,7 +388,8 @@ lessons:
       uk: Прості мажорні акорди
     outcomeUK: Порівняти мажорне та мінорне звучання
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    evidence: Chord forms and separated-note practice authored; interval/tuning/editorial acceptance pending.
   - number: 27
     moduleID: first-chords
     lessonID: two-chord-changes
