@@ -14,4 +14,4 @@
 
 - 60 bilingual bundles validate; 809 UI keys, generated project and UI-source type-check pass. Inventory: 50 authored, 4 needing review, 74 todo.
 - Independent course matrix verifies exact positions, alternating cues, upstroke start, note/rest durations and scored eligibility across eight tunings × five fret counts. JSON round trips and invalid cue combinations pass. Existing strum/palm-muted reference tests pass unchanged.
-- Full Core/App and signed Release evidence remains pending below. Native accessibility, actual guitar strokes and practical playing accuracy are not established by the synthetic/code tests.
+- All 237 Core tests pass explicitly serially: 23 Persistence, 89 Learning, 38 Domain, 82 Audio and 5 AgentBridge (audio suite 231.257 s). All 136 App tests pass in 134.236 s. Signed local Release/archive validates 60 bundles/181 YAML files; report: docs/benchmarks/picking-directions-release-bundle.json. Signed sandbox-to-XPC invalid-request probe passes without a provider invocation. PR/CI remain pending. Native accessibility, actual guitar strokes and practical playing accuracy are not established by the synthetic/code tests.
