@@ -1,38 +1,58 @@
 lessonID: em-arpeggio
-lessonVersion: 2
+lessonVersion: 3
 locale: en
 title: Minor chord and arpeggio
 summary: Connect a minor chord shape with separate ascending and descending notes.
 goal: Connect a minor chord shape with an ascending and descending arpeggio.
-body: >-
-  First complete open strings, first frets and steady quarters. A minor chord contains root, minor third and fifth.
-  The shown shape is calculated for the selected tuning. A changed shape may require a different hand position;
-  no finger numbers are inferred from audio. The chord example is for display/listening only; simultaneous chords
-  are not graded. For practice, damp the previous note before every new pluck. Start at 60 BPM or 40–50 for slower
-  changes; try 70 after comfortable repeats.
+body: 'An arpeggio presents chord tones one after another instead of together. It is more than a picking order:
+  it lets you hear how the same root, minor third and fifth recur in different registers. First compare the full
+  chord reference with the beginning of the separate-note example. The musical material is the same; its presentation
+  changes.
+
+
+  Keep the chord shape prepared and move the pick between strings with small motions. The exercise climbs from the
+  bass to the highest target once, then descends without repeating the top note. Eleven quarter-note attacks fill the
+  first eleven beats of three bars; the final beat is a real rest. Count across the turn instead of starting a new
+  pulse at the highest note.
+
+
+  For graded practice, stop the previous string before each new pluck. This deliberately separated sound gives the
+  monophonic detector one pitch at a time. After a successful separated attempt, you may try the same shape with
+  notes ringing together as an ungraded listening exercise. A score from the separated version does not certify
+  the overlapping chord.
+
+
+  Start at 40–50 BPM if string changes are difficult, then use 60. The current fret positions and note names follow
+  your tuning and selected region; inspect them before playing. Choose a comfortable reachable variant. The app
+  cannot detect which finger or physical string produced a pitch.'
 steps:
   shape:
     title: 1. Explore the chord shape
-    body: >-
-      These positions sound together in the example only: {{positions}}. Check comfort before playing; the app cannot
-      measure your hand position.
+    body: 'These positions sound together in the example only: {{positions}}. Check comfort before playing; the
+      app cannot measure your hand position.'
   low-notes:
     title: 2. Play the first four notes
-    body: 'Bar 1, one separate note per click: {{positions}}.'
+    body: Play the first four targets one per click. Prepare the whole shape, then let the picking hand find each
+      successive string without a large jump. Stop the previous note as the next begins. If one target is wrong,
+      replay this one-bar fragment before joining it to the turn. {{positions}}.
   top-and-turn:
     title: 3. Reach the top and turn
-    body: 'Bar 2 plays the highest note once and starts descending: {{positions}}.'
+    body: The highest note occurs once, then the order reverses. Count all four beats of bar 2 aloud; do not add
+      an extra attack while changing picking direction. Slow the whole fragment if the turn is rushed. {{positions}}.
   return-and-rest:
     title: 4. Return and rest
-    body: 'Bar 3 returns to the low note, then rests on beat 4: {{positions}}.'
+    body: 'Return to the low target in bar 3, then stop on beat 4. Keep counting during that rest so the next repetition
+      begins on time. Compare the first low note with this last one: the intended sounding pitch is the same. {{positions}}.'
   whole-arpeggio:
     title: 5. Practice the complete arpeggio
-    body: 'Eleven separate attacks, followed by one rest. Avoid overlapping strings: {{positions}}.'
+    body: 'Join all three bars: eleven separated attacks and one rest. Try three complete attempts at the same tempo.
+      Use the result to find repeated pitch errors or early/late attacks, then practice the smallest whole-bar fragment
+      that contains the problem. Raise the tempo by 5 BPM only when the turn and final rest remain steady. {{positions}}.'
 historicalTitle: From the {{root}}m shape to separate notes
 activities:
   lesson:
     title: '{{root}} minor'
-    body: |-
-      Explore {{root}} minor, then play each note separately.
+    body: 'Explore {{root}} minor, then play each note separately.
 
-      Sequence: {{sequence}}.
+
+      Sequence: {{sequence}}.'

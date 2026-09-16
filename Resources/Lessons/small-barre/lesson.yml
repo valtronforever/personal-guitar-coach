@@ -1,0 +1,284 @@
+schemaVersion: 3
+id: small-barre
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: two-strings-shape
+  kind: fingering
+  exerciseID: small-barre-two-strings
+  eventIDs: []
+  activityID: two-strings-shape
+  fingeringID: two-strings-shape
+- id: two-strings
+  kind: events
+  exerciseID: small-barre-two-strings
+  activityID: two-strings
+  eventIDs:
+  - n-0
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - n-5
+  - rest
+- id: three-strings-shape
+  kind: fingering
+  exerciseID: small-barre-three-strings
+  eventIDs: []
+  activityID: three-strings-shape
+  fingeringID: three-strings-shape
+- id: three-strings
+  kind: events
+  exerciseID: small-barre-three-strings
+  activityID: three-strings
+  eventIDs:
+  - n-0
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - n-5
+  - rest
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: small-barre-two-strings
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n-0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 5
+  - id: n-1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 5
+  - id: n-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 5
+  - id: n-3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 5
+  - id: n-4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 5
+  - id: n-5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 5
+  - id: rest
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+- id: small-barre-three-strings
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n-0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: n-1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 5
+  - id: n-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 5
+  - id: n-3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: n-4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 5
+  - id: n-5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 5
+  - id: rest
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+adaptation:
+  policy: fretPattern
+materials:
+- id: two-strings-shape
+  source:
+    kind: fingering
+    fingeringID: two-strings-shape
+  positioning:
+    enabled: false
+- id: two-strings
+  source:
+    kind: exercise
+    exerciseID: small-barre-two-strings
+  positioning:
+    enabled: false
+- id: three-strings-shape
+  source:
+    kind: fingering
+    fingeringID: three-strings-shape
+  positioning:
+    enabled: false
+- id: three-strings
+  source:
+    kind: exercise
+    exerciseID: small-barre-three-strings
+  positioning:
+    enabled: false
+activities:
+- id: two-strings-shape
+  materialID: two-strings-shape
+- id: two-strings
+  materialID: two-strings
+- id: three-strings-shape
+  materialID: three-strings-shape
+- id: three-strings
+  materialID: three-strings
+fingerings:
+- id: two-strings-shape
+  exerciseID: small-barre-two-strings
+  fingering:
+    positions:
+    - string: 2
+      fret: 5
+    - string: 1
+      fret: 5
+    mutedStrings:
+    - 3
+    - 4
+    - 5
+    - 6
+    fingerNumbers:
+      '2': 1
+      '1': 1
+- id: three-strings-shape
+  exerciseID: small-barre-three-strings
+  fingering:
+    positions:
+    - string: 3
+      fret: 5
+    - string: 2
+      fret: 5
+    - string: 1
+      fret: 5
+    mutedStrings:
+    - 4
+    - 5
+    - 6
+    fingerNumbers:
+      '3': 1
+      '2': 1
+      '1': 1
+practiceEntries:
+- id: two-strings
+  activityID: two-strings
+  exerciseID: small-barre-two-strings
+- id: three-strings
+  activityID: three-strings
+  exerciseID: small-barre-three-strings
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - finger
+  - clear
+  - release
+curriculum:
+  moduleID: first-chords
+  ordinal: 31
+  durationMinutes: 15
+  prerequisites:
+  - minor-chord-shapes
+  - clean-fretted-note
+  keywords:
+  - Your first small barre
+  - Перше мале баре

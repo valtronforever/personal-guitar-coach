@@ -398,7 +398,8 @@ lessons:
       uk: Зміна двох акордів
     outcomeUK: Переставляти пальці без зупинки пульсу
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 28
     moduleID: first-chords
     lessonID: down-up-strumming
@@ -417,7 +418,8 @@ lessons:
       uk: Які струни мають звучати в акорді
     outcomeUK: Уникати зайвих басових і відкритих струн
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 30
     moduleID: first-chords
     lessonID: em-arpeggio
@@ -426,7 +428,8 @@ lessons:
       uk: Від акорду до окремих нот
     outcomeUK: Зіграти форму акорду як послідовне арпеджіо
     originalAssessment: Н
-    status: needs_review
+    status: authored
+    acceptance: pending
   - number: 31
     moduleID: first-chords
     lessonID: small-barre
@@ -435,7 +438,8 @@ lessons:
       uk: Перше мале баре
     outcomeUK: Затиснути кілька струн одним пальцем
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 32
     moduleID: first-chords
     lessonID: first-song-form
@@ -444,7 +448,8 @@ lessons:
       uk: Перша пісенна форма
     outcomeUK: Зіграти куплет і приспів із простих акордів
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 33
     moduleID: rock-rhythm
     lessonID: power-chord-self-practice

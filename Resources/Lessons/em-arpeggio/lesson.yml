@@ -1,6 +1,6 @@
 schemaVersion: 3
 id: em-arpeggio
-version: 2
+version: 3
 difficulty: beginner
 topic: arpeggios
 steps:
@@ -270,8 +270,10 @@ practiceEntries:
 curriculum:
   moduleID: first-chords
   ordinal: 30
-  durationMinutes: 10
-  prerequisites: []
+  durationMinutes: 15
+  prerequisites:
+    - minor-chord-shapes
+    - first-rhythm-study
   keywords:
     - From chord to arpeggio
     - Від акорду до окремих нот

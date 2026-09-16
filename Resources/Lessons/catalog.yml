@@ -39,6 +39,10 @@ lessons:
   - minor-chord-shapes
   - major-chord-shapes
   - down-up-strumming
+  - two-chord-changes
+  - chord-string-selection
+  - small-barre
+  - first-song-form
 modules:
   - id: getting-started
     order: 1

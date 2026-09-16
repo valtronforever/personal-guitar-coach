@@ -1,0 +1,77 @@
+lessonID: chord-string-selection
+lessonVersion: 1
+locale: en
+title: Choosing which chord strings sound
+summary: Control the first string of a stroke and hear how an extra bass changes the shape.
+goal: Keep marked silent strings quiet in five- and four-string chord examples.
+body: 'A guitar chord diagram includes both sounding positions and strings that should remain silent. An open circle
+  means an open sounding string; × means do not sound it. Those are different instructions. The lowest intended
+  note helps define the bass of the accompaniment, so strumming all six strings is not automatically correct.
+
+
+  This lesson revisits the five-string and four-string minor forms. Start the pick at their intended bass strings
+  and travel only through the required group. A smaller stroke and controlled contact are usually more useful than
+  an exaggerated jump. Keep the chord shape ready, but notice that avoiding an unused string is also a picking-hand
+  task.
+
+
+  The comparison deliberately adds one lower chord tone to each shape. It is not necessarily an out-of-key note:
+  it changes the bass and therefore the intended voicing. The app can show that contrast, but its monophonic pitch
+  score does not prove all unused strings were silent in a full strum. Separate-note practice and your listening
+  check answer different questions.'
+steps:
+  prepare:
+    title: Read open versus silent
+    body: Find the open sounding markers and the × markers in the shape view. Do not press a muted string just because
+      it has no fret number. First make a silent picking motion across the intended string group.
+  five-strings-shape:
+    title: '{{root}} minor — begin on string 5'
+    body: Keep string 6 silent and begin the downstroke on string 5. Brush through strings 4–1, then stop and listen
+      for any low ringing you did not intend. Do three slow strokes with a pause between them. {{positions}}.
+  five-strings:
+    title: Check the five intended pitches
+    body: Play strings 5–1 separately, one per click at 50 BPM, stopping the previous note. The final three beats
+      are rest. If the full chord was unclear but all five targets pass, return to the simultaneous listening check;
+      separate success does not certify the strum.
+  four-strings-shape:
+    title: '{{root}} minor — begin on string 4'
+    body: 'Avoid both strings 5 and 6. Make the stroke shallower and begin on string 4. Check the top fretted note
+      as well: clean bass selection should not come at the cost of an accidentally muted high string. {{positions}}.'
+  four-strings:
+    title: Check four strings, then rest
+    body: Play the four targets from low to high, one per click. Rest through the second bar. On the next repetition
+      begin from string 4 again, without sweeping in from string 6. {{sequence}}.
+  bass-comparison:
+    title: Hear the unintended bass
+    body: Bars 1 and 3 are the intended five- and four-string shapes. Bar 2 adds string 6 to the first; bar 4 adds
+      string 5 to the second. Compare each pair at the same volume. The additional tone can belong to the chord
+      while still changing the desired bass. These are comparison examples, not scored targets.
+  review:
+    title: Return to the intended versions
+    body: Alternate the two correct shapes for four slow strokes each. Listen specifically below the intended bass
+      and check the × strings after each stroke. If an unwanted string rings, reduce the stroke depth and retry
+      before increasing tempo.
+activities:
+  five-strings-shape:
+    title: '{{root}} minor — five sounding strings'
+    body: String 6 is excluded.
+  five-strings:
+    title: '{{root}} minor — five separate targets'
+    body: Five notes and three resting beats. {{sequence}}.
+  four-strings-shape:
+    title: '{{root}} minor — four sounding strings'
+    body: Strings 5–6 are excluded.
+  four-strings:
+    title: '{{root}} minor — four separate targets'
+    body: Four notes and one resting bar. {{sequence}}.
+  bass-comparison:
+    title: Intended bass versus added lower tone
+    body: Correct five-string shape, added low string, correct four-string shape, added low string.
+learningTasks:
+  review:
+    title: Review string selection
+    body: Listen to the complete stroke; the individual-note score cannot certify unused-string silence.
+    items:
+      markers: I distinguished open sounding strings from × strings.
+      bass: My stroke began at the intended bass string in each shape.
+      silence: I heard no unintended lower ringing after four strokes of each correct shape.
