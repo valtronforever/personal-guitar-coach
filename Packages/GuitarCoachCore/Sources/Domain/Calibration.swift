@@ -152,6 +152,11 @@ public struct CalibrationProfile: Codable, Equatable, Sendable, Identifiable {
     public var personalInstrument: InstrumentProfile? { personalEvidence?.instrument ?? instrumentEvidence?.instrument ?? manualInstrumentEvidence?.instrument }
     public var outputSetting: OutputAlignmentProfile? { instrumentEvidence?.outputSetting ?? manualInstrumentEvidence?.outputSetting }
     public var remainingInstrumentOffset: Double { instrumentEvidence?.guitar.offset ?? manualInstrumentEvidence?.remainingOffset ?? residualOffsetSeconds }
+    /// Restricts newly selected settings without rewriting signed evidence in historical results.
+    public var isNonnegativeSetting: Bool {
+        (0...1).contains(remainingInstrumentOffset) && (0...1).contains(residualOffsetSeconds) &&
+        (outputSetting?.isNonnegativeSetting ?? true)
+    }
 
     public init(id: UUID = UUID(), revision: Int = 1, route: CalibrationRoute, createdAt: Date = Date(), method: CalibrationMethod,
                 residualOffsetSeconds: Double, uncertaintySeconds: Double, evidence: CalibrationEvidence? = nil, personalEvidence: PersonalSyncEvidence? = nil, instrumentEvidence: InstrumentSyncEvidence? = nil, manualInstrumentEvidence: ManualInstrumentSyncEvidence? = nil) throws {

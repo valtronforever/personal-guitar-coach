@@ -265,6 +265,59 @@ private actor SynchronizationRepository: CalibrationRepository {
         }
     }
 
+    @Test func negativeMeasurementsRemainDiagnosticAndCannotBeApplied() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (runtime, audio, store) = await setup(directory), model = store.wizard
+        try await outputMeasurement(runtime, audio: audio, store: store, offset: -0.02)
+        let output = try #require(model.outputCandidate)
+        #expect(output.seconds < 0 && !output.isNonnegativeSetting)
+        let outputTrace = model.timelines
+        await model.applyOutput(audio: audio, store: store)
+        #expect(store.outputProfiles.isEmpty && model.timelines == outputTrace)
+        #expect(model.messageKey == "sync.nonnegative.measurement")
+        model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+        try await waitForRequest(runtime, model: model)
+        await runtime.finish(offset: -0.02); try await waitForCompletion(model)
+        let guitar = try #require(model.candidate)
+        #expect(guitar.remainingInstrumentOffset < 0 && !guitar.isNonnegativeSetting)
+        let guitarTrace = model.timelines
+        await model.apply(audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(store.profiles.isEmpty && model.timelines == guitarTrace)
+        #expect(model.messageKey == "sync.nonnegative.measurement")
+    }
+
+    @Test func oldNegativeSettingsRemainReadableButCannotBeReactivated() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (_, audio, _) = await setup(directory), repository = LocalRepository(root: directory)
+        let route = try #require(audio.state?.calibrationRoute)
+        let output = try OutputAlignmentProfile(output: route.output, manual: ManualOutputAlignment(seconds: -0.02, reference: .additional))
+        let evidence = try ManualInstrumentSyncEvidence(instrument: InstrumentProfile(), outputSetting: output, remainingOffset: -0.03)
+        let profile = try CalibrationProfile(route: route, method: .manualPersonal, residualOffsetSeconds: evidence.offset,
+            uncertaintySeconds: ManualInstrumentSyncEvidence.scoringAllowance, manualInstrumentEvidence: evidence)
+        try await repository.saveOutputAlignment(output)
+        try await repository.saveCalibration(profile, replacing: nil)
+        let store = CalibrationStore(repository: repository); await store.load()
+        #expect(store.storedOutputProfile(for: route.output) == output && store.outputProfile(for: route.output) == nil)
+        #expect(store.profile(for: route) == profile)
+        store.confirm(profile, session: audio.synchronizationSession, revision: try #require(audio.state?.routeRevision))
+        #expect(store.usableProfile(audio: audio, instrument: InstrumentProfile()) == nil)
+        #expect(await store.saveOutput(output) == false)
+        #expect(await store.save(profile) == false)
+        await store.wizard.applyManualOutput(output, audio: audio, store: store)
+        await store.wizard.applyManualInstrument(-0.03, audio: audio, store: store, instrument: InstrumentProfile())
+        #expect(store.wizard.messageKey == "sync.manual.invalid")
+        #expect(try await repository.loadOutputAlignments() == [output])
+        #expect(try await repository.loadCalibrationProfiles() == [profile])
+        await store.resetOutput(route.output)
+        #expect(store.storedOutputProfile(for: route.output) == nil)
+        for seconds in [0.0, 1.0] {
+            await store.wizard.applyManualInstrument(seconds, audio: audio, store: store, instrument: InstrumentProfile())
+            #expect(store.usableProfile(audio: audio, instrument: InstrumentProfile())?.remainingInstrumentOffset == seconds)
+        }
+    }
+
     @Test func manualValuesApplyWithoutARecordedPassAndRetainFailureDiagnostics() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
@@ -278,15 +331,15 @@ private actor SynchronizationRepository: CalibrationRepository {
         await runtime.failPass("count"); try await waitForCompletion(model)
         let trace = model.timelines
         #expect(model.candidate == nil && model.failure?.reason == .count)
-        await model.applyManualInstrument(-0.05, audio: audio, store: store, instrument: InstrumentProfile())
+        await model.applyManualInstrument(0.05, audio: audio, store: store, instrument: InstrumentProfile())
         let profile = try #require(store.usableProfile(audio: audio, instrument: InstrumentProfile()))
-        #expect(profile.method == .manualPersonal && abs(profile.residualOffsetSeconds - 0.15) < 1e-9)
+        #expect(profile.method == .manualPersonal && abs(profile.residualOffsetSeconds - 0.25) < 1e-9)
         #expect(profile.manualInstrumentEvidence?.outputSetting == output && profile.instrumentEvidence == nil)
         #expect(model.timelines == trace && model.failure?.reason == .count)
         let reopened = CalibrationStore(repository: LocalRepository(root: directory)); await reopened.load()
         #expect(reopened.profiles == [profile] && reopened.outputProfiles == [output])
         #expect(reopened.usableProfile(audio: audio, instrument: InstrumentProfile()) == nil)
-        await reopened.wizard.applyManualInstrument(-0.05, audio: audio, store: reopened, instrument: InstrumentProfile())
+        await reopened.wizard.applyManualInstrument(0.05, audio: audio, store: reopened, instrument: InstrumentProfile())
         #expect(reopened.usableProfile(audio: audio, instrument: InstrumentProfile())?.method == .manualPersonal)
         await reopened.resetOutput(audio.state?.outputEndpoint)
         #expect(reopened.usableProfile(audio: audio, instrument: InstrumentProfile()) == nil)

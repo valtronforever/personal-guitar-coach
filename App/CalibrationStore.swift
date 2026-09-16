@@ -15,9 +15,14 @@ final class CalibrationStore {
     private(set) var errorKey: String?
     init(repository: (any CalibrationRepository)?) { self.repository = repository }
     func outputProfile(for endpoint: CalibrationEndpoint?) -> OutputAlignmentProfile? {
+        guard let value = storedOutputProfile(for: endpoint), value.isNonnegativeSetting else { return nil }
+        return value
+    }
+    func storedOutputProfile(for endpoint: CalibrationEndpoint?) -> OutputAlignmentProfile? {
         outputProfiles.first { $0.output == endpoint }
     }
     func saveOutput(_ value: OutputAlignmentProfile) async -> Bool {
+        guard value.isNonnegativeSetting else { errorKey = "sync.manual.invalid"; return false }
         guard loaded, !busy, let repository = repository as? any OutputAlignmentRepository else { errorKey = "calibration.storageSave"; return false }
         busy = true; defer { busy = false }
         do {
@@ -27,7 +32,7 @@ final class CalibrationStore {
         } catch { errorKey = "calibration.storageSave"; return false }
     }
     func resetOutput(_ endpoint: CalibrationEndpoint?) async {
-        guard loaded, !busy, let value = outputProfile(for: endpoint), let repository = repository as? any OutputAlignmentRepository else { return }
+        guard loaded, !busy, let value = storedOutputProfile(for: endpoint), let repository = repository as? any OutputAlignmentRepository else { return }
         busy = true; defer { busy = false }
         do {
             try await repository.removeOutputAlignment(id: value.id)
@@ -44,7 +49,7 @@ final class CalibrationStore {
     }
     private var receipts: [UUID: Receipt] = [:]
     func usableProfile(audio: AudioSessionStore, instrument: InstrumentProfile) -> CalibrationProfile? {
-        guard let profile = profile(for: audio.state?.calibrationRoute) else { return nil }
+        guard let profile = profile(for: audio.state?.calibrationRoute), profile.isNonnegativeSetting else { return nil }
         guard profile.method.isPersonal else { return profile }
         guard let receipt = receipts[profile.id], receipt.session == audio.synchronizationSession,
               receipt.revision == audio.state?.routeRevision,
@@ -53,7 +58,7 @@ final class CalibrationStore {
         return profile
     }
     func confirm(_ profile: CalibrationProfile, session: UUID, revision: UInt64) {
-        guard profiles.contains(profile), profile.method.isPersonal else { return }
+        guard profiles.contains(profile), profile.method.isPersonal, profile.isNonnegativeSetting else { return }
         receipts[profile.id] = Receipt(session: session, revision: revision)
     }
     func load() async {
@@ -67,6 +72,7 @@ final class CalibrationStore {
         } catch { errorKey = "calibration.storageLoad" }
     }
     @discardableResult func save(_ value: CalibrationProfile) async -> Bool {
+        guard value.isNonnegativeSetting else { errorKey = "sync.manual.invalid"; return false }
         guard loaded, !busy, let repository else { return false }
         busy = true; defer { busy = false }
         do {

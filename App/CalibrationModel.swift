@@ -233,6 +233,7 @@ final class CalibrationModel {
               outputSetting?.id == store.outputProfile(for: frozenOutput)?.id else {
             invalidate(audio: audio); return
         }
+        guard candidate.isNonnegativeSetting else { messageKey = "sync.nonnegative.measurement"; return }
         if await store.save(candidate) {
             // Save may suspend: a changed route never becomes eligible through a stale receipt.
             store.confirm(candidate, session: session, revision: revision)
@@ -243,10 +244,12 @@ final class CalibrationModel {
         guard !running, audio.state?.purpose == nil, audio.state?.isClicking != true, audio.state?.isStartingClick != true, let outputCandidate,
               audio.state?.outputEndpoint == outputCandidate.output, revision == audio.state?.routeRevision,
               session == audio.synchronizationSession else { invalidate(audio: audio); return }
+        guard outputCandidate.isNonnegativeSetting else { messageKey = "sync.nonnegative.measurement"; return }
         if await store.saveOutput(outputCandidate) { messageKey = "calibration.saved" }
         else { messageKey = "calibration.storageSave" }
     }
     func applyManualOutput(_ value: OutputAlignmentProfile, audio: AudioSessionStore, store: CalibrationStore) async {
+        guard value.isNonnegativeSetting else { messageKey = "sync.manual.invalid"; return }
         guard !running, value.isManual, audio.state?.purpose == nil, audio.state?.isClicking != true,
               audio.state?.isStartingClick != true, value.output == audio.state?.outputEndpoint else { return }
         if await store.saveOutput(value) {
@@ -254,6 +257,7 @@ final class CalibrationModel {
         } else { messageKey = "calibration.storageSave" }
     }
     func applyManualInstrument(_ remainingOffset: Double, audio: AudioSessionStore, store: CalibrationStore, instrument: InstrumentProfile) async {
+        guard remainingOffset.isFinite, (0...1).contains(remainingOffset) else { messageKey = "sync.manual.invalid"; return }
         guard !running, let state = audio.state, let route = state.calibrationRoute,
               state.purpose == nil, !state.isClicking, !state.isStartingClick else { return }
         let session = audio.synchronizationSession

@@ -47,6 +47,10 @@ public struct OutputAlignmentProfile: Codable, Equatable, Sendable, Identifiable
     public let manual: ManualOutputAlignment?
     public let clockDriftSeconds: Double
     public var isManual: Bool { manual != nil }
+    /// Current settings policy; signed historical snapshots and measurement evidence still decode unchanged.
+    public var isNonnegativeSetting: Bool {
+        (0...1).contains(seconds) && (manual.map { (0...1).contains($0.seconds) } ?? true)
+    }
     public var seconds: Double {
         if let evidence { return evidence.offset }
         guard let manual else { return 0 }

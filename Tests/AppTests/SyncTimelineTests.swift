@@ -38,11 +38,11 @@ struct SyncTimelineTests {
 }
 
 struct LatencyEntryTests {
-    @Test func signedMillisecondsAcceptLocaleDecimalsButNeverPartialOrNonfiniteInput() {
-        for (text, expected) in [("+120", 0.12), ("−25,5", -0.0255), ("  -25.5 ", -0.0255), (".5", 0.0005), ("1000", 1.0)] {
+    @Test func nonnegativeMillisecondsAcceptLocaleDecimalsButRejectNegativeOrPartialInput() {
+        for (text, expected) in [("+120", 0.12), ("25,5", 0.0255), ("  25.5 ", 0.0255), ("0", 0), (".5", 0.0005), ("1000", 1.0)] {
             #expect(LatencyEntryParser.seconds(text) == expected)
         }
-        for text in ["", "120ms", "12,3,4", "1 000", "NaN", "inf", "1e2", "+-20", "1001", "-1001"] {
+        for text in ["-25", "−25,5", "-0", "-0.001", "", "120ms", "12,3,4", "1 000", "NaN", "inf", "1e2", "+-20", "1001", "-1001"] {
             #expect(LatencyEntryParser.seconds(text) == nil)
         }
     }

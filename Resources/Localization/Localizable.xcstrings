@@ -5628,13 +5628,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter −1000 to +1000 ms. A positive value compensates for recorded attacks arriving late. Manual offsets and hardware estimates are not measured evidence and do not enable rhythm scores."
+            "value": "Enter 0 to 1000 ms. A positive value compensates for recorded attacks arriving late. Manual offsets and hardware estimates are not measured evidence and do not enable rhythm scores."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть від −1000 до +1000 мс. Додатне значення компенсує запізнення записаних атак. Ручне зміщення й апаратна оцінка не є виміряними доказами та не відкривають оцінку ритму."
+            "value": "Введіть від 0 до 1000 мс. Додатне значення компенсує запізнення записаних атак. Ручне зміщення й апаратна оцінка не є виміряними доказами та не відкривають оцінку ритму."
           }
         }
       }
@@ -12083,13 +12083,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Delay in ms, e.g. +120 or −25"
+            "value": "Delay in ms, from 0 to 1000"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Затримка в мс, наприклад +120 або −25"
+            "value": "Затримка в мс, від 0 до 1000"
           }
         }
       }
@@ -12131,13 +12131,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter the full output delay from the specification (0–1000 ms). The app subtracts the hardware delay already reported by this output to avoid counting it twice. Specifications may not match the current Bluetooth connection."
+            "value": "Enter the total output delay from the device specification. The app subtracts the delay already reported by the output. The total must be at least that reported delay so the correction stays nonnegative."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть повну затримку виходу зі специфікації (0–1000 мс). Програма відніме апаратну затримку, яку вже повідомляє цей вихід, щоб не врахувати її двічі. Специфікація може не відповідати поточному Bluetooth-підключенню."
+            "value": "Введіть повну затримку виходу зі специфікації пристрою. Програма відніме затримку, яку вже повідомляє вихід. Повне значення має бути не меншим за повідомлену затримку, щоб поправка лишалася невід’ємною."
           }
         }
       }
@@ -12147,13 +12147,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a signed correction in addition to the delay already reported by the output. Positive values move the cursor later; negative values move it earlier."
+            "value": "Enter a nonnegative correction in addition to the delay already reported by the output. A positive value moves the cursor later."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть поправку зі знаком до затримки, яку вже повідомляє вихід. Додатні значення зміщують курсор пізніше, від’ємні — раніше."
+            "value": "Введіть невід’ємну поправку до затримки, яку вже повідомляє вихід. Додатне значення зміщує курсор пізніше."
           }
         }
       }
@@ -12179,13 +12179,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Signed values: −1000…+1000 ms. Total output + instrument compensation must also stay within this range. A decimal dot or comma is accepted."
+            "value": "Allowed range: 0–1000 ms. Total output + instrument compensation must not exceed 1000 ms. A decimal dot or comma is accepted."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Значення зі знаком: −1000…+1000 мс. Сума поправок виходу й інструменту також має бути в цих межах. Дозволено десяткову крапку або кому."
+            "value": "Дозволений діапазон: 0–1000 мс. Сума поправок виходу й інструменту не має перевищувати 1000 мс. Дозволено десяткову крапку або кому."
           }
         }
       }
@@ -12195,13 +12195,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a valid delay between −1000 and +1000 ms; the combined compensation must be in the same range."
+            "value": "Enter a delay from 0 to 1000 ms. Negative corrections are not allowed; combined compensation must not exceed 1000 ms."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть коректну затримку від −1000 до +1000 мс; сумарна поправка має бути в тих самих межах."
+            "value": "Введіть затримку від 0 до 1000 мс. Від’ємні поправки заборонені; сумарна компенсація не має перевищувати 1000 мс."
           }
         }
       }
@@ -12211,13 +12211,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Delay (ms)"
+            "value": "Delay"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Затримка (мс)"
+            "value": "Затримка"
           }
         }
       }
@@ -12227,13 +12227,93 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "+120 or −25"
+            "value": "Example: 120 or 25.5"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "+120 або −25"
+            "value": "Наприклад: 120 або 25,5"
+          }
+        }
+      }
+    },
+    "sync.manual.unit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ms"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "мс"
+          }
+        }
+      }
+    },
+    "sync.manual.apply": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Застосувати"
+          }
+        }
+      }
+    },
+    "sync.nonnegative.measurement": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The measured negative offset remains on the timeline for diagnosis and cannot be applied. Repeat the measurement or enter a value from 0 to 1000 ms."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряне від’ємне зміщення залишається на шкалі для діагностики й не може бути застосоване. Повторіть вимірювання або введіть значення від 0 до 1000 мс."
+          }
+        }
+      }
+    },
+    "sync.nonnegative.savedOutput": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The saved negative output setting is inactive. Using 0 ms; enter a nonnegative value or reset this setting."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережене від’ємне налаштування виходу вимкнено. Використовується 0 мс; введіть невід’ємне значення або скиньте це налаштування."
+          }
+        }
+      }
+    },
+    "sync.nonnegative.savedInstrument": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This saved setting contains a negative correction and is not used for scoring. Apply a nonnegative value or repeat the measurement. Past practice results are unchanged."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Це збережене налаштування містить від’ємну поправку й не використовується для оцінювання. Застосуйте невід’ємне значення або повторіть вимірювання. Минулі результати практики не змінено."
           }
         }
       }
