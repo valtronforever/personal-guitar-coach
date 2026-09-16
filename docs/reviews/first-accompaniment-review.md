@@ -17,3 +17,5 @@
 - All 136 App tests pass. After the lesson-version update, all 80 Learning tests pass again and all 43 bundles validate. 807 UI keys and the generated project pass their checks. The explicit serial App run also passes all 136 tests in 123.065 seconds. Signed Release/archive and XPC checks pass in the original root path; report `docs/benchmarks/first-accompaniment-release-bundle.json` covers 43 bundles/130 YAML files. PR/CI remain pending. Native en/uk reader/VoiceOver and real instrument comfort/clarity remain pending_user.
 
 A fresh attempt to inspect the native app via the computer-use service returned timeoutReached (-10005); no native window interaction was established, and no UI acceptance was inferred from the signed bundle checks.
+
+Consolidated delivery in PR #69 together with strum support. Final explicit-serial Learning run: all 80 tests passed in 30.533 seconds. Together with the unchanged 23 Persistence /38 Domain /78 Audio /5 AgentBridge suites, 224 Core tests are covered; all 136 App tests also pass explicitly serially. Full consolidated CI remains required.
