@@ -18,3 +18,5 @@
 - All 136 App tests pass explicitly serially in 125.079 seconds. Generated Xcode project and 807 localized UI keys pass checks.
 - Four focused anchor/course tests pass after the optional-binding cleanup. Signed Release/archive passes with 44 bundles/133 YAML files; report: docs/benchmarks/open-bass-anchor-release-bundle.json. The signed sandbox-to-XPC invalid-request probe passes without invoking a provider. CI remains pending.
 - Native reader/VoiceOver, actual string comfort, real-guitar capture and perceived reference usefulness remain pending_user. Synthetic/code checks do not establish those outcomes.
+
+Full CI run 35156066168 passed. PR #70 merged as 8873e61ed761c2185ab3e6d720d06bc3ed221e11. Native/hardware checks remain pending_user.
