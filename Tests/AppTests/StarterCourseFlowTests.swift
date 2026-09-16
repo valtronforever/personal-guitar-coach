@@ -10,7 +10,7 @@ import Audio
     @Test func EachBundledLessonConnectsTextVisualsPracticeSavedResultAndRetry() async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.issues.isEmpty && library.lessons.count == 16)
+        #expect(library.issues.isEmpty && library.lessons.count == 29)
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), assessment = AssessmentStore(repository: repository)
@@ -66,13 +66,13 @@ import Audio
             }
         }
         await data.reload()
-        #expect(data.records.count == 16 && data.historyIssues.isEmpty)
+        #expect(data.records.count == library.lessons.reduce(0) { $0 + $1.manifest.practiceEntries.count } && data.historyIssues.isEmpty)
         for record in data.records {
             #expect(record.assessment != nil)
             #expect(ResultPresentation.title(record: record, lessons: library.lessons, language: .en) != nil)
             #expect(ResultPresentation.title(record: record, lessons: library.lessons, language: .uk) != nil)
         }
-        let intro = try #require(library.lessons.first)
+        let intro = try #require(library.lessons.first { $0.id == "open-strings-intro" })
         let staleBookmark = LessonBookmark(lessonVersion: 1, stepID: "hear-high-e", readVersion: 1)
         let restored = LessonSelection(lesson: intro, bookmark: staleBookmark)
         #expect(restored.stepID == intro.manifest.steps.first?.id)

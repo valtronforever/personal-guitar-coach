@@ -16,3 +16,145 @@ lessons:
   - guitar-foundations
   - power-chord-self-practice
   - hear-pitch-direction
+  - guitar-anatomy
+  - pick-grip
+  - signal-chain
+  - clean-input
+  - tune-six-strings
+  - standard-and-drop
+  - practice-preparation
+  - clean-fretted-note
+  - down-up-strokes
+  - adjacent-strings
+  - stop-a-note
+  - reading-tab
+  - first-melody
+modules:
+  - id: getting-started
+    order: 1
+    titles:
+      en: Getting started with electric guitar
+      uk: Початок роботи з електрогітарою
+    summaries:
+      en: Set up the instrument, sound and practice environment.
+      uk: Підготуйте інструмент, звук і місце для занять.
+  - id: first-notes
+    order: 2
+    titles:
+      en: First notes and tablature
+      uk: Перші ноти та табулатура
+    summaries:
+      en: Connect clean notes, string changes and readable TAB.
+      uk: Поєднайте чисті ноти, переходи між струнами та читання TAB.
+  - id: basic-rhythm
+    order: 3
+    titles:
+      en: Rhythm foundations
+      uk: Основи ритму
+    summaries:
+      en: Build a pulse, subdivisions, rests and complete phrases.
+      uk: Розвивайте пульс, поділ долі, паузи та цілі фрази.
+  - id: first-chords
+    order: 4
+    titles:
+      en: Chords and accompaniment
+      uk: Акорди й акомпанемент
+    summaries:
+      en: Shape chords, change them in time and play accompaniment.
+      uk: Збирайте акорди, вчасно змінюйте їх і грайте акомпанемент.
+  - id: rock-rhythm
+    order: 5
+    titles:
+      en: Rock and metal rhythm guitar
+      uk: Ритм-гітара року та металу
+    summaries:
+      en: Control power chords, muting and original riffs.
+      uk: Керуйте павер-акордами, глушінням і власними рифами.
+  - id: fretboard-theory
+    order: 6
+    titles:
+      en: Fretboard and music fundamentals
+      uk: Гриф і музичні основи
+    summaries:
+      en: Understand notes, intervals, keys and transposition.
+      uk: Розберіться з нотами, інтервалами, тональностями та транспонуванням.
+  - id: lead-foundations
+    order: 7
+    titles:
+      en: Lead guitar foundations
+      uk: Основи сольної техніки
+    summaries:
+      en: Coordinate the hands and develop expressive note transitions.
+      uk: Координуйте руки й розвивайте виразні переходи між нотами.
+  - id: scales-positions
+    order: 8
+    titles:
+      en: Scales and positions
+      uk: Гами та позиції
+    summaries:
+      en: Connect scale degrees, patterns and regions of the neck.
+      uk: Поєднуйте ступені, аплікатури та ділянки грифа.
+  - id: advanced-rhythm
+    order: 9
+    titles:
+      en: Beyond the basic pulse
+      uk: Поглиблений ритм
+    summaries:
+      en: Explore tuplets, compound and odd meters, and internal time.
+      uk: Опануйте тріолі, складені й непарні розміри та внутрішній пульс.
+  - id: harmony
+    order: 10
+    titles:
+      en: Chords across the neck
+      uk: Гармонія на всьому грифі
+    summaries:
+      en: Link movable chords, inversions and voice leading.
+      uk: Поєднуйте рухомі акорди, обернення та голосоведіння.
+  - id: ear-improvisation
+    order: 11
+    titles:
+      en: Ear training and improvisation
+      uk: Слух та імпровізація
+    summaries:
+      en: Listen, reproduce and develop your own musical phrases.
+      uk: Слухайте, відтворюйте та розвивайте власні музичні фрази.
+  - id: advanced-technique
+    order: 12
+    titles:
+      en: Advanced electric-guitar technique
+      uk: Поглиблена техніка електрогітари
+    summaries:
+      en: Develop specialized picking, legato and harmonic techniques.
+      uk: Розвивайте спеціалізовані штрихи, легато й флажолети.
+  - id: electric-styles
+    order: 13
+    titles:
+      en: Electric-guitar styles
+      uk: Стилі електрогітари
+    summaries:
+      en: Apply your skills in original introductory genre studies.
+      uk: Застосуйте навички у власних вступних жанрових етюдах.
+  - id: specializations
+    order: 14
+    titles:
+      en: Musical specializations
+      uk: Музичні спеціалізації
+    summaries:
+      en: Explore jazz, fingerstyle, modes and melodic tension.
+      uk: Дослідіть джаз, fingerstyle, лади та мелодичне напруження.
+  - id: electric-tone
+    order: 15
+    titles:
+      en: Electric-guitar sound
+      uk: Звук електрогітари
+    summaries:
+      en: Make deliberate choices about tone, effects and recording.
+      uk: Свідомо обирайте тембр, ефекти та спосіб запису.
+  - id: independent-musician
+    order: 16
+    titles:
+      en: Repertoire and independent practice
+      uk: Репертуар і самостійна практика
+    summaries:
+      en: Learn, write, arrange and review complete music.
+      uk: Вивчайте, пишіть, аранжуйте та аналізуйте цілі твори.

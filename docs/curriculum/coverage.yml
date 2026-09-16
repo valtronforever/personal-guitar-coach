@@ -1,0 +1,1300 @@
+schemaVersion: 1
+expectedLessonCount: 128
+modules:
+  - id: getting-started
+    order: 1
+    titles:
+      en: Getting started with electric guitar
+      uk: Початок роботи з електрогітарою
+    summaries:
+      en: Set up the instrument, sound and practice environment.
+      uk: Підготуйте інструмент, звук і місце для занять.
+  - id: first-notes
+    order: 2
+    titles:
+      en: First notes and tablature
+      uk: Перші ноти та табулатура
+    summaries:
+      en: Connect clean notes, string changes and readable TAB.
+      uk: Поєднайте чисті ноти, переходи між струнами та читання TAB.
+  - id: basic-rhythm
+    order: 3
+    titles:
+      en: Rhythm foundations
+      uk: Основи ритму
+    summaries:
+      en: Build a pulse, subdivisions, rests and complete phrases.
+      uk: Розвивайте пульс, поділ долі, паузи та цілі фрази.
+  - id: first-chords
+    order: 4
+    titles:
+      en: Chords and accompaniment
+      uk: Акорди й акомпанемент
+    summaries:
+      en: Shape chords, change them in time and play accompaniment.
+      uk: Збирайте акорди, вчасно змінюйте їх і грайте акомпанемент.
+  - id: rock-rhythm
+    order: 5
+    titles:
+      en: Rock and metal rhythm guitar
+      uk: Ритм-гітара року та металу
+    summaries:
+      en: Control power chords, muting and original riffs.
+      uk: Керуйте павер-акордами, глушінням і власними рифами.
+  - id: fretboard-theory
+    order: 6
+    titles:
+      en: Fretboard and music fundamentals
+      uk: Гриф і музичні основи
+    summaries:
+      en: Understand notes, intervals, keys and transposition.
+      uk: Розберіться з нотами, інтервалами, тональностями та транспонуванням.
+  - id: lead-foundations
+    order: 7
+    titles:
+      en: Lead guitar foundations
+      uk: Основи сольної техніки
+    summaries:
+      en: Coordinate the hands and develop expressive note transitions.
+      uk: Координуйте руки й розвивайте виразні переходи між нотами.
+  - id: scales-positions
+    order: 8
+    titles:
+      en: Scales and positions
+      uk: Гами та позиції
+    summaries:
+      en: Connect scale degrees, patterns and regions of the neck.
+      uk: Поєднуйте ступені, аплікатури та ділянки грифа.
+  - id: advanced-rhythm
+    order: 9
+    titles:
+      en: Beyond the basic pulse
+      uk: Поглиблений ритм
+    summaries:
+      en: Explore tuplets, compound and odd meters, and internal time.
+      uk: Опануйте тріолі, складені й непарні розміри та внутрішній пульс.
+  - id: harmony
+    order: 10
+    titles:
+      en: Chords across the neck
+      uk: Гармонія на всьому грифі
+    summaries:
+      en: Link movable chords, inversions and voice leading.
+      uk: Поєднуйте рухомі акорди, обернення та голосоведіння.
+  - id: ear-improvisation
+    order: 11
+    titles:
+      en: Ear training and improvisation
+      uk: Слух та імпровізація
+    summaries:
+      en: Listen, reproduce and develop your own musical phrases.
+      uk: Слухайте, відтворюйте та розвивайте власні музичні фрази.
+  - id: advanced-technique
+    order: 12
+    titles:
+      en: Advanced electric-guitar technique
+      uk: Поглиблена техніка електрогітари
+    summaries:
+      en: Develop specialized picking, legato and harmonic techniques.
+      uk: Розвивайте спеціалізовані штрихи, легато й флажолети.
+  - id: electric-styles
+    order: 13
+    titles:
+      en: Electric-guitar styles
+      uk: Стилі електрогітари
+    summaries:
+      en: Apply your skills in original introductory genre studies.
+      uk: Застосуйте навички у власних вступних жанрових етюдах.
+  - id: specializations
+    order: 14
+    titles:
+      en: Musical specializations
+      uk: Музичні спеціалізації
+    summaries:
+      en: Explore jazz, fingerstyle, modes and melodic tension.
+      uk: Дослідіть джаз, fingerstyle, лади та мелодичне напруження.
+  - id: electric-tone
+    order: 15
+    titles:
+      en: Electric-guitar sound
+      uk: Звук електрогітари
+    summaries:
+      en: Make deliberate choices about tone, effects and recording.
+      uk: Свідомо обирайте тембр, ефекти та спосіб запису.
+  - id: independent-musician
+    order: 16
+    titles:
+      en: Repertoire and independent practice
+      uk: Репертуар і самостійна практика
+    summaries:
+      en: Learn, write, arrange and review complete music.
+      uk: Вивчайте, пишіть, аранжуйте та аналізуйте цілі твори.
+lessons:
+  - number: 1
+    moduleID: getting-started
+    lessonID: guitar-anatomy
+    titles:
+      en: Electric-guitar anatomy
+      uk: Будова електрогітари
+    outcomeUK: Знайти струни, лади, бридж, звукознімачі та органи керування
+    originalAssessment: С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 2
+    moduleID: getting-started
+    lessonID: guitar-foundations
+    titles:
+      en: Sitting and standing position
+      uk: Положення гітари сидячи та стоячи
+    outcomeUK: Налаштувати ремінь і зручне положення інструменту
+    originalAssessment: С
+    status: authored
+    evidence: Expanded seated/standing posture lesson; preserves original stable task IDs.
+  - number: 3
+    moduleID: getting-started
+    lessonID: pick-grip
+    titles:
+      en: Holding the pick
+      uk: Як тримати медіатор
+    outcomeUK: Знайти стабільний хват і невелику амплітуду руху
+    originalAssessment: С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 4
+    moduleID: getting-started
+    lessonID: signal-chain
+    titles:
+      en: Guitar, interface, amplifier and headphones
+      uk: Гітара, інтерфейс, підсилювач і навушники
+    outcomeUK: Зібрати та зрозуміти свій сигнальний ланцюг
+    originalAssessment: С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 5
+    moduleID: getting-started
+    lessonID: clean-input
+    titles:
+      en: Clean input and signal level
+      uk: Чистий вхід і рівень сигналу
+    outcomeUK: Виставити gain без кліпінгу та зайвого шуму
+    originalAssessment: С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 6
+    moduleID: getting-started
+    lessonID: tune-six-strings
+    titles:
+      en: Tuning all six strings
+      uk: Налаштування гітари тюнером
+    outcomeUK: Налаштувати всі шість струн обраного строю
+    originalAssessment: Н+С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 7
+    moduleID: getting-started
+    lessonID: standard-and-drop
+    titles:
+      en: Standard and drop tunings
+      uk: 'Standard і Drop: у чому різниця'
+    outcomeUK: Зрозуміти зміну інтервалів та аплікатур
+    originalAssessment: Н+С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 8
+    moduleID: getting-started
+    lessonID: practice-preparation
+    titles:
+      en: Preparing for practice
+      uk: Підготовка до практики
+    outcomeUK: Перевірити стрій, метроном, затримку та вхід
+    originalAssessment: С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 9
+    moduleID: first-notes
+    lessonID: open-strings-intro
+    titles:
+      en: Open strings
+      uk: Відкриті струни
+    outcomeUK: Знаходити потрібну струну та грати її окремо
+    originalAssessment: Н
+    status: authored
+    evidence: Existing reviewed starter content; musical events and content versions preserved.
+  - number: 10
+    moduleID: first-notes
+    lessonID: first-frets
+    titles:
+      en: First frets
+      uk: Перші лади
+    outcomeUK: Зіграти коротку хроматичну послідовність
+    originalAssessment: Н
+    status: authored
+    evidence: Existing reviewed starter content; musical events and content versions preserved.
+  - number: 11
+    moduleID: first-notes
+    lessonID: clean-fretted-note
+    titles:
+      en: A clean fretted note
+      uk: Чиста затиснута нота
+    outcomeUK: Підібрати положення пальця й достатній тиск
+    originalAssessment: Н+С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 12
+    moduleID: first-notes
+    lessonID: down-up-strokes
+    titles:
+      en: Downstrokes and upstrokes
+      uk: Удари медіатором вниз і вгору
+    outcomeUK: Зіграти прості послідовності обома напрямками
+    originalAssessment: Н+С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 13
+    moduleID: first-notes
+    lessonID: adjacent-strings
+    titles:
+      en: Changing adjacent strings
+      uk: Перехід між сусідніми струнами
+    outcomeUK: Потрапляти медіатором у потрібну струну
+    originalAssessment: Н+С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 14
+    moduleID: first-notes
+    lessonID: stop-a-note
+    titles:
+      en: Stopping a note
+      uk: Як зупинити звучання ноти
+    outcomeUK: Відокремлювати ноти й прибирати небажане звучання
+    originalAssessment: С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 15
+    moduleID: first-notes
+    lessonID: reading-tab
+    titles:
+      en: Reading tablature
+      uk: Як читати TAB
+    outcomeUK: Зіставляти номер струни, лад і послідовність нот
+    originalAssessment: Н+С
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 16
+    moduleID: first-notes
+    lessonID: first-melody
+    titles:
+      en: Your first melody
+      uk: Перша мелодія
+    outcomeUK: Зіграти короткий завершений твір на двох струнах
+    originalAssessment: Н
+    status: authored
+    evidence: Module 1–2 editorial and software acceptance pending.
+  - number: 17
+    moduleID: basic-rhythm
+    lessonID: steady-pulse
+    titles:
+      en: A steady pulse
+      uk: Рівний пульс
+    outcomeUK: Грати четверті під метроном
+    originalAssessment: Н
+    status: needs_review
+  - number: 18
+    moduleID: basic-rhythm
+    lessonID: eighth-notes
+    titles:
+      en: Eighth notes
+      uk: Восьмі ноти
+    outcomeUK: Утримувати два рівні звуки на долю
+    originalAssessment: Н
+    status: todo
+  - number: 19
+    moduleID: basic-rhythm
+    lessonID: rhythm-rests
+    titles:
+      en: Rests and re-entry
+      uk: Паузи та точний початок після паузи
+    outcomeUK: Зберігати внутрішній рахунок під час мовчання
+    originalAssessment: Н+С
+    status: todo
+  - number: 20
+    moduleID: basic-rhythm
+    lessonID: slow-sixteenths
+    titles:
+      en: Slow sixteenth notes
+      uk: Шістнадцяті в повільному темпі
+    outcomeUK: Рахувати й грати чотири поділи долі
+    originalAssessment: Н
+    status: todo
+  - number: 21
+    moduleID: basic-rhythm
+    lessonID: beat-accents
+    titles:
+      en: Strong beats and accents
+      uk: Сильні долі та акценти
+    outcomeUK: Змінювати акценти, зберігаючи пульс
+    originalAssessment: Н+С
+    status: todo
+  - number: 22
+    moduleID: basic-rhythm
+    lessonID: dotted-tied-notes
+    titles:
+      en: Dotted notes and ties
+      uk: 'Подовження нот: крапка й ліга'
+    outcomeUK: Читати та виконувати довгі й зв’язані тривалості
+    originalAssessment: Р
+    status: todo
+  - number: 23
+    moduleID: basic-rhythm
+    lessonID: simple-meters
+    titles:
+      en: 4/4 and 3/4
+      uk: Розміри 4/4 та 3/4
+    outcomeUK: Відчувати початок такту й різне групування долей
+    originalAssessment: Н
+    status: todo
+  - number: 24
+    moduleID: basic-rhythm
+    lessonID: first-rhythm-study
+    titles:
+      en: Your first rhythm study
+      uk: Перший ритмічний етюд
+    outcomeUK: Зіграти вісім тактів із нотами та паузами
+    originalAssessment: Н+С
+    status: todo
+  - number: 25
+    moduleID: first-chords
+    lessonID: minor-chord-shapes
+    titles:
+      en: Simple minor chords
+      uk: Прості мінорні акорди
+    outcomeUK: Зібрати кілька форм і перевірити кожну струну
+    originalAssessment: Н+С
+    status: todo
+  - number: 26
+    moduleID: first-chords
+    lessonID: major-chord-shapes
+    titles:
+      en: Simple major chords
+      uk: Прості мажорні акорди
+    outcomeUK: Порівняти мажорне та мінорне звучання
+    originalAssessment: Н+С
+    status: todo
+  - number: 27
+    moduleID: first-chords
+    lessonID: two-chord-changes
+    titles:
+      en: Changing between two chords
+      uk: Зміна двох акордів
+    outcomeUK: Переставляти пальці без зупинки пульсу
+    originalAssessment: С
+    status: todo
+  - number: 28
+    moduleID: first-chords
+    lessonID: down-up-strumming
+    titles:
+      en: Down-up strumming
+      uk: Базовий бій вниз–вгору
+    outcomeUK: Зіграти рівний акомпанемент
+    originalAssessment: С
+    status: todo
+  - number: 29
+    moduleID: first-chords
+    lessonID: chord-string-selection
+    titles:
+      en: Choosing the strings in a chord
+      uk: Які струни мають звучати в акорді
+    outcomeUK: Уникати зайвих басових і відкритих струн
+    originalAssessment: С
+    status: todo
+  - number: 30
+    moduleID: first-chords
+    lessonID: em-arpeggio
+    titles:
+      en: From chord to arpeggio
+      uk: Від акорду до окремих нот
+    outcomeUK: Зіграти форму акорду як послідовне арпеджіо
+    originalAssessment: Н
+    status: needs_review
+  - number: 31
+    moduleID: first-chords
+    lessonID: small-barre
+    titles:
+      en: The small barre
+      uk: Перше мале баре
+    outcomeUK: Затиснути кілька струн одним пальцем
+    originalAssessment: Н+С
+    status: todo
+  - number: 32
+    moduleID: first-chords
+    lessonID: first-song-form
+    titles:
+      en: Your first song form
+      uk: Перша пісенна форма
+    outcomeUK: Зіграти куплет і приспів із простих акордів
+    originalAssessment: С
+    status: todo
+  - number: 33
+    moduleID: rock-rhythm
+    lessonID: power-chord-self-practice
+    titles:
+      en: 'Power chords: root and fifth'
+      uk: 'Power chord: основний тон і квінта'
+    outcomeUK: Будувати двозвучні форми від різних нот
+    originalAssessment: Н+С
+    status: needs_review
+  - number: 34
+    moduleID: rock-rhythm
+    lessonID: moving-power-chords
+    titles:
+      en: Moving power chords
+      uk: Переміщення power chords
+    outcomeUK: Зіграти послідовність без зайвого шуму
+    originalAssessment: С
+    status: todo
+  - number: 35
+    moduleID: rock-rhythm
+    lessonID: palm-muting
+    titles:
+      en: Palm muting
+      uk: Palm muting
+    outcomeUK: Керувати ступенем приглушення біля бриджа
+    originalAssessment: С
+    status: todo
+  - number: 36
+    moduleID: rock-rhythm
+    lessonID: fretting-hand-muting
+    titles:
+      en: Fretting-hand muting
+      uk: Глушіння лівою рукою
+    outcomeUK: Зупиняти акорди й контролювати паузи
+    originalAssessment: С
+    status: todo
+  - number: 37
+    moduleID: rock-rhythm
+    lessonID: two-hand-muting
+    titles:
+      en: Two-hand muting
+      uk: Глушіння обома руками
+    outcomeUK: Прибирати резонанс сусідніх струн
+    originalAssessment: С
+    status: todo
+  - number: 38
+    moduleID: rock-rhythm
+    lessonID: pedal-tone-riffs
+    titles:
+      en: Pedal-tone riffs
+      uk: Риф із педальним тоном
+    outcomeUK: Чергувати повторювану басову ноту з іншими нотами
+    originalAssessment: Н+С
+    status: todo
+  - number: 39
+    moduleID: rock-rhythm
+    lessonID: drop-tuning-riffs
+    titles:
+      en: Riffs in drop tuning
+      uk: Рифи в Drop-строї
+    outcomeUK: Використовувати характерні форми та відкриту нижню струну
+    originalAssessment: Н+С
+    status: todo
+  - number: 40
+    moduleID: rock-rhythm
+    lessonID: first-overdriven-riff
+    titles:
+      en: Your first overdriven riff
+      uk: Перший риф із перевантаженням
+    outcomeUK: Поєднати power chords, паузи та palm muting
+    originalAssessment: С
+    status: todo
+  - number: 41
+    moduleID: fretboard-theory
+    lessonID: fretboard-note-names
+    titles:
+      en: Notes across the fretboard
+      uk: Назви нот на грифі
+    outcomeUK: Знаходити задані ноти без прив’язки до одного строю
+    originalAssessment: Н
+    status: todo
+  - number: 42
+    moduleID: fretboard-theory
+    lessonID: octaves
+    titles:
+      en: Octaves
+      uk: Октави
+    outcomeUK: Знаходити ту саму ноту в різних октавах
+    originalAssessment: Н
+    status: todo
+  - number: 43
+    moduleID: fretboard-theory
+    lessonID: intervals
+    titles:
+      en: Intervals on one and several strings
+      uk: Інтервали на одній і кількох струнах
+    outcomeUK: Зіграти секунди, терції, кварти, квінти та октави
+    originalAssessment: Н
+    status: todo
+  - number: 44
+    moduleID: fretboard-theory
+    lessonID: tonic-and-degrees
+    titles:
+      en: Tonic and scale degrees
+      uk: Тоніка та ступені
+    outcomeUK: Розуміти роль ноти щодо тонального центру
+    originalAssessment: Н+С
+    status: todo
+  - number: 45
+    moduleID: fretboard-theory
+    lessonID: building-triads
+    titles:
+      en: Building triads
+      uk: Як із нот утворюється тризвук
+    outcomeUK: Побудувати мажорний і мінорний акорди
+    originalAssessment: Н+С
+    status: todo
+  - number: 46
+    moduleID: fretboard-theory
+    lessonID: transpose-a-melody
+    titles:
+      en: Transposing a melody or riff
+      uk: Перенесення музики в іншу тональність
+    outcomeUK: Транспонувати просту мелодію або риф
+    originalAssessment: Н
+    status: todo
+  - number: 47
+    moduleID: fretboard-theory
+    lessonID: fingering-key-tuning
+    titles:
+      en: Fingering, key and tuning
+      uk: Аплікатура, тональність і стрій
+    outcomeUK: Порівняти результат у Standard та Drop
+    originalAssessment: Н+С
+    status: todo
+  - number: 48
+    moduleID: fretboard-theory
+    lessonID: fretboard-map
+    titles:
+      en: Your fretboard map
+      uk: Карта грифа
+    outcomeUK: Знайти задані ноти кількома способами
+    originalAssessment: Н+С
+    status: todo
+  - number: 49
+    moduleID: lead-foundations
+    lessonID: alternate-picking
+    titles:
+      en: Alternate picking
+      uk: Змінний штрих — alternate picking
+    outcomeUK: Утримувати послідовне чергування вниз–вгору
+    originalAssessment: Н+С
+    status: todo
+  - number: 50
+    moduleID: lead-foundations
+    lessonID: hand-synchronization
+    titles:
+      en: Synchronizing both hands
+      uk: Синхронізація обох рук
+    outcomeUK: Зіграти рівну послідовність без зайвих атак
+    originalAssessment: Н+С
+    status: todo
+  - number: 51
+    moduleID: lead-foundations
+    lessonID: slides
+    titles:
+      en: Slides
+      uk: Slide
+    outcomeUK: Переміщуватися між нотами ковзанням
+    originalAssessment: Р
+    status: todo
+  - number: 52
+    moduleID: lead-foundations
+    lessonID: hammer-ons
+    titles:
+      en: Hammer-ons
+      uk: Hammer-on
+    outcomeUK: Отримувати наступну ноту ударом пальця
+    originalAssessment: Р
+    status: todo
+  - number: 53
+    moduleID: lead-foundations
+    lessonID: pull-offs
+    titles:
+      en: Pull-offs
+      uk: Pull-off
+    outcomeUK: Отримувати нижчу ноту контрольованим зняттям пальця
+    originalAssessment: Р
+    status: todo
+  - number: 54
+    moduleID: lead-foundations
+    lessonID: first-bend
+    titles:
+      en: Your first bend
+      uk: Перший bend
+    outcomeUK: Підтягувати струну до заданої висоти
+    originalAssessment: Р
+    status: todo
+  - number: 55
+    moduleID: lead-foundations
+    lessonID: bend-target-and-release
+    titles:
+      en: Bend accuracy and release
+      uk: Точність bend і повернення ноти
+    outcomeUK: Порівнювати підтягування з еталонною нотою
+    originalAssessment: Р
+    status: todo
+  - number: 56
+    moduleID: lead-foundations
+    lessonID: vibrato
+    titles:
+      en: Vibrato
+      uk: Vibrato
+    outcomeUK: Керувати шириною й швидкістю коливання висоти
+    originalAssessment: Р
+    status: todo
+  - number: 57
+    moduleID: scales-positions
+    lessonID: c-major
+    titles:
+      en: The major scale
+      uk: Мажорна гама
+    outcomeUK: Зіграти гаму та розпізнавати її ступені
+    originalAssessment: Н
+    status: needs_review
+  - number: 58
+    moduleID: scales-positions
+    lessonID: natural-minor
+    titles:
+      en: Natural minor
+      uk: Натуральний мінор
+    outcomeUK: Порівняти його будову з мажором
+    originalAssessment: Н
+    status: todo
+  - number: 59
+    moduleID: scales-positions
+    lessonID: a-minor-pentatonic
+    titles:
+      en: Minor pentatonic
+      uk: Мінорна пентатоніка
+    outcomeUK: Зіграти основну позицію в обраній тональності
+    originalAssessment: Н
+    status: needs_review
+  - number: 60
+    moduleID: scales-positions
+    lessonID: major-pentatonic
+    titles:
+      en: Major pentatonic
+      uk: Мажорна пентатоніка
+    outcomeUK: Застосувати інше групування п’яти нот
+    originalAssessment: Н
+    status: todo
+  - number: 61
+    moduleID: scales-positions
+    lessonID: blues-scale
+    titles:
+      en: The blues scale
+      uk: Блюзова гама
+    outcomeUK: Додати блюзову ноту до пентатоніки
+    originalAssessment: Н
+    status: todo
+  - number: 62
+    moduleID: scales-positions
+    lessonID: connect-scale-positions
+    titles:
+      en: Connecting adjacent positions
+      uk: З’єднання сусідніх позицій
+    outcomeUK: Грати фрази за межами одного «боксу»
+    originalAssessment: Н
+    status: todo
+  - number: 63
+    moduleID: scales-positions
+    lessonID: same-notes-new-position
+    titles:
+      en: The same notes in another position
+      uk: Ті самі ноти в іншій позиції
+    outcomeUK: Перенести аплікатуру зі збереженням тональності
+    originalAssessment: Н+С
+    status: needs_review
+  - number: 64
+    moduleID: scales-positions
+    lessonID: scale-sequences
+    titles:
+      en: Scale sequences
+      uk: Послідовності всередині гами
+    outcomeUK: Грати групами по три, чотири та через ступінь
+    originalAssessment: Н
+    status: todo
+  - number: 65
+    moduleID: advanced-rhythm
+    lessonID: triplets
+    titles:
+      en: Triplets
+      uk: Тріолі
+    outcomeUK: Ділити долю на три рівні частини
+    originalAssessment: Р
+    status: todo
+  - number: 66
+    moduleID: advanced-rhythm
+    lessonID: swing-shuffle
+    titles:
+      en: Swing and shuffle
+      uk: Swing і shuffle
+    outcomeUK: Відчути нерівномірний поділ долі
+    originalAssessment: Р
+    status: todo
+  - number: 67
+    moduleID: advanced-rhythm
+    lessonID: syncopation
+    titles:
+      en: Syncopation
+      uk: Синкопи
+    outcomeUK: Акцентувати слабкі частини долі
+    originalAssessment: Н+С
+    status: todo
+  - number: 68
+    moduleID: advanced-rhythm
+    lessonID: compound-meters
+    titles:
+      en: 6/8 and 12/8
+      uk: Розміри 6/8 та 12/8
+    outcomeUK: Грати зі складеним поділом долі
+    originalAssessment: Р
+    status: todo
+  - number: 69
+    moduleID: advanced-rhythm
+    lessonID: gallop-patterns
+    titles:
+      en: Gallop and reverse gallop
+      uk: Галоп і зворотний галоп
+    outcomeUK: Виконувати характерні металеві ритми
+    originalAssessment: Н+С
+    status: todo
+  - number: 70
+    moduleID: advanced-rhythm
+    lessonID: displaced-accents
+    titles:
+      en: Displaced accents
+      uk: Зміщення ритмічного акценту
+    outcomeUK: Повторювати фігуру з різних частин долі
+    originalAssessment: Н+С
+    status: todo
+  - number: 71
+    moduleID: advanced-rhythm
+    lessonID: odd-meters
+    titles:
+      en: 5/4 and 7/8
+      uk: 'Непарні розміри: 5/4 та 7/8'
+    outcomeUK: Рахувати й грати нерівні групи
+    originalAssessment: Р
+    status: todo
+  - number: 72
+    moduleID: advanced-rhythm
+    lessonID: missing-clicks
+    titles:
+      en: A metronome with missing clicks
+      uk: Метроном із пропущеними кліками
+    outcomeUK: Утримувати темп без постійної зовнішньої підказки
+    originalAssessment: Р
+    status: todo
+  - number: 73
+    moduleID: harmony
+    lessonID: major-barre-chords
+    titles:
+      en: Major barre chords
+      uk: Мажорні акорди з повним баре
+    outcomeUK: Переносити форму в різні тональності
+    originalAssessment: Н+С
+    status: todo
+  - number: 74
+    moduleID: harmony
+    lessonID: minor-barre-chords
+    titles:
+      en: Minor barre chords
+      uk: Мінорні акорди з повним баре
+    outcomeUK: Змінювати якість акорду в рухомій формі
+    originalAssessment: Н+С
+    status: todo
+  - number: 75
+    moduleID: harmony
+    lessonID: caged
+    titles:
+      en: CAGED
+      uk: Система CAGED
+    outcomeUK: Пов’язати форми акордів із ділянками грифа
+    originalAssessment: Н+С
+    status: todo
+  - number: 76
+    moduleID: harmony
+    lessonID: triad-inversions
+    titles:
+      en: Triad inversions
+      uk: Обернення тризвуків
+    outcomeUK: Зіграти один акорд із різними нижніми нотами
+    originalAssessment: Н+С
+    status: todo
+  - number: 77
+    moduleID: harmony
+    lessonID: seventh-chords
+    titles:
+      en: Seventh chords
+      uk: Септакорди
+    outcomeUK: Побудувати dominant 7, major 7 і minor 7
+    originalAssessment: Н+С
+    status: todo
+  - number: 78
+    moduleID: harmony
+    lessonID: harmonic-functions
+    titles:
+      en: Chord functions and progressions
+      uk: Функції акордів і типові послідовності
+    outcomeUK: Розуміти рух між тонікою, субдомінантою й домінантою
+    originalAssessment: С
+    status: todo
+  - number: 79
+    moduleID: harmony
+    lessonID: voice-leading
+    titles:
+      en: Voice leading
+      uk: Голосоведіння
+    outcomeUK: Змінювати акорди з мінімальним рухом окремих голосів
+    originalAssessment: Н+С
+    status: todo
+  - number: 80
+    moduleID: harmony
+    lessonID: chord-change-arpeggios
+    titles:
+      en: Arpeggios through chord changes
+      uk: Арпеджіо за змінами акордів
+    outcomeUK: Переходити між акордовими звуками вчасно
+    originalAssessment: Н
+    status: todo
+  - number: 81
+    moduleID: ear-improvisation
+    lessonID: find-heard-note
+    titles:
+      en: Find the note you hear
+      uk: Знайди почуту ноту
+    outcomeUK: Підібрати окремий звук на грифі
+    originalAssessment: Р
+    status: todo
+  - number: 82
+    moduleID: ear-improvisation
+    lessonID: hear-pitch-direction
+    titles:
+      en: Intervals by ear
+      uk: Інтервали на слух
+    outcomeUK: Розрізняти й відтворювати відстані між нотами
+    originalAssessment: Р
+    status: needs_review
+  - number: 83
+    moduleID: ear-improvisation
+    lessonID: repeat-a-rhythm
+    titles:
+      en: Repeat a rhythm
+      uk: Повтори ритм
+    outcomeUK: Відтворити почуту ритмічну фразу
+    originalAssessment: Р
+    status: todo
+  - number: 84
+    moduleID: ear-improvisation
+    lessonID: transcribe-short-melody
+    titles:
+      en: Transcribe a short melody
+      uk: Підбір короткої мелодії
+    outcomeUK: Знайти фразу без готової табулатури
+    originalAssessment: Р
+    status: todo
+  - number: 85
+    moduleID: ear-improvisation
+    lessonID: two-note-improvisation
+    titles:
+      en: Improvising with two or three notes
+      uk: Імпровізація з двох-трьох нот
+    outcomeUK: Створювати мотиви через ритм і повторення
+    originalAssessment: С
+    status: todo
+  - number: 86
+    moduleID: ear-improvisation
+    lessonID: chord-tone-targeting
+    titles:
+      en: Targeting chord tones
+      uk: Опорні ноти над акордами
+    outcomeUK: Завершувати фрази на акордових звуках
+    originalAssessment: Н+С
+    status: todo
+  - number: 87
+    moduleID: ear-improvisation
+    lessonID: question-answer-phrases
+    titles:
+      en: Question, answer and silence
+      uk: Запитання, відповідь і паузи
+    outcomeUK: Будувати зрозумілі музичні фрази
+    originalAssessment: С
+    status: todo
+  - number: 88
+    moduleID: ear-improvisation
+    lessonID: build-a-solo
+    titles:
+      en: Building a short solo
+      uk: Побудова короткого соло
+    outcomeUK: Створити вступ, розвиток і завершення
+    originalAssessment: С
+    status: todo
+  - number: 89
+    moduleID: advanced-technique
+    lessonID: string-skipping
+    titles:
+      en: String skipping
+      uk: String skipping
+    outcomeUK: Перестрибувати через струни без зайвих звуків
+    originalAssessment: Н+С
+    status: todo
+  - number: 90
+    moduleID: advanced-technique
+    lessonID: economy-picking
+    titles:
+      en: Economy picking
+      uk: Economy picking
+    outcomeUK: Поєднати змінний штрих із рухом між струнами
+    originalAssessment: Н+С
+    status: todo
+  - number: 91
+    moduleID: advanced-technique
+    lessonID: long-legato
+    titles:
+      en: Long legato phrases
+      uk: Довгі legato-фрази
+    outcomeUK: Поєднувати hammer-on і pull-off через кілька струн
+    originalAssessment: Р
+    status: todo
+  - number: 92
+    moduleID: advanced-technique
+    lessonID: sweep-picking
+    titles:
+      en: Sweep picking
+      uk: Sweep picking
+    outcomeUK: Зіграти арпеджіо одним послідовним рухом медіатора
+    originalAssessment: Р
+    status: todo
+  - number: 93
+    moduleID: advanced-technique
+    lessonID: tapping
+    titles:
+      en: Tapping
+      uk: Tapping
+    outcomeUK: Додати ноти пальцем правої руки
+    originalAssessment: Р
+    status: todo
+  - number: 94
+    moduleID: advanced-technique
+    lessonID: harmonics
+    titles:
+      en: Natural and artificial harmonics
+      uk: Натуральні та штучні флажолети
+    outcomeUK: Отримувати й контролювати гармоніки
+    originalAssessment: Р
+    status: todo
+  - number: 95
+    moduleID: advanced-technique
+    lessonID: hybrid-picking
+    titles:
+      en: Hybrid picking
+      uk: Hybrid picking
+    outcomeUK: Поєднувати медіатор і пальці
+    originalAssessment: Н+С
+    status: todo
+  - number: 96
+    moduleID: advanced-technique
+    lessonID: tremolo-picking
+    titles:
+      en: Tremolo picking
+      uk: Tremolo picking
+    outcomeUK: Утримувати швидкі повторні атаки з контрольованим рухом
+    originalAssessment: Р
+    status: todo
+  - number: 97
+    moduleID: electric-styles
+    lessonID: blues-accompaniment
+    titles:
+      en: Blues accompaniment
+      uk: Блюзовий акомпанемент
+    outcomeUK: Зіграти дванадцятитактову форму
+    originalAssessment: С
+    status: todo
+  - number: 98
+    moduleID: electric-styles
+    lessonID: blues-solo
+    titles:
+      en: Blues soloing
+      uk: Блюзове соло
+    outcomeUK: Поєднати пентатоніку, bend, vibrato та фразування
+    originalAssessment: С
+    status: todo
+  - number: 99
+    moduleID: electric-styles
+    lessonID: classic-rock
+    titles:
+      en: Classic rock
+      uk: Класичний рок
+    outcomeUK: Поєднати риф, акордовий акомпанемент і короткі вставки
+    originalAssessment: С
+    status: todo
+  - number: 100
+    moduleID: electric-styles
+    lessonID: punk-hardcore
+    titles:
+      en: Punk and hardcore
+      uk: Панк і хардкор
+    outcomeUK: Утримувати енергійний ритм та чіткі зупинки
+    originalAssessment: С
+    status: todo
+  - number: 101
+    moduleID: electric-styles
+    lessonID: metal-study
+    titles:
+      en: Metal
+      uk: Метал
+    outcomeUK: Поєднати palm muting, галоп, педальний тон і Drop-форми
+    originalAssessment: С
+    status: todo
+  - number: 102
+    moduleID: electric-styles
+    lessonID: funk-study
+    titles:
+      en: Funk
+      uk: Фанк
+    outcomeUK: Грати короткі акорди, приглушені атаки та синкопи
+    originalAssessment: С
+    status: todo
+  - number: 103
+    moduleID: electric-styles
+    lessonID: rnb-neo-soul
+    titles:
+      en: R&B and neo-soul
+      uk: R&B і neo-soul
+    outcomeUK: Використовувати компактні акорди, обернення й мелодичні прикраси
+    originalAssessment: С
+    status: todo
+  - number: 104
+    moduleID: electric-styles
+    lessonID: country-chicken-picking
+    titles:
+      en: Country and chicken picking
+      uk: Кантрі та chicken picking
+    outcomeUK: Поєднати hybrid picking, короткі ноти та характерні акценти
+    originalAssessment: С
+    status: todo
+  - number: 105
+    moduleID: specializations
+    lessonID: jazz-comping
+    titles:
+      en: Jazz comping
+      uk: Джазовий акомпанемент
+    outcomeUK: Зіграти ii–V–I компактними акордовими формами
+    originalAssessment: Н+С
+    status: todo
+  - number: 106
+    moduleID: specializations
+    lessonID: jazz-lines
+    titles:
+      en: Jazz solo lines
+      uk: Джазова сольна лінія
+    outcomeUK: Пов’язати акордові звуки хроматичними підходами
+    originalAssessment: Н+С
+    status: todo
+  - number: 107
+    moduleID: specializations
+    lessonID: fingerstyle-bass-melody
+    titles:
+      en: 'Fingerstyle: bass and melody'
+      uk: 'Fingerstyle: бас і мелодія'
+    outcomeUK: Вести дві музичні лінії пальцями
+    originalAssessment: С
+    status: todo
+  - number: 108
+    moduleID: specializations
+    lessonID: chord-melody
+    titles:
+      en: Chord melody
+      uk: Chord melody
+    outcomeUK: Поєднати мелодію з акордовою підтримкою
+    originalAssessment: С
+    status: todo
+  - number: 109
+    moduleID: specializations
+    lessonID: modal-improvisation
+    titles:
+      en: Modes and modal improvisation
+      uk: Лади та модальна імпровізація
+    outcomeUK: Почути характер ладу відносно тонального центру
+    originalAssessment: Н+С
+    status: todo
+  - number: 110
+    moduleID: specializations
+    lessonID: harmonic-minor
+    titles:
+      en: Harmonic minor
+      uk: Гармонічний мінор
+    outcomeUK: Застосувати характерні інтервали в мелодії та гармонії
+    originalAssessment: Н
+    status: todo
+  - number: 111
+    moduleID: specializations
+    lessonID: melodic-minor
+    titles:
+      en: Melodic minor
+      uk: Мелодичний мінор
+    outcomeUK: Зіграти характерні фрази й розібрати їх застосування
+    originalAssessment: Н+С
+    status: todo
+  - number: 112
+    moduleID: specializations
+    lessonID: tension-resolution
+    titles:
+      en: Tension and resolution
+      uk: Напруження та розв’язання
+    outcomeUK: Свідомо використовувати неакордові ноти й повертатися до опорних
+    originalAssessment: С
+    status: todo
+  - number: 113
+    moduleID: electric-tone
+    lessonID: pickup-volume-tone
+    titles:
+      en: Pickups, Volume and Tone
+      uk: Звукознімачі, Volume і Tone
+    outcomeUK: Отримати різні тембри органами керування гітари
+    originalAssessment: С
+    status: todo
+  - number: 114
+    moduleID: electric-tone
+    lessonID: clean-crunch-high-gain
+    titles:
+      en: Clean, crunch and high gain
+      uk: Clean, crunch і high gain
+    outcomeUK: Порівняти реакцію різного перевантаження на ту саму гру
+    originalAssessment: С
+    status: todo
+  - number: 115
+    moduleID: electric-tone
+    lessonID: amp-cabinet-ir
+    titles:
+      en: Amplifier, cabinet and IR
+      uk: Підсилювач, кабінет та IR
+    outcomeUK: Зрозуміти внесок кожного елемента в звук
+    originalAssessment: С
+    status: todo
+  - number: 116
+    moduleID: electric-tone
+    lessonID: equalization
+    titles:
+      en: Equalization
+      uk: Еквалайзер
+    outcomeUK: Змінювати бас, середину й верх із конкретною метою
+    originalAssessment: С
+    status: todo
+  - number: 117
+    moduleID: electric-tone
+    lessonID: drive-compression-gate
+    titles:
+      en: Drive, compressor and noise gate
+      uk: Drive, compressor і noise gate
+    outcomeUK: Налаштувати обробку, не приховуючи нею помилки гри
+    originalAssessment: С
+    status: todo
+  - number: 118
+    moduleID: electric-tone
+    lessonID: time-and-modulation-effects
+    titles:
+      en: Delay, reverb and modulation
+      uk: Delay, reverb і modulation
+    outcomeUK: Підібрати ефекти до темпу та музичної ролі
+    originalAssessment: С
+    status: todo
+  - number: 119
+    moduleID: electric-tone
+    lessonID: expressive-hardware
+    titles:
+      en: Tremolo arm, volume swells and feedback
+      uk: Важіль, volume swells і керований feedback
+    outcomeUK: Застосувати виразні прийоми на відповідному обладнанні
+    originalAssessment: С
+    status: todo
+  - number: 120
+    moduleID: electric-tone
+    lessonID: record-di-monitoring
+    titles:
+      en: Recording clean DI and monitoring
+      uk: Запис чистого DI та моніторинг
+    outcomeUK: Записати чистий сигнал і зрозуміти, що саме чує аналізатор
+    originalAssessment: С
+    status: todo
+  - number: 121
+    moduleID: independent-musician
+    lessonID: transcribe-riff-solo
+    titles:
+      en: Transcribing a riff or solo
+      uk: Підбір повного рифу або соло
+    outcomeUK: Розбити запис на фрази та відтворити їх на слух
+    originalAssessment: С
+    status: todo
+  - number: 122
+    moduleID: independent-musician
+    lessonID: reading-music-formats
+    titles:
+      en: Reading TAB, staff and chord diagrams
+      uk: Читання TAB, нот і акордових схем
+    outcomeUK: Зіграти незнайомий нескладний матеріал
+    originalAssessment: Н+С
+    status: todo
+  - number: 123
+    moduleID: independent-musician
+    lessonID: write-a-riff
+    titles:
+      en: Writing your own riff
+      uk: Створення власного рифу
+    outcomeUK: Написати завершену фразу з ритмом і розвитком
+    originalAssessment: С
+    status: todo
+  - number: 124
+    moduleID: independent-musician
+    lessonID: arrange-two-guitars
+    titles:
+      en: Arranging for two guitars
+      uk: Аранжування для двох гітар
+    outcomeUK: Розподілити регістри та ролі між партіями
+    originalAssessment: С
+    status: todo
+  - number: 125
+    moduleID: independent-musician
+    lessonID: play-with-rhythm-section
+    titles:
+      en: Playing with bass and drums
+      uk: Гра з басом і барабанами
+    outcomeUK: Узгодити атаки, паузи й музичний простір
+    originalAssessment: С
+    status: todo
+  - number: 126
+    moduleID: independent-musician
+    lessonID: prepare-composition
+    titles:
+      en: Preparing a complete composition
+      uk: Підготовка повної композиції
+    outcomeUK: Вивчити форму, переходи, початок і завершення
+    originalAssessment: С
+    status: todo
+  - number: 127
+    moduleID: independent-musician
+    lessonID: performance-recording
+    titles:
+      en: Recording a complete performance
+      uk: Контрольний запис виконання
+    outcomeUK: Зіграти композицію цілком і скласти список конкретних помилок
+    originalAssessment: С
+    status: todo
+  - number: 128
+    moduleID: independent-musician
+    lessonID: personal-practice-plan
+    titles:
+      en: Your personal development plan
+      uk: Особиста програма розвитку
+    outcomeUK: 'Скласти цикл практики: техніка, ритм, слух, репертуар і повторення'
+    originalAssessment: С
+    status: todo

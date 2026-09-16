@@ -1,0 +1,46 @@
+lessonID: clean-fretted-note
+lessonVersion: 1
+locale: en
+title: A clean fretted note
+summary: Find enough fretting pressure for a stable note without squeezing harder than needed.
+goal: Find enough fretting pressure for a stable note without squeezing harder than needed.
+body: >-
+  Use string 3, fret 2 as a small experiment. The note’s pitch can be measured, but a pitch score alone cannot certify
+  comfortable hand position or the absence of fret noise. Listen to the actual guitar as well as looking at the
+  feedback.
+steps:
+  placement:
+    title: Place the fingertip near the fret
+    body: >-
+      Locate fret 2 on string 3. Place the fingertip just behind the metal fret toward the headstock, not on top
+      of the metal. Keep adjacent strings free unless you deliberately use a finger to mute them. {{positions}}
+  pressure:
+    title: Explore the pressure threshold
+    body: >-
+      Pluck once, release pressure slightly while keeping contact, then press enough to restore the fretted note.
+      Repeat slowly three times. Notice the change from a stable note to a muted/buzzy sound without making a larger
+      picking stroke.
+  repeat:
+    title: Reset between notes
+    body: >-
+      At 60 BPM, play on beats 1 and 3; beats 2 and 4 are rests. Release unnecessary pressure in each rest, then
+      prepare the same position again. The TAB shows the same pitch each time. {{positions}}
+  review:
+    title: Compare four entries
+    body: >-
+      Play the two bars twice. For each entry, listen for a stable note before trying to make it louder. If one
+      attempt buzzes, move the fingertip closer to the fret first. Audio assessment checks pitch and attack time;
+      judge pressure and sound texture yourself.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I found a position close to the fret that rings clearly.
+      criterion-2: I can reduce pressure during the rests.
+      criterion-3: I listened for buzzing instead of relying only on a pitch score.

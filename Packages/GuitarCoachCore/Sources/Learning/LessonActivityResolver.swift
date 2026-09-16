@@ -80,7 +80,7 @@ extension LoadedLesson {
         }
         let steps = manifest.steps.filter { $0.activityID == activityID }.map { step in
             LessonStep(id: step.id, kind: step.kind, exerciseID: step.exerciseID, eventIDs: step.eventIDs,
-                activityID: step.activityID, fingeringID: step.fingeringID)
+                activityID: step.activityID, fingeringID: step.fingeringID, tool: step.tool)
         }
         let version = manifest.version
         let renderer = ActivityTextRenderer(lessonID: id, version: version, activityID: activityID, choice: choice, region: region,

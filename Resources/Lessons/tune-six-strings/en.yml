@@ -1,0 +1,40 @@
+lessonID: tune-six-strings
+lessonVersion: 1
+locale: en
+title: Tuning all six strings
+summary: Tune all six open strings to the profile selected in Settings.
+goal: Tune all six open strings to the profile selected in Settings.
+body: >-
+  Selecting a tuning profile does not retune the instrument. The tuner compares the sound you play with the target
+  for that string. Keep other strings quiet and let the attack settle before judging the reading.
+steps:
+  profile:
+    title: Choose the intended tuning
+    body: >-
+      Open instrument settings and select the tuning you intend to play. Read the six open-string targets in order
+      6 → 1. Do not use a memorized E Standard target if your physical guitar is in C Standard or a drop tuning.
+  one-string:
+    title: Tune one string at a time
+    body: >-
+      Open the tuner and choose string 6 manually first. Pluck it once, quiet the others and observe the stable
+      part of the reading. Adjust the corresponding tuning machine in small steps, plucking again between adjustments.
+  six-strings:
+    title: Work through all six
+    body: >-
+      Repeat from string 6 to string 1, confirming both the note and octave rather than a note letter alone. If
+      the display is unstable or shows no note, stop turning the peg and check string isolation and input signal.
+  recheck:
+    title: Make a second pass
+    body: >-
+      Recheck each string after the first pass, especially on a floating bridge where one adjustment can affect
+      the others. Mark completion only after checking the physical instrument. The checklist is your confirmation,
+      not an automatic tuning certificate.
+activities: {}
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: The selected profile matches the tuning I intend to play.
+      criterion-2: I checked each string against its note and octave.
+      criterion-3: I made a second pass after adjusting all six strings.

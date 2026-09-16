@@ -1,0 +1,47 @@
+schemaVersion: 3
+id: guitar-anatomy
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: string-path
+    kind: none
+    eventIDs: []
+  - id: numbering
+    kind: none
+    eventIDs: []
+  - id: electronics
+    kind: none
+    eventIDs: []
+  - id: tour
+    kind: none
+    eventIDs: []
+exercises: []
+materials: []
+activities: []
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: tour
+    kind: checklist
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+  - id: knowledge
+    stepID: tour
+    kind: quiz
+    itemIDs:
+      - answer-1
+      - answer-2
+      - answer-3
+    correctOptionID: answer-1
+curriculum:
+  moduleID: getting-started
+  ordinal: 1
+  durationMinutes: 8
+  prerequisites: []
+  keywords:
+    - Electric-guitar anatomy
+    - Будова електрогітари

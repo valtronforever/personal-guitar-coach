@@ -1,0 +1,45 @@
+lessonID: stop-a-note
+lessonVersion: 1
+locale: en
+title: Stopping a note
+summary: Stop a ringing note deliberately while maintaining the count.
+goal: Stop a ringing note deliberately while maintaining the count.
+body: >-
+  Silence is an action in guitar playing. Open strings keep vibrating when the fretting hand is lifted, so they
+  need deliberate contact to stop. This is a listening/self-assessment exercise: the current attack detector does
+  not certify the exact end of every note.
+steps:
+  open:
+    title: Stop an open string
+    body: >-
+      Pluck open string 3 and let it ring. Touch the vibrating string lightly with an available finger or the picking-hand
+      edge to stop it. Aim for quiet contact rather than striking the string again.
+  fretted:
+    title: Release pressure without lifting away
+    body: >-
+      Fret string 3 at fret 2, pluck, then reduce fretting pressure while leaving the fingertip touching the string.
+      Lifting fully away can let the open string sound. Compare these two releases slowly.
+  rests:
+    title: Sound, silence, sound, silence
+    body: >-
+      Count four beats. Sound the note on 1, stop it on 2, sound it on 3 and stop on 4. Repeat first with the open
+      string, then with fret 2. Keep counting during silence. The synthesized preview is a pitch/pulse guide, not
+      a demonstration of hand contact. {{positions}}
+  review:
+    title: Listen to the gaps
+    body: >-
+      Listen specifically to beats 2 and 4 for open-string leakage or a second attack from the muting motion. Repeat
+      one bar until the difference between sound and silence is deliberate. Judge the stopping action yourself.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I can stop an open note without another audible attack.
+      criterion-2: I keep contact when releasing the fretted note.
+      criterion-3: I can keep counting while the string is silent.

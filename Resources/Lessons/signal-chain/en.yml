@@ -1,0 +1,43 @@
+lessonID: signal-chain
+lessonVersion: 1
+locale: en
+title: Guitar, interface, amplifier and headphones
+summary: Trace the clean input and listening output as separate signal paths.
+goal: Trace the clean input and listening output as separate signal paths.
+body: >-
+  The app analyzes the selected mono input. What you hear can come from direct monitoring, a separate amplifier
+  or software processing. Hearing your guitar does not by itself prove that the app is receiving the correct input.
+steps:
+  map:
+    title: Draw your path
+    body: >-
+      For a direct electric-guitar setup, write: guitar → cable → instrument input → selected app channel. Separately
+      write: app metronome → selected output → headphones. Identify where your guitar monitoring joins what you
+      hear.
+  input:
+    title: Choose the appropriate input
+    body: >-
+      Use an input that supports instrument/Hi-Z level for a passive guitar connected directly. A processor may
+      provide line level instead: follow its output and interface specifications. Select the channel actually connected,
+      not a sum of every input.
+  output:
+    title: Confirm what you hear
+    body: >-
+      Start quietly. Confirm a metronome click reaches the chosen headphones. Then play the guitar and identify
+      whether you hear direct or software monitoring. Two monitoring paths at once can produce a doubled or delayed
+      sound.
+  verify:
+    title: Test input and output independently
+    body: >-
+      Watch the input meter while plucking, then stop playing and test the output. If the guitar is audible but
+      the meter is still, check the selected channel. If the meter moves but clicks are silent, check output selection
+      and headphone level.
+activities: {}
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I know which mono channel carries my guitar.
+      criterion-2: I can hear the app output at a comfortable level.
+      criterion-3: I can describe my guitar monitoring path.

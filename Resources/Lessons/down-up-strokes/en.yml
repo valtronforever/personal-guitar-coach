@@ -1,0 +1,45 @@
+lessonID: down-up-strokes
+lessonVersion: 1
+locale: en
+title: Downstrokes and upstrokes
+summary: Play separate downstroke and upstroke groups with a consistent pulse.
+goal: Play separate downstroke and upstroke groups with a consistent pulse.
+body: >-
+  A downstroke travels toward the floor on a normally held right-handed guitar; an upstroke returns the opposite
+  way. With a mirrored instrument, think of movement across the string plane rather than the screen direction. This
+  lesson separates the strokes before alternating them.
+steps:
+  down:
+    title: Four downstrokes
+    body: >-
+      Play open string 2 four times with downstrokes, one per click. Return the pick above the string quietly between
+      sounds. Keep the travel short enough that you can find the string again without looking. {{positions}}
+  up:
+    title: Four upstrokes
+    body: >-
+      Now approach the same string from below and play four upstrokes. Reset below it without sounding a second
+      note. Listen for unintended double attacks while the hand returns. {{positions}}
+  join:
+    title: One bar each way
+    body: >-
+      Play bar 1 downwards and bar 2 upwards at 60 BPM. Say “down” or “up” quietly on each click. Keep the pulse
+      through the change of direction at the barline. {{positions}}
+  review:
+    title: Watch and listen separately
+    body: >-
+      Use pitch/timing feedback to locate uneven entries, then watch the picking hand during a slow repeat. The
+      input audio cannot prove which direction you used. If returns make extra sounds, reduce the stroke size before
+      raising tempo.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I played one full bar using downstrokes only.
+      criterion-2: I played one full bar using upstrokes only.
+      criterion-3: The reset movement did not add unwanted attacks.

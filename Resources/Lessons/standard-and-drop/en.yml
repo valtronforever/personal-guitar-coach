@@ -1,0 +1,56 @@
+lessonID: standard-and-drop
+lessonVersion: 1
+locale: en
+title: Standard and drop tunings
+summary: Explain why a drop tuning changes low-string shapes differently from standard-family transposition.
+goal: Explain why a drop tuning changes low-string shapes differently from standard-family transposition.
+body: >-
+  In a standard-family tuning, all six strings move by the same number of semitones. In the corresponding drop tuning,
+  string 6 is a further whole tone lower while strings 1–5 keep their targets. Thus the open-string interval from
+  string 6 to 5 changes from a fourth to a fifth.
+steps:
+  family:
+    title: Read the tuning families
+    body: >-
+      The app pairs E Standard with Drop D, D Standard with Drop C, C Standard with Drop B♭ and B Standard with
+      Drop A. Read the pitches in Settings rather than assuming the name of the lowest string from memory.
+  compare:
+    title: Compare the open-string gap
+    body: >-
+      Pluck open string 6, then open string 5, leaving space between them. The example follows your physical positions.
+      In a custom tuning, inspect the displayed pitches: the fourth/fifth comparison is specific to the standard/drop
+      families. {{positions}}
+  compensate:
+    title: Compensate the lower string
+    body: >-
+      In a drop tuning, fret 2 on string 6 sounds at the pitch that the open sixth string had in the corresponding
+      standard tuning. Compare the open and second-fret positions in the example; do not change Settings without
+      matching the physical guitar. {{positions}}
+  review:
+    title: Describe the shape change
+    body: >-
+      Explain aloud which five strings stay unchanged when moving within one standard/drop pair, and why a low-string
+      fingering may need adjustment. If you physically changed tuning, run the tuner again before practicing.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I can name the drop partner of my standard-family tuning.
+      criterion-2: I understand that string 6 changes relative to strings 1–5.
+      criterion-3: The app profile still matches my physical guitar.
+  knowledge:
+    title: Which string changes within a standard/drop pair?
+    body: Choose one answer, then compare with the explanation.
+    items:
+      answer-1: All six by different amounts
+      answer-2: Only string 1
+      answer-3: String 6 drops by a whole tone
+    explanation: >-
+      The corresponding drop tuning lowers string 6 by two semitones. Moving between standard-family tunings instead
+      transposes all six strings together.

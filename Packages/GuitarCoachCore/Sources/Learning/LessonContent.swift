@@ -4,6 +4,7 @@ import Domain
 public enum LessonDifficulty: String, Codable, CaseIterable, Sendable { case beginner, intermediate, advanced }
 public enum LessonTopic: String, Codable, CaseIterable, Sendable { case basics, chromatic, rhythm, majorScale, pentatonic, arpeggios, theory, technique, chords, earTraining, tone }
 public enum LessonLanguage: String, CaseIterable, Sendable { case en, uk }
+public enum LessonTool: String, Codable, Sendable { case tuner, audioSetup, settings }
 public enum StepVisualKind: String, Codable, Sendable { case none, events, fingering }
 
 public struct LessonStep: Codable, Sendable, Equatable, Identifiable {
@@ -13,9 +14,10 @@ public struct LessonStep: Codable, Sendable, Equatable, Identifiable {
     public let eventIDs: [String]
     public let activityID: String?
     public let fingeringID: String?
-    public init(id: String, kind: StepVisualKind, exerciseID: String? = nil, eventIDs: [String] = [], activityID: String? = nil, fingeringID: String? = nil) {
+    public let tool: LessonTool?
+    public init(id: String, kind: StepVisualKind, exerciseID: String? = nil, eventIDs: [String] = [], activityID: String? = nil, fingeringID: String? = nil, tool: LessonTool? = nil) {
         self.id = id; self.kind = kind; self.exerciseID = exerciseID; self.eventIDs = eventIDs
-        self.activityID = activityID; self.fingeringID = fingeringID
+        self.activityID = activityID; self.fingeringID = fingeringID; self.tool = tool
     }
 }
 
@@ -32,14 +34,15 @@ public struct LessonManifest: Codable, Sendable, Equatable, Identifiable {
     public let activities: [LessonActivity]
     public let practiceEntries: [LessonPracticeEntry]
     public let fingerings: [LessonSourceFingering]
+    public let curriculum: LessonCurriculumPlacement?
     public let learningTasks: [LessonLearningTask]?
     public var tasks: [LessonLearningTask] { learningTasks ?? [] }
     public init(schemaVersion: Int = 3, id: String, version: Int = 1, difficulty: LessonDifficulty = .beginner,
                 topic: LessonTopic = .basics, steps: [LessonStep], exercises: [Exercise], adaptation: LessonAdaptationDefinition? = nil,
-                materials: [LessonMaterial], activities: [LessonActivity], practiceEntries: [LessonPracticeEntry], fingerings: [LessonSourceFingering] = [], learningTasks: [LessonLearningTask]? = nil) {
+                materials: [LessonMaterial], activities: [LessonActivity], practiceEntries: [LessonPracticeEntry], fingerings: [LessonSourceFingering] = [], learningTasks: [LessonLearningTask]? = nil, curriculum: LessonCurriculumPlacement? = nil) {
         self.schemaVersion = schemaVersion; self.id = id; self.version = version; self.difficulty = difficulty; self.topic = topic
         self.steps = steps; self.exercises = exercises; self.adaptation = adaptation
-        self.materials = materials; self.activities = activities; self.practiceEntries = practiceEntries; self.fingerings = fingerings; self.learningTasks = learningTasks
+        self.materials = materials; self.activities = activities; self.practiceEntries = practiceEntries; self.fingerings = fingerings; self.learningTasks = learningTasks; self.curriculum = curriculum
     }
 }
 
@@ -81,7 +84,8 @@ public struct LessonText: Codable, Sendable, Equatable {
 public struct LessonCatalogManifest: Codable, Sendable {
     public let schemaVersion: Int
     public let lessons: [String]
-    public init(schemaVersion: Int = 1, lessons: [String]) { self.schemaVersion = schemaVersion; self.lessons = lessons }
+    public let modules: [LessonModule]?
+    public init(schemaVersion: Int = 1, lessons: [String], modules: [LessonModule]? = nil) { self.schemaVersion = schemaVersion; self.lessons = lessons; self.modules = modules }
 }
 
 public struct HighlightedPosition: Sendable, Equatable {
@@ -112,7 +116,7 @@ public struct LoadedLesson: Identifiable, Sendable, Equatable {
 }
 
 public enum ContentIssueCode: String, Sendable {
-    case unsupportedSchema, missingFile, invalidYAML, invalidIdentifier, duplicateIdentifier, invalidMusicalData
+    case invalidCurriculum, unsupportedSchema, missingFile, invalidYAML, invalidIdentifier, duplicateIdentifier, invalidMusicalData
     case unknownExercise, unknownEvent, unknownStep, invalidStep, missingTranslation, translationMismatch, invalidText, unavailableCatalog, unsupportedMode
 }
 
@@ -133,4 +137,8 @@ public struct ContentIssue: Identifiable, Sendable {
 public struct LessonCatalogReport: Sendable {
     public let lessons: [LoadedLesson]
     public let issues: [ContentIssue]
+    public let modules: [LessonModule]
+    public init(lessons: [LoadedLesson], issues: [ContentIssue], modules: [LessonModule] = []) {
+        self.lessons = lessons; self.issues = issues; self.modules = modules
+    }
 }

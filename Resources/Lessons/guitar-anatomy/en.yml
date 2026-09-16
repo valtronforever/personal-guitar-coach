@@ -1,0 +1,51 @@
+lessonID: guitar-anatomy
+lessonVersion: 1
+locale: en
+title: Electric-guitar anatomy
+summary: Identify the parts you use to choose, fret and control a note.
+goal: Identify the parts you use to choose, fret and control a note.
+body: >-
+  Keep the guitar unplugged for this tour. Follow one string from its tuning machine, across the nut and frets,
+  to its bridge saddle. Different electric guitars have different bridges and controls, but the musical roles remain
+  recognizable. No adjustment screws need to be turned.
+steps:
+  string-path:
+    title: Trace the string
+    body: >-
+      Point to the headstock, tuning machine, nut, fretboard and bridge. The nut and saddle define the vibrating
+      length of an open string. A fretted note shortens that length at a metal fret.
+  numbering:
+    title: Strings and frets
+    body: >-
+      String 1 is the thinnest and string 6 the thickest. Fret 0 means open. Touch the first space behind the first
+      metal fret, then the third. A fret number names a playing position, not a screw or an inlay.
+  electronics:
+    title: Find the signal controls
+    body: >-
+      Locate the pickups beneath the strings, pickup selector, Volume, Tone and output jack if fitted. The pickup
+      converts string vibration into an electrical signal; the cable carries it onward. Your instrument may omit
+      or combine some controls.
+  tour:
+    title: A one-minute instrument tour
+    body: >-
+      Without looking at the text, point to the part that tunes a string, the part your fretting finger plays behind,
+      and the output connection. Then name one control whose role you still need to check in the guitar manual.
+activities: {}
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I can trace a string from tuning machine to bridge.
+      criterion-2: I can identify string 1 and fret 0.
+      criterion-3: I know where my guitar output and volume control are.
+  knowledge:
+    title: Which part changes a string’s tension for tuning?
+    body: Choose one answer, then compare with the explanation.
+    items:
+      answer-1: Tuning machine
+      answer-2: Pickup selector
+      answer-3: Tone control
+    explanation: >-
+      The tuning machine winds or releases the string. The pickup selector and Tone affect the electrical sound,
+      not the tuning of the string.

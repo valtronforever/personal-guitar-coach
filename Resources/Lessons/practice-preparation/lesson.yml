@@ -1,0 +1,45 @@
+schemaVersion: 3
+id: practice-preparation
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: instrument
+    kind: none
+    eventIDs: []
+    tool: tuner
+  - id: route
+    kind: none
+    eventIDs: []
+    tool: audioSetup
+  - id: timing
+    kind: none
+    eventIDs: []
+    tool: audioSetup
+  - id: routine
+    kind: none
+    eventIDs: []
+exercises: []
+materials: []
+activities: []
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: routine
+    kind: checklist
+    itemIDs:
+      - criterion-1
+      - criterion-2
+      - criterion-3
+curriculum:
+  moduleID: getting-started
+  ordinal: 8
+  durationMinutes: 8
+  prerequisites:
+    - clean-input
+    - tune-six-strings
+    - standard-and-drop
+  keywords:
+    - Preparing for practice
+    - Підготовка до практики

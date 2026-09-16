@@ -127,3 +127,5 @@
 - `done` — [Manual latency controls and nonnegative settings](follow-up/latency-editor-layout.md): grouped controls and nonnegative values, including corrections; historical evidence preserved.
 
 - `pending_user` — [Lesson learning modes](follow-up/lesson-learning-modes.md): theory, self-assessment and listening questions alongside scored practice.
+
+- `in_progress` — [Full curriculum and library UX](follow-up/full-curriculum.md): all 128 agreed lessons, required functional extensions, course organization and discovery.

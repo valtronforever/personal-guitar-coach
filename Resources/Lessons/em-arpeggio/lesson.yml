@@ -267,3 +267,11 @@ practiceEntries:
   - id: em-arpeggio-practice
     activityID: lesson
     exerciseID: em-arpeggio-practice
+curriculum:
+  moduleID: first-chords
+  ordinal: 30
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - From chord to arpeggio
+    - Від акорду до окремих нот

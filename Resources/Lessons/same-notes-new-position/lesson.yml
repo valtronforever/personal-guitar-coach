@@ -294,3 +294,11 @@ practiceEntries:
   - id: seven-practice
     activityID: seven
     exerciseID: same-notes-new-position-practice
+curriculum:
+  moduleID: scales-positions
+  ordinal: 63
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - The same notes in another position
+    - Ті самі ноти в іншій позиції

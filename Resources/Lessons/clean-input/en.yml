@@ -1,0 +1,52 @@
+lessonID: clean-input
+lessonVersion: 1
+locale: en
+title: Clean input and signal level
+summary: Set input gain using real playing peaks and quiet pauses.
+goal: Set input gain using real playing peaks and quiet pauses.
+body: >-
+  Gain controls the signal entering the converter; headphone volume controls listening loudness. Turning up headphones
+  will not improve a weak captured signal. Use a clean guitar path for note assessment, then handle your preferred
+  effects in the listening path.
+steps:
+  baseline:
+    title: Listen to the pause
+    body: >-
+      Enable input monitoring in audio setup and leave the guitar quiet for a moment. Note the idle meter level,
+      then touch the strings gently. This comparison helps distinguish the played note from background noise; it
+      is not a noise-floor calibration.
+  peaks:
+    title: Play at practice strength
+    body: >-
+      Pluck several notes with the strongest attack you expect to use. Read the peak value during the attack, not
+      only the falling sustain. The app’s working guide is −30 to −6 dBFS; keep margin before overload.
+  adjust:
+    title: Change one control
+    body: >-
+      If attacks overload, lower the interface input gain and repeat the same phrase. If attacks remain weak, check
+      the selected input, instrument mode and guitar volume before raising gain. Changing headphone volume is a
+      separate listening adjustment.
+  check:
+    title: Repeat and leave silence
+    body: >-
+      Play four notes, leave four beats quiet, then repeat. Verify the strongest note stays below overload and the
+      pause remains distinguishable. A working meter level is a useful setup check, not proof that every note will
+      be recognized.
+activities: {}
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I checked peaks during my strongest intended attacks.
+      criterion-2: There is no overload warning while I play.
+      criterion-3: I can distinguish input gain from headphone loudness.
+  knowledge:
+    title: Which control changes the captured input level?
+    body: Choose one answer, then compare with the explanation.
+    items:
+      answer-1: Headphone volume
+      answer-2: Interface input gain
+      answer-3: Metronome tempo
+    explanation: Input gain affects the captured level. Headphone volume changes what you hear, and tempo changes
+      timing.

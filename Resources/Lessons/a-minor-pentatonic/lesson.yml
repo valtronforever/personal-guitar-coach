@@ -279,3 +279,11 @@ practiceEntries:
   - id: a-minor-pentatonic-practice
     activityID: lesson
     exerciseID: a-minor-pentatonic-practice
+curriculum:
+  moduleID: scales-positions
+  ordinal: 59
+  durationMinutes: 10
+  prerequisites: []
+  keywords:
+    - Minor pentatonic
+    - Мінорна пентатоніка

@@ -1,0 +1,44 @@
+lessonID: adjacent-strings
+lessonVersion: 1
+locale: en
+title: Changing adjacent strings
+summary: Cross between two neighboring strings without striking a third string.
+goal: Cross between two neighboring strings without striking a third string.
+body: >-
+  Begin with the open third and second strings. The picking hand needs to change its location as well as its stroke
+  direction. Keep the sound clean so that an accidental neighboring string is easy to notice.
+steps:
+  find:
+    title: Find each string before sounding it
+    body: >-
+      Rest the pick lightly against string 3 without sounding it, then locate string 2 the same way. Repeat the
+      silent move four times. Look once to check the position, then try by touch.
+  pair:
+    title: Play a two-note pair
+    body: >-
+      At 60 BPM, play string 3 on beat 1 and string 2 on beat 2. Pause before repeating the pair. Do not drag the
+      pick across both strings as one strum. {{positions}}
+  continuous:
+    title: Connect four pairs
+    body: >-
+      Play the complete two-bar pattern: 3–2–3–2, then 3–2–3–2. Use a small hand relocation between strings and
+      keep counting through every crossing. {{positions}}
+  review:
+    title: Isolate a difficult crossing
+    body: >-
+      If feedback shows a repeated error, replay only the pair around that crossing slowly, then return to both
+      bars. Listen for a third string ringing and stop it deliberately. The expected diagram shows a fingering,
+      not proof of which string you played.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I can locate both strings before making the stroke.
+      criterion-2: The crossing keeps one intended note per beat.
+      criterion-3: I listened for and quieted unintended neighboring strings.

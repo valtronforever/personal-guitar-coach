@@ -106,3 +106,13 @@ practiceEntries:
   - id: open-strings-intro-practice
     activityID: lesson
     exerciseID: open-strings-intro-practice
+curriculum:
+  moduleID: first-notes
+  ordinal: 9
+  durationMinutes: 10
+  prerequisites:
+    - tune-six-strings
+    - practice-preparation
+  keywords:
+    - Open strings
+    - Відкриті струни

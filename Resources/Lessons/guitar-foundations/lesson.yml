@@ -1,10 +1,16 @@
 schemaVersion: 3
 id: guitar-foundations
-version: 1
+version: 2
 difficulty: beginner
 topic: basics
 steps:
   - id: prepare
+    kind: none
+    eventIDs: []
+  - id: standing
+    kind: none
+    eventIDs: []
+  - id: reach
     kind: none
     eventIDs: []
   - id: check-understanding
@@ -30,3 +36,12 @@ learningTasks:
       - thin
       - thick
     correctOptionID: thin
+curriculum:
+  moduleID: getting-started
+  ordinal: 2
+  durationMinutes: 10
+  prerequisites:
+    - guitar-anatomy
+  keywords:
+    - Sitting and standing position
+    - Положення гітари сидячи та стоячи

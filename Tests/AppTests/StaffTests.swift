@@ -74,7 +74,7 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 16)
+        #expect(library.lessons.count == 29)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for entry in lesson.manifest.practiceEntries {

@@ -87,7 +87,7 @@ import Persistence
         let lesson = try lesson()
         #expect(LessonFilter(query: "OPEN", difficulty: .beginner, topic: .basics).matches(lesson, language: .en))
         #expect(LessonFilter(query: "струни").matches(lesson, language: .uk))
-        #expect(!LessonFilter(query: "струни").matches(lesson, language: .en))
+        #expect(LessonFilter(query: "струни").matches(lesson, language: .en))
         #expect(!LessonFilter(difficulty: .advanced).matches(lesson, language: .en))
         #expect(!LessonFilter(topic: .rhythm).matches(lesson, language: .en))
         #expect(LessonFilter(query: "  \n").matches(lesson, language: .en))

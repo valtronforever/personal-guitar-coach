@@ -1,0 +1,49 @@
+lessonID: first-melody
+lessonVersion: 1
+locale: en
+title: Your first melody
+summary: Learn a four-bar melody on two strings in two phrases.
+goal: Learn a four-bar melody on two strings in two phrases.
+body: >-
+  This original study uses a rising question and a returning answer. Its intervals and tonal relationship are preserved
+  when your selected tuning transposes it. Start at 60 BPM, or use 40–50 BPM to give string changes more time.
+steps:
+  listen:
+    title: Hear the shape of the melody
+    body: >-
+      Listen once without playing. Notice the silence at the end of each of the first two bars and the longer final
+      two-bar answer. Hum the direction of the phrase if useful; exact singing ability is not being tested.
+  question:
+    title: Build the first phrase
+    body: >-
+      Play bars 1–2 only. Begin on string 2, rise onto string 1, then return. Leave the fourth beat of each bar
+      quiet. Name the next position before moving the pick. {{positions}}
+  answer:
+    title: Build the answer
+    body: >-
+      Play bars 3–4 as one connected phrase. The highest note appears early, then the melody descends and closes
+      by stepping up to its final note. Keep the same pulse through the string crossings. {{positions}}
+  perform:
+    title: Join all four bars
+    body: >-
+      Play the whole study after the count-in. If one crossing repeatedly fails, practice the two surrounding notes
+      slowly, then place them back in the phrase. Make one complete take without restarting mid-bar. {{positions}}
+  review:
+    title: Choose the next repeat
+    body: >-
+      Compare the two phrases: which entry, rest or crossing needs attention? Use event feedback for audible pitch/time
+      errors and your own listening for stopping and musical shape. Repeat the identified bar rather than raising
+      tempo immediately.
+activities:
+  example:
+    title: Your instrument example
+    body: 'Expected sequence: {{sequence}}. Select a step to see its positions. Preview uses synthesized reference
+      notes.'
+learningTasks:
+  review:
+    title: Review your practice
+    body: Mark only what you checked yourself. Revisit an unchecked item next time.
+    items:
+      criterion-1: I can play each two-bar phrase separately.
+      criterion-2: I left silence at the first two bar endings.
+      criterion-3: I completed a full take and chose one specific point to improve.

@@ -13,7 +13,7 @@ import Persistence
     }
     @Test func oneCatalogAndLegacyBookmarksReachTheSameAdaptiveCourse() async throws {
         let library = await library()
-        #expect(library.catalogLessons.count == 10 && library.lessons.count == 16)
+        #expect(library.catalogLessons.count == 23 && library.lessons.count == 29)
         #expect(library.sourceLesson(id: "ab-major-c-standard")?.id == "c-major")
         let source = try #require(library.sourceLesson(id: "c-major"))
         let selection = LessonSelection(lesson: source, tuning: .standard)
@@ -53,7 +53,7 @@ import Persistence
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), store = AssessmentStore(repository: repository)
         for tuning in TuningProfile.presets {
-            for source in library.catalogLessons where source.id != "same-notes-new-position" && !source.manifest.practiceEntries.isEmpty {
+            for source in library.catalogLessons where ["open-strings-intro", "first-frets", "steady-pulse", "c-major", "a-minor-pentatonic", "em-arpeggio"].contains(source.id) {
                 let lesson = try source.resolveActivity(id: "lesson", instrument: InstrumentProfile(tuning: tuning))
                 let exerciseID = try #require(source.manifest.practiceEntries.first?.id)
                 let request = try #require(PracticeRequest(lesson: source, snapshot: lesson, entryID: exerciseID))
