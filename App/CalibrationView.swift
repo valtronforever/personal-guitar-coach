@@ -18,6 +18,7 @@ struct CalibrationView: View {
     private var route: CalibrationRoute? { audio.state?.calibrationRoute }
     private var profile: CalibrationProfile? { store.profile(for: route) }
     private var outputProfile: OutputAlignmentProfile? { store.outputProfile(for: audio.state?.outputEndpoint) }
+    private var storedOutputProfile: OutputAlignmentProfile? { store.storedOutputProfile(for: audio.state?.outputEndpoint) }
     private var canEdit: Bool {
         audio.canEdit && store.loaded && !store.busy && !model.running && audio.state?.purpose == nil &&
         audio.state?.isClicking != true && audio.state?.isStartingClick != true
@@ -36,18 +37,20 @@ struct CalibrationView: View {
                     }
                     Section("sync.setting.taps") {
                         milliseconds("sync.output.value", outputProfile?.seconds ?? 0)
+                        if storedOutputProfile?.isNonnegativeSetting == false { Text("sync.nonnegative.savedOutput").font(.callout) }
                         if outputProfile?.isManual == true { Text("sync.manual.badge").font(.caption) }
                         Text("sync.output.explanation").font(.callout)
                         HStack {
                             Button("sync.output.measure") { model.start(audio: audio, store: store, instrument: instrument, string: string, source: .taps) }
                                 .disabled(!canEdit || audio.state?.outputEndpoint == nil).accessibilityIdentifier("sync.output.start")
                             Button("sync.output.reset") { Task { await store.resetOutput(audio.state?.outputEndpoint) } }
-                                .disabled(!canEdit || outputProfile == nil)
+                                .disabled(!canEdit || storedOutputProfile == nil)
                         }
                         if let candidate = model.outputCandidate {
                             milliseconds("sync.output.measured", candidate.seconds)
+                            if !candidate.isNonnegativeSetting { Text("sync.nonnegative.measurement").font(.callout) }
                             Button("sync.output.apply") { Task { await model.applyOutput(audio: audio, store: store) } }
-                                .disabled(!canEdit || outputProfile?.id == candidate.id).accessibilityIdentifier("sync.output.apply")
+                                .disabled(!canEdit || !candidate.isNonnegativeSetting || outputProfile?.id == candidate.id).accessibilityIdentifier("sync.output.apply")
                         }
                         Divider()
                         Text("sync.manual.title").font(.headline)
@@ -57,9 +60,9 @@ struct CalibrationView: View {
                         }.disabled(!canEdit)
                         ManualDelayField(value: $manualOutputText, identifier: "sync.output.manualValue", enabled: canEdit,
                                          canApply: manualOutput != nil, applyLabel: "sync.manual.applyOutput",
-                                         applyIdentifier: "sync.output.manualApply") {
+                                         applyIdentifier: "sync.output.manualApply", onApply: {
                             if let value = manualOutput { Task { await model.applyManualOutput(value, audio: audio, store: store) } }
-                        }
+                        }, validationMessage: !manualOutputText.isEmpty && manualOutput == nil && canEdit && audio.state?.outputEndpoint != nil ? "sync.manual.invalid" : nil)
                         Text(manualOutputReference == .total ? "sync.manual.totalHelp" : "sync.manual.additionalHelp").font(.caption)
                         Text("sync.manual.range").font(.caption).foregroundStyle(.secondary)
 
@@ -67,6 +70,7 @@ struct CalibrationView: View {
                     Section("sync.setting.guitar") {
                         if let profile {
                             milliseconds("sync.instrument.value", profile.remainingInstrumentOffset)
+                            if !profile.isNonnegativeSetting { Text("sync.nonnegative.savedInstrument").font(.callout) }
                             if profile.method == .manualPersonal { Text("sync.manual.badge").font(.caption) }
                             if store.usableProfile(audio: audio, instrument: instrument) == nil { Text("sync.instrument.recheck").foregroundStyle(.secondary) }
                         } else { Text("sync.instrument.unset") }
@@ -80,21 +84,22 @@ struct CalibrationView: View {
                             .disabled(!canEdit || route == nil).accessibilityIdentifier("calibration.start")
                         if let candidate = model.candidate {
                             milliseconds("sync.instrument.measured", candidate.remainingInstrumentOffset)
+                            if !candidate.isNonnegativeSetting { Text("sync.nonnegative.measurement").font(.callout) }
                             milliseconds("sync.instrument.total", candidate.residualOffsetSeconds)
                             milliseconds("sync.repeatability", candidate.uncertaintySeconds)
-                            Text(candidate.uncertaintySeconds + 0.03 <= 0.1 ? "sync.eligible" : "sync.uncertain")
+                            if candidate.isNonnegativeSetting { Text(candidate.uncertaintySeconds + 0.03 <= 0.1 ? "sync.eligible" : "sync.uncertain") }
                             Button("sync.apply") { Task { await model.apply(audio: audio, store: store, instrument: instrument) } }
-                                .disabled(!canEdit || model.messageKey == "calibration.saved").accessibilityIdentifier("sync.apply")
+                                .disabled(!canEdit || !candidate.isNonnegativeSetting || model.messageKey == "calibration.saved").accessibilityIdentifier("sync.apply")
                         }
                         Divider()
                         Text("sync.manual.title").font(.headline)
                         ManualDelayField(value: $manualInstrumentText, identifier: "sync.instrument.manualValue", enabled: canEdit,
                                          canApply: canApplyManualInstrument, applyLabel: "sync.manual.applyInstrument",
-                                         applyIdentifier: "sync.instrument.manualApply") {
+                                         applyIdentifier: "sync.instrument.manualApply", onApply: {
                             if let offset = LatencyEntryParser.seconds(manualInstrumentText) {
                                 Task { await model.applyManualInstrument(offset, audio: audio, store: store, instrument: instrument) }
                             }
-                        }
+                        }, validationMessage: !manualInstrumentText.isEmpty && !canApplyManualInstrument && canEdit && route != nil ? "sync.manual.invalid" : nil)
                         Text("sync.manual.instrumentHelp").font(.caption)
                         Text("sync.manual.range").font(.caption).foregroundStyle(.secondary)
                         if let profile {
@@ -166,7 +171,8 @@ struct CalibrationView: View {
     private var manualOutput: OutputAlignmentProfile? {
         guard let output = audio.state?.outputEndpoint, let seconds = LatencyEntryParser.seconds(manualOutputText),
               let manual = try? ManualOutputAlignment(seconds: seconds, reference: manualOutputReference) else { return nil }
-        return try? OutputAlignmentProfile(output: output, manual: manual)
+        guard let value = try? OutputAlignmentProfile(output: output, manual: manual), value.isNonnegativeSetting else { return nil }
+        return value
     }
     private var canApplyManualInstrument: Bool {
         guard let route, let seconds = LatencyEntryParser.seconds(manualInstrumentText) else { return false }

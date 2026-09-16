@@ -1,13 +1,13 @@
-# Compact manual latency editor
+# Manual latency controls and nonnegative settings
 
 Status: `done`
 
-Improve the manual delay controls for output and instrument: label above the editor, compact numeric field, adjacent localized unit, short Apply action and an explicit example below. Keep native editing chrome, existing initial-focus behavior, validation, accessible action context and stored values.
+Improve both manual editors with a label above the numeric field, localized unit, short Apply action and example. Per the user's explicit follow-up, both settings, including additional corrections, accept only 0–1000 ms; combined compensation must not exceed 1000 ms.
 
-Acceptance: inspect both languages in light/dark with signed values and disabled controls; rebuild and verify the local Release. No audio/scoring changes or new logic tests for this layout-only work.
+Implemented in the shared ManualDelayField, preserving native editing, initial-focus behavior and full accessible action context. Invalid entries show an inline explanation. Model/store guards also reject negative settings, and total-specification subtraction must not produce a negative correction. Negative measured candidates retain diagnostic timelines but cannot Apply.
 
-Implemented in the shared ManualDelayField: label above, 112-point native rounded numeric field with trailing alignment, adjacent ms/мс, prominent short Apply action, example below. Full output/instrument action names remain in accessibility labels and tooltips; existing identifiers, enablement and action closures are preserved.
+Previously stored signed evidence remains readable and unchanged. Negative output settings are inactive with an explicit zero-fallback notice; negative instrument settings cannot enable scoring. Users can reset or replace them. New selection policy does not rewrite historical snapshots, scores or schemas.
 
-Validation: production component rendered via offscreen NSHostingView in grouped Form in EN/UK and light/dark; +120.0, −25,5 and disabled −1000.0 display without clipping. Local previews are in `build/visual-validation/latency-editor-*.png` (not committed build artifacts). Release app/ZIP rebuilt and verified; 721 localization keys, generated project and UI-source typecheck passed. No new logic tests for a cosmetic change. Live native window selection timed out; keyboard/VoiceOver and prior timing hardware acceptance remain open.
+Validation: 4 relevant Domain tests and 13 App tests passed, covering parsing, boundaries, direct calls, signed legacy records, preserved negative measurement traces and positive flows. Production control renders cover EN/UK and light/dark; final Release app/ZIP signature/resources/archive verification passed (724 localized keys); evidence is linked below. Native selection timed out, so keyboard/VoiceOver and real timing acceptance remain open in USER-VALIDATION.
 
-Evidence: [same-agent review](../../docs/reviews/latency-editor-layout-review.md), [Release verification](../../docs/benchmarks/latency-editor-release-bundle.json).
+Evidence: [same-agent review](../../docs/reviews/latency-editor-layout-review.md), [Release verification](../../docs/benchmarks/latency-editor-release-bundle.json). Local preview PNGs live in build/visual-validation and are not committed.

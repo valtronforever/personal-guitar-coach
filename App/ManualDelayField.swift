@@ -9,6 +9,7 @@ struct ManualDelayField: View {
     let applyLabel: LocalizedStringKey
     let applyIdentifier: String
     let onApply: () -> Void
+    var validationMessage: LocalizedStringKey? = nil
     var bundle: Bundle = .main
 
     var body: some View {
@@ -40,6 +41,12 @@ struct ManualDelayField: View {
             }.controlSize(.large)
             Text("sync.manual.placeholder", bundle: bundle)
                 .font(.caption).foregroundStyle(.secondary)
+            if let validationMessage {
+                Label { Text(validationMessage, bundle: bundle) } icon: { Image(systemName: "exclamationmark.circle") }
+                    .font(.caption).foregroundStyle(.red)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier(identifier + ".validation")
+            }
         }.padding(.vertical, 4)
     }
 }

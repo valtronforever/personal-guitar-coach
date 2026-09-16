@@ -58,6 +58,12 @@ struct IndependentSyncTests {
         #expect(abs(total.seconds - 0.15) < 1e-9 && total.evidence == nil && total.isManual)
         let correction = try OutputAlignmentProfile(output: output, manual: ManualOutputAlignment(seconds: -0.05, reference: .additional))
         #expect(correction.seconds == -0.05)
+        #expect(total.isNonnegativeSetting && !correction.isNonnegativeSetting)
+        let belowReported = try OutputAlignmentProfile(output: output, manual: ManualOutputAlignment(seconds: 0, reference: .total))
+        #expect(!belowReported.isNonnegativeSetting)
+        for seconds in [0.0, 1.0] {
+            #expect(try OutputAlignmentProfile(output: output, manual: ManualOutputAlignment(seconds: seconds, reference: .additional)).isNonnegativeSetting)
+        }
         for value in [total, correction] {
             #expect(try JSONDecoder().decode(OutputAlignmentProfile.self, from: JSONEncoder().encode(value)) == value)
         }
@@ -68,6 +74,7 @@ struct IndependentSyncTests {
         #expect(throws: CalibrationError.invalidProfile) { try ManualInstrumentSyncEvidence(instrument: InstrumentProfile(), outputSetting: total, remainingOffset: 1) }
         let route = try CalibrationRoute(input: output, output: output, backendVersion: "manual-test")
         let profile = try CalibrationProfile(route: route, method: .manualPersonal, residualOffsetSeconds: manual.offset, uncertaintySeconds: ManualInstrumentSyncEvidence.scoringAllowance, manualInstrumentEvidence: manual)
+        #expect(!profile.isNonnegativeSetting)
         #expect(try JSONDecoder().decode(CalibrationProfile.self, from: JSONEncoder().encode(profile)) == profile)
         #expect(profile.personalInstrument == InstrumentProfile() && profile.outputSetting == total)
         #expect(profile.rhythmCapability(route: route, toleranceSeconds: 0.2, durationSeconds: 20, clockDriftSeconds: 0) == .approximate)

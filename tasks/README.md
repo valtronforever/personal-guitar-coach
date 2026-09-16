@@ -118,10 +118,10 @@
 
 - `pending_user` — [Calibration failure diagnostics](follow-up/calibration-failure-diagnostics.md): specific first-pass rejection reasons and retained measurements; real-device diagnosis pending.
 
-- `pending_user` — [Independent output and instrument latency settings](follow-up/independent-latency-settings.md): default-zero output, optional taps, separate instrument measurement, signed manual settings with approximate scoring and retained diagnostic timelines.
+- `pending_user` — [Independent output and instrument latency settings](follow-up/independent-latency-settings.md): default-zero output, optional taps, separate instrument measurement, nonnegative manual settings with approximate scoring and retained diagnostic timelines.
 
 - `done` — [Visible manual latency inputs](follow-up/latency-field-affordance.md): explicit native field borders and separate examples for both latency settings.
 
 - `pending_user` — [Neutral initial focus in timing settings](follow-up/latency-initial-focus.md): start at the title without automatically editing a latency value; live focus verification pending.
 
-- `done` — [Compact manual latency editor](follow-up/latency-editor-layout.md): grouped label, numeric value, unit and short Apply action; EN/UK light/dark rendering verified.
+- `done` — [Manual latency controls and nonnegative settings](follow-up/latency-editor-layout.md): grouped controls and nonnegative values, including corrections; historical evidence preserved.
