@@ -273,3 +273,9 @@ All voices and material `tonalRoot` use this same offset. An E-rooted source bec
 Use optional event field palmMuted: true to mark P.M. in normal/compact TAB and staff, with localized accessibility descriptions. It survives tuning/position resolution and frozen exercise serialization; false is omitted from old canonical JSON. Rests and assessSustain notes cannot carry this field. Exercises containing it must be displayOnly: short muted-input pitch/timbre grading has not been validated.
 
 Preview applies a fixed 90 ms exponential decay to each reference voice from its original onset (including staggered strum voices), without changing musical duration, frequencies or attacks. Seeking preserves decay age. This is a synthetic short-versus-ringing comparison, not realistic guitar/amp modeling or evidence of hand technique. Practice continues to emit only clicks. Teach contact, pitch clarity and damping through specific listening/self-practice criteria. See palm-muting and first-overdriven-riff for complete examples.
+
+### Single-note picking cues
+
+A single note may declare pickStroke: down or up. Use strum.direction for a multi-string chord; do not declare both. Rests cannot carry a picking cue. TAB/staff show the arrow only at the attack, and localized accessibility names it. Tuning/position resolution and frozen practice snapshots retain the cue.
+
+This is an authored physical instruction, not an inferred stroke direction. The reference waveform and automatic pitch/attack assessment remain identical to an unmarked note. For alternate picking, explicitly label the authored sequence and include a separate self-observation criterion. An upstroke-start group is valid. See alternate-picking and hand-synchronization.

@@ -128,4 +128,4 @@
 
 - `pending_user` — [Lesson learning modes](follow-up/lesson-learning-modes.md): theory, self-assessment and listening questions alongside scored practice.
 
-- `in_progress` — [Full curriculum and library UX](follow-up/full-curriculum.md): all 128 agreed lessons, required functional extensions, course organization and discovery. Modules 1–6 authored; strum-reference, harmonic-root, low-register, opt-in sustain and accent-reference extensions implemented, open-bass transposition anchor and palm-muting reference cues added; remaining course and hardware validation pending.
+- `in_progress` — [Full curriculum and library UX](follow-up/full-curriculum.md): all 128 agreed lessons, required functional extensions, course organization and discovery. Modules 1–6 and introductory picking/synchronization authored; strum-reference, harmonic-root, low-register, opt-in sustain and accent-reference extensions implemented, open-bass transposition anchor and palm-muting reference cues added; remaining course and hardware validation pending.

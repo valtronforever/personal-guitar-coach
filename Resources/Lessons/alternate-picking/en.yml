@@ -1,0 +1,54 @@
+lessonID: alternate-picking
+lessonVersion: 1
+locale: en
+title: Alternate picking
+summary: Follow explicit down–up cues across repeated notes and string changes.
+goal: Maintain alternating pick direction while keeping the written attacks even.
+body: 'Alternate picking changes pick direction at every intended attack: down, up, down, up. A downstroke moves
+  toward the thinner strings and an upstroke toward the thicker strings, independent of the TAB screen orientation.
+  The arrows show the intended gesture; they are not a measurement of your hand. The synthetic tone does not change
+  timbre for an upstroke.
+
+
+  Start with repeated notes so pitch changes do not distract from the picking cycle. Use a small movement that clears
+  the string and a grip firm enough to retain the pick without squeezing harder for speed. Compare the volume of
+  the two directions by ear; an upstroke does not need an extra-large motion to be audible.
+
+
+  Then cross between two strings while keeping the alternation continuous. Finally start a short group on an upstroke
+  so the downbeat is not permanently tied to one direction. The physical fret pattern is retained across tunings
+  and its pitches are recomputed. Scores check audible notes and attacks; you confirm the actual direction, effort
+  and balance yourself.'
+steps:
+  prepare:
+    title: Check the arrow meanings
+    body: Away from the string, make four small down–up pairs. Return to one fretted target and sound one pair slowly.
+      Keep the unused strings quiet.
+  one-string: &id001
+    title: Sixteen even attacks
+    body: At 50 BPM count 1 & 2 & 3 & 4 & for two bars. Follow every arrow, with down on the numbers and up on &.
+      Keep the final upstroke as clear as the first downstroke; try three complete attempts.
+  cross-strings: &id002
+    title: Continue the cycle across strings
+    body: Play two notes on string 6, then two on string 5, repeating four times. The first attack on each string
+      is down in this pattern. Do not add a second downstroke just to prepare a string change. {{sequence}}.
+  upstroke-start: &id003
+    title: Start on up deliberately
+    body: 'One bar reverses the starting direction: up on each numbered beat and down on &. Keep the same tempo
+      and pitch. Compare the feel, then return to the original two-bar pattern.'
+  review:
+    title: Check motion separately from the score
+    body: Review pitch/attack feedback for the measured part. Then observe one slow repetition to check that the
+      arrows match your actual strokes and that the movement stays small. Increase tempo only after three even repetitions.
+activities:
+  one-string: *id001
+  cross-strings: *id002
+  upstroke-start: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      directions: I followed the intended alternating directions, including the upstroke start.
+      balance: The two directions sounded reasonably balanced without larger motions.
+      crossing: I kept the cycle continuous through the string changes.

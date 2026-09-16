@@ -100,9 +100,9 @@ struct PracticeScoreRow: View {
                         .frame(width: max(1, width - 2), alignment: .leading).lineLimit(1).minimumScaleFactor(0.7)
                         .offset(x: 1, y: 139 * zoom).accessibilityHidden(true)
                 }
-                if (event.accented || event.strum != nil) && !segment.isContinuation {
-                    Text(verbatim: (event.accented ? ">" : "") + (event.strum.map { $0.direction == .down ? "↓" : "↑" } ?? "")).font(.system(size: (event.accented && event.strum != nil ? 9 : 12) * zoom, weight: .bold))
-                        .position(x: min(8 * zoom, width / 2), y: 151 * zoom).accessibilityHidden(true)
+                if (event.accented || event.pickingDirection != nil) && !segment.isContinuation {
+                    Text(verbatim: (event.accented ? ">" : "") + (event.pickingDirection.map { $0 == .down ? "↓" : "↑" } ?? "")).font(.system(size: (event.palmMuted || event.accented && event.pickingDirection != nil ? 9 : 12) * zoom, weight: .bold))
+                        .position(x: min(8 * zoom, width / 2), y: (event.palmMuted ? 153 : 151) * zoom).accessibilityHidden(true)
                 }
                 if event.kind == .rest {
                     Image(systemName: "pause.fill").font(.caption)
@@ -151,8 +151,8 @@ struct PracticeScoreRow: View {
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         if event.palmMuted { notes = String(format: localizationBundle.localizedString(forKey: "tab.palmMutedNotes %@", value: nil, table: nil), locale: locale, notes) }
-        if let strum = event.strum, !segment.isContinuation {
-            let direction = localizationBundle.localizedString(forKey: strum.direction == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)
+        if let stroke = event.pickingDirection, !segment.isContinuation {
+            let direction = localizationBundle.localizedString(forKey: stroke == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)
             let emphasis = localizationBundle.localizedString(forKey: event.accented ? "tab.strumAccented" : "tab.strumNormal", value: nil, table: nil)
             return Text("tab.strumDescription \(segment.bar + 1) \(beat) \(duration) \(notes) \(direction) \(emphasis)", bundle: localizationBundle)
         }

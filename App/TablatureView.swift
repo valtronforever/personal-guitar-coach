@@ -189,7 +189,7 @@ struct TablatureView: View {
                     HStack(spacing: 3) {
                         if event.palmMuted { Text(verbatim: "P.M.").bold() }
                         if event.accented && !segment.isContinuation { Text(verbatim: ">").bold() }
-                        if let strum = event.strum, !segment.isContinuation { Text(verbatim: strum.direction == .down ? "↓" : "↑").bold() }
+                        if let stroke = event.pickingDirection, !segment.isContinuation { Text(verbatim: stroke == .down ? "↓" : "↑").bold() }
                         if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
                         if event.kind == .rest { Image(systemName: "pause.fill") }
                         Text(verbatim: TimelineModel.durationLabel(event.durationTicks)).monospacedDigit()
@@ -242,8 +242,8 @@ struct TablatureView: View {
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         if event.palmMuted { notes = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, notes) }
-        if let strum = event.strum, !segment.isContinuation {
-            let direction = settings.localized(strum.direction == .down ? "tab.strumDown" : "tab.strumUp")
+        if let stroke = event.pickingDirection, !segment.isContinuation {
+            let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
             let emphasis = settings.localized(event.accented ? "tab.strumAccented" : "tab.strumNormal")
             return Text("tab.strumDescription \(segment.bar + 1) \(beat) \(duration) \(notes) \(direction) \(emphasis)")
         }

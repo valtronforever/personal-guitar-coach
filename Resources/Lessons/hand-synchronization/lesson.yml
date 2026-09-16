@@ -1,0 +1,414 @@
+schemaVersion: 3
+id: hand-synchronization
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: one-note-at-a-time
+  kind: events
+  exerciseID: hand-synchronization-one-note-at-a-time
+  activityID: one-note-at-a-time
+  eventIDs:
+  - e0
+  - e1
+  - e2
+  - e3
+  - e4
+  - e5
+  - e6
+  - e7
+  - e8
+  - e9
+  - e10
+  - e11
+  - e12
+  - e13
+  - e14
+  - e15
+- id: four-note-groups
+  kind: events
+  exerciseID: hand-synchronization-four-note-groups
+  activityID: four-note-groups
+  eventIDs:
+  - e0
+  - e1
+  - e2
+  - e3
+  - e4
+  - e5
+  - e6
+  - e7
+  - e8
+  - e9
+  - e10
+  - e11
+  - e12
+  - e13
+  - e14
+  - e15
+  - e16
+  - e17
+  - e18
+  - e19
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: hand-synchronization-one-note-at-a-time
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: e0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    pickStroke: down
+  - id: e1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 6
+    pickStroke: up
+  - id: e2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    pickStroke: down
+  - id: e3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 8
+    pickStroke: up
+  - id: e4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+    pickStroke: down
+  - id: e5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 6
+    pickStroke: up
+  - id: e6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+    pickStroke: down
+  - id: e7
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 8
+    pickStroke: up
+  - id: e8
+    startTick: 7680
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+    pickStroke: down
+  - id: e9
+    startTick: 8640
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 6
+    pickStroke: up
+  - id: e10
+    startTick: 9600
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+    pickStroke: down
+  - id: e11
+    startTick: 10560
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 8
+    pickStroke: up
+  - id: e12
+    startTick: 11520
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: e13
+    startTick: 12480
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: e14
+    startTick: 13440
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: e15
+    startTick: 14400
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hand-synchronization-four-note-groups
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: e0
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e1
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 6
+    pickStroke: up
+  - id: e2
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+    pickStroke: down
+  - id: e3
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 8
+    pickStroke: up
+  - id: e4
+    startTick: 1920
+    durationTicks: 1920
+    kind: rest
+    positions: []
+  - id: e5
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e6
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 6
+    pickStroke: up
+  - id: e7
+    startTick: 4800
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+    pickStroke: down
+  - id: e8
+    startTick: 5280
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 8
+    pickStroke: up
+  - id: e9
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+  - id: e10
+    startTick: 7680
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e11
+    startTick: 8160
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 6
+    pickStroke: up
+  - id: e12
+    startTick: 8640
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+    pickStroke: down
+  - id: e13
+    startTick: 9120
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 8
+    pickStroke: up
+  - id: e14
+    startTick: 9600
+    durationTicks: 1920
+    kind: rest
+    positions: []
+  - id: e15
+    startTick: 11520
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e16
+    startTick: 12000
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 6
+    pickStroke: up
+  - id: e17
+    startTick: 12480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+    pickStroke: down
+  - id: e18
+    startTick: 12960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 8
+    pickStroke: up
+  - id: e19
+    startTick: 13440
+    durationTicks: 1920
+    kind: rest
+    positions: []
+adaptation:
+  policy: fretPattern
+materials:
+- id: one-note-at-a-time
+  source:
+    kind: exercise
+    exerciseID: hand-synchronization-one-note-at-a-time
+  positioning:
+    enabled: false
+- id: four-note-groups
+  source:
+    kind: exercise
+    exerciseID: hand-synchronization-four-note-groups
+  positioning:
+    enabled: false
+activities:
+- id: one-note-at-a-time
+  materialID: one-note-at-a-time
+- id: four-note-groups
+  materialID: four-note-groups
+fingerings: []
+practiceEntries:
+- id: one-note-at-a-time
+  activityID: one-note-at-a-time
+  exerciseID: hand-synchronization-one-note-at-a-time
+- id: four-note-groups
+  activityID: four-note-groups
+  exerciseID: hand-synchronization-four-note-groups
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - targets
+  - rests
+  - specific
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 50
+  durationMinutes: 20
+  prerequisites:
+  - alternate-picking
+  - clean-fretted-note
+  keywords:
+  - Synchronizing both hands
+  - Синхронізація обох рук

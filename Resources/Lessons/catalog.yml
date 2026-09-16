@@ -58,6 +58,8 @@ lessons:
   - transpose-a-melody
   - fingering-key-tuning
   - fretboard-map
+  - alternate-picking
+  - hand-synchronization
 modules:
   - id: getting-started
     order: 1
