@@ -12,9 +12,15 @@ struct AgentBridgeTests {
         #expect((source["practice"] as? [String: Any])?["evidence"] != nil)
     }
     @Test func bothMaximumTracesFitLocallyAndAreOmittedFromTheCLIPrompt() throws {
-        let frames: [[String: Any]] = (0..<45_100).map { index in
-            ["id": UInt64.max - UInt64(45_100 - index), "normalizedTime": 12345678.123456 + Double(index) * 0.02,
-             "state": "pitched", "frequency": 329.6275569128699]
+        var frames: [[String: Any]] = []
+        frames.reserveCapacity(45_100)
+        for index in 0..<45_100 {
+            let id = UInt64.max - UInt64(45_100 - index)
+            let time = 12345678.123456 + Double(index) * 0.02
+            var frame: [String: Any] = [:]
+            frame["id"] = id; frame["normalizedTime"] = time
+            frame["state"] = "pitched"; frame["frequency"] = 329.6275569128699
+            frames.append(frame)
         }
         let source: [String: Any] = ["practice": ["bends": ["version": "bend-assessment-1"],
             "evidence": ["pitchContour": ["version": "periodic-window-center-1", "frames": frames],
