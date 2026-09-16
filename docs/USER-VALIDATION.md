@@ -105,3 +105,10 @@ Open “Hear pitch direction / Почути напрямок мелодії”, 
 - Inspect course/filters and reader at 900×620 in English/Ukrainian and light/dark; verify keyboard navigation, VoiceOver, step navigation, prerequisite and next-lesson links. Native Ukrainian/dark library/filter/search checks passed on 2026-09-16; reader automation was interrupted by an external SkyComputerUseService crash, not marked passed.
 - Follow topics 1–16 on an actual guitar, including tuner/audio tool transitions; distinguish physical setup/self-checks from pitch/time grading. Confirm useful phrasing and practical tempo, especially while changing strings.
 - Low-register grading now includes B Standard / Drop B♭ / Drop A at A4 = 440 Hz. On a real clean guitar, validate repeated A1–B1 attacks, sustained notes without spurious attacks, and the Standard/Drop lesson at 44.1/48 kHz. Try different pickup selections and picking strengths. Synthetic DSP/collector/assessment checks establish software behavior only; hardware accuracy remains pending. Recheck instrument timing after the analyzer version change.
+
+### Rhythm duration extension — pending_user
+
+- In English and Ukrainian, select the dotted/tied lesson and compare TAB with Staff in light/dark modes; read dotted symbols/tie continuations using keyboard and VoiceOver at the minimum window size.
+- On a clean real guitar/interface, play the dotted and tied examples at 60 BPM. Verify one attack across the barline, full vs early release, wrong sustained pitch, muted/noisy input and calibration on/off. Record device/rate/channel/tuning/gain; synthetic fixtures are not this evidence.
+- Select only the second tied bar, then pause during a tie and resume: confirm the range expands to a complete note and no hidden reattack is required.
+- Check results, archived replay/retry and the optional Record & analyze path with a sustain lesson. Confirm uncertain capture never shows a successful duration score.

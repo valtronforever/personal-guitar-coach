@@ -61,18 +61,16 @@ struct StaffTests {
             MusicalEvent(id:"rest",startTick:1440,durationTicks:240,kind:.rest),note("e",1680,midi:55,duration:240), MusicalEvent(id:"ending-rest",startTick:1920,durationTicks:1920,kind:.rest)]
         let timeline = try TimelineModel(exercise: Exercise(id:"beams",events:events),instrument:tuning)
         let model = StaffModel(timeline:timeline,key:.neutral), symbols = try model.symbols(in:0)
-        #expect(model.beams(symbols).map(\.ids) == [["a","b"],["c","d"]])
+        #expect(model.beams(symbols).map { $0.ids.map(\.eventID) } == [["a","b"],["c","d"]])
         #expect(model.beams(symbols).map(\.flags) == [1,2])
-        #expect(symbols.first { $0.id == "rest" }?.pitch == nil)
+        #expect(symbols.first { $0.eventID == "rest" }?.pitch == nil)
         #expect(symbols.map { $0.resolved.event.durationTicks } == [480,480,240,240,240,240,1920])
     }
     @Test func unsupportedMusicFailsExplicitlyInsteadOfInventingNotation() throws {
         let partial = try TimelineModel(exercise: Exercise(id:"partial",events:[note("one",0,midi:40)]),instrument:tuning)
-        #expect(try StaffModel(timeline:partial,key:.neutral).symbols(in:0).map(\.id) == ["one"])
-        let across = try TimelineModel(exercise: Exercise(id:"tie",events:[note("long",0,midi:40,duration:4320)]),instrument:tuning)
-        #expect(throws: StaffLimitation.crossBar) { try StaffModel(timeline:across,key:.neutral).symbols(in:0) }
-        let dotted = try TimelineModel(exercise: Exercise(id:"dotted",events:[note("dot",0,midi:40,duration:1440)]),instrument:tuning)
-        #expect(throws: StaffLimitation.duration) { try StaffModel(timeline:dotted,key:.neutral).symbols(in:0) }
+        #expect(try StaffModel(timeline:partial,key:.neutral).symbols(in:0).map(\.eventID) == ["one"])
+        let odd = try TimelineModel(exercise: Exercise(id:"unsupported-grid",events:[note("tiny",0,midi:40,duration:121)]),instrument:tuning)
+        #expect(throws: StaffLimitation.duration) { try StaffModel(timeline:odd,key:.neutral).symbols(in:0) }
         let gap = try TimelineModel(exercise: Exercise(id:"gap",events:[note("late",960,midi:40)]),instrument:tuning)
         #expect(throws: StaffLimitation.gaps) { try StaffModel(timeline:gap,key:.neutral).symbols(in:0) }
         let chord = try MusicalEvent(id:"chord",startTick:0,durationTicks:960,kind:.note,positions:[FretPosition(string:6,fret:0),FretPosition(string:5,fret:0)])
@@ -82,7 +80,7 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 29)
+        #expect(library.lessons.count == 30)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for entry in lesson.manifest.practiceEntries {
@@ -92,7 +90,7 @@ struct StaffTests {
                 let timeline = try TimelineModel(exercise:exercise,instrument:.dropD)
                 let staff = StaffModel(timeline:timeline,key:.neutral)
                 let symbols = try (0..<timeline.barCount).flatMap { try staff.symbols(in:$0) }
-                #expect(symbols.map(\.id) == timeline.events.map(\.id))
+                #expect(symbols.filter { !$0.fragment.tieFromPrevious }.map(\.eventID) == timeline.events.map(\.id))
                 if exercise.id == "c-major-practice" {
                     #expect(symbols.compactMap(\.pitch).map(\.name) == ["C4","D4","E4","F4","G4","A4","B4","C5","B4","A4","G4","F4","E4","D4","C4"])
                     #expect(symbols.allSatisfy { $0.accidental == nil && $0.resolved.event.durationTicks == 960 })
@@ -101,10 +99,10 @@ struct StaffTests {
                     #expect(symbols.compactMap(\.pitch).map(\.name) == ["A♭3","B♭3","C4","D♭4","E♭4","F4","G4","A♭4","G4","F4","E♭4","D♭4","C4","B♭3","A♭3"])
                     #expect(try staff.symbols(in: 0).map(\.accidental) == ["♭", "♭", nil, "♭"])
                 }
-                #expect(symbols.compactMap(\.pitch).map(\.writtenMIDI) == timeline.events.flatMap(\.pitches).map { $0.midi + 12 })
+                #expect(symbols.compactMap(\.pitch).map(\.writtenMIDI) == symbols.flatMap { $0.resolved.pitches }.map { $0.midi + 12 })
                 for symbol in symbols {
-                    selection.selectEvent(symbol.id,exerciseID:exercise.id,extending:false)
-                    #expect(selection.selectedIDs == [symbol.id])
+                    selection.selectEvent(symbol.eventID,exerciseID:exercise.id,extending:false)
+                    #expect(selection.selectedIDs == [symbol.eventID])
                     #expect(selection.exercise?.id == exercise.id)
                 }
             }

@@ -43,13 +43,12 @@ public final class CoachAgentRunner: @unchecked Sendable {
 
     public func run(request: Data, audio: Data, provider: String, executableOverride: URL? = nil,
                     timeout: TimeInterval = 300) throws -> Data {
-        guard request.count <= 2_000_000, audio.count > 0, audio.count <= 100 * 1024 * 1024,
+        guard request.count <= CoachAgentContract.maximumRequestBytes, audio.count > 0, audio.count <= 100 * 1024 * 1024,
               let object = try JSONSerialization.jsonObject(with: request) as? [String: Any],
               object["schemaVersion"] as? Int == 1,
               let filename = object["audioFile"] as? String, ["audio.wav", "audio.mp3"].contains(filename),
               let report = object["audio"] as? [String: Any],
-              report["sha256"] as? String == SHA256.hash(data: audio).map({ String(format: "%02x", $0) }).joined(),
-              let requestString = String(data: request, encoding: .utf8) else { throw CoachAgentFailure.invalidRequest }
+              report["sha256"] as? String == SHA256.hash(data: audio).map({ String(format: "%02x", $0) }).joined() else { throw CoachAgentFailure.invalidRequest }
         guard let executable = executableOverride ?? Self.executable(provider: provider) else { throw CoachAgentFailure.missingCLI }
         let manager = FileManager.default
         let directory = manager.temporaryDirectory.appendingPathComponent("coach-agent-" + UUID().uuidString)
@@ -58,7 +57,7 @@ public final class CoachAgentRunner: @unchecked Sendable {
         try audio.write(to: directory.appendingPathComponent(filename))
         try request.write(to: directory.appendingPathComponent("request.json"))
         try Data(CoachAgentContract.schema.utf8).write(to: directory.appendingPathComponent("schema.json"))
-        let prompt = CoachAgentContract.prompt(requestJSON: requestString, audioPath: directory.appendingPathComponent(filename).path)
+        let prompt = CoachAgentContract.prompt(requestJSON: try CoachAgentContract.coachingData(object), audioPath: directory.appendingPathComponent(filename).path)
         try Data(prompt.utf8).write(to: directory.appendingPathComponent("prompt.txt"))
         let input = try FileHandle(forReadingFrom: directory.appendingPathComponent("prompt.txt"))
         let stdoutURL = directory.appendingPathComponent("stdout.txt"), stderrURL = directory.appendingPathComponent("stderr.txt")

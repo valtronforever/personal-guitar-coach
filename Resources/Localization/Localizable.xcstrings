@@ -8586,13 +8586,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This bar uses notation outside the prototype: chords, ties across bars, gaps, incomplete bars, unusual durations or pitches outside A1–E6. Use Tablature to see the complete sequence."
+            "value": "This bar uses notation outside the supported range: chords, gaps, an unsupported rhythmic grid or pitches outside A1–E6. Use Tablature to see the complete sequence."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Цей такт виходить за межі прототипу: акорди, ліги через тактові риски, проміжки, неповні такти, нестандартні тривалості або ноти поза A1–E6. Повна послідовність доступна в табулатурі."
+            "value": "Цей такт містить непідтримувану нотацію: акорди, проміжки, непідтримуваний ритмічний поділ або ноти поза A1–E6. Повна послідовність доступна в табулатурі."
           }
         }
       }
@@ -13349,6 +13349,243 @@
           "stringUnit": {
             "state": "translated",
             "value": "Курс"
+          }
+        }
+      }
+    },
+    "staff.tie.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start of one sustained note. Follow the tie without another attack. Select to highlight the whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Початок однієї довгої ноти. Продовжуйте по лізі без нової атаки. Виберіть, щоб позначити всю ноту."
+          }
+        }
+      }
+    },
+    "staff.tie.middle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuation of the same note, tied on both sides. Do not attack again. Select to highlight the whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продовження тієї самої ноти, ліги з обох боків. Не атакуйте знову. Виберіть, щоб позначити всю ноту."
+          }
+        }
+      }
+    },
+    "staff.tie.end": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End of the same sustained note. Do not attack again here. Select to highlight the whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закінчення тієї самої довгої ноти. Не атакуйте тут знову. Виберіть, щоб позначити всю ноту."
+          }
+        }
+      }
+    },
+    "staff.dottedNote %@ %@ %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dotted note: written %@, sounding %@, duration %@ of a whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нота з крапкою: записана %@, звучить %@, тривалість %@ цілої ноти."
+          }
+        }
+      }
+    },
+    "staff.dottedRest %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dotted rest, duration %@ of a whole note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза з крапкою, тривалість %@ цілої ноти."
+          }
+        }
+      }
+    },
+    "practice.rangeExpandedForSustain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The range includes complete sustained notes and rests, so none is cut at a barline."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Діапазон охоплює довгі ноти й паузи повністю, щоб не обрізати їх на тактовій рисці."
+          }
+        }
+      }
+    },
+    "assessment.sustain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sustain"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утримання"
+          }
+        }
+      }
+    },
+    "assessment.sustainExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sustain measures the share of a marked note held at the target pitch, allowing for the attack and release edges. It contributes 20% of the overall score when requested by the exercise; it does not measure an exact release time."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утримання показує частку позначеної ноти з потрібною висотою, з допуском на початок і закінчення. Якщо вправа його перевіряє, це 20% загальної оцінки; точний момент заглушення не оцінюється."
+          }
+        }
+      }
+    },
+    "assessment.sustainUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There is not enough reliable evidence to score sustain for this attempt."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недостатньо надійних вимірювань, щоб оцінити утримання в цій спробі."
+          }
+        }
+      }
+    },
+    "practice.sustainRequirement": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marked sustained notes are assessed for stable target pitch through their duration. They must last at least 0.5 seconds at the chosen tempo. Play ties without a second attack."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У позначених довгих нотах перевіряється утримання потрібної висоти. За обраного темпу вони мають тривати щонайменше 0,5 секунди. Ноти з лігою грайте без повторної атаки."
+          }
+        }
+      }
+    },
+    "result.sustainHeld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target pitch held through %lld%% of the measured interval."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Потрібна висота звучала протягом %lld%% виміряного інтервалу."
+          }
+        }
+      }
+    },
+    "result.sustainSilent %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silence occupied %lld%% of the measured interval."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тиша зайняла %lld%% виміряного інтервалу."
+          }
+        }
+      }
+    },
+    "feedback.sustain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold the target pitch through the written duration. Listen for early silence or a changed note, then repeat the marked fragment."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утримуйте потрібну висоту протягом записаної тривалості. Послухайте, чи немає передчасної тиші або зміни ноти, і повторіть позначений фрагмент."
+          }
+        }
+      }
+    },
+    "result.annotation.sustain": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note ended early or changed pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нота обірвалася рано або змінила висоту"
           }
         }
       }

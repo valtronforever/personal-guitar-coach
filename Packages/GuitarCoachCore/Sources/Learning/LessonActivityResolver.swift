@@ -71,7 +71,8 @@ extension LoadedLesson {
                     let positions: [FretPosition]
                     if event.positions.allSatisfy({ sharedMapping[$0] != nil }) { positions = event.positions.compactMap { sharedMapping[$0] } }
                     else { positions = try resolvePositions(event.positions, source: source) }
-                    return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks, kind: event.kind, positions: positions)
+                    return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain)
                 }
             }
             return try Exercise(id: source.id, version: source.version, ppq: source.ppq, events: events,

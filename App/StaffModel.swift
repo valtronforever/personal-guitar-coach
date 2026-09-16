@@ -32,19 +32,30 @@ struct StaffPitch: Equatable, Sendable {
 
 struct StaffSymbol: Identifiable, Sendable {
     let resolved: ResolvedEvent
+    let fragment: NotationFragment
     let pitch: StaffPitch?
     let accidental: String?
-    var id: String { resolved.id }
-    var flags: Int { resolved.event.durationTicks == 240 ? 2 : resolved.event.durationTicks == 480 ? 1 : 0 }
-    var hollow: Bool { resolved.event.durationTicks >= 1920 }
-    var hasStem: Bool { resolved.event.durationTicks != 3840 && pitch != nil }
+    var id: NotationFragmentID { fragment.id }
+    var eventID: String { resolved.id }
+    var startTick: Int64 { fragment.startTick }
+    var endTick: Int64 { fragment.endTick }
+    var flags: Int { fragment.duration.flags }
+    var hollow: Bool { fragment.duration.baseTicks >= 1920 }
+    var hasStem: Bool { fragment.duration.baseTicks != 3840 && pitch != nil }
+    var hintKey: String {
+        if fragment.tieFromPrevious && fragment.tieToNext { return "staff.tie.middle" }
+        if fragment.tieFromPrevious { return "staff.tie.end" }
+        if fragment.tieToNext { return "staff.tie.start" }
+        return "staff.selectHint"
+    }
 }
-struct StaffBeam: Equatable, Sendable { let ids: [String]; let flags: Int; let stemsUp: Bool }
-enum StaffLimitation: String, Error { case range, polyphony, duration, gaps, crossBar }
+struct StaffBeam: Equatable, Sendable { let ids: [NotationFragmentID]; let flags: Int; let stemsUp: Bool }
+enum StaffLimitation: String, Error { case range, polyphony, duration, gaps }
 
 struct StaffModel: Sendable {
     let timeline: TimelineModel
     let key: StaffKey
+    static let canvasHeight = 280.0
     static let bottomStep = 30 // Written E4, bottom line of treble staff.
     static func y(step: Int) -> Double { 160 - Double(step - bottomStep) * 6 }
     static func ledgerSteps(for step: Int) -> [Int] {
@@ -57,20 +68,23 @@ struct StaffModel: Sendable {
         var accidentals: [Int: Int] = [:], result: [StaffSymbol] = []
         var end = timeline.startTick(of: bar)
         for segment in segments {
-            let resolved = segment.resolved, event = resolved.event
-            guard !segment.isContinuation && segment.endTick == event.endTick else { throw StaffLimitation.crossBar }
+            let resolved = segment.resolved
             guard segment.startTick == end else { throw StaffLimitation.gaps }
-            guard [240, 480, 960, 1920, 3840].contains(event.durationTicks), event.startTick % 240 == 0 else { throw StaffLimitation.duration }
             guard resolved.pitches.count <= 1 else { throw StaffLimitation.polyphony }
             let pitch = resolved.pitches.first.map { StaffPitch(sounding: $0, key: key, preferredSpelling: timeline.tuning.preferredSpelling) }
-            var accidental: String?
-            if let pitch {
-                guard (33...88).contains(pitch.soundingMIDI) else { throw StaffLimitation.range }
-                let current = accidentals[pitch.step] ?? key.alteration(letter: pitch.letter)
-                if current != pitch.alteration { accidental = pitch.alteration == 0 ? "♮" : pitch.alteration == 1 ? "♯" : "♭" }
-                accidentals[pitch.step] = pitch.alteration
+            if let pitch, !(33...88).contains(pitch.soundingMIDI) { throw StaffLimitation.range }
+            for fragment in try RhythmNotation.fragments(segment) {
+                var accidental: String?
+                // A tie carries its pitch over the barline, but does not establish an
+                // accidental for a later, freshly attacked note in this new bar.
+                if let pitch, !fragment.tieFromPrevious {
+                    let current = accidentals[pitch.step] ?? key.alteration(letter: pitch.letter)
+                    if current != pitch.alteration { accidental = pitch.alteration == 0 ? "♮" : pitch.alteration == 1 ? "♯" : "♭" }
+                    accidentals[pitch.step] = pitch.alteration
+                }
+                result.append(StaffSymbol(resolved: resolved, fragment: fragment, pitch: pitch, accidental: accidental))
             }
-            result.append(StaffSymbol(resolved: resolved, pitch: pitch, accidental: accidental)); end = segment.endTick
+            end = segment.endTick
         }
         let start = timeline.startTick(of: bar)
         let expectedEnd = start + min(timeline.ticksPerBar, timeline.exercise.durationTicks - start)
@@ -89,12 +103,21 @@ struct StaffModel: Sendable {
             group = []
         }
         for symbol in symbols {
-            guard symbol.flags > 0 && symbol.pitch != nil else { finish(); continue }
+            guard symbol.flags > 0 && symbol.pitch != nil && !symbol.fragment.duration.dotted else { finish(); continue }
             if let last = group.last,
-               last.flags != symbol.flags || last.resolved.event.endTick != symbol.resolved.event.startTick ||
-               last.resolved.event.startTick / MusicalTime.ppq != symbol.resolved.event.startTick / MusicalTime.ppq { finish() }
+               last.flags != symbol.flags || last.endTick != symbol.startTick ||
+               last.startTick / MusicalTime.ppq != symbol.startTick / MusicalTime.ppq { finish() }
             group.append(symbol)
         }
         finish(); return result
+    }
+    func adjacent(to id: NotationFragmentID, offset: Int) -> StaffSymbol? {
+        let bar = timeline.bar(containing: id.startTick)
+        guard let symbols = try? symbols(in: bar), let index = symbols.firstIndex(where: { $0.id == id }) else { return nil }
+        let next = index + offset
+        if symbols.indices.contains(next) { return symbols[next] }
+        let adjacentBar = bar + (offset < 0 ? -1 : 1)
+        guard (0..<timeline.barCount).contains(adjacentBar), let adjacent = try? self.symbols(in: adjacentBar) else { return nil }
+        return offset < 0 ? adjacent.last : adjacent.first
     }
 }

@@ -29,6 +29,7 @@ lessons:
   - stop-a-note
   - reading-tab
   - first-melody
+  - dotted-tied-notes
 modules:
   - id: getting-started
     order: 1

@@ -2,7 +2,7 @@ import Foundation
 
 /// Versioned software capability from the task 12 corpus. Physical-route validation remains separate.
 public enum MonophonicCapability {
-    public static let version = "mono-capability-2"
+    public static let version = "mono-capability-3"
     public static let frequencyRange = 55.0...1500.0
     public static let minimumNoteSeconds = 0.2
     public static let sampleRates: Set<Double> = [44100, 48000]
@@ -32,7 +32,7 @@ public enum MonophonicCapability {
             if !supportsTarget(pitch, referenceA4: tuning.referenceA4) {
                 return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
             }
-            if duration + 1e-9 < minimumNoteSeconds {
+            if duration + 1e-9 < (resolved.event.assessSustain ? SustainTrace.minimumNoteSeconds : minimumNoteSeconds) {
                 return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
             }
             return nil

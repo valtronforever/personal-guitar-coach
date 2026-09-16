@@ -136,6 +136,9 @@ struct PracticeEntryView: View {
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
             }
             Text("practice.stringOrder").font(.caption)
+            if exercise.events.contains(where: \.assessSustain) {
+                Text("practice.sustainRequirement").font(.caption).foregroundStyle(.secondary)
+            }
             Text("result.fretCount \(instrument.fretCount)")
             Toggle("practice.tunedConfirmation", isOn: Binding(get: { model.physicallyTuned }, set: { model.physicallyTuned = $0 }))
                 .disabled(model.isBusy).accessibilityIdentifier("practice.tuned")
@@ -145,6 +148,9 @@ struct PracticeEntryView: View {
                 Spacer()
                 Stepper("practice.firstBarValue \(model.firstBar)", value: Binding(get: { model.firstBar }, set: { model.setBars(first: $0, last: model.lastBar) }), in: 1...model.barCount)
                 Stepper("practice.lastBarValue \(model.lastBar)", value: Binding(get: { model.lastBar }, set: { model.setBars(first: model.firstBar, last: $0) }), in: model.firstBar...max(model.firstBar, model.barCount))
+            }
+            if model.rangeExpandedForSustain {
+                Label("practice.rangeExpandedForSustain", systemImage: "info.circle").font(.caption).foregroundStyle(.secondary)
             }
             Toggle("practice.repeat", isOn: Binding(get: { model.repeatEnabled }, set: { model.setRepeat($0) }))
             Text("practice.repeatExplanation").font(.caption).foregroundStyle(.secondary)

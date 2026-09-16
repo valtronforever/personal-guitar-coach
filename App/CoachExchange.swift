@@ -76,8 +76,8 @@ enum CoachExchange {
 
     static func readResponse(_ url: URL, practice: AssessedPractice) throws -> CoachAnalysisResponse {
         let handle = try FileHandle(forReadingFrom: url); defer { try? handle.close() }
-        let data = try handle.read(upToCount: 2_000_001) ?? Data()
-        guard data.count <= 2_000_000 else { throw CoachFileError.response }
+        let data = try handle.read(upToCount: CoachAgentContract.maximumEnvelopeBytes + 1) ?? Data()
+        guard data.count <= CoachAgentContract.maximumEnvelopeBytes else { throw CoachFileError.response }
         let decoder = JSONDecoder(); decoder.dateDecodingStrategy = .iso8601
         let value = try decoder.decode(CoachAnalysisResponse.self, from: data)
         let request = value.request, feedback = value.feedback

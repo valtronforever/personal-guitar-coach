@@ -72,11 +72,13 @@ public struct AudioAnalysisSnapshot: Equatable, Sendable {
     public let invalidSamples: UInt64
     public let qualitySpans: [SignalQualitySpan]
     public let totalQualitySpans: UInt64
+    public let sustainTrace: SustainTraceSnapshot?
     /// Immutable worker DTO construction also supports offline fixtures without a capture runtime.
     public init(algorithmVersion: String, latest: PitchObservation?, events: [DetectedNoteEvent], totalEvents: UInt64,
-                invalidSamples: UInt64, qualitySpans: [SignalQualitySpan], totalQualitySpans: UInt64) {
+                invalidSamples: UInt64, qualitySpans: [SignalQualitySpan], totalQualitySpans: UInt64, sustainTrace: SustainTraceSnapshot? = nil) {
         self.algorithmVersion = algorithmVersion; self.latest = latest; self.events = events; self.totalEvents = totalEvents
         self.invalidSamples = invalidSamples; self.qualitySpans = qualitySpans; self.totalQualitySpans = totalQualitySpans
+        self.sustainTrace = sustainTrace
     }
 }
 
@@ -86,6 +88,7 @@ public final class MonophonicAnalyzer {
     public static let algorithmVersion = "mono-mpm-flux-4"
     public static let eventCapacity = 128
     public static let qualitySpanCapacity = 256
+    public static let sustainFrameCapacity = 512
     public let sampleRate: Double
     public let hopFrames: Int
     private let detector: PitchDetector
@@ -108,6 +111,8 @@ public final class MonophonicAnalyzer {
     private var totalEvents: UInt64 = 0
     private var qualitySpans: [SignalQualitySpan] = []
     private var totalQualitySpans: UInt64 = 0
+    private var sustainFrames: [SustainTraceSample] = []
+    private var totalSustainFrames: UInt64 = 0
     private var hopSquares = 0.0
     private let highPassCoefficient: Double
     private var previousInput = 0.0, firstHighPass = 0.0, secondHighPass = 0.0
@@ -121,6 +126,7 @@ public final class MonophonicAnalyzer {
         eventPitchCandidates.reserveCapacity(5)
         events.reserveCapacity(Self.eventCapacity)
         qualitySpans.reserveCapacity(Self.qualitySpanCapacity)
+        sustainFrames.reserveCapacity(Self.sustainFrameCapacity)
     }
 
     /// The optional host time belongs to the first sample of this chunk, not its delivery time.
@@ -150,7 +156,8 @@ public final class MonophonicAnalyzer {
     public func snapshot() -> AudioAnalysisSnapshot {
         AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-4", latest: latest, events: events,
                               totalEvents: totalEvents, invalidSamples: invalidSamples,
-                              qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans)
+                              qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans,
+                              sustainTrace: SustainTraceSnapshot(frames: sustainFrames, totalFrames: totalSustainFrames))
     }
 
     /// Offline/session finalization preserves an attack that never yielded a stable estimate.
@@ -205,6 +212,28 @@ public final class MonophonicAnalyzer {
         if rms < 0.003 { noiseFloor = max(0.0001, min(0.001, noiseFloor * 0.98 + rms * 0.02)) }
         latest = PitchObservation(time: timestamp(processed), quality: quality, pitch: pitch, rms: rms, peak: peak, noiseFloor: noiseFloor,
                                   periodEvidence: evidence)
+        if processed >= Int64(frame.count), processed.isMultiple(of: Int64(hopFrames * 2)) {
+            totalSustainFrames += 1
+            if sustainFrames.count == Self.sustainFrameCapacity { sustainFrames.removeFirst() }
+            // Measure silence around the same window-center timestamp. A long pitch
+            // window can remain unstable after a clean release; that is not noisy input.
+            let center = frame.count / 2
+            // Remove DC locally instead of using the high-pass output: the filter's
+            // decay after a stopped low note must not look like continuing input.
+            var centerSum = 0.0, centerSquares = 0.0
+            for index in (center - hopFrames)..<(center + hopFrames) {
+                let value = Double(rawRing[(head + index) % rawRing.count])
+                centerSum += value; centerSquares += value * value
+            }
+            let count = Double(hopFrames * 2), mean = centerSum / count
+            let centerSilent = max(0, centerSquares / count - mean * mean).squareRoot() < 0.001
+            let state: SustainFrame.State
+            if quality == .clipping || quality == .invalid { state = .uncertain }
+            else if centerSilent { state = .silence }
+            else { state = quality == .reliable && pitch != nil ? .pitched : .uncertain }
+            sustainFrames.append(SustainTraceSample(id: totalSustainFrames, time: timestamp(processed - Int64(frame.count / 2)),
+                state: state, frequency: state == .pitched ? pitch?.frequency : nil))
+        }
         if let last = qualitySpans.last, last.quality == quality {
             qualitySpans[qualitySpans.count - 1] = SignalQualitySpan(id: last.id, quality: quality, start: last.start, end: timestamp(processed))
         } else {

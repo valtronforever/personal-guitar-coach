@@ -1,0 +1,68 @@
+lessonID: dotted-tied-notes
+lessonVersion: 1
+locale: en
+title: Dotted notes and ties
+summary: Lengthen a note without losing the pulse or adding an attack.
+goal: Count a dotted quarter and sustain one note across a barline.
+body: |-
+  A dot adds half the original duration: a dotted quarter lasts one and a half beats. A tie joins written notes of the same pitch into one continuous sound. Pluck only the first note of a tie; add the written durations. A barline does not stop the sound.
+
+  Use Staff (prototype) to see dots and ties; TAB shows the same exact durations as fractions. Both views share the same sounding event. Start at 60 BPM with a clean input and mute unused strings. The sustain result measures stable target-pitch coverage, not the exact release instant or hand technique.
+steps:
+  concept:
+    title: Add half, or join durations
+    body: >-
+      A quarter is one beat; its dot adds half a beat. A half note tied to a quarter is three beats with one attack.
+      A tie must connect the same pitch; it is different from a slur indicating legato between different notes.
+  dot:
+    title: Long, then short
+    body: >-
+      Use open string 3: {{positions}}. Count “1 and 2 and”: pluck the long note on 1, let it sound through 2, then
+      pluck the short note on the “and” of 2. The second attack is halfway between clicks 2 and 3.
+  dot-count:
+    title: Keep the empty beats
+    body: >-
+      Play the two attacks, stop at beat 3 and count “3 and 4 and” silently. Preview the whole bar, then practice
+      it four times at 60 BPM. Keep the second attack between the clicks; do not shorten the long note to make room.
+  tie:
+    title: Cross the barline with one attack
+    body: >-
+      Count beats 1 and 2 without playing, pluck on beat 3, and hold through beat 4 and beat 1 of the next bar.
+      Do not pluck at the barline. The two tied symbols are one target: {{positions}}.
+  tie-release:
+    title: Release, then start again
+    body: >-
+      Stop on beat 2 of the second bar. Pluck again on beat 3 and hold for two beats. A fresh note after the rest
+      requires a fresh attack. Selecting a practice range that cuts the tie expands the range to include the whole
+      note.
+  review:
+    title: Compare timing and sustain
+    body: >-
+      Practice the dotted bar first, then the tied pair of bars. Check attack timing separately from sustain. If
+      sustain is low, listen for early muting or a changed pitch; if the signal is uncertain, check the clean input
+      and repeat at the same tempo. After three controlled repetitions, increase by 5 BPM. Do not chase a score
+      by rushing.
+activities:
+  dots:
+    title: Dotted rhythm on {{first}}
+    body: One open-string pitch, adapted to your tuning. {{sequence}}. Keep unused strings quiet.
+  ties:
+    title: Tie across the bar on {{first}}
+    body: One open-string pitch, adapted to your tuning. {{sequence}}. Keep unused strings quiet.
+learningTasks:
+  duration:
+    title: How long is a dotted quarter?
+    body: In 4/4, the quarter-note click is one beat.
+    items:
+      one: One beat
+      one-half: One and a half beats
+      two: Two beats
+    explanation: 'The quarter contributes one beat and the dot adds half of that: 1 + ½ = 1½. Two beats would be
+      a half note.'
+  review:
+    title: Check the difference
+    body: Mark only what you heard and counted.
+    items:
+      count: The short note follows on the “and” of 2.
+      one-attack: I crossed the barline without a second attack.
+      release: I stopped for the rest and restarted with a deliberate attack.

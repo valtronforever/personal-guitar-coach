@@ -1,0 +1,188 @@
+schemaVersion: 3
+id: dotted-tied-notes
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: concept
+    kind: none
+    eventIDs: []
+  - id: dot
+    kind: events
+    exerciseID: dotted-tied-notes-dots
+    eventIDs:
+      - long
+      - short
+    activityID: dots
+  - id: dot-count
+    kind: events
+    exerciseID: dotted-tied-notes-dots
+    eventIDs:
+      - long
+      - short
+      - space
+    activityID: dots
+  - id: tie
+    kind: events
+    exerciseID: dotted-tied-notes-ties
+    eventIDs:
+      - across
+    activityID: ties
+  - id: tie-release
+    kind: events
+    exerciseID: dotted-tied-notes-ties
+    eventIDs:
+      - across
+      - release
+      - again
+    activityID: ties
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: dotted-tied-notes-dots
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning: &id001
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: long
+        startTick: 0
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+        assessSustain: true
+      - id: short
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: space
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: dotted-tied-notes-ties
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning: *id001
+    assessmentMode: monophonic
+    events:
+      - id: count
+        startTick: 0
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: across
+        startTick: 1920
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+        assessSustain: true
+      - id: release
+        startTick: 4800
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: again
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+        assessSustain: true
+adaptation:
+  policy: fretPattern
+materials:
+  - id: dots
+    source:
+      kind: exercise
+      exerciseID: dotted-tied-notes-dots
+    positioning:
+      enabled: false
+  - id: ties
+    source:
+      kind: exercise
+      exerciseID: dotted-tied-notes-ties
+    positioning:
+      enabled: false
+activities:
+  - id: dots
+    materialID: dots
+  - id: ties
+    materialID: ties
+fingerings: []
+practiceEntries:
+  - id: dots
+    activityID: dots
+    exerciseID: dotted-tied-notes-dots
+  - id: ties
+    activityID: ties
+    exerciseID: dotted-tied-notes-ties
+learningTasks:
+  - id: duration
+    stepID: concept
+    kind: quiz
+    itemIDs:
+      - one
+      - one-half
+      - two
+    correctOptionID: one-half
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - count
+      - one-attack
+      - release
+curriculum:
+  moduleID: basic-rhythm
+  ordinal: 22
+  durationMinutes: 15
+  prerequisites:
+    - steady-pulse
+  keywords:
+    - Dotted notes
+    - Ties
+    - Крапки
+    - Ліги

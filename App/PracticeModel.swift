@@ -36,6 +36,7 @@ final class PracticeModel {
     private(set) var latestEvidence: PracticeEvidence?
     private(set) var completedCount = 0
     private(set) var errorKey: String?
+    private(set) var rangeExpandedForSustain = false
     private(set) var backendError: AudioBackendError?
     private(set) var recordedTake: CoachRecordedTake?
     private(set) var recordsForCoach = false
@@ -68,7 +69,7 @@ final class PracticeModel {
         let bar = request?.exercise.timeSignature.ticksPerBar ?? 3840
         firstBar = request?.initialRange.map { Int($0.lowerBound / bar) + 1 } ?? 1
         lastBar = request?.initialRange.map { Int(($0.upperBound - 1) / bar) + 1 } ?? barCount
-        repeatEnabled = false
+        repeatEnabled = false; rangeExpandedForSustain = false
         physicallyTuned = false; latestEvidence = nil; completedCount = 0; errorKey = nil
     }
     func setTempo(_ value: Double) {
@@ -78,7 +79,11 @@ final class PracticeModel {
         guard bpm != value else { return }; stop(.changedTempo); bpm = value
     }
     func setBars(first: Int, last: Int) {
-        let lower = max(1, min(first, barCount)), upper = max(lower, min(last, barCount))
+        guard let exercise = request?.exercise else { return }
+        let requestedLower = max(1, min(first, barCount)), requestedUpper = max(requestedLower, min(last, barCount))
+        let complete = PracticeBarSelection.completeEvents(in: exercise, first: requestedLower, last: requestedUpper)
+        let lower = complete.lowerBound, upper = complete.upperBound
+        rangeExpandedForSustain = lower != requestedLower || upper != requestedUpper
         guard lower != firstBar || upper != lastBar else { return }
         stop(.changedRange); firstBar = lower; lastBar = upper
     }
@@ -106,7 +111,12 @@ final class PracticeModel {
         let bar = request?.exercise.timeSignature.ticksPerBar ?? 3840
         let resumeBar = cursorTick.map { Int($0 / bar) + 1 }
         stop(.paused)
-        if let resumeBar { firstBar = min(lastBar, max(firstBar, resumeBar)) }
+        if let resumeBar, let exercise = request?.exercise {
+            let first = min(lastBar, max(firstBar, resumeBar))
+            let bounds = PracticeBarSelection.completeEvents(in: exercise, first: first, last: lastBar)
+            rangeExpandedForSustain = bounds.lowerBound != first || bounds.upperBound != lastBar
+            firstBar = bounds.lowerBound; lastBar = bounds.upperBound
+        }
     }
     func stop(_ reason: PracticeStopReason = .userCancelled) {
         displayTick = nil
@@ -265,7 +275,8 @@ final class PracticeModel {
             let value = try PracticeEvidence(id: id, configuration: configuration, startedAt: startedAt, finishedAt: max(Date(), startedAt),
                 phase: phase, reason: machine.reason, signalConfirmed: signalConfirmed, renderEpochSeconds: renderEpoch,
                 maximumClockDriftSeconds: clockInvalid ? nil : maximumDrift, attacks: collector?.attacks ?? [],
-                clipping: collector?.clipping ?? [], uncertainSignal: collector?.uncertainSignal ?? [], analysisVersion: collector?.analysisVersion ?? MonophonicAnalyzer.algorithmVersion)
+                clipping: collector?.clipping ?? [], uncertainSignal: collector?.uncertainSignal ?? [],
+                sustainTrace: collector?.sustainTrace(), analysisVersion: collector?.analysisVersion ?? MonophonicAnalyzer.algorithmVersion)
             publishedAttemptID = id
             if !pendingConfigurationReset { latestEvidence = value }
             await onAttemptFinished?(value)

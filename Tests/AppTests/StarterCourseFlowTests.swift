@@ -10,7 +10,7 @@ import Audio
     @Test func EachBundledLessonConnectsTextVisualsPracticeSavedResultAndRetry() async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.issues.isEmpty && library.lessons.count == 29)
+        #expect(library.issues.isEmpty && library.lessons.count == 30)
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), assessment = AssessmentStore(repository: repository)
@@ -45,9 +45,15 @@ import Audio
                     route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "course-events-1"),
                     lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, activity: request.activityReference))
                 // Healthy silence is explicit synthetic evidence, not a device capture or a permission request.
+                let start = try configuration.expectedStart(renderEpochSeconds: 100)
+                let end = try configuration.expectedEnd(renderEpochSeconds: 100)
+                let trace: SustainTrace? = try configuration.selectedEvents.contains(where: \.assessSustain) ? SustainTrace(frames:
+                    (0...Int(ceil((end - start + 0.4) / 0.02))).map { i in
+                        try SustainFrame(id: UInt64(i + 1), normalizedTime: start - 0.1 + Double(i) * 0.02, state: .silence, frequency: nil)
+                    }) : nil
                 let evidence = try PracticeEvidence(id: UUID(), configuration: configuration, startedAt: Date(timeIntervalSince1970: 1),
                     finishedAt: Date(timeIntervalSince1970: 60), phase: .completed, reason: nil, signalConfirmed: true,
-                    renderEpochSeconds: 100, maximumClockDriftSeconds: 0, attacks: [], clipping: [], analysisVersion: "course-events-1")
+                    renderEpochSeconds: 100, maximumClockDriftSeconds: 0, attacks: [], clipping: [], sustainTrace: trace, analysisVersion: "course-events-1")
                 #expect(await assessment.receive(evidence))
                 let result = try #require(assessment.latest)
                 #expect(result.validity == .uncalibrated && result.pitchScore == 0 && result.overallScore == nil)

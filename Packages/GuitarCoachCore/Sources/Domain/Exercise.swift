@@ -10,25 +10,38 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let durationTicks: Int64
     public let kind: MusicalEventKind
     public let positions: [FretPosition]
+    /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
+    public let assessSustain: Bool
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = []) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
         }
         guard (kind == .rest && positions.isEmpty) || (kind == .note && !positions.isEmpty),
               Set(positions.map(\.string)).count == positions.count else { throw MusicError.invalidEvent }
+        guard !assessSustain || (kind == .note && positions.count == 1) else { throw MusicError.invalidEvent }
         self.id = id; self.startTick = startTick; self.durationTicks = durationTicks
-        self.kind = kind; self.positions = positions
+        self.kind = kind; self.positions = positions; self.assessSustain = assessSustain
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions }
+    public func encode(to encoder: Encoder) throws {
+        var values = encoder.container(keyedBy: CodingKeys.self)
+        try values.encode(id, forKey: .id); try values.encode(startTick, forKey: .startTick)
+        try values.encode(durationTicks, forKey: .durationTicks); try values.encode(kind, forKey: .kind)
+        try values.encode(positions, forKey: .positions)
+        // Preserve pre-extension canonical JSON and archived coach digests.
+        if assessSustain { try values.encode(true, forKey: .assessSustain) }
+    }
+
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
             durationTicks: values.decode(Int64.self, forKey: .durationTicks), kind: values.decode(MusicalEventKind.self, forKey: .kind),
-            positions: values.decodeIfPresent([FretPosition].self, forKey: .positions) ?? [])
+            positions: values.decodeIfPresent([FretPosition].self, forKey: .positions) ?? [],
+            assessSustain: values.decodeIfPresent(Bool.self, forKey: .assessSustain) ?? false)
     }
 }
 
@@ -75,6 +88,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
             guard events.contains(where: { $0.kind == .note }) else { throw MusicError.invalidExercise }
             guard events.allSatisfy({ $0.positions.count <= 1 }) else { throw MusicError.unsupportedPolyphony }
         }
+        guard assessmentMode == .monophonic || !events.contains(where: \.assessSustain) else { throw MusicError.invalidExercise }
         self.id = id; self.version = version; self.ppq = ppq; self.events = events
         self.timeSignature = timeSignature; self.defaultBPM = defaultBPM
         self.minimumBPM = minimumBPM; self.maximumBPM = maximumBPM
