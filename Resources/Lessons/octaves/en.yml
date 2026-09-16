@@ -1,0 +1,56 @@
+lessonID: octaves
+lessonVersion: 1
+locale: en
+title: 'Octaves: same name, different height'
+summary: Compare a unison with a twelve-semitone octave.
+goal: Find octave partners on the same and different strings without confusing them with unisons.
+body: 'A unison is the same sounding pitch, even when played at two different string/fret positions. An octave has
+  the same pitch-class name twelve semitones higher or lower; the octave number changes by one. Its frequency doubles
+  upward, so the pair sounds related without being identical.
+
+
+  On a single string, move twelve frets for an octave. Across strings, use the displayed pitch relationship instead
+  of assuming one universal geometric pattern. The interval between strings 3 and 2 differs from the other neighboring
+  pairs in Standard, and Drop changes the lowest pair. This lesson preserves each sounding interval and adapts its
+  low-string positions for your tuning.
+
+
+  Listen to each pair, then play the notes separately with the previous note stopped. The unison comparison comes
+  first; the two octave exercises then use different routes. The score can confirm the heights and attack order,
+  but equal-pitch positions cannot be distinguished from sound alone. You verify the chosen string and fingering
+  yourself.'
+steps:
+  prepare:
+    title: Read letter and octave together
+    body: Select the first pair and compare its full names. Before playing, predict whether the second note should
+      be identical or higher. Keep the two meanings separate throughout this lesson.
+  same-pitch: &id001
+    title: First establish a unison
+    body: Four quarters alternate two positions with the same pitch and octave. Pick each target deliberately at
+      50 BPM. Listen for similar height despite a different string timbre; the score cannot verify which position
+      you chose. {{sequence}}.
+  cross-string-octave: &id002
+    title: Low–high pairs across strings
+    body: Play three root–octave pairs, then two quiet beats. The middle pair moves up two semitones before returning.
+      Stop the low string as the higher one starts; compare the octave number, not just the letter. {{sequence}}.
+  same-string-octave: &id003
+    title: Twelve frets on one string
+    body: Play each pair on its shown string, releasing during the position move. Each pair is exactly twelve frets
+      apart, including the fretted low-string pair. Take time to locate the distant mark before a scored attempt.
+      {{sequence}}.
+  review:
+    title: Explain the two relationships
+    body: Replay the unison, then one octave pair. Explain why one keeps the octave number and the other changes
+      it. If a long position move is inaccurate, practice that pair freely before restoring the pulse.
+activities:
+  same-pitch: *id001
+  cross-string-octave: *id002
+  same-string-octave: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      difference: I distinguished a unison from an octave by full pitch names and sound.
+      positions: I followed the intended string positions even where sound alone cannot prove them.
+      move: I released pressure during twelve-fret moves instead of dragging a squeezed note.

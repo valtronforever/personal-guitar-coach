@@ -1,0 +1,53 @@
+lessonID: fretboard-note-names
+lessonVersion: 1
+locale: en
+title: Note names across the fretboard
+summary: Read the current sounding names and find the next semitone.
+goal: Name and play notes from the selected open strings, including the octave at fret 12.
+body: 'A fret raises a string by one semitone. The repeating pitch-class cycle is A, A♯/B♭, B, C, C♯/D♭, D, D♯/E♭,
+  E, F, F♯/G♭, G, G♯/A♭, then A again. B–C and E–F are already one semitone apart: there is no extra sharp or flat
+  fret between them. Sharp and flat spellings can name the same sounding pitch in this tuning system.
+
+
+  Start from the open-string name shown by your actual tuning, not an assumed E. This physical-pattern lesson retains
+  each string/fret position when the tuning changes and recomputes its sounding name. The octave number is part
+  of the target: A2 and A3 share a letter but have different heights. Fret 12 repeats the open string''s pitch class
+  one octave higher.
+
+
+  Before each short attempt, say the displayed targets while tracing their positions. Play slowly, then look away
+  and predict the next name from the previous one. Reveal the markers to check yourself. Automatic practice checks
+  the audible notes and attacks; it cannot tell whether you remembered the names or read the TAB.'
+steps:
+  prepare:
+    title: Start from this guitar
+    body: Confirm the tuning and say all six displayed open-string names with octave numbers. Locate the two pairs
+      of natural letter names with no intervening sharp/flat in the cycle.
+  low-chromatic: &id001
+    title: Five neighboring notes on string 6
+    body: Play frets 0–4 as five quarters, then count three resting beats. At 50 BPM, name each target before starting;
+      do not add an extra fret at B–C or E–F. {{sequence}}.
+  high-chromatic: &id002
+    title: Use the same rule from a different start
+    body: Repeat frets 0–4 on string 1. Compare the starting octave and names with the low-string example. Predict
+      the five-note sequence, reveal it, then make two scored attempts. {{sequence}}.
+  name-repeat: &id003
+    title: The letter returns at fret 12
+    body: Alternate open and fret 12 on strings 6, 5 and 1; finish with two resting beats. State the new octave
+      number each time. Damp the previous string when changing strings. {{sequence}}.
+  review:
+    title: Recall without the markers
+    body: Choose one of the practiced strings. Look away and name frets 0–4 and 12, then check against the diagram.
+      Separate a naming mistake from a playing mistake and repeat the relevant five notes.
+activities:
+  low-chromatic: *id001
+  high-chromatic: *id002
+  name-repeat: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      names: I predicted the five neighboring names before revealing the diagram.
+      octave: I distinguished the repeated letter name from its higher octave.
+      tuning: I used this tuning’s open names, not memorized Standard labels.

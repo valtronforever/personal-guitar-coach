@@ -1,0 +1,282 @@
+schemaVersion: 3
+id: octaves
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: same-pitch
+  kind: events
+  exerciseID: octaves-same-pitch
+  activityID: same-pitch
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: cross-string-octave
+  kind: events
+  exerciseID: octaves-cross-string-octave
+  activityID: cross-string-octave
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - rest
+- id: same-string-octave
+  kind: events
+  exerciseID: octaves-same-string-octave
+  activityID: same-string-octave
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - rest
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: octaves-same-pitch
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+- id: octaves-cross-string-octave
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 9
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+  - id: rest
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+- id: octaves-same-string-octave
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 17
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 12
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 0
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 12
+  - id: rest
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: same-pitch
+  source:
+    kind: exercise
+    exerciseID: octaves-same-pitch
+  positioning:
+    enabled: false
+- id: cross-string-octave
+  source:
+    kind: exercise
+    exerciseID: octaves-cross-string-octave
+  positioning:
+    enabled: false
+- id: same-string-octave
+  source:
+    kind: exercise
+    exerciseID: octaves-same-string-octave
+  positioning:
+    enabled: false
+activities:
+- id: same-pitch
+  materialID: same-pitch
+- id: cross-string-octave
+  materialID: cross-string-octave
+- id: same-string-octave
+  materialID: same-string-octave
+fingerings: []
+practiceEntries:
+- id: same-pitch
+  activityID: same-pitch
+  exerciseID: octaves-same-pitch
+- id: cross-string-octave
+  activityID: cross-string-octave
+  exerciseID: octaves-cross-string-octave
+- id: same-string-octave
+  activityID: same-string-octave
+  exerciseID: octaves-same-string-octave
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - difference
+  - positions
+  - move
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 42
+  durationMinutes: 20
+  prerequisites:
+  - fretboard-note-names
+  - adjacent-strings
+  keywords:
+  - 'Octaves: same name, different height'
+  - 'Октави: одна назва, різна висота'

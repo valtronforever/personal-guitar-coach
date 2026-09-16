@@ -1,0 +1,365 @@
+schemaVersion: 3
+id: tonic-and-degrees
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: degree-map
+  kind: events
+  exerciseID: tonic-and-degrees-degree-map
+  activityID: degree-map
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - n6
+  - n7
+- id: return-home
+  kind: events
+  exerciseID: tonic-and-degrees-return-home
+  activityID: return-home
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - n6
+  - n7
+  - n8
+  - n9
+  - n10
+  - n11
+- id: two-endings
+  kind: events
+  exerciseID: tonic-and-degrees-two-endings
+  activityID: two-endings
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - n6
+  - n7
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: tonic-and-degrees-degree-map
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 3
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+  - id: n6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 4
+  - id: n7
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+- id: tonic-and-degrees-return-home
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 3
+  - id: n6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n7
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n8
+    startTick: 7680
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n9
+    startTick: 8640
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+  - id: n10
+    startTick: 9600
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 4
+  - id: n11
+    startTick: 10560
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+- id: tonic-and-degrees-two-endings
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n7
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: degree-map
+  source:
+    kind: exercise
+    exerciseID: tonic-and-degrees-degree-map
+  positioning:
+    enabled: false
+- id: return-home
+  source:
+    kind: exercise
+    exerciseID: tonic-and-degrees-return-home
+  positioning:
+    enabled: false
+- id: two-endings
+  source:
+    kind: exercise
+    exerciseID: tonic-and-degrees-two-endings
+  positioning:
+    enabled: false
+activities:
+- id: degree-map
+  materialID: degree-map
+- id: return-home
+  materialID: return-home
+- id: two-endings
+  materialID: two-endings
+fingerings: []
+practiceEntries:
+- id: degree-map
+  activityID: degree-map
+  exerciseID: tonic-and-degrees-degree-map
+- id: return-home
+  activityID: return-home
+  exerciseID: tonic-and-degrees-return-home
+- id: two-endings
+  activityID: two-endings
+  exerciseID: tonic-and-degrees-two-endings
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - home
+  - numbers
+  - ending
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 44
+  durationMinutes: 20
+  prerequisites:
+  - intervals
+  keywords:
+  - Tonic and scale degrees
+  - Тоніка та ступені

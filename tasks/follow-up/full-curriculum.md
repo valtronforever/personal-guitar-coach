@@ -44,3 +44,7 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - PR #69 merged as 0f79d54 after complete CI run 35153895995 passed (both Core/App suites explicitly serial, DSP regression, synthetic soak, signed bundle/XPC and CI builds).
 
 - Rock-rhythm module continuation: topics 34–38 and 40 authored, completing authored modules 1–5 (40 topics). Added validated P.M. notation/reference metadata, display-only guard, decay-preserving seeking and English/Ukrainian accessibility. Total 50 bundles/44 visible. All 231 Core/136 App tests, content/localization/UI-source checks and signed Release/XPC pass; CI and physical acceptance remain open.
+
+- Fretboard-theory module: topics 41–48 authored with distinct physical-pattern/interval policies, unison/octave and degree/triad/transposition examples, and fixed/learner fret-region activities. 58 bundles/52 visible, 48 authored topics. [Review](../../docs/reviews/fretboard-theory-review.md) records independent musical and instrument-matrix checks, all 88 Learning/136 App tests and a signed 58-bundle Release/XPC pass; CI and physical acceptance remain open.
+
+- PR #70 merged as 8873e61 after full CI 35156066168 passed. PR #71 was reopened and retargeted to main after GitHub closed it on deletion of its former base branch; its current head is rebased onto the accepted open-bass implementation and awaits replacement CI.

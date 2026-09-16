@@ -538,7 +538,8 @@ lessons:
       uk: Назви нот на грифі
     outcomeUK: Знаходити задані ноти без прив’язки до одного строю
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 42
     moduleID: fretboard-theory
     lessonID: octaves
@@ -547,7 +548,8 @@ lessons:
       uk: Октави
     outcomeUK: Знаходити ту саму ноту в різних октавах
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 43
     moduleID: fretboard-theory
     lessonID: intervals
@@ -556,7 +558,8 @@ lessons:
       uk: Інтервали на одній і кількох струнах
     outcomeUK: Зіграти секунди, терції, кварти, квінти та октави
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 44
     moduleID: fretboard-theory
     lessonID: tonic-and-degrees
@@ -565,7 +568,8 @@ lessons:
       uk: Тоніка та ступені
     outcomeUK: Розуміти роль ноти щодо тонального центру
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 45
     moduleID: fretboard-theory
     lessonID: building-triads
@@ -574,7 +578,8 @@ lessons:
       uk: Як із нот утворюється тризвук
     outcomeUK: Побудувати мажорний і мінорний акорди
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 46
     moduleID: fretboard-theory
     lessonID: transpose-a-melody
@@ -583,7 +588,8 @@ lessons:
       uk: Перенесення музики в іншу тональність
     outcomeUK: Транспонувати просту мелодію або риф
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 47
     moduleID: fretboard-theory
     lessonID: fingering-key-tuning
@@ -592,7 +598,8 @@ lessons:
       uk: Аплікатура, тональність і стрій
     outcomeUK: Порівняти результат у Standard та Drop
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 48
     moduleID: fretboard-theory
     lessonID: fretboard-map
@@ -601,7 +608,8 @@ lessons:
       uk: Карта грифа
     outcomeUK: Знайти задані ноти кількома способами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 49
     moduleID: lead-foundations
     lessonID: alternate-picking

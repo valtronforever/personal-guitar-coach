@@ -1,0 +1,245 @@
+schemaVersion: 3
+id: building-triads
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: major-stack
+  kind: events
+  exerciseID: building-triads-major-stack
+  activityID: major-stack
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: minor-stack
+  kind: events
+  exerciseID: building-triads-minor-stack
+  activityID: minor-stack
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: chord-contrast
+  kind: events
+  exerciseID: building-triads-chord-contrast
+  activityID: chord-contrast
+  eventIDs:
+  - major
+  - r1
+  - minor
+  - r2
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: building-triads-major-stack
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+- id: building-triads-minor-stack
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 6
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+- id: building-triads-chord-contrast
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: major
+    startTick: 0
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+    - string: 4
+      fret: 2
+    - string: 3
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: r1
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: minor
+    startTick: 3840
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+    - string: 4
+      fret: 1
+    - string: 3
+      fret: 0
+    strum:
+      direction: down
+      spreadTicks: 120
+  - id: r2
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: major-stack
+  source:
+    kind: exercise
+    exerciseID: building-triads-major-stack
+  positioning:
+    enabled: false
+- id: minor-stack
+  source:
+    kind: exercise
+    exerciseID: building-triads-minor-stack
+  positioning:
+    enabled: false
+- id: chord-contrast
+  source:
+    kind: exercise
+    exerciseID: building-triads-chord-contrast
+  positioning:
+    enabled: false
+activities:
+- id: major-stack
+  materialID: major-stack
+- id: minor-stack
+  materialID: minor-stack
+- id: chord-contrast
+  materialID: chord-contrast
+fingerings: []
+practiceEntries:
+- id: major-stack
+  activityID: major-stack
+  exerciseID: building-triads-major-stack
+- id: minor-stack
+  activityID: minor-stack
+  exerciseID: building-triads-minor-stack
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - structure
+  - third
+  - clarity
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 45
+  durationMinutes: 20
+  prerequisites:
+  - power-chord-self-practice
+  - tonic-and-degrees
+  keywords:
+  - Building major and minor triads
+  - Побудова мажорного й мінорного тризвуків

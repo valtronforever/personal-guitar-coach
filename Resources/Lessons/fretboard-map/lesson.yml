@@ -1,0 +1,272 @@
+schemaVersion: 3
+id: fretboard-map
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: original
+  kind: events
+  exerciseID: fretboard-map-original
+  activityID: original
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: near-seven
+  kind: events
+  exerciseID: fretboard-map-near-seven
+  activityID: near-seven
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: near-twelve
+  kind: events
+  exerciseID: fretboard-map-near-twelve
+  activityID: near-twelve
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: explore
+  kind: events
+  exerciseID: fretboard-map-explore
+  activityID: explore
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: fretboard-map-original
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events: &id002
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 0
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 0
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+- id: fretboard-map-near-seven
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events: *id002
+- id: fretboard-map-near-twelve
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events: *id002
+- id: fretboard-map-explore
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events: *id002
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: original
+  source:
+    kind: exercise
+    exerciseID: fretboard-map-original
+  positioning:
+    enabled: true
+    preserve: soundingPitch
+    windowFrets: 6
+    allowedStarts:
+      kind: explicit
+      frets:
+      - 0
+      - 5
+      - 7
+      - 12
+    allowOriginal: true
+- id: near-seven
+  source:
+    kind: exercise
+    exerciseID: fretboard-map-near-seven
+  positioning:
+    enabled: true
+    preserve: soundingPitch
+    windowFrets: 6
+    allowedStarts:
+      kind: explicit
+      frets:
+      - 0
+      - 5
+      - 7
+      - 12
+    allowOriginal: true
+- id: near-twelve
+  source:
+    kind: exercise
+    exerciseID: fretboard-map-near-twelve
+  positioning:
+    enabled: true
+    preserve: soundingPitch
+    windowFrets: 6
+    allowedStarts:
+      kind: explicit
+      frets:
+      - 0
+      - 5
+      - 7
+      - 12
+    allowOriginal: true
+- id: explore
+  source:
+    kind: exercise
+    exerciseID: fretboard-map-explore
+  positioning:
+    enabled: true
+    preserve: soundingPitch
+    windowFrets: 6
+    allowedStarts:
+      kind: explicit
+      frets:
+      - 0
+      - 5
+      - 7
+      - 12
+    allowOriginal: true
+activities:
+- id: original
+  materialID: original
+  positionSelection:
+    mode: fixed
+    value:
+      kind: original
+- id: near-seven
+  materialID: near-seven
+  positionSelection:
+    mode: fixed
+    value:
+      kind: region
+      firstFret: 7
+- id: near-twelve
+  materialID: near-twelve
+  positionSelection:
+    mode: fixed
+    value:
+      kind: region
+      firstFret: 12
+- id: explore
+  materialID: explore
+  positionSelection:
+    mode: learner
+    default:
+      kind: original
+fingerings: []
+practiceEntries:
+- id: original
+  activityID: original
+  exerciseID: fretboard-map-original
+- id: near-seven
+  activityID: near-seven
+  exerciseID: fretboard-map-near-seven
+- id: near-twelve
+  activityID: near-twelve
+  exerciseID: fretboard-map-near-twelve
+- id: explore
+  activityID: explore
+  exerciseID: fretboard-map-explore
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - pitch
+  - routes
+  - meaning
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 48
+  durationMinutes: 20
+  prerequisites:
+  - octaves
+  - transpose-a-melody
+  - fingering-key-tuning
+  keywords:
+  - Your fretboard map
+  - Ваша карта грифа
