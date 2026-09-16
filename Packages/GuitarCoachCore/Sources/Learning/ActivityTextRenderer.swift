@@ -29,7 +29,7 @@ struct ActivityTextRenderer {
         text.components(separatedBy: "{{").dropFirst().compactMap { $0.components(separatedBy: "}}").first }.sorted()
     }
     static func validate(_ text: LessonText) throws {
-        guard [text.title, text.summary, text.goal, text.body].allSatisfy({ !$0.contains("{{") && !$0.contains("}}") }) else { throw ContentFailure(.invalidText, "Schema 2 teaching fields cannot contain instrument tokens") }
+        guard [text.title, text.summary, text.goal, text.body].allSatisfy({ !$0.contains("{{") && !$0.contains("}}") }) else { throw ContentFailure(.invalidText, "Schema 3 teaching fields cannot contain instrument tokens") }
         let strings = text.steps.values.flatMap { [$0.title, $0.body] } + text.activities.values.flatMap { [$0.title, $0.body] }
             + (text.historicalTitle.map { [$0] } ?? [])
         let values = Dictionary(uniqueKeysWithValues: tokens.map { ($0, "value") })
@@ -71,6 +71,6 @@ struct ActivityTextRenderer {
         }
         return try LessonText(lessonID: lessonID, lessonVersion: version, locale: text.locale, title: text.title,
             summary: text.summary, goal: text.goal, body: text.body, steps: copies,
-            historicalTitle: text.historicalTitle.map { try Self.fill($0, values: values) }, activities: [activityID: activity])
+            historicalTitle: text.historicalTitle.map { try Self.fill($0, values: values) }, activities: [activityID: activity], learningTasks: text.learningTasks)
     }
 }

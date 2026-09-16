@@ -1,0 +1,81 @@
+schemaVersion: 3
+id: lesson-template
+version: 1
+difficulty: beginner
+topic: earTraining
+steps:
+  - id: listen
+    kind: none
+    eventIDs: []
+    activityID: example
+exercises:
+  - id: lesson-template-practice
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: first
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: second
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+materials:
+  - id: example
+    source:
+      kind: exercise
+      exerciseID: lesson-template-practice
+activities:
+  - id: example
+    materialID: example
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: direction
+    stepID: listen
+    kind: quiz
+    itemIDs:
+      - higher
+      - lower
+      - same
+    correctOptionID: higher
+    stimulusExerciseID: lesson-template-practice
+adaptation:
+  policy: transposeIntervals

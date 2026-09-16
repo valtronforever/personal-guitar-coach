@@ -1,0 +1,36 @@
+lessonID: lesson-template
+lessonVersion: 1
+locale: en
+title: Before the first note
+summary: Set up a comfortable practice position and learn string numbering.
+goal: Prepare your instrument and identify string 1.
+body: >-
+  A stable guitar and a relaxed position make short practice sessions easier. String numbers stay the same in every
+  six-string tuning: 1 is the thinnest and 6 is the thickest. Fret 0 means an open string.
+steps:
+  prepare:
+    title: Prepare to play
+    body: >-
+      Support the guitar with your lap or strap so you do not have to hold its weight with the fretting hand. Release
+      unnecessary pressure in both hands. Start with a quiet amplifier or headphone level and raise it gradually.
+  check-understanding:
+    title: Check your understanding
+    body: >-
+      Changing from a standard tuning to a drop tuning changes pitches, but does it change the string numbering?
+      Choose the description of string 1.
+activities: {}
+learningTasks:
+  setup:
+    title: Ready to begin
+    body: Check each item when it is true for you.
+    items:
+      supported: The guitar is supported without gripping the neck.
+      relaxed: I can release pressure in both hands.
+      quiet: I started at a comfortable, quiet listening level.
+  string-order:
+    title: Which string is number 1?
+    body: Select one answer.
+    items:
+      thin: The thinnest string
+      thick: The thickest string
+    explanation: String 1 is the thinnest; string 6 is the thickest. These numbers are independent of the tuning.

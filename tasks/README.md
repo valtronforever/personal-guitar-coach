@@ -125,3 +125,5 @@
 - `pending_user` — [Neutral initial focus in timing settings](follow-up/latency-initial-focus.md): start at the title without automatically editing a latency value; live focus verification pending.
 
 - `done` — [Manual latency controls and nonnegative settings](follow-up/latency-editor-layout.md): grouped controls and nonnegative values, including corrections; historical evidence preserved.
+
+- `pending_user` — [Lesson learning modes](follow-up/lesson-learning-modes.md): theory, self-assessment and listening questions alongside scored practice.

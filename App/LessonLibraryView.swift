@@ -51,6 +51,12 @@ struct LessonLibraryView: View {
                                         Text(verbatim: lesson.text(for: language).title).font(.headline)
                                         Text(verbatim: lesson.text(for: language).summary).foregroundStyle(.secondary).lineLimit(3)
                                         HStack {
+                                            if !lesson.manifest.practiceEntries.isEmpty { Text("lesson.mode.scored") }
+                                            ForEach(Array(Set(lesson.manifest.tasks.map { $0.kind.rawValue })).sorted(), id: \.self) { kind in
+                                                Text(LocalizedStringKey("lesson.task.kind." + kind))
+                                            }
+                                        }.font(.caption).foregroundStyle(.secondary)
+                                        HStack {
                                             Text(LocalizedStringKey(difficultyKey(lesson.manifest.difficulty)))
                                             Text(LocalizedStringKey(topicKey(lesson.manifest.topic)))
                                             if let readVersion = reading.progress.lessons[lesson.id]?.readVersion {

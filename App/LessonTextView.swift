@@ -41,7 +41,8 @@ struct LessonTextView: View {
                         .onAppear { if restoresBookmark, let id = selection.stepID { proxy.scrollTo(id, anchor: .top) } }
                     }.frame(minHeight: 140)
                     Divider()
-                    if selection.exercise != nil { PreviewControls(model: preview) }
+                    if selection.exercise != nil { PreviewControls(model: preview, listeningOnly: selection.isListeningQuestion) }
+                    if selection.showsMusicalVisuals {
                     Picker("tab.visualMode", selection: $visualMode) {
                         Text("fretboard.title").tag("fretboard")
                         Text("tab.title").tag("tablature")
@@ -63,6 +64,7 @@ struct LessonTextView: View {
                         }
                     } else {
                         Text("tab.noSequence").foregroundStyle(.secondary).padding()
+                    }
                     }
                 }
         }
@@ -92,7 +94,7 @@ struct LessonTextView: View {
             Label(LocalizedStringKey("lesson.activity.error." + failure.rawValue), systemImage: "exclamationmark.triangle")
                 .accessibilityIdentifier("lesson.activity.unavailable")
         }
-        if let snapshot = selection.snapshot, let variant = snapshot.text(for: language).activities[snapshot.activity.id] {
+        if !selection.isListeningQuestion, let snapshot = selection.snapshot, let variant = snapshot.text(for: language).activities[snapshot.activity.id] {
             LessonVariantView(variant: variant, instrument: InstrumentProfile(tuning: snapshot.exercises.first?.requiredTuning ?? snapshot.instrument.tuning, frets: snapshot.instrument.frets),
                 policy: selection.sourceLesson.manifest.adaptation?.policy)
         }
@@ -141,6 +143,17 @@ struct LessonTextView: View {
                         .accessibilityValue(Text(LocalizedStringKey(selection.stepID == step.id ? "fretboard.selected" : "fretboard.unmarked")))
                     if let copy { Text(verbatim: copy.body).textSelection(.enabled) }
                     else { Text("lesson.activity.stepUnavailable").foregroundStyle(.secondary) }
+                    if selection.stepID == step.id {
+                        ForEach(selection.tasks) { task in
+                            if let copy = text.taskTexts[task.id] {
+                                LessonTaskView(task: task, copy: copy, context: selection.taskContext(task),
+                                    progress: reading.progress.lessons[lesson.id]?.learningTasks[task.id],
+                                    canEdit: reading.canEdit && (step.activityID == nil || selection.snapshot != nil)) { value in
+                                    reading.setTask(value, taskID: task.id, lessonID: lesson.id)
+                                }
+                            }
+                        }
+                    }
                 }.id(step.id)
             }
         }

@@ -72,6 +72,24 @@ private struct PreviewPermission: AudioPermissionProviding {
         #expect(model.requestID == nil && model.resumeTick == nil && model.cursorTick == nil)
         #expect(await runtime.request == nil)
     }
+    @Test func listeningUsesOutputOnlyAndStopsOnNavigationWithoutChangingPreviewPreferences() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let runtime = PreviewRuntime(), coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PreviewPermission())
+        let audio = AudioSessionStore(repository: LocalRepository(root: directory), coordinator: coordinator)
+        await audio.load(); await audio.select(outputUID: "output", outputChannel: 2)
+        let model = PreviewModel(); await model.configure(try exercise(), contextID: UUID(), audio: audio)
+        model.countInBars = 2; model.clickEnabled = true; model.loops = true; model.toneVolume = 0
+        await model.start(tuning: .standard, audio: audio, listeningOnly: true)
+        let request = try #require(await runtime.request)
+        #expect(request.countInBars == 0 && !request.clickEnabled && !request.loops && request.toneVolume > 0)
+        #expect(model.countInBars == 2 && model.clickEnabled && model.loops && model.toneVolume == 0)
+        #expect(model.requestID != nil)
+        await model.configure(nil, contextID: UUID(), audio: audio)
+        #expect(await runtime.request == nil)
+        #expect(model.requestID == nil && model.exercise == nil)
+    }
+
     @Test func changingFingeringStopsPreviewAndNextTransportUsesNewPositionsWithSamePitches() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }

@@ -1,0 +1,30 @@
+lessonID: hear-pitch-direction
+lessonVersion: 1
+locale: en
+title: Hear pitch direction
+summary: Recognize whether a second note moves up, down or stays the same.
+goal: Identify an upward movement by ear.
+body: >-
+  Pitch describes how high or low a note sounds. Loudness is a different property: a louder note is not necessarily
+  higher. Listen to the two-note example before selecting an answer.
+steps:
+  listen:
+    title: Listen to two notes
+    body: >-
+      Use Listen to example below. Replay as often as needed, then compare the pitch of the second note with the
+      first.
+activities:
+  example:
+    title: Listening example
+    body: A two-note example, played through your selected audio output.
+learningTasks:
+  direction:
+    title: Where does the second note move?
+    body: Choose by sound. No guitar input is required.
+    items:
+      higher: Higher
+      lower: Lower
+      same: The same pitch
+    explanation: >-
+      The second note is higher by two semitones (a whole tone). The interval remains the same when this example
+      is transposed to another tuning.

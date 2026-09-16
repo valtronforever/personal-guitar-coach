@@ -33,14 +33,22 @@ final class ReadingProgressStore {
         var next = progress
         next.lastLessonID = lessonID
         next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID,
-                                              readVersion: progress.lessons[lessonID]?.readVersion, activityChoices: activityChoices, activityConfirmations: activityConfirmations)
+                                              readVersion: progress.lessons[lessonID]?.readVersion, activityChoices: activityChoices, activityConfirmations: activityConfirmations, learningTasks: progress.lessons[lessonID]?.learningTasks ?? [:])
         update(next)
     }
 
     func setRead(_ read: Bool, lessonID: String, version: Int, stepID: String?, activityChoices: [String: PositionChoice] = [:], activityConfirmations: [String: PositionSelfConfirmation] = [:]) {
         guard canEdit else { return }
         var next = progress
-        next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID, readVersion: read ? version : nil, activityChoices: activityChoices, activityConfirmations: activityConfirmations)
+        next.lessons[lessonID] = LessonBookmark(lessonVersion: version, stepID: stepID, readVersion: read ? version : nil, activityChoices: activityChoices, activityConfirmations: activityConfirmations, learningTasks: progress.lessons[lessonID]?.learningTasks ?? [:])
+        update(next)
+    }
+
+    func setTask(_ value: LessonTaskProgress, taskID: String, lessonID: String) {
+        guard canEdit, value.isValid, var bookmark = progress.lessons[lessonID],
+              bookmark.lessonVersion == value.context.lessonVersion else { return }
+        bookmark.learningTasks[taskID] = value
+        var next = progress; next.lessons[lessonID] = bookmark
         update(next)
     }
 

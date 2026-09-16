@@ -9,7 +9,7 @@ struct LessonPositionTests {
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
-        return report.lessons.filter { $0.manifest.adaptation != nil && $0.id != "same-notes-new-position" }
+        return report.lessons.filter { $0.manifest.adaptation != nil && $0.id != "same-notes-new-position" && !$0.manifest.practiceEntries.isEmpty }
     }
     @Test func seventhPositionHasIndependentGoldenFingeringAndUnchangedSoundingScale() throws {
         let source = try #require(course().first { $0.id == "c-major" })

@@ -12317,6 +12317,278 @@
           }
         }
       }
+    },
+    "lesson.task.kind.checklist": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checklist"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чекліст"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.kind.selfPractice": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Self-assessed practice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Практика із самооцінкою"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.kind.quiz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Knowledge / listening check"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірка знань / слуху"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.selfCompleted": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed by self-report"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виконано за самооцінкою"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.selfReportHelp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your checkmarks record your own assessment. The app has not verified your playing or technique."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позначки зберігають вашу власну оцінку. Додаток не перевіряв вашу гру чи техніку."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.correct": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correct answer"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Правильна відповідь"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.incorrect": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not quite. Read the explanation and try again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не зовсім так. Прочитайте пояснення та спробуйте ще."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.retry": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try question again"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробувати запитання ще раз"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.listen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen to example"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухати приклад"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.task.listenHelp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use Listen to example below. The musical diagram is hidden so you can answer by ear."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скористайтеся кнопкою «Прослухати приклад» унизу. Музична схема прихована, щоб ви могли відповісти на слух."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "lesson.mode.scored": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio-scored practice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Практика з аудіооцінкою"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "topic.theory": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music theory"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Музична теорія"
+          }
+        }
+      }
+    },
+    "topic.technique": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Technique"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Техніка"
+          }
+        }
+      }
+    },
+    "topic.chords": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chords"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Акорди"
+          }
+        }
+      }
+    },
+    "topic.earTraining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ear training"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розвиток слуху"
+          }
+        }
+      }
+    },
+    "topic.tone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tone and equipment"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звук та обладнання"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
