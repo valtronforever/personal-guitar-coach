@@ -57,7 +57,7 @@ struct TuningSettingsView: View {
                     positions: (1...6).compactMap { try? FretPosition(string: $0, fret: 0) }), selected: $selectedPosition)
                     .padding(.vertical, 8)
             }
-            if tuning.strings.contains(where: { !Exercise.monophonicMIDITarget.contains($0.openPitch.midi) }) {
+            if tuning.strings.contains(where: { !MonophonicCapability.supportsTarget($0.openPitch, referenceA4: tuning.referenceA4) }) {
                 Label("tuning.outOfRange", systemImage: "exclamationmark.triangle")
             }
         }

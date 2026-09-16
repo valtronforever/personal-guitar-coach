@@ -25,7 +25,9 @@ import Learning
         let repository = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:repository.appendingPathComponent("Resources/Lessons"))
         let cMajor = try #require(library.lessons.first { $0.id == "c-major" }?.manifest.exercises.first { $0.id == "c-major-practice" })
-        for example in [exercise,half,whole,cMajor] {
+        let low = try Exercise(id: "low-a1", events: [MusicalEvent(id: "r0", startTick: 0, durationTicks: 3840, kind: .note,
+            positions: [FretPosition(string: 6, fret: 0)])], tuningPolicy: .fixedTuning, requiredTuning: .dropA)
+        for example in [exercise,half,whole,cMajor,low] {
         let timeline = try TimelineModel(exercise:example,instrument:.standard)
         for bar in 0..<timeline.barCount {
         for key in StaffKey.allCases {

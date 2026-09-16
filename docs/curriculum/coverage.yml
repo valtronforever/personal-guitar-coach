@@ -199,7 +199,7 @@ lessons:
     outcomeUK: Зрозуміти зміну інтервалів та аплікатур
     originalAssessment: Н+С
     status: authored
-    evidence: Module 1–2 editorial and software acceptance pending.
+    evidence: Version 2 adds scored practice across eight presets and five neck lengths; see docs/reviews/low-register-practice-review.md. Full curriculum acceptance remains pending.
   - number: 8
     moduleID: getting-started
     lessonID: practice-preparation

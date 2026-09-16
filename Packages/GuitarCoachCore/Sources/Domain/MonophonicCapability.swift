@@ -2,10 +2,16 @@ import Foundation
 
 /// Versioned software capability from the task 12 corpus. Physical-route validation remains separate.
 public enum MonophonicCapability {
-    public static let version = "mono-capability-1"
+    public static let version = "mono-capability-2"
     public static let frequencyRange = 55.0...1500.0
     public static let minimumNoteSeconds = 0.2
     public static let sampleRates: Set<Double> = [44100, 48000]
+
+    public static func supportsTarget(_ pitch: Pitch, referenceA4: Double) -> Bool {
+        guard Exercise.monophonicMIDITarget.contains(pitch.midi),
+              let hz = try? pitch.frequency(referenceA4: referenceA4) else { return false }
+        return frequencyRange.contains(hz)
+    }
 
     public struct Limitation: Equatable, Sendable {
         public enum Reason: Sendable { case frequency, duration }
@@ -23,7 +29,7 @@ public enum MonophonicCapability {
             guard let pitch = resolved.pitches.first else { return nil }
             let hz = try pitch.frequency(referenceA4: tuning.referenceA4)
             let duration = try MusicalTime.seconds(forTicks: resolved.event.durationTicks, bpm: bpm)
-            if !Exercise.monophonicMIDITarget.contains(pitch.midi) || !frequencyRange.contains(hz) {
+            if !supportsTarget(pitch, referenceA4: tuning.referenceA4) {
                 return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
             }
             if duration + 1e-9 < minimumNoteSeconds {

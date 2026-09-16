@@ -5,7 +5,7 @@ import Domain
 @testable import PersonalGuitarCoach
 
 @MainActor struct TunerModelTests {
-    @Test(arguments: [44100.0, 48000.0]) func dropALowStringAcceptsDetuningWithoutChangingTheGradingLimit(sampleRate: Double) throws {
+    @Test(arguments: [44100.0, 48000.0]) func dropALowStringRetainsDetuningFeedbackWithExpandedGradingRange(sampleRate: Double) throws {
         for cents in [-75.0, -25, 0, 25, 75] {
             let frequency = 55 * pow(2, cents / 1200)
             let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
@@ -19,8 +19,8 @@ import Domain
             #expect(model.reading.feedback == (cents < 0 ? .flat : cents > 0 ? .sharp : .inTune))
             #expect(abs(try #require(model.reading.cents) - cents) < 1)
             #expect(model.reading.targetFrequency == 55)
-            #expect(!Exercise.monophonicMIDITarget.contains(33))
-            #expect(analyzer.snapshot().algorithmVersion == "mono-mpm-flux-3")
+            #expect(Exercise.monophonicMIDITarget.contains(33))
+            #expect(analyzer.snapshot().algorithmVersion == MonophonicAnalyzer.algorithmVersion)
         }
         let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
         let low = (0..<Int(sampleRate)).map { Float(0.2 * sin(2 * .pi * 50 * Double($0) / sampleRate)) }

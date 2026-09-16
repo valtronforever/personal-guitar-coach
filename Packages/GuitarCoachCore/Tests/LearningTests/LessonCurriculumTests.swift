@@ -121,4 +121,27 @@ struct LessonCurriculumTests {
         #expect(resolved.steps.allSatisfy { step in step.tool == toolLesson.manifest.steps.first { $0.id == step.id }?.tool })
         #expect(toolLesson.manifest.steps.contains { $0.tool != nil })
     }
+    @Test func standardAndDropPracticeHasCorrectIndependentLowStringTargets() throws {
+        let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
+        let source = try #require(report.lessons.first { $0.id == "standard-and-drop" })
+        let targets: [(TuningProfile, [Int])] = [
+            (.standard, [40,45,42,45]), (.dropD, [38,45,40,45]),
+            (.dStandard, [38,43,40,43]), (.dropC, [36,43,38,43]),
+            (.cStandard, [36,41,38,41]), (.dropBFlat, [34,41,36,41]),
+            (.bStandard, [35,40,37,40]), (.dropA, [33,40,35,40])
+        ]
+        #expect(source.manifest.practiceEntries.count == 1)
+        let entry = try #require(source.manifest.practiceEntries.first)
+        for (tuning, expected) in targets {
+            for frets in GuitarFretCount.allCases {
+                let adapted = try source.resolveActivity(id: entry.activityID, instrument: InstrumentProfile(tuning: tuning, frets: frets))
+                let exercise = try #require(adapted.exercises.first { $0.id == entry.exerciseID })
+                #expect(exercise.assessmentMode == .monophonic)
+                #expect(try exercise.resolvedEvents(instrument: tuning).flatMap(\.pitches).map(\.midi) == expected)
+                for bpm in [exercise.minimumBPM, exercise.defaultBPM, exercise.maximumBPM] {
+                    try exercise.validateForPractice(instrument: tuning, bpm: bpm)
+                }
+            }
+        }
+    }
 }

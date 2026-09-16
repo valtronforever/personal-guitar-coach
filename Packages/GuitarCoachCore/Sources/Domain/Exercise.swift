@@ -39,8 +39,8 @@ public struct ResolvedEvent: Hashable, Sendable, Identifiable {
 }
 
 public struct Exercise: Hashable, Codable, Identifiable, Sendable {
-    /// Initial musical target C2–E6. Actual audio capability also requires task 12's measured limits.
-    public static let monophonicMIDITarget = 36...88
+    /// Musical target A1–E6. Frequency, tempo and signal gates still apply.
+    public static let monophonicMIDITarget = 33...88
     public let id: String
     public let version: Int
     public let ppq: Int64

@@ -130,7 +130,7 @@ MVP: Codable JSON repositories із versioned envelopes й атомарною з
 
 Пресети є незмінними. Редагування починається зі створення custom copy з новим stable ID; повторне редагування custom зберігає ID та підвищує revision лише при зміні даних. Preferences перевіряє відповідність selected snapshot елементу registry. Stale expectedRevision відхиляється, а новий snapshot публікується лише після успішного запису.
 
-`LocalDataStore.instrumentWillChange` — synchronous MainActor boundary до публікації нового InstrumentProfile; composition root задачі 16 підключає сюди переривання практики. `TuningRequirementView` показує fixed-tuning mismatch для lesson/practice preflight. `validatePracticeSnapshot` перевіряє структурну сумісність збереженої спроби; `validateForPractice` додатково перевіряє початковий C2–E6 target. Поточні обмеження DSP не повинні змінювати читабельність історії.
+`LocalDataStore.instrumentWillChange` — synchronous MainActor boundary до публікації нового InstrumentProfile; composition root задачі 16 підключає сюди переривання практики. `TuningRequirementView` показує fixed-tuning mismatch для lesson/practice preflight. `validatePracticeSnapshot` перевіряє структурну сумісність збереженої спроби; `validateForPractice` додатково перевіряє поточний A1–E6 target. Поточні обмеження DSP не повинні змінювати читабельність історії.
 
 UI використовує note names з octave, підтримує ASCII/Unicode accidentals. A4 — частина revision профілю; поле приймає крапку або кому як decimal separator. Зміна профілю не виконує pitch shifting. Computed localization keys спочатку формуються як String, щоб LocalizedStringKey не перетворював ID на форматний аргумент.
 
@@ -185,7 +185,7 @@ Capture приймає 44.1/48 kHz і до 8192 frames per slice. C packets не
 
 Для live display потрібні три стабільні кадри; event pitch у `mono-mpm-flux-2` додатково підтверджується п’ятьма стабільними post-onset estimates і їх медіаною. За 300 ms без підтвердження attack стає uncertain. Host seconds поки є first-packet anchor + stream frames/rate, без latency subtraction; фізичний clock mapping і drift належать задачі 15. Параметри, bounds і джерела — в ADR 002; measured evidence — у docs/benchmarks/12-audio-analysis.md.
 
-`MonophonicCapability` у Domain додає до validateForPractice частотні й duration limits: C2–E6, 55–1500 Hz з фактичним A4, minimum 200 ms. Audio capture допускає 44.1/48 kHz. Це software capability окремо від route/calibration validity; display, preview та історія не блокуються. Tuner/practice UI отримують evidence через вже спільний coordinator.
+`MonophonicCapability` у Domain додає до validateForPractice частотні й duration limits: A1–E6, 55–1500 Hz з фактичним A4, minimum 200 ms. Audio capture допускає 44.1/48 kHz. Це software capability окремо від route/calibration validity; display, preview та історія не блокуються. Tuner/practice UI отримують evidence через вже спільний coordinator.
 
 ## Transport після задачі 14
 
