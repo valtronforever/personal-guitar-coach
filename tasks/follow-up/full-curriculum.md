@@ -31,4 +31,4 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 
 - Basic-rhythm continuation: six new bilingual lessons plus expanded pulse guidance complete authored topics 17–24. Added explicit accent notation/reference dynamics, conservative sixteenth tempos and original eight-bar study. See [same-agent review](../../docs/reviews/basic-rhythm-review.md). Inventory: 24 authored, 6 needing review, 98 todo; remaining modules and full acceptance stay open.
 
-- Module 4 in progress: explicit material harmonic roots avoid naming a chord from its first voice; topics 25–26 now have draft-reviewed minor/major forms, chord previews and separated-note practice. [Review/evidence](../../docs/reviews/first-chord-forms-review.md); final verification/release/merge still pending.
+- Module 4 in progress: explicit material harmonic roots avoid naming a chord from its first voice; topics 25–26 now have reviewed minor/major forms, chord previews and separated-note practice. [Review/evidence](../../docs/reviews/first-chord-forms-review.md); 77 Learning /136 App tests and signed local Release checks pass; PR/CI/merge pending.

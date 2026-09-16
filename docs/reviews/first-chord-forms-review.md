@@ -12,5 +12,5 @@
 ## Verification
 
 - 38 bilingual bundles load; three new focused tests pass (root round-trip/validation, inversion/position independence, full chord matrix).
-- All 77 Learning tests and 136 App tests pass. All 802 en/uk UI keys validate; generated project is current; partial 128-topic inventory passes with 26 authored, 6 needing review and 96 todo. Same-agent code and bilingual instructional review completed. Root-path Release/bundle checks and PR/CI/merge remain pending.
+- All 77 Learning tests and 136 App tests pass. All 802 en/uk UI keys validate; generated project is current; partial 128-topic inventory passes with 26 authored, 6 needing review and 96 todo. Same-agent code and bilingual instructional review completed. Local Release/archive built in the original workspace path; signed bundle validation passes (38 bundles/115 YAML files), report `docs/benchmarks/first-chord-forms-release-bundle.json`. XPC invalid-request probe passes without invoking a provider. PR/CI/merge remain pending.
 - Native English/Ukrainian reader/VoiceOver and real guitar chord comfort/clarity remain pending_user. No polyphonic recognition, measured finger identification or full course completion claimed.
