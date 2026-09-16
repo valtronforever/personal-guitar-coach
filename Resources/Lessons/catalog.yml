@@ -50,6 +50,14 @@ lessons:
   - two-hand-muting
   - pedal-tone-riffs
   - first-overdriven-riff
+  - fretboard-note-names
+  - octaves
+  - intervals
+  - tonic-and-degrees
+  - building-triads
+  - transpose-a-melody
+  - fingering-key-tuning
+  - fretboard-map
 modules:
   - id: getting-started
     order: 1

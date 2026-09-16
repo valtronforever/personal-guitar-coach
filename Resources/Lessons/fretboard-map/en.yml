@@ -1,0 +1,59 @@
+lessonID: fretboard-map
+lessonVersion: 1
+locale: en
+title: Your fretboard map
+summary: Find the same sounding targets in several regions of the neck.
+goal: Play a two-note phrase through different fingerings while retaining its exact pitches and key.
+body: 'A useful fretboard map connects equivalent sounding notes, not just repeated letter names. A note with the
+  same letter but another octave is a different target. Here a short phrase alternates two exact pitches. You will
+  find it near the open position, near fret 7 and near fret 12, then choose another permitted region.
+
+
+  Region selection asks for a fingering within the stated window; it does not mean the first note must land exactly
+  on the first fret of that window. The app chooses feasible string/fret positions while preserving sounding pitch.
+  The route can change with tuning, particularly on the low string in Drop. If a custom tuning or neck makes a choice
+  unavailable, use an offered feasible region rather than silently changing the note or octave.
+
+
+  Listen to the same phrase before each move, then compare the full pitch names. A different string can change timbre
+  while keeping the note. Scored practice checks those pitches and attacks; because equivalent notes sound alike,
+  the selected region is a practice instruction you verify yourself. The score does not prove where your hand was.'
+steps:
+  prepare:
+    title: Keep the octave in the target
+    body: Read both full note names in the initial activity and listen once. Keep those exact targets in mind while
+      exploring; do not substitute a lower or higher octave just because it shares the letter.
+  original: &id001
+    title: Start with the original route
+    body: Play the four alternating quarters at 50 BPM. Say the names before starting, then confirm each displayed
+      string and fret. {{sequence}}.
+  near-seven: &id002
+    title: Find them near fret 7
+    body: 'Use the fixed region beginning at fret 7. Compare the sounding names with Original: they must match.
+      Locate both positions silently before the four-note attempt. {{positions}}.'
+  near-twelve: &id003
+    title: Move farther without raising the key
+    body: The window now begins at fret 12. Follow the actual string choices; a lower string can produce the same
+      pitch at a higher fret. Compare one attempt here with one near fret 7. {{positions}}.
+  explore: &id004
+    title: Choose and verify another region
+    body: Choose Original or an available window beginning at 0, 5, 7 or 12. Predict a possible position before
+      revealing the computed route, then play two attempts. An unavailable option never authorizes changing the target
+      octave.
+  review:
+    title: Connect the routes in memory
+    body: Name two positions for the first exact pitch, including string and fret. Check one freely, then return
+      to a timed phrase. Keep your position observation separate from the automatic pitch result.
+activities:
+  original: *id001
+  near-seven: *id002
+  near-twelve: *id003
+  explore: *id004
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      pitch: All regions retained the same full pitch names and octave numbers.
+      routes: I checked two different string/fret routes on the actual guitar.
+      meaning: I understood that the region start is a window boundary, not a required first-note fret.

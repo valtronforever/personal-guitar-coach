@@ -1,0 +1,288 @@
+schemaVersion: 3
+id: fretboard-note-names
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: low-chromatic
+  kind: events
+  exerciseID: fretboard-note-names-low-chromatic
+  activityID: low-chromatic
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - rest
+- id: high-chromatic
+  kind: events
+  exerciseID: fretboard-note-names-high-chromatic
+  activityID: high-chromatic
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - rest
+- id: name-repeat
+  kind: events
+  exerciseID: fretboard-note-names-name-repeat
+  activityID: name-repeat
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - rest
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: fretboard-note-names-low-chromatic
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 1
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 2
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 4
+  - id: rest
+    startTick: 4800
+    durationTicks: 2880
+    kind: rest
+    positions: []
+- id: fretboard-note-names-high-chromatic
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 0
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 1
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 2
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 3
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 4
+  - id: rest
+    startTick: 4800
+    durationTicks: 2880
+    kind: rest
+    positions: []
+- id: fretboard-note-names-name-repeat
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 12
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 0
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 12
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 0
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 1
+      fret: 12
+  - id: rest
+    startTick: 5760
+    durationTicks: 1920
+    kind: rest
+    positions: []
+adaptation:
+  policy: fretPattern
+materials:
+- id: low-chromatic
+  source:
+    kind: exercise
+    exerciseID: fretboard-note-names-low-chromatic
+  positioning:
+    enabled: false
+- id: high-chromatic
+  source:
+    kind: exercise
+    exerciseID: fretboard-note-names-high-chromatic
+  positioning:
+    enabled: false
+- id: name-repeat
+  source:
+    kind: exercise
+    exerciseID: fretboard-note-names-name-repeat
+  positioning:
+    enabled: false
+activities:
+- id: low-chromatic
+  materialID: low-chromatic
+- id: high-chromatic
+  materialID: high-chromatic
+- id: name-repeat
+  materialID: name-repeat
+fingerings: []
+practiceEntries:
+- id: low-chromatic
+  activityID: low-chromatic
+  exerciseID: fretboard-note-names-low-chromatic
+- id: high-chromatic
+  activityID: high-chromatic
+  exerciseID: fretboard-note-names-high-chromatic
+- id: name-repeat
+  activityID: name-repeat
+  exerciseID: fretboard-note-names-name-repeat
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - names
+  - octave
+  - tuning
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 41
+  durationMinutes: 20
+  prerequisites:
+  - reading-tab
+  - first-frets
+  - tune-six-strings
+  keywords:
+  - Note names across the fretboard
+  - Назви нот на грифі

@@ -1,0 +1,239 @@
+schemaVersion: 3
+id: fingering-key-tuning
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: low-fifth
+  kind: events
+  exerciseID: fingering-key-tuning-low-fifth
+  activityID: low-fifth
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: middle-fourth
+  kind: events
+  exerciseID: fingering-key-tuning-middle-fourth
+  activityID: middle-fourth
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: upper-fourth
+  kind: events
+  exerciseID: fingering-key-tuning-upper-fourth
+  activityID: upper-fourth
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: fingering-key-tuning-low-fifth
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+- id: fingering-key-tuning-middle-fourth
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 3
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 3
+- id: fingering-key-tuning-upper-fourth
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 3
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 2
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 2
+      fret: 3
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: low-fifth
+  source:
+    kind: exercise
+    exerciseID: fingering-key-tuning-low-fifth
+  positioning:
+    enabled: false
+- id: middle-fourth
+  source:
+    kind: exercise
+    exerciseID: fingering-key-tuning-middle-fourth
+  positioning:
+    enabled: false
+- id: upper-fourth
+  source:
+    kind: exercise
+    exerciseID: fingering-key-tuning-upper-fourth
+  positioning:
+    enabled: false
+activities:
+- id: low-fifth
+  materialID: low-fifth
+- id: middle-fourth
+  materialID: middle-fourth
+- id: upper-fourth
+  materialID: upper-fourth
+fingerings: []
+practiceEntries:
+- id: low-fifth
+  activityID: low-fifth
+  exerciseID: fingering-key-tuning-low-fifth
+- id: middle-fourth
+  activityID: middle-fourth
+  exerciseID: fingering-key-tuning-middle-fourth
+- id: upper-fourth
+  activityID: upper-fourth
+  exerciseID: fingering-key-tuning-upper-fourth
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - uniform
+  - geometry
+  - upper
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 47
+  durationMinutes: 20
+  prerequisites:
+  - standard-and-drop
+  - intervals
+  - transpose-a-melody
+  keywords:
+  - Fingering, key and tuning
+  - Аплікатура, тональність і стрій

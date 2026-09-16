@@ -1,0 +1,53 @@
+lessonID: tonic-and-degrees
+lessonVersion: 1
+locale: en
+title: Tonic and scale degrees
+summary: Hear a note’s role relative to a tonal center.
+goal: Relate scale degrees to a tonic and compare an open ending with a return home.
+body: 'A tonic is the reference that a phrase establishes as home. In a major scale its degrees are numbered 1–7,
+  then 8 repeats the tonic an octave higher. These numbers describe roles relative to that tonic; the same sounding
+  note can play another role in a different key. This lesson’s note names transpose with the instrument while the
+  degree patterns stay the same.
+
+
+  First climb the major scale and say 1 2 3 4 5 6 7 8. Its semitone distances from the tonic are 0, 2, 4, 5, 7,
+  9, 11 and 12. Then use short phrases that depart and return. The repeated tonic and the phrase ending help establish
+  the center; one isolated pitch does not prove a key by itself.
+
+
+  The last comparison ends first on degree 2, then on degree 1 in the same register. Hear how the second can feel
+  more settled in the established context. This is a listening relationship, not an automatic emotional judgment.
+  Scored practice checks the written notes and attacks; describe the sense of arrival yourself.'
+steps:
+  prepare:
+    title: Establish the first target as home
+    body: Listen to the first note, sing or hum it quietly if comfortable, then find it on the instrument. Keep
+      it in mind while hearing the other degrees.
+  degree-map: &id001
+    title: Eight notes, eight degree labels
+    body: Play two bars of quarters at 50 BPM and say the degree numbers before the attempt. The last note is 8,
+      the higher tonic, not a new pitch class. {{sequence}}.
+  return-home: &id002
+    title: Three small departures
+    body: The bars are 1–3–5–1, 1–4–2–1 and 1–6–7–8. Notice that the final return uses the upper tonic. Keep the
+      pulse while hearing which notes lean toward the return.
+  two-endings: &id003
+    title: Change only the ending
+    body: Compare 1–2–3–2 with 1–2–3–1. Play both at the same tempo and force. Repeat twice and describe which ending
+      feels more settled in this context; there is no separate automatic score for that impression.
+  review:
+    title: Separate a degree from its current name
+    body: Name today’s tonic from the markers, then explain why degree 5 remains degree 5 after the lesson transposes.
+      Repeat one phrase without reading its degree list.
+activities:
+  degree-map: *id001
+  return-home: *id002
+  two-endings: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      home: I kept the established tonic in mind while playing other degrees.
+      numbers: I could describe one phrase by degrees as well as current note names.
+      ending: I compared the two endings in the same tempo and tonal context.

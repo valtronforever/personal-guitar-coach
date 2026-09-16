@@ -1,0 +1,54 @@
+lessonID: building-triads
+lessonVersion: 1
+locale: en
+title: Building major and minor triads
+summary: Add a third to the root and fifth, then hear the complete chord.
+goal: Construct and compare 1–3–5 and 1–♭3–5 from a common root.
+body: 'A power chord leaves out the third. Adding that tone gives the basic three-note major or minor triad. From
+  the root, a major triad uses semitone distances 0–4–7; a minor triad uses 0–3–7. The root and fifth stay put while
+  the third moves down one semitone. The ♭3 label here means a lowered major-scale third relative to the root; the
+  displayed note need not have a flat in its letter spelling.
+
+
+  Build the tones separately first. Hear the root–third distance, then the fifth, and return to the root. These
+  monophonic versions can be scored when each note has its own attack and the previous string is stopped. Next listen
+  to the three tones together in a playable voicing. The voicing may place the third on another string than the
+  single-note drill while keeping the intended pitches.
+
+
+  The simultaneous references are for listening and self-practice, not polyphonic recognition. Compare the two chord
+  qualities at similar volume without treating major as always happy or minor as always sad. Their musical effect
+  depends on the surrounding phrase and harmony; this lesson isolates the third as the concrete difference.'
+steps:
+  prepare:
+    title: Keep root and fifth fixed
+    body: Recall the fifth from the power-chord lesson. Find the reference root, then predict whether the major
+      third or minor third will be higher.
+  major-stack: &id001
+    title: 'Major: 0–4–7 semitones'
+    body: Play root, major third, fifth and root as four quarters at 50 BPM. Say 1–3–5–1 before playing. Stop each
+      previous note for the scored version. {{sequence}}.
+  minor-stack: &id002
+    title: 'Minor: lower only the third'
+    body: Keep the root and fifth targets from the previous example and lower the third by one semitone. Compare
+      both bars three times before two scored attempts. {{sequence}}.
+  chord-contrast: &id003
+    title: Hear three tones together
+    body: Sound the major voicing for three beats, stop for beat 4, then repeat with the minor voicing. Check each
+      intended string individually before brushing the complete chord. This combined example is ungraded.
+  review:
+    title: Point to the changing voice
+    body: Identify which displayed voice moves by a semitone in the chord comparison. Replay the separated thirds
+      if the difference is unclear, then return to the complete voicings.
+activities:
+  major-stack: *id001
+  minor-stack: *id002
+  chord-contrast: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      structure: I could explain both semitone formulas from the root.
+      third: I identified the third as the only changed chord tone.
+      clarity: I checked the complete voicings by listening, separately from note scores.

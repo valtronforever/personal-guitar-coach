@@ -1,0 +1,55 @@
+lessonID: transpose-a-melody
+lessonVersion: 1
+locale: en
+title: Transposing a melody
+summary: Move every pitch by the same interval while retaining the rhythm.
+goal: Play a short melody in two keys and distinguish transposition from a new fingering of the same notes.
+body: 'Transposition changes every pitch by the same musical interval. The rhythm and the distances between successive
+  notes stay the same, so the melody remains recognizable in a new key. In this lesson the second version is a whole
+  tone, or two semitones, above the first. Its letter names depend on the instrument tuning, but that difference
+  between versions is always two semitones.
+
+
+  All source notes here are fretted. Moving their positions two frets higher on the same strings raises them by
+  two semitones without changing the shape. An open-string phrase would need a new fingering rather than an imaginary
+  fret below zero when moved downward. More general transpositions can also run into the available neck range; a
+  workable destination is part of arranging the music.
+
+
+  Do not confuse this with choosing another fret region for the same sounding notes. That changes positions while
+  retaining key and octave. Here you should hear and read new pitches. Practice the two versions at the same tempo
+  and picking force, then compare their shared contour rather than assuming a different physical position always
+  means a different key.'
+steps:
+  prepare:
+    title: Predict the change
+    body: Inspect the first target in each version. Predict the second version’s first note two semitones above
+      the first, then confirm its full name. Keep the instrument settings unchanged for this comparison.
+  original-key: &id001
+    title: Learn the original contour
+    body: 'Play seven quarters and one resting beat at 50 BPM: rise through the first three notes, reach the fifth,
+      then return by the same route. Make two steady attempts. {{sequence}}.'
+  whole-tone-up: &id002
+    title: Move every target up two semitones
+    body: Use the second version’s markers at the same tempo. The rhythm and string order stay the same. Listen
+      for the whole phrase sounding higher, not just its first note. {{sequence}}.
+  phrase-pairs: &id003
+    title: Compare one bar in each key
+    body: Play the first four notes in the original key, then the matching four in the higher key. Keep all eight
+      attacks evenly spaced and prepare the two-fret move before the second bar.
+  review:
+    title: Explain what changed and what stayed
+    body: Name one changed pitch and one preserved interval between neighboring notes. Explain why relocating the
+      same pitches to another string would be a different operation.
+activities:
+  original-key: *id001
+  whole-tone-up: *id002
+  phrase-pairs: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      all: Every target moved by two semitones, including the return notes.
+      rhythm: Both versions kept the same rhythm and contour.
+      distinction: I distinguished a new key from a new position for the same pitches.

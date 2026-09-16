@@ -1,0 +1,69 @@
+lessonID: intervals
+lessonVersion: 1
+locale: en
+title: Intervals on one and several strings
+summary: Hear musical distances from a shared reference.
+goal: Play seconds, thirds, fourths, fifths and octaves while preserving their sounding distances.
+body: 'An interval describes the distance between two pitches. Here the reference stays the same while the upper
+  note changes. The examples use a major second (2 semitones), minor third (3), major third (4), perfect fourth
+  (5), perfect fifth (7) and octave (12). The word third alone is incomplete when choosing an exact target: major
+  and minor differ by a semitone.
+
+
+  On one string, semitone distance equals the difference in fret numbers. Across strings, the open-string interval
+  also matters. A small geometric movement can therefore make a larger pitch change. Read the resolved notes instead
+  of counting fret offsets across different strings as though they were on one string.
+
+
+  Listen to each pair before the four-note scored exercise. Stop the previous string as the next starts. The selected
+  tuning transposes the common reference while keeping every interval intact; the exercise checks audible pitches
+  and attacks, not your ability to name an interval from memory. For that, look away after listening and explain
+  the distance before checking the labels.'
+steps:
+  second: &id001
+    title: Major second
+    body: At 50 BPM alternate the reference and the note 2 semitones above it. Say the interval before playing,
+      then listen for the distance without looking. Four quarters make one bar. {{sequence}}.
+  minor-third: &id002
+    title: Minor third
+    body: At 50 BPM alternate the reference and the note 3 semitones above it. Say the interval before playing,
+      then listen for the distance without looking. Four quarters make one bar. {{sequence}}.
+  major-third: &id003
+    title: Major third
+    body: At 50 BPM alternate the reference and the note 4 semitones above it. Say the interval before playing,
+      then listen for the distance without looking. Four quarters make one bar. {{sequence}}.
+  fourth: &id004
+    title: Perfect fourth
+    body: At 50 BPM alternate the reference and the note 5 semitones above it. Say the interval before playing,
+      then listen for the distance without looking. Four quarters make one bar. {{sequence}}.
+  fifth: &id005
+    title: Perfect fifth
+    body: At 50 BPM alternate the reference and the note 7 semitones above it. Say the interval before playing,
+      then listen for the distance without looking. Four quarters make one bar. {{sequence}}.
+  octave: &id006
+    title: Octave
+    body: At 50 BPM alternate the reference and the note 12 semitones above it. Say the interval before playing,
+      then listen for the distance without looking. Four quarters make one bar. {{sequence}}.
+  prepare:
+    title: Compare distances, not finger counts
+    body: Locate the recurring first target. Count fret differences for the same-string examples; for cross-string
+      pairs use sounding names and the stated semitone distance.
+  review:
+    title: Contrast the two thirds
+    body: Replay the minor and major thirds back to back, then the fourth and fifth. Explain which pair differs
+      by one semitone and which by two. Choose one uncertain interval for three slow attempts.
+activities:
+  second: *id001
+  minor-third: *id002
+  major-third: *id003
+  fourth: *id004
+  fifth: *id005
+  octave: *id006
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      thirds: I distinguished the three-semitone third from the four-semitone third.
+      strings: I included the tuning interval when comparing different strings.
+      hearing: I compared the pairs by ear before looking back at their names.

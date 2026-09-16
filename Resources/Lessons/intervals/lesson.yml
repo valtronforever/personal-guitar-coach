@@ -1,0 +1,414 @@
+schemaVersion: 3
+id: intervals
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: second
+  kind: events
+  exerciseID: intervals-second
+  activityID: second
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: minor-third
+  kind: events
+  exerciseID: intervals-minor-third
+  activityID: minor-third
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: major-third
+  kind: events
+  exerciseID: intervals-major-third
+  activityID: major-third
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: fourth
+  kind: events
+  exerciseID: intervals-fourth
+  activityID: fourth
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: fifth
+  kind: events
+  exerciseID: intervals-fifth
+  activityID: fifth
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: octave
+  kind: events
+  exerciseID: intervals-octave
+  activityID: octave
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: intervals-second
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+- id: intervals-minor-third
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 6
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 6
+- id: intervals-major-third
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+- id: intervals-fourth
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 3
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 3
+- id: intervals-fifth
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+- id: intervals-octave
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 10
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 10
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: second
+  source:
+    kind: exercise
+    exerciseID: intervals-second
+  positioning:
+    enabled: false
+- id: minor-third
+  source:
+    kind: exercise
+    exerciseID: intervals-minor-third
+  positioning:
+    enabled: false
+- id: major-third
+  source:
+    kind: exercise
+    exerciseID: intervals-major-third
+  positioning:
+    enabled: false
+- id: fourth
+  source:
+    kind: exercise
+    exerciseID: intervals-fourth
+  positioning:
+    enabled: false
+- id: fifth
+  source:
+    kind: exercise
+    exerciseID: intervals-fifth
+  positioning:
+    enabled: false
+- id: octave
+  source:
+    kind: exercise
+    exerciseID: intervals-octave
+  positioning:
+    enabled: false
+activities:
+- id: second
+  materialID: second
+- id: minor-third
+  materialID: minor-third
+- id: major-third
+  materialID: major-third
+- id: fourth
+  materialID: fourth
+- id: fifth
+  materialID: fifth
+- id: octave
+  materialID: octave
+fingerings: []
+practiceEntries:
+- id: second
+  activityID: second
+  exerciseID: intervals-second
+- id: minor-third
+  activityID: minor-third
+  exerciseID: intervals-minor-third
+- id: major-third
+  activityID: major-third
+  exerciseID: intervals-major-third
+- id: fourth
+  activityID: fourth
+  exerciseID: intervals-fourth
+- id: fifth
+  activityID: fifth
+  exerciseID: intervals-fifth
+- id: octave
+  activityID: octave
+  exerciseID: intervals-octave
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - thirds
+  - strings
+  - hearing
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 43
+  durationMinutes: 25
+  prerequisites:
+  - octaves
+  keywords:
+  - Intervals on one and several strings
+  - Інтервали на одній і кількох струнах

@@ -1,0 +1,330 @@
+schemaVersion: 3
+id: transpose-a-melody
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: original-key
+  kind: events
+  exerciseID: transpose-a-melody-original-key
+  activityID: original-key
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - n6
+  - rest
+- id: whole-tone-up
+  kind: events
+  exerciseID: transpose-a-melody-whole-tone-up
+  activityID: whole-tone-up
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - n6
+  - rest
+- id: phrase-pairs
+  kind: events
+  exerciseID: transpose-a-melody-phrase-pairs
+  activityID: phrase-pairs
+  eventIDs:
+  - n0
+  - n1
+  - n2
+  - n3
+  - n4
+  - n5
+  - n6
+  - n7
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: transpose-a-melody-original-key
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: rest
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: transpose-a-melody-whole-tone-up
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 9
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 9
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: rest
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: transpose-a-melody-phrase-pairs
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: n0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: n1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+  - id: n6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 9
+  - id: n7
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 7
+adaptation:
+  policy: transposeIntervals
+  anchorString: 1
+materials:
+- id: original-key
+  source:
+    kind: exercise
+    exerciseID: transpose-a-melody-original-key
+  positioning:
+    enabled: false
+- id: whole-tone-up
+  source:
+    kind: exercise
+    exerciseID: transpose-a-melody-whole-tone-up
+  positioning:
+    enabled: false
+- id: phrase-pairs
+  source:
+    kind: exercise
+    exerciseID: transpose-a-melody-phrase-pairs
+  positioning:
+    enabled: false
+activities:
+- id: original-key
+  materialID: original-key
+- id: whole-tone-up
+  materialID: whole-tone-up
+- id: phrase-pairs
+  materialID: phrase-pairs
+fingerings: []
+practiceEntries:
+- id: original-key
+  activityID: original-key
+  exerciseID: transpose-a-melody-original-key
+- id: whole-tone-up
+  activityID: whole-tone-up
+  exerciseID: transpose-a-melody-whole-tone-up
+- id: phrase-pairs
+  activityID: phrase-pairs
+  exerciseID: transpose-a-melody-phrase-pairs
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - all
+  - rhythm
+  - distinction
+curriculum:
+  moduleID: fretboard-theory
+  ordinal: 46
+  durationMinutes: 20
+  prerequisites:
+  - tonic-and-degrees
+  - octaves
+  keywords:
+  - Transposing a melody
+  - Перенесення мелодії в іншу тональність

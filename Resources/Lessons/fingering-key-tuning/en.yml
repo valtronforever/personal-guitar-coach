@@ -1,0 +1,56 @@
+lessonID: fingering-key-tuning
+lessonVersion: 1
+locale: en
+title: Fingering, key and tuning
+summary: Separate string/fret geometry from the pitches it produces.
+goal: Explain why a shape transposes uniformly between Standard tunings but needs a low-string adjustment in Drop.
+body: 'A fingering is a set of physical contacts. Its sounding pitches depend on the open-string tuning. Moving
+  from E Standard to D Standard lowers all six strings by two semitones, so the same positions produce a uniformly
+  transposed phrase. The intervals within that phrase stay intact. C and B Standard follow the same principle at
+  their own offsets.
+
+
+  Drop is different: compared with the corresponding Standard preset, only string 6 is lowered by two semitones.
+  A shape using that string can change its internal intervals. As a concrete E Standard reference, string 6 fret
+  3 and string 5 fret 5 sound G2 and D3, a fifth. Keeping those contacts in Drop D gives F2 and D3, a major sixth.
+  Moving the low contact to fret 5 restores G2–D3. You do not need to retune physically to understand this worked
+  comparison.
+
+
+  The practice below preserves the intended intervals for your currently selected tuning. Inspect the actual marks:
+  the low-string fifth may need a different offset, while the middle-string fourth keeps its relationship. The string-3-to-2
+  fourth also needs a different shape because those open strings are a major third apart in the supplied presets.
+  Sound alone checks the resulting notes, not the contacts you used.'
+steps:
+  prepare:
+    title: Confirm one physical tuning
+    body: Keep Settings matched to the actual guitar for all scored attempts. The written E Standard/Drop D comparison
+      is explanatory; changing a setting does not retune the guitar.
+  low-fifth: &id001
+    title: Preserve the fifth across the lowest pair
+    body: Alternate the two targets as quarters at 50 BPM. Identify whether the marks use a two-fret offset or align
+      in the selected preset. Both should sound seven semitones apart. {{sequence}}.
+  middle-fourth: &id002
+    title: Same fret across a fourth-tuned pair
+    body: Play the four targets on strings 5 and 4. The same-fret contacts give a five-semitone fourth in the supplied
+      presets. Compare the sound and geometry with the previous fifth. {{sequence}}.
+  upper-fourth: &id003
+    title: The upper pair needs an offset
+    body: Now play a fourth between strings 3 and 2. Notice the one-fret offset that compensates for their different
+      open-string interval. Stop each previous note for the graded version. {{sequence}}.
+  review:
+    title: Explain a changed shape without changing the music
+    body: Use the low-fifth example to explain the difference between dropping one string and lowering all strings
+      together. Then explain why the two fourths need different shapes even in Standard.
+activities:
+  low-fifth: *id001
+  middle-fourth: *id002
+  upper-fourth: *id003
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      uniform: I distinguished uniform Standard transposition from dropping only string 6.
+      geometry: I followed the actual interval-preserving positions for this tuning.
+      upper: I explained the offset between strings 3 and 2.
