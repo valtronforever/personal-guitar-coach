@@ -17,6 +17,11 @@ private actor CalibrationRuntime: AudioRuntime {
     var reads: UInt64 = 0
     var wrongPitch = false
     var clipped = false
+    var missing = false
+    var variable = false
+    var clockDrift = 0.0
+    var playedOffset = 0.05
+    var dataLost = false
     func devices() -> [AudioDeviceDescriptor] {
         [AudioDeviceDescriptor(hardwareID: 1, uid: "test", name: "Synthetic interface", inputChannels: 1, outputChannels: 1,
             sampleRate: 48000, bufferFrames: changed ? 256 : 512)]
@@ -34,10 +39,10 @@ private actor CalibrationRuntime: AudioRuntime {
         reads += 1
         let frames: UInt64 = (complete ? 22 * 48000 : 48000) + reads * 512
         let events: [DetectedNoteEvent] = complete ? (request?.exercise.events.enumerated().map { index, event in
-            let frame = Int64((Double(event.startTick) / 960 + 0.05) * 48000)
+            let frame = Int64((Double(event.startTick) / 960 + playedOffset + (variable && index.isMultiple(of: 2) ? 0.16 : 0)) * 48000)
             let onset = AnalysisTimestamp(frame: frame, sampleRate: 48000, hostSeconds: 100.1 + Double(frame) / 48000)
             return DetectedNoteEvent(id: UInt64(index + 1), onset: onset, resolvedAt: onset, quality: .reliable, pitch: DetectedPitch(frequency: wrongPitch ? 440 : 195.99771799, clarity: 0.98))
-        } ?? []) : []
+        }.filter { !missing || $0.id != 20 } ?? []) : []
         let now = AnalysisTimestamp(frame: Int64(frames), sampleRate: 48000, hostSeconds: 100.1 + Double(frames) / 48000)
         let before = AnalysisTimestamp(frame: Int64(frames) - 14400, sampleRate: 48000, hostSeconds: now.hostSeconds! - 0.3)
         let latest = PitchObservation(time: now, quality: .reliable, pitch: DetectedPitch(frequency: 195.99771799, clarity: 0.98),
@@ -45,8 +50,8 @@ private actor CalibrationRuntime: AudioRuntime {
         let span = SignalQualitySpan(id: 1, quality: .reliable, start: before, end: now)
         let analysis = AudioAnalysisSnapshot(algorithmVersion: MonophonicAnalyzer.algorithmVersion, latest: latest, events: events,
             totalEvents: UInt64(events.count), invalidSamples: 0, qualitySpans: [span], totalQualitySpans: 1)
-        return CaptureSnapshot(totalFrames: frames, totalPackets: frames / 512, droppedPackets: 0, peak: complete && clipped ? 1 : 0.2, rms: 0.01,
-            sampleRate: 48000, lastHostTime: AVAudioTime.hostTime(forSeconds: 100.1 + Double(frames - 512) / 48000),
+        return CaptureSnapshot(totalFrames: frames, totalPackets: frames / 512, droppedPackets: dataLost ? 1 : 0, peak: complete && clipped ? 1 : 0.2, rms: 0.01,
+            sampleRate: 48000, lastHostTime: AVAudioTime.hostTime(forSeconds: 100.1 + Double(frames - 512) / 48000 + clockDrift),
             hostTimeValid: true, analysis: analysis, lastPacketFrames: 512)
     }
     func startClick(device: AudioDeviceDescriptor, channel: Int) {}
@@ -63,7 +68,12 @@ private actor CalibrationRuntime: AudioRuntime {
             sampleRate: 48000, renderedFrames: complete ? 27 * 48000 : 0, scheduledStartHostSeconds: 100,
             renderAnchorHostSeconds: 100, presentationLatency: 0)
     }
-    func finish(wrongPitch: Bool = false, clipped: Bool = false) { self.wrongPitch = wrongPitch; self.clipped = clipped; complete = true }
+    func finish(wrongPitch: Bool = false, clipped: Bool = false, offset: Double = 0.05) { playedOffset = offset; self.wrongPitch = wrongPitch; self.clipped = clipped; complete = true }
+    func failPass(_ kind: String) {
+        dataLost = kind == "data"
+        missing = kind == "count"; variable = kind == "spread"; clockDrift = kind == "clock" ? 0.03 : 0
+        complete = true
+    }
     func changeRoute() { changed = true }
 }
 
@@ -160,8 +170,42 @@ private actor SynchronizationRepository: CalibrationRepository {
         #expect(!model.running && model.stage == .ready && model.messageKey == "sync.routeChanged")
         #expect(store.profiles.isEmpty)
     }
+    @Test func secondPassDisagreementPreservesItsMeasuredDifferenceWithoutSaving() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let (runtime, audio, store) = await setup(directory)
+        let model = CalibrationModel()
+        for offset in [0.05, 0.12] {
+            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+            try await waitForRequest(runtime, model: model)
+            await runtime.finish(offset: offset); try await waitForCompletion(model)
+        }
+        #expect(model.failure?.reason == .disagreement && model.diagnostics?.passNumber == 2)
+        #expect(abs((model.diagnostics?.betweenPassDifference ?? 0) - 0.07) < 0.001)
+        #expect(model.candidate == nil && store.profiles.isEmpty)
+    }
+    @Test func failedFirstPassRetainsSpecificDiagnosticsAndRetryClearsThem() async throws {
+        for kind in ["count", "spread", "clock"] {
+            let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+            defer { try? FileManager.default.removeItem(at: directory) }
+            let (runtime, audio, store) = await setup(directory)
+            let model = CalibrationModel()
+            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+            try await waitForRequest(runtime, model: model)
+            await runtime.failPass(kind); try await waitForCompletion(model)
+            #expect(model.messageKey == "sync.failure." + (kind == "clock" ? "clockDrift" : kind))
+            #expect(model.diagnostics?.passNumber == 1 && model.diagnostics?.maximumPeak == 0.2)
+            #expect(model.diagnostics?.measuredAttacks == (kind == "count" ? 15 : 16))
+            #expect(store.profiles.isEmpty && model.candidate == nil)
+            if kind == "spread" { #expect((model.diagnostics?.timing?.spread ?? 0) > 0.06) }
+            model.start(audio: audio, store: store, instrument: InstrumentProfile(), string: 3)
+            #expect(model.messageKey == nil && model.diagnostics == nil)
+            model.cancel(audio: audio); try await waitForCompletion(model)
+            #expect(model.diagnostics == nil)
+        }
+    }
     @Test func routeChangeBadPitchClippingAndCancellationCannotSave() async throws {
-        for mode in ["route", "pitch", "clip", "cancel"] {
+        for mode in ["route", "pitch", "clip", "data", "cancel"] {
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
             defer { try? FileManager.default.removeItem(at: directory) }
             let (runtime, audio, store) = await setup(directory)
@@ -174,11 +218,18 @@ private actor SynchronizationRepository: CalibrationRepository {
             case "route": await runtime.changeRoute(); await audio.refresh()
             case "pitch": await runtime.finish(wrongPitch: true)
             case "clip": await runtime.finish(clipped: true)
+            case "data": await runtime.failPass("data")
             default: model.cancel(audio: audio)
             }
             try await waitForCompletion(model)
             #expect(model.candidate == nil && model.stage == .ready)
             #expect(store.profiles == [old])
+            if mode == "pitch" {
+                #expect(model.failure?.reason == .wrongNotes && model.diagnostics?.wrongAttacks == 16)
+            }
+            if mode == "clip" { #expect(model.failure?.reason == .clipping) }
+            if mode == "route" { #expect(model.audioError == .routeChanged) }
+            if mode == "data" { #expect(model.audioError == .dataLoss) }
             #expect(await audio.coordinator.snapshot().captureRequestID == nil)
         }
     }

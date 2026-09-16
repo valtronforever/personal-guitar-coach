@@ -1,6 +1,7 @@
 import Foundation
 import Testing
 import Domain
+import AudioTestSupport
 @testable import Audio
 
 struct PersonalSyncTests {
@@ -48,5 +49,50 @@ struct PersonalSyncTests {
         let plan = try TransportPlan(request: request, sampleRate: 48000)
         #expect(plan.audiblePosition(renderedFrames: 60000, outputLatencySeconds: 0.25).tick == 960)
         #expect(plan.audiblePosition(renderedFrames: 0, outputLatencySeconds: 0.25).tick == 0)
+    }
+}
+
+struct PersonalSyncDiagnosticsTests {
+    let expected = (4..<20).map(Double.init)
+    @Test func rejectionNamesTheActualGateWithoutRelaxingAcceptance() throws {
+        let cases: [([Double], PersonalSyncPassAnalysis.Rejection)] = [
+            ([.nan], .timestamps), (Array(expected.dropLast()), .count),
+            (expected.map { $0 + 0.41 }, .timingWindow),
+            (expected.enumerated().map { $0.element + ($0.offset.isMultiple(of: 2) ? 0.08 : -0.08) }, .spread),
+            (expected.enumerated().map { $0.element + Double($0.offset) * 0.004 }, .drift)
+        ]
+        for (observed, reason) in cases {
+            let report = PersonalSyncPassAnalysis(expected: expected, observed: observed)
+            #expect(report.rejection == reason)
+            #expect(throws: CalibrationError.insufficientEvidence) { try PersonalSyncPass(expected: expected, observed: observed) }
+        }
+        let report = PersonalSyncPassAnalysis(expected: expected, observed: expected.map { $0 + 0.15 })
+        #expect(report.rejection == nil && report.attackCount == 16)
+        #expect(abs(report.offset! - 0.15) < 1e-9)
+        let missing = PersonalSyncPassAnalysis(expected: expected, observed: Array(expected.dropLast()))
+        #expect(missing.attackCount == 15 && missing.spread == nil)
+    }
+}
+
+struct PersonalSyncPCMTests {
+    @Test func cStandardLowStringWithHalfSecondNotesProducesSixteenReliableAttacks() throws {
+        for rate in [44100.0, 48000] {
+            let frequency = try TuningProfile.cStandard.frequency(at: FretPosition(string: 6, fret: 0))
+            let expected = (4..<20).map(Double.init)
+            let signal = SyntheticAudio.render(rate: rate, duration: 21,
+                notes: expected.map { SyntheticNote(onset: $0 + 0.05, duration: 0.5, frequency: frequency) })
+            let analyzer = try MonophonicAnalyzer(sampleRate: rate)
+            signal.withUnsafeBufferPointer { input in
+                for offset in stride(from: 0, to: input.count, by: 512) {
+                    analyzer.process(.init(rebasing: input[offset..<min(input.count, offset + 512)]), startHostSeconds: 100 + Double(offset) / rate)
+                }
+            }
+            analyzer.finish()
+            let events = analyzer.snapshot().events
+            #expect(events.count == 16)
+            #expect(events.allSatisfy { $0.quality == .reliable && abs(1200 * log2(($0.pitch?.frequency ?? 1) / frequency)) <= 50 })
+            let pass = try PersonalSyncPass(expected: expected, observed: events.map { $0.onset.streamSeconds })
+            #expect(abs(pass.offset - 0.05) < 0.03)
+        }
     }
 }

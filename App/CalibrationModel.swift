@@ -13,6 +13,8 @@ final class CalibrationModel {
     private(set) var audioError: AudioBackendError?
     private(set) var candidate: CalibrationProfile?
     private(set) var passNumber = 1
+    private(set) var diagnostics: CalibrationDiagnostics?
+    private(set) var failure: CalibrationFailure?
     @ObservationIgnored private var task: Task<Void, Never>?
     @ObservationIgnored private var captureID: UUID?
     private var firstClockDrift = 0.0
@@ -39,7 +41,10 @@ final class CalibrationModel {
         candidate = nil; stage = .signal; passNumber = first == nil ? 1 : 2
         task = Task {
             do {
+                try Task.checkCancellation()
                 let frequency = try instrument.tuning.frequency(at: FretPosition(string: string, fret: 0))
+                diagnostics = CalibrationDiagnostics(passNumber: passNumber, targetFrequency: frequency)
+                failure = nil
                 let request = try PersonalSyncProbe.request(instrument: instrument, string: string)
                 try await audio.coordinator.start(purpose: .calibration, requestID: id)
                 let signalDeadline = ContinuousClock.now.advanced(by: .seconds(20))
@@ -49,7 +54,7 @@ final class CalibrationModel {
                     if PracticePreflightSignal.isReady(current.meters), let pitch = current.meters?.analysis?.latest?.pitch,
                        abs(1200 * log2(pitch.frequency / frequency)) <= 50 {
                         baseline = current.meters?.analysis
-                    } else if ContinuousClock.now >= signalDeadline { throw CalibrationError.insufficientEvidence }
+                    } else if ContinuousClock.now >= signalDeadline { throw diagnostics?.signalFailure ?? CalibrationFailure(reason: .noSignal) }
                     if baseline == nil { try await Task.sleep(for: .milliseconds(50)) }
                 }
                 try await audio.coordinator.startTransport(request)
@@ -69,7 +74,7 @@ final class CalibrationModel {
                               analysis.totalEvents - lastEvent == UInt64(newEvents.count),
                               analysis.totalQualitySpans - lastSpan == UInt64(spans.count), events.count + newEvents.count <= 128,
                               !spans.contains(where: { $0.quality == .clipping || $0.quality == .invalid }) else {
-                            throw CalibrationError.insufficientEvidence
+                            throw CalibrationFailure(reason: spans.contains(where: { $0.quality == .clipping }) ? .clipping : .dataLoss)
                         }
                         events += newEvents; lastEvent = analysis.totalEvents; lastSpan = analysis.totalQualitySpans
                     }
@@ -77,26 +82,31 @@ final class CalibrationModel {
                     if epoch == nil { epoch = playback.renderAnchorHostSeconds }
                     elapsedSeconds = max(0, Double(playback.renderedFrames) / playback.sampleRate - (route.output.hardwareLatencySeconds ?? playback.presentationLatency))
                     if elapsedSeconds >= 4 { stage = .playing }
-                    if playback.phase == .completed, completedAt == nil { completedAt = .now }
-                    if let value = current.clock?.validatedDriftSeconds { drift = max(drift, abs(value)); hadClock = true }
-                    else if hadClock { throw CalibrationError.insufficientEvidence }
-                    if let completedAt, completedAt.duration(to: .now) >= .seconds(1.8 + (route.input.hardwareLatencySeconds ?? 0) + (route.output.hardwareLatencySeconds ?? 0)) {
-                        guard let epoch, current.clock?.validatedDriftSeconds != nil, drift <= 0.02 else { throw CalibrationError.insufficientEvidence }
+                    diagnostics?.phase = stage
+                    if let epoch {
                         let expected = try (4..<20).map { try route.expectedTime(renderEpochSeconds: epoch, sampleFrame: Int64(Double($0) * route.output.sampleRate)) }
-                        var observed: [Double] = []
-                        for event in events {
-                            guard let host = event.onset.hostSeconds else { throw CalibrationError.insufficientEvidence }
-                            let time = try route.observedTime(inputHostSeconds: host)
-                            if time >= expected[0] - 0.45 && time <= expected[15] + 0.45 {
-                                guard event.quality == .reliable, let pitch = event.pitch, pitch.clarity >= 0.9,
-                                      pitch.frequency.isFinite, abs(1200 * log2(pitch.frequency / frequency)) <= 50 else {
-                                    throw CalibrationError.insufficientEvidence
-                                }
-                            }
-                            observed.append(time)
+                        _ = try diagnostics?.analyze(events: events, expected: expected, route: route)
+                    }
+                    if playback.phase == .completed, completedAt == nil { completedAt = .now }
+                    if let value = current.clock?.validatedDriftSeconds {
+                        drift = max(drift, abs(value)); hadClock = true; diagnostics?.clockDrift = drift
+                    } else if hadClock { throw CalibrationFailure(reason: .clockUnavailable) }
+                    if let completedAt, completedAt.duration(to: .now) >= .seconds(1.8 + (route.input.hardwareLatencySeconds ?? 0) + (route.output.hardwareLatencySeconds ?? 0)) {
+                        guard let epoch, current.clock?.validatedDriftSeconds != nil else { throw CalibrationFailure(reason: .clockUnavailable) }
+                        guard drift <= 0.02 else { throw CalibrationFailure(reason: .clockDrift) }
+                        let expected = try (4..<20).map { try route.expectedTime(renderEpochSeconds: epoch, sampleFrame: Int64(Double($0) * route.output.sampleRate)) }
+                        let observed = try diagnostics!.analyze(events: events, expected: expected, route: route)
+                        if let failure = diagnostics?.noteFailure { throw failure }
+                        let timing = PersonalSyncPassAnalysis(expected: expected, observed: observed)
+                        diagnostics?.timing = timing
+                        if let rejection = timing.rejection {
+                            throw CalibrationFailure(reason: CalibrationFailure.Reason(rawValue: rejection.rawValue) ?? .unknown)
                         }
                         let pass = try PersonalSyncPass(expected: expected, observed: observed)
                         if let first {
+                            let difference = abs(first.offset - pass.offset)
+                            diagnostics?.betweenPassDifference = difference
+                            guard difference <= 0.04 else { throw CalibrationFailure(reason: .disagreement) }
                             let evidence = try PersonalSyncEvidence(instrument: instrument, string: string,
                                 offsets: [first.offset, pass.offset], spreads: [first.spread, pass.spread], drifts: [first.drift, pass.drift])
                             candidate = try CalibrationProfile(route: route, method: .personal, residualOffsetSeconds: evidence.offset,
@@ -108,9 +118,14 @@ final class CalibrationModel {
                     try await Task.sleep(for: .milliseconds(50))
                 }
             } catch is CancellationError { reset(); messageKey = "sync.cancelled" }
+            catch AudioBackendError.cancelled { reset(); messageKey = "sync.cancelled" }
             catch {
-                reset(); messageKey = "sync.failed"
+                let report = diagnostics
+                let failed = error as? CalibrationFailure
+                reset()
+                diagnostics = report; failure = failed
                 audioError = error as? AudioBackendError
+                messageKey = failed?.messageKey ?? (audioError == nil ? "sync.failure.unknown" : "sync.failure.audio")
             }
             await audio.stopCapture(id: id)
             if captureID == id { captureID = nil; running = false; task = nil }
@@ -120,12 +135,21 @@ final class CalibrationModel {
         try Task.checkCancellation()
         await audio.coordinator.poll(); await audio.publish()
         try Task.checkCancellation()
+        diagnostics?.observe(audio.state?.meters)
+        if let phase = audio.state?.phase {
+            switch phase {
+            case let .failed(error), let .interrupted(error): throw error
+            default: break
+            }
+        }
         guard let state = audio.state, state.captureRequestID == id, state.phase == .running,
               state.calibrationRoute == frozenRoute, state.routeRevision == revision,
               audio.synchronizationSession == session else { throw AudioBackendError.routeChanged }
         if let meters = state.meters, meters.totalFrames > 0 {
-            guard meters.hostTimeValid, meters.droppedPackets == 0, meters.discontinuities == 0,
-                  meters.invalidSamples == 0, meters.peak < 0.995 else { throw CalibrationError.insufficientEvidence }
+            guard meters.peak < 0.995 else { throw CalibrationFailure(reason: .clipping) }
+            guard meters.hostTimeValid else { throw CalibrationFailure(reason: .timestamps) }
+            guard meters.droppedPackets == 0, meters.discontinuities == 0,
+                  meters.invalidSamples == 0 else { throw CalibrationFailure(reason: .dataLoss) }
         }
         return state
     }
@@ -148,7 +172,7 @@ final class CalibrationModel {
     }
     private func reset() {
         first = nil; firstClockDrift = 0; candidate = nil; frozenRoute = nil; frozenInstrument = nil; frozenString = nil
-        messageKey = nil; audioError = nil
+        messageKey = nil; audioError = nil; diagnostics = nil; failure = nil
         revision = nil; session = nil; stage = .ready; passNumber = 1; elapsedSeconds = 0
     }
 }

@@ -24,19 +24,38 @@ public struct PersonalSyncPass: Equatable, Sendable {
     /// Timestamps have already been normalized by CalibrationRoute. All sixteen attacks must be present.
     /// A sub-half-beat window prevents silently matching a missing attack to the following click.
     public init(expected: [Double], observed: [Double]) throws {
+        let analysis = PersonalSyncPassAnalysis(expected: expected, observed: observed)
+        guard analysis.rejection == nil, let offset = analysis.offset,
+              let spread = analysis.spread, let drift = analysis.drift else { throw CalibrationError.insufficientEvidence }
+        self.offset = offset; self.spread = spread; self.drift = drift
+    }
+}
+
+/// Diagnostic evidence from the same gates used to accept a pass; no rejected attacks are discarded to improve it.
+public struct PersonalSyncPassAnalysis: Equatable, Sendable {
+    public enum Rejection: String, Sendable { case timestamps, count, timingWindow, spread, drift }
+    public private(set) var rejection: Rejection?
+    public private(set) var attackCount = 0
+    public private(set) var maximumOffset: Double?
+    public private(set) var offset: Double?
+    public private(set) var spread: Double?
+    public private(set) var drift: Double?
+    public init(expected: [Double], observed: [Double]) {
         guard expected.count == 16, (expected + observed).allSatisfy({ $0.isFinite }),
               zip(expected, expected.dropFirst()).allSatisfy({ abs($1 - $0 - 1) < 0.001 }),
-              zip(observed, observed.dropFirst()).allSatisfy({ $1 > $0 }) else { throw CalibrationError.insufficientEvidence }
+              zip(observed, observed.dropFirst()).allSatisfy({ $1 > $0 }) else { rejection = .timestamps; return }
         let attacks = observed.filter { $0 >= expected[0] - 0.45 && $0 <= expected[15] + 0.45 }
-        guard attacks.count == 16 else { throw CalibrationError.insufficientEvidence }
+        attackCount = attacks.count
+        guard attacks.count == 16 else { rejection = .count; return }
         let offsets = zip(attacks, expected).map(-)
-        guard offsets.allSatisfy({ abs($0) <= 0.4 }) else { throw CalibrationError.insufficientEvidence }
+        maximumOffset = offsets.map(abs).max()!
         let center = Self.median(offsets)
-        // With sixteen samples the nearest-rank p95 is the maximum, deliberately conservative.
-        let spread = offsets.map { abs($0 - center) }.max()!
-        let drift = Self.median(Array(offsets.suffix(5))) - Self.median(Array(offsets.prefix(5)))
-        guard spread <= 0.06, abs(drift) <= 0.04 else { throw CalibrationError.insufficientEvidence }
-        self.offset = center; self.spread = spread; self.drift = drift
+        offset = center
+        spread = offsets.map { abs($0 - center) }.max()!
+        drift = Self.median(Array(offsets.suffix(5))) - Self.median(Array(offsets.prefix(5)))
+        if maximumOffset! > 0.4 { rejection = .timingWindow }
+        else if spread! > 0.06 { rejection = .spread }
+        else if abs(drift!) > 0.04 { rejection = .drift }
     }
     private static func median(_ values: [Double]) -> Double {
         let sorted = values.sorted(), n = sorted.count

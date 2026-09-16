@@ -9353,13 +9353,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tune the selected string and mute the others. After Start, pluck and sustain it for the signal check. Listen to four clicks without playing, then play one short note on each of the next sixteen clicks. Follow the sound, not the progress bar. Repeat for the second pass."
+            "value": "Tune the selected string and mute the others. After Start, pluck and sustain it for the signal check. Listen to four clicks without playing, then play on each of the next sixteen clicks. Let each note ring for about half a second, then mute it before the next click. Follow the sound, not the progress bar. Repeat for the second pass."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Налаштуйте обрану струну й приглушіть інші. Після початку зіграйте її та дайте звучати для перевірки сигналу. Прослухайте чотири кліки без гри, потім зіграйте по одній короткій ноті на кожен із наступних шістнадцяти кліків. Орієнтуйтеся на звук, а не індикатор прогресу. Повторіть у другому проході."
+            "value": "Налаштуйте обрану струну й приглушіть інші. Після початку зіграйте її та дайте звучати для перевірки сигналу. Прослухайте чотири кліки без гри, потім грайте на кожен із наступних шістнадцяти кліків. Дайте кожній ноті звучати приблизно пів секунди, потім приглушіть перед наступним кліком. Орієнтуйтеся на звук, а не індикатор прогресу. Повторіть у другому проході."
           }
         }
       }
@@ -9438,13 +9438,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Play sixteen short notes, one on each click."
+            "value": "Play one note on each click. Let it ring for about half a second, then mute it before the next click."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Зіграйте шістнадцять коротких нот, по одній на кожен клік."
+            "value": "Грайте одну ноту на кожен клік. Дайте їй звучати приблизно пів секунди, потім приглушіть перед наступним кліком."
           }
         }
       }
@@ -10737,6 +10737,567 @@
           "stringUnit": {
             "state": "translated",
             "value": "Вибрати цей такт; Shift розширює фрагмент практики. Активна спроба зупиниться."
+          }
+        }
+      }
+    },
+    "sync.failure.noSignal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The signal check timed out without audible input. Check the selected input and mono channel, then pluck the selected string."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірка сигналу завершилась без чутного входу. Перевірте вибраний вхід і моноканал, потім зіграйте обрану струну."
+          }
+        }
+      }
+    },
+    "sync.failure.weakSignal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The signal check could not confirm a stable note and the recorded peak was below −30 dBFS. Check the input level and let the selected string ring."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірка не підтвердила стабільну ноту; зафіксований пік був нижче −30 dBFS. Перевірте рівень входу й дайте обраній струні звучати."
+          }
+        }
+      }
+    },
+    "sync.failure.unstableSignal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The signal check could not confirm the selected pitch continuously for 200 ms. Let one clean open string ring; check tuning and try string 3 if the low string is difficult to detect."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірка не підтвердила обрану висоту безперервно протягом 200 мс. Дайте звучати одній чистій відкритій струні; перевірте стрій і спробуйте струну 3, якщо низька струна погано розпізнається."
+          }
+        }
+      }
+    },
+    "sync.failure.wrongPitch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The detected pitch did not match the selected open string within 50 cents. Compare the target and detected frequencies below; check the string selection and tuner."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розпізнана висота не відповідає обраній відкритій струні в межах 50 центів. Порівняйте цільову й розпізнану частоти нижче; перевірте вибір струни та тюнер."
+          }
+        }
+      }
+    },
+    "sync.failure.clipping": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The pass stopped because the input clipped. Reduce input gain and retry. A clipped attack may be brief even when the rest of the signal looks normal."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прохід зупинено через перевантаження входу. Зменште gain і повторіть. Перевантаження атаки може бути коротким, навіть якщо решта сигналу виглядає нормально."
+          }
+        }
+      }
+    },
+    "sync.failure.dataLoss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio samples or analysis events were lost or invalid. This is an audio capture problem, not a timing mistake. Restart the input and retry."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіосемпли або події аналізу втрачено чи пошкоджено. Це проблема аудіозахоплення, а не помилка ритму. Перезапустіть вхід і повторіть."
+          }
+        }
+      }
+    },
+    "sync.failure.clockUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The pass could not verify the input/output audio clocks. Retry with a stable audio route; playing more accurately will not fix missing clock evidence."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося перевірити аудіогодинники входу й виходу. Повторіть зі стабільним аудіопідключенням; точніша гра не усуне відсутність даних годинника."
+          }
+        }
+      }
+    },
+    "sync.failure.clockDrift": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The measured audio-clock drift exceeded 20 ms. Check the value below and retry with another output or a stable wired route."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряний дрейф аудіогодинників перевищив 20 мс. Перевірте значення нижче й повторіть з іншим виходом або стабільним дротовим підключенням."
+          }
+        }
+      }
+    },
+    "sync.failure.uncertainNotes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some attacks had no reliable pitch. Let each note ring for about half a second before muting it; use a clean signal and mute the other strings. See the attack counts below."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для частини атак не вдалося надійно визначити висоту. Дайте кожній ноті звучати приблизно пів секунди перед глушінням; використовуйте чистий сигнал і приглушіть інші струни. Кількості атак наведено нижче."
+          }
+        }
+      }
+    },
+    "sync.failure.wrongNotes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some detected attacks differed from the selected string by more than 50 cents. Check tuning and the selected string, and mute the other strings. This can also indicate a pitch-detection error."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Частина розпізнаних атак відрізнялася від обраної струни більш ніж на 50 центів. Перевірте стрій і вибрану струну, приглушіть інші струни. Це також може бути помилкою розпізнавання висоти."
+          }
+        }
+      }
+    },
+    "sync.failure.timestamps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The pass contained missing or invalid audio timestamps. Restart the audio input and retry."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У проході відсутні або некоректні часові мітки аудіо. Перезапустіть аудіовхід і повторіть."
+          }
+        }
+      }
+    },
+    "sync.failure.count": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The pass did not contain exactly 16 detected attacks in the measurement window. Compare the count below: missing attacks may be undetected notes; extra attacks may be string noise or click leakage."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У вікні вимірювання розпізнано не рівно 16 атак. Перевірте кількість нижче: пропуски можуть бути нерозпізнаними нотами, зайві атаки — шумом струн або потраплянням кліків у вхід."
+          }
+        }
+      }
+    },
+    "sync.failure.timingWindow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At least one attack was more than 400 ms from its click. Listen to four clicks, then play on each of the next sixteen. A large output delay can also exceed this measurement window."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Принаймні одна атака віддалена від кліку більш ніж на 400 мс. Прослухайте чотири кліки, потім грайте на кожен із наступних шістнадцяти. Велика затримка виходу також може перевищувати це вікно вимірювання."
+          }
+        }
+      }
+    },
+    "sync.failure.spread": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The pass was rejected because timing spread exceeded 60 ms from the median offset. This is stricter than the ±400 ms matching window. See the measured spread below; retry with steadier timing or check whether output delay varies."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прохід відхилено: розкид таймінгу від медіанного зсуву перевищив 60 мс. Це суворіша вимога, ніж вікно зіставлення ±400 мс. Виміряний розкид наведено нижче; повторіть рівніше або перевірте, чи не змінюється затримка виходу."
+          }
+        }
+      }
+    },
+    "sync.failure.drift": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The timing offset changed by more than 40 ms from the beginning to the end of this pass. Retry and follow the audible clicks; varying output latency can also cause this."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зсув таймінгу змінився більш ніж на 40 мс від початку до кінця проходу. Повторіть, орієнтуючись на чутні кліки; причиною також може бути змінна затримка виходу."
+          }
+        }
+      }
+    },
+    "sync.failure.disagreement": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Both passes were individually valid, but their median offsets differed by more than 40 ms. Repeat both passes with the same audio route and playing pattern."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обидва проходи окремо валідні, але їхні медіанні зсуви відрізняються більш ніж на 40 мс. Повторіть обидва проходи з тим самим аудіопідключенням і способом гри."
+          }
+        }
+      }
+    },
+    "sync.failure.unknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronization could not finish. The measurements below are from the unsuccessful pass; no calibration was saved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося завершити синхронізацію. Нижче наведено вимірювання невдалого проходу; калібрування не збережено."
+          }
+        }
+      }
+    },
+    "sync.failure.audio": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronization stopped because of an audio error. No calibration was saved."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Синхронізацію зупинено через аудіопомилку. Калібрування не збережено."
+          }
+        }
+      }
+    },
+    "sync.diagnostics.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pass diagnostics"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Діагностика проходу"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.stopped": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Captured measurements from this pass; input monitoring is now stopped."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зафіксовані вимірювання цього проходу; моніторинг входу зараз зупинено."
+          }
+        }
+      }
+    },
+    "sync.diagnostics.target": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target frequency, Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цільова частота, Гц"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.detected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last detected frequency, Hz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остання розпізнана частота, Гц"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.peak": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum observed input peak, dBFS"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Максимальний спостережений пік входу, dBFS"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.attacks %lld %lld %lld %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attacks: %1$lld / 16 expected. Matching pitch: %2$lld. Other pitch: %3$lld. Uncertain: %4$lld."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Атаки: %1$lld / 16 очікуваних. Відповідна висота: %2$lld. Інша висота: %3$lld. Невизначені: %4$lld."
+          }
+        }
+      }
+    },
+    "sync.diagnostics.maximumOffset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum distance from click, ms (limit 400)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Максимальна відстань від кліку, мс (межа 400)"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.spread": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timing spread, ms (limit 60)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розкид таймінгу, мс (межа 60)"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.drift": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change from start to end, ms (limit ±40)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зміна від початку до кінця, мс (межа ±40)"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.clock": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum audio-clock drift, ms (limit 20)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Максимальний дрейф аудіогодинників, мс (межа 20)"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.agreement": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Difference between passes, ms (limit 40)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Різниця між проходами, мс (межа 40)"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.phase": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measurement stage"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Етап вимірювання"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.phase.signal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signal check"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевірка сигналу"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.phase.listening": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listening clicks"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кліки відліку"
+          }
+        }
+      }
+    },
+    "sync.diagnostics.phase.playing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Played notes"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гра нот"
           }
         }
       }

@@ -115,3 +115,5 @@
 - [Input signal level guidance](follow-up/input-level-guidance.md) — `pending_user`; shared dBFS zones and gain advice.
 
 - [Practice tablature read-ahead](follow-up/practice-tablature-lookahead.md) — `pending_user`; compact rows, visible count-in and smooth audio-driven cursor/following.
+
+- `pending_user` — [Calibration failure diagnostics](follow-up/calibration-failure-diagnostics.md): specific first-pass rejection reasons and retained measurements; real-device diagnosis pending.
