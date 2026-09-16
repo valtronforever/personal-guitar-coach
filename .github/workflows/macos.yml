@@ -26,7 +26,8 @@ jobs:
       - name: Package tests
         run: swift test --package-path Packages/GuitarCoachCore
       - name: App state tests
-        run: swift test
+        # These tests share MainActor and include real-time polling deadlines.
+        run: swift test --no-parallel
       - name: Validate bundled lessons
         run: swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons
       - name: Verify audio corpus
