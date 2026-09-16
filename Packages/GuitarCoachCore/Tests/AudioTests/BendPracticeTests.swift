@@ -38,7 +38,16 @@ struct BendPracticeTests {
             random = random &* 6364136223846793005 &+ 1
             let envelope = min(1, time / 0.005, (3 - time) / 0.005)
             let signal = 0.15 * (sin(phase) + 0.3 * sin(2 * phase) + 0.15 * sin(3 * phase)) * envelope
-            pcm.append(mode == "silence" ? 0 : mode == "noise" ? Float((Double(random >> 32) / Double(UInt32.max) * 2 - 1) * 0.2) : mode == "clipped" ? Float(signal * 12) : Float(signal))
+            let sample: Float
+            switch mode {
+            case "silence": sample = 0
+            case "noise":
+                let normalizedRandom = Double(random >> 32) / Double(UInt32.max)
+                sample = Float((normalizedRandom * 2 - 1) * 0.2)
+            case "clipped": sample = Float(signal * 12)
+            default: sample = Float(signal)
+            }
+            pcm.append(sample)
         }
         for frame in stride(from: 0, to: pcm.count, by: 769) {
             pcm.withUnsafeBufferPointer { ptr in analyzer.process(.init(rebasing: ptr[frame..<min(frame + 769, ptr.count)]), startHostSeconds: 100 + Double(frame) / rate) }
