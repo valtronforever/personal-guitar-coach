@@ -121,3 +121,5 @@
 - `pending_user` — [Independent output and instrument latency settings](follow-up/independent-latency-settings.md): default-zero output, optional taps, separate instrument measurement, signed manual settings with approximate scoring and retained diagnostic timelines.
 
 - `done` — [Visible manual latency inputs](follow-up/latency-field-affordance.md): explicit native field borders and separate examples for both latency settings.
+
+- `pending_user` — [Neutral initial focus in timing settings](follow-up/latency-initial-focus.md): start at the title without automatically editing a latency value; live focus verification pending.
