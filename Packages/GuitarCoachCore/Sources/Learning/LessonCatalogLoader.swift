@@ -24,7 +24,7 @@ public struct LessonCatalogLoader: Sendable {
                     throw ContentFailure(.invalidIdentifier, "Lesson directory escapes the catalog")
                 }
                 let data = try read(folder.appendingPathComponent("lesson.yml"))
-                try checkSchema(data, allowed: [2])
+                try checkSchema(data, allowed: [3])
                 let manifest = try decode(LessonManifest.self, from: data)
                 guard manifest.id == id else { throw ContentFailure(.invalidIdentifier, "Folder and lesson IDs differ: \(id)") }
                 try validate(manifest)
@@ -43,10 +43,10 @@ public struct LessonCatalogLoader: Sendable {
     }
 
     public func validate(_ manifest: LessonManifest) throws {
-        guard manifest.schemaVersion == 2 else { throw ContentFailure(.unsupportedSchema, "Lesson schema \(manifest.schemaVersion)") }
+        guard manifest.schemaVersion == 3 else { throw ContentFailure(.unsupportedSchema, "Lesson schema \(manifest.schemaVersion)") }
         try validateID(manifest.id)
         guard manifest.version > 0, !manifest.steps.isEmpty, manifest.steps.count <= 512,
-              !manifest.exercises.isEmpty, manifest.exercises.count <= 64 else {
+              manifest.exercises.count <= 64 else {
             throw ContentFailure(.invalidStep, "A lesson needs bounded steps/exercises and a positive version")
         }
         try uniqueIDs(manifest.steps.map(\.id)); try uniqueIDs(manifest.exercises.map(\.id))
@@ -55,6 +55,7 @@ public struct LessonCatalogLoader: Sendable {
             try uniqueIDs(exercise.events.map(\.id))
         }
         try validateActivities(manifest)
+        try validateLearningTasks(manifest)
     }
 
     private func translation(_ language: LessonLanguage, folder: URL, manifest: LessonManifest) throws -> LessonText {
@@ -69,6 +70,7 @@ public struct LessonCatalogLoader: Sendable {
         guard Set(text.activities.keys) == Set(manifest.activities.map(\.id)) else {
             throw ContentFailure(.translationMismatch, "Translation activity IDs differ")
         }
+        try validateLearningTaskText(text, manifest: manifest)
         try ActivityTextRenderer.validate(text)
         for step in manifest.steps where step.activityID == nil {
             if let copy = text.steps[step.id], [copy.title, copy.body].contains(where: { $0.contains("{{") || $0.contains("}}") }) {

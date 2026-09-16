@@ -7,19 +7,21 @@ public struct LessonBookmark: Codable, Equatable, Sendable {
     public var stepID: String?
     public var readVersion: Int?
     public var activityChoices: [String: PositionChoice]
+    public var learningTasks: [String: LessonTaskProgress]
     public var activityConfirmations: [String: PositionSelfConfirmation]
     public init(lessonVersion: Int, stepID: String?, readVersion: Int? = nil,
-                activityChoices: [String: PositionChoice] = [:], activityConfirmations: [String: PositionSelfConfirmation] = [:]) {
+                activityChoices: [String: PositionChoice] = [:], activityConfirmations: [String: PositionSelfConfirmation] = [:], learningTasks: [String: LessonTaskProgress] = [:]) {
         self.lessonVersion = lessonVersion; self.stepID = stepID; self.readVersion = readVersion
-        self.activityChoices = activityChoices; self.activityConfirmations = activityConfirmations
+        self.activityChoices = activityChoices; self.activityConfirmations = activityConfirmations; self.learningTasks = learningTasks
     }
-    private enum CodingKeys: String, CodingKey { case lessonVersion, stepID, readVersion, activityChoices, activityConfirmations }
+    private enum CodingKeys: String, CodingKey { case lessonVersion, stepID, readVersion, activityChoices, activityConfirmations, learningTasks }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         self.init(lessonVersion: try v.decode(Int.self, forKey: .lessonVersion), stepID: try v.decodeIfPresent(String.self, forKey: .stepID),
             readVersion: try v.decodeIfPresent(Int.self, forKey: .readVersion),
             activityChoices: try v.decodeIfPresent([String: PositionChoice].self, forKey: .activityChoices) ?? [:],
-            activityConfirmations: try v.decodeIfPresent([String: PositionSelfConfirmation].self, forKey: .activityConfirmations) ?? [:])
+            activityConfirmations: try v.decodeIfPresent([String: PositionSelfConfirmation].self, forKey: .activityConfirmations) ?? [:],
+            learningTasks: try v.decodeIfPresent([String: LessonTaskProgress].self, forKey: .learningTasks) ?? [:])
     }
 
 }
@@ -34,6 +36,8 @@ public struct ReadingProgress: Codable, Equatable, Sendable {
         guard lastLessonID == nil || lessons[lastLessonID!] != nil else { throw StorageError.invalidRecord }
         for (id, bookmark) in lessons {
             guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                  bookmark.learningTasks.count <= 256, bookmark.learningTasks.values.allSatisfy(\.isValid),
+                  bookmark.learningTasks.keys.allSatisfy({ !$0.isEmpty && $0.utf8.count <= 64 }),
                   bookmark.activityChoices.count <= 256, bookmark.activityConfirmations.count <= 256,
                   (Array(bookmark.activityChoices.keys) + Array(bookmark.activityConfirmations.keys)).allSatisfy({ !$0.isEmpty && $0.utf8.count <= 64 }),
                   bookmark.activityChoices.values.allSatisfy({ $0.firstFret.map { (0...24).contains($0) } ?? true }),

@@ -37,7 +37,19 @@ final class LessonSelection {
     var policy: PositioningPolicy? { activityID.flatMap { sourceLesson.positioningPolicy(activityID: $0) } }
     var choice: PositionChoice { activityID.flatMap { activityChoices[$0] } ?? activity?.positionSelection?.choice ?? .original }
     var canChoosePosition: Bool { policy?.enabled == true && activity?.positionSelection?.mode == .learner }
-    var exercise: Exercise? { snapshot?.exercises.first { $0.id == exerciseID } }
+    var tasks: [LessonLearningTask] { sourceLesson.manifest.tasks.filter { $0.stepID == stepID } }
+    var isListeningQuestion: Bool { tasks.contains { $0.stimulusExerciseID != nil } }
+    var showsMusicalVisuals: Bool { !isListeningQuestion && sourceLesson.manifest.steps.first { $0.id == stepID }?.kind != StepVisualKind.none }
+    var exercise: Exercise? {
+        let id = tasks.first { $0.stimulusExerciseID != nil }?.stimulusExerciseID ?? exerciseID
+        return snapshot?.exercises.first { $0.id == id }
+    }
+    func taskContext(_ task: LessonLearningTask) -> LessonTaskContext {
+        LessonTaskContext(lessonVersion: sourceLesson.manifest.version,
+            instrument: task.usesInstrument ? InstrumentProfile(tuning: instrument.tuning, frets: instrument.frets) : nil,
+            position: task.usesInstrument ? choice : nil,
+            resolverVersion: task.usesInstrument ? ResolvedLessonActivity.resolverVersion : nil)
+    }
     var practiceEntries: [LessonPracticeEntry] { sourceLesson.manifest.practiceEntries.filter { $0.activityID == activityID } }
     var selfConfirmed: Bool {
         guard let snapshot, let saved = activityConfirmations[snapshot.activity.id] else { return false }

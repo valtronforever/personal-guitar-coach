@@ -10,10 +10,17 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None = None, starts: str = "auto") -> Path:
+def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None = None, starts: str = "auto", mode: str = "scored") -> Path:
     # Leave nine characters for the globally unique exercise suffix '-practice'.
     if not re.fullmatch(r"[a-z][a-z0-9-]{0,54}", lesson_id):
         raise ValueError("Use 1–55 lowercase ASCII letters, digits or hyphens, starting with a letter")
+    templates = {"scored": "lesson", "theory": "lesson-theory", "selfPractice": "lesson-selfPractice", "listening": "lesson-listening"}
+    if mode not in templates:
+        raise ValueError("Unknown lesson mode")
+    if mode in ("theory", "listening") and window is not None:
+        raise ValueError("Theory/listening templates do not expose position selection")
+    if mode == "listening" and policy != "transposeIntervals":
+        raise ValueError("Listening examples require transposeIntervals")
     position_policy = None
     if window is not None:
         if not 1 <= window <= 6:
@@ -70,10 +77,11 @@ def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None =
     catalog_temp = None
     try:
         for filename in ["lesson.yml", "en.yml", "uk.yml"]:
-            source = ROOT / "docs/templates/lesson" / filename
+            source = ROOT / "docs/templates" / templates[mode] / filename
             data = rename(loads(source.read_text(encoding="utf-8")))
             if source.name == "lesson.yml":
-                data["adaptation"]["policy"] = policy
+                if "adaptation" in data:
+                    data["adaptation"]["policy"] = policy
                 if position_policy:
                     data["materials"][0]["positioning"] = position_policy
                     data["activities"][0]["positionSelection"] = {"mode": "learner", "default": {"kind": "original"}}
@@ -101,12 +109,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("lesson_id", help="Stable ID, at most 55 characters")
     parser.add_argument("--catalog", type=Path, default=ROOT / "Resources/Lessons", help="Existing lesson catalog directory")
-    parser.add_argument("--policy", choices=["fretPattern", "transposeIntervals"], default="fretPattern")
+    parser.add_argument("--policy", choices=["fretPattern", "transposeIntervals"], default=None)
+    parser.add_argument("--mode", choices=["scored", "theory", "selfPractice", "listening"], default="scored")
     parser.add_argument("--positioning-window", type=int, help="Opt into positioning, width 1–6 frets")
     parser.add_argument("--starts", default="auto", help="Allowed starts: auto, 3,7 or 3:12:1")
     args = parser.parse_args()
     try:
-        result = create(args.lesson_id, args.catalog, args.policy, args.positioning_window, args.starts)
+        result = create(args.lesson_id, args.catalog, args.policy or ("fretPattern" if args.mode == "scored" else "transposeIntervals"), args.positioning_window, args.starts, args.mode)
     except (OSError, ValueError) as error:
         parser.exit(1, f"Cannot create lesson: {error}\n")
     print(f"Created draft: {result}\nEdit both languages and the musical exercise, then run ValidateLessonContent before building.")

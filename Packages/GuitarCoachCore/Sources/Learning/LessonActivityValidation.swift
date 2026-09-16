@@ -7,7 +7,7 @@ extension LessonCatalogLoader {
             guard condition else { throw ContentFailure(.invalidStep, message) }
         }
         let materials = manifest.materials, activities = manifest.activities, entries = manifest.practiceEntries
-        try require(!materials.isEmpty && materials.count <= 128 && !activities.isEmpty && activities.count <= 256 && !entries.isEmpty && entries.count <= 256, "Missing or excessive activity data")
+        try require(materials.count <= 128 && activities.count <= 256 && entries.count <= 256, "Missing or excessive activity data")
         try uniqueIDs(materials.map(\.id)); try uniqueIDs(activities.map(\.id)); try uniqueIDs(entries.map(\.id))
         let shapes = manifest.fingerings
         try require(shapes.count <= 128, "Too many source shapes"); try uniqueIDs(shapes.map(\.id))
@@ -40,6 +40,7 @@ extension LessonCatalogLoader {
             }
             let ids = material.exerciseIDs(in: manifest)
             let contexts = ids.compactMap { exercises[$0] }
+            try require(!contexts.isEmpty, "Material needs a source exercise")
             if material.policy.enabled && source.kind != .fingering {
                 try require(contexts.contains { exercise in
                     exercise.events.contains { material.eventIDs(in: exercise).contains($0.id) && !$0.positions.isEmpty }

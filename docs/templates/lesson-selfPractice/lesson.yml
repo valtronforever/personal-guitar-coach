@@ -1,0 +1,82 @@
+schemaVersion: 3
+id: lesson-template
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+  - id: play
+    kind: events
+    exerciseID: lesson-template-practice
+    eventIDs:
+      - chord
+      - rest
+    activityID: example
+exercises:
+  - id: lesson-template-practice
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: chord
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 5
+            fret: 5
+      - id: rest
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+materials:
+  - id: example
+    source:
+      kind: exercise
+      exerciseID: lesson-template-practice
+activities:
+  - id: example
+    materialID: example
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: clean-chord
+    stepID: play
+    kind: selfPractice
+    itemIDs:
+      - both-notes
+      - unused-strings
+      - release
+adaptation:
+  policy: transposeIntervals

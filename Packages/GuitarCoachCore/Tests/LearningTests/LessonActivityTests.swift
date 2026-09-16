@@ -36,7 +36,7 @@ struct LessonActivityTests {
         let practiceID = material.source.kind == .fingering ? "practice" : activity.id
         let practiceExerciseID = material.source.kind == .fingering ? source.manifest.practiceEntries.map(\.exerciseID)[0] : exerciseIDs.first { source.manifest.practiceEntries.map(\.exerciseID).contains($0) } ?? exerciseIDs[0]
         let extra = material.source.kind == .fingering
-        let manifest = LessonManifest(schemaVersion: 2, id: id, steps: steps, exercises: source.manifest.exercises,
+        let manifest = LessonManifest(schemaVersion: 3, id: id, steps: steps, exercises: source.manifest.exercises,
             adaptation: LessonAdaptationDefinition(policy: policy ?? adaptation.policy),
             materials: extra ? [material, practiceMaterial] : [material], activities: extra ? [activity, practiceActivity] : [activity],
             practiceEntries: [LessonPracticeEntry(id: "perform", activityID: practiceID, exerciseID: practiceExerciseID)], fingerings: shapes)
@@ -168,7 +168,7 @@ struct LessonActivityTests {
         let lesson = try fixture(starts: .explicit([3,7])), m = lesson.manifest
         let fixed = LessonActivity(id: "fixed-seven", materialID: "material", positionSelection: ActivityPositionSelection(mode: .fixed, value: .region(firstFret: 7)))
         let fixedStep = LessonStep(id: "fixed-step", kind: .events, exerciseID: "c-major-practice", eventIDs: ["up-1"], activityID: fixed.id)
-        let manifest = LessonManifest(schemaVersion: 2, id: m.id, steps: m.steps + [fixedStep], exercises: m.exercises, adaptation: m.adaptation,
+        let manifest = LessonManifest(schemaVersion: 3, id: m.id, steps: m.steps + [fixedStep], exercises: m.exercises, adaptation: m.adaptation,
             materials: m.materials, activities: m.activities + [fixed], practiceEntries: m.practiceEntries + [LessonPracticeEntry(id: "fixed-practice", activityID: fixed.id, exerciseID: "c-major-practice")], fingerings: m.fingerings)
         try LessonCatalogLoader().validate(manifest)
         func text(_ source: LessonText) -> LessonText {

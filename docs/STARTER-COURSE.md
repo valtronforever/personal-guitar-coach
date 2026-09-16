@@ -2,7 +2,7 @@
 
 **Current behavior (2026-09-12):** the user sees one six-lesson course that automatically adapts to the tuning in Settings/Tuner. See [automatic lesson tuning](AUTOMATIC-LESSON-TUNING.md) for transposition, Drop D/custom mapping, current templates and history compatibility. The static Standard/C Standard inventories and dated evidence below describe the retained source/legacy resources, not two separate live course choices.
 
-Thirteen bilingual lesson bundles use schema 2: six adaptive starter lessons, one guided position-exploration lesson, and six historical C Standard bundles retained for saved IDs. The library shows seven lessons; the historical bundles are hidden from new-course browsing. Each starter lesson includes a goal, prerequisites, short explanations, selectable steps, explicit Standard tuning (strings **6 → 1: E2 A2 D3 G3 B3 E4**, A4 = 440 Hz), one scored single-note exercise and a recommended starting tempo. The final Standard lesson additionally provides an Em chord example for display/listening only.
+Sixteen bilingual lesson bundles use schema 3: six adaptive starter lessons, one guided position-exploration lesson, six historical C Standard bundles retained for saved IDs, and three learning-mode examples. The library shows ten lessons; the historical bundles are hidden from new-course browsing. Each starter lesson includes a goal, prerequisites, short explanations, selectable steps, explicit Standard tuning (strings **6 → 1: E2 A2 D3 G3 B3 E4**, A4 = 440 Hz), one scored single-note exercise and a recommended starting tempo. The final Standard lesson additionally provides an Em chord example for display/listening only.
 
 | Lesson / resource ID | Focus | Practice | Start / available BPM | Next tempo suggested in text |
 | --- | --- | --- | --- | --- |
@@ -65,3 +65,6 @@ Independent MIDI goldens cover all twelve sequences, both sample rates, tuning m
 ## Guided positioning extension
 
 [Same notes, different positions](../Resources/Lessons/same-notes-new-position/lesson.yml) reuses one major-scale exercise for a single-note fragment, learner exploration, fixed Original and fixed near-seven performances. The complete scale uses width 6 and allowed starts 3/7; the note uses width 5 and starts 3–12. Each performance is a separate attempt with frozen activity conditions. Generic theory is independent of tuning; activity text, fretboard, tab/staff and practice use the selected snapshot. See [authoring](CONTENT-AUTHORING.md) for the sole current API. Real guitar comfort and native accessibility checks remain in USER-VALIDATION.
+
+
+The new authoring examples are **Before the first note** (`guitar-foundations`: checklist and a knowledge question), **Power chord: sound and silence** (`power-chord-self-practice`: display-only chord, metronome/preview and self-assessment), and **Hear pitch direction** (`hear-pitch-direction`: synthesized two-note listening question). These examples exercise the schema; they do not constitute the proposed full curriculum or add guitar-technique recognition. Self-reported criteria and quiz answers remain separate from audio assessment history.

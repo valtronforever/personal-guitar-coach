@@ -4,6 +4,7 @@ import Domain
 
 struct PreviewControls: View {
     @Bindable var model: PreviewModel
+    var listeningOnly = false
     @Environment(AudioSessionStore.self) private var audio
     @Environment(LocalDataStore.self) private var data
     @Environment(AppSettings.self) private var settings
@@ -17,8 +18,10 @@ struct PreviewControls: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Button(model.resumeTick == nil ? "playback.play" : "playback.resume") {
-                    Task { await model.start(tuning: data.preferences.instrument.tuning, audio: audio) }
+                Button(listeningOnly ? "lesson.task.listen" : (model.resumeTick == nil ? "playback.play" : "playback.resume")) {
+                    Task {
+                        await model.start(tuning: data.preferences.instrument.tuning, audio: audio, listeningOnly: listeningOnly)
+                    }
                 }.disabled(model.requestID != nil || model.isBusy || unavailable || audio.selectedOutput == nil || !audio.canEdit)
                     .accessibilityIdentifier("playback.play")
                 Button("playback.pause") { Task { await model.stop(audio: audio, pause: true) } }
@@ -27,8 +30,10 @@ struct PreviewControls: View {
                     .disabled(model.requestID == nil && model.resumeTick == nil).accessibilityIdentifier("playback.stop")
                 if let beat = model.countInBeat { Text("playback.countInBeat \(beat)").monospacedDigit() }
                 Spacer()
+                if !listeningOnly {
                 Button("playback.options", systemImage: "slider.horizontal.3") { showsOptions.toggle() }.labelStyle(.iconOnly).help(Text("playback.options")).accessibilityIdentifier("playback.options")
                     .popover(isPresented: $showsOptions, arrowEdge: .trailing) { options.environment(\.locale, settings.locale) }
+                }
                 Button("audio.title", systemImage: "waveform") { showsAudio = true }.labelStyle(.iconOnly).help(Text("audio.title"))
             }
             if unavailable { Text("playback.audioInUse").foregroundStyle(.secondary) }

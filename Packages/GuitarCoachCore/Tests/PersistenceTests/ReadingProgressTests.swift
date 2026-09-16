@@ -1,6 +1,7 @@
 import Foundation
 import Testing
 import Persistence
+import Domain
 
 struct ReadingProgressTests {
     @Test func readingRoundTripSurvivesClearingPracticeHistory() async throws {
@@ -27,6 +28,25 @@ struct ReadingProgressTests {
         await #expect(throws: (any Error).self) { try await repo.loadReadingProgress() }
         await #expect(throws: (any Error).self) { try await repo.saveReadingProgress(ReadingProgress()) }
         #expect(try Data(contentsOf: url) == bytes)
+    }
+
+    @Test func schemaOneReadingMigratesOnlyOnSaveAndKeepsTaskResponses() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        let url = root.appendingPathComponent("reading-progress.json")
+        let bytes = Data(#"{"schemaVersion":1,"payload":{"lastLessonID":"lesson","lessons":{"lesson":{"lessonVersion":1,"stepID":"first","readVersion":1}}}}"#.utf8)
+        try bytes.write(to: url)
+        let repo = LocalRepository(root: root)
+        var value = try await repo.loadReadingProgress()
+        #expect(value.lessons["lesson"]?.learningTasks.isEmpty == true)
+        #expect(try Data(contentsOf: url) == bytes)
+        value.lessons["lesson"]?.learningTasks["check"] = LessonTaskProgress(context: LessonTaskContext(lessonVersion: 1), answerID: "correct")
+        try await repo.saveReadingProgress(value)
+        #expect(try await LocalRepository(root: root).loadReadingProgress() == value)
+        let json = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any]
+        #expect(json?["schemaVersion"] as? Int == 2)
+        #expect(value.lessons["lesson"]?.readVersion == 1)
     }
 
     @Test func invalidBookmarksCannotBeCommitted() async throws {

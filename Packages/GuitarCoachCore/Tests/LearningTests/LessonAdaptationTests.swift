@@ -9,7 +9,7 @@ struct LessonAdaptationTests {
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
-        let lessons = report.lessons.filter { $0.manifest.adaptation != nil && $0.id != "same-notes-new-position" }
+        let lessons = report.lessons.filter { $0.manifest.adaptation != nil && $0.id != "same-notes-new-position" && !$0.manifest.practiceEntries.isEmpty }
         #expect(lessons.count == 6)
         return lessons
     }

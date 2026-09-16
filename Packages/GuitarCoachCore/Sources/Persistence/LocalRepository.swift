@@ -143,7 +143,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         do {
             let data = try Data(contentsOf: readingURL)
             let version = try JSONDecoder().decode(VersionHeader.self, from: data).schemaVersion
-            guard version == 1 else { throw StorageError.unsupportedVersion(version) }
+            guard version == 1 || version == 2 else { throw StorageError.unsupportedVersion(version) }
             let value = try JSONDecoder().decode(DocumentEnvelope<ReadingProgress>.self, from: data).payload
             try value.validate()
             return value
@@ -156,7 +156,7 @@ public actor LocalRepository: PracticeRepository, InstrumentRepository, ReadingR
         try value.validate()
         _ = try loadReadingProgress() // Preserve corrupt/future documents instead of replacing them.
         try prepare()
-        try writer.write(encode(DocumentEnvelope(schemaVersion: 1, payload: value)), readingURL)
+        try writer.write(encode(DocumentEnvelope(schemaVersion: 2, payload: value)), readingURL)
     }
 
     public func loadPreferences() -> PreferencesLoad {

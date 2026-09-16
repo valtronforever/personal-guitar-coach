@@ -1,0 +1,32 @@
+schemaVersion: 3
+id: guitar-foundations
+version: 1
+difficulty: beginner
+topic: basics
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: check-understanding
+    kind: none
+    eventIDs: []
+exercises: []
+materials: []
+activities: []
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: setup
+    stepID: prepare
+    kind: checklist
+    itemIDs:
+      - supported
+      - relaxed
+      - quiet
+  - id: string-order
+    stepID: check-understanding
+    kind: quiz
+    itemIDs:
+      - thin
+      - thick
+    correctOptionID: thin

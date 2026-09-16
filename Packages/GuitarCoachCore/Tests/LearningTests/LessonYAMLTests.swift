@@ -55,10 +55,10 @@ struct LessonYAMLTests {
         let fixture = try Fixture(); defer { fixture.remove() }
         let path = "lesson-template/lesson.yml"
         switch kind {
-        case "syntax": try fixture.write(path, "schemaVersion: 2\nsteps: [unterminated\n")
-        case "duplicate": try fixture.write(path, "schemaVersion: 2\nschemaVersion: 99\n")
-        case "nested-duplicate": try fixture.write(path, "schemaVersion: 2\nsource:\n  kind: lesson\n  kind: exercise\n")
-        case "multiple-documents": try fixture.write(path, "schemaVersion: 2\n---\nschemaVersion: 2\n")
+        case "syntax": try fixture.write(path, "schemaVersion: 3\nsteps: [unterminated\n")
+        case "duplicate": try fixture.write(path, "schemaVersion: 3\nschemaVersion: 99\n")
+        case "nested-duplicate": try fixture.write(path, "schemaVersion: 3\nsource:\n  kind: lesson\n  kind: exercise\n")
+        case "multiple-documents": try fixture.write(path, "schemaVersion: 3\n---\nschemaVersion: 3\n")
         case "wrong-type": try fixture.write(path, "schemaVersion: [2]\n")
         default: try Data([0xFF, 0xFE, 0xFF]).write(to: fixture.root.appendingPathComponent(path))
         }

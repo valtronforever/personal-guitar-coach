@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 public enum LessonDifficulty: String, Codable, CaseIterable, Sendable { case beginner, intermediate, advanced }
-public enum LessonTopic: String, Codable, CaseIterable, Sendable { case basics, chromatic, rhythm, majorScale, pentatonic, arpeggios }
+public enum LessonTopic: String, Codable, CaseIterable, Sendable { case basics, chromatic, rhythm, majorScale, pentatonic, arpeggios, theory, technique, chords, earTraining, tone }
 public enum LessonLanguage: String, CaseIterable, Sendable { case en, uk }
 public enum StepVisualKind: String, Codable, Sendable { case none, events, fingering }
 
@@ -32,12 +32,14 @@ public struct LessonManifest: Codable, Sendable, Equatable, Identifiable {
     public let activities: [LessonActivity]
     public let practiceEntries: [LessonPracticeEntry]
     public let fingerings: [LessonSourceFingering]
-    public init(schemaVersion: Int = 2, id: String, version: Int = 1, difficulty: LessonDifficulty = .beginner,
+    public let learningTasks: [LessonLearningTask]?
+    public var tasks: [LessonLearningTask] { learningTasks ?? [] }
+    public init(schemaVersion: Int = 3, id: String, version: Int = 1, difficulty: LessonDifficulty = .beginner,
                 topic: LessonTopic = .basics, steps: [LessonStep], exercises: [Exercise], adaptation: LessonAdaptationDefinition? = nil,
-                materials: [LessonMaterial], activities: [LessonActivity], practiceEntries: [LessonPracticeEntry], fingerings: [LessonSourceFingering] = []) {
+                materials: [LessonMaterial], activities: [LessonActivity], practiceEntries: [LessonPracticeEntry], fingerings: [LessonSourceFingering] = [], learningTasks: [LessonLearningTask]? = nil) {
         self.schemaVersion = schemaVersion; self.id = id; self.version = version; self.difficulty = difficulty; self.topic = topic
         self.steps = steps; self.exercises = exercises; self.adaptation = adaptation
-        self.materials = materials; self.activities = activities; self.practiceEntries = practiceEntries; self.fingerings = fingerings
+        self.materials = materials; self.activities = activities; self.practiceEntries = practiceEntries; self.fingerings = fingerings; self.learningTasks = learningTasks
     }
 }
 
@@ -66,11 +68,13 @@ public struct LessonText: Codable, Sendable, Equatable {
     /// Optional original heading retained for historical result presentation after an editorial rename.
     public let historicalTitle: String?
     public let activities: [String: LessonActivityText]
+    public let learningTasks: [String: LessonLearningTaskText]?
+    public var taskTexts: [String: LessonLearningTaskText] { learningTasks ?? [:] }
     public init(lessonID: String, lessonVersion: Int = 1, locale: String, title: String, summary: String, goal: String,
-                body: String, steps: [String: LessonStepText], historicalTitle: String? = nil, activities: [String: LessonActivityText]) {
+                body: String, steps: [String: LessonStepText], historicalTitle: String? = nil, activities: [String: LessonActivityText], learningTasks: [String: LessonLearningTaskText]? = nil) {
         self.lessonID = lessonID; self.lessonVersion = lessonVersion; self.locale = locale; self.title = title
         self.summary = summary; self.goal = goal; self.body = body; self.steps = steps
-        self.historicalTitle = historicalTitle; self.activities = activities
+        self.historicalTitle = historicalTitle; self.activities = activities; self.learningTasks = learningTasks
     }
 }
 

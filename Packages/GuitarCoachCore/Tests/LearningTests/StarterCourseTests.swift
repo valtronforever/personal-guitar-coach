@@ -9,7 +9,7 @@ struct StarterCourseTests {
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
-        return report.lessons.filter { $0.id != "same-notes-new-position" }
+        return report.lessons.filter { $0.id != "same-notes-new-position" && !$0.manifest.practiceEntries.isEmpty }
     }
     private let expected: [(String, [Int], Int64, Int)] = [
         ("open-strings-intro", [40, 64], 3840, 60),

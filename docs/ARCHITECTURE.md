@@ -227,7 +227,7 @@ StaffModel/StaffDrawing — presentation поверх тієї самої Timeli
 
 ## Automatic lesson tuning (2026-09-12)
 
-[The adaptation contract](AUTOMATIC-LESSON-TUNING.md) supersedes the separate C Standard course selection. Learning owns pure position/interval adaptation and localized template rendering; the UI consumes one resolved fixed-tuning snapshot. All source resources now use schema 2; saved practice evidence remains readable independently. Catalog aliases avoid duplicate live lessons without rewriting stored history. AppNavigation refreshes only fresh adaptive practice; archived retries remain fixed.
+[The adaptation contract](AUTOMATIC-LESSON-TUNING.md) supersedes the separate C Standard course selection. Learning owns pure position/interval adaptation and localized template rendering; the UI consumes one resolved fixed-tuning snapshot. All source resources now use schema 3; saved practice evidence remains readable independently. Catalog aliases avoid duplicate live lessons without rewriting stored history. AppNavigation refreshes only fresh adaptive practice; archived retries remain fixed.
 
 ### Configurable fret count (2026-09-12)
 
@@ -247,7 +247,7 @@ Domain defines `PositionChoice`, `FretRegion` and validated `PositioningPolicy` 
 
 Practice entries freeze resolved exercises, source IDs/tick offset, activity/material/entry IDs, policy, choice, resolver version and localized titles in `PracticeActivityReference`. Domain validates metadata before audio. Partial-bar fragments retain canonical event IDs and normalize their first tick. Self-reported fingering use never affects scoring and is removed from archived retries. Comparison includes activity conditions; retries use saved evidence without current lesson files. Legacy `LessonPosition` exists only to decode historical practice evidence, not as a lesson API.
 
-The sole lesson API uses schema-2 manifests and one en/uk text edition. No schema-1 lesson decoder or `adapted(to:)` facade remains. See [authoring contract](CONTENT-AUTHORING.md), [design](design/lesson-positioning/README.md) and [delivery/verification](../tasks/follow-up/lesson-design-system.md).
+The sole lesson API uses schema-3 manifests and one en/uk text edition. No schema-1 lesson decoder or `adapted(to:)` facade remains. See [authoring contract](CONTENT-AUTHORING.md), [design](design/lesson-positioning/README.md) and [delivery/verification](../tasks/follow-up/lesson-design-system.md).
 
 ### YAML lesson resources
 
@@ -256,3 +256,10 @@ Learning decodes UTF-8 `.yml` files directly with pinned Yams 6.2.2 (MIT, bundle
 ## Optional audio-file AI coaching
 
 [Audio-file AI coach](AUDIO-AGENT-COACH.md) adds an explicit one-take recording action. PCMReader collects bounded opt-in mono PCM; file creation, stereo metronome reference rendering and offline analysis run outside capture. The app's separate AgentCoach store retains versioned audio/context/advice without mutating the assessment repository. A packaged, application-private XPC service invokes installed Codex/Claude CLI using CLI-owned auth. The main app remains sandboxed; this helper deliberately runs outside that sandbox to support local CLI authentication. No localhost server or general shell RPC is introduced.
+
+
+## Study tasks (lesson schema 3)
+
+Learning owns `LessonLearningTask` (checklist, selfPractice, quiz), strict manifest/text validation and completion rules. These tasks attach to steps; musical activities/positioning and monophonic practice entries retain their responsibilities. Theory-only lessons have empty musical arrays. Listening tasks resolve interval-preserving, display-only audio through the existing transport; the reader hides the example diagrams and activity copy. Playback uses a per-request silent-metronome/no-count-in/no-loop override without changing normal preview preferences.
+
+Domain `LessonTaskProgress` stores checkmarks or a selected answer with a content/instrument/position context, never an audio score. Reading envelope 2 adds task responses to bookmarks; envelope 1 loads with empty task responses and migrates only on the next save. Navigation and read toggles preserve task responses. Different lesson versions or instrument conditions do not count as current completion; theory responses are instrument-independent. Existing practice/result envelopes are unchanged.

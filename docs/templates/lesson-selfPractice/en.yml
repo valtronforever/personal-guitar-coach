@@ -1,0 +1,31 @@
+lessonID: lesson-template
+lessonVersion: 1
+locale: en
+title: 'Power chord: sound and silence'
+summary: Listen to a two-note power chord and assess your own sound.
+goal: Play two intended notes together, then stop their sound deliberately.
+body: >-
+  A power chord combines a root and a perfect fifth. It does not contain a major or minor third. Begin with a clean
+  sound so unintended ringing is easy to hear. The example follows your tuning; drop tunings can require a different
+  fingering.
+steps:
+  play:
+    title: Play, listen, then stop
+    body: >-
+      Use the highlighted positions. Pick only the two intended strings together, let them ring for two beats, then
+      stop the sound for two beats. Repeat slowly. Use playback as a pitch and timing reference; its synthesized
+      sound does not demonstrate picking or muting technique.
+activities:
+  example:
+    title: Your power-chord example
+    body: >-
+      Expected notes and positions: {{positions}}. Use the preview options to loop, change tempo or silence the
+      example tone while keeping the metronome.
+learningTasks:
+  clean-chord:
+    title: Assess your attempt
+    body: Listen to your own playing before checking these criteria.
+    items:
+      both-notes: I can hear both intended notes clearly.
+      unused-strings: The unused strings do not ring unintentionally.
+      release: I can stop the sound during the rest.

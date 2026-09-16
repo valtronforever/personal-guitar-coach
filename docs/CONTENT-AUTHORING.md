@@ -1,12 +1,12 @@
 # Authoring bilingual lessons
 
-Lessons are UTF-8 YAML (`.yml`). Manifests use **schema 2 only**. Each lesson has `lesson.yml`, `en.yml` and `uk.yml`; there are no baseline/adaptive text editions. The ordering file `catalog.yml` has its own schema 1. Loading content is read-only, offline and does not request audio permission.
+Lessons are UTF-8 YAML (`.yml`). Manifests use **schema 3 only**. Each lesson has `lesson.yml`, `en.yml` and `uk.yml`; there are no baseline/adaptive text editions. The ordering file `catalog.yml` has its own schema 1. Loading content is read-only, offline and does not request audio permission.
 
 ## YAML conventions
 
 Use two spaces for indentation and no tabs. Each file contains one document; comments (`# ...`) are welcome. Use `|-` for literal paragraphs and `>-` to fold wrapped lines into one paragraph without a trailing newline. Quote text containing `: ` or ` #`, strings such as `yes`/`null`, and values beginning with `{{...}}`. Musical numbers remain numbers; booleans use `true`/`false`. Duplicate mapping keys are rejected. Prefer explicit values over YAML anchors, merge keys or custom tags.
 
-The app reads `.yml` directly with Yams; no JSON lesson fallback or generated JSON copy is needed. Lesson schema 2, catalog schema 1 and content/exercise versions are unchanged by this serialization-only migration. Saved settings, practice evidence and machine-readable availability reports remain JSON.
+The app reads `.yml` directly with Yams; no JSON lesson fallback or generated JSON copy is needed. The lesson contract is schema 3; catalog schema remains 1. Existing lessons moved to schema 3 without changing their content/exercise versions or musical events. Saved settings, practice evidence and machine-readable availability reports remain JSON.
 
 ## Create and validate a draft
 
@@ -21,6 +21,9 @@ python3 -m pip install -r Scripts/requirements.txt
 
 ```sh
 python3 Scripts/new_lesson.py my-lesson
+python3 Scripts/new_lesson.py setup-check --mode theory
+python3 Scripts/new_lesson.py chord-study --mode selfPractice
+python3 Scripts/new_lesson.py listening-study --mode listening
 python3 Scripts/new_lesson.py scale-study --policy transposeIntervals --positioning-window 6 --starts 3,7
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons --positions same-notes-new-position > /tmp/positions.json
@@ -39,9 +42,10 @@ The [minimal template](templates/lesson/lesson.yml) and [complete demonstration]
 | `materials` | Select reusable musical content and optionally permit positioning |
 | `activities` | Instantiate a material with a learner choice or a fixed choice |
 | `steps` | Ordered instruction and visual subset, attached to an activity |
-| `practiceEntries` | Stable entry ID, activity ID and source exercise ID |
+| `practiceEntries` | Automatically assessed monophonic practice: stable entry ID, activity ID and source exercise ID |
+| `learningTasks` | Optional step-bound checklist, self-practice criteria or multiple-choice question |
 
-A lesson requires positive `version`, difficulty (`beginner`, `intermediate`, `advanced`), topic (`basics`, `chromatic`, `rhythm`, `majorScale`, `pentatonic`, `arpeggios`), nonempty steps/exercises/materials/activities/practiceEntries and a `fingerings` array (possibly empty). Bounds: 512 steps, 64 exercises, 4096 events per exercise, 128 materials/shapes and 256 activities/practice entries.
+A lesson requires positive `version`, difficulty (`beginner`, `intermediate`, `advanced`), topic (`basics`, `chromatic`, `rhythm`, `majorScale`, `pentatonic`, `arpeggios`, `theory`, `technique`, `chords`, `earTraining`, `tone`), nonempty steps and explicit exercises/materials/activities/practiceEntries/fingerings arrays (each may be empty). Bounds: 512 steps, 64 exercises, 4096 events per exercise, 128 materials/shapes and 256 activities/practice entries/tasks. A purely textual lesson needs no exercise, material or audio access.
 
 IDs contain 1–64 lowercase ASCII letters, digits or hyphens, starting with a letter. Lesson and exercise IDs are unique across the catalog; the other IDs are local to their owner. Folder and lesson ID must agree. Invalid lessons produce author diagnostics while healthy lessons remain available.
 
@@ -63,6 +67,49 @@ Material `source` is one tagged object. Choose one of these alternatives:
 ```
 
 A single event selects one note. An event fragment must be contiguous in source order, including internal rests. Its derived exercise starts at tick 0 while preserving IDs, durations, rests and the source tick offset. A material cannot combine incompatible source tuning contexts. A whole-lesson material includes linked shapes and arpeggios so they retain consistent positions. A chord shape moves as a complete voicing on distinct strings; it remains display/preview only. Use a separate monophonic arpeggio for assessment.
+
+## Learning tasks and completion
+
+`learningTasks` is optional (omitted means no tasks). A lesson may combine all modes. An entirely theoretical lesson can also contain only text and the existing “mark read” action.
+
+| Kind | Required fields | Meaning |
+| --- | --- | --- |
+| `checklist` | `id`, `stepID`, ordered `itemIDs` (1–32) | Personal confirmation of preparation or understanding |
+| `selfPractice` | Same fields as checklist | Self-reported technique criteria; optional musical step for fretboard/TAB/preview/metronome |
+| `quiz` | Same fields, 2–8 options, `correctOptionID` | One selected answer, explicit correct/incorrect feedback, explanation and retry |
+| Existing `practiceEntries` | Activity and monophonic exercise reference | Performed audio assessment, still subject to signal/timing/capability gates |
+
+Example manifest task:
+
+```yaml
+learningTasks:
+  - id: clean-chord
+    stepID: play
+    kind: selfPractice
+    itemIDs: [both-notes, unused-strings]
+```
+
+Both `en.yml` and `uk.yml` require exactly matching task/item IDs:
+
+```yaml
+learningTasks:
+  clean-chord:
+    title: Assess your sound
+    body: Listen before marking these criteria.
+    items:
+      both-notes: I can hear both intended notes.
+      unused-strings: The other strings remain quiet.
+```
+
+Questions additionally require a nonblank localized `explanation`. A question checks immediately when an answer is selected, then locks the options until retry. Checklist/self-practice tasks forbid `correctOptionID`, `stimulusExerciseID` and explanation text. Task prose is instrument-independent and cannot contain musical template tokens; use the associated activity copy for computed notes/positions.
+
+For an ear-training question, set `stimulusExerciseID` to a sounding exercise in the step's activity. Use a dedicated `kind: exercise` material, `adaptation.policy: transposeIntervals`, no positioning, a text-only step (`kind: none`), and no practice entry for that activity. The listening step contains exactly one task and is the only step in its activity. The reader hides its activity copy, fretboard and TAB, while **Listen to example** plays the resolved notes through the selected output. No microphone permission is needed. The example uses its full range/default tempo, no count-in, no click and no loop; it stops on navigation or instrument changes. Use generic titles, instructions and answer labels: do not print the correct note/interval in the question or elsewhere in the visible lesson. The validator checks structural/template leaks, not the semantics of natural-language clues.
+
+These are fixed author-written questions, not a randomized question bank. `correctOptionID` is an author assertion: validate it against the example in all supported tunings. Interval-preserving transposition supports questions about direction/interval; absolute note-name questions need instrument-specific answer generation, which is not implemented. The examples use synthesized reference tones; they do not demonstrate pick attack, distortion, muting or other guitar techniques.
+
+The reader exposes tasks for the selected step. Checklist completion means all criteria were checked, explicitly labelled as self-report. Quiz completion means the current answer matches the author's answer. Neither creates a practice score/history entry or marks the whole lesson as read. Read status remains independent. Checkmarks/answers persist across navigation, language changes and restarts. Increment the lesson version when changing task meaning, criteria or correct answers. Old-version responses cannot satisfy new-version tasks. Self-practice/listening responses are also scoped to tuning, fret count, chosen position and resolver version; theory progress does not depend on instrument settings.
+
+The scaffold modes use checked-in templates: [theory](templates/lesson-theory/lesson.yml), [self-practice](templates/lesson-selfPractice/lesson.yml), [listening](templates/lesson-listening/lesson.yml), and default [scored practice](templates/lesson/lesson.yml). The listening mode enforces interval adaptation and disallows positioning. All drafts still require editorial review; the scaffold does not generate new pedagogical content.
 
 ## Tuning adaptation and positioning
 

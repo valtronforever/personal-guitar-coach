@@ -37,7 +37,7 @@ final class PreviewModel {
         errorKey = nil
         await stop(audio: audio)
     }
-    func start(tuning: TuningProfile, audio: AudioSessionStore) async {
+    func start(tuning: TuningProfile, audio: AudioSessionStore, listeningOnly: Bool = false) async {
         guard !isBusy, let exercise else { return }
         generation += 1; let ticket = generation
         isBusy = true; errorKey = nil
@@ -45,9 +45,9 @@ final class PreviewModel {
         if let requestID { await audio.stopTransport(id: requestID) }
         guard generation == ticket else { return }
         do {
-            let next = try TransportRequest(exercise: exercise, tuning: tuning, bpm: bpm, range: range,
-                startTick: resumeTick.flatMap { range.contains($0) ? $0 : nil }, countInBars: countInBars, loops: loops,
-                clickEnabled: clickEnabled, accent: accent, clickVolume: clickVolume, toneVolume: toneVolume)
+            let next = try TransportRequest(exercise: exercise, tuning: tuning, bpm: listeningOnly ? exercise.defaultBPM : bpm, range: listeningOnly ? 0..<exercise.durationTicks : range,
+                startTick: listeningOnly ? nil : resumeTick.flatMap { range.contains($0) ? $0 : nil }, countInBars: listeningOnly ? 0 : countInBars, loops: listeningOnly ? false : loops,
+                clickEnabled: listeningOnly ? false : clickEnabled, accent: accent, clickVolume: clickVolume, toneVolume: listeningOnly ? 0.5 : toneVolume)
             requestID = next.id; cursorTick = nil; countInBeat = nil
             await audio.startTransport(next)
             if generation == ticket { isBusy = false; update(audio.state) }
