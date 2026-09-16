@@ -113,10 +113,10 @@ The scaffold modes use checked-in templates: [theory](templates/lesson-theory/le
 
 ## Tuning adaptation and positioning
 
-Optional `adaptation` contains only `policy`:
+Optional `adaptation` contains `policy` and an optional `anchorString` (default 1):
 
 - `fretPattern`: retain the physical pattern under the selected tuning, appropriate for open strings and technique drills.
-- `transposeIntervals`: transpose by the difference between selected and reference string 1, then find positions preserving those intervals. E/D/C/B Standard retain the pattern. Drop adjusts the low string while keeping the intended music.
+- `transposeIntervals`: transpose by the difference between the selected and reference anchor string, then find positions preserving those intervals. With the default string 1, E/D/C/B Standard retain the pattern. Drop adjusts the low string while keeping the intended music.
 
 Without adaptation, a fixed-tuning source stays fixed; a follows-instrument source uses the selected tuning. Every resolved exercise freezes the actual tuning. Lesson positioning happens after choosing sounding pitches and **never changes the key or octave**.
 
@@ -255,3 +255,15 @@ For a lesson with several chords, use separate named materials/activities with t
 A multi-string note may declare `strum: { direction: down, spreadTicks: 120 }` (or `up`). Down sounds lower strings before higher strings; up reverses the order, independently of the order of `positions`. `spreadTicks` is the time between the first and last string in the exercise PPQ; default 120, range 1…960, strictly shorter than the event. Omitted strings do not sound. Specify a smaller set of positions for a partial upstroke. A rest cannot carry a strum; use a real rest for an omitted stroke.
 
 TAB displays ↓/↑ as picking-hand directions; these are not instructions to move vertically through the TAB drawing. Preview staggers synthetic voices within one canonical event. Chord events remain `displayOnly`; this metadata does not introduce polyphonic scoring or prove the player's physical stroke direction. For author-guided practice, pair the timed reference with a specific `selfPractice` task. Omitted `strum` keeps prior playback and encoding unchanged.
+
+### Open-bass transposition anchor
+
+For a riff whose tonic must remain the instrument's open lowest string, use:
+
+```yaml
+adaptation:
+  policy: transposeIntervals
+  anchorString: 6
+```
+
+All voices and material `tonalRoot` use this same offset. An E-rooted source becomes D-rooted in Drop D, with its root/fifth/octave shape changing from 6/0–5/2–4/2 to 6/0–5/0–4/0. This deliberately changes the key when the bass is dropped. Omit the field for established-key lessons, whose default string-1 behavior remains unchanged. Valid anchors are 1–6; `fretPattern` may only retain the default anchor because it does not transpose intervals. Increment the lesson version when changing an existing lesson's anchor. Relocation remains an independent pitch-preserving operation and cannot promise an open bass in a higher fret region.

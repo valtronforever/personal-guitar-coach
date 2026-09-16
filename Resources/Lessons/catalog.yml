@@ -43,6 +43,7 @@ lessons:
   - chord-string-selection
   - small-barre
   - first-song-form
+  - drop-tuning-riffs
 modules:
   - id: getting-started
     order: 1

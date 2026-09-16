@@ -38,3 +38,5 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - First accompaniment continuation: topics 27, 29, 31 and 32 authored; topic 30 arpeggio guidance expanded. All modules 1–4 now authored (32 topics), 43 total bundles/37 visible. Independent musical checks and editorial findings: [local review](../../docs/reviews/first-accompaniment-review.md). 43-bundle signed Release/XPC, 80 Learning tests and both parallel/explicit-serial 136-App-test runs pass. PR/CI and hardware acceptance remain open; modules 5–16 still require implementation.
 
 - The strum and first-accompaniment changes are consolidated in PR #69. Explicit serial Core/App runs avoid unrelated fixture starvation without changing any deadlines or assertions; final CI is pending.
+
+- Rock-rhythm foundation: optional author-selected open-string transposition anchor; topic 39 Drop riff authored and topic 33 power-chord lesson expanded with moved/octave forms, quiz and separated-note practice. 44 bundles/38 visible; 34 authored topics. [Review](../../docs/reviews/open-bass-anchor-review.md) records independent tuning/fret checks; release/CI and physical acceptance remain open.

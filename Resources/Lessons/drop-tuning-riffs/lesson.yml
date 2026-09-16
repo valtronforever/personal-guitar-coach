@@ -1,0 +1,692 @@
+schemaVersion: 3
+id: drop-tuning-riffs
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: open-shape
+  kind: fingering
+  exerciseID: drop-tuning-riffs-power-notes
+  eventIDs: []
+  activityID: open-shape
+  fingeringID: open-shape
+- id: moved-shape
+  kind: fingering
+  exerciseID: drop-tuning-riffs-power-notes
+  eventIDs: []
+  activityID: moved-shape
+  fingeringID: moved-shape
+- id: power-notes
+  kind: events
+  exerciseID: drop-tuning-riffs-power-notes
+  activityID: power-notes
+  eventIDs:
+  - n-0
+  - n-1
+  - n-2
+  - n-3
+  - n-4
+  - n-5
+  - n-6
+  - rest
+- id: bass-riff
+  kind: events
+  exerciseID: drop-tuning-riffs-bass-riff
+  activityID: bass-riff
+  eventIDs:
+  - bar-1-n-1
+  - bar-1-n-2
+  - bar-1-n-3
+  - bar-1-n-4
+  - bar-1-n-5
+  - bar-2-n-1
+  - bar-2-n-2
+  - bar-2-n-3
+  - bar-2-n-4
+  - bar-2-n-5
+  - bar-3-n-1
+  - bar-3-n-2
+  - bar-3-n-3
+  - bar-3-n-4
+  - bar-3-n-5
+  - bar-4-n-1
+  - bar-4-n-2
+  - bar-4-n-3
+  - bar-4-n-4
+  - bar-4-n-5
+- id: full-riff
+  kind: events
+  exerciseID: drop-tuning-riffs-full-riff
+  activityID: full-riff
+  eventIDs:
+  - bar-1-n-1
+  - bar-1-n-2
+  - bar-1-n-3
+  - bar-1-n-4
+  - bar-1-n-5
+  - bar-2-n-1
+  - bar-2-n-2
+  - bar-2-n-3
+  - bar-2-n-4
+  - bar-2-n-5
+  - bar-3-n-1
+  - bar-3-n-2
+  - bar-3-n-3
+  - bar-3-n-4
+  - bar-3-n-5
+  - bar-4-n-1
+  - bar-4-n-2
+  - bar-4-n-3
+  - bar-4-n-4
+  - bar-4-n-5
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: drop-tuning-riffs-power-notes
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: n-0
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: n-1
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 2
+  - id: n-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 2
+  - id: n-3
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+  - id: n-4
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+  - id: n-5
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 4
+      fret: 5
+  - id: n-6
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+  - id: rest
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: drop-tuning-riffs-bass-riff
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: bar-1-n-1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-1-n-2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-1-n-3
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    accented: false
+  - id: bar-1-n-4
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    accented: false
+  - id: bar-1-n-5
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-2-n-1
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-2-n-2
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-2-n-3
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    accented: false
+  - id: bar-2-n-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    accented: false
+  - id: bar-2-n-5
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-3-n-1
+    startTick: 7680
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-3-n-2
+    startTick: 8160
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-3-n-3
+    startTick: 8640
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    accented: false
+  - id: bar-3-n-4
+    startTick: 9600
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    accented: false
+  - id: bar-3-n-5
+    startTick: 10560
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-4-n-1
+    startTick: 11520
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-4-n-2
+    startTick: 12000
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-4-n-3
+    startTick: 12480
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    accented: false
+  - id: bar-4-n-4
+    startTick: 13440
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    accented: false
+  - id: bar-4-n-5
+    startTick: 14400
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+- id: drop-tuning-riffs-full-riff
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: displayOnly
+  events:
+  - id: bar-1-n-1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-1-n-2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-1-n-3
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    - string: 4
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-1-n-4
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    - string: 4
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-1-n-5
+    startTick: 2880
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-2-n-1
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-2-n-2
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-2-n-3
+    startTick: 4800
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    - string: 4
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-2-n-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    - string: 4
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-2-n-5
+    startTick: 6720
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-3-n-1
+    startTick: 7680
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-3-n-2
+    startTick: 8160
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-3-n-3
+    startTick: 8640
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    - string: 4
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-3-n-4
+    startTick: 9600
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    - string: 4
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-3-n-5
+    startTick: 10560
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-4-n-1
+    startTick: 11520
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: true
+  - id: bar-4-n-2
+    startTick: 12000
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+  - id: bar-4-n-3
+    startTick: 12480
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    - string: 4
+      fret: 5
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-4-n-4
+    startTick: 13440
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    - string: 5
+      fret: 7
+    - string: 4
+      fret: 7
+    strum:
+      direction: down
+      spreadTicks: 120
+    accented: false
+  - id: bar-4-n-5
+    startTick: 14400
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 6
+      fret: 0
+    accented: false
+adaptation:
+  policy: transposeIntervals
+  anchorString: 6
+materials:
+- id: open-shape
+  source:
+    kind: fingering
+    fingeringID: open-shape
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 40
+- id: moved-shape
+  source:
+    kind: fingering
+    fingeringID: moved-shape
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 43
+- id: power-notes
+  source:
+    kind: exercise
+    exerciseID: drop-tuning-riffs-power-notes
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 40
+- id: bass-riff
+  source:
+    kind: exercise
+    exerciseID: drop-tuning-riffs-bass-riff
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 40
+- id: full-riff
+  source:
+    kind: exercise
+    exerciseID: drop-tuning-riffs-full-riff
+  positioning:
+    enabled: false
+  tonalRoot:
+    midi: 40
+activities:
+- id: open-shape
+  materialID: open-shape
+- id: moved-shape
+  materialID: moved-shape
+- id: power-notes
+  materialID: power-notes
+- id: bass-riff
+  materialID: bass-riff
+- id: full-riff
+  materialID: full-riff
+fingerings:
+- id: open-shape
+  exerciseID: drop-tuning-riffs-power-notes
+  fingering:
+    positions:
+    - string: 6
+      fret: 0
+    - string: 5
+      fret: 2
+    - string: 4
+      fret: 2
+    mutedStrings:
+    - 1
+    - 2
+    - 3
+    fingerNumbers:
+      '5': 3
+      '4': 4
+- id: moved-shape
+  exerciseID: drop-tuning-riffs-power-notes
+  fingering:
+    positions:
+    - string: 6
+      fret: 3
+    - string: 5
+      fret: 5
+    - string: 4
+      fret: 5
+    mutedStrings:
+    - 1
+    - 2
+    - 3
+    fingerNumbers:
+      '6': 1
+      '5': 3
+      '4': 4
+practiceEntries:
+- id: power-notes
+  activityID: power-notes
+  exerciseID: drop-tuning-riffs-power-notes
+- id: bass-riff
+  activityID: bass-riff
+  exerciseID: drop-tuning-riffs-bass-riff
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - tuning
+  - shape
+  - pulse
+  - quiet
+curriculum:
+  moduleID: rock-rhythm
+  ordinal: 39
+  durationMinutes: 25
+  prerequisites:
+  - standard-and-drop
+  - power-chord-self-practice
+  - down-up-strumming
+  keywords:
+  - Riffs in Drop tuning
+  - Рифи в Drop-строї
