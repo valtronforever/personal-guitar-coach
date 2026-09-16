@@ -67,3 +67,9 @@ Personal synchronization follow-up (2026-09-14): U03/U09/U10 must verify real si
 - Verify en/uk layout, keyboard/VoiceOver, progress/cancel/error/retry/delete, imported file channel selection and reloaded saved feedback.
 - Codex 0.154.0 returned a structured Ukrainian response through the signed sandbox/XPC path using a generated sine fixture. This is integration evidence, not guitar-coaching quality acceptance.
 - Claude Code 2.1.236 launches but its current local OAuth session is expired and cannot refresh. Sign in again using `claude auth login`, then run the saved take. No account settings were changed by implementation.
+
+### Input-level guidance follow-up (2026-09-16)
+
+- With the real selected guitar input, vary physical gain while plucking: verify weak/working/high/overload hints in Audio setup, Timing synchronization and practice preflight. Lower gain before continuing after clipping. Confirm pauses/decay are not confused with a gain target.
+- Verify English/Ukrainian layouts, light/dark contrast, scrolling of the synchronization sheet and VoiceOver reading of level/status/hint. No second capture stream is introduced.
+- Working amplitude alone must not imply successful synchronization: selected-string pitch, clean/stable signal, timing repeatability and healthy clocks are still required.

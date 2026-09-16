@@ -10315,6 +10315,363 @@
           }
         }
       }
+    },
+    "audio.meter.peak": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peak"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пік"
+          }
+        }
+      }
+    },
+    "audio.meter.db %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ dBFS"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ dBFS"
+          }
+        }
+      }
+    },
+    "audio.meter.zone.weak": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weak < −30"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Слабкий < −30"
+          }
+        }
+      }
+    },
+    "audio.meter.zone.good": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working −30…−6"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Робочий −30…−6"
+          }
+        }
+      }
+    },
+    "audio.meter.zone.high": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High ≥ −6"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Високий ≥ −6"
+          }
+        }
+      }
+    },
+    "audio.meter.state.inactive": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitoring stopped"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Моніторинг зупинено"
+          }
+        }
+      }
+    },
+    "audio.meter.state.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No valid reading yet"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ще немає коректного виміру"
+          }
+        }
+      }
+    },
+    "audio.meter.state.silent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No signal or very quiet"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Немає сигналу або дуже тихо"
+          }
+        }
+      }
+    },
+    "audio.meter.state.weak": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weak level"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Слабкий рівень"
+          }
+        }
+      }
+    },
+    "audio.meter.state.good": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working level"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Робочий рівень"
+          }
+        }
+      }
+    },
+    "audio.meter.state.high": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High level — little headroom"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Високий рівень — малий запас"
+          }
+        }
+      }
+    },
+    "audio.meter.state.clipping": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overload / clipping"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевантаження / кліпінг"
+          }
+        }
+      }
+    },
+    "audio.meter.hint.inactive": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start input monitoring or the signal check to see the live level."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запусти моніторинг входу або перевірку сигналу, щоб побачити поточний рівень."
+          }
+        }
+      }
+    },
+    "audio.meter.hint.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for valid input samples. Check the selected device and channel if this persists."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очікуємо коректний вхідний сигнал. Якщо стан не змінюється, перевір вибраний пристрій і канал."
+          }
+        }
+      }
+    },
+    "audio.meter.hint.silent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluck a string. If the meter stays here, check the cable, input channel, guitar volume and interface gain."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграй ноту. Якщо індикатор лишається тут, перевір кабель, канал входу, гучність гітари та gain інтерфейсу."
+          }
+        }
+      }
+    },
+    "audio.meter.hint.weak": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While playing normally, gradually raise the interface input gain until peaks reach the working zone."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Граючи зі звичною силою, поступово піднімай gain входу інтерфейсу, доки піки не досягнуть робочої зони."
+          }
+        }
+      }
+    },
+    "audio.meter.hint.good": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The level is a useful starting point. Calibration also needs a clean, stable note on the selected string."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рівень підходить як орієнтир. Для калібрування також потрібна чиста, стабільна нота вибраної струни."
+          }
+        }
+      }
+    },
+    "audio.meter.hint.high": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lower the interface input gain so stronger attacks still have room below 0 dBFS."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зменш gain входу інтерфейсу, щоб сильніші удари мали запас до 0 dBFS."
+          }
+        }
+      }
+    },
+    "audio.meter.hint.clipping": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lower the interface input gain and repeat the signal check. Overloaded audio cannot be used for calibration."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зменш gain входу інтерфейсу й повтори перевірку сигналу. Перевантажений звук непридатний для калібрування."
+          }
+        }
+      }
+    },
+    "audio.meter.guidance": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aim for peaks from −30 to −6 dBFS while plucking, not during pauses or note decay. These are gain guides, not a guarantee of note recognition."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Орієнтуйся на піки від −30 до −6 dBFS під час ударів, а не пауз чи згасання ноти. Це підказки для gain, а не гарантія розпізнавання нот."
+          }
+        }
+      }
+    },
+    "audio.meter.rms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average (RMS)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Середній (RMS)"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -143,3 +143,7 @@ Follow-up 2026-09-12: analyzer `mono-mpm-flux-3` accepts observations down to on
 ## Opt-in recording for AI advice
 
 The Record & analyze action records exactly one bounded practice take via the existing PCM reader. Channel 1 is clean selected input; WAV channel 2 is the scheduled metronome reference aligned by render/capture host time. It does not measure actual headphone output or solve Bluetooth latency. Imported WAV/MP3 has unverified correspondence/start alignment. Offline audio measurements and the immutable lesson/assessment snapshot feed the optional local CLI coach. AI prose cannot update numeric assessment or invent evidence. See [the audio-file contract](AUDIO-AGENT-COACH.md) for privacy, bounds, XPC privileges and retention.
+
+## Input-level display guidance
+
+Audio setup, personal synchronization and practice preflight share a −60…0 dBFS peak meter with RMS readout. Zones are presentation guidance: weak below −30 dBFS, working from −30 to below −6 dBFS, high from −6 dBFS, and overload at the existing 0.995 peak-amplitude guard (about −0.044 dBFS). These gain guides apply while plucking, not to pauses or note decay; they do not change DSP silence/quiet thresholds, pitch confidence or calibration eligibility. Stopped/missing/invalid capture never displays a live working-level status. English/Ukrainian text and symbols supplement colored zones.

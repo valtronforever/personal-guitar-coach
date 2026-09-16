@@ -111,3 +111,5 @@
 
 - [Personal timing synchronization wizard](personal-sync-wizard.md) — `pending_user`; two guitar-playing passes, no cable calibration UI.
 - [Audio-file AI coach](audio-agent-coach.md) — `pending_user`; one-action recording, separate metronome reference, Codex/Claude XPC integration.
+
+- [Input signal level guidance](follow-up/input-level-guidance.md) — `in_progress`; shared dBFS zones and gain advice.
