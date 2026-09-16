@@ -11,6 +11,7 @@ struct CalibrationView: View {
     @State private var manualOutputText = "0"
     @State private var manualInstrumentText = "0"
     @State private var manualOutputReference: ManualOutputReference = .additional
+    @FocusState private var isTitleFocused: Bool
     private var string: Int { store.calibrationString }
     private var model: CalibrationModel { store.wizard }
     private var instrument: InstrumentProfile { data.preferences.instrument }
@@ -24,6 +25,9 @@ struct CalibrationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("calibration.title").font(.title.bold())
+                .focusable()
+                .focused($isTitleFocused)
+                .focusEffectDisabled()
             ScrollViewReader { proxy in
                 Form {
                     Section {
@@ -148,6 +152,9 @@ struct CalibrationView: View {
             }
             HStack { Spacer(); Button("common.done") { model.cancel(audio: audio); dismiss() } }
         }.padding(20).frame(width: 980, height: 820)
+        // Begin at the title instead of automatically editing the first latency field.
+        // Default priority preserves deliberate Tab/click focus and the measurement tap button.
+        .defaultFocus($isTitleFocused, true)
         .task {
             await store.load(); await audio.dismissSetup(); await audio.refresh()
             model.refreshContext(audio: audio, store: store, instrument: instrument, string: string)
