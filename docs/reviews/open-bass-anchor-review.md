@@ -16,5 +16,5 @@
 - All 44 bilingual bundles validate. Inventory audit: 34 authored, 4 needing review, 90 todo; full-course acceptance remains open.
 - 84 Learning tests pass, including independent MIDI/interval, open-bass, root-label, fret/string, event timing and graded-entry goldens across eight presets × five fret counts.
 - All 136 App tests pass explicitly serially in 125.079 seconds. Generated Xcode project and 807 localized UI keys pass checks.
-- Focused rerun after the optional-binding cleanup, signed Release/archive, XPC and CI evidence will be recorded below.
+- Four focused anchor/course tests pass after the optional-binding cleanup. Signed Release/archive passes with 44 bundles/133 YAML files; report: docs/benchmarks/open-bass-anchor-release-bundle.json. The signed sandbox-to-XPC invalid-request probe passes without invoking a provider. CI remains pending.
 - Native reader/VoiceOver, actual string comfort, real-guitar capture and perceived reference usefulness remain pending_user. Synthetic/code checks do not establish those outcomes.

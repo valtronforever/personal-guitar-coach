@@ -39,4 +39,4 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 
 - The strum and first-accompaniment changes are consolidated in PR #69. Explicit serial Core/App runs avoid unrelated fixture starvation without changing any deadlines or assertions; final CI is pending.
 
-- Rock-rhythm foundation: optional author-selected open-string transposition anchor; topic 39 Drop riff authored and topic 33 power-chord lesson expanded with moved/octave forms, quiz and separated-note practice. 44 bundles/38 visible; 34 authored topics. [Review](../../docs/reviews/open-bass-anchor-review.md) records independent tuning/fret checks; release/CI and physical acceptance remain open.
+- Rock-rhythm foundation: optional author-selected open-string transposition anchor; topic 39 Drop riff authored and topic 33 power-chord lesson expanded with moved/octave forms, quiz and separated-note practice. 44 bundles/38 visible; 34 authored topics. [Review](../../docs/reviews/open-bass-anchor-review.md) records independent tuning/fret checks and a signed 44-bundle Release/XPC pass; CI and physical acceptance remain open.
