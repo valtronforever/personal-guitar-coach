@@ -1,0 +1,49 @@
+lessonID: hand-synchronization
+lessonVersion: 1
+locale: en
+title: Synchronizing both hands
+summary: Prepare each fretted target for one deliberate pick attack.
+goal: Play short coordinated groups without extra attacks, blocked notes or rushed string changes.
+body: 'The fretting contact and pick attack need to meet at the intended note onset. If the pick arrives before
+  the target is ready, you may hear the old pitch or a blocked attack; if a finger lands or releases forcefully,
+  it can add an unintended note. Listen for the sound itself before deciding which movement to adjust. The app cannot
+  diagnose which hand caused an error.
+
+
+  This physical-pattern exercise uses frets 5–8. Try index, middle, ring and little finger in order, using only
+  enough pressure for a clear note. Keep nearby fingers available without stretching rigidly or holding every previous
+  note down. If the span is uncomfortable, stop and use shorter relaxed attempts rather than forcing a speed goal.
+
+
+  The first study crosses three strings slowly and leaves a full bar to release. The second uses four eighths followed
+  by two quiet beats, so each short group has a fresh preparation. Alternate the pick as marked. Scored practice
+  checks the resulting pitches and attacks; finger choice, hand timing mechanism and absence of unnecessary tension
+  remain your observations.'
+steps:
+  prepare:
+    title: Prepare one contact before adding tempo
+    body: Sound fret 5, stop it, prepare fret 6 and pick once. Repeat through fret 8 without a metronome. Find the
+      least effort that keeps the intended note clear.
+  one-note-at-a-time: &id001
+    title: Twelve notes and a release bar
+    body: 'At 50 BPM play frets 5–8 on strings 6, 5 and 4, one quarter per click. The fourth bar is entirely silent:
+      release effort and prepare again. Check the first note after each string change. {{sequence}}.'
+  four-note-groups: &id002
+    title: Coordinate a short burst
+    body: Count 1 & 2 & 3 4. Play the four marked eighths, then keep two beats silent and relaxed. Repeat four bars;
+      do not fill the rests with extra test notes.
+  review:
+    title: Work on one transition
+    body: Choose one missed or extra attack from the result and repeat that pair slowly. Listen for a clean beginning
+      and release, then replay the whole group. Keep the tempo unchanged until three groups are clear and comfortable.
+activities:
+  one-note-at-a-time: *id001
+  four-note-groups: *id002
+learningTasks:
+  review:
+    title: Review this attempt
+    body: Mark only what you checked by listening or observing your hands.
+    items:
+      targets: Each picked attack met the prepared target without an unintended intermediate note.
+      rests: I released effort during the written rests instead of practicing through them.
+      specific: I isolated one troublesome transition instead of assuming which hand was at fault.

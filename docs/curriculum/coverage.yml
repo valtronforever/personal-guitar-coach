@@ -618,7 +618,8 @@ lessons:
       uk: Змінний штрих — alternate picking
     outcomeUK: Утримувати послідовне чергування вниз–вгору
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 50
     moduleID: lead-foundations
     lessonID: hand-synchronization
@@ -627,7 +628,8 @@ lessons:
       uk: Синхронізація обох рук
     outcomeUK: Зіграти рівну послідовність без зайвих атак
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 51
     moduleID: lead-foundations
     lessonID: slides

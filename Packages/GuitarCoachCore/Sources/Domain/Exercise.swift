@@ -33,11 +33,14 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let strum: StrumPattern?
     /// Authored technique cue and short synthetic reference envelope; not inferred from input.
     public let palmMuted: Bool
+    /// Picking instruction for a single note; audible pitch/time cannot prove the gesture.
+    public let pickStroke: StrumDirection?
+    public var pickingDirection: StrumDirection? { strum?.direction ?? pickStroke }
     /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
     public let assessSustain: Bool
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
@@ -48,6 +51,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         guard !accented || kind == .note else { throw MusicError.invalidEvent }
         guard strum == nil || (kind == .note && positions.count >= 2 && strum!.spreadTicks < durationTicks) else { throw MusicError.invalidEvent }
         guard !palmMuted || (kind == .note && !assessSustain) else { throw MusicError.invalidEvent }
+        guard pickStroke == nil || (kind == .note && positions.count == 1 && strum == nil) else { throw MusicError.invalidEvent }
+        self.pickStroke = pickStroke
         self.palmMuted = palmMuted
         self.strum = strum
         self.accented = accented
@@ -65,9 +70,10 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         if accented { try values.encode(true, forKey: .accented) }
         try values.encodeIfPresent(strum, forKey: .strum)
         if palmMuted { try values.encode(true, forKey: .palmMuted) }
+        try values.encodeIfPresent(pickStroke, forKey: .pickStroke)
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted }
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
@@ -76,7 +82,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             assessSustain: values.decodeIfPresent(Bool.self, forKey: .assessSustain) ?? false,
             accented: values.decodeIfPresent(Bool.self, forKey: .accented) ?? false,
             strum: values.decodeIfPresent(StrumPattern.self, forKey: .strum),
-            palmMuted: values.decodeIfPresent(Bool.self, forKey: .palmMuted) ?? false)
+            palmMuted: values.decodeIfPresent(Bool.self, forKey: .palmMuted) ?? false,
+            pickStroke: values.decodeIfPresent(StrumDirection.self, forKey: .pickStroke))
     }
 }
 

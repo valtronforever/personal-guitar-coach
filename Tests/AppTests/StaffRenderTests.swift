@@ -45,8 +45,8 @@ import Learning
             MusicalEvent(id: "rest", startTick: 3360, durationTicks: 480, kind: .rest)
         ], tuningPolicy: .fixedTuning, requiredTuning: .dropA)
         let muted = try Exercise(id: "muted-low", events: [
-            MusicalEvent(id: "r0", startTick: 0, durationTicks: 480, kind: .note, positions: [FretPosition(string: 6, fret: 0)], accented: true, palmMuted: true),
-            MusicalEvent(id: "low2", startTick: 480, durationTicks: 480, kind: .note, positions: [FretPosition(string: 6, fret: 0)], palmMuted: true),
+            MusicalEvent(id: "r0", startTick: 0, durationTicks: 480, kind: .note, positions: [FretPosition(string: 6, fret: 0)], accented: true, palmMuted: true, pickStroke: .down),
+            MusicalEvent(id: "low2", startTick: 480, durationTicks: 480, kind: .note, positions: [FretPosition(string: 6, fret: 0)], palmMuted: true, pickStroke: .up),
             MusicalEvent(id: "ring", startTick: 960, durationTicks: 1920, kind: .note, positions: [FretPosition(string: 6, fret: 0)]),
             MusicalEvent(id: "rest", startTick: 2880, durationTicks: 960, kind: .rest)
         ], tuningPolicy: .fixedTuning, requiredTuning: .dropA, assessmentMode: .displayOnly)

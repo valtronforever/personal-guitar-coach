@@ -1,0 +1,502 @@
+schemaVersion: 3
+id: alternate-picking
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: one-string
+  kind: events
+  exerciseID: alternate-picking-one-string
+  activityID: one-string
+  eventIDs:
+  - e0
+  - e1
+  - e2
+  - e3
+  - e4
+  - e5
+  - e6
+  - e7
+  - e8
+  - e9
+  - e10
+  - e11
+  - e12
+  - e13
+  - e14
+  - e15
+- id: cross-strings
+  kind: events
+  exerciseID: alternate-picking-cross-strings
+  activityID: cross-strings
+  eventIDs:
+  - e0
+  - e1
+  - e2
+  - e3
+  - e4
+  - e5
+  - e6
+  - e7
+  - e8
+  - e9
+  - e10
+  - e11
+  - e12
+  - e13
+  - e14
+  - e15
+- id: upstroke-start
+  kind: events
+  exerciseID: alternate-picking-upstroke-start
+  activityID: upstroke-start
+  eventIDs:
+  - e0
+  - e1
+  - e2
+  - e3
+  - e4
+  - e5
+  - e6
+  - e7
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: alternate-picking-one-string
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: &id001
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: e0
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e1
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e2
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e3
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e4
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e5
+    startTick: 2400
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e6
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e7
+    startTick: 3360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e8
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e9
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e10
+    startTick: 4800
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e11
+    startTick: 5280
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e12
+    startTick: 5760
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e13
+    startTick: 6240
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e14
+    startTick: 6720
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e15
+    startTick: 7200
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+- id: alternate-picking-cross-strings
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: e0
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    pickStroke: down
+  - id: e1
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    pickStroke: up
+  - id: e2
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+    pickStroke: down
+  - id: e3
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+    pickStroke: up
+  - id: e4
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    pickStroke: down
+  - id: e5
+    startTick: 2400
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    pickStroke: up
+  - id: e6
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+    pickStroke: down
+  - id: e7
+    startTick: 3360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+    pickStroke: up
+  - id: e8
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    pickStroke: down
+  - id: e9
+    startTick: 4320
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    pickStroke: up
+  - id: e10
+    startTick: 4800
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+    pickStroke: down
+  - id: e11
+    startTick: 5280
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+    pickStroke: up
+  - id: e12
+    startTick: 5760
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 5
+    pickStroke: down
+  - id: e13
+    startTick: 6240
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 6
+      fret: 7
+    pickStroke: up
+  - id: e14
+    startTick: 6720
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+    pickStroke: down
+  - id: e15
+    startTick: 7200
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 5
+      fret: 7
+    pickStroke: up
+- id: alternate-picking-upstroke-start
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 50
+  minimumBPM: 40
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning: *id001
+  assessmentMode: monophonic
+  events:
+  - id: e0
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e1
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e2
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e3
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e4
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e5
+    startTick: 2400
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+  - id: e6
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: up
+  - id: e7
+    startTick: 3360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+    pickStroke: down
+adaptation:
+  policy: fretPattern
+materials:
+- id: one-string
+  source:
+    kind: exercise
+    exerciseID: alternate-picking-one-string
+  positioning:
+    enabled: false
+- id: cross-strings
+  source:
+    kind: exercise
+    exerciseID: alternate-picking-cross-strings
+  positioning:
+    enabled: false
+- id: upstroke-start
+  source:
+    kind: exercise
+    exerciseID: alternate-picking-upstroke-start
+  positioning:
+    enabled: false
+activities:
+- id: one-string
+  materialID: one-string
+- id: cross-strings
+  materialID: cross-strings
+- id: upstroke-start
+  materialID: upstroke-start
+fingerings: []
+practiceEntries:
+- id: one-string
+  activityID: one-string
+  exerciseID: alternate-picking-one-string
+- id: cross-strings
+  activityID: cross-strings
+  exerciseID: alternate-picking-cross-strings
+- id: upstroke-start
+  activityID: upstroke-start
+  exerciseID: alternate-picking-upstroke-start
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - directions
+  - balance
+  - crossing
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 49
+  durationMinutes: 20
+  prerequisites:
+  - down-up-strokes
+  - eighth-notes
+  - two-hand-muting
+  keywords:
+  - Alternate picking
+  - Змінний штрих — alternate picking
