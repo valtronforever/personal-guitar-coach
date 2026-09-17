@@ -10,7 +10,7 @@ import Audio
     @Test func EachBundledLessonConnectsTextVisualsPracticeSavedResultAndRetry() async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.issues.isEmpty && library.lessons.count == 86)
+        #expect(library.issues.isEmpty && library.lessons.count == 87)
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), assessment = AssessmentStore(repository: repository)
@@ -51,7 +51,7 @@ import Audio
                     (0...Int(ceil((end - start + 0.4) / 0.02))).map { i in
                         try SustainFrame(id: UInt64(i + 1), normalizedTime: start - 0.1 + Double(i) * 0.02, state: .silence, frequency: nil)
                     }) : nil
-                let contour: PitchContourTrace? = try configuration.selectedEvents.contains(where: { $0.bend != nil || $0.pitchTransition != nil }) ? PitchContourTrace(frames:
+                let contour: PitchContourTrace? = try configuration.selectedEvents.contains(where: { $0.bend != nil || $0.pitchTransition != nil || $0.vibrato != nil }) ? PitchContourTrace(frames:
                     (0...Int(ceil((end - start + 0.4) / 0.02))).map { i in
                         try SustainFrame(id: UInt64(i + 1), normalizedTime: start - 0.1 + Double(i) * 0.02, state: .silence, frequency: nil)
                     }) : nil

@@ -41,6 +41,7 @@ public enum CoachAgentContract {
         have unverified correspondence/start offset and cannot be used to recompute practice timing.
         Sustain summaries measure stable target-pitch coverage, not an exact release time. Raw sustain and moving-pitch traces are omitted.
         Bend summaries measure the audible base/rise/target/release/return against an authored path, not finger motion.
+        Vibrato measurements describe audible width (robust 5–95 percentile span), lower pitch, rate and cycle-period regularity, plus stable starting/returned pitch. They do not prove a finger motion or repicking. Exact modulation phase is not graded. Honor unscoredVibratoObservationIDs: spectral flux during modulation is not a verified extra pick. Report unknown contour separately from known flat, silent, wrong-width or irregular performance. Do not claim that you listened to the file merely because a local path was provided.
         Spectral events inside bends are retained observations, not scored extra pick attacks. Honor the request’s unscoredBendObservationIDs; never diagnose an extra physical pick stroke from those events.
         Pitch-transition summaries measure base/travel/target for slides and base/target for hammer-on/pull-off.
         Their timing score concerns the initial attack; phase coverage is not an exact second-attack time or proof of a physical technique.

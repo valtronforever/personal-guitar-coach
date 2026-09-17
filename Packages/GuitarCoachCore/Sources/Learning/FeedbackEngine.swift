@@ -2,13 +2,13 @@ import Foundation
 import Domain
 
 public enum FeedbackKind: String, Sendable {
-    case inputLevel, signal, interrupted, restart, calibration, early, late, missed, pitch, tuning, rests, sustain, bend, pitchTransition, repeatFragment
+    case inputLevel, signal, interrupted, restart, calibration, early, late, missed, pitch, tuning, rests, sustain, bend, pitchTransition, vibrato, repeatFragment
 }
 public enum FeedbackAction: Sendable { case audioSetup, tuner, repeatFragment }
 
 /// Advice is derived from archived measurements, never from an inferred hand, finger, or string.
 public struct PracticeRecommendation: Equatable, Sendable, Identifiable {
-    public static let ruleVersion = "feedback-4"
+    public static let ruleVersion = "feedback-5"
     public var id: String { kind.rawValue }
     public let sourceAttemptID: UUID
     public let kind: FeedbackKind
@@ -47,6 +47,9 @@ public enum FeedbackEngine {
             }
             if let transitions = result.pitchTransitions {
                 uncertainIDs.formUnion(transitions.notes.filter { $0.score == nil }.map(\.id))
+            }
+            if let vibrato = result.vibrato {
+                uncertainIDs.formUnion(vibrato.notes.filter { $0.score == nil }.map(\.id))
             }
             if let bends = result.bends {
                 uncertainIDs.formUnion(bends.notes.filter { $0.score == nil }.map(\.id))
@@ -103,6 +106,8 @@ public enum FeedbackEngine {
         if let held = best(result.notes.filter { sustainIDs.contains($0.id) }, minimum: 1, kind: .sustain) { answer.append(held) }
         let transitionIDs = Set(result.pitchTransitions?.notes.filter { $0.phases.contains { ($0.matchedFraction ?? 1) < 0.8 } }.map(\.id) ?? [])
         if let transition = best(result.notes.filter { transitionIDs.contains($0.id) }, minimum: 1, kind: .pitchTransition) { answer.append(transition) }
+        let vibratoIDs = Set(result.vibrato?.notes.filter { $0.phases.contains { ($0.matchedFraction ?? 1) < 0.8 } }.map(\.id) ?? [])
+        if let vibrato = best(result.notes.filter { vibratoIDs.contains($0.id) }, minimum: 1, kind: .vibrato) { answer.append(vibrato) }
         let bendIDs = Set(result.bends?.notes.filter { ($0.score ?? 100) < 80 }.map(\.id) ?? [])
         if let bend = best(result.notes.filter { bendIDs.contains($0.id) }, minimum: 1, kind: .bend) { answer.append(bend) }
         let wrong = result.notes.filter { !$0.uncertain && abs($0.centsError ?? 0) >= result.parameters.pitchToleranceCents }

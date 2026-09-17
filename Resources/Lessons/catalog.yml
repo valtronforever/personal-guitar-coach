@@ -86,6 +86,7 @@ lessons:
   - slides
   - hammer-ons
   - pull-offs
+  - vibrato
 modules:
   - id: getting-started
     order: 1

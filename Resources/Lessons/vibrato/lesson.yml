@@ -1,0 +1,575 @@
+schemaVersion: 3
+id: vibrato
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: steady
+    kind: events
+    exerciseID: vibrato-steady
+    eventIDs:
+      - note-1
+      - rest-1
+      - note-2
+      - rest-2
+    activityID: steady
+  - id: narrow
+    kind: events
+    exerciseID: vibrato-narrow
+    eventIDs:
+      - note-1
+      - rest-1
+      - note-2
+      - rest-2
+    activityID: narrow
+  - id: wide
+    kind: events
+    exerciseID: vibrato-wide
+    eventIDs:
+      - note-1
+      - rest-1
+      - note-2
+      - rest-2
+    activityID: wide
+  - id: faster
+    kind: events
+    exerciseID: vibrato-faster
+    eventIDs:
+      - note-1
+      - rest-1
+      - note-2
+      - rest-2
+    activityID: faster
+  - id: delayed-phrase
+    kind: events
+    exerciseID: vibrato-delayed-phrase
+    eventIDs:
+      - note-1
+      - rest-1
+      - note-2
+      - rest-2
+      - note-3
+      - rest-3
+    activityID: delayed-phrase
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: vibrato-steady
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 60
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        assessSustain: true
+      - id: rest-1
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+      - id: note-2
+        startTick: 7680
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        assessSustain: true
+      - id: rest-2
+        startTick: 11520
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: vibrato-narrow
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 60
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 5760
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 40
+          startTick: 960
+          endTick: 4800
+          periodTicks: 960
+      - id: rest-1
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: note-2
+        startTick: 7680
+        durationTicks: 5760
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 40
+          startTick: 960
+          endTick: 4800
+          periodTicks: 960
+      - id: rest-2
+        startTick: 13440
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: vibrato-wide
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 60
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 5760
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 80
+          startTick: 960
+          endTick: 4800
+          periodTicks: 960
+      - id: rest-1
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: note-2
+        startTick: 7680
+        durationTicks: 5760
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 80
+          startTick: 960
+          endTick: 4800
+          periodTicks: 960
+      - id: rest-2
+        startTick: 13440
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: vibrato-faster
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 60
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 5760
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 80
+          startTick: 960
+          endTick: 4800
+          periodTicks: 480
+      - id: rest-1
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: note-2
+        startTick: 7680
+        durationTicks: 5760
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 80
+          startTick: 960
+          endTick: 4800
+          periodTicks: 480
+      - id: rest-2
+        startTick: 13440
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: vibrato-delayed-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 60
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 6720
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 60
+          startTick: 1920
+          endTick: 5760
+          periodTicks: 480
+      - id: rest-1
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: note-2
+        startTick: 7680
+        durationTicks: 6720
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        pickStroke: down
+        vibrato:
+          extentCents: 60
+          startTick: 1920
+          endTick: 5760
+          periodTicks: 480
+      - id: rest-2
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: note-3
+        startTick: 15360
+        durationTicks: 6720
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        vibrato:
+          extentCents: 60
+          startTick: 1920
+          endTick: 5760
+          periodTicks: 480
+      - id: rest-3
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: steady
+    source:
+      kind: exercise
+      exerciseID: vibrato-steady
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      allowOriginal: true
+  - id: narrow
+    source:
+      kind: exercise
+      exerciseID: vibrato-narrow
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      allowOriginal: true
+  - id: wide
+    source:
+      kind: exercise
+      exerciseID: vibrato-wide
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      allowOriginal: true
+  - id: faster
+    source:
+      kind: exercise
+      exerciseID: vibrato-faster
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      allowOriginal: true
+  - id: delayed-phrase
+    source:
+      kind: exercise
+      exerciseID: vibrato-delayed-phrase
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      allowOriginal: true
+activities:
+  - id: steady
+    materialID: steady
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: narrow
+    materialID: narrow
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: wide
+    materialID: wide
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: faster
+    materialID: faster
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: delayed-phrase
+    materialID: delayed-phrase
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+practiceEntries:
+  - id: steady
+    activityID: steady
+    exerciseID: vibrato-steady
+  - id: narrow
+    activityID: narrow
+    exerciseID: vibrato-narrow
+  - id: wide
+    activityID: wide
+    exerciseID: vibrato-wide
+  - id: faster
+    activityID: faster
+    exerciseID: vibrato-faster
+  - id: delayed-phrase
+    activityID: delayed-phrase
+    exerciseID: vibrato-delayed-phrase
+fingerings: []
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - width
+      - speed
+      - volume
+    correctOptionID: width
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - motion
+      - quiet
+      - contrast
+      - listen
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 56
+  durationMinutes: 30
+  prerequisites:
+    - first-bend
+  keywords:
+    - vibrato
+    - вібрато
+    - width
+    - rate
+    - pitch oscillation
+    - ширина
+    - швидкість

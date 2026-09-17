@@ -171,3 +171,7 @@ Pending on a real six-string guitar/input route after the signed Release is avai
 - Verify recording/result reopening preserves the selected exercise, tuning, region, phase measurements and excluded internal observations. If using an agent, verify advice stays grounded in measured phases and does not claim to identify fingers, strings, repicking or an exact secondary-attack time.
 
 A correct audible trajectory does not prove the physical technique. Manual gesture checks are intentionally separate from the audio score.
+
+### Vibrato follow-up
+
+Pending real clean guitar: complete the five vibrato activities at 60BPM in the chosen tuning, then compare narrower/wider and slower/faster playing. Confirm that stable base/return, measured width, individual cycle rates and the retained curve reflect what was heard. Compare deliberate flat notes, an occasional slow cycle, accidental pitch drift, background noise and clipping; technical uncertainty must not be reported as a technique failure. Check upper/lower supported registers, permitted relocation and normal decay. Validate TAB/staff wavy spans across bars, keyboard/VoiceOver labels, en/uk and both themes in the native Release. Audio cannot confirm hand posture, exact fret/string, finger choice or lack of repicking. No such physical/native acceptance is claimed by synthetic/offline tests.

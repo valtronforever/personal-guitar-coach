@@ -70,13 +70,13 @@ extension LoadedLesson {
                 events = try selected.map { event in
                     let positions: [FretPosition]
                     if event.positions.allSatisfy({ sharedMapping[$0] != nil }) { positions = event.positions.compactMap { sharedMapping[$0] } }
-                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend != nil || event.pitchTransition?.kind == .slide ? 1 : 0, linkedFretOffset: event.pitchTransition?.semitones ?? 0) }
+                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend != nil || event.vibrato != nil || event.pitchTransition?.kind == .slide ? 1 : 0, linkedFretOffset: event.pitchTransition?.semitones ?? 0) }
                     if let transition = event.pitchTransition, let base = positions.first {
                         let target = try transition.targetPosition(from: base)
                         guard instrument.contains(target), region?.contains(target, maximumFret: instrument.fretCount) ?? true else { throw PositioningError.regionUnplayable }
                     }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato)
                 }
             }
             let selectedIDs = Set(events.map(\.id))

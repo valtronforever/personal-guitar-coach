@@ -1,0 +1,81 @@
+lessonID: vibrato
+lessonVersion: 1
+locale: en
+title: 'Vibrato: control width, speed and the return'
+summary: Begin with a steady note, change width and speed separately, then delay vibrato within a phrase.
+goal: Produce a regular upward pitch oscillation and return to the original pitch without an unintended bend.
+body: |-
+  Vibrato gives a held note a deliberate, repeating change in pitch. Width describes how far the pitch moves; speed describes how often the motion repeats. A wider vibrato need not be faster. This lesson separates those choices so that you can hear and control each one before using them in a phrase.
+
+  The exercises use an upward bend-and-return motion on a fretted note. Start at the normal pitch, raise it slightly, then return to that same pitch. One rise and return is one cycle. Keep a comfortable fretting contact and use a small controlled movement; supporting fingers can help on the thicker strings. Avoid squeezing harder after every cycle or gradually leaving the string bent. Keep the neighboring strings quiet with the available fretting and picking-hand contact. Choose a comfortable motion and pause when tension accumulates. The app does not judge hand posture from audio.
+
+  First play the steady-note exercise without vibrato. Listen to its pitch, let it remain audible for four beats, then mute for four beats. This establishes the sound you will return to. You should be able to choose a steady note deliberately rather than adding motion to every sustained sound.
+
+  For narrow vibrato, pick on beat 1, hold that pitch for one beat, then make one rise-and-return cycle per click for four beats. The pitch excursion is 40 cents: substantially less than a semitone, which is 100 cents. At the start of the sixth beat return to the base pitch and hold it for one beat; the last two beats are quiet. Treat the two bars as one eight-beat exercise. The wavy mark shows the active interval, while the detailed curve illustrates its shape.
+
+  Repeat the same timing with an 80-cent width. Keep the cycle speed unchanged and listen for the larger excursion. Next keep that width but make two cycles per beat. Do not increase force simply to increase speed. Begin at 60 BPM and change tempo only when the starting note, oscillation and return remain clear. The preview uses a synthesized tone to clarify pitch and time; it is not a model of a guitarist’s finger movement or timbre.
+
+  In the delayed phrase, let each new pitch remain steady for two beats before adding four beats of 60-cent vibrato at two cycles per beat. Return for one beat, then use the last beat to mute and prepare the next note. That delay makes vibrato an expressive choice within the note instead of an automatic response to its attack.
+
+  Review the base and return phases as well as the measured width, median rate and range of individual cycle rates. A reasonable average can conceal an uneven cycle. The score does not demand an exact match to the drawn oscillation phase and cannot prove which finger moved or whether you repicked. Use a clean input for measurement, listen back, and confirm the physical details yourself. Tuning changes transpose the sounding notes; permitted position changes preserve those pitches while moving the fretted targets.
+steps:
+  prepare:
+    title: Hear the base pitch first
+    body: >-
+      Use a clean input. Choose a comfortable fretted note and keep adjacent strings quiet. Separate width from
+      speed.
+  question:
+    title: Width or speed?
+    body: Think about the size of the pitch excursion.
+  review:
+    title: Listen and check the motion
+    body: Compare the measured width and individual cycle rates, then confirm the physical details yourself.
+  steady: &id001
+    title: Choose a steady note
+    body: >-
+      Hold the displayed note without vibrato for beats 1–4, then mute for beats 5–8. Repeat. Listen to the pitch
+      you will return to. Sounding targets: {{sequence}}. Fretted positions: {{positions}}.
+  narrow: &id002
+    title: Narrow and slow
+    body: >-
+      Pick and hold beat 1. Apply 40-cent vibrato at one cycle per beat on beats 2–5. Hold the base pitch on beat
+      6 and rest on beats 7–8. Sounding targets: {{sequence}}. Fretted positions: {{positions}}.
+  wide: &id003
+    title: Wider at the same speed
+    body: >-
+      Use the same timing as narrow vibrato, but widen the excursion to 80 cents. Keep one cycle per beat; hold
+      the base on beat 6 and rest on beats 7–8. Sounding targets: {{sequence}}. Fretted positions: {{positions}}.
+  faster: &id004
+    title: Faster at the same width
+    body: >-
+      Hold beat 1, then perform 80-cent vibrato at two cycles per beat on beats 2–5. Return for beat 6, then rest.
+      Compare speed separately from width. Sounding targets: {{sequence}}. Fretted positions: {{positions}}.
+  delayed-phrase: &id005
+    title: Delay vibrato within the note
+    body: >-
+      For each eight-beat note group, hold beats 1–2 steady, add 60-cent vibrato at two cycles per beat on beats
+      3–6, return on beat 7 and rest on beat 8. Prepare each new pitch during the rest. Sounding targets: {{sequence}}.
+      Fretted positions: {{positions}}.
+activities:
+  steady: *id001
+  narrow: *id002
+  wide: *id003
+  faster: *id004
+  delayed-phrase: *id005
+learningTasks:
+  question:
+    title: Width or speed?
+    body: You keep one cycle per beat but increase the excursion from 40 to 80 cents. What changed?
+    items:
+      width: Width; the cycle speed stayed the same.
+      speed: Speed; the width stayed the same.
+      volume: Only loudness changed.
+    explanation: Cents describe pitch excursion, while cycles per beat describe rate. Neither number specifies loudness.
+  review:
+    title: Listen and check the motion
+    body: Mark only what you actually checked. Audio cannot prove finger motion or the absence of repicking.
+    items:
+      motion: I used a comfortable controlled motion and relaxed between attempts.
+      quiet: I kept neighboring strings quiet and checked accidental repicking.
+      contrast: I changed width and speed separately and heard the difference.
+      listen: I listened for a steady base and a complete return.
