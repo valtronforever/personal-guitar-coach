@@ -994,7 +994,8 @@ lessons:
       uk: Імпровізація з двох-трьох нот
     outcomeUK: Створювати мотиви через ритм і повторення
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 86
     moduleID: ear-improvisation
     lessonID: chord-tone-targeting
@@ -1003,7 +1004,8 @@ lessons:
       uk: Опорні ноти над акордами
     outcomeUK: Завершувати фрази на акордових звуках
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 87
     moduleID: ear-improvisation
     lessonID: question-answer-phrases
@@ -1012,7 +1014,8 @@ lessons:
       uk: Запитання, відповідь і паузи
     outcomeUK: Будувати зрозумілі музичні фрази
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 88
     moduleID: ear-improvisation
     lessonID: build-a-solo
@@ -1021,7 +1024,8 @@ lessons:
       uk: Побудова короткого соло
     outcomeUK: Створити вступ, розвиток і завершення
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 89
     moduleID: advanced-technique
     lessonID: string-skipping

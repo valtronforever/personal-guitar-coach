@@ -1,0 +1,89 @@
+lessonID: chord-tone-targeting
+lessonVersion: 1
+locale: en
+title: Land on a chord tone
+summary: Hear a changing backdrop, prepare a landing tone and approach it in time.
+goal: Choose and reach a tone belonging to the current chord while distinguishing fixed targets from free phrasing.
+body: |-
+  A phrase can use many scale notes, but its resting points shape how it relates to harmony. A chord tone belongs to the chord sounding now. In a major triad, root, third and fifth are available landing tones. A note may be in the key yet outside the current triad. This lesson practices the decision to land rather than treating every scale note as equally settled.
+
+  The four-bar backdrop follows I–IV–V–I in a major center. Listen once and identify the moment each chord changes. Each chord lasts one bar. Loop the preview to hear the return, then choose a root target for each bar. The backdrop is synthesized and display-only; you may play over it for self-practice, but the app does not recognize your complete chord-plus-melody performance as a graded monophonic response.
+
+  In the roots exercise, play the current root on beat 1, hold for two beats, then leave two beats to prepare the next chord. In the thirds exercise, keep the same rhythm and land on the third instead. Compare how the third identifies the chord quality while the root gives a direct point of rest. The score checks these fixed notes and attacks. It cannot determine whether an improvised choice was expressive or whether you mentally identified the chord.
+
+  The approach exercise moves through two quarter notes and lands for a half note on beat 3 of each bar. Some brief approach notes lie outside the current triad. Hear their movement toward the longer target instead of holding all three notes as if they had the same role. The last bar returns to the tonic root and asks for an audible two-beat hold. Keep previous strings quiet so that the input remains monophonic.
+
+  After practicing the written targets, return to the looping backdrop and invent a short approach of your own. Plan the landing before playing the first approach note. Begin with roots, then try thirds. Leave space after each landing and notice whether the chord changes while you are still holding a tone from the previous bar. If that happens, decide whether to move with the new chord rather than letting the old fingering dictate the phrase.
+
+  Keep two kinds of feedback separate. A fixed-target attempt provides pitch and calibrated timing evidence without the chord backdrop. Your own phrase over the backdrop needs listening and self-observation. The same sounding pitch can be played on more than one string; the app cannot certify a particular fingering. Tuning transposes the center and targets together, while permitted region choices preserve the sounding phrase.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  backdrop:
+    title: Hear I–IV–V–I
+    body: 'Center: {{root}} major. Each chord lasts one bar. Loop this display-only reference and play your own
+      approach and landing over it; this is self-practice, not chord recognition. Sounding notes: {{sequence}}.
+      Use the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  roots:
+    title: Land on roots
+    body: 'Four bars, I–IV–V–I: play each root on beat 1 for two beats, then rest for two. The scored response has
+      no chord backing. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does
+      not prove the string or finger.'
+  thirds:
+    title: Land on thirds
+    body: 'Keep the same four-bar progression and two-beat sound/two-beat rest, but choose the third of each current
+      chord. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not prove
+      the string or finger.'
+  approach:
+    title: Approach, then settle
+    body: 'I–IV–V–I: two quarter-note approaches lead to a two-beat landing on beat 3. Land on thirds in bars 1–3
+      and the tonic root in bar 4. Hold the final root for its full two beats. Sounding notes: {{sequence}}. Use
+      the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  choose-the-landing:
+    title: Choose by the current chord
+    body: The key remains major but the harmony moves from I to IV. Which rule identifies a chord-tone landing?
+  make-an-approach:
+    title: Invent a landing phrase
+    body: Loop the backdrop and create four bars. Choose each landing before its approach, then compare a root version
+      and a third version.
+activities:
+  backdrop:
+    title: Hear I–IV–V–I
+    body: 'Center: {{root}} major. Each chord lasts one bar. Loop this display-only reference and play your own
+      approach and landing over it; this is self-practice, not chord recognition. Sounding notes: {{sequence}}.
+      Use the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  roots:
+    title: Land on roots
+    body: 'Four bars, I–IV–V–I: play each root on beat 1 for two beats, then rest for two. The scored response has
+      no chord backing. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does
+      not prove the string or finger.'
+  thirds:
+    title: Land on thirds
+    body: 'Keep the same four-bar progression and two-beat sound/two-beat rest, but choose the third of each current
+      chord. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not prove
+      the string or finger.'
+  approach:
+    title: Approach, then settle
+    body: 'I–IV–V–I: two quarter-note approaches lead to a two-beat landing on beat 3. Land on thirds in bars 1–3
+      and the tonic root in bar 4. Hold the final root for its full two beats. Sounding notes: {{sequence}}. Use
+      the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+learningTasks:
+  choose-the-landing:
+    title: Choose by the current chord
+    body: The key remains major but the harmony moves from I to IV. Which rule identifies a chord-tone landing?
+    items:
+      current: Choose a root, third or fifth of the current IV chord.
+      previous: Keep any tone of the previous I chord.
+      scale: Every scale tone is equally a chord tone.
+    explanation: The current triad determines chord membership. A scale note can be a brief approach without being
+      a triad tone.
+  make-an-approach:
+    title: Invent a landing phrase
+    body: Loop the backdrop and create four bars. Choose each landing before its approach, then compare a root version
+      and a third version.
+    items:
+      plan: I named the current chord and prepared its landing.
+      space: I left space after a landing and heard the next change.
+      compare: I compared root and third targets over the backdrop.
+      limits: I separated the fixed-note score from my own phrase review.

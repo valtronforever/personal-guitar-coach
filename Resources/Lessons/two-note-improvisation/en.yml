@@ -1,0 +1,67 @@
+lessonID: two-note-improvisation
+lessonVersion: 1
+locale: en
+title: Make a motif from two or three notes
+summary: Use repetition, rhythm and silence before adding more pitches.
+goal: Create a recognizable short idea and vary one feature while retaining its identity.
+body: |-
+  Improvisation does not require a large number of notes. A motif is a small idea that a listener can recognize when it returns. Two pitches already offer choices of order, rhythm, duration and silence. Limiting the pitch set makes those choices easier to hear and prevents the scale shape from deciding every phrase for you.
+
+  Hear the seed motif first. It uses a root and minor third, then leaves a whole bar empty. Copy it until you can recall the rhythm without following every notehead. In your own version, retain the same two pitches but choose a different arrangement of attacks. Leave enough space to hear the result. This is a model for comparison, not a required answer to an automatically scored improvisation test.
+
+  The rhythm-change model keeps the pitch vocabulary and changes how the first note is repeated. Compare the two examples at the same tempo. Notice what stayed recognizable and what changed. Now invent one variation by changing rhythm only; then return to the original seed. Do not change note order, rhythm, register and volume all at once, because you will lose a clear comparison.
+
+  For independent practice, keep the metronome and lower the reference-tone volume in playback options. Loop the two-bar span. Play an idea in the first bar and leave the second bar quiet. On the next cycle, repeat the idea exactly; on the following cycle, alter one detail. Count through the quiet bar and restart deliberately rather than filling every gap with extra notes.
+
+  The third model adds the fourth degree to the same minor vocabulary. Let the new pitch provide one clear point of interest, then return to the root. More pitches should serve a phrase, not replace it. Make two versions of your own motif: one with two pitches and one with three. Compare whether the extra sound strengthened the idea. Stop when the phrase reaches a clear ending, even if you could keep moving through the scale.
+
+  Use the self-practice checks to describe decisions you actually heard: a repeated rhythm, a chosen change and a complete silence. There is no numerical creativity score here. The synthesized examples illustrate pitch and musical time rather than guitar expression. Tuning transposes the vocabulary; a permitted position choice preserves its sounding pitches. In either case, listen to the model again before judging your own contrast.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  seed:
+    title: Two pitches, then silence
+    body: 'Center: {{root}} minor. Copy the first bar, then count the silent second bar. Use that space to recall
+      the motif. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not prove
+      the string or finger.'
+  rhythm-change:
+    title: Change the rhythm, keep the vocabulary
+    body: 'Compare the repeated opening note and the earlier silence with the seed. Invent another rhythm using
+      only these two pitches. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound
+      does not prove the string or finger.'
+  third-pitch:
+    title: Add one new pitch with a purpose
+    body: 'The fourth degree extends the idea before it returns. Compare a two-pitch and three-pitch version of
+      your own motif. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does
+      not prove the string or finger.'
+  make-your-motif:
+    title: Invent, repeat, vary
+    body: 'Play four two-bar cycles: idea, exact repeat, one variation, return. Keep a whole quiet bar when using
+      the seed loop. Confirm each decision by listening.'
+activities:
+  seed:
+    title: Two pitches, then silence
+    body: 'Center: {{root}} minor. Copy the first bar, then count the silent second bar. Use that space to recall
+      the motif. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not prove
+      the string or finger.'
+  rhythm-change:
+    title: Change the rhythm, keep the vocabulary
+    body: 'Compare the repeated opening note and the earlier silence with the seed. Invent another rhythm using
+      only these two pitches. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound
+      does not prove the string or finger.'
+  third-pitch:
+    title: Add one new pitch with a purpose
+    body: 'The fourth degree extends the idea before it returns. Compare a two-pitch and three-pitch version of
+      your own motif. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does
+      not prove the string or finger.'
+learningTasks:
+  make-your-motif:
+    title: Invent, repeat, vary
+    body: 'Play four two-bar cycles: idea, exact repeat, one variation, return. Keep a whole quiet bar when using
+      the seed loop. Confirm each decision by listening.'
+    items:
+      repeat: I repeated a recognizable idea before changing it.
+      one: I changed one feature and could describe it.
+      space: I counted through a complete silent bar.
+      compare: I compared two-pitch and three-pitch versions.

@@ -1,0 +1,78 @@
+lessonID: build-a-solo
+lessonVersion: 1
+locale: en
+title: Build a short solo with a shape
+summary: Plan an opening, a development and a clear ending from a small pitch vocabulary.
+goal: Create an eight-bar solo whose repeated idea, contrast and ending can be heard.
+body: |-
+  A short solo benefits from a shape that a listener can follow. More speed or more scale positions do not automatically create development. Begin with a small idea, give it time to become recognizable, change one or two features, then finish deliberately. This lesson uses an eight-bar minor-pentatonic model to show that a complete structure can fit inside a modest pitch range.
+
+  Treat bars 1–2 as the introduction. The opening motif uses a root, minor third and fourth, then leaves space. Copy this fragment and listen for the identity of the idea rather than merely reading its frets. Write a brief verbal plan for your own opening: for example, a short rising idea followed by a pause. Choose a plan you can actually play at a comfortable tempo.
+
+  Bars 3–6 develop the material. The model first repeats a familiar opening with a different rhythm, then reaches higher pitches and a denser passage. The highest point is prepared rather than appearing as an unrelated exercise. In your version, choose one way to develop the motif: repeat it with a changed rhythm, extend its ending, or move toward a higher register. You do not need to use all three.
+
+  Bars 7–8 reduce the density and return to a clear root ending with space afterward. A final note is more convincing when you decide when it begins and when the phrase ends. Do not keep adding notes because the metronome is still running. Copy the ending alone, then connect the last development bar to it without an extra pause at the boundary.
+
+  Now play the complete model and identify its three parts by ear. Lower the reference-tone volume, keep the metronome and create your own eight bars. Plan before playing: two bars to introduce, four to develop, two to finish. Use a few comfortable pitches and leave at least one intentional silence. You may sketch your own TAB outside the app, but there is no requirement to match the model note for note.
+
+  Play two versions and compare a specific choice instead of judging one globally as good or bad. Did the repeated idea remain recognizable? Was the denser section a contrast? Did the ending sound chosen? If a transition is awkward, simplify it rather than compensating with speed. This lesson uses self-review; no numeric score claims to measure expression, originality or solo quality. The app provides a timed model, readable notation and a metronome, while the musical decisions remain yours.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  opening:
+    title: Introduce the idea
+    body: 'Center: {{root}} minor. Two bars introduce a small motif and its space. Describe the opening before copying
+      it, then invent a related opening. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion;
+      the sound does not prove the string or finger.'
+  development:
+    title: Develop and reach a peak
+    body: 'Four bars vary the opening rhythm, move higher and return to a less dense line. Choose one comparable
+      development device for your own idea. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion;
+      the sound does not prove the string or finger.'
+  ending:
+    title: Finish and leave space
+    body: 'Two bars descend toward the root, hold it for two beats and leave the final two beats quiet. Connect
+      this ending to the development without an inserted pause. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  complete-solo:
+    title: Hear the complete eight-bar shape
+    body: 'Bars 1–2 introduce, 3–6 develop and 7–8 finish. Listen to the whole form, then lower the reference tone
+      and play an original eight-bar version to the metronome. Sounding notes: {{sequence}}. Use the displayed fingering
+      as a suggestion; the sound does not prove the string or finger.'
+  plan-and-compare:
+    title: Make and compare two versions
+    body: Plan two introductory bars, four development bars and two ending bars. Play the plan twice, changing one
+      musical decision in the second version.
+activities:
+  opening:
+    title: Introduce the idea
+    body: 'Center: {{root}} minor. Two bars introduce a small motif and its space. Describe the opening before copying
+      it, then invent a related opening. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion;
+      the sound does not prove the string or finger.'
+  development:
+    title: Develop and reach a peak
+    body: 'Four bars vary the opening rhythm, move higher and return to a less dense line. Choose one comparable
+      development device for your own idea. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion;
+      the sound does not prove the string or finger.'
+  ending:
+    title: Finish and leave space
+    body: 'Two bars descend toward the root, hold it for two beats and leave the final two beats quiet. Connect
+      this ending to the development without an inserted pause. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  complete-solo:
+    title: Hear the complete eight-bar shape
+    body: 'Bars 1–2 introduce, 3–6 develop and 7–8 finish. Listen to the whole form, then lower the reference tone
+      and play an original eight-bar version to the metronome. Sounding notes: {{sequence}}. Use the displayed fingering
+      as a suggestion; the sound does not prove the string or finger.'
+learningTasks:
+  plan-and-compare:
+    title: Make and compare two versions
+    body: Plan two introductory bars, four development bars and two ending bars. Play the plan twice, changing one
+      musical decision in the second version.
+    items:
+      form: I could identify the introduction, development and ending by ear.
+      motif: A recognizable idea returned after its first appearance.
+      contrast: I used a deliberate contrast and at least one silence.
+      end: I chose the final note and stopped deliberately.
+      compare: I compared one specific decision across two versions.
