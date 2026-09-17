@@ -60,3 +60,7 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - PR #74 merged as 92715ee after exact-head CI run 35163893733 passed; the scale continuation PR #75 was retargeted to main without deleting its former base branch.
 
 - Advanced-rhythm introduction: explicit complete eighth-triplet groups, conventional notation in both TABs/staff, preserved actual ticks and scoped-material validation; topics 65–66 authored with comparison, pulse and melodic examples. Inventory: 69 bundles/63 visible, 62 authored topics, 1 needing review, 65 todo. [Same-agent review](../../docs/reviews/triplet-notation-review.md) records software/render/synthetic-capture evidence; 259 Core /142 App tests and the signed 69-bundle Release/archive/XPC checks pass; exact-head CI remains pending. Full curriculum remains in progress.
+
+- PR #75 merged as 00da753 after exact-head CI run 35164627711 passed. Triplet PR #76 was retargeted to main with its base branch retained.
+
+- Rhythm-phrasing continuation: topics 67/69/70 authored with offbeat/held syncopation, ordinary/reverse gallop and displaced eighth-note groups. Existing sustain, pick-cue, accent and open-bass policies supply their distinct practice contracts. Inventory: 72 bundles/66 visible, 65 authored topics, 1 needing review, 62 todo. See [same-agent review](../../docs/reviews/rhythm-phrasing-course-review.md). Full curriculum remains in progress; native/hardware acceptance remains pending.

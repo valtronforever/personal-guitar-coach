@@ -810,7 +810,8 @@ lessons:
       uk: Синкопи
     outcomeUK: Акцентувати слабкі частини долі
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 68
     moduleID: advanced-rhythm
     lessonID: compound-meters
@@ -828,7 +829,8 @@ lessons:
       uk: Галоп і зворотний галоп
     outcomeUK: Виконувати характерні металеві ритми
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 70
     moduleID: advanced-rhythm
     lessonID: displaced-accents
@@ -837,7 +839,8 @@ lessons:
       uk: Зміщення ритмічного акценту
     outcomeUK: Повторювати фігуру з різних частин долі
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 71
     moduleID: advanced-rhythm
     lessonID: odd-meters

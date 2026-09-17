@@ -1,0 +1,80 @@
+lessonID: gallop-patterns
+lessonVersion: 1
+locale: en
+title: Gallop and reverse gallop
+summary: Place one eighth and two sixteenths in two different orders for a metal rhythm foundation.
+goal: Keep the same quarter pulse while switching between long-short-short and short-short-long.
+body: |-
+  A gallop combines an eighth note with two sixteenths inside one quarter beat: long-short-short. On a four-part count, 1-e-and-a, the attacks fall on “1”, “and” and “a”. The reverse gallop uses two sixteenths followed by an eighth: short-short-long, attacking “1”, “e” and “and”. Both patterns contain three attacks but divide the beat into four equal sixteenth slots, so neither is an equal triplet.
+
+  Begin at 50 BPM. Speak the four-slot count before playing and keep a small alternate-picking motion. The TAB gives down/up cues for every note. Since three attacks occur in a beat, strict alternation starts successive beats in opposite directions. Follow the continuous pattern instead of resetting to a downstroke at every click. These are suggested practice strokes; an audio score cannot verify them.
+
+  Play the repeated gallop for two bars, then the reverse version separately at the same tempo. In the first, leave space after the initial attack and place the two short notes near the end of the beat. In the reverse, play the short pair first and allow the last note its full half-beat. A common mistake is making all three spaces equal or rushing the final pair into the next click. Use one isolated beat to repair that shape, then connect two bars.
+
+  The four-bar riff uses an open-string bass and changing upper replies. Bar 1 uses gallops, bar 2 reverse gallops, and bar 3 alternates the two patterns beat by beat. Bar 4 has one quarter-note bass and three quiet beats for release. The lesson adapts its root from the lowest string, so Standard and Drop settings retain the intended bass-relative intervals while showing the current notes and positions.
+
+  Use a clean, unmuted tone for the scored exercises. After controlling the rhythm, explore palm muting separately with the earlier muting lesson; its tonal result and your picking direction are not verified by this pitch/attack score. The shortest notes set the graded tempo limit here (40–70 BPM). Prioritize steady spacing and a relaxed hand before adding speed or distortion. Review the short-pair timings rather than treating an overall number as proof of technique.
+steps:
+  prepare:
+    title: Count four slots, play three attacks
+    body: >-
+      Set 50 BPM. Say 1-e-and-a and tap all four parts first. For gallop, remove the e attack while keeping its
+      time; for reverse gallop, remove the a attack while keeping the final note sounding.
+  gallop-pulse:
+    title: Long-short-short
+    body: >-
+      Play eight groups in two bars. Attack on the number, “and” and “a”. Follow the displayed alternating strokes
+      across beat boundaries; the next group may start with an upstroke. Keep the short pair distinct.
+  reverse-pulse:
+    title: Short-short-long
+    body: >-
+      Use the same pulse and bass note. Attack on the number, “e” and “and”; let the final eighth last through a.
+      Compare the changed gap with the first exercise without changing tempo.
+  gallop-riff:
+    title: Transfer the rhythm to a bass riff
+    body: >-
+      Bar 1 gallops, bar 2 reverses, bar 3 alternates gallop/reverse/gallop/reverse. The upper reply changes while
+      the bass returns. Play only the quarter bass at the start of bar 4, then three silent beats. {{sequence}}.
+  review:
+    title: Check the short pair and hand recovery
+    body: >-
+      Compare the two sixteenth attacks with the surrounding beat. Repeat the weaker rhythm on one pitch, then restore
+      its upper reply. Observe pick direction, tension and the release bar yourself; the app measures pitches and
+      attack timing.
+  question:
+    title: Which count describes the gallop?
+    body: Count the subdivision before answering.
+activities:
+  gallop-pulse:
+    title: Long-short-short
+    body: >-
+      Play eight groups in two bars. Attack on the number, “and” and “a”. Follow the displayed alternating strokes
+      across beat boundaries; the next group may start with an upstroke. Keep the short pair distinct.
+  reverse-pulse:
+    title: Short-short-long
+    body: >-
+      Use the same pulse and bass note. Attack on the number, “e” and “and”; let the final eighth last through a.
+      Compare the changed gap with the first exercise without changing tempo.
+  gallop-riff:
+    title: Transfer the rhythm to a bass riff
+    body: >-
+      Bar 1 gallops, bar 2 reverses, bar 3 alternates gallop/reverse/gallop/reverse. The upper reply changes while
+      the bass returns. Play only the quarter bass at the start of bar 4, then three silent beats. {{sequence}}.
+learningTasks:
+  question:
+    title: Which count describes the gallop?
+    body: For eighth–sixteenth–sixteenth in one beat, where are the attacks on 1-e-and-a?
+    items:
+      gallop: '1, and, a: the first note occupies 1 and e.'
+      reverse: '1, e, and: the last note occupies and and a.'
+      triplet: Three equal spaces independent of the four-part count.
+    explanation: >-
+      The ordinary gallop is long-short-short (2+1+1 sixteenth slots). The reverse is 1+1+2. Equal triplets divide
+      the beat into three instead.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      shape: I distinguished 2+1+1 from 1+1+2 without changing tempo.
+      strokes: I checked continuous alternate picking rather than assuming the score proves it.
+      release: I kept the riff pulse and released the hand during the last three silent beats.

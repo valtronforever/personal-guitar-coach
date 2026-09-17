@@ -77,10 +77,21 @@ struct StaffTests {
         let chords = try TimelineModel(exercise: Exercise(id:"chords",events:[chord],assessmentMode:.displayOnly),instrument:tuning)
         #expect(throws: StaffLimitation.polyphony) { try StaffModel(timeline:chords,key:.neutral).symbols(in:0) }
     }
+    @Test func offbeatRestFragmentsRemainSilentAndDoNotAcquireTies() throws {
+        let events = try [note("short", 0, midi: 48, duration: 480),
+            MusicalEvent(id: "long-rest", startTick: 480, durationTicks: 3360, kind: .rest)]
+        let timeline = try TimelineModel(exercise: Exercise(id: "split-rest", events: events), instrument: tuning)
+        let symbols = try StaffModel(timeline: timeline, key: .neutral).symbols(in: 0)
+        let rests = symbols.filter { $0.eventID == "long-rest" }
+        #expect(rests.map(\.startTick) == [480, 960])
+        #expect(rests.map { $0.fragment.duration.ticks } == [480, 2880])
+        #expect(rests.allSatisfy { $0.pitch == nil && !$0.fragment.tieFromPrevious && !$0.fragment.tieToNext })
+        #expect(symbols.filter { $0.startTick == $0.resolved.event.startTick }.map(\.eventID) == ["short", "long-rest"])
+    }
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 69)
+        #expect(library.lessons.count == 72)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for entry in lesson.manifest.practiceEntries {
@@ -90,7 +101,7 @@ struct StaffTests {
                 let timeline = try TimelineModel(exercise:exercise,instrument:.dropD)
                 let staff = StaffModel(timeline:timeline,key:.neutral)
                 let symbols = try (0..<timeline.barCount).flatMap { try staff.symbols(in:$0) }
-                #expect(symbols.filter { !$0.fragment.tieFromPrevious }.map(\.eventID) == timeline.events.map(\.id))
+                #expect(symbols.filter { $0.startTick == $0.resolved.event.startTick }.map(\.eventID) == timeline.events.map(\.id))
                 if exercise.id == "c-major-practice" {
                     #expect(symbols.compactMap(\.pitch).map(\.name) == ["C4","D4","E4","F4","G4","A4","B4","C5","B4","A4","G4","F4","E4","D4","C4"])
                     #expect(symbols.allSatisfy { $0.accidental == nil && $0.resolved.event.durationTicks == 960 })
