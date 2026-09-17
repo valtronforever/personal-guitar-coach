@@ -90,3 +90,5 @@ PR 84 merged after exact-head CI `35179866487` passed. Listen-and-repeat topics 
 Listen-and-repeat local verification completed: 310 Core /167 App tests, final loader regressions, 90 bundles/888 localization keys and signed root-only Release/archive/XPC passed. Exact-head CI/merge pending; topics 85–128 and full acceptance remain required.
 
 Topics 85–88 are authored: motifs, chord-tone landings, call/response slots and an eight-bar solo form. All 11 initial modules now have their eight topics authored; this is not full acceptance. Inventory: 88 authored /40 todo, 94 bundles /88 visible. A 2,120-resolution matrix and reference/notation checks pass; [task](improvisation-course.md) and [same-agent review](../../docs/reviews/improvisation-course-review.md) track full suites/Release/CI still in progress. Parent listen-and-repeat PR 85 is pending CI.
+
+Improvisation local delivery verified: 127 Learning /169 App tests, 94 bundles/888 localization keys and signed root-only Release/archive/XPC pass. Exact-head CI/merge pending. Module 11 is authored; 40 advanced-technique/style/composition topics and full acceptance remain required.

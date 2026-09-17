@@ -1,6 +1,6 @@
 # Improvisation course — same-agent review
 
-Status: local verification in progress. This is a same-agent content/software review, not an independent review or hardware acceptance.
+Status: local software/Release checks passed; exact-head CI/merge pending. This is a same-agent content/software review, not an independent review or hardware acceptance.
 
 Scope: curriculum 85–88, completing the authored ear/improvisation module. Four substantive bilingual lessons use existing reference playback, explicit rests, notation, tuning/region resolution and learning tasks. Only three fixed chord-tone exercises are graded; original motifs, answers and solo choices are self-observed.
 
@@ -19,4 +19,6 @@ Evidence collected:
 - Two App presentation/transport tests passed (2.003 s), `/tmp/improvisation-presentation-fixed.log`. Every new example has complete TAB; monophonic examples have complete staff. Both 44.1/48 kHz render checks find zero teacher samples in the response bar, audible metronome samples when enabled, and identical teacher samples at the next loop. This is deterministic synthesized output, not hardware listening evidence.
 - 94 bilingual bundles validate with no issues; inventory is 88 authored /40 todo, 88 visible lessons and 6 legacy compatibility bundles. 888 UI keys validate. Existing catalog-count tests retain explicit expected counts, updated for four new bundles.
 
-Full Learning: 127 tests in 41 suites passed (130.227 s), `/tmp/improvisation-learning-full.log`. Four Python authoring/audit tests passed (10.802 s); generated project, localization and UI-source checks pass. Full App, signed root-only Release/archive/XPC and exact-head CI/merge are being collected. Native listening, original guitar responses, keyboard/VoiceOver and hardware checks remain pending. No local Debug app is built. Full 128-topic acceptance remains open.
+Full Learning: 127 tests in 41 suites passed (130.227 s), `/tmp/improvisation-learning-full.log`. Four Python authoring/audit tests passed (10.802 s); generated project, localization and UI-source checks pass. Full App: 169 tests in 50 suites passed (194.057 s), `/tmp/improvisation-app-full.log`.
+
+Root-only Release/archive checks passed in `docs/benchmarks/improvisation-release-bundle.json`: arm64, macOS 14, ad-hoc signature, hardened runtime, expected entitlements, 94 bundles /283 YAML resources. Binary SHA256 `933a0e0f07c00ad4acda40efad8087eaa66f48983b388f4d5dcb22b3842a1c66`; ZIP SHA256 `705b96ddd10ec62a91c437be5f8e365cdf170cfaff15b8911c3fccd978af43e5`. `/tmp/improvisation-release.log`, `/tmp/improvisation-bundle.log`. Signed sandbox → separate XPC → invalidRequest probe passed, no provider called (`/tmp/improvisation-xpc.log`). Exact-head CI/merge remain open. Native listening, original guitar responses, keyboard/VoiceOver and hardware checks remain pending. No local Debug app is built. Full 128-topic acceptance remains open.
