@@ -20,3 +20,9 @@ Full Learning suite: 149 tests/54 suites passed 242.340s. Full App first run exe
 ## Completed local software checks
 
 Full Learning: 149 tests/54 suites passed 242.340s. Full App after the three inventory corrections: 196 tests/61 suites passed 278.997s; no remaining failures. The final content check validates 134 bilingual bundles with zero issues. Project generation is current, 948 UI keys preserve en/uk placeholder parity, five author-tool tests pass 18.055s, UI-test sources type-check and the partial curriculum audit reports 128 authored topics. Latest reading prose has 374 English / 290 Ukrainian body words after the octave correction. Signed root Release, exact-head CI/merge and the separate complete-course acceptance audit remain open.
+
+## Local Release evidence (2026-09-17)
+
+Root-only Release and ZIP rebuilt with 134 bilingual bundles/403 YAML files (128 visible course lessons), 948 localized keys, arm64 and macOS 14 minimum. Ad-hoc signature, hardened runtime, exact sandbox/audio/user-selected read-write entitlements, archive and offline resources verified. [Bundle report](../../docs/benchmarks/independent-musician-release-bundle.json). Binary SHA-256 `f1b62a9c8454f4f9648db07564f4060c178a15ed5c12de31cb55a43de3bc7325`; archive SHA-256 `7980c293cd236181b7d1923aa183332591045bac2e62940d0098abc616b367cb`. Signed sandbox→XPC→invalidRequest probe passed; no provider invoked. No local Debug .app was built. Native app-launch/actual-guitar fields remain false.
+
+Logs: `/tmp/independent-{learning-focused,app-focused,learning-full,app-final,content-final,release,bundle,xpc}.log`. Exact-head CI/merge and final 128-topic acceptance audit remain open.
