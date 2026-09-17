@@ -121,12 +121,16 @@ struct StaffView: View {
         let written = TimelineModel.durationLabel(symbol.fragment.duration.triplet ? symbol.fragment.duration.baseTicks : symbol.fragment.duration.ticks)
         let duration = symbol.fragment.tripletID == nil ? written : String(format: settings.localized("rhythm.tripletDuration %@"), locale: settings.locale, written)
         if let pitch = symbol.pitch {
-            var sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
-            if let stroke = symbol.resolved.event.pickStroke, !symbol.fragment.tieFromPrevious {
+            var sounding = (symbol.fragment.pitchOffset == 0 ? symbol.resolved.pitches[0] : symbol.resolved.transitionTargetPitch!).name(spelling: timeline.tuning.preferredSpelling)
+            if let stroke = symbol.resolved.event.pickStroke, symbol.startTick == symbol.resolved.event.startTick {
                 let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
             if let bend = symbol.resolved.event.bend { sounding = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, sounding, bend.semitones * 100) }
+            if symbol.resolved.event.pitchTransition != nil {
+                sounding += "; " + PitchTransitionPresentation.spoken(event: symbol.resolved, pulseTicks: timeline.pulseTicks,
+                    tuning: timeline.tuning, locale: settings.locale, localized: settings.localized)
+            }
             if symbol.resolved.event.palmMuted { sounding = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, sounding) }
             if symbol.accentedAttack {
                 return symbol.fragment.duration.dotted
@@ -238,7 +242,7 @@ struct StaffDrawing {
                     }
                 }
             }
-            if let stroke = symbol.resolved.event.pickStroke, !symbol.fragment.tieFromPrevious {
+            if let stroke = symbol.resolved.event.pickStroke, symbol.startTick == symbol.resolved.event.startTick {
                 context.draw(Text(verbatim: stroke == .down ? "↓" : "↑").font(.system(size: 12, weight: .bold)),
                     at: CGPoint(x: position, y: StaffModel.canvasHeight - 42))
             }
@@ -276,6 +280,22 @@ struct StaffDrawing {
                 let offset = Double(flag) * (beam.stemsUp ? 7 : -7), stemOffset = beam.stemsUp ? 7.0 : -7.0
                 line(CGPoint(x: x(first) + stemOffset, y: y + offset), CGPoint(x: x(last) + stemOffset, y: y + offset), thickness: 4)
             }
+        }
+        for segment in timeline.segments(in: currentBar) where segment.resolved.event.pitchTransition != nil {
+            let event = segment.resolved.event, transition = event.pitchTransition!
+            let targetTick = event.startTick + transition.endTick
+            let linkStart = transition.kind == .slide ? event.startTick + transition.startTick : event.startTick
+            let low = max(segment.startTick, linkStart), high = min(segment.endTick, targetTick)
+            guard low < high else { continue }
+            let a = leading + timeline.x(tick: low, bar: currentBar, zoom: 1) + (low == linkStart ? 32 : 0)
+            let b = leading + timeline.x(tick: high, bar: currentBar, zoom: 1) + (high == targetTick ? 16 : 0)
+            let y = StaffModel.canvasHeight - 46
+            var path = Path(); path.move(to: CGPoint(x: a, y: y))
+            if transition.kind == .slide { path.addLine(to: CGPoint(x: b, y: y - (transition.semitones > 0 ? 10 : -10))) }
+            else { path.addQuadCurve(to: CGPoint(x: b, y: y), control: CGPoint(x: (a + b) / 2, y: y - 18)) }
+            context.stroke(path, with: .color(ink), lineWidth: 1.5)
+            context.draw(Text(verbatim: PitchTransitionPresentation.mark(transition)).font(.system(size: 10, weight: .bold)),
+                at: CGPoint(x: (a + b) / 2, y: y - 18))
         }
         for (index, symbol) in symbols.enumerated() {
             guard let pitch = symbol.pitch else { continue }

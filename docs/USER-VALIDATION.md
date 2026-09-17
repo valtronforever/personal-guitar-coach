@@ -160,3 +160,14 @@ Pending user: verify native en/uk family/inversion labels, step-to-map transitio
 ### Harmony progression course topics 77–80
 
 Pending user: compare maj7/7/m7 and moved dominant labels in en/uk; follow I–IV–V–I and I–vi–IV–V chord references with inverted basses. Inspect wide and connected voice leading, then run the three sustained single-voice lines and connected arpeggio with clean interface input. Reattack repeated notes at each bar, leave the written fourth-beat rests, and verify that a missing/released sound is not described as bad finger contact. Run the two four-bar arpeggios and eight-bar study; check reading ahead, mixed eighth/quarter rhythm, pauses and final two-beat sustain. Full-chord clarity and physical fingering remain self-reported.
+
+## Slides and legato pitch transitions (topics 51–53)
+
+Pending on a real six-string guitar/input route after the signed Release is available:
+
+- In C Standard and the desired Drop preset, compare both endpoint notes and the offered original/7th/12th-fret regions. Check that both frets fit the configured neck and the same-string movement is comfortable. Open-string exercises should retain their open-string preparation.
+- At 40–60 BPM with clean input, try the upward/downward slides, open/fretted hammer-ons and pull-offs. Compare measured base/travel/target curves with what you hear; distinguish weak targets, muted targets, wrong pitch, clipping and noisy input. A physical slide's fret-transition envelope may differ from the synthetic corpus; report false rejection without treating the current score as validated hardware support.
+- Check that the target appears at its written time in TAB and staff, h/p/slide links are readable, the cursor follows the selected output calibration and a target at a barline is not shown as a tie from another pitch. Test keyboard/VoiceOver selection of the complete event and both language/theme settings.
+- Verify recording/result reopening preserves the selected exercise, tuning, region, phase measurements and excluded internal observations. If using an agent, verify advice stays grounded in measured phases and does not claim to identify fingers, strings, repicking or an exact secondary-attack time.
+
+A correct audible trajectory does not prove the physical technique. Manual gesture checks are intentionally separate from the audio score.

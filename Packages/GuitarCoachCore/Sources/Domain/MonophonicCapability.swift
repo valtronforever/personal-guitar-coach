@@ -3,6 +3,7 @@ import Foundation
 /// Versioned software capability from the task 12 corpus. Physical-route validation remains separate.
 public enum MonophonicCapability {
     public static let version = "mono-capability-3"
+    public static let pitchTransitionVersion = "mono-capability-4"
     public static let frequencyRange = 55.0...1500.0
     public static let minimumNoteSeconds = 0.2
     public static let sampleRates: Set<Double> = [44100, 48000]
@@ -37,6 +38,14 @@ public enum MonophonicCapability {
                     return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
                 }
                 if !BendCapability.supports(bend: bend, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz, pulseTicks: exercise.timeSignature.pulseTicks) {
+                    return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
+                }
+            }
+            if let transition = resolved.event.pitchTransition {
+                if !PitchTransitionCapability.supportsFrequencies(transition, frequency: hz) {
+                    return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
+                }
+                if !PitchTransitionCapability.supports(transition: transition, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz, pulseTicks: exercise.timeSignature.pulseTicks) {
                     return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
                 }
             }

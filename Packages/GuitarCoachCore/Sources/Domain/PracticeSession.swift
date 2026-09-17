@@ -46,7 +46,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     public init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>? = nil,
                 countInBars: Int = 1, route: CalibrationRoute, calibration: CalibrationProfile? = nil, outputAlignment: OutputAlignmentProfile? = nil, lesson: PracticeLessonReference? = nil) throws {
         try self.init(exercise: exercise, instrument: instrument, bpm: bpm, range: range, countInBars: countInBars,
-            route: route, calibration: calibration, outputAlignment: outputAlignment, lesson: lesson, capabilityVersion: MonophonicCapability.version,
+            route: route, calibration: calibration, outputAlignment: outputAlignment, lesson: lesson, capabilityVersion: exercise.events.contains(where: { $0.pitchTransition != nil && (range?.contains($0.startTick) ?? true) }) ? MonophonicCapability.pitchTransitionVersion : MonophonicCapability.version,
             validateCurrentCapability: true)
     }
     private init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>?, countInBars: Int,
@@ -86,9 +86,9 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     }
     /// Starting a restored configuration checks today's capability; reading history does not.
     public func validateForCurrentPractice() throws {
-        guard selectedEvents.flatMap(\.positions).allSatisfy(instrument.contains) else { throw MusicError.invalidFret }
+        guard selectedEvents.flatMap(\.techniquePositions).allSatisfy(instrument.contains) else { throw MusicError.invalidFret }
         if let position = lesson?.position {
-            guard selectedEvents.flatMap(\.positions).allSatisfy({ position.contains($0, maximumFret: instrument.fretCount) }) else { throw MusicError.invalidFret }
+            guard selectedEvents.flatMap(\.techniquePositions).allSatisfy({ position.contains($0, maximumFret: instrument.fretCount) }) else { throw MusicError.invalidFret }
         }
         guard MonophonicCapability.sampleRates.contains(route.input.sampleRate) else { throw PracticeError.unsupportedFormat }
         let selectedIDs = Set(selectedEvents.map(\.id))

@@ -13,6 +13,12 @@ struct TimelineSegment: Identifiable, Sendable {
     var writtenDurationTicks: Int64 { triplet == nil ? resolved.event.durationTicks : resolved.event.durationTicks / 2 * 3 }
     var id: String { resolved.id }
     var isContinuation: Bool { startTick > resolved.event.startTick }
+    var displaysTransitionTarget: Bool {
+        guard let transition = resolved.event.pitchTransition else { return false }
+        return startTick >= resolved.event.startTick + transition.endTick
+    }
+    var displayPositions: [FretPosition] { displaysTransitionTarget ? Array(resolved.event.techniquePositions.suffix(1)) : resolved.event.positions }
+    var displayPitches: [Pitch] { displaysTransitionTarget ? resolved.transitionTargetPitch.map { [$0] } ?? [] : resolved.pitches }
 }
 
 struct TimelineTriplet: Identifiable, Sendable {

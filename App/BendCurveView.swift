@@ -11,10 +11,18 @@ struct BendCurveView: View {
     var baseFrequency: Double? = nil
     var localizationBundle: Bundle = .main
 
+    private var targetPoints: [(tick: Int64, cents: Double)] {
+        if let bend = event.bend { return bend.points(durationTicks: event.durationTicks).map { ($0.tick, $0.cents) } }
+        if let transition = event.pitchTransition {
+            return [(0, 0), (transition.startTick, 0), (transition.endTick, Double(transition.semitones * 100)), (event.durationTicks, Double(transition.semitones * 100))]
+        }
+        return []
+    }
+    private var targetCents: Double { Double((event.bend?.semitones ?? event.pitchTransition?.semitones ?? 0) * 100) }
     var body: some View {
-        if let bend = event.bend {
+        if !targetPoints.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text("bend.curveTitle", bundle: localizationBundle).font(.headline)
+                Text(LocalizedStringKey(event.pitchTransition == nil ? "bend.curveTitle" : "transition.curveTitle"), bundle: localizationBundle).font(.headline)
                 HStack(spacing: 20) {
                     Label { Text("bend.expected", bundle: localizationBundle) } icon: { Image(systemName: "line.diagonal") }.foregroundStyle(.secondary)
                     if normalizedStart != nil { Label { Text("bend.observed", bundle: localizationBundle) } icon: { Image(systemName: "waveform.path") }.foregroundStyle(Color.accentColor) }
@@ -29,13 +37,13 @@ struct BendCurveView: View {
                         guard let hz = frame.frequency, let base = baseFrequency else { return nil }
                         return 1200 * (log2(hz) - log2(base))
                     }
-                    let lower = floor(min(-50, observed.min() ?? 0) / 50) * 50
-                    let upper = ceil(max(Double(bend.semitones * 100 + 50), observed.max() ?? 0) / 50) * 50
+                    let lower = floor(min(-50, targetCents - 50, observed.min() ?? 0) / 50) * 50
+                    let upper = ceil(max(50, targetCents + 50, observed.max() ?? 0) / 50) * 50
                     func point(beat: Double, cents: Double) -> CGPoint {
                         CGPoint(x: left + min(duration, max(0, beat)) / duration * width,
                                 y: top + (upper - min(upper, max(lower, cents))) / (upper - lower) * height)
                     }
-                    for value in [lower, 0, Double(bend.semitones * 100), upper] {
+                    for value in [lower, 0, targetCents, upper] {
                         var line = Path(); line.move(to: point(beat: 0, cents: value)); line.addLine(to: point(beat: duration, cents: value))
                         context.stroke(line, with: .color(.secondary.opacity(0.25)), lineWidth: 1)
                         context.draw(Text(verbatim: String(Int(value))).font(.caption2.monospacedDigit()), at: CGPoint(x: left - 8, y: point(beat: 0, cents: value).y), anchor: .trailing)
@@ -48,7 +56,7 @@ struct BendCurveView: View {
                         context.draw(Text(verbatim: String(beat + 1)).font(.caption2.monospacedDigit()), at: CGPoint(x: x, y: top + height + 14))
                     }
                     var target = Path()
-                    for (index, p) in bend.points(durationTicks: event.durationTicks).enumerated() {
+                    for (index, p) in targetPoints.enumerated() {
                         let value = point(beat: Double(p.tick) / Double(pulseTicks), cents: p.cents)
                         if index == 0 { target.move(to: value) } else { target.addLine(to: value) }
                     }
@@ -68,8 +76,12 @@ struct BendCurveView: View {
                         context.stroke(path, with: .color(.accentColor), lineWidth: 2)
                     }
                 }.frame(height: 210).accessibilityHidden(true)
-                Text("bend.axes", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
-                Text("bend.targetSemitones \(bend.semitones)", bundle: localizationBundle).font(.caption)
+                Text(LocalizedStringKey(event.pitchTransition == nil ? "bend.axes" : "transition.axes"), bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
+                if let bend = event.bend { Text("bend.targetSemitones \(bend.semitones)", bundle: localizationBundle).font(.caption) }
+                if let transition = event.pitchTransition {
+                    Text(LocalizedStringKey("transition.kind." + transition.kind.rawValue), bundle: localizationBundle).font(.caption)
+                    Text("transition.curveExplanation", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
+                }
                 if normalizedStart != nil { Text("bend.traceGaps", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary) }
             }.accessibilityElement(children: .contain)
         }
@@ -98,6 +110,32 @@ struct BendResultView: View {
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }.accessibilityIdentifier("bend.result")
+        }
+    }
+}
+
+struct PitchTransitionResultView: View {
+    let result: AssessedPractice
+    let note: PitchTransitionNoteAssessment
+    var body: some View {
+        if let event = result.evidence.configuration.selectedEvents.first(where: { $0.id == note.id }),
+           let assessed = result.notes.first(where: { $0.id == note.id }) {
+            GroupBox("transition.resultTitle") {
+                VStack(alignment: .leading, spacing: 12) {
+                    BendCurveView(event: event, bpm: result.evidence.configuration.bpm, pulseTicks: result.evidence.configuration.exercise.timeSignature.pulseTicks,
+                        frames: result.evidence.pitchContour?.frames ?? [], normalizedStart: note.normalizedStart, baseFrequency: assessed.targetFrequency)
+                    ForEach(note.phases, id: \.kind) { phase in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(LocalizedStringKey("transition.phase." + phase.kind.rawValue)).font(.headline)
+                            if let matched = phase.matchedFraction, result.pitchTransitionScore != nil {
+                                Text("bend.matched \(Int((matched * 100).rounded()))")
+                                if let cents = phase.medianErrorCents { Text("bend.error \(Int(cents.rounded()))") }
+                            } else { Text("bend.unavailable") }
+                            Text("bend.coverage \(Int((phase.silentFraction * 100).rounded())) \(Int((phase.unknownFraction * 100).rounded()))").font(.caption)
+                        }.accessibilityElement(children: .combine)
+                    }
+                }.frame(maxWidth: .infinity, alignment: .leading)
+            }.accessibilityIdentifier("transition.result")
         }
     }
 }

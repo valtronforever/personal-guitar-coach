@@ -19,6 +19,7 @@ struct CoachAnalysisRequest: Codable, Sendable {
     let renderEpochHostSeconds: Double?
     let expectedNotes: [String]
     let unscoredBendObservationIDs: [UInt64]?
+    var unscoredPitchTransitionObservationIDs: [UInt64]? = nil
 
     var evidenceIDs: Set<String> {
         Set(["audio:summary", "practice:summary"] + audio.events.map(\.id) + audio.pitchSamples.map(\.id) + practice.notes.map { "practice:" + $0.id })
@@ -55,8 +56,14 @@ enum CoachExchange {
 
     private static func unscoredBendIDs(_ practice: AssessedPractice) -> [UInt64]? {
         guard practice.bends != nil else { return nil }
-        let scored = Set(practice.scoredExtras.map(\.id))
-        return practice.extras.filter { !scored.contains($0.id) }.map(\.id)
+        let excluded = practice.evidence.bendObservationIDs(notes: practice.notes)
+        return practice.extras.filter { excluded.contains($0.id) }.map(\.id)
+    }
+
+    private static func unscoredTransitionIDs(_ practice: AssessedPractice) -> [UInt64]? {
+        guard practice.pitchTransitions != nil else { return nil }
+        let excluded = practice.evidence.pitchTransitionObservationIDs(notes: practice.notes)
+        return practice.extras.filter { excluded.contains($0.id) }.map(\.id)
     }
 
     static func digest(_ practice: AssessedPractice) throws -> String { CoachAudioFile.hash(try encode(practice)) }
@@ -70,7 +77,12 @@ enum CoachExchange {
         let tuning = config.exercise.requiredTuning ?? config.instrument.tuning
         let expected = try config.selectedEvents.map { event -> String in
             let names = try event.positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: ", ")
-            return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)"
+            let motion: String
+            if let transition = event.pitchTransition, let target = event.techniquePositions.last {
+                let targetName = try tuning.pitch(at: target).name(spelling: tuning.preferredSpelling)
+                motion = "; pitchTransition=\(transition.kind.rawValue), changeStartTick=\(event.startTick + transition.startTick), targetTick=\(event.startTick + transition.endTick), targetPitch=\(targetName); one initial pick target, gesture unverified"
+            } else { motion = "" }
+            return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)" + motion
         }
         return CoachAnalysisRequest(schemaVersion: 1, promptVersion: promptVersion(for: practice), id: id,
             language: language == "uk" ? "uk" : "en", practiceDigest: try digest(practice),
@@ -79,11 +91,13 @@ enum CoachExchange {
             lessonContext: String((previous?.lessonContext ?? lessonContext).prefix(20_000)),
             recordingStartHostSeconds: take?.recording.firstHostSeconds ?? previous?.recordingStartHostSeconds,
             renderEpochHostSeconds: take?.renderEpoch ?? previous?.renderEpochHostSeconds, expectedNotes: expected,
-            unscoredBendObservationIDs: unscoredBendIDs(practice))
+            unscoredBendObservationIDs: unscoredBendIDs(practice),
+            unscoredPitchTransitionObservationIDs: unscoredTransitionIDs(practice))
     }
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if practice.evidence.configuration.selectedEvents.contains(where: { $0.pitchTransition != nil }) { return "file-coach-5" }
         if ![TimeSignature.threeFour, .fourFour].contains(exercise.timeSignature) || exercise.beatGrouping != nil { return "file-coach-4" }
         if practice.evidence.configuration.exercise.metronome != nil { return "file-coach-3" }
         return practice.bends == nil ? "file-coach-1" : "file-coach-2"
@@ -98,6 +112,7 @@ enum CoachExchange {
         let request = value.request, feedback = value.feedback
         guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == (promptVersion(for: practice)),
               request.unscoredBendObservationIDs == (unscoredBendIDs(practice)),
+              request.unscoredPitchTransitionObservationIDs == (unscoredTransitionIDs(practice)),
               request.practice.id == practice.id, request.practiceDigest == (try digest(practice)),
               (try digest(request.practice)) == request.practiceDigest,
               ["user-supplied-file; correspondence-and-start-offset-unverified", "capture-host-time; metronome-render-reference; audible-output-delay-not-measured"].contains(request.alignment),

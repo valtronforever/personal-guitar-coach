@@ -14278,6 +14278,295 @@
           }
         }
       }
+    },
+    "transition.kind.slide": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slide"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Слайд"
+          }
+        }
+      }
+    },
+    "transition.kind.hammerOn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hammer-on"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hammer-on"
+          }
+        }
+      }
+    },
+    "transition.kind.pullOff": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pull-off"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pull-off"
+          }
+        }
+      }
+    },
+    "transition.spoken %@ %@ %@ %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. Within this event, change begins on beat %2$@ and reaches the target on beat %3$@: fret %4$lld, %5$@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. У межах цієї події зміна починається на долі %2$@ і досягає цілі на долі %3$@: лад %4$lld, %5$@."
+          }
+        }
+      }
+    },
+    "transition.curveTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch transition"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перехід висоти"
+          }
+        }
+      }
+    },
+    "transition.curveExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The dashed line is an abstract pitch reference. A slide may move through fret steps. A vertical change marks the target time for hammer-on or pull-off. Sound does not prove the hand gesture."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пунктир — умовний орієнтир висоти. Слайд може проходити через ладові сходинки. Вертикальна зміна позначає час цільової ноти для hammer-on або pull-off. Звук не доводить рух руки."
+          }
+        }
+      }
+    },
+    "transition.resultTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured pitch transition"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряний перехід висоти"
+          }
+        }
+      }
+    },
+    "transition.phase.base": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Початкова висота"
+          }
+        }
+      }
+    },
+    "transition.phase.travel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slide travel"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переміщення слайду"
+          }
+        }
+      }
+    },
+    "transition.phase.target": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target pitch"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цільова висота"
+          }
+        }
+      }
+    },
+    "transition.score": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch transition"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перехід висоти"
+          }
+        }
+      }
+    },
+    "transition.assessmentLimits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch and rhythm above describe initial attacks. The overall score combines those attacks with the audible pitch phases; mixed bend/transition exercises weight each moving note equally. A sustain component is included when requested. This does not identify fingers, strings, hand gestures or repicking, and does not measure an exact secondary attack time."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Висота й ритм вище описують початкові атаки. Загальна оцінка поєднує їх із чутними фазами висоти; у вправах із бендами й переходами кожна така нота має однакову вагу. За запитом додається компонент утримання. Це не визначає пальці, струни, рухи рук чи повторний удар і не вимірює точний час другої атаки."
+          }
+        }
+      }
+    },
+    "transition.practiceInstructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a clean, sustained single note. Pick the starting fret, then follow the marked slide, hammer-on or pull-off to the target fret at its written time. The app measures audible pitch phases and the first attack, not the physical gesture."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Грай одну чисту ноту з достатнім утриманням. Вдар по початковій ноті, потім виконай позначений слайд, hammer-on або pull-off до цільового ладу у вказаний час. Додаток вимірює чутні фази висоти та першу атаку, а не фізичний рух."
+          }
+        }
+      }
+    },
+    "result.annotation.pitchTransition": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch transition needs attention"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перехід висоти потребує уваги"
+          }
+        }
+      }
+    },
+    "feedback.pitchTransition": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some pitch-transition phases did not follow the target. Review the measured curve and repeat the fragment slowly, listening to the starting and ending pitches."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Деякі фази переходу висоти не відповідали цілі. Переглянь виміряну криву й повільно повтори фрагмент, слухаючи початкову та кінцеву висоти."
+          }
+        }
+      }
+    },
+    "staff.transitionTarget": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target of the pitch transition; select the complete event."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ціль переходу висоти; вибрати всю подію."
+          }
+        }
+      }
+    },
+    "transition.axes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizontal: beats from this event’s initial attack. Vertical: signed cents relative to the starting pitch."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Горизонтально: долі від початкової атаки цієї події. Вертикально: центи зі знаком відносно початкової висоти."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

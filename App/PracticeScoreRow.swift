@@ -110,8 +110,10 @@ struct PracticeScoreRow: View {
                     RoundedRectangle(cornerRadius: 3).fill(Color.accentColor.opacity(0.1))
                         .overlay(RoundedRectangle(cornerRadius: 3).strokeBorder(.primary.opacity(0.5), lineWidth: 1))
                 }
-                durationMark(segment.writtenDurationTicks, continuation: segment.isContinuation)
-                    .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
+                if event.pitchTransition == nil {
+                    durationMark(segment.writtenDurationTicks, continuation: segment.isContinuation)
+                        .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
+                }
                 if let bend = event.bend {
                     Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r"))
                         .font(.system(size: 9 * zoom, weight: .bold)).offset(x: 1, y: 137 * zoom).accessibilityHidden(true)
@@ -128,6 +130,9 @@ struct PracticeScoreRow: View {
                 if event.kind == .rest {
                     Image(systemName: "pause.fill").font(.caption)
                         .frame(width: width, height: 6 * stringSpacing).offset(y: gridTop)
+                } else if event.pitchTransition != nil {
+                    PitchTransitionTabContent(segment: segment, width: width, gridTop: gridTop, stringSpacing: stringSpacing,
+                        anchorX: min(8 * zoom, width / 2), zoom: zoom, compact: true)
                 } else {
                     ForEach(event.positions, id: \.self) { position in
                         Text(verbatim: String(position.fret)).font(.system(size: 12 * zoom, weight: .bold, design: .monospaced))
@@ -170,10 +175,13 @@ struct PracticeScoreRow: View {
         let duration = segment.triplet == nil ? written : String(format: tripletFormat, locale: locale, written)
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)", bundle: localizationBundle) }
         let format = localizationBundle.localizedString(forKey: "tab.position %lld %lld %@", value: nil, table: nil)
-        var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
+        var notes = zip(segment.displayPositions, segment.displayPitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }
+        if event.pitchTransition != nil {
+            notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) })
+        }
         if event.palmMuted { notes = String(format: localizationBundle.localizedString(forKey: "tab.palmMutedNotes %@", value: nil, table: nil), locale: locale, notes) }
         if let stroke = event.pickingDirection, !segment.isContinuation {
             let direction = localizationBundle.localizedString(forKey: stroke == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)

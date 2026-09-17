@@ -1,6 +1,6 @@
 # Movable harmony course
 
-Status: `in_progress`
+Status: `pending_user`
 
 Continue the authorized 128-topic course with harmony topics 73–80. Use explicit harmonic roots, tuning-aware resolved shapes, progressive bilingual teaching and honest separation between full-chord self-observation and monophonic assessment. Do not infer a barre, finger contact or simultaneous chord quality from sequential notes.
 
@@ -26,3 +26,5 @@ Independent MIDI/fret/role goldens cover all presets and neck lengths; App selec
 All eight harmony topics are now authored; this remains `in_progress` until delivery checks and merge complete. Topics 77–80 add four seventh-chord string checks, two unscored functional progressions with inverted basses, wide-versus-connected voice-leading references, three graded sustained voice lines plus an arpeggio, and three progressive arpeggio-through-changes exercises including an original eight-bar study. These reuse explicit material roots, display-only chords, opt-in sustain and monophonic practice rather than adding duplicate runtime music models.
 
 Independent four-test goldens cover all presets/fret choices, chord suffixes and harmonic roots, exact pitch order, timing, rests and final sustain. Full Learning/App, author-tool and Release evidence are recorded in [the third-delivery review](../../docs/reviews/harmony-progressions-course-review.md). Native and actual instrument acceptance remain open. The larger course still requires the remaining lead-technique extensions and modules 11–16.
+
+All harmony deliveries (PRs 80–82) are merged after exact-head CI. The latest signed root Release contains all eight topics. Native/hardware evidence remains open; this status does not mean the full 128-topic course is complete.

@@ -1,0 +1,365 @@
+schemaVersion: 3
+id: hammer-ons
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: open-string
+    kind: events
+    exerciseID: hammer-ons-open-string
+    eventIDs:
+      - pair-1
+      - rest-1
+      - pair-2
+      - rest-2
+    activityID: open-string
+  - id: fretted-pair
+    kind: events
+    exerciseID: hammer-ons-fretted-pair
+    eventIDs:
+      - pair-1
+      - rest-1
+      - pair-2
+      - rest-2
+    activityID: fretted-pair
+  - id: legato-phrase
+    kind: events
+    exerciseID: hammer-ons-legato-phrase
+    eventIDs:
+      - pair-1
+      - rest-1
+      - pair-2
+      - rest-2
+      - pair-3
+      - rest-3
+      - pair-4
+      - rest-4
+    activityID: legato-phrase
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: hammer-ons-open-string
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 60
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: pair-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-2
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-2
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: hammer-ons-fretted-pair
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 60
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: pair-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-2
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-2
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: hammer-ons-legato-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 60
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: pair-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-2
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-2
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-3
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 1
+          startTick: 960
+      - id: rest-3
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-4
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: hammerOn
+          semitones: 2
+          startTick: 960
+      - id: rest-4
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: open-string
+    source:
+      kind: exercise
+      exerciseID: hammer-ons-open-string
+    positioning:
+      enabled: false
+  - id: fretted-pair
+    source:
+      kind: exercise
+      exerciseID: hammer-ons-fretted-pair
+    positioning:
+      enabled: true
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      preserve: soundingPitch
+      allowOriginal: true
+  - id: legato-phrase
+    source:
+      kind: exercise
+      exerciseID: hammer-ons-legato-phrase
+    positioning:
+      enabled: false
+activities:
+  - id: open-string
+    materialID: open-string
+  - id: fretted-pair
+    materialID: fretted-pair
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: legato-phrase
+    materialID: legato-phrase
+practiceEntries:
+  - id: open-string
+    activityID: open-string
+    exerciseID: hammer-ons-open-string
+  - id: fretted-pair
+    activityID: fretted-pair
+    exerciseID: hammer-ons-fretted-pair
+  - id: legato-phrase
+    activityID: legato-phrase
+    exerciseID: hammer-ons-legato-phrase
+fingerings: []
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - finger
+      - pick
+      - slide
+    correctOptionID: finger
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - pick
+      - landing
+      - quiet
+      - compare
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 52
+  durationMinutes: 25
+  prerequisites:
+    - hand-synchronization
+  keywords:
+    - hammer-ons
+    - hammerOn
+    - legato
+    - легато
+    - перехід висоти

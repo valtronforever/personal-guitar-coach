@@ -37,7 +37,7 @@ struct ActivityTextRenderer {
         for string in strings { _ = try fill(string, values: values) }
     }
     func render(_ text: LessonText) throws -> LessonText {
-        let positions = exercises.flatMap(\.events).flatMap(\.positions)
+        let positions = exercises.flatMap(\.events).flatMap(\.techniquePositions)
         let pitches = try positions.map { try tuning.pitch(at: $0) }
         let names = pitches.map { $0.name(spelling: tuning.preferredSpelling) }
         let positionLabel: String
@@ -66,7 +66,7 @@ struct ActivityTextRenderer {
             guard let copy = text.steps[step.id] else { throw ContentFailure(.translationMismatch, "Missing step text") }
             var scoped = values
             if step.kind != .none {
-                let positions = fingerings.first { $0.id == step.fingeringID }?.fingering.positions ?? exercises.first { $0.id == step.exerciseID }?.events.filter { step.eventIDs.contains($0.id) }.flatMap(\.positions) ?? []
+                let positions = fingerings.first { $0.id == step.fingeringID }?.fingering.positions ?? exercises.first { $0.id == step.exerciseID }?.events.filter { step.eventIDs.contains($0.id) }.flatMap(\.techniquePositions) ?? []
                 scoped.merge(try positionValues(positions)) { _, new in new }
             }
             copies[step.id] = try LessonStepText(title: Self.fill(copy.title, values: scoped), body: Self.fill(copy.body, values: scoped))

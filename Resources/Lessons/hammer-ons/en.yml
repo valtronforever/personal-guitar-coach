@@ -1,0 +1,88 @@
+lessonID: hammer-ons
+lessonVersion: 1
+locale: en
+title: 'Hammer-ons: make the second note with the fretting hand'
+summary: Start from an open string, then connect fretted pairs and a short phrase with one initial pick per pair.
+goal: Make the higher note speak clearly at the written time without another pick attack.
+body: |-
+  A hammer-on produces a higher fretted note by bringing a fretting finger down onto a string that is already sounding. Pick the first note once. The second note comes from the fretting hand rather than a second stroke of the pick. In TAB, h joins the two fret numbers. The second number appears at its own rhythmic position; it is not a chord with the first note.
+
+  Begin with the open-string exercise. Let the open string ring for beat 1, then place a finger firmly just behind the destination fret on beat 2. Keep the new note sounding through beats 2 and 3, and mute on beat 4. Prepare the finger close to the string rather than lifting it high and striking harder. Enough speed and accurate placement matter more than excessive force. Keep adjacent strings quiet and release tension between attempts.
+
+  The fretted pair adds a starting finger. Hold the lower fret with the index finger and use a comfortable higher finger for the target two frets away; index and ring are a useful starting option. Keep the lower finger in place as the higher finger lands. Do not push the string sideways into an unintended bend. First pick the target separately to hear its clean pitch, then compare the hammer-on with it. The displayed positions can adapt to your tuning or permitted neck region; judge the finger choice yourself.
+
+  In the four-bar phrase, read the next pair during each quiet fourth beat. Most pairs move by two frets, but one moves by a single fret. Prepare that shorter spacing rather than repeating a memorized stretch. Each bar still begins with a fresh pick attack. The app is not asking for an uninterrupted chain of hammer-ons across all bars.
+
+  Review the starting and target phases separately. A clear starting note with a weak target can mean the second sound did not match the intended pitch or did not remain audible; inspect the measured curve and listen before changing your hand movement. The score cannot diagnose finger strength or prove that you avoided repicking. It measures the first attack time and the audible pitch coverage around the authored change, not an exact second-attack timestamp.
+
+  Use a clean sound for measurement. Compression or distortion can make an uneven hammer-on sound more even while making pitch analysis less reliable. The synthesized preview illustrates the pitch and rhythm, not a model of finger contact. Slow, relaxed repetitions with a clear rest are more useful here than increasing speed before the target speaks consistently.
+steps:
+  prepare:
+    title: Prepare the destination close to the string
+    body: >-
+      Listen to the two displayed pitches separately. Then pick only the first and let the fretting hand make the
+      higher note. Use a clean sound and avoid sideways string movement.
+  review:
+    title: Compare both sounding phases
+    body: >-
+      Review the starting and target phases, then listen to the target’s clarity. Check for a second pick and excess
+      finger motion yourself; the audio score does not verify those gestures.
+  question:
+    title: Where does the second note come from?
+    body: Use the instructed gesture, not only the final pitch.
+  open-string:
+    title: Open string to a fretted note
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}. Keep this open-string preparation in its original position.
+  fretted-pair:
+    title: Hammer-on between two frets
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+  legato-phrase:
+    title: A phrase with whole-step and half-step changes
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+activities:
+  open-string:
+    title: Open string to a fretted note
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}. Keep this open-string preparation in its original position.
+  fretted-pair:
+    title: Hammer-on between two frets
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+  legato-phrase:
+    title: A phrase with whole-step and half-step changes
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+learningTasks:
+  question:
+    title: Where does the second note come from?
+    body: What does h ask you to do after picking the starting note?
+    items:
+      finger: Bring a fretting finger down at the target fret so the higher note sounds.
+      pick: Pick both notes with alternate strokes.
+      slide: Move the starting finger continuously along the neck.
+    explanation: >-
+      A hammer-on uses a landing fretting finger to produce the higher note. The lesson grades audible pitches and
+      the first attack; observing whether you picked again remains your responsibility.
+  review:
+    title: Observe the physical technique yourself
+    body: Mark only what you actually practiced; the pitch score does not confirm these gestures.
+    items:
+      pick: I picked only the first note of each pair.
+      landing: I placed the higher finger close behind the target fret on beat 2.
+      quiet: I kept neighboring strings quiet and rested on beat 4.
+      compare: I listened to the target separately and compared its clarity with the hammer-on.

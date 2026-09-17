@@ -30,3 +30,5 @@ Initial targeted musical run: four tests pass (3.746 s), covering every preset/f
 ## Signed local Release
 
 Root-only Release/archive build passes. Audit verifies 83 lessons /250 YAML files, en/uk offline resources, arm64 macOS 14 minimum, ad-hoc signature, hardened runtime and expected sandbox entitlements. Binary SHA256: `55ddba41f38d8723e5b10392fae29f1b5f747c8e769e22d7f7d4c3974af8e32f`; archive: `228801006c8d13f6319a7c132eb4a02934c8aa6079f780fb308ed3bc860fb77b`. Signed sandbox→separate XPC→invalidRequest passes without an AI provider. [Bundle report](../benchmarks/harmony-progressions-release-bundle.json). No local Debug app was built. Native launch/hardware remain unverified; exact-head CI/merge remain open.
+
+Exact head `0494fe4c53574388b7fccc824aa48b2eb0bb12eb` passed GitHub Actions run 35173463958; PR 82 was merged. Native/hardware gates remain open.

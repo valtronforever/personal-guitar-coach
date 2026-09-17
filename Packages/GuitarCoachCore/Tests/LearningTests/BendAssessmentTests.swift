@@ -53,4 +53,34 @@ struct BendAssessmentTests {
         #expect(try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(result)) == result)
         #expect(throws: AssessmentError.invalidResult) { try BendPhaseAssessment(kind: .target, matchedFraction: 1, silentFraction: 0, unknownFraction: 0.3, medianErrorCents: 0) }
     }
+    @Test func bendCapabilityAndMeasuredPhasesUseTheSameFrozenPulseInEveryMeter() throws {
+        let endpoint = try CalibrationEndpoint(uid:"meter-bend",channel:1,sampleRate:48000,bufferFrames:512,deviceLatencyFrames:0,streamLatencyFrames:0)
+        let route = try CalibrationRoute(input:endpoint,output:endpoint,backendVersion:"fixture")
+        let calibration = try CalibrationProfile(route:route,method:.measured,residualOffsetSeconds:0.12,uncertaintySeconds:0.015,
+            evidence:CalibrationEvidence(algorithmVersion:"fixture",matchedPulses:12,missedPulses:0,extraPulses:0,durationSeconds:25,residualP95Seconds:0.005,driftSeconds:0))
+        for meter in TimeSignature.allCases {
+            let phase = meter.pulseTicks / 2
+            let bend = try PitchBend(semitones:2,riseStartTick:phase,riseEndTick:phase*2)
+            let event = try MusicalEvent(id:"bend",startTick:0,durationTicks:phase*3,kind:.note,positions:[FretPosition(string:3,fret:9)],bend:bend)
+            let rest = try MusicalEvent(id:"rest",startTick:phase*3,durationTicks:meter.ticksPerBar-phase*3,kind:.rest)
+            let config = try PracticeConfiguration(exercise:Exercise(id:"meter-bend",events:[event,rest],timeSignature:meter),instrument:InstrumentProfile(),bpm:60,route:route,calibration:calibration)
+            let onset = 100.0 + Double(meter.beatsPerBar) + 0.12
+            let hz = 329.6275569128699
+            let frames = try (0..<86).map { index -> SustainFrame in
+                let seconds = Double(index)*0.02-0.1
+                // Every half-pulse is exactly 0.5 s at 60 BPM, independent of quarter-note PPQ.
+                let cents: Double = seconds < 0.5 ? 0 : seconds < 1 ? 400*(seconds-0.5) : 200
+                return try SustainFrame(id:UInt64(index+1),normalizedTime:onset+seconds,state:.pitched,frequency:hz*pow(2,cents/1200))
+            }
+            let attack = try PracticeAttack(id:1,normalizedOnset:onset,frequency:hz,clarity:0.99,reliable:true)
+            let input = try PracticeEvidence(id:UUID(),configuration:config,startedAt:Date(timeIntervalSince1970:1),finishedAt:Date(timeIntervalSince1970:30),
+                phase:.completed,reason:nil,signalConfirmed:true,renderEpochSeconds:100,maximumClockDriftSeconds:0,attacks:[attack],clipping:[],pitchContour:PitchContourTrace(frames:frames),analysisVersion:"fixture")
+            let result = try AssessmentEngine.evaluate(input)
+            #expect(result.validity == .valid && result.bendScore == 100 && result.overallScore == 100)
+            #expect(abs(result.notes.first?.timingErrorSeconds ?? 1) < 1e-8)
+            #expect(result.bends?.notes.first?.normalizedStart == onset)
+            #expect(try JSONDecoder().decode(AssessedPractice.self,from:JSONEncoder().encode(result)) == result)
+        }
+    }
+
 }

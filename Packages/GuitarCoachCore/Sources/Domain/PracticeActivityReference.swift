@@ -42,7 +42,7 @@ public struct PracticeActivityReference: Codable, Equatable, Sendable {
             guard confirmation.tuning.hasSamePitches(as: tuning) else { throw PracticeError.invalidEvidence }
         }
         if let region = try positioning.region(for: choice) {
-            guard exercise.events.flatMap(\.positions).allSatisfy({ region.contains($0, maximumFret: 24) }) else { throw PracticeError.invalidEvidence }
+            guard exercise.events.flatMap(\.techniquePositions).allSatisfy({ region.contains($0, maximumFret: 24) }) else { throw PracticeError.invalidEvidence }
         }
     }
     public func hasSameConditions(as other: Self) -> Bool {
