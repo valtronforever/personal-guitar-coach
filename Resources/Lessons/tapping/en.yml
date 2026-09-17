@@ -1,0 +1,63 @@
+lessonID: tapping
+lessonVersion: 1
+locale: en
+title: Add tapped notes to a legato phrase
+summary: Introduce the picking hand as another source of a fretted note.
+goal: Reach a higher pitch with a tap, return cleanly and connect the movement to a repeated phrase.
+body: |-
+  Tapping uses a finger of the picking hand to sound a fretted note. For a right-handed player this is normally the right hand; reverse the hand roles if you play left-handed. The t mark identifies the intended tapped target. This lesson begins on one string so that reaching the target, returning to the lower note and controlling unwanted strings can be practiced separately.
+
+  First prepare the lower fretted note with the usual fretting hand. Pick it once, then place the tapping fingertip just behind the higher fret with enough controlled contact to sound that note. You do not need a large swing or a hard impact. Keep the lower finger in position. Pull the tapping finger off in a small motion that lets the prepared lower note ring again, then stop in the written rest.
+
+  The first pattern travels from the root to its fifth and back. Listen for three separate stable pitches rather than a percussive click followed by a weak return. If the return disappears, isolate only the tap and release before repeating the full pattern. Keep unused strings quiet with comfortable contact from both hands. Do not use extra distortion to hide a note that does not sound clearly through the clean input.
+
+  Add a hammer-on to the minor third before tapping the fifth. Return first to that middle note and then to the root. Count all five notes equally: pick, hammer, tap, pull, pull. The repeated example joins two cycles without another pick at the internal root. That root still has a full beat; it is not a signal to rush into the next hammer-on. Use the final three beats of rest to stop, reset and decide what to improve.
+
+  Begin with slow quarter notes and compare every plateau in the result, especially the note immediately after the tap. An input that becomes uncertain is a measurement limitation to investigate, not evidence that your hand is wrong. The app assesses heard pitches and initial timing; it cannot determine which hand struck a fret, whether you repicked or how well you muted neighboring strings. Use the self-check for those observations. Once both cycles are controlled, increase the tempo a small amount within the supported range, keeping the same clear returns.
+steps:
+  prepare:
+    title: Prepare a clean input
+    body: Tune the guitar, begin at 60 BPM and preview the phrase before playing.
+  tap-return:
+    title: Tap the fifth and return
+    body: Pick the root, tap the fifth on beat two, and pull off to the prepared root on beat three. Rest on beat
+      four. The TAB gives every reached fret and its duration. The pitch curve shows all targets; one event represents
+      one initial pick and the whole unpicked chain.
+  minor-triad:
+    title: Connect a minor-triad chain
+    body: 'Center: {{root}} minor. One pick begins root–minor third–fifth–minor third–root. The fifth is tapped;
+      keep both returning notes audible for a full beat. The TAB gives every reached fret and its duration. The
+      pitch curve shows all targets; one event represents one initial pick and the whole unpicked chain.'
+  two-cycles:
+    title: Join two cycles with one pick
+    body: Nine notes form two joined cycles. Pick only at the beginning, keep the internal root for its whole beat
+      and count the final three-beat rest. The TAB gives every reached fret and its duration. The pitch curve shows
+      all targets; one event represents one initial pick and the whole unpicked chain.
+  check-tap:
+    title: Check contact, return and muting
+    body: Use your hearing and direct observation in addition to the measured pitch targets.
+activities:
+  tap-return:
+    title: Tap the fifth and return
+    body: Pick the root, tap the fifth on beat two, and pull off to the prepared root on beat three. Rest on beat
+      four. The TAB gives every reached fret and its duration. The pitch curve shows all targets; one event represents
+      one initial pick and the whole unpicked chain.
+  minor-triad:
+    title: Connect a minor-triad chain
+    body: 'Center: {{root}} minor. One pick begins root–minor third–fifth–minor third–root. The fifth is tapped;
+      keep both returning notes audible for a full beat. The TAB gives every reached fret and its duration. The
+      pitch curve shows all targets; one event represents one initial pick and the whole unpicked chain.'
+  two-cycles:
+    title: Join two cycles with one pick
+    body: Nine notes form two joined cycles. Pick only at the beginning, keep the internal root for its whole beat
+      and count the final three-beat rest. The TAB gives every reached fret and its duration. The pitch curve shows
+      all targets; one event represents one initial pick and the whole unpicked chain.
+learningTasks:
+  check-tap:
+    title: Check contact, return and muting
+    body: Use your hearing and direct observation in addition to the measured pitch targets.
+    items:
+      contact: I used a controlled tap without a large forceful swing.
+      return: Both the tapped note and the following lower note remained audible.
+      mute: I kept neighboring strings quiet through both cycles.
+      pick: I observed one initial pick, with no new pick at the internal root.

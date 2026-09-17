@@ -52,6 +52,7 @@ struct ResultDetailView: View {
                     }
                 }
                 eventDetail(selectedID ?? result.notes[0].id)
+                if let chain = result.legatoChains?.notes.first(where: { $0.id == (selectedID ?? result.notes[0].id) }) { LegatoChainResultView(result: result, note: chain) }
                 if let transition = result.pitchTransitions?.notes.first(where: { $0.id == (selectedID ?? result.notes[0].id) }) {
                     PitchTransitionResultView(result: result, note: transition)
                 }
@@ -140,7 +141,7 @@ struct ResultDetailView: View {
             switch advice.kind {
             case .inputLevel: Text("feedback.clippingEvidence \(advice.evidenceCount)")
             case .signal: Text("feedback.signalEvidence \(advice.evidenceCount) \(advice.denominator)")
-            case .early, .late, .missed, .pitch, .tuning, .sustain, .bend, .pitchTransition, .vibrato:
+            case .early, .late, .missed, .pitch, .tuning, .sustain, .bend, .pitchTransition, .vibrato, .legatoChain:
                 Text("feedback.noteEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .rests: Text("feedback.restEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .repeatFragment: Text("feedback.repeatEvidence \(advice.denominator)")

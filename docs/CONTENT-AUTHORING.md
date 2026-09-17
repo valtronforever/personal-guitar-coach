@@ -451,3 +451,22 @@ Use neutral labels such as “Response A”, describe a comparison method, and a
 The learner may deliberately reveal notation and fretboard targets. This remains guided for the current selection, including replays and tempo/range changes. Each performed configuration freezes `listeningConditions` version 1 (completed reference, targets revealed), paired with `PracticeActivityReference` schema 2 and the resolved exercise. Results identify whether targets were hidden during that attempt; guided and hidden conditions are not compared as equal. Older ordinary activity schema 1 and configurations omit the new fields and retain their encoding. A retry must prepare again. Results may display the expected notes for diagnosis.
 
 This is measured pitch/onset reproduction, not proof of perfect pitch, hearing, unfamiliar material, memory, fingering or general ear-training proficiency. The examples are fixed, not randomized. Software playback completion does not prove perception. Rhythm needs valid calibration; manual calibration is explicitly approximate, and missing audio still withholds a score. There is no transcription editor: learners can write their own notes externally and submit a guitar response. The `file-coach-7` exchange includes the frozen listening conditions and instructs the coach to honor these limits.
+
+### Multi-target legato chains
+
+Use optional `legatoChain` on a single-voice note for 1–8 sequential unpicked targets. One `MusicalEvent` retains one initial attack; each target is a stable pitch plateau, not a new pick event. `semitones` is relative to the **preceding** target (the first relative to the base), while `startTick` is absolute within the parent event. The cumulative offset must stay within ±24 semitones and all reached frets must be 0–24 on the same string. Strictly increasing positive target ticks must precede the event end. `hammerOn` and `tap` require a positive interval; `pullOff` requires a negative interval, each at most 12 semitones. `pickStroke`/accent describe only the initial attack. Chain, bend, single transition, vibrato, assessed sustain and palm mute cannot coexist on one event.
+
+```yaml
+legatoChain:
+  targets:
+    - {kind: hammerOn, semitones: 3, startTick: 960}
+    - {kind: tap, semitones: 4, startTick: 1920}
+    - {kind: pullOff, semitones: -4, startTick: 2880}
+    - {kind: pullOff, semitones: -3, startTick: 3840}
+```
+
+With a 4800-tick parent this is five quarter notes: base, +3, +7, +3, base. TAB/staff and the pitch curve show all targets; notation fragments keep the source event ID. Ties connect only a sustained plateau, never distinct pitches. A string change needs a new event/initial attack; this first chain contract does not infer an unpicked cross-string articulation.
+
+The clean monophonic envelope requires initial 195.9–880 Hz, all plateaus 195.9–1100 Hz, and at least 0.4 s per plateau at the requested meter pulse/BPM. Display/reference are broader than assessment. The app measures audible pitch coverage, not the hand/finger, fret, string or absence of repicking. Add a separate physical self-check rather than reporting the gesture as measured.
+
+Positioning checks every intermediate target when choosing a starting position. `windowFrets` now permits 1–12: this is a search region, **not** a claim of a feasible one-hand stretch. Chord voicings retain the existing four-fret span constraint. Wider regions can describe two-handed tapping, while physically essential string-crossing tasks should disable relocation. Available choices are pruned against the actual instrument/fret count. Topics 91/93 demonstrate short→long chains, fixed three-string crossings and repeated tapped minor-triad cycles. Missing optional fields preserve earlier canonical encoding and saved grades.

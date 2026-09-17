@@ -74,7 +74,7 @@ struct StaffModel: Sendable {
             guard segment.startTick == end else { throw StaffLimitation.gaps }
             guard resolved.pitches.count <= 1 else { throw StaffLimitation.polyphony }
             for fragment in try RhythmNotation.fragments(segment) {
-                let sounding = fragment.pitchOffset == 0 ? resolved.pitches.first : resolved.transitionTargetPitch
+                let sounding = try resolved.pitches.first.map { try Pitch(midi: $0.midi + fragment.pitchOffset) }
                 let pitch = sounding.map { StaffPitch(sounding: $0, key: key, preferredSpelling: timeline.tuning.preferredSpelling) }
                 if let pitch, !(33...88).contains(pitch.soundingMIDI) { throw StaffLimitation.range }
                 var accidental: String?

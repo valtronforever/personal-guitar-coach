@@ -1052,7 +1052,8 @@ lessons:
       uk: Довгі legato-фрази
     outcomeUK: Поєднувати hammer-on і pull-off через кілька струн
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 92
     moduleID: advanced-technique
     lessonID: sweep-picking
@@ -1070,7 +1071,8 @@ lessons:
       uk: Tapping
     outcomeUK: Додати ноти пальцем правої руки
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 94
     moduleID: advanced-technique
     lessonID: harmonics

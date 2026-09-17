@@ -1,0 +1,67 @@
+lessonID: long-legato
+lessonVersion: 1
+locale: en
+title: Connect longer legato phrases
+summary: Link several hammer-ons and pull-offs, then carry the pattern across strings.
+goal: Keep each intermediate note audible and timed within a chain that begins with one pick.
+body: |-
+  A longer legato phrase connects several notes after one initial pick. The important change from a two-note exercise is that the middle notes must remain complete musical events to the ear: they have a pitch and a duration even though the picking hand does not attack them. A loud first note and a clear last note do not compensate for an inaudible or rushed middle.
+
+  Begin with a three-note chain on one string. Prepare the lower finger before the pull-off, pick the starting fret once, hammer the higher note on the next click, and pull off to the original pitch on the following click. Hold each pitch for its full beat. The final rest is a deliberate release and reset. Repeat the small chain before attempting the longer one.
+
+  The five-note example rises through three frets and returns through the middle fret. Keep the lower fingers available rather than lifting the whole hand after each change. For a pull-off, release with a small controlled movement that leaves the lower note sounding; avoid pulling so far sideways that the pitch bends. The lesson shows expected frets, but choose comfortable fingering according to your hand and instrument.
+
+  Next move between the three treble strings. Each new string begins with a fresh pick; the h and p marks inside its chain still require no further pick. This makes the string crossing explicit instead of pretending that a note on another string can sustain automatically. Mute the previous string during the written rest, place the next starting finger, and keep counting. The distances between frets vary because these examples use notes from one major collection.
+
+  Start at 60 BPM with a clean input. Compare the recorded pitch plateaus with the target curve: an incorrect middle height needs a pitch correction, a short plateau needs slower coordination, and a silent section needs an audible note before adding speed. Do not interpret an unknown section as a wrong note. The measurement checks slow sustained targets and initial timing; it cannot verify your fingers, muting, even volume or absence of repicking. Check those separately while repeating one chain, then join the crossings without losing the pulse.
+steps:
+  prepare:
+    title: Prepare a clean input
+    body: Tune the guitar, begin at 60 BPM and preview the phrase before playing.
+  three-notes:
+    title: Return through three notes
+    body: Pick once, hammer up a whole tone, then pull off to the beginning. One beat per note, one beat of rest.
+      The TAB gives every reached fret and its duration. The pitch curve shows all targets; one event represents
+      one initial pick and the whole unpicked chain.
+  five-notes:
+    title: Keep both middle notes complete
+    body: The middle pitch appears on the way up and on the way down. Sustain both appearances for a beat; after
+      five notes, count the three rest beats. The TAB gives every reached fret and its duration. The pitch curve
+      shows all targets; one event represents one initial pick and the whole unpicked chain.
+  string-crossings:
+    title: Carry the chain across three strings
+    body: Three five-note chains use the root, third and fifth as starting notes in the {{root}} major collection.
+      Pick only the first note of each chain; use the three-beat rests for a controlled string change. This activity
+      keeps its original fingering to preserve three distinct string crossings. The TAB gives every reached fret
+      and its duration. The pitch curve shows all targets; one event represents one initial pick and the whole unpicked
+      chain.
+  check-chain:
+    title: Check the chain and crossing
+    body: Compare one slow attempt with the written targets and your own observation.
+activities:
+  three-notes:
+    title: Return through three notes
+    body: Pick once, hammer up a whole tone, then pull off to the beginning. One beat per note, one beat of rest.
+      The TAB gives every reached fret and its duration. The pitch curve shows all targets; one event represents
+      one initial pick and the whole unpicked chain.
+  five-notes:
+    title: Keep both middle notes complete
+    body: The middle pitch appears on the way up and on the way down. Sustain both appearances for a beat; after
+      five notes, count the three rest beats. The TAB gives every reached fret and its duration. The pitch curve
+      shows all targets; one event represents one initial pick and the whole unpicked chain.
+  string-crossings:
+    title: Carry the chain across three strings
+    body: Three five-note chains use the root, third and fifth as starting notes in the {{root}} major collection.
+      Pick only the first note of each chain; use the three-beat rests for a controlled string change. This activity
+      keeps its original fingering to preserve three distinct string crossings. The TAB gives every reached fret
+      and its duration. The pitch curve shows all targets; one event represents one initial pick and the whole unpicked
+      chain.
+learningTasks:
+  check-chain:
+    title: Check the chain and crossing
+    body: Compare one slow attempt with the written targets and your own observation.
+    items:
+      middle: I could hear every intermediate note for its intended duration.
+      pick: I used one pick at each chain start and h/p movements afterward.
+      crossing: I silenced the previous string and counted through the crossing rests.
+      ease: I kept the hand relaxed and reduced tempo when the chain became rushed.

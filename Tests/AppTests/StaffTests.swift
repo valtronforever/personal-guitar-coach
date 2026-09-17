@@ -91,7 +91,7 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 94)
+        #expect(library.lessons.count == 96)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for entry in lesson.manifest.practiceEntries {
@@ -117,6 +117,7 @@ struct StaffTests {
                     let event = symbol.resolved.event
                     let interval: Int
                     if let transition = event.pitchTransition, symbol.startTick >= event.startTick + transition.endTick { interval = transition.semitones }
+                    else if let chain = event.legatoChain { interval = Int(chain.cents(at: Double(symbol.startTick - event.startTick)) / 100) }
                     else { interval = 0 }
                     return symbol.resolved.pitches.map { $0.midi + interval + 12 }
                 }

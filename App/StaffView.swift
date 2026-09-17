@@ -121,14 +121,14 @@ struct StaffView: View {
         let written = TimelineModel.durationLabel(symbol.fragment.duration.triplet ? symbol.fragment.duration.baseTicks : symbol.fragment.duration.ticks)
         let duration = symbol.fragment.tripletID == nil ? written : String(format: settings.localized("rhythm.tripletDuration %@"), locale: settings.locale, written)
         if let pitch = symbol.pitch {
-            var sounding = (symbol.fragment.pitchOffset == 0 ? symbol.resolved.pitches[0] : symbol.resolved.transitionTargetPitch!).name(spelling: timeline.tuning.preferredSpelling)
+            var sounding = (try! Pitch(midi: symbol.resolved.pitches[0].midi + symbol.fragment.pitchOffset)).name(spelling: timeline.tuning.preferredSpelling)
             if let stroke = symbol.resolved.event.pickStroke, symbol.startTick == symbol.resolved.event.startTick {
                 let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
             if let bend = symbol.resolved.event.bend { sounding = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, sounding, bend.semitones * 100) }
             if let vibrato = symbol.resolved.event.vibrato { sounding += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: timeline.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
-            if symbol.resolved.event.pitchTransition != nil {
+            if symbol.resolved.event.pitchTransition != nil || symbol.resolved.event.legatoChain != nil {
                 sounding += "; " + PitchTransitionPresentation.spoken(event: symbol.resolved, pulseTicks: timeline.pulseTicks,
                     tuning: timeline.tuning, locale: settings.locale, localized: settings.localized)
             }
@@ -287,21 +287,21 @@ struct StaffDrawing {
             VibratoPresentation.draw(context: &context, start: leading + timeline.x(tick: span.lowerBound, bar: currentBar, zoom: 1),
                 end: leading + timeline.x(tick: span.upperBound, bar: currentBar, zoom: 1), y: StaffModel.canvasHeight - 46)
         }
-        for segment in timeline.segments(in: currentBar) where segment.resolved.event.pitchTransition != nil {
-            let event = segment.resolved.event, transition = event.pitchTransition!
-            let targetTick = event.startTick + transition.endTick
-            let linkStart = transition.kind == .slide ? event.startTick + transition.startTick : event.startTick
+        for segment in timeline.segments(in: currentBar) {
+            for link in PitchTransitionPresentation.links(segment.resolved.event) {
+            let targetTick = link.endTick, linkStart = link.startTick
             let low = max(segment.startTick, linkStart), high = min(segment.endTick, targetTick)
             guard low < high else { continue }
             let a = leading + timeline.x(tick: low, bar: currentBar, zoom: 1) + (low == linkStart ? 32 : 0)
             let b = leading + timeline.x(tick: high, bar: currentBar, zoom: 1) + (high == targetTick ? 16 : 0)
             let y = StaffModel.canvasHeight - 46
             var path = Path(); path.move(to: CGPoint(x: a, y: y))
-            if transition.kind == .slide { path.addLine(to: CGPoint(x: b, y: y - (transition.semitones > 0 ? 10 : -10))) }
+            if link.slide { path.addLine(to: CGPoint(x: b, y: y - (link.ascending ? 10 : -10))) }
             else { path.addQuadCurve(to: CGPoint(x: b, y: y), control: CGPoint(x: (a + b) / 2, y: y - 18)) }
             context.stroke(path, with: .color(ink), lineWidth: 1.5)
-            context.draw(Text(verbatim: PitchTransitionPresentation.mark(transition)).font(.system(size: 10, weight: .bold)),
+            context.draw(Text(verbatim: link.mark).font(.system(size: 10, weight: .bold)),
                 at: CGPoint(x: (a + b) / 2, y: y - 18))
+            }
         }
         for (index, symbol) in symbols.enumerated() {
             guard let pitch = symbol.pitch else { continue }

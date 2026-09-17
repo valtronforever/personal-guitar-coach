@@ -187,7 +187,7 @@ public struct TransportPlan: Sendable {
                     continue
                 }
                 // Muted references keep their decay age when seeking into an existing note.
-                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil || item.event.vibrato != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
+                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil || item.event.vibrato != nil || item.event.legatoChain != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
                 for sample in a..<b {
                     let age = Double(sample - toneOnset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))
@@ -198,6 +198,9 @@ public struct TransportPlan: Sendable {
                     } else if let transition = item.event.pitchTransition {
                         let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
                         phaseSeconds = transition.integratedMultiplier(to: age / sampleRate / secondsPerTick, durationTicks: item.event.durationTicks) * secondsPerTick
+                    } else if let chain = item.event.legatoChain {
+                        let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
+                        phaseSeconds = chain.integratedMultiplier(to: age / sampleRate / secondsPerTick, durationTicks: item.event.durationTicks) * secondsPerTick
                     } else if let reference = vibratoReferences[index] {
                         let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
                         phaseSeconds = reference.integratedMultiplier(to: age / sampleRate / secondsPerTick, durationTicks: item.event.durationTicks) * secondsPerTick

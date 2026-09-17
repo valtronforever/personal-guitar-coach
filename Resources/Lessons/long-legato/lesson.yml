@@ -1,0 +1,364 @@
+schemaVersion: 3
+id: long-legato
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: three-notes
+    kind: events
+    exerciseID: long-legato-three-notes
+    eventIDs:
+      - phrase-1
+      - rest-1
+    activityID: three-notes
+  - id: five-notes
+    kind: events
+    exerciseID: long-legato-five-notes
+    eventIDs:
+      - phrase-1
+      - rest-1
+    activityID: five-notes
+  - id: string-crossings
+    kind: events
+    exerciseID: long-legato-string-crossings
+    eventIDs:
+      - phrase-1
+      - rest-1
+      - phrase-2
+      - rest-2
+      - phrase-3
+      - rest-3
+    activityID: string-crossings
+  - id: check-chain
+    kind: none
+    eventIDs: []
+exercises:
+  - id: long-legato-three-notes
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: phrase-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 2
+              startTick: 960
+            - kind: pullOff
+              semitones: -2
+              startTick: 1920
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: long-legato-five-notes
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: phrase-1
+        startTick: 0
+        durationTicks: 4800
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 2
+              startTick: 960
+            - kind: hammerOn
+              semitones: 2
+              startTick: 1920
+            - kind: pullOff
+              semitones: -2
+              startTick: 2880
+            - kind: pullOff
+              semitones: -2
+              startTick: 3840
+      - id: rest-1
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: long-legato-string-crossings
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: phrase-1
+        startTick: 0
+        durationTicks: 4800
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 2
+              startTick: 960
+            - kind: hammerOn
+              semitones: 2
+              startTick: 1920
+            - kind: pullOff
+              semitones: -2
+              startTick: 2880
+            - kind: pullOff
+              semitones: -2
+              startTick: 3840
+      - id: rest-1
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+      - id: phrase-2
+        startTick: 7680
+        durationTicks: 4800
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 1
+              startTick: 960
+            - kind: hammerOn
+              semitones: 2
+              startTick: 1920
+            - kind: pullOff
+              semitones: -2
+              startTick: 2880
+            - kind: pullOff
+              semitones: -1
+              startTick: 3840
+      - id: rest-2
+        startTick: 12480
+        durationTicks: 2880
+        kind: rest
+        positions: []
+      - id: phrase-3
+        startTick: 15360
+        durationTicks: 4800
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 2
+              startTick: 960
+            - kind: hammerOn
+              semitones: 2
+              startTick: 1920
+            - kind: pullOff
+              semitones: -2
+              startTick: 2880
+            - kind: pullOff
+              semitones: -2
+              startTick: 3840
+      - id: rest-3
+        startTick: 20160
+        durationTicks: 2880
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: three-notes
+    source:
+      kind: exercise
+      exerciseID: long-legato-three-notes
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 7
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: five-notes
+    source:
+      kind: exercise
+      exerciseID: long-legato-five-notes
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 7
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: string-crossings
+    source:
+      kind: exercise
+      exerciseID: long-legato-string-crossings
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: three-notes
+    materialID: three-notes
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: five-notes
+    materialID: five-notes
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: string-crossings
+    materialID: string-crossings
+practiceEntries:
+  - id: three-notes
+    activityID: three-notes
+    exerciseID: long-legato-three-notes
+  - id: five-notes
+    activityID: five-notes
+    exerciseID: long-legato-five-notes
+  - id: string-crossings
+    activityID: string-crossings
+    exerciseID: long-legato-string-crossings
+fingerings: []
+learningTasks:
+  - id: check-chain
+    stepID: check-chain
+    kind: selfPractice
+    itemIDs:
+      - middle
+      - pick
+      - crossing
+      - ease
+curriculum:
+  moduleID: advanced-technique
+  ordinal: 91
+  durationMinutes: 30
+  prerequisites:
+    - hammer-ons
+    - pull-offs
+  keywords:
+    - Connect longer legato phrases
+    - Поєднуй довші фрази legato
+    - legato
+    - tapping
+    - тепінг
+    - hammer-on
+    - pull-off

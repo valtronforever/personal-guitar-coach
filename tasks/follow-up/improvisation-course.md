@@ -1,6 +1,6 @@
 # Motifs, chord-tone targets and solo structure
 
-Status: `in_progress`
+Status: `pending_user`
 
 Deliver curriculum topics 85–88 with substantive en/uk instruction, distinct original musical examples and explicit practice outcomes. Complete the authored ear/improvisation module after topics 81–84; do not claim the whole course is accepted.
 
@@ -14,3 +14,5 @@ Reuse existing notation, synthesized preview/metronome, tuning/position resoluti
 Validate every preset/fret count and authored position choice with independent musical goldens; en/uk text and localized UI; source IDs/timing and complete notation. Same-agent review, root-only signed Release/archive/XPC and exact-head CI/merge are required. Hardware/native acceptance stays pending_user. No local Debug app; no subagents.
 
 Parent listen-and-repeat PR 85 is open at `0a26f34` (CI pending). Current inventory is 84 authored /44 todo, 90 bundles /84 visible. All four lessons are authored; targeted matrix/notation/transport checks pass. Inventory is now 88 authored /40 todo, 94 bundles /88 visible. 127 Learning /169 App tests and signed root-only Release/archive/XPC checks pass; exact-head CI/merge remain in progress. See [same-agent review](../../docs/reviews/improvisation-course-review.md).
+
+PR 86 was retargeted to main after PR 85 merged. Exact-head CI `35183530037` passed in 25m51s at `cf1bfb4d8b2d9b5157fc4df34f7826a5ad4cda34`; merged as `13a2d694f748480e7c016ffc9b32c6e995ad2911` on 2026-09-17. Native/hardware acceptance remains pending_user.

@@ -16,12 +16,14 @@ struct AssessmentSummaryView: View {
                     metric("assessment.overall", result.overallScore)
                     metric("assessment.pitch", result.pitchScore)
                     metric("assessment.rhythm", result.timingScore)
+                    if result.legatoChains != nil { metric("legato.score", result.legatoChainScore) }
                     if result.pitchTransitions != nil { metric("transition.score", result.pitchTransitionScore) }
                     if result.vibrato != nil { metric("vibrato.score", result.vibratoScore) }
                     if result.bends != nil { metric("bend.score", result.bendScore) }
                     if result.sustain != nil { metric("assessment.sustain", result.sustainScore) }
                 }
                 if result.vibrato != nil { Text("vibrato.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
+                if result.legatoChains != nil { Text("legato.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
                 if result.pitchTransitions != nil { Text("transition.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
                 if result.bends != nil && result.pitchTransitions == nil { Text(LocalizedStringKey(result.sustain == nil ? "bend.assessmentLimits" : "bend.assessmentMixedLimits")).font(.caption).foregroundStyle(.secondary) }
                 if result.sustain != nil {
