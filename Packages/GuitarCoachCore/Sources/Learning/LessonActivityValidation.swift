@@ -16,6 +16,7 @@ extension LessonCatalogLoader {
         let materialMap = Dictionary(uniqueKeysWithValues: materials.map { ($0.id, $0) })
         let activityMap = Dictionary(uniqueKeysWithValues: activities.map { ($0.id, $0) })
         for shape in shapes {
+            try require(exercises[shape.exerciseID]?.hasHeldVoices != true, "Held voices cannot be projected into an ordinary fingering")
             try require(exercises[shape.exerciseID] != nil && !shape.fingering.positions.isEmpty, "Source shape needs an exercise and sounding positions: \(shape.id)")
             try require(exercises[shape.exerciseID]?.events.contains(where: { $0.mutedAttack != nil }) != true, "Muted attacks require explicit string roles; ordinary named fingerings cannot represent them")
             try require(exercises[shape.exerciseID]?.events.contains(where: { $0.harmonic != nil }) != true, "Harmonic events require explicit node roles; ordinary named fingerings cannot represent them")
@@ -56,6 +57,10 @@ extension LessonCatalogLoader {
             let ids = material.exerciseIDs(in: manifest)
             let contexts = ids.compactMap { exercises[$0] }
             try require(!contexts.isEmpty, "Material needs a source exercise")
+            if contexts.contains(where: \.hasHeldVoices) {
+                try require(!material.policy.enabled && source.kind != .events && source.kind != .fingering,
+                    "Held voices require whole exercises and fixed physical strings")
+            }
             if material.tonalRoot != nil {
                 try require(manifest.adaptation?.policy == .transposeIntervals && contexts.allSatisfy { $0.requiredTuning != nil },
                     "Explicit tonal root requires interval-preserving adaptation and a source tuning")

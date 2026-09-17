@@ -113,4 +113,14 @@ import Persistence
         }
     }
 
+    @Test func heldVoiceLessonsAreOrderedAsSelfPracticeWithoutAScoredEntry() async throws {
+        let store = await library()
+        for language in [LessonLanguage.en,.uk] {
+            let result = LessonFilter(moduleID: "specializations",mode: .selfPractice).results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
+            #expect(result.map(\.id) == ["fingerstyle-bass-melody","chord-melody"])
+            let scored = LessonFilter(moduleID: "specializations",mode: .scored).results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
+            #expect(scored.isEmpty)
+        }
+    }
+
 }

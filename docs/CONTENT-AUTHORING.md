@@ -533,3 +533,25 @@ Muted attacks require `assessmentMode: displayOnly`, including in mixed pitched/
 Tuning changes and region choices retain the specified physical strings without inventing a pitch. TAB shows × on those strings, staff shows an unpitched cross with rhythm/stem/beam and no accidental, and the fretboard shows muted strings. `sequence`/`notes`/`positions` text includes a localized muted-string label rather than silently dropping the event. Named-fingering projections from any exercise containing muted attacks are rejected because an ordinary fingering would lose the attack instruction. The normal staff polyphony limit still applies to simultaneous pitched chords; it reports its existing limitation instead of showing one chord tone as the whole chord.
 
 Topic 102 (`funk-study`) progressively separates short chord stabs, scratches and rests, then combines them in syncopated patterns and a four-bar study. Its physical and musical checks are self-reported. There is no automatic pitch, damping or noisy-attack score for these events. Ordinary event encoding omits `mutedAttack`, preserving prior saved data; no prior result is regraded.
+
+## Independently held voices
+
+For display-only fingerstyle/chord-melody references, each nonoverlapping event lists **all currently sounding positions**. Optional `heldStrings` lists sorted unique physical strings that continue from the immediately preceding adjacent event without another attack. Every held position must match the preceding string and fret exactly. Positions not listed in `heldStrings` are new attacks, including repeated fret numbers; omitted positions end. A fully held event is allowed for a release of another voice, but cannot be accented because it has no new attack.
+
+```yaml
+- id: start
+  startTick: 0
+  durationTicks: 960
+  kind: note
+  positions: [{string: 5, fret: 3}, {string: 2, fret: 5}]
+- id: melody-change
+  startTick: 960
+  durationTicks: 960
+  kind: note
+  positions: [{string: 5, fret: 3}, {string: 2, fret: 6}]
+  heldStrings: [5]
+```
+
+This is one continuous bass plus two separately attacked upper notes, not two complete chord attacks. An absent/empty field retains historical encoding. The first contract supports plain pitched display-only exercises: do not combine held-voice exercises with strum, palm-muted, harmonic, moving-pitch or unpitched-attack metadata. Authors must use whole exercise/lesson materials and `positioning: {enabled: false}`; event fragments, named-fingering projection and learner relocation are rejected rather than silently removing holds. Interval adaptation preserves each physical string and adjusts its fret to the transposed pitch (including Drop); an out-of-range result is unavailable. Standard transpositions retain the same frets.
+
+Both TABs show held frets in parentheses with a localized legend and spoken continuation. The fretboard shows all active positions; preview merges the individual voice spans without reattacking at intervening melody events. Existing polyphonic staff fallback is explicit. Simultaneous voices, hand coordination and balance remain self-reviewed; no automatic polyphonic score is provided. Topics 107–108 demonstrate both held bass/moving melody and held melody/changing bass, then retained lower chord voices.

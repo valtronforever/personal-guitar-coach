@@ -36,6 +36,7 @@ struct TablatureView: View {
                     .accessibilityIdentifier("tab.zoom")
             }
             if model.exercise.events.contains(where: { $0.mutedAttack != nil }) { Text("mutedAttack.legend").font(.caption).foregroundStyle(.secondary) }
+            if model.exercise.hasHeldVoices { Text("heldVoice.legend").font(.caption).foregroundStyle(.secondary) }
             ScrollViewReader { proxy in
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
@@ -232,7 +233,7 @@ struct TablatureView: View {
                         anchorX: min(22, width / 2), zoom: 1, compact: false)
                 } else {
                     ForEach(event.positions, id: \.self) { position in
-                        Text(verbatim: String(position.fret)).font(.body.bold().monospacedDigit())
+                        Text(verbatim: HeldVoicePresentation.fret(position, event: event, continuation: model.exercise.hasHeldVoices && segment.isContinuation)).font(.body.bold().monospacedDigit())
                             .frame(minWidth: 24, minHeight: 24).background(.background, in: RoundedRectangle(cornerRadius: 4))
                             .position(x: min(22, width / 2), y: gridTop + (CGFloat(position.string) - 0.5) * rowHeight)
                     }
@@ -275,6 +276,7 @@ struct TablatureView: View {
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        notes = HeldVoicePresentation.spoken(notes: notes, event: event, continuation: model.exercise.hasHeldVoices && segment.isContinuation, locale: settings.locale, localized: settings.localized)
         if let attack = event.mutedAttack { notes = MutedAttackPresentation.spoken(attack, locale: settings.locale, localized: settings.localized) }
         if event.harmonic != nil { notes = HarmonicPresentation.spoken(event: event, tuning: model.tuning, locale: settings.locale, localized: settings.localized) }
         if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }

@@ -67,6 +67,7 @@ struct StaffModel: Sendable {
         return []
     }
     func symbols(in bar: Int64) throws -> [StaffSymbol] {
+        guard !timeline.exercise.hasHeldVoices else { throw StaffLimitation.polyphony }
         let segments = timeline.segments(in: bar)
         var accidentals: [Int: Int] = [:], result: [StaffSymbol] = []
         var end = timeline.startTick(of: bar)

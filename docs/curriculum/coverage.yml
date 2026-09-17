@@ -1212,7 +1212,8 @@ lessons:
       uk: 'Fingerstyle: бас і мелодія'
     outcomeUK: Вести дві музичні лінії пальцями
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 108
     moduleID: specializations
     lessonID: chord-melody
@@ -1221,7 +1222,8 @@ lessons:
       uk: Chord melody
     outcomeUK: Поєднати мелодію з акордовою підтримкою
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 109
     moduleID: specializations
     lessonID: modal-improvisation

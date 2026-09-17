@@ -1,0 +1,68 @@
+lessonID: chord-melody
+lessonVersion: 1
+locale: en
+title: 'Chord melody: retain harmony under a moving tune'
+summary: Keep selected chord voices sounding while the top line changes.
+goal: Play a four-bar chord-melody study with a clear top voice and intentional harmony changes.
+body: |-
+  Chord melody places a tune and its harmonic support in one guitar part. It does not require a new complete chord attack for every melody note. Begin with the melody alone, then learn the supporting shapes separately. In the combined example, two lower voices sometimes remain held while only the first string changes. Hear which part is moving before trying to memorize the whole grip sequence.
+
+  The four-bar route moves from tonic to subdominant, dominant and tonic. The top line includes passing or neighboring colors that are not always members of the underlying major triad. Do not replace every such note with a new harmony. For example, an upper second can decorate the tonic while the lower root and third remain unchanged. Listen to its return to a stable chord tone.
+
+  Parentheses tell you exactly which lower strings continue without another attack. Keep their physical contacts while changing the melody finger. At a new bar, ordinary fret numbers begin a fresh supporting shape. A repeated fret without parentheses is still a new attack. The reference keeps the held voices continuous, so compare its sustained harmony with your own rather than copying only the melody rhythm.
+
+  Balance is a musical choice. First play all voices gently and listen for the top line. Then make the melody slightly easier to follow without repeatedly striking the lower chord. Avoid solving an unclear melody by increasing every attack equally. Some shapes double a pitch on two strings; the displayed positions remain physical instructions even when the sounds share a pitch. The app cannot verify the actual string from audio alone.
+
+  Practice one supporting shape and its melody first, then connect the bar boundary. Release voices that are no longer present and prepare the next chord during the preceding duration without shortening it. Finish the final high tonic for its full two beats. On a second pass, listen only to the lower voices for accidental interruptions. Use self-review for balance, releases and fingering; simultaneous chord-melody accuracy is not automatically graded.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  top-line:
+    title: Learn the melody and its ending
+    body: 'Center: {{root}} major. Keep the first-string line recognizable through all four bars, including the
+      final high tonic.'
+  supporting-chords:
+    title: Four supporting shapes
+    body: Play I–IV–V–I as whole-bar shapes. These introduce the harmonic route; the combined melody will decorate
+      them with additional colors.
+  retain-the-chord:
+    title: Move the melody over two held voices
+    body: Keep strings 2 and 3 ringing inside each bar. Attack a new supporting shape at the second bar; do not
+      carry the old harmony through the change.
+  chord-melody-study:
+    title: A complete four-bar chord-melody phrase
+    body: Follow the upper tune while I–IV–V–I remains audible below. The final upper tonic lasts two beats above
+      the held lower voices.
+  arrangement-review:
+    title: Review melody, support and releases separately
+    body: 'Play the complete phrase twice: follow the melody first, then listen to continuity in the lower chord
+      voices.'
+activities:
+  top-line:
+    title: Learn the melody and its ending
+    body: 'Center: {{root}} major. Keep the first-string line recognizable through all four bars, including the
+      final high tonic.'
+  supporting-chords:
+    title: Four supporting shapes
+    body: Play I–IV–V–I as whole-bar shapes. These introduce the harmonic route; the combined melody will decorate
+      them with additional colors.
+  retain-the-chord:
+    title: Move the melody over two held voices
+    body: Keep strings 2 and 3 ringing inside each bar. Attack a new supporting shape at the second bar; do not
+      carry the old harmony through the change.
+  chord-melody-study:
+    title: A complete four-bar chord-melody phrase
+    body: Follow the upper tune while I–IV–V–I remains audible below. The final upper tonic lasts two beats above
+      the held lower voices.
+learningTasks:
+  arrangement-review:
+    title: Review melody, support and releases separately
+    body: 'Play the complete phrase twice: follow the melody first, then listen to continuity in the lower chord
+      voices.'
+    items:
+      tune: The melody remained recognizable inside the full texture.
+      holds: I kept parenthesized lower voices sounding without reattacking.
+      changes: Each new harmony began at its bar boundary.
+      release: Old voices ended when their strings disappeared or changed.
+      ending: I held the final tonic for both beats and ended the phrase deliberately.
