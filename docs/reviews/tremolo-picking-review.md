@@ -17,3 +17,5 @@ Evidence:
 - Full Learning/App, content and signed root-only Release/archive/XPC results are pending below. No native app interaction or real fast-picking performance is claimed.
 
 Full App: 180 tests/55 suites passed in 219.379 s (`/tmp/tremolo-app-full.log`), including the complete 110-bundle catalog. Generated project is current. Full Learning and Release evidence follow below.
+
+Full Learning: 139 tests/48 suites, 166.323 s (`/tmp/tremolo-learning.log`). Root Release validates 110 bilingual bundles with zero issues. Signed archive/bundle checks pass: arm64/macOS14, ad-hoc hardened sandbox, expected entitlements, 331 YAML resources and both locales. Binary SHA256 `f5bf75ae94b2cfd849c64fe0ff3f77cdabc8cddb3daa432a68edb1723dc73b90`; archive `ddf28c14f75e1de0e34dff46919e37a3dd6435233cead33eb197074a4056874b`. See `docs/benchmarks/tremolo-picking-release-bundle.json`. Signed sandbox→XPC→invalidRequest passed without a provider invocation. Exact-head CI/merge and native/hardware gates remain open.
