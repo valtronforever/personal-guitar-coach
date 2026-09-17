@@ -1,0 +1,483 @@
+schemaVersion: 3
+id: major-barre-chords
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: sixth-root-shape
+    kind: fingering
+    exerciseID: major-barre-chords-sixth-root
+    eventIDs: []
+    activityID: sixth-root-shape
+    fingeringID: sixth-root-shape
+  - id: sixth-root-notes
+    kind: events
+    exerciseID: major-barre-chords-sixth-root
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - n6
+      - release
+    activityID: sixth-root-notes
+  - id: sixth-root-moved-shape
+    kind: fingering
+    exerciseID: major-barre-chords-sixth-root-moved
+    eventIDs: []
+    activityID: sixth-root-moved-shape
+    fingeringID: sixth-root-moved-shape
+  - id: sixth-root-moved-notes
+    kind: events
+    exerciseID: major-barre-chords-sixth-root-moved
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - n6
+      - release
+    activityID: sixth-root-moved-notes
+  - id: fifth-root-shape
+    kind: fingering
+    exerciseID: major-barre-chords-fifth-root
+    eventIDs: []
+    activityID: fifth-root-shape
+    fingeringID: fifth-root-shape
+  - id: fifth-root-notes
+    kind: events
+    exerciseID: major-barre-chords-fifth-root
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - release
+    activityID: fifth-root-notes
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: major-barre-chords-sixth-root
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 6
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: major-barre-chords-sixth-root-moved
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 9
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 9
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 7
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: major-barre-chords-fifth-root
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 7
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: sixth-root-shape
+    source:
+      kind: fingering
+      fingeringID: sixth-root-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: sixth-root-notes
+    source:
+      kind: exercise
+      exerciseID: major-barre-chords-sixth-root
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: sixth-root-moved-shape
+    source:
+      kind: fingering
+      fingeringID: sixth-root-moved-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 47
+  - id: sixth-root-moved-notes
+    source:
+      kind: exercise
+      exerciseID: major-barre-chords-sixth-root-moved
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 47
+  - id: fifth-root-shape
+    source:
+      kind: fingering
+      fingeringID: fifth-root-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: fifth-root-notes
+    source:
+      kind: exercise
+      exerciseID: major-barre-chords-fifth-root
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+activities:
+  - id: sixth-root-shape
+    materialID: sixth-root-shape
+  - id: sixth-root-notes
+    materialID: sixth-root-notes
+  - id: sixth-root-moved-shape
+    materialID: sixth-root-moved-shape
+  - id: sixth-root-moved-notes
+    materialID: sixth-root-moved-notes
+  - id: fifth-root-shape
+    materialID: fifth-root-shape
+  - id: fifth-root-notes
+    materialID: fifth-root-notes
+practiceEntries:
+  - id: sixth-root-notes
+    activityID: sixth-root-notes
+    exerciseID: major-barre-chords-sixth-root
+  - id: sixth-root-moved-notes
+    activityID: sixth-root-moved-notes
+    exerciseID: major-barre-chords-sixth-root-moved
+  - id: fifth-root-notes
+    activityID: fifth-root-notes
+    exerciseID: major-barre-chords-fifth-root
+fingerings:
+  - id: sixth-root-shape
+    exerciseID: major-barre-chords-sixth-root
+    fingering:
+      positions:
+        - string: 6
+          fret: 5
+        - string: 5
+          fret: 7
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 6
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 5
+      mutedStrings: []
+      fingerNumbers:
+        '6': 1
+        '5': 3
+        '4': 4
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: sixth-root-moved-shape
+    exerciseID: major-barre-chords-sixth-root-moved
+    fingering:
+      positions:
+        - string: 6
+          fret: 7
+        - string: 5
+          fret: 9
+        - string: 4
+          fret: 9
+        - string: 3
+          fret: 8
+        - string: 2
+          fret: 7
+        - string: 1
+          fret: 7
+      mutedStrings: []
+      fingerNumbers:
+        '6': 1
+        '5': 3
+        '4': 4
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: fifth-root-shape
+    exerciseID: major-barre-chords-fifth-root
+    fingering:
+      positions:
+        - string: 5
+          fret: 5
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 7
+        - string: 2
+          fret: 7
+        - string: 1
+          fret: 5
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 2
+        '3': 3
+        '2': 4
+        '1': 1
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - quality
+      - root
+      - index
+    correctOptionID: quality
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - roots
+      - contact
+      - move
+      - chord
+curriculum:
+  moduleID: harmony
+  ordinal: 73
+  durationMinutes: 30
+  prerequisites:
+    - small-barre
+    - major-chord-shapes
+  keywords:
+    - barre
+    - major
+    - movable chord
+    - sixth-string root
+    - fifth-string root
+    - баре
+    - мажор
+    - рухомий акорд

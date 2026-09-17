@@ -870,7 +870,8 @@ lessons:
       uk: Мажорні акорди з повним баре
     outcomeUK: Переносити форму в різні тональності
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 74
     moduleID: harmony
     lessonID: minor-barre-chords
@@ -879,7 +880,8 @@ lessons:
       uk: Мінорні акорди з повним баре
     outcomeUK: Змінювати якість акорду в рухомій формі
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 75
     moduleID: harmony
     lessonID: caged

@@ -75,6 +75,8 @@ lessons:
   - missing-clicks
   - compound-meters
   - odd-meters
+  - major-barre-chords
+  - minor-barre-chords
 modules:
   - id: getting-started
     order: 1
