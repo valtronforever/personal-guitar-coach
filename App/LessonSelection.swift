@@ -39,8 +39,10 @@ final class LessonSelection {
     var canChoosePosition: Bool { policy?.enabled == true && activity?.positionSelection?.mode == .learner }
     var tasks: [LessonLearningTask] { sourceLesson.manifest.tasks.filter { $0.stepID == stepID } }
     var isListeningQuestion: Bool { tasks.contains { $0.stimulusExerciseID != nil } }
-    var showsMusicalVisuals: Bool { !isListeningQuestion && sourceLesson.manifest.steps.first { $0.id == stepID }?.kind != StepVisualKind.none }
+    var isListeningPractice: Bool { practiceEntries.contains { $0.presentation == .listenAndRepeat } }
+    var showsMusicalVisuals: Bool { !isListeningQuestion && !isListeningPractice && sourceLesson.manifest.steps.first { $0.id == stepID }?.kind != StepVisualKind.none }
     var exercise: Exercise? {
+        guard !isListeningPractice else { return nil }
         let id = tasks.first { $0.stimulusExerciseID != nil }?.stimulusExerciseID ?? exerciseID
         return snapshot?.exercises.first { $0.id == id }
     }
@@ -104,6 +106,7 @@ final class LessonSelection {
         stepID = id; exerciseID = step.exerciseID; range.clear(); refresh()
     }
     func selectEvent(_ id: String, exerciseID: String, extending: Bool) {
+        guard !isListeningPractice && !isListeningQuestion else { return }
         guard let exercise = snapshot?.exercises.first(where: { $0.id == exerciseID }), exercise.events.contains(where: { $0.id == id }) else { return }
         if self.exerciseID != exerciseID { range.clear() }
         if extending && range.ids.isEmpty && self.exerciseID == exerciseID, let first = exercise.events.first(where: { selectedIDs.contains($0.id) }) {
@@ -155,7 +158,7 @@ struct PracticeRequest: Equatable, Sendable {
             resolverVersion: ResolvedLessonActivity.resolverVersion, source: source,
             lessonTitles: ["en": lesson.english.title, "uk": lesson.ukrainian.title],
             activityTitles: ["en": snapshot.english.activities[snapshot.activity.id]?.title ?? lesson.english.title,
-                             "uk": snapshot.ukrainian.activities[snapshot.activity.id]?.title ?? lesson.ukrainian.title], selfConfirmation: selfConfirmation),
+                             "uk": snapshot.ukrainian.activities[snapshot.activity.id]?.title ?? lesson.ukrainian.title], selfConfirmation: selfConfirmation, presentation: entry.presentation),
               (try? reference.validate(exercise: exercise)) != nil else { return nil }
         lessonID = lesson.id; lessonVersion = lesson.manifest.version; self.exercise = exercise
         adaptsWithInstrument = true; frets = snapshot.instrument.frets; activityReference = reference; historicalPosition = nil

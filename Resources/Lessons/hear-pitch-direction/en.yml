@@ -1,22 +1,92 @@
 lessonID: hear-pitch-direction
-lessonVersion: 1
+lessonVersion: 2
 locale: en
-title: Hear pitch direction
-summary: Recognize whether a second note moves up, down or stays the same.
-goal: Identify an upward movement by ear.
-body: >-
-  Pitch describes how high or low a note sounds. Loudness is a different property: a louder note is not necessarily
-  higher. Listen to the two-note example before selecting an answer.
+title: Hear and reproduce intervals
+summary: Compare direction and distance, then reproduce short note pairs without TAB.
+goal: Distinguish repeated, rising and falling notes and reproduce the heard interval in the same register.
+body: |-
+  An interval is the distance between two pitches. Direction and size are different questions: first decide whether the second note rises, falls or stays the same, then compare how far it moves. A repeated note is a unison. A small step and a large leap can both rise. Naming the interval is useful, but reproducing the two sounds is the practical goal here.
+
+  Listen to the recognition example and choose the direction before reading its explanation. Then work through the interval questions. Hear the first note as an anchor and retain it while the second sounds. You may sing or hum the pair privately. Do not judge distance from loudness or from which tone seems brighter: the reference uses the same synthesized sound for each pitch.
+
+  For the response examples, listen without looking for a fret number. Find the first pitch on your guitar, then search for the second while preserving that anchor. Move on one string initially if it makes the distance easier to hear. Replay the reference after a few comparisons rather than accumulating guesses. A different string can produce the same pitch; the app evaluates the sound and cannot verify your chosen fingering.
+
+  When the pair is comfortable, start the scored response after its new count-in. Preserve both the heard order and octave. Let each note be clear, then leave the heard gap before the next attack. A correct interval shifted to a different starting pitch is a useful musical exercise, but it is not the exact reference required in this response. The displayed result compares absolute sounding pitches as well as available timing evidence.
+
+  Use the questions to check interval labels, and the response attempts to check reproduction; one does not replace the other. Review repeated notes, small movements and wider movements across several examples. If you reveal a target, compare and understand the mismatch rather than treating the guided score as an unseen listening test. All examples transpose together with the instrument tuning. The interval relationship survives that change, while the sounding note names change.
 steps:
+  prepare:
+    title: Listen before searching
+    body: Read the method, choose a clean input and prepare to compare sounds.
   listen:
     title: Listen to two notes
-    body: >-
-      Use Listen to example below. Replay as often as needed, then compare the pitch of the second note with the
-      first.
+    body: Use Listen to example below. Replay as often as needed, then compare the pitch of the second note with
+      the first.
+  pair-one:
+    title: Listen to this pair
+    body: Listen before choosing the interval.
+  pair-two:
+    title: Listen to this pair
+    body: Listen before choosing the interval.
+  pair-three:
+    title: Listen to this pair
+    body: Listen before choosing the interval.
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-e:
+    title: Response E
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
 activities:
   example:
     title: Listening example
     body: A two-note example, played through your selected audio output.
+  pair-one:
+    title: Listen to this pair
+    body: Listen before choosing the interval.
+  pair-two:
+    title: Listen to this pair
+    body: Listen before choosing the interval.
+  pair-three:
+    title: Listen to this pair
+    body: Listen before choosing the interval.
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-e:
+    title: Response E
+    body: Open practice, listen to the complete reference and find its pair in order. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
 learningTasks:
   direction:
     title: Where does the second note move?
@@ -25,6 +95,37 @@ learningTasks:
       higher: Higher
       lower: Lower
       same: The same pitch
-    explanation: >-
-      The second note is higher by two semitones (a whole tone). The interval remains the same when this example
-      is transposed to another tuning.
+    explanation: The second note is higher by two semitones (a whole tone). The interval remains the same when this
+      example is transposed to another tuning.
+  pair-one:
+    title: Listen to this pair
+    body: Which interval do you hear?
+    items:
+      unison: Unison
+      minor-third: Minor third
+      fifth: Perfect fifth
+    explanation: 'The pitches repeat: the distance is zero semitones.'
+  pair-two:
+    title: Listen to this pair
+    body: Which interval do you hear?
+    items:
+      unison: Unison
+      minor-third: Minor third
+      fifth: Perfect fifth
+    explanation: 'The second pitch is three semitones above the first: a minor third.'
+  pair-three:
+    title: Listen to this pair
+    body: Which interval do you hear?
+    items:
+      unison: Unison
+      minor-third: Minor third
+      fifth: Perfect fifth
+    explanation: 'The second pitch is seven semitones above the first: a perfect fifth.'
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+    items:
+      compare: I compared sounds before looking for a visual answer.
+      replay: I replayed the reference when memory became uncertain.
+      diagnose: I identified a specific pitch, order or timing mismatch to practice.
+      honesty: I distinguished guided attempts and familiar examples from a new listening challenge.

@@ -53,8 +53,9 @@ public struct LessonPracticeEntry: Codable, Equatable, Sendable, Identifiable {
     public let id: String
     public let activityID: String
     public let exerciseID: String
-    public init(id: String, activityID: String, exerciseID: String) {
-        self.id = id; self.activityID = activityID; self.exerciseID = exerciseID
+    public let presentation: PracticePresentation?
+    public init(id: String, activityID: String, exerciseID: String, presentation: PracticePresentation? = nil) {
+        self.id = id; self.activityID = activityID; self.exerciseID = exerciseID; self.presentation = presentation
     }
 }
 

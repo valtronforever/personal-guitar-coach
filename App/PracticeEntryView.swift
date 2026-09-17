@@ -47,13 +47,15 @@ struct PracticeEntryView: View {
                     } else { Text("result.savedExercise").font(.title2.bold()).accessibilityIdentifier("practice.selectedExercise") }
                     if let activity = request.activityReference {
                         Text(verbatim: activity.activityTitles[language.rawValue] ?? activity.activityID)
-                        PositionChoiceLabel(choice: activity.choice).accessibilityIdentifier("practice.position")
+                        if !model.hidesTargets { PositionChoiceLabel(choice: activity.choice).accessibilityIdentifier("practice.position") }
                     } else if let position = request.historicalPosition { Text("lesson.position.from \(position.firstFret)").accessibilityIdentifier("practice.position") }
                     DisclosureGroup("practice.options", isExpanded: $showsOptions) {
                         options(request.exercise).padding(.top, 10)
                     }
                     status
                     if exceedsFretCount { Label("practice.error.fretCount", systemImage: "exclamationmark.triangle").foregroundStyle(.secondary) }
+                    if model.isListeningPractice { listeningControls }
+                    if !model.hidesTargets {
                     Picker("tab.visualMode", selection: $visualMode) {
                         Text("fretboard.title").tag("fretboard")
                         Text("tab.title").tag("tab")
@@ -72,6 +74,9 @@ struct PracticeEntryView: View {
                             }
                     }
                     Text("practice.expectedExplanation").font(.caption).foregroundStyle(.secondary)
+                    } else {
+                        ListeningPulseView(exercise: request.exercise, displayTick: model.displayTick)
+                    }
                     if let result = assessment.latest, result.id == model.latestEvidence?.id {
                         AssessmentSummaryView(result: result)
                         if model.recordsForCoach { CoachResultSection(result: result) }
@@ -158,8 +163,10 @@ struct PracticeEntryView: View {
             if model.rangeExpandedForSustain {
                 Label("practice.rangeExpandedForSustain", systemImage: "info.circle").font(.caption).foregroundStyle(.secondary)
             }
-            Toggle("practice.repeat", isOn: Binding(get: { model.repeatEnabled }, set: { model.setRepeat($0) }))
-            Text("practice.repeatExplanation").font(.caption).foregroundStyle(.secondary)
+            if !model.isListeningPractice {
+                Toggle("practice.repeat", isOn: Binding(get: { model.repeatEnabled }, set: { model.setRepeat($0) }))
+                Text("practice.repeatExplanation").font(.caption).foregroundStyle(.secondary)
+            }
             if exercise.metronome != nil { Label("practice.metronomeGaps", systemImage: "speaker.slash").font(.caption).foregroundStyle(.secondary) }
             HStack {
                 Text("playback.clickVolume")
@@ -171,6 +178,12 @@ struct PracticeEntryView: View {
             Text(LocalizedStringKey("calibration.method." + ((model.phase.active ? model.machine.configuration?.calibration : calibration.usableProfile(audio: audio, instrument: instrument))?.method.rawValue ?? "none")))
             Text("practice.pitchOnlyExplanation").font(.callout).foregroundStyle(.secondary)
         }
+    }
+    private var listeningControls: some View {
+        ListeningPreparationView(playing: model.isListeningBusy, busy: model.isBusy,
+            hidesTargets: model.hidesTargets, referenceCompleted: model.listeningConditions?.referencePlaybackCompleted == true,
+            outputAvailable: audio.selectedOutput != nil,
+            onListen: { model.listen(instrument: data.preferences.instrument) }, onReveal: { model.revealListeningTargets() })
     }
     private var assessmentNotices: some View {
         Group {
@@ -213,7 +226,7 @@ struct PracticeEntryView: View {
         Text("coach.actionExplanation").font(.caption).foregroundStyle(.secondary)
         HStack {
             Button(model.phase == .paused ? "practice.resume" : "practice.start") { model.start(instrument: data.preferences.instrument) }
-                .disabled(exceedsFretCount || model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
+                .disabled(exceedsFretCount || !model.canStartPreparedAttempt || model.isBusy || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil).accessibilityIdentifier("practice.start")
             Button("coach.recordAndAnalyze") {
                 guard coach.busyAttempt == nil else { return }
                 let context = CoachLessonContext.make(request: model.request, lessons: library.lessons,
@@ -221,11 +234,11 @@ struct PracticeEntryView: View {
                 model.start(instrument: data.preferences.instrument, recordForCoach: true,
                             language: language.rawValue, lessonContext: context, provider: coach.provider)
                 if model.isBusy, let id = model.machine.attemptID { coach.reserveRecording(id) }
-            }.disabled(exceedsFretCount || model.isBusy || coach.busyAttempt != nil || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil)
+            }.disabled(exceedsFretCount || !model.canStartPreparedAttempt || model.isBusy || coach.busyAttempt != nil || assessment.pending != nil || assessment.isSaving || model.request == nil || audio.state?.calibrationRoute == nil)
                 .accessibilityIdentifier("coach.recordAndAnalyze")
             Button("playback.pause") { model.pause() }.disabled(!model.phase.active || model.phase == .finalizing)
                 .accessibilityIdentifier("practice.pause")
-            Button("playback.stop") { model.stop() }.disabled(!model.isBusy).accessibilityIdentifier("practice.stop")
+            Button("playback.stop") { model.stop() }.disabled(!model.isBusy && !model.isListeningBusy).accessibilityIdentifier("practice.stop")
             Spacer()
             if model.completedCount > 0 { Text("practice.completedAttempts \(model.completedCount)").font(.caption) }
             Button("practice.backToLesson") {

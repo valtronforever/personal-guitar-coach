@@ -111,6 +111,20 @@ extension LessonCatalogLoader {
             let selected = exercise.events.filter { material.eventIDs(in: exercise).contains($0.id) }
             guard exercise.assessmentMode == .monophonic else { throw ContentFailure(.unsupportedMode, "Practice entry needs a monophonic exercise") }
             try require(selected.contains { $0.kind == .note && $0.positions.count == 1 }, "Practice entry needs sounding monophonic events")
+            if entry.presentation == .listenAndRepeat {
+                let steps = manifest.steps.filter { $0.activityID == activity.id }
+                try require(exercise.events.first?.startTick == 0 && zip(exercise.events, exercise.events.dropFirst()).allSatisfy { $0.endTick == $1.startTick },
+                    "Listening responses need explicit rests so revealed notation has no gaps")
+                try require(material.source.kind == .exercise && material.source.exerciseID == exercise.id && !material.policy.enabled,
+                    "Listen-and-repeat needs a complete, non-positionable private exercise")
+                try require(steps.count == 1 && steps[0].kind == .none && !manifest.tasks.contains { $0.stepID == steps[0].id },
+                    "Listen-and-repeat needs a dedicated text-only step without answer tasks")
+                try require(activities.filter { $0.materialID == material.id }.count == 1 && entries.filter { $0.activityID == activity.id }.count == 1,
+                    "Listening activity cannot share its material or practice entry")
+                try require(!materials.contains { $0.id != material.id && $0.exerciseIDs(in: manifest).contains(exercise.id) }
+                    && !shapes.contains { $0.exerciseID == exercise.id }, "A listening target cannot be exposed through another material or shape")
+                try require(manifest.adaptation?.policy == .transposeIntervals, "Listening responses must preserve intervals across tunings")
+            }
         }
     }
 }
@@ -128,5 +142,18 @@ extension LessonMaterial {
         if source.kind == .lesson { return manifest.fingerings.map(\.id) }
         if source.kind == .fingering { return source.fingeringID.map { [$0] } ?? [] }
         return []
+    }
+}
+
+
+extension LessonCatalogLoader {
+    func validateListeningText(_ text: LessonText, manifest: LessonManifest) throws {
+        let activities = Set(manifest.practiceEntries.filter { $0.presentation == .listenAndRepeat }.map(\.activityID))
+        let stepIDs = Set(manifest.steps.filter { $0.activityID.map(activities.contains) == true }.map(\.id))
+        let strings = text.activities.filter { activities.contains($0.key) }.values.flatMap { [$0.title, $0.body] }
+            + text.steps.filter { stepIDs.contains($0.key) }.values.flatMap { [$0.title, $0.body] }
+        guard !strings.contains(where: { $0.contains("{{") || $0.contains("}}") }) else {
+            throw ContentFailure(.invalidText, "Listening instructions cannot reveal musical context tokens")
+        }
     }
 }

@@ -1,6 +1,6 @@
 # Authored vibrato and measured modulation
 
-Status: `in_progress`
+Status: `pending_user`
 
 Topic 56 is implemented with authored width/rate, continuous reference playback, TAB/staff/curve presentation, periodic-contour measurement, results/recommendations and a five-activity bilingual lesson. The existing audio coordinator and contour are reused; no new capture pipeline or audio-callback work. Tuning/position semantics and historical result encoding are preserved.
 

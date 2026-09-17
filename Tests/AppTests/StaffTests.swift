@@ -91,13 +91,16 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 87)
+        #expect(library.lessons.count == 90)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for entry in lesson.manifest.practiceEntries {
-                let step = try #require(lesson.manifest.steps.first { $0.activityID == entry.activityID && $0.exerciseID == entry.exerciseID })
+                let hidden = entry.presentation == .listenAndRepeat
+                let step = try #require(lesson.manifest.steps.first { $0.activityID == entry.activityID && (hidden || $0.exerciseID == entry.exerciseID) })
                 selection.selectStep(step.id)
-                let exercise = try #require(selection.exercise)
+                if hidden { #expect(selection.exercise == nil && !selection.showsMusicalVisuals) }
+                // Notation can be shown after explicit reveal/in results; the reading selector remains private.
+                let exercise = try #require(hidden ? selection.snapshot?.exercises.first { $0.id == entry.exerciseID } : selection.exercise)
                 let timeline = try TimelineModel(exercise:exercise,instrument:.dropD)
                 let staff = StaffModel(timeline:timeline,key:.neutral)
                 let symbols = try (0..<timeline.barCount).flatMap { try staff.symbols(in:$0) }
@@ -120,8 +123,12 @@ struct StaffTests {
                 #expect(symbols.compactMap(\.pitch).map(\.writtenMIDI) == expectedWritten)
                 for symbol in symbols {
                     selection.selectEvent(symbol.eventID,exerciseID:exercise.id,extending:false)
-                    #expect(selection.selectedIDs == [symbol.eventID])
-                    #expect(selection.exercise?.id == exercise.id)
+                    if hidden {
+                        #expect(selection.selectedIDs.isEmpty && selection.exercise == nil)
+                    } else {
+                        #expect(selection.selectedIDs == [symbol.eventID])
+                        #expect(selection.exercise?.id == exercise.id)
+                    }
                 }
             }
         }

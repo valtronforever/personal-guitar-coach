@@ -82,6 +82,7 @@ public struct LessonCatalogLoader: Sendable {
             throw ContentFailure(.translationMismatch, "Translation activity IDs differ")
         }
         try validateLearningTaskText(text, manifest: manifest)
+        try validateListeningText(text, manifest: manifest)
         try ActivityTextRenderer.validate(text)
         for step in manifest.steps where step.activityID == nil {
             if let copy = text.steps[step.id], [copy.title, copy.body].contains(where: { $0.contains("{{") || $0.contains("}}") }) {

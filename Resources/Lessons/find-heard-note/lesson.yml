@@ -1,0 +1,327 @@
+schemaVersion: 3
+id: find-heard-note
+version: 1
+difficulty: beginner
+topic: earTraining
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: response-a
+  kind: none
+  eventIDs: []
+  activityID: response-a
+- id: response-b
+  kind: none
+  eventIDs: []
+  activityID: response-b
+- id: response-c
+  kind: none
+  eventIDs: []
+  activityID: response-c
+- id: response-d
+  kind: none
+  eventIDs: []
+  activityID: response-d
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: find-heard-note-response-a
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: find-heard-note-response-b
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 4
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 4
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: find-heard-note-response-c
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: find-heard-note-response-d
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 6
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 6
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+- id: response-a
+  source:
+    kind: exercise
+    exerciseID: find-heard-note-response-a
+- id: response-b
+  source:
+    kind: exercise
+    exerciseID: find-heard-note-response-b
+- id: response-c
+  source:
+    kind: exercise
+    exerciseID: find-heard-note-response-c
+- id: response-d
+  source:
+    kind: exercise
+    exerciseID: find-heard-note-response-d
+activities:
+- id: response-a
+  materialID: response-a
+- id: response-b
+  materialID: response-b
+- id: response-c
+  materialID: response-c
+- id: response-d
+  materialID: response-d
+practiceEntries:
+- id: response-a
+  activityID: response-a
+  exerciseID: find-heard-note-response-a
+  presentation: listenAndRepeat
+- id: response-b
+  activityID: response-b
+  exerciseID: find-heard-note-response-b
+  presentation: listenAndRepeat
+- id: response-c
+  activityID: response-c
+  exerciseID: find-heard-note-response-c
+  presentation: listenAndRepeat
+- id: response-d
+  activityID: response-d
+  exerciseID: find-heard-note-response-d
+  presentation: listenAndRepeat
+fingerings: []
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - compare
+  - replay
+  - diagnose
+  - honesty
+curriculum:
+  moduleID: ear-improvisation
+  ordinal: 81
+  durationMinutes: 25
+  prerequisites:
+  - fretboard-note-names
+  keywords:
+  - Find a heard note without TAB
+  - Знайди почуту ноту без табулатури
+  - listen and repeat
+  - на слух

@@ -21,6 +21,23 @@ final class PracticeModel {
     @ObservationIgnored private var lastLiveFrame: Int64?
     @ObservationIgnored private var lastLiveUpdate: ContinuousClock.Instant?
     @ObservationIgnored var onAttemptFinished: ((PracticeEvidence) async -> Void)?
+    @ObservationIgnored private var listeningTask: Task<Void, Never>?
+    @ObservationIgnored private var listeningInstrument: InstrumentProfile?
+    @ObservationIgnored private var listeningRevision: UInt64?
+    @ObservationIgnored private var listeningSession: UUID?
+    private(set) var listening = ListeningPreparation()
+    private(set) var isListeningBusy = false
+    var isListeningPractice: Bool { request?.activityReference?.presentation == .listenAndRepeat }
+    var hidesTargets: Bool { isListeningPractice && !listening.targetsRevealed }
+    var listeningConditions: PracticeListeningConditions? {
+        guard isListeningPractice else { return nil }
+        // Reconfiguration or sleep invalidates a completed reference even while the screen is idle.
+        if listeningRevision != audio.state?.routeRevision || listeningSession != audio.synchronizationSession {
+            return try? PracticeListeningConditions(referencePlaybackCompleted: false, targetsRevealed: listening.targetsRevealed)
+        }
+        return listening.conditions
+    }
+    var canStartPreparedAttempt: Bool { !isListeningBusy && (!isListeningPractice || listeningConditions != nil) }
     private(set) var machine = PracticeStateMachine()
     private(set) var request: PracticeRequest?
     private(set) var bpm = 60.0
@@ -51,6 +68,7 @@ final class PracticeModel {
         return machine.configuration?.selectedEvents.first { $0.startTick <= cursorTick && cursorTick < $0.endTick }
     }
     var expectedPositions: [FretPosition] {
+        guard !hidesTargets else { return [] }
         if phase == .running { return activeEvent?.techniquePositions ?? [] }
         guard phase != .finalizing, let exercise = request?.exercise else { return [] }
         let lower = Int64(firstBar - 1) * exercise.timeSignature.ticksPerBar
@@ -63,7 +81,7 @@ final class PracticeModel {
 
     func configure(_ request: PracticeRequest?) {
         guard self.request != request else { return }
-        stop(.changedExercise); self.request = request
+        stop(.changedExercise); listening = ListeningPreparation(); self.request = request
         if isBusy { pendingConfigurationReset = true } else { machine = PracticeStateMachine() }
         bpm = request?.initialBPM ?? request?.exercise.defaultBPM ?? 60
         let bar = request?.exercise.timeSignature.ticksPerBar ?? 3840
@@ -99,9 +117,10 @@ final class PracticeModel {
         let end = upper.overflow ? exercise.durationTicks : min(exercise.durationTicks, upper.partialValue)
         return Set(exercise.events.filter { $0.startTick >= lower && $0.startTick < end }.map(\.id))
     }
-    func setRepeat(_ value: Bool) { repeatEnabled = recordsForCoach && isBusy ? false : value }
+    func setRepeat(_ value: Bool) { repeatEnabled = isListeningPractice || recordsForCoach && isBusy ? false : value }
     func setClickVolume(_ value: Double) { guard value.isFinite, !isBusy else { return }; clickVolume = min(1, max(0, value)) }
     func instrumentWillChange(_ value: InstrumentProfile) {
+        if listeningInstrument != value { cancelListening() }
         guard let old = machine.configuration?.instrument else { physicallyTuned = false; return }
         if old.tuning != value.tuning || old.source != value.source || old.frets != value.frets {
             physicallyTuned = false; stop(.changedInstrument)
@@ -120,17 +139,23 @@ final class PracticeModel {
     }
     func stop(_ reason: PracticeStopReason = .userCancelled) {
         displayTick = nil
+        cancelListening()
         guard isBusy else { return }
         machine.stop(reason); task?.cancel()
         if let id = captureID { Task { await audio.stopCapture(id: id) } }
     }
 
     func start(instrument: InstrumentProfile, recordForCoach: Bool = false, language: String = "en", lessonContext: String = "", provider: CoachProvider = .codex) {
-        guard !isBusy, let request else { return }
+        guard !isBusy, !isListeningBusy, let request else { return }
+        guard canStartPreparedAttempt else { errorKey = "listening.prepareFirst"; return }
         errorKey = nil; backendError = nil
         let targetInstrument: InstrumentProfile
         do { targetInstrument = try request.retryInstrument(from: instrument) }
         catch { errorKey = "result.retryTuningMismatch"; physicallyTuned = false; return }
+        if isListeningPractice, listening.referenceCompleted, listeningInstrument != targetInstrument {
+            cancelListening()
+            guard canStartPreparedAttempt else { errorKey = "listening.prepareFirst"; return }
+        }
         guard let route = audio.state?.calibrationRoute else { errorKey = "practice.error.route"; return }
         let configuration: PracticeConfiguration
         do {
@@ -141,7 +166,7 @@ final class PracticeModel {
                 range: Int64(firstBar - 1) * bar..<endTick,
                 route: route, calibration: calibration.usableProfile(audio: audio, instrument: targetInstrument),
                 outputAlignment: calibration.outputProfile(for: route.output),
-                lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, position: request.historicalPosition, activity: request.activityReference))
+                lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, position: request.historicalPosition, activity: request.activityReference), listeningConditions: listeningConditions)
             if recordForCoach && (configuration.durationSeconds > 120 || configuration.countInSeconds + configuration.durationSeconds + configuration.finalDrainSeconds > 145) {
                 errorKey = "coach.error.tooLarge"; return
             }
@@ -149,6 +174,7 @@ final class PracticeModel {
         } catch { errorKey = Self.configurationError(error); return }
         latestEvidence = nil
         guard physicallyTuned else { machine.stop(.tuningNotConfirmed); return }
+        listening.invalidate()
         recordsForCoach = recordForCoach; recordedTake = nil; coachLanguage = language; coachLesson = lessonContext; coachProvider = provider
         if recordForCoach { repeatEnabled = false }
         synchronizationSession = audio.synchronizationSession; synchronizationRevision = audio.state?.routeRevision
@@ -178,6 +204,76 @@ final class PracticeModel {
             if pendingConfigurationReset { machine = PracticeStateMachine(); latestEvidence = nil; pendingConfigurationReset = false }
             if captureID == id { captureID = nil; isBusy = false; task = nil; cursorTick = nil; displayTick = nil; countInBeat = nil; latestFrequency = nil }
         }
+    }
+
+    func revealListeningTargets() {
+        guard isListeningPractice, !isBusy, !isListeningBusy else { return }
+        listening.reveal()
+    }
+    private func cancelListening() {
+        let previous = listening.playbackID
+        listening.invalidate(); listeningTask?.cancel()
+        // Keep busy until this task releases its coordinator ownership.
+        if let previous { Task { await audio.stopTransport(id: previous) } }
+    }
+    func listen(instrument: InstrumentProfile) {
+        guard isListeningPractice, !isBusy, !isListeningBusy, let request else { return }
+        errorKey = nil; backendError = nil
+        do {
+            let target = try request.retryInstrument(from: instrument)
+            let bar = request.exercise.timeSignature.ticksPerBar
+            let range = Int64(firstBar - 1) * bar..<min(request.exercise.durationTicks, Int64(lastBar) * bar)
+            let transport = try TransportRequest(exercise: request.exercise, tuning: target.tuning,
+                bpm: bpm, range: range, countInBars: 1, loops: false,
+                clickEnabled: true, clickVolume: max(0.1, clickVolume), toneVolume: 0.5)
+            listening.begin(transport.id); isListeningBusy = true
+            listeningInstrument = target; listeningRevision = audio.state?.routeRevision
+            listeningSession = audio.synchronizationSession
+            latestEvidence = nil
+            listeningTask = Task {
+                do {
+                    try Task.checkCancellation()
+                    try await audio.coordinator.startTransport(transport)
+                    let plan = try TransportPlan(request: transport, sampleRate: 48000)
+                    let duration = Double(plan.endFrame ?? 0) / 48000
+                    let deadline = ContinuousClock.now.advanced(by: .seconds(duration + 10))
+                    while true {
+                        try Task.checkCancellation()
+                        let state = await audio.coordinator.snapshot()
+                        guard listening.playbackID == transport.id,
+                              listeningRevision == state.routeRevision,
+                              listeningSession == audio.synchronizationSession,
+                              let playback = state.transport, playback.requestID == transport.id,
+                              state.transportRequestID == transport.id || (playback.phase == .completed && state.phase == .idle && state.purpose == nil) else { throw AudioBackendError.routeChanged }
+                        if playback.phase == .completed {
+                            let output = state.outputEndpoint
+                            let alignment = calibration.outputProfile(for: output)
+                            let latency = max(0, (output?.hardwareLatencySeconds ?? (alignment == nil ? playback.presentationLatency : 0)) + (alignment?.seconds ?? 0))
+                            // Let already rendered sound leave the output before enabling input practice.
+                            try await Task.sleep(for: .seconds(latency + 0.1))
+                            try Task.checkCancellation()
+                            let final = await audio.coordinator.snapshot()
+                            guard final.transport?.requestID == transport.id, final.transport?.phase == .completed,
+                                  final.phase == .idle, final.purpose == nil, final.routeRevision == listeningRevision,
+                                  listeningSession == audio.synchronizationSession else { throw AudioBackendError.routeChanged }
+                            await audio.stopTransport(id: transport.id)
+                            try Task.checkCancellation()
+                            listening.complete(transport.id)
+                            break
+                        }
+                        guard ContinuousClock.now < deadline else { throw AudioBackendError.streamStalled }
+                        try await Task.sleep(for: .milliseconds(50))
+                    }
+                } catch {
+                    if listening.playbackID == transport.id {
+                        listening.invalidate()
+                        if !(error is CancellationError) { errorKey = "listening.playbackFailed"; backendError = error as? AudioBackendError }
+                    }
+                }
+                await audio.stopTransport(id: transport.id)
+                isListeningBusy = false; listeningTask = nil
+            }
+        } catch { errorKey = "listening.playbackFailed" }
     }
 
     private func resetAttempt() {

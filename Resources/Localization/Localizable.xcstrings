@@ -14855,6 +14855,214 @@
           }
         }
       }
+    },
+    "listening.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen and repeat"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухай і повтори"
+          }
+        }
+      }
+    },
+    "listening.instructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen to the reference with its count-in, then play it after the new count-in when you start practice. Search for the sounds before starting if needed. Showing the targets makes this guided practice."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухай еталон із відліком, потім почни практику та зіграй після нового відліку. За потреби спочатку знайди звуки на гітарі. Відкриття нот переводить спробу в режим гри з підказками."
+          }
+        }
+      }
+    },
+    "listening.playReference": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play reference"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прослухати еталон"
+          }
+        }
+      }
+    },
+    "listening.reveal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show targets · guided practice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показати ноти · гра з підказками"
+          }
+        }
+      }
+    },
+    "listening.playing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playing reference…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відтворення еталона…"
+          }
+        }
+      }
+    },
+    "listening.guided": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guided practice · targets revealed"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гра з підказками · ноти відкрито"
+          }
+        }
+      }
+    },
+    "listening.ready": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reference finished · ready to start"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Еталон завершено · можна починати"
+          }
+        }
+      }
+    },
+    "listening.prepareFirst": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen to the complete reference or show the targets before starting."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перед початком прослухай еталон повністю або відкрий ноти."
+          }
+        }
+      }
+    },
+    "listening.playbackFailed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The reference did not finish. Check the audio output and listen again."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Еталон не завершився. Перевір аудіовихід і прослухай ще раз."
+          }
+        }
+      }
+    },
+    "listening.hidden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Targets hidden"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ноти приховано"
+          }
+        }
+      }
+    },
+    "listening.pulseOnly": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the metronome pulse is shown. Play the notes and rhythm you heard."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показано лише пульс метронома. Відтвори почуті ноти й ритм."
+          }
+        }
+      }
+    },
+    "listening.resultHidden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Targets hidden during this attempt"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ноти були приховані під час цієї спроби"
+          }
+        }
+      }
+    },
+    "listening.resultLimits": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The score measures the audible notes and timing. Playback completion and hidden notation do not prove hearing, understanding or an unfamiliar example."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка вимірює чутні ноти й таймінг. Завершення відтворення та приховані ноти не доводять, що приклад було почуто, зрозуміло чи зіграно вперше."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

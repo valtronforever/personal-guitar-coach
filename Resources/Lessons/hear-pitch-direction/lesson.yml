@@ -1,89 +1,802 @@
 schemaVersion: 3
 id: hear-pitch-direction
-version: 1
+version: 2
 difficulty: beginner
 topic: earTraining
 steps:
-  - id: listen
-    kind: none
-    eventIDs: []
-    activityID: example
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: listen
+  kind: none
+  eventIDs: []
+  activityID: example
+- id: pair-one
+  kind: none
+  eventIDs: []
+  activityID: pair-one
+- id: pair-two
+  kind: none
+  eventIDs: []
+  activityID: pair-two
+- id: pair-three
+  kind: none
+  eventIDs: []
+  activityID: pair-three
+- id: response-a
+  kind: none
+  eventIDs: []
+  activityID: response-a
+- id: response-b
+  kind: none
+  eventIDs: []
+  activityID: response-b
+- id: response-c
+  kind: none
+  eventIDs: []
+  activityID: response-c
+- id: response-d
+  kind: none
+  eventIDs: []
+  activityID: response-d
+- id: response-e
+  kind: none
+  eventIDs: []
+  activityID: response-e
+- id: review
+  kind: none
+  eventIDs: []
 exercises:
-  - id: hear-pitch-direction-practice
-    version: 1
-    ppq: 960
-    timeSignature: 4/4
-    defaultBPM: 60
-    minimumBPM: 40
-    maximumBPM: 100
-    tuningPolicy: fixedTuning
-    requiredTuning:
-      id: standard
-      revision: 1
-      name: Standard
-      referenceA4: 440
-      strings:
-        - number: 1
-          openPitch:
-            midi: 64
-        - number: 2
-          openPitch:
-            midi: 59
-        - number: 3
-          openPitch:
-            midi: 55
-        - number: 4
-          openPitch:
-            midi: 50
-        - number: 5
-          openPitch:
-            midi: 45
-        - number: 6
-          openPitch:
-            midi: 40
-    assessmentMode: displayOnly
-    events:
-      - id: first
-        startTick: 0
-        durationTicks: 960
-        kind: note
-        positions:
-          - string: 5
-            fret: 3
-      - id: second
-        startTick: 1920
-        durationTicks: 960
-        kind: note
-        positions:
-          - string: 5
-            fret: 5
-materials:
-  - id: example
-    source:
-      kind: exercise
-      exerciseID: hear-pitch-direction-practice
-activities:
-  - id: example
-    materialID: example
-practiceEntries: []
-fingerings: []
-learningTasks:
-  - id: direction
-    stepID: listen
-    kind: quiz
-    itemIDs:
-      - higher
-      - lower
-      - same
-    correctOptionID: higher
-    stimulusExerciseID: hear-pitch-direction-practice
+- id: hear-pitch-direction-practice
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 100
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: first
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 3
+  - id: second
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 5
+      fret: 5
+- id: hear-pitch-direction-pair-one
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-pair-two
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-pair-three
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: displayOnly
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 12
+  - id: event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-response-a
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-4
+    startTick: 4800
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: event-5
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-response-b
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-4
+    startTick: 4800
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-5
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-response-c
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: gap-before-event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-4
+    startTick: 4800
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: event-5
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-response-d
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: gap-before-event-4
+    startTick: 4800
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: event-5
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: hear-pitch-direction-response-e
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 12
+  - id: gap-before-event-3
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 3840
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 5
+  - id: gap-before-event-4
+    startTick: 4800
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 12
+  - id: event-5
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
 adaptation:
   policy: transposeIntervals
+materials:
+- id: example
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-practice
+- id: pair-one
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-pair-one
+- id: pair-two
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-pair-two
+- id: pair-three
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-pair-three
+- id: response-a
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-response-a
+- id: response-b
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-response-b
+- id: response-c
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-response-c
+- id: response-d
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-response-d
+- id: response-e
+  source:
+    kind: exercise
+    exerciseID: hear-pitch-direction-response-e
+activities:
+- id: example
+  materialID: example
+- id: pair-one
+  materialID: pair-one
+- id: pair-two
+  materialID: pair-two
+- id: pair-three
+  materialID: pair-three
+- id: response-a
+  materialID: response-a
+- id: response-b
+  materialID: response-b
+- id: response-c
+  materialID: response-c
+- id: response-d
+  materialID: response-d
+- id: response-e
+  materialID: response-e
+practiceEntries:
+- id: response-a
+  activityID: response-a
+  exerciseID: hear-pitch-direction-response-a
+  presentation: listenAndRepeat
+- id: response-b
+  activityID: response-b
+  exerciseID: hear-pitch-direction-response-b
+  presentation: listenAndRepeat
+- id: response-c
+  activityID: response-c
+  exerciseID: hear-pitch-direction-response-c
+  presentation: listenAndRepeat
+- id: response-d
+  activityID: response-d
+  exerciseID: hear-pitch-direction-response-d
+  presentation: listenAndRepeat
+- id: response-e
+  activityID: response-e
+  exerciseID: hear-pitch-direction-response-e
+  presentation: listenAndRepeat
+fingerings: []
+learningTasks:
+- id: direction
+  stepID: listen
+  kind: quiz
+  itemIDs:
+  - higher
+  - lower
+  - same
+  correctOptionID: higher
+  stimulusExerciseID: hear-pitch-direction-practice
+- id: pair-one
+  stepID: pair-one
+  kind: quiz
+  itemIDs:
+  - unison
+  - minor-third
+  - fifth
+  correctOptionID: unison
+  stimulusExerciseID: hear-pitch-direction-pair-one
+- id: pair-two
+  stepID: pair-two
+  kind: quiz
+  itemIDs:
+  - unison
+  - minor-third
+  - fifth
+  correctOptionID: minor-third
+  stimulusExerciseID: hear-pitch-direction-pair-two
+- id: pair-three
+  stepID: pair-three
+  kind: quiz
+  itemIDs:
+  - unison
+  - minor-third
+  - fifth
+  correctOptionID: fifth
+  stimulusExerciseID: hear-pitch-direction-pair-three
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - compare
+  - replay
+  - diagnose
+  - honesty
 curriculum:
   moduleID: ear-improvisation
   ordinal: 82
-  durationMinutes: 10
-  prerequisites: []
+  durationMinutes: 25
+  prerequisites:
+  - find-heard-note
   keywords:
-    - Intervals by ear
-    - Інтервали на слух
+  - Hear and reproduce intervals
+  - Почуй і відтвори інтервали
+  - listen and repeat
+  - на слух
