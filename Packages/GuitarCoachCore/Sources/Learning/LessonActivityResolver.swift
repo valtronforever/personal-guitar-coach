@@ -79,7 +79,7 @@ extension LoadedLesson {
                         guard try chain.positions(from: base).allSatisfy({ instrument.contains($0) && (region?.contains($0, maximumFret: instrument.fretCount) ?? true) }) else { throw PositioningError.regionUnplayable }
                     }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger)
                 }
             }
             let selectedIDs = Set(events.map(\.id))

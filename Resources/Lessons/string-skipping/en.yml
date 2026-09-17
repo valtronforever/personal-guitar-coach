@@ -1,0 +1,73 @@
+lessonID: string-skipping
+lessonVersion: 1
+locale: en
+title: Cross a gap between strings
+summary: Control the destination string and keep unused strings quiet.
+goal: Move between nonadjacent strings with clear notes and a steady pulse.
+body: |-
+  String skipping means moving to a nonadjacent string while leaving the strings between quiet. The challenge is not simply the distance traveled by the pick. You must prepare the destination note, avoid accidental contact on the way and control any string that keeps ringing after it is no longer wanted. Begin with a small, repeatable gap so that these jobs can be observed separately.
+
+  First play the adjacent-string control pattern at a comfortable volume. Alternate down and up strokes as marked, keeping the pulse even on both notes. Notice how far the picking hand moves and how the lower note stops as the upper one begins. This is your comparison pattern, not a speed test. Keep the same tempo when adding the skipped string.
+
+  In the one-string gap, move from string four to string two. Look at the destination before starting, then play several slow repetitions while looking less often. Let the motion clear the intervening string instead of digging through it. A small amount of clearance is useful; a large circular jump makes the next return harder to time. Keep the fretting fingers prepared and use comfortable contact to quiet strings that should not ring.
+
+  The wider gap moves from string four to string one. Compare it with the smaller jump before connecting the alternating-gap phrase. In that phrase the upper destination changes, so do not let a repeated arm motion choose the wrong string automatically. Count the eighth notes aloud at first. If one destination repeatedly fails, return to its two-note pair instead of restarting the whole phrase faster.
+
+  Use a clean sound for measured practice and stop the previous note as the next begins. The pitch and timing score can reveal a wrong audible destination or a late attack, but it cannot prove which string you used or whether every unused string stayed quiet. Listen separately for background ringing and watch the pick path. Repeat one slow clean version, then make only a small tempo increase. A quieter, controlled jump is more useful than a fast pattern whose unwanted strings you cannot hear under distortion.
+steps:
+  prepare:
+    title: Prepare the string and stroke plan
+    body: Tune the instrument, begin slowly with a clean input, and read the physical cues before practice.
+  adjacent-control:
+    title: Establish the adjacent control
+    body: 'Alternate the two neighboring strings with down/up strokes and one note per beat. Sounding notes: {{sequence}}.
+      The fixed string pattern is part of the technique; this activity does not offer relocation. Practice checks
+      pitch and timing, while the physical cue is a self-check.'
+  skip-one:
+    title: Leave one string untouched
+    body: 'Skip string three when moving between strings four and two. Keep its sound quiet in both directions.
+      Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer
+      relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  skip-two:
+    title: Control the wider jump
+    body: 'Move between strings four and one, keeping the two intervening strings quiet. Use the same tempo as the
+      smaller gap. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  alternating-gaps:
+    title: Choose the destination in a phrase
+    body: 'An eighth-note pattern alternates narrow and wide gaps. Read each upper destination before starting;
+      root: {{root}}. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  check-skipping:
+    title: Inspect the path and silence
+    body: Use the note result alongside a separate check of string contact and ringing.
+activities:
+  adjacent-control:
+    title: Establish the adjacent control
+    body: 'Alternate the two neighboring strings with down/up strokes and one note per beat. Sounding notes: {{sequence}}.
+      The fixed string pattern is part of the technique; this activity does not offer relocation. Practice checks
+      pitch and timing, while the physical cue is a self-check.'
+  skip-one:
+    title: Leave one string untouched
+    body: 'Skip string three when moving between strings four and two. Keep its sound quiet in both directions.
+      Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer
+      relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  skip-two:
+    title: Control the wider jump
+    body: 'Move between strings four and one, keeping the two intervening strings quiet. Use the same tempo as the
+      smaller gap. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  alternating-gaps:
+    title: Choose the destination in a phrase
+    body: 'An eighth-note pattern alternates narrow and wide gaps. Read each upper destination before starting;
+      root: {{root}}. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+learningTasks:
+  check-skipping:
+    title: Inspect the path and silence
+    body: Use the note result alongside a separate check of string contact and ringing.
+    items:
+      path: The pick cleared the skipped strings in both directions.
+      quiet: I listened for and controlled unwanted ringing.
+      pulse: The wider gap kept the same pulse as the adjacent control.
+      target: I could choose the changing upper destination without rushing.

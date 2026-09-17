@@ -105,7 +105,7 @@ enum CoachExchange {
                 let rate = config.bpm * Double(config.exercise.timeSignature.pulseTicks) / 60 / Double(vibrato.periodTicks)
                 motion = "; vibratoWidthCents=\(vibrato.extentCents), vibratoRateHz=\(rate), modulationStartTick=\(event.startTick + vibrato.startTick), modulationEndTick=\(event.startTick + vibrato.endTick); upward cycles returning to base, one initial pick target, gesture unverified"
             } else { motion = "" }
-            return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)" + motion
+            return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)" + motion + (event.pluckFinger.map { "; pickingHandFinger=" + $0.rawValue + "; authored cue, gesture unverified" } ?? "")
         }
         return CoachAnalysisRequest(schemaVersion: 1, promptVersion: promptVersion(for: practice), id: id,
             language: language == "uk" ? "uk" : "en", practiceDigest: try digest(practice),
@@ -122,6 +122,7 @@ enum CoachExchange {
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if practice.evidence.configuration.selectedEvents.contains(where: { $0.pluckFinger != nil }) { return "file-coach-9" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.legatoChain != nil }) { return "file-coach-8" }
         if practice.evidence.configuration.listeningConditions != nil { return "file-coach-7" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.vibrato != nil }) { return "file-coach-6" }

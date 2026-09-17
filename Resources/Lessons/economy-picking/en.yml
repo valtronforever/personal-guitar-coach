@@ -1,0 +1,73 @@
+lessonID: economy-picking
+lessonVersion: 1
+locale: en
+title: Link alternate and economy strokes
+summary: Continue one stroke direction across an adjacent-string boundary.
+goal: Compare strict alternate picking with a planned economy pattern and keep the rhythm unchanged.
+body: |-
+  Economy picking combines alternate strokes on one string with a continued stroke direction when moving to an adjacent string. It is a choice of motion, not a rule that every phrase must use. The useful comparison is whether the planned path makes a particular crossing comfortable while retaining its timing and articulation. You still need to hear every note separately.
+
+  Preview the three-notes-per-string line, then play its strict alternate version. Begin down and keep alternating even at the string boundaries. Notice which crossings feel different from the middle of a string. Keep this version as a fair reference: use the same pitches, note lengths and BPM when switching to economy strokes so that changing the tempo does not hide the effect of the movement.
+
+  In the ascending economy version each three-note group uses down, up, down. The final downstroke continues toward the next thinner string, whose first note also uses down. Think of two consecutive notes separated by their written time, not a chord brushed at once. Reduce the motion until the crossing is controlled, and release the previous fretted note as the next sounds during monophonic practice.
+
+  Descending reverses the plan: up, down, up on each string, continuing upward toward the next thicker string. Practice descent alone before joining both directions. In the turnaround exercise the highest note is played again with an upstroke to establish the descending pattern. Give that repeated pitch its own full duration and attack; do not skip it simply because the fretting finger is already in place.
+
+  The arrows are an authored picking plan. A correct pitch/rhythm score cannot distinguish that plan from strict alternate picking or another gesture, so verify the direction by observation. Listen for an accidental rush at each same-direction pair and for two notes ringing together. If either occurs, slow the boundary alone before reconnecting the phrase. Finish by comparing both versions at one comfortable tempo and naming which crossing improved, rather than assuming economy picking is automatically faster or better for every line.
+steps:
+  prepare:
+    title: Prepare the string and stroke plan
+    body: Tune the instrument, begin slowly with a clean input, and read the physical cues before practice.
+  alternate-control:
+    title: Compare strict alternate picking
+    body: 'Keep alternating through every string crossing; this is the comparison pattern. Sounding notes: {{sequence}}.
+      The fixed string pattern is part of the technique; this activity does not offer relocation. Practice checks
+      pitch and timing, while the physical cue is a self-check.'
+  economy-up:
+    title: Continue downward across strings
+    body: 'Use down–up–down on each string. The boundary has two downstrokes, each at its own written time. Sounding
+      notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  economy-down:
+    title: Continue upward across strings
+    body: 'Use up–down–up on each string while descending toward the root. Sounding notes: {{sequence}}. The fixed
+      string pattern is part of the technique; this activity does not offer relocation. Practice checks pitch and
+      timing, while the physical cue is a self-check.'
+  turnaround:
+    title: Plan the turn at the top
+    body: 'Repeat the highest pitch with an upstroke, then follow the descending plan without compressing the two
+      attacks. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does
+      not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  compare-strokes:
+    title: Compare the motion honestly
+    body: Play both plans at the same tempo and separate what you heard from what you observed.
+activities:
+  alternate-control:
+    title: Compare strict alternate picking
+    body: 'Keep alternating through every string crossing; this is the comparison pattern. Sounding notes: {{sequence}}.
+      The fixed string pattern is part of the technique; this activity does not offer relocation. Practice checks
+      pitch and timing, while the physical cue is a self-check.'
+  economy-up:
+    title: Continue downward across strings
+    body: 'Use down–up–down on each string. The boundary has two downstrokes, each at its own written time. Sounding
+      notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  economy-down:
+    title: Continue upward across strings
+    body: 'Use up–down–up on each string while descending toward the root. Sounding notes: {{sequence}}. The fixed
+      string pattern is part of the technique; this activity does not offer relocation. Practice checks pitch and
+      timing, while the physical cue is a self-check.'
+  turnaround:
+    title: Plan the turn at the top
+    body: 'Repeat the highest pitch with an upstroke, then follow the descending plan without compressing the two
+      attacks. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does
+      not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+learningTasks:
+  compare-strokes:
+    title: Compare the motion honestly
+    body: Play both plans at the same tempo and separate what you heard from what you observed.
+    items:
+      direction: I followed the intended directions at each string boundary.
+      separate: The same-direction pair remained two separate, evenly timed notes.
+      turn: I gave both highest-note attacks their written duration at the turn.
+      compare: I identified a specific crossing that felt more or less controlled.

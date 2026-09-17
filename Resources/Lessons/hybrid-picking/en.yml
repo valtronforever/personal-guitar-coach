@@ -1,0 +1,73 @@
+lessonID: hybrid-picking
+lessonVersion: 1
+locale: en
+title: Combine a pick with free fingers
+summary: Alternate picked bass notes with finger-plucked upper notes.
+goal: Read the pick/finger cues and coordinate a single-note hybrid pattern with a steady pulse.
+body: |-
+  Hybrid picking keeps the pick in use while free fingers of the same hand pluck other strings. In these examples the pick plays lower notes, the middle finger plays string two and the ring finger plays string one. The roles belong to the picking hand whether you play right- or left-handed. Begin with one finger before asking two fingers to alternate.
+
+  Hold the pick comfortably with thumb and index finger, leaving the middle and ring fingers available rather than rigidly extended. A finger pluck can be small and close to the string. Avoid hooking far underneath and pulling away with unnecessary force. You can use comfortable fingertip or nail contact; the goal here is a controllable note, not a prescribed nail shape or a particular loud snap.
+
+  Learn the notation before starting: arrows are pick strokes, m is the picking-hand middle finger and a is the ring finger. These are instructions, not detected results. The first pattern alternates a downstroke on the lower string with m on the upper string, one note per beat. Keep both note lengths and attack levels comfortable. Listen for a delayed finger note after a confident picked note, then isolate that pair if necessary.
+
+  Add the ring finger while keeping each finger assigned to its upper string. The inside/outside example changes the order, so the finger choice must follow the next written string rather than a memorized m–a alternation. Prepare the destination lightly, make the pluck, then release the previous note as the next begins for measured monophonic practice. Keeping only one note sounding lets the app compare the actual line reliably.
+
+  The final phrase combines longer picked notes with pairs of shorter finger notes. Count the subdivisions even during the longer bass notes. The score checks the heard pitches and initial attacks, not finger choice, pick grip, muting or balance between pick and fingers. Use the self-check for those physical and listening observations. After the measured version, you may explore letting selected notes ring together on your own; that overlapping texture is outside this monophonic grade. Increase tempo only when the change between pick and fingers feels repeatable.
+steps:
+  prepare:
+    title: Prepare the string and stroke plan
+    body: Tune the instrument, begin slowly with a clean input, and read the physical cues before practice.
+  pick-and-middle:
+    title: Alternate pick and middle finger
+    body: 'Use a downstroke on string four and m on string two. Keep the unused intervening string quiet. Sounding
+      notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  two-fingers:
+    title: Give each upper string a finger
+    body: 'm plays string two; a plays string one. Keep the pick available for the next lower note. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  inside-outside:
+    title: Follow a changing upper-string order
+    body: 'Read the finger cue for each eighth note; the sequence is not a constant m–a alternation. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  hybrid-phrase:
+    title: Keep subdivisions through the bass notes
+    body: 'A quarter-note pick stroke is followed by two eighth-note finger plucks. Count the same subdivision through
+      both durations. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  check-hybrid:
+    title: Review the hand roles and sound
+    body: Confirm what you actually observed; the note score cannot certify these physical choices.
+activities:
+  pick-and-middle:
+    title: Alternate pick and middle finger
+    body: 'Use a downstroke on string four and m on string two. Keep the unused intervening string quiet. Sounding
+      notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  two-fingers:
+    title: Give each upper string a finger
+    body: 'm plays string two; a plays string one. Keep the pick available for the next lower note. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  inside-outside:
+    title: Follow a changing upper-string order
+    body: 'Read the finger cue for each eighth note; the sequence is not a constant m–a alternation. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  hybrid-phrase:
+    title: Keep subdivisions through the bass notes
+    body: 'A quarter-note pick stroke is followed by two eighth-note finger plucks. Count the same subdivision through
+      both durations. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+learningTasks:
+  check-hybrid:
+    title: Review the hand roles and sound
+    body: Confirm what you actually observed; the note score cannot certify these physical choices.
+    items:
+      roles: I used the pick, middle and ring fingers at their marked notes.
+      grip: I retained a comfortable pick grip while the other fingers moved.
+      balance: I listened for unwanted changes in volume between pick and fingers.
+      single: I kept the measured line monophonic and counted its subdivisions.

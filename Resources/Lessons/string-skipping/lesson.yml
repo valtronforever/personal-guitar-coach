@@ -1,0 +1,537 @@
+schemaVersion: 3
+id: string-skipping
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: adjacent-control
+    kind: events
+    exerciseID: string-skipping-adjacent-control
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: adjacent-control
+  - id: skip-one
+    kind: events
+    exerciseID: string-skipping-skip-one
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: skip-one
+  - id: skip-two
+    kind: events
+    exerciseID: string-skipping-skip-two
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: skip-two
+  - id: alternating-gaps
+    kind: events
+    exerciseID: string-skipping-alternating-gaps
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: alternating-gaps
+  - id: check-skipping
+    kind: none
+    eventIDs: []
+exercises:
+  - id: string-skipping-adjacent-control
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: note-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: note-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+  - id: string-skipping-skip-one
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+  - id: string-skipping-skip-two
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pickStroke: up
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pickStroke: up
+      - id: note-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pickStroke: up
+      - id: note-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pickStroke: up
+  - id: string-skipping-alternating-gaps
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pickStroke: up
+      - id: note-5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+        pickStroke: up
+      - id: note-7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+        pickStroke: up
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: adjacent-control
+    source:
+      kind: exercise
+      exerciseID: string-skipping-adjacent-control
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: skip-one
+    source:
+      kind: exercise
+      exerciseID: string-skipping-skip-one
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: skip-two
+    source:
+      kind: exercise
+      exerciseID: string-skipping-skip-two
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: alternating-gaps
+    source:
+      kind: exercise
+      exerciseID: string-skipping-alternating-gaps
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+activities:
+  - id: adjacent-control
+    materialID: adjacent-control
+  - id: skip-one
+    materialID: skip-one
+  - id: skip-two
+    materialID: skip-two
+  - id: alternating-gaps
+    materialID: alternating-gaps
+practiceEntries:
+  - id: adjacent-control
+    activityID: adjacent-control
+    exerciseID: string-skipping-adjacent-control
+  - id: skip-one
+    activityID: skip-one
+    exerciseID: string-skipping-skip-one
+  - id: skip-two
+    activityID: skip-two
+    exerciseID: string-skipping-skip-two
+  - id: alternating-gaps
+    activityID: alternating-gaps
+    exerciseID: string-skipping-alternating-gaps
+fingerings: []
+learningTasks:
+  - id: check-skipping
+    stepID: check-skipping
+    kind: selfPractice
+    itemIDs:
+      - path
+      - quiet
+      - pulse
+      - target
+curriculum:
+  moduleID: advanced-technique
+  ordinal: 89
+  durationMinutes: 30
+  prerequisites:
+    - alternate-picking
+  keywords:
+    - Cross a gap between strings
+    - Перестрибуй через проміжок між струнами
+    - picking
+    - медіатор
+    - coordination
+    - координація

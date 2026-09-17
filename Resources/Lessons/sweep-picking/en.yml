@@ -1,0 +1,83 @@
+lessonID: sweep-picking
+lessonVersion: 1
+locale: en
+title: Sweep through a small arpeggio
+summary: Connect adjacent strings in one direction while sounding each note separately.
+goal: Coordinate a controlled two- or three-string sweep with clear releases and an even pulse.
+body: |-
+  Sweep picking moves the pick through neighboring strings in one direction while the fretting hand makes each note distinct. Although the right-hand path can resemble a slow strum, the intended result is an arpeggio rather than a chord sounding together. Begin with two strings and deliberate rests. Speed is not useful until you can control where each note begins and where the previous note ends.
+
+  For the two-string example, prepare the lower note and play a downstroke. Let the pick approach the next thinner string without swinging away into a new large stroke. Sound the second note on its written beat, then stop during the rest. The continuous direction does not mean rushing both notes into one instant. At this slow teaching tempo you are learning the path and timing before making the movement more fluid.
+
+  Add the third string to complete a major triad. Release the previous fretting pressure as the next note begins while maintaining enough contact to prevent unwanted ringing. Where adjacent strings share a fret, experiment with a small controlled finger roll rather than holding both notes as a barre. Choose comfortable fingering; the app can hear overlapping or wrong pitches imperfectly and cannot observe the finger roll itself.
+
+  Practice the reverse direction separately: sweep up from the thinnest string toward the thicker strings. Keep each note at the same rhythmic spacing as the descent across the strings. In the round trip, finish the descending pick motion, count the written rest, then begin the reverse sweep. This reset makes the two directions clear before attempting a seamless turnaround. The minor shape changes the third by one fret while preserving the same string order and hand-direction plan.
+
+  Use a clean input and keep measured practice monophonic. Review the note and timing result, then separately listen for notes ringing together, extra string noise and a sudden rush at a crossing. The arrows describe the intended motion; the score cannot prove a sweep gesture, finger roll or absence of independent pick strokes. Repeat the smallest group that needs work, keeping the rest and pulse intact. Increase tempo only in small steps after the separate notes stay clear in both directions.
+steps:
+  prepare:
+    title: Prepare clear separate notes
+    body: Tune the guitar, use a clean input and preview the string order before playing.
+  two-strings:
+    title: Guide the pick through two strings
+    body: 'Two downstrokes are separated by one beat. Stop for two beats before repeating the pair. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  major-down:
+    title: Sweep a major triad downward
+    body: 'Play root–third–fifth in {{root}} major on three adjacent strings, then rest for one beat. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  major-up:
+    title: Reverse the sweep direction
+    body: 'Play fifth–third–root with three upstrokes; keep the lower notes as distinct as the higher ones. Sounding
+      notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  round-trip:
+    title: Reset and play the reverse sweep
+    body: 'Each three-note group uses eighth notes, then a written reset rest before the next direction. Count the
+      whole rest. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  minor-shape:
+    title: Keep the movement in a minor shape
+    body: 'Lower the third by one fret and keep root/fifth unchanged. Compare the new sound with the major form
+      at the same tempo. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  check-sweep:
+    title: Review separation and motion
+    body: Use the measured notes with direct observation of the pick and fretting hand.
+activities:
+  two-strings:
+    title: Guide the pick through two strings
+    body: 'Two downstrokes are separated by one beat. Stop for two beats before repeating the pair. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  major-down:
+    title: Sweep a major triad downward
+    body: 'Play root–third–fifth in {{root}} major on three adjacent strings, then rest for one beat. Sounding notes:
+      {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  major-up:
+    title: Reverse the sweep direction
+    body: 'Play fifth–third–root with three upstrokes; keep the lower notes as distinct as the higher ones. Sounding
+      notes: {{sequence}}. The fixed string pattern is part of the technique; this activity does not offer relocation.
+      Practice checks pitch and timing, while the physical cue is a self-check.'
+  round-trip:
+    title: Reset and play the reverse sweep
+    body: 'Each three-note group uses eighth notes, then a written reset rest before the next direction. Count the
+      whole rest. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+  minor-shape:
+    title: Keep the movement in a minor shape
+    body: 'Lower the third by one fret and keep root/fifth unchanged. Compare the new sound with the major form
+      at the same tempo. Sounding notes: {{sequence}}. The fixed string pattern is part of the technique; this activity
+      does not offer relocation. Practice checks pitch and timing, while the physical cue is a self-check.'
+learningTasks:
+  check-sweep:
+    title: Review separation and motion
+    body: Use the measured notes with direct observation of the pick and fretting hand.
+    items:
+      path: The pick continued through neighboring strings in the marked direction.
+      notes: I heard distinct notes instead of a chord ringing together.
+      release: I controlled the release or roll between adjacent fretted notes.
+      time: Each crossing and reset rest kept its intended timing.

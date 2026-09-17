@@ -1,0 +1,573 @@
+schemaVersion: 3
+id: hybrid-picking
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: pick-and-middle
+    kind: events
+    exerciseID: hybrid-picking-pick-and-middle
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: pick-and-middle
+  - id: two-fingers
+    kind: events
+    exerciseID: hybrid-picking-two-fingers
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: two-fingers
+  - id: inside-outside
+    kind: events
+    exerciseID: hybrid-picking-inside-outside
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+    activityID: inside-outside
+  - id: hybrid-phrase
+    kind: events
+    exerciseID: hybrid-picking-hybrid-phrase
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - note-5
+      - note-6
+      - note-7
+      - note-8
+      - note-9
+      - note-10
+      - note-11
+      - note-12
+    activityID: hybrid-phrase
+  - id: check-hybrid
+    kind: none
+    eventIDs: []
+exercises:
+  - id: hybrid-picking-pick-and-middle
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+  - id: hybrid-picking-two-fingers
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pluckFinger: ring
+      - id: note-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pluckFinger: ring
+      - id: note-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+  - id: hybrid-picking-inside-outside
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pluckFinger: ring
+      - id: note-3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pluckFinger: ring
+      - id: note-5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+        pluckFinger: middle
+      - id: note-7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+        pluckFinger: ring
+      - id: note-8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+        pluckFinger: middle
+  - id: hybrid-picking-hybrid-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-3
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pluckFinger: ring
+      - id: note-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-5
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+        pluckFinger: middle
+      - id: note-6
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+        pluckFinger: ring
+      - id: note-7
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-8
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pluckFinger: middle
+      - id: note-9
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        pluckFinger: ring
+      - id: note-10
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        pickStroke: down
+      - id: note-11
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+        pluckFinger: middle
+      - id: note-12
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+        pluckFinger: ring
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: pick-and-middle
+    source:
+      kind: exercise
+      exerciseID: hybrid-picking-pick-and-middle
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: two-fingers
+    source:
+      kind: exercise
+      exerciseID: hybrid-picking-two-fingers
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: inside-outside
+    source:
+      kind: exercise
+      exerciseID: hybrid-picking-inside-outside
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: hybrid-phrase
+    source:
+      kind: exercise
+      exerciseID: hybrid-picking-hybrid-phrase
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+activities:
+  - id: pick-and-middle
+    materialID: pick-and-middle
+  - id: two-fingers
+    materialID: two-fingers
+  - id: inside-outside
+    materialID: inside-outside
+  - id: hybrid-phrase
+    materialID: hybrid-phrase
+practiceEntries:
+  - id: pick-and-middle
+    activityID: pick-and-middle
+    exerciseID: hybrid-picking-pick-and-middle
+  - id: two-fingers
+    activityID: two-fingers
+    exerciseID: hybrid-picking-two-fingers
+  - id: inside-outside
+    activityID: inside-outside
+    exerciseID: hybrid-picking-inside-outside
+  - id: hybrid-phrase
+    activityID: hybrid-phrase
+    exerciseID: hybrid-picking-hybrid-phrase
+fingerings: []
+learningTasks:
+  - id: check-hybrid
+    stepID: check-hybrid
+    kind: selfPractice
+    itemIDs:
+      - roles
+      - grip
+      - balance
+      - single
+curriculum:
+  moduleID: advanced-technique
+  ordinal: 95
+  durationMinutes: 30
+  prerequisites:
+    - string-skipping
+  keywords:
+    - Combine a pick with free fingers
+    - Поєднай медіатор із вільними пальцями
+    - picking
+    - медіатор
+    - coordination
+    - координація

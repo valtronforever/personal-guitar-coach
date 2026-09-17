@@ -96,6 +96,10 @@ lessons:
   - vibrato
   - long-legato
   - tapping
+  - string-skipping
+  - economy-picking
+  - hybrid-picking
+  - sweep-picking
 modules:
   - id: getting-started
     order: 1

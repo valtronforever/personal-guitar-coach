@@ -15255,6 +15255,86 @@
           }
         }
       }
+    },
+    "pluck.finger.thumb": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluck with the picking-hand thumb (p)."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте великим пальцем руки звуковидобування (p)."
+          }
+        }
+      }
+    },
+    "pluck.finger.index": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluck with the picking-hand index finger (i)."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте вказівним пальцем руки звуковидобування (i)."
+          }
+        }
+      }
+    },
+    "pluck.finger.middle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluck with the picking-hand middle finger (m)."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте середнім пальцем руки звуковидобування (m)."
+          }
+        }
+      }
+    },
+    "pluck.finger.ring": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluck with the picking-hand ring finger (a)."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте безіменним пальцем руки звуковидобування (a)."
+          }
+        }
+      }
+    },
+    "pluck.instructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finger marks refer to the picking hand: p = thumb, i = index, m = middle, a = ring. Arrows indicate pick strokes. Follow the lesson’s hand roles; the audio score measures pitches and timing, not which finger or pick produced them."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позначки стосуються руки звуковидобування: p — великий, i — вказівний, m — середній, a — безіменний палець. Стрілки позначають удари медіатором. Дотримуйтеся ролей рук з уроку; аудіооцінка вимірює висоти й таймінг, а не палець чи медіатор, якими їх зіграно."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

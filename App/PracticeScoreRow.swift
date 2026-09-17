@@ -124,8 +124,8 @@ struct PracticeScoreRow: View {
                         .frame(width: max(1, width - 2), alignment: .leading).lineLimit(1).minimumScaleFactor(0.7)
                         .offset(x: 1, y: 139 * zoom).accessibilityHidden(true)
                 }
-                if (event.accented || event.pickingDirection != nil) && !segment.isContinuation {
-                    Text(verbatim: (event.accented ? ">" : "") + (event.pickingDirection.map { $0 == .down ? "↓" : "↑" } ?? "")).font(.system(size: (event.palmMuted || event.accented && event.pickingDirection != nil ? 9 : 12) * zoom, weight: .bold))
+                if (event.accented || event.pickingDirection != nil || event.pluckFinger != nil) && !segment.isContinuation {
+                    Text(verbatim: (event.accented ? ">" : "") + (event.pickingDirection.map { $0 == .down ? "↓" : "↑" } ?? event.pluckFinger?.symbol ?? "")).font(.system(size: (event.palmMuted || event.accented && event.pickingDirection != nil ? 9 : 12) * zoom, weight: .bold))
                         .position(x: min(8 * zoom, width / 2), y: (event.palmMuted ? 153 : 151) * zoom).accessibilityHidden(true)
                 }
                 if event.kind == .rest {
@@ -185,6 +185,7 @@ struct PracticeScoreRow: View {
             notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) })
         }
         if event.palmMuted { notes = String(format: localizationBundle.localizedString(forKey: "tab.palmMutedNotes %@", value: nil, table: nil), locale: locale, notes) }
+        if let finger = event.pluckFinger, !segment.isContinuation { notes += "; " + localizationBundle.localizedString(forKey: finger.instructionKey, value: nil, table: nil) }
         if let stroke = event.pickingDirection, !segment.isContinuation {
             let direction = localizationBundle.localizedString(forKey: stroke == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)
             let emphasis = localizationBundle.localizedString(forKey: event.accented ? "tab.strumAccented" : "tab.strumNormal", value: nil, table: nil)
