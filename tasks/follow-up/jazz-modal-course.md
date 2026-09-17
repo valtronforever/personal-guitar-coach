@@ -7,3 +7,5 @@ Complete the remaining six specialization lessons with substantive en/uk teachin
 Six lessons and 27 activities authored; 1,080 independent preset/neck cases pass. Loader validates 126 bundles; 917 localized keys and partial inventory 120 authored/8 todo pass. [Same-agent review](../../docs/reviews/jazz-modal-course-review.md). Full Learning/App, root Release and CI/merge remain in progress.
 
 Full Learning145 and App188 tests pass; UI-test sources type-check. Root Release and exact-head CI/merge are next.
+
+Signed root-only Release/archive/XPC pass for126 bilingual bundles. [Bundle evidence](../../docs/benchmarks/jazz-modal-release-bundle.json). Exact-head CI/merge and actual native/guitar acceptance remain open.

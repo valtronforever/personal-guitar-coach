@@ -18,3 +18,5 @@ Evidence:
 - Loader validates 126 bundles, zero issues; partial inventory 120 authored/8 todo. Localization 917 keys, generated-project and diff checks pass. Full Learning/App, Release/CI and native acceptance remain pending below.
 
 Full Learning: 145 tests/52 suites passed in304.611s; full App:188 tests/59 suites passed in330.715s (`/tmp/jazz-modal-learning-full.log`, `/tmp/jazz-modal-app-full.log`). UI-test sources type-check. Parent typed-helper CI fix was fast-forwarded with identical test data and its separate regression pass; no production behavior changed. Signed root-only Release and fresh CI are next.
+
+Signed root-only Release/archive validates126 bilingual bundles / 379 YAML files with zero issues, arm64/macOS14, ad-hoc hardened sandbox and expected entitlements. Binary SHA256 `5c6afa369f623da9db700164dd055e7909e9bf7ba517d31d65eb262194558e58`; archive `c72fb42b14cad4af1b70b7a42f00636f05b86af763315417afd3fcbeaf06237a`. See `docs/benchmarks/jazz-modal-release-bundle.json`. Signed sandbox→XPC→invalidRequest passes without a provider call. Actual native app/guitar/provider acceptance remains open; exact-head CI/merge are pending.
