@@ -1,0 +1,54 @@
+lessonID: expressive-hardware
+lessonVersion: 1
+locale: en
+title: Shape a note beyond the pick attack
+summary: Explore volume swells, a compatible vibrato arm and controllable feedback without forcing the instrument.
+goal: Perform the available expressive actions deliberately and distinguish volume, pitch movement and feedback.
+body: |-
+  A volume swell removes or softens the initial attack by raising level after the string has been excited. A guitar vibrato arm changes string tension and pitch. Acoustic feedback occurs when amplified sound excites the instrument again, sustaining a loop. These actions are not interchangeable, and the equipment determines which are available. This lesson provides timing guides and self-observation rather than a score for these mechanisms.
+
+  Begin with the long-note guide and a clean monitoring sound. Reduce guitar volume, pick the note, then raise volume smoothly during the first two beats and lower it before the rest. Try a volume pedal instead if available. Learn a small range first; avoid losing the next note while reaching for a knob. Volume before a driven stage can change distortion, whereas later volume changes the level of the already processed sound.
+
+  If the guitar has a compatible vibrato arm, consult its instructions and use a small comfortable movement. Play the reference pitch, move it gently and return, then compare the returned pitch with the tuner. Do not install or force an arm on a fixed bridge, and do not assume every bridge allows upward travel. Without the hardware, study the distinction and leave the arm criterion unchecked; a fretting-hand bend is a different action.
+
+  Feedback is an optional equipment experiment, not a reason to increase sound level until a loop appears. If controlled feedback is already available at a comfortable level, test starting one note, allowing a short sustain and stopping it deliberately by muting and reducing level. A dedicated feedback effect offers another experiment but is not proof of an acoustic loop. If neither option is available, keep this criterion open. Finish every experiment by restoring your normal clean input and verifying tuning.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  long-note:
+    title: Time a single-note swell
+    body: 'The written note is a timing and pitch guide only. Raise level after its attack, then finish before the
+      rest. The reference does not synthesize the swell or arm motion. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  chord-swell:
+    title: Try a quiet chord swell
+    body: 'Prepare the shown triad, excite it with reduced volume, then bring it in smoothly. This chord texture
+      and changing volume are self-practice, not monophonic grading. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  expressive-test:
+    title: Record only actions you performed
+    body: Use compatible available equipment. An unchecked hardware item is an honest future task, not a failed
+      pitch score.
+activities:
+  long-note:
+    title: Time a single-note swell
+    body: 'The written note is a timing and pitch guide only. Raise level after its attack, then finish before the
+      rest. The reference does not synthesize the swell or arm motion. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  chord-swell:
+    title: Try a quiet chord swell
+    body: 'Prepare the shown triad, excite it with reduced volume, then bring it in smoothly. This chord texture
+      and changing volume are self-practice, not monophonic grading. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+learningTasks:
+  expressive-test:
+    title: Record only actions you performed
+    body: Use compatible available equipment. An unchecked hardware item is an honest future task, not a failed
+      pitch score.
+    items:
+      swell: I made a smooth swell and ended it before the rest.
+      arm: With a compatible arm I made a small movement and checked the return pitch.
+      feedback: I controlled the start and stop of available feedback at a comfortable level.
+      restore: I restored the normal clean route and checked tuning.

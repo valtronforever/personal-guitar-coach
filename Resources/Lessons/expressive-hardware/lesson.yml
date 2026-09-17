@@ -1,0 +1,204 @@
+schemaVersion: 3
+id: expressive-hardware
+version: 1
+difficulty: intermediate
+topic: tone
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: long-note
+    kind: events
+    exerciseID: expressive-hardware-long-note
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: long-note
+  - id: chord-swell
+    kind: events
+    exerciseID: expressive-hardware-chord-swell
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: chord-swell
+  - id: expressive-test
+    kind: none
+    eventIDs: []
+exercises:
+  - id: expressive-hardware-long-note
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: expressive-hardware-chord-swell
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: long-note
+    source:
+      kind: exercise
+      exerciseID: expressive-hardware-long-note
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: chord-swell
+    source:
+      kind: exercise
+      exerciseID: expressive-hardware-chord-swell
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: long-note
+    materialID: long-note
+  - id: chord-swell
+    materialID: chord-swell
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: expressive-test
+    stepID: expressive-test
+    kind: selfPractice
+    itemIDs:
+      - swell
+      - arm
+      - feedback
+      - restore
+curriculum:
+  moduleID: electric-tone
+  ordinal: 119
+  durationMinutes: 25
+  prerequisites:
+    - pickup-volume-tone
+    - time-and-modulation-effects
+  keywords:
+    - Shape a note beyond the pick attack
+    - Формуй ноту після атаки медіатора
+    - tone
+    - тембр
+    - signal path
+    - шлях сигналу

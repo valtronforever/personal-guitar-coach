@@ -100,6 +100,14 @@ lessons:
   - economy-picking
   - hybrid-picking
   - sweep-picking
+  - pickup-volume-tone
+  - clean-crunch-high-gain
+  - amp-cabinet-ir
+  - equalization
+  - drive-compression-gate
+  - time-and-modulation-effects
+  - expressive-hardware
+  - record-di-monitoring
 modules:
   - id: getting-started
     order: 1

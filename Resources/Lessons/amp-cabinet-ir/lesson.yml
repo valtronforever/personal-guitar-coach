@@ -1,0 +1,139 @@
+schemaVersion: 3
+id: amp-cabinet-ir
+version: 1
+difficulty: intermediate
+topic: tone
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: control
+    kind: events
+    exerciseID: amp-cabinet-ir-control
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+    activityID: control
+  - id: cabinet-test
+    kind: none
+    eventIDs: []
+  - id: ir-quiz
+    kind: none
+    eventIDs: []
+exercises:
+  - id: amp-cabinet-ir-control
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-3
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-4
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: control
+    source:
+      kind: exercise
+      exerciseID: amp-cabinet-ir-control
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: control
+    materialID: control
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: cabinet-test
+    stepID: cabinet-test
+    kind: selfPractice
+    itemIDs:
+      - map
+      - cab
+      - amp
+      - save
+  - id: ir-quiz
+    stepID: ir-quiz
+    kind: quiz
+    itemIDs:
+      - response
+      - solo
+      - all
+    correctOptionID: response
+curriculum:
+  moduleID: electric-tone
+  ordinal: 115
+  durationMinutes: 25
+  prerequisites:
+    - clean-crunch-high-gain
+  keywords:
+    - Separate amplifier, cabinet and IR
+    - Розділи підсилювач, кабінет та IR
+    - tone
+    - тембр
+    - signal path
+    - шлях сигналу

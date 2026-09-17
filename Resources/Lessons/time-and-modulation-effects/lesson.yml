@@ -1,0 +1,129 @@
+schemaVersion: 3
+id: time-and-modulation-effects
+version: 1
+difficulty: intermediate
+topic: tone
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: control
+    kind: events
+    exerciseID: time-and-modulation-effects-control
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: control
+  - id: effect-test
+    kind: none
+    eventIDs: []
+  - id: delay-time
+    kind: none
+    eventIDs: []
+exercises:
+  - id: time-and-modulation-effects-control
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 2880
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-4
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: control
+    source:
+      kind: exercise
+      exerciseID: time-and-modulation-effects-control
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: control
+    materialID: control
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: effect-test
+    stepID: effect-test
+    kind: selfPractice
+    itemIDs:
+      - delay
+      - reverb
+      - modulation
+      - route
+  - id: delay-time
+    stepID: delay-time
+    kind: quiz
+    itemIDs:
+      - half
+      - dotted
+      - beat
+    correctOptionID: dotted
+curriculum:
+  moduleID: electric-tone
+  ordinal: 118
+  durationMinutes: 25
+  prerequisites:
+    - drive-compression-gate
+  keywords:
+    - Place repeats, space and movement
+    - Розмісти повтори, простір і рух
+    - tone
+    - тембр
+    - signal path
+    - шлях сигналу

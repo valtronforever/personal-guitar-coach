@@ -1,0 +1,46 @@
+lessonID: equalization
+lessonVersion: 1
+locale: en
+title: Use EQ for a stated purpose
+summary: Compare a small tonal change in context and keep the change only if it solves a problem.
+goal: Make and explain one useful low, mid or high-frequency adjustment with a fair bypass comparison.
+body: |-
+  An equalizer changes the balance of frequency regions. Frequency selects the region, gain raises or lowers it, and Q or bandwidth controls how broad a bell-shaped change is. Bass, middle and treble knobs are a simpler interface to related tone changes. They are not independent instructions to maximize three numbers; their interaction depends on the device. Begin from a known neutral or saved setting.
+
+  Give the comparison a purpose before touching a knob: for example, make a low-note pattern less boomy, help the melody stand out, or soften an abrasive pick edge. Play the control phrase through the same pickup, amp and cabinet. Change one broad region by a small amount, then return to the starting setting. Write what became clearer and what useful part of the sound was lost.
+
+  For a low-end comparison, listen to the start and stop of the lower notes rather than judging only their size. For mids, compare whether you can follow the line without turning up the whole signal. For highs, distinguish useful attack detail from an edge that distracts from the note. These descriptions depend on register and arrangement; there is no single correct frequency or fixed EQ curve for every tuning.
+
+  Match the processed and bypassed listening levels approximately, then compare in the intended musical context. A tone that is impressive alone may obscure another part. EQ before a driven amp can change what drives distortion, while EQ after it reshapes the resulting sound; note the location as well as the values. Keep the smallest useful change and save a way back. EQ cannot repair a missed note or prove that a string was muted correctly.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  eq-test:
+    title: Choose and justify one adjustment
+    body: Compare a small cut and boost in a chosen broad region, return to neutral between them, and retain only
+      a change that serves your stated goal.
+activities:
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+learningTasks:
+  eq-test:
+    title: Choose and justify one adjustment
+    body: Compare a small cut and boost in a chosen broad region, return to neutral between them, and retain only
+      a change that serves your stated goal.
+    items:
+      goal: I named an audible problem before changing EQ.
+      region: I compared a cut and boost without changing other stages.
+      bypass: I compared bypass at a similar listening level and in context.
+      save: I documented the EQ location, adjustment and reason to keep it.
