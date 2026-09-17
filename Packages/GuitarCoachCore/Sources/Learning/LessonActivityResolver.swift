@@ -92,7 +92,7 @@ extension LoadedLesson {
                         guard instrument.contains(touch), region?.contains(touch, maximumFret: instrument.fretCount) ?? true else { throw PositioningError.regionUnplayable }
                     }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger, harmonic: event.harmonic)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger, harmonic: event.harmonic, mutedAttack: event.mutedAttack)
                 }
             }
             let selectedIDs = Set(events.map(\.id))

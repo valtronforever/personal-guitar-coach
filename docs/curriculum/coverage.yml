@@ -1159,7 +1159,8 @@ lessons:
       uk: Фанк
     outcomeUK: Грати короткі акорди, приглушені атаки та синкопи
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 103
     moduleID: electric-styles
     lessonID: rnb-neo-soul

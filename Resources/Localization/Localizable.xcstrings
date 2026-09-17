@@ -15437,6 +15437,70 @@
           }
         }
       }
+    },
+    "mutedAttack.spoken %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unpitched muted attack on strings %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушений удар без визначеної висоти по струнах %@"
+          }
+        }
+      }
+    },
+    "mutedAttack.staff %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, duration %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, тривалість %@"
+          }
+        }
+      }
+    },
+    "mutedAttack.legend": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "× marks an unpitched muted-string attack, not a rest."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "× позначає приглушений удар без визначеної висоти, а не паузу."
+          }
+        }
+      }
+    },
+    "mutedAttack.staffAccent %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accented %@, duration %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Акцент: %@, тривалість %@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

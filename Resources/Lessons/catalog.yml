@@ -110,6 +110,7 @@ lessons:
   - record-di-monitoring
   - harmonics
   - tremolo-picking
+  - funk-study
 modules:
   - id: getting-started
     order: 1

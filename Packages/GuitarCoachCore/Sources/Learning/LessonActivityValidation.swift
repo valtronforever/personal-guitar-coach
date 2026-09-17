@@ -17,6 +17,7 @@ extension LessonCatalogLoader {
         let activityMap = Dictionary(uniqueKeysWithValues: activities.map { ($0.id, $0) })
         for shape in shapes {
             try require(exercises[shape.exerciseID] != nil && !shape.fingering.positions.isEmpty, "Source shape needs an exercise and sounding positions: \(shape.id)")
+            try require(exercises[shape.exerciseID]?.events.contains(where: { $0.mutedAttack != nil }) != true, "Muted attacks require explicit string roles; ordinary named fingerings cannot represent them")
             try require(exercises[shape.exerciseID]?.events.contains(where: { $0.harmonic != nil }) != true, "Harmonic events require explicit node roles; ordinary named fingerings cannot represent them")
         }
         for material in materials {

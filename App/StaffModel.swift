@@ -42,7 +42,8 @@ struct StaffSymbol: Identifiable, Sendable {
     var endTick: Int64 { fragment.endTick }
     var flags: Int { fragment.duration.flags }
     var hollow: Bool { fragment.duration.baseTicks >= 1920 }
-    var hasStem: Bool { fragment.duration.baseTicks != 3840 && pitch != nil }
+    var engravingStep: Int? { pitch?.step ?? (resolved.event.mutedAttack == nil ? nil : 34) }
+    var hasStem: Bool { fragment.duration.baseTicks != 3840 && engravingStep != nil }
     var hintKey: String {
         if fragment.isTechniqueTarget { return "staff.transitionTarget" }
         if fragment.tieFromPrevious && fragment.tieToNext { return "staff.tie.middle" }
@@ -100,13 +101,13 @@ struct StaffModel: Sendable {
         var result: [StaffBeam] = [], group: [StaffSymbol] = []
         func finish() {
             if group.count > 1 {
-                let sum = group.compactMap(\.pitch).map(\.step).reduce(0, +)
+                let sum = group.compactMap(\.engravingStep).reduce(0, +)
                 result.append(StaffBeam(ids: group.map(\.id), flags: group[0].flags, stemsUp: Double(sum) / Double(group.count) < 34))
             }
             group = []
         }
         for symbol in symbols {
-            guard symbol.flags > 0 && symbol.pitch != nil && !symbol.fragment.duration.dotted else { finish(); continue }
+            guard symbol.flags > 0 && symbol.engravingStep != nil && !symbol.fragment.duration.dotted else { finish(); continue }
             if let last = group.last,
                last.fragment.tripletID != symbol.fragment.tripletID || last.flags != symbol.flags || last.endTick != symbol.startTick ||
                timeline.notationGroupStart(at: last.startTick) != timeline.notationGroupStart(at: symbol.startTick) { finish() }
