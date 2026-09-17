@@ -126,6 +126,7 @@ struct StaffView: View {
                 let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
+            if let finger = symbol.resolved.event.pluckFinger, symbol.startTick == symbol.resolved.event.startTick { sounding += "; " + settings.localized(finger.instructionKey) }
             if let bend = symbol.resolved.event.bend { sounding = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, sounding, bend.semitones * 100) }
             if let vibrato = symbol.resolved.event.vibrato { sounding += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: timeline.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
             if symbol.resolved.event.pitchTransition != nil || symbol.resolved.event.legatoChain != nil {
@@ -245,6 +246,10 @@ struct StaffDrawing {
             }
             if let stroke = symbol.resolved.event.pickStroke, symbol.startTick == symbol.resolved.event.startTick {
                 context.draw(Text(verbatim: stroke == .down ? "↓" : "↑").font(.system(size: 12, weight: .bold)),
+                    at: CGPoint(x: position, y: StaffModel.canvasHeight - 42))
+            }
+            if let finger = symbol.resolved.event.pluckFinger, symbol.startTick == symbol.resolved.event.startTick {
+                context.draw(Text(verbatim: finger.symbol).font(.system(size: 12, weight: .bold)),
                     at: CGPoint(x: position, y: StaffModel.canvasHeight - 42))
             }
             if let bend = symbol.resolved.event.bend {

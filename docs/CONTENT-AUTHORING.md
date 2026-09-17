@@ -470,3 +470,18 @@ With a 4800-tick parent this is five quarter notes: base, +3, +7, +3, base. TAB/
 The clean monophonic envelope requires initial 195.9–880 Hz, all plateaus 195.9–1100 Hz, and at least 0.4 s per plateau at the requested meter pulse/BPM. Display/reference are broader than assessment. The app measures audible pitch coverage, not the hand/finger, fret, string or absence of repicking. Add a separate physical self-check rather than reporting the gesture as measured.
 
 Positioning checks every intermediate target when choosing a starting position. `windowFrets` now permits 1–12: this is a search region, **not** a claim of a feasible one-hand stretch. Chord voicings retain the existing four-fret span constraint. Wider regions can describe two-handed tapping, while physically essential string-crossing tasks should disable relocation. Available choices are pruned against the actual instrument/fret count. Topics 91/93 demonstrate short→long chains, fixed three-string crossings and repeated tapped minor-triad cycles. Missing optional fields preserve earlier canonical encoding and saved grades.
+
+### Picking-hand finger cues
+
+Optional `pluckFinger: thumb | index | middle | ring` labels an ordinary single-voice note's initial attack with p/i/m/a. These are picking-hand roles, independent of left/right-handed playing. The cue cannot coexist with `pickStroke`, strum, bend, transition, vibrato or legato chain in this first contract, and cannot be attached to a rest/chord. Sustained ordinary notes may carry the initial cue; continuations do not repeat it. It is not an audio-detected articulation and does not change pitch, timing, reference timbre or scoring parameters.
+
+```yaml
+- id: upper-note
+  kind: note
+  startTick: 960
+  durationTicks: 960
+  positions: [{string: 2, fret: 5}]
+  pluckFinger: middle
+```
+
+Topics 89/90/92/95 retain fixed string patterns for skipping/economy/sweep/hybrid teaching. Their ordinary note assessment checks audible pitch/time, while explicit self-checks cover picking direction, hand use, finger rolling, string separation and muting. Hybrid examples use arrows for the pick and m/a for upper strings. Describe intentional monophonic release in measured practice; do not imply that the same score assesses an overlapping chord texture. Changes to an existing lesson's physical cues require a new lesson/exercise version; these new lessons begin at version 1.

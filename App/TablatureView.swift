@@ -185,6 +185,25 @@ struct TablatureView: View {
         }.frame(width: width, height: height)
     }
 
+    private func notationHeader(_ segment: TimelineSegment) -> some View {
+        let event = segment.resolved.event
+        var marks: [String] = []
+        if let bend = event.bend { marks.append("b" + String(bend.semitones) + (bend.releaseEndTick == nil ? "" : "r")) }
+        if event.palmMuted { marks.append("P.M.") }
+        if event.accented && !segment.isContinuation { marks.append(">") }
+        if let stroke = event.pickingDirection, !segment.isContinuation { marks.append(stroke == .down ? "↓" : "↑") }
+        if let finger = event.pluckFinger, !segment.isContinuation { marks.append(finger.symbol) }
+        return VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 3) {
+                if !marks.isEmpty { Text(verbatim: marks.joined(separator: " ")).bold() }
+                if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
+                if event.kind == .rest { Image(systemName: "pause.fill") }
+                Text(verbatim: TimelineModel.durationLabel(segment.writtenDurationTicks)).monospacedDigit()
+            }.font(.caption).lineLimit(1).minimumScaleFactor(0.7)
+            Rectangle().fill(.secondary).frame(height: 2)
+        }
+    }
+
     private func eventButton(_ segment: TimelineSegment) -> some View {
         let event = segment.resolved.event
         let width = model.x(tick: segment.endTick, bar: segment.bar, zoom: zoom) - model.x(tick: segment.startTick, bar: segment.bar, zoom: zoom)
@@ -197,18 +216,9 @@ struct TablatureView: View {
                     RoundedRectangle(cornerRadius: 5).fill(Color.accentColor.opacity(0.12))
                         .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(.primary, lineWidth: 2))
                 }
-                if event.pitchTransition == nil && event.legatoChain == nil { VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 3) {
-                        if let bend = event.bend { Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r")).bold() }
-                        if event.palmMuted { Text(verbatim: "P.M.").bold() }
-                        if event.accented && !segment.isContinuation { Text(verbatim: ">").bold() }
-                        if let stroke = event.pickingDirection, !segment.isContinuation { Text(verbatim: stroke == .down ? "↓" : "↑").bold() }
-                        if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
-                        if event.kind == .rest { Image(systemName: "pause.fill") }
-                        Text(verbatim: TimelineModel.durationLabel(segment.writtenDurationTicks)).monospacedDigit()
-                    }.font(.caption).lineLimit(1).minimumScaleFactor(0.7)
-                    Rectangle().fill(.secondary).frame(height: 2)
-                }.padding(.horizontal, 4).offset(y: 23) }
+                if event.pitchTransition == nil && event.legatoChain == nil {
+                    notationHeader(segment).padding(.horizontal, 4).offset(y: 23)
+                }
                 if event.kind == .rest {
                     Image(systemName: "pause.circle").font(.title2).frame(width: width, height: rowHeight * 6).offset(y: gridTop)
                 } else if event.pitchTransition != nil || event.legatoChain != nil {
@@ -265,6 +275,7 @@ struct TablatureView: View {
             notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: settings.locale, localized: settings.localized)
         }
         if event.palmMuted { notes = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, notes) }
+        if let finger = event.pluckFinger, !segment.isContinuation { notes += "; " + settings.localized(finger.instructionKey) }
         if let stroke = event.pickingDirection, !segment.isContinuation {
             let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
             let emphasis = settings.localized(event.accented ? "tab.strumAccented" : "tab.strumNormal")

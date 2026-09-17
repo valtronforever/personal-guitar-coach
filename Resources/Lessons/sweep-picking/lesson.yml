@@ -1,0 +1,614 @@
+schemaVersion: 3
+id: sweep-picking
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: two-strings
+    kind: events
+    exerciseID: sweep-picking-two-strings
+    eventIDs:
+      - note-1
+      - note-2
+      - reset-2
+      - note-3
+      - note-4
+      - reset-4
+    activityID: two-strings
+  - id: major-down
+    kind: events
+    exerciseID: sweep-picking-major-down
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset-3
+      - note-4
+      - note-5
+      - note-6
+      - reset-6
+    activityID: major-down
+  - id: major-up
+    kind: events
+    exerciseID: sweep-picking-major-up
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset-3
+      - note-4
+      - note-5
+      - note-6
+      - reset-6
+    activityID: major-up
+  - id: round-trip
+    kind: events
+    exerciseID: sweep-picking-round-trip
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset-3
+      - note-4
+      - note-5
+      - note-6
+      - reset-6
+    activityID: round-trip
+  - id: minor-shape
+    kind: events
+    exerciseID: sweep-picking-minor-shape
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset-3
+      - note-4
+      - note-5
+      - note-6
+      - reset-6
+    activityID: minor-shape
+  - id: check-sweep
+    kind: none
+    eventIDs: []
+exercises:
+  - id: sweep-picking-two-strings
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+      - id: reset-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: note-3
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+      - id: note-4
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+      - id: reset-4
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: sweep-picking-major-down
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: down
+      - id: reset-3
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: note-4
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+      - id: note-5
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+      - id: note-6
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: down
+      - id: reset-6
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: sweep-picking-major-up
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: up
+      - id: note-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: reset-3
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: note-4
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: up
+      - id: note-5
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-6
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: reset-6
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: sweep-picking-round-trip
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+      - id: note-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: down
+      - id: note-3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: down
+      - id: reset-3
+        startTick: 1440
+        durationTicks: 2400
+        kind: rest
+        positions: []
+      - id: note-4
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: up
+      - id: note-5
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        pickStroke: up
+      - id: note-6
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: reset-6
+        startTick: 5280
+        durationTicks: 2400
+        kind: rest
+        positions: []
+  - id: sweep-picking-minor-shape
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+      - id: note-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 4
+        pickStroke: down
+      - id: note-3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: down
+      - id: reset-3
+        startTick: 1440
+        durationTicks: 2400
+        kind: rest
+        positions: []
+      - id: note-4
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        pickStroke: up
+      - id: note-5
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 4
+        pickStroke: up
+      - id: note-6
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: up
+      - id: reset-6
+        startTick: 5280
+        durationTicks: 2400
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: two-strings
+    source:
+      kind: exercise
+      exerciseID: sweep-picking-two-strings
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: major-down
+    source:
+      kind: exercise
+      exerciseID: sweep-picking-major-down
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: major-up
+    source:
+      kind: exercise
+      exerciseID: sweep-picking-major-up
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: round-trip
+    source:
+      kind: exercise
+      exerciseID: sweep-picking-round-trip
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: minor-shape
+    source:
+      kind: exercise
+      exerciseID: sweep-picking-minor-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: two-strings
+    materialID: two-strings
+  - id: major-down
+    materialID: major-down
+  - id: major-up
+    materialID: major-up
+  - id: round-trip
+    materialID: round-trip
+  - id: minor-shape
+    materialID: minor-shape
+practiceEntries:
+  - id: two-strings
+    activityID: two-strings
+    exerciseID: sweep-picking-two-strings
+  - id: major-down
+    activityID: major-down
+    exerciseID: sweep-picking-major-down
+  - id: major-up
+    activityID: major-up
+    exerciseID: sweep-picking-major-up
+  - id: round-trip
+    activityID: round-trip
+    exerciseID: sweep-picking-round-trip
+  - id: minor-shape
+    activityID: minor-shape
+    exerciseID: sweep-picking-minor-shape
+fingerings: []
+learningTasks:
+  - id: check-sweep
+    stepID: check-sweep
+    kind: selfPractice
+    itemIDs:
+      - path
+      - notes
+      - release
+      - time
+curriculum:
+  moduleID: advanced-technique
+  ordinal: 92
+  durationMinutes: 30
+  prerequisites:
+    - economy-picking
+    - em-arpeggio
+  keywords:
+    - Sweep through a small arpeggio
+    - Проведи sweep через невелике арпеджіо
+    - sweep
+    - arpeggio
+    - арпеджіо
+    - медіатор

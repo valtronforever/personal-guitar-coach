@@ -1034,7 +1034,8 @@ lessons:
       uk: String skipping
     outcomeUK: Перестрибувати через струни без зайвих звуків
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 90
     moduleID: advanced-technique
     lessonID: economy-picking
@@ -1043,7 +1044,8 @@ lessons:
       uk: Economy picking
     outcomeUK: Поєднати змінний штрих із рухом між струнами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 91
     moduleID: advanced-technique
     lessonID: long-legato
@@ -1062,7 +1064,8 @@ lessons:
       uk: Sweep picking
     outcomeUK: Зіграти арпеджіо одним послідовним рухом медіатора
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 93
     moduleID: advanced-technique
     lessonID: tapping
@@ -1090,7 +1093,8 @@ lessons:
       uk: Hybrid picking
     outcomeUK: Поєднувати медіатор і пальці
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 96
     moduleID: advanced-technique
     lessonID: tremolo-picking

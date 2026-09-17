@@ -35,6 +35,7 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let palmMuted: Bool
     /// Picking instruction for a single note; audible pitch/time cannot prove the gesture.
     public let pickStroke: StrumDirection?
+    public let pluckFinger: PluckingFinger?
     public var pickingDirection: StrumDirection? { strum?.direction ?? pickStroke }
     /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
     public let assessSustain: Bool
@@ -50,7 +51,7 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     }
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil, bend: PitchBend? = nil, pitchTransition: PitchTransition? = nil, vibrato: PitchVibrato? = nil, legatoChain: LegatoChain? = nil) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil, bend: PitchBend? = nil, pitchTransition: PitchTransition? = nil, vibrato: PitchVibrato? = nil, legatoChain: LegatoChain? = nil, pluckFinger: PluckingFinger? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
@@ -78,6 +79,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             guard kind == .note, positions.count == 1, bend == nil, pitchTransition == nil, vibrato == nil, !assessSustain, !palmMuted else { throw MusicError.invalidEvent }
             try legatoChain.validate(durationTicks: durationTicks, position: positions[0])
         }
+        guard pluckFinger == nil || (kind == .note && positions.count == 1 && pickStroke == nil && strum == nil && bend == nil && pitchTransition == nil && vibrato == nil && legatoChain == nil) else { throw MusicError.invalidEvent }
+        self.pluckFinger = pluckFinger
         self.legatoChain = legatoChain
         self.vibrato = vibrato
         self.pitchTransition = pitchTransition
@@ -101,13 +104,14 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         try values.encodeIfPresent(strum, forKey: .strum)
         if palmMuted { try values.encode(true, forKey: .palmMuted) }
         try values.encodeIfPresent(pickStroke, forKey: .pickStroke)
+        try values.encodeIfPresent(pluckFinger, forKey: .pluckFinger)
         try values.encodeIfPresent(bend, forKey: .bend)
         try values.encodeIfPresent(pitchTransition, forKey: .pitchTransition)
         try values.encodeIfPresent(vibrato, forKey: .vibrato)
         try values.encodeIfPresent(legatoChain, forKey: .legatoChain)
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke, bend, pitchTransition, vibrato, legatoChain }
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke, bend, pitchTransition, vibrato, legatoChain, pluckFinger }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
@@ -121,7 +125,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             bend: values.decodeIfPresent(PitchBend.self, forKey: .bend),
             pitchTransition: values.decodeIfPresent(PitchTransition.self, forKey: .pitchTransition),
             vibrato: values.decodeIfPresent(PitchVibrato.self, forKey: .vibrato),
-            legatoChain: values.decodeIfPresent(LegatoChain.self, forKey: .legatoChain))
+            legatoChain: values.decodeIfPresent(LegatoChain.self, forKey: .legatoChain),
+            pluckFinger: values.decodeIfPresent(PluckingFinger.self, forKey: .pluckFinger))
     }
 }
 
