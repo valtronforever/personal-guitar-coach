@@ -9,7 +9,7 @@ public enum AssessmentEngine {
         let expected = config.selectedEvents.filter { $0.kind == .note }
         let tuning = config.exercise.requiredTuning ?? config.instrument.tuning
         let frequencies = try expected.map { try tuning.pitch(at: $0.positions[0]).frequency(referenceA4: tuning.referenceA4) }
-        let secondsPerTick = 60 / config.bpm / Double(config.exercise.ppq)
+        let secondsPerTick = config.exercise.timeSignature.secondsPerTick(bpm: config.bpm)
         let relative = expected.map { Double($0.startTick - config.range.lowerBound) * secondsPerTick }
         let intervals = zip(relative, relative.dropFirst()).map { $1 - $0 }
         let tolerance = min(parameters.maximumRhythmTolerance(personal: config.calibration?.method.isPersonal == true), (intervals.min() ?? .infinity) * parameters.rhythmIntervalFraction)

@@ -50,7 +50,8 @@ struct TimelineTests {
         #expect(model.followTarget(7681) == nil)
     }
     @Test func longExercisePagesAndFinalPartialBarStayBounded() throws {
-        let model = try TimelineModel(exercise: Exercise(id: "large", events: [note("long", 0, Int64.max)]), instrument: .standard)
+        for meter in TimeSignature.allCases {
+        let model = try TimelineModel(exercise: Exercise(id: "large", events: [note("long", 0, Int64.max)], timeSignature: meter), instrument: .standard)
         #expect(model.page(containing: 0) == 0..<16)
         #expect(model.page(containing: 16) == 16..<32)
         let last = model.barCount - 1
@@ -62,6 +63,10 @@ struct TimelineTests {
         #expect(model.x(tick: Int64.max, bar: last, zoom: 1) > 0)
         #expect(model.segments(in: -1).isEmpty)
         #expect(model.segments(in: model.barCount).isEmpty)
+        #expect(model.notationBoundaries(in: last).last == Int64.max)
+        #expect(model.notationBoundaries(in: Int64.max).isEmpty)
+        #expect(model.silentBeatNumbers(in: Int64.max).isEmpty)
+        }
     }
     @Test func hitTestingAfterScrollAndZoomReturnsStableIDs() throws {
         let events = try (0..<100).map { try note("n\($0)", Int64($0) * 240, 240, fret: $0 % 25) }

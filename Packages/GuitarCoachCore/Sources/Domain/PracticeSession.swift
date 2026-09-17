@@ -35,7 +35,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     public let calibration: CalibrationProfile?
     public let outputAlignment: OutputAlignmentProfile?
     public var selectedEvents: [MusicalEvent] { exercise.events.filter { range.contains($0.startTick) } }
-    public var durationSeconds: Double { Double(range.count) / 960 * 60 / bpm }
+    public var durationSeconds: Double { Double(range.count) * exercise.timeSignature.secondsPerTick(bpm: bpm) }
     public var countInSeconds: Double { Double(countInBars * exercise.timeSignature.beatsPerBar) * 60 / bpm }
     /// A measured output offset already contains unreported presentation delay. Do not add the fallback again.
     public func visualOutputLatency(fallback: Double) -> Double {
@@ -70,7 +70,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
         let selected = exercise.events.filter { range.contains($0.startTick) }
         let notes = selected.filter { $0.kind == .note }
         guard !notes.isEmpty else { throw PracticeError.invalidRange }
-        guard notes.count <= Self.maximumNotes, Double(range.count) / 960 * 60 / bpm <= Self.maximumSeconds else {
+        guard notes.count <= Self.maximumNotes, Double(range.count) * exercise.timeSignature.secondsPerTick(bpm: bpm) <= Self.maximumSeconds else {
             throw PracticeError.unsupportedSize
         }
         if let calibration, calibration.route != route { throw CalibrationError.invalidRoute }

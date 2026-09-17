@@ -107,7 +107,7 @@ struct StaffModel: Sendable {
             guard symbol.flags > 0 && symbol.pitch != nil && !symbol.fragment.duration.dotted else { finish(); continue }
             if let last = group.last,
                last.fragment.tripletID != symbol.fragment.tripletID || last.flags != symbol.flags || last.endTick != symbol.startTick ||
-               last.startTick / MusicalTime.ppq != symbol.startTick / MusicalTime.ppq { finish() }
+               timeline.notationGroupStart(at: last.startTick) != timeline.notationGroupStart(at: symbol.startTick) { finish() }
             group.append(symbol)
         }
         finish(); return result

@@ -820,7 +820,8 @@ lessons:
       uk: Розміри 6/8 та 12/8
     outcomeUK: Грати зі складеним поділом долі
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 69
     moduleID: advanced-rhythm
     lessonID: gallop-patterns
@@ -849,7 +850,8 @@ lessons:
       uk: 'Непарні розміри: 5/4 та 7/8'
     outcomeUK: Рахувати й грати нерівні групи
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 72
     moduleID: advanced-rhythm
     lessonID: missing-clicks

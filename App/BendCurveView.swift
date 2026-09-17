@@ -5,6 +5,7 @@ import Domain
 struct BendCurveView: View {
     let event: MusicalEvent
     var bpm: Double = 60
+    var pulseTicks: Int64 = MusicalTime.ppq
     var frames: [SustainFrame] = []
     var normalizedStart: Double? = nil
     var baseFrequency: Double? = nil
@@ -20,7 +21,7 @@ struct BendCurveView: View {
                 }.font(.caption)
                 Canvas { context, size in
                     let left = 48.0, top = 16.0, width = max(1, size.width - left - 16), height = max(1, size.height - top - 32)
-                    let duration = Double(event.durationTicks) / 960
+                    let duration = Double(event.durationTicks) / Double(pulseTicks)
                     let selected: [SustainFrame]
                     if let start = normalizedStart { selected = frames.filter { $0.normalizedTime >= start && $0.normalizedTime <= start + duration * 60 / bpm } }
                     else { selected = [] }
@@ -48,7 +49,7 @@ struct BendCurveView: View {
                     }
                     var target = Path()
                     for (index, p) in bend.points(durationTicks: event.durationTicks).enumerated() {
-                        let value = point(beat: Double(p.tick) / 960, cents: p.cents)
+                        let value = point(beat: Double(p.tick) / Double(pulseTicks), cents: p.cents)
                         if index == 0 { target.move(to: value) } else { target.addLine(to: value) }
                     }
                     context.stroke(target, with: .color(.primary), style: StrokeStyle(lineWidth: 2, dash: [6, 4]))
@@ -83,7 +84,7 @@ struct BendResultView: View {
            let assessed = result.notes.first(where: { $0.id == note.id }) {
             GroupBox("bend.resultTitle") {
                 VStack(alignment: .leading, spacing: 12) {
-                    BendCurveView(event: event, bpm: result.evidence.configuration.bpm,
+                    BendCurveView(event: event, bpm: result.evidence.configuration.bpm, pulseTicks: result.evidence.configuration.exercise.timeSignature.pulseTicks,
                         frames: result.evidence.pitchContour?.frames ?? [], normalizedStart: note.normalizedStart, baseFrequency: assessed.targetFrequency)
                     ForEach(note.phases, id: \.kind) { phase in
                         VStack(alignment: .leading, spacing: 4) {

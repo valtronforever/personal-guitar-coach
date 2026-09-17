@@ -17,6 +17,10 @@ struct MetronomeGapAppTests {
         let gapped = try AssessmentEngine.evaluate(evidence)
         #expect(CoachExchange.promptVersion(for:gapped) == "file-coach-3")
         #expect(gapped.notes == baseline.notes)
+        exercise.removeValue(forKey:"metronome"); exercise["timeSignature"] = "6/8"
+        config["exercise"] = exercise; json["configuration"] = config
+        let compoundEvidence = try JSONDecoder().decode(PracticeEvidence.self,from:JSONSerialization.data(withJSONObject:json))
+        #expect(CoachExchange.promptVersion(for:try AssessmentEngine.evaluate(compoundEvidence)) == "file-coach-4")
     }
 
     @Test func scoreMarkersAndRecordedReferenceKeepTheSameOmissions() throws {

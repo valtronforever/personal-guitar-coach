@@ -4,7 +4,7 @@ import Testing
 
 struct MetronomePatternTests {
     @Test func omissionsValidateScopeAndPreserveHistoricalEncoding() throws {
-        for ticks: [Int64] in [[], [-960], [480], [960,0], [0,0]] {
+        for ticks: [Int64] in [[], [-960], [240], [960,0], [0,0]] {
             #expect(throws: MusicError.invalidTime) { try MetronomePattern(silentBeatTicks: ticks) }
         }
         #expect(throws: MusicError.invalidTime) {

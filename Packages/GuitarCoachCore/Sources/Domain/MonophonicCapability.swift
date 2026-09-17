@@ -28,7 +28,7 @@ public enum MonophonicCapability {
         return try exercise.resolvedEvents(instrument: instrument).compactMap { resolved in
             guard let pitch = resolved.pitches.first else { return nil }
             let hz = try pitch.frequency(referenceA4: tuning.referenceA4)
-            let duration = try MusicalTime.seconds(forTicks: resolved.event.durationTicks, bpm: bpm)
+            let duration = try MusicalTime.seconds(forTicks: resolved.event.durationTicks, bpm: bpm, pulseTicks: exercise.timeSignature.pulseTicks)
             if !supportsTarget(pitch, referenceA4: tuning.referenceA4) {
                 return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
             }
@@ -36,7 +36,7 @@ public enum MonophonicCapability {
                 if !BendCapability.baseFrequencyRange.contains(hz) || hz * pow(2, Double(bend.semitones) / 12) > BendCapability.maximumTargetFrequency {
                     return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
                 }
-                if !BendCapability.supports(bend: bend, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz) {
+                if !BendCapability.supports(bend: bend, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz, pulseTicks: exercise.timeSignature.pulseTicks) {
                     return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
                 }
             }

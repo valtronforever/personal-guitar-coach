@@ -80,7 +80,8 @@ extension LoadedLesson {
             return try Exercise(id: source.id, version: source.version, ppq: source.ppq, events: events,
                 timeSignature: source.timeSignature, defaultBPM: source.defaultBPM, minimumBPM: source.minimumBPM, maximumBPM: source.maximumBPM,
                 tuningPolicy: .fixedTuning, requiredTuning: tuning, assessmentMode: material.source.kind == .fingering || !events.contains(where: { $0.kind == .note }) ? .displayOnly : source.assessmentMode, triplets: material.source.kind == .fingering ? [] : triplets,
-                metronome: material.source.kind == .fingering ? nil : source.metronome?.scoped(to: offset..<(offset + (events.last?.endTick ?? 0))))
+                metronome: material.source.kind == .fingering ? nil : source.metronome?.scoped(to: offset..<(offset + (events.last?.endTick ?? 0)), pulseTicks: source.timeSignature.pulseTicks),
+                beatGrouping: source.beatGrouping)
         }
         let steps = manifest.steps.filter { $0.activityID == activityID }.map { step in
             LessonStep(id: step.id, kind: step.kind, exerciseID: step.exerciseID, eventIDs: step.eventIDs,

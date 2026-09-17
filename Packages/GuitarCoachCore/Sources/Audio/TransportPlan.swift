@@ -28,7 +28,7 @@ public struct TransportRequest: Sendable, Equatable {
               range.upperBound - range.lowerBound >= 240, range.contains(start),
               (0...4).contains(countInBars), clickVolume.isFinite, (0...1).contains(clickVolume),
               toneVolume.isFinite, (0...1).contains(toneVolume), exercise.events.count <= 4096,
-              (try MusicalTime.seconds(forTicks: exercise.durationTicks, bpm: bpm)) + Double(countInBars * exercise.timeSignature.beatsPerBar) * 60 / bpm <= 86390 else { throw MusicError.invalidTime }
+              (try MusicalTime.seconds(forTicks: exercise.durationTicks, bpm: bpm, pulseTicks: exercise.timeSignature.pulseTicks)) + Double(countInBars * exercise.timeSignature.beatsPerBar) * 60 / bpm <= 86390 else { throw MusicError.invalidTime }
         id = UUID(); self.exercise = exercise; self.tuning = tuning; self.bpm = bpm; self.range = range
         self.startTick = start; self.countInBars = countInBars; self.loops = loops; self.mode = mode
         self.clickEnabled = clickEnabled; self.accent = accent; self.clickVolume = clickVolume; self.toneVolume = toneVolume
@@ -53,6 +53,8 @@ public struct TransportPlan: Sendable {
     private let strumOffsets: [[Int64]]
     private let bendPoints: [[PitchBend.Point]]
     private let silentBeatTicks: Set<Int64>
+    private let groupAccents: Set<Int>
+    private var pulseTicks: Int64 { request.exercise.timeSignature.pulseTicks }
     private var firstTicks: Int64 { request.range.upperBound - request.startTick }
     private var cycleTicks: Int64 { request.range.upperBound - request.range.lowerBound }
     public var endFrame: Int64? { request.loops ? nil : frame(at: countInTicks + firstTicks) }
@@ -63,6 +65,7 @@ public struct TransportPlan: Sendable {
         self.request = request; self.sampleRate = sampleRate
         countInTicks = Int64(request.countInBars) * request.exercise.timeSignature.ticksPerBar
         silentBeatTicks = Set(request.exercise.metronome?.silentBeatTicks ?? [])
+        groupAccents = request.exercise.accentedPulseIndices
         events = try request.exercise.resolvedEvents(instrument: request.tuning)
         let reference = (request.exercise.requiredTuning ?? request.tuning).referenceA4
         frequencies = try events.map { try $0.pitches.map { try $0.frequency(referenceA4: reference) } }
@@ -81,23 +84,24 @@ public struct TransportPlan: Sendable {
 
     // Internal callers only pass validated request-derived ticks within the 24-hour render bound.
     func frame(at tick: Int64) -> Int64 {
-        Int64((Double(tick) * 60 * sampleRate / (request.bpm * Double(MusicalTime.ppq))).rounded())
+        Int64((Double(tick) * 60 * sampleRate / (request.bpm * Double(pulseTicks))).rounded())
     }
     private func ticks(at frame: Int64) -> Double {
-        Double(frame) * request.bpm * Double(MusicalTime.ppq) / (60 * sampleRate)
+        Double(frame) * request.bpm * Double(pulseTicks) / (60 * sampleRate)
     }
 
     public func position(at sample: Int64) -> TransportPosition {
         let sample = max(0, sample)
         if sample < practiceStartFrame {
-            let beat = Int(ticks(at: sample) / Double(MusicalTime.ppq)) + 1
+            // Use the same half-sample boundary rule as scheduled clicks and musical position.
+            let beat = Int((Double(sample) + 0.5) * request.bpm / (60 * sampleRate)) + 1
             return TransportPosition(tick: request.startTick, loopIndex: 0, countInBeat: beat, completed: false)
         }
         if let endFrame, sample >= endFrame {
             return TransportPosition(tick: request.range.upperBound, loopIndex: 0, countInBeat: nil, completed: true)
         }
         // Half a sample matches rounding of scheduled boundaries.
-        let tick = Int64(floor((Double(sample) + 0.5) * request.bpm * Double(MusicalTime.ppq) / (60 * sampleRate))) - countInTicks
+        let tick = Int64(floor((Double(sample) + 0.5) * request.bpm * Double(pulseTicks) / (60 * sampleRate))) - countInTicks
         if tick < firstTicks {
             return TransportPosition(tick: min(request.range.upperBound - 1, request.startTick + max(0, tick)), loopIndex: 0, countInBeat: nil, completed: false)
         }
@@ -112,10 +116,10 @@ public struct TransportPlan: Sendable {
         var output = [Float](repeating: 0, count: count)
         let end = startFrame + Int64(count)
         if request.clickEnabled && request.mode != .calibration && startFrame < practiceStartFrame {
-            let first = max(0, Int64(floor(ticks(at: startFrame) / 960)) - 1)
-            let last = min(countInTicks / 960, Int64(ceil(ticks(at: end) / 960)) + 1)
+            let first = max(0, Int64(floor(ticks(at: startFrame) / Double(pulseTicks))) - 1)
+            let last = min(countInTicks / pulseTicks, Int64(ceil(ticks(at: end) / Double(pulseTicks))) + 1)
             if first < last { for beat in first..<last {
-                addClick(at: frame(at: beat * 960), accented: beat % Int64(request.exercise.timeSignature.beatsPerBar) == 0,
+                addClick(at: frame(at: beat * pulseTicks), accented: groupAccents.contains(Int(beat % Int64(request.exercise.timeSignature.beatsPerBar))),
                          start: startFrame, output: &output)
             } }
         }
@@ -136,13 +140,13 @@ public struct TransportPlan: Sendable {
                 continue
             }
             if request.clickEnabled {
-                let sourceLow = sourceStart + max(0, Int64(floor(ticks(at: startFrame))) - epoch - 960)
-                let sourceHigh = min(request.range.upperBound, sourceStart + Int64(ceil(ticks(at: end))) - epoch + 960)
-                let firstBeat = max(sourceStart, sourceLow) / 960
-                if sourceHigh > sourceStart { for beat in firstBeat...sourceHigh / 960 {
-                    let tick = beat * 960
+                let sourceLow = sourceStart + max(0, Int64(floor(ticks(at: startFrame))) - epoch - pulseTicks)
+                let sourceHigh = min(request.range.upperBound, sourceStart + Int64(ceil(ticks(at: end))) - epoch + pulseTicks)
+                let firstBeat = max(sourceStart, sourceLow) / pulseTicks
+                if sourceHigh > sourceStart { for beat in firstBeat...sourceHigh / pulseTicks {
+                    let tick = beat * pulseTicks
                     if tick >= sourceStart && tick < request.range.upperBound && !silentBeatTicks.contains(tick) {
-                        addClick(at: frame(at: epoch + tick - sourceStart), accented: beat % Int64(request.exercise.timeSignature.beatsPerBar) == 0,
+                        addClick(at: frame(at: epoch + tick - sourceStart), accented: groupAccents.contains(Int(beat % Int64(request.exercise.timeSignature.beatsPerBar))),
                                  stop: frame(at: segmentEnd), start: startFrame, output: &output)
                     }
                 } }
@@ -177,7 +181,7 @@ public struct TransportPlan: Sendable {
                     let envelope = min(1, min(age / fade, remaining / fade))
                     let phaseSeconds: Double
                     if item.event.bend != nil {
-                        let secondsPerTick = 60 / (request.bpm * Double(MusicalTime.ppq))
+                        let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
                         phaseSeconds = PitchBend.integratedMultiplier(to: age / sampleRate / secondsPerTick, points: bendPoints[index]) * secondsPerTick
                     } else { phaseSeconds = age / sampleRate }
                     let tone = frequencies[index].reduce(0.0) { $0 + sin(item.event.bend == nil ? 2 * .pi * $1 * age / sampleRate : 2 * .pi * $1 * phaseSeconds) }
@@ -207,7 +211,7 @@ extension TransportPlan {
         let delay = outputLatencySeconds.isFinite ? min(10, max(0, outputLatencySeconds)) : 0
         let alignment = visualAlignmentSeconds.isFinite ? min(1, max(-1, visualAlignmentSeconds)) : 0
         let frames = max(0, renderedFrames - Int64(((delay + alignment) * sampleRate).rounded()))
-        let elapsed = Double(frames) * request.bpm * Double(MusicalTime.ppq) / (60 * sampleRate)
+        let elapsed = Double(frames) * request.bpm * Double(pulseTicks) / (60 * sampleRate)
         let offset = elapsed - Double(countInTicks)
         if offset < Double(firstTicks) { return Double(request.startTick) + offset }
         if request.loops {

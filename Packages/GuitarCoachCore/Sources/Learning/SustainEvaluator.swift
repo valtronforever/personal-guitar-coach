@@ -16,11 +16,11 @@ enum SustainEvaluator {
         }
         let results = try targets.map { event -> SustainNoteAssessment in
             guard let note = assessed[event.id], !note.uncertain, let epoch = evidence.renderEpochSeconds, frames.count >= 2 else { return try unknown(event.id) }
-            let duration = try MusicalTime.seconds(forTicks: event.durationTicks, bpm: config.bpm)
+            let duration = try MusicalTime.seconds(forTicks: event.durationTicks, bpm: config.bpm, pulseTicks: config.exercise.timeSignature.pulseTicks)
             guard duration >= SustainTrace.minimumNoteSeconds - 1e-9 else { return try unknown(event.id) }
             let attack = note.attackID.flatMap { attacks[$0] }
             let expected = try config.route.expectedTime(renderEpochSeconds: epoch,
-                sampleFrame: Int64(((config.countInSeconds + Double(event.startTick - config.range.lowerBound) / 960 * 60 / config.bpm) * config.route.output.sampleRate).rounded()))
+                sampleFrame: Int64(((config.countInSeconds + Double(event.startTick - config.range.lowerBound) * config.exercise.timeSignature.secondsPerTick(bpm: config.bpm)) * config.route.output.sampleRate).rounded()))
             let start = attack?.normalizedOnset ?? expected + (config.calibration?.residualOffsetSeconds ?? 0)
             let lower = start + 0.2, upper = start + duration - 0.05, length = upper - lower
             var a = 0, b = frames.count

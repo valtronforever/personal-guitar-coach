@@ -75,7 +75,7 @@ extension PracticeEvidence {
     public func bendObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
         guard let epoch = renderEpochSeconds else { return [] }
         let offset = configuration.calibration?.residualOffsetSeconds ?? 0
-        let secondsPerTick = 60 / configuration.bpm / 960
+        let secondsPerTick = configuration.exercise.timeSignature.secondsPerTick(bpm: configuration.bpm)
         let notesByID = Dictionary(uniqueKeysWithValues: notes.map { ($0.id, $0) })
         let attacksByID = Dictionary(uniqueKeysWithValues: attacks.map { ($0.id, $0) })
         let intervals: [Range<Double>] = configuration.selectedEvents.compactMap { event in

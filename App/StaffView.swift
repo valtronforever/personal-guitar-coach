@@ -64,7 +64,7 @@ struct StaffView: View {
                             HStack(spacing: 0) {
                                 Color.clear.frame(width: leading + 24, height: 1)
                                 ForEach(0..<timeline.exercise.timeSignature.beatsPerBar * 2, id: \.self) { half in
-                                    Color.clear.frame(width: TimelineModel.baseBeatWidth / 2, height: 1)
+                                    Color.clear.frame(width: timeline.beatWidth / 2, height: 1)
                                         .id(TimelineFollowTarget(bar: currentBar, halfBeat: half))
                                 }
                                 Color.clear.frame(width: 1, height: 1)
@@ -166,13 +166,16 @@ struct StaffDrawing {
         }
         context.draw(Text(verbatim: "𝄞").font(.custom("Apple Symbols", size: 88)), at: CGPoint(x: 24, y: 148))
         context.draw(Text(verbatim: "8").font(.system(size: 12)), at: CGPoint(x: 24, y: 184))
-        context.draw(Text(verbatim: String(timeline.exercise.timeSignature.beatsPerBar)).font(.system(size: 24, weight: .bold)), at: CGPoint(x: 78, y: 124))
-        context.draw(Text(verbatim: "4").font(.system(size: 24, weight: .bold)), at: CGPoint(x: 78, y: 149))
+        context.draw(Text(verbatim: String(timeline.exercise.timeSignature.numerator)).font(.system(size: 24, weight: .bold)), at: CGPoint(x: 78, y: 124))
+        context.draw(Text(verbatim: String(timeline.exercise.timeSignature.denominator)).font(.system(size: 24, weight: .bold)), at: CGPoint(x: 78, y: 149))
         if key != .neutral {
             context.draw(Text(verbatim: key == .gMajor ? "♯" : "♭").font(.custom("Apple Symbols", size: 29)),
                 at: CGPoint(x: 53, y: StaffModel.y(step: key == .gMajor ? 38 : 34)))
         }
         line(CGPoint(x: lineEnd, y: 112), CGPoint(x: lineEnd, y: 160))
+        if let grouping = timeline.groupingLabel {
+            context.draw(Text(verbatim: grouping).font(.caption.bold()), at: CGPoint(x: 78, y: 82))
+        }
         let beams = model.beams(symbols)
         for symbol in symbols {
             let position = x(symbol), duration = symbol.fragment.duration

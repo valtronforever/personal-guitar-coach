@@ -102,7 +102,7 @@ struct TablatureView: View {
             Text(LocalizedStringKey(instructionsKey)).font(.caption).foregroundStyle(.secondary)
                 .lineLimit(3).frame(minHeight: 44, alignment: .topLeading)
             if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && $0.event.bend != nil })?.event {
-                BendCurveView(event: event)
+                BendCurveView(event: event, pulseTicks: model.pulseTicks)
             }
             if let tick = cursorTick, let bar = model.cursorBar(tick) {
                 Group {
@@ -149,7 +149,7 @@ struct TablatureView: View {
                     context.stroke(line, with: .color(.secondary.opacity(0.6)), lineWidth: 1)
                 }
                 for beat in 0...model.exercise.timeSignature.beatsPerBar {
-                    let x = Double(beat) * TimelineModel.baseBeatWidth * zoom
+                    let x = Double(beat) * model.beatWidth * zoom
                     var line = Path(); line.move(to: CGPoint(x: x, y: gridTop - 6)); line.addLine(to: CGPoint(x: x, y: gridTop + rowHeight * 6))
                     context.stroke(line, with: .color(.secondary.opacity(beat == 0 ? 1 : 0.35)), style: StrokeStyle(lineWidth: beat == 0 ? 2 : 1, dash: beat == 0 ? [] : [3, 4]))
                 }
@@ -159,7 +159,10 @@ struct TablatureView: View {
                         end: model.x(tick: group.endTick, bar: bar, zoom: zoom) - 6, y: Double(height) - 8)
                 }
             }.accessibilityHidden(true)
-            Text("tab.bar \(bar + 1)").font(.caption.bold()).padding(.leading, 6).accessibilityHidden(true)
+            HStack {
+                Text("tab.bar \(bar + 1)")
+                if let grouping = model.groupingLabel { Text(verbatim: grouping).foregroundStyle(.secondary) }
+            }.font(.caption.bold()).padding(.leading, 6)
             ForEach(model.segments(in: bar)) { segment in
                 eventButton(segment)
                     .offset(x: model.x(tick: segment.startTick, bar: bar, zoom: zoom))
@@ -167,7 +170,7 @@ struct TablatureView: View {
             // These transparent layout cells have real frames for ScrollViewReader, independent of the drawing offsets.
             HStack(spacing: 0) {
                 ForEach(0..<(model.exercise.timeSignature.beatsPerBar * 2), id: \.self) { slot in
-                    Color.clear.frame(width: TimelineModel.baseBeatWidth * zoom / 2, height: 1)
+                    Color.clear.frame(width: model.beatWidth * zoom / 2, height: 1)
                         .id(TimelineFollowTarget(bar: bar, halfBeat: slot))
                 }
                 Color.clear.frame(width: 1, height: 1)
@@ -239,7 +242,7 @@ struct TablatureView: View {
     }
 
     private func beatText(_ tick: Int64, bar: Int64) -> String {
-        (Double(tick - model.startTick(of: bar)) / Double(MusicalTime.ppq) + 1)
+        (Double(tick - model.startTick(of: bar)) / Double(model.pulseTicks) + 1)
             .formatted(.number.precision(.fractionLength(0...2)).locale(settings.locale))
     }
     private func description(_ segment: TimelineSegment) -> Text {

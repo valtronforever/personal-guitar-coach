@@ -25,7 +25,7 @@ struct PracticeScoreLayout: Equatable {
         ticksPerBar = timeline.ticksPerBar; beatsPerBar = timeline.exercise.timeSignature.beatsPerBar
         let usable = max(240, (width.isFinite ? width : 600) - Self.gutter)
         let scale = zoom.isFinite ? min(1.5, max(0.8, zoom)) : 1
-        barsPerRow = Int64(max(1, min(4, floor(usable / (Double(beatsPerBar) * 60 * scale)))))
+        barsPerRow = Int64(max(1, min(4, floor(usable / (Double(beatsPerBar) * 60 * max(1, Double(timeline.pulseTicks) / 960) * scale)))))
         barWidth = usable / Double(barsPerRow)
     }
 

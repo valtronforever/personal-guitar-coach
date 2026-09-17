@@ -83,6 +83,8 @@ enum CoachExchange {
     }
 
     static func promptVersion(for practice: AssessedPractice) -> String {
+        let exercise = practice.evidence.configuration.exercise
+        if ![TimeSignature.threeFour, .fourFour].contains(exercise.timeSignature) || exercise.beatGrouping != nil { return "file-coach-4" }
         if practice.evidence.configuration.exercise.metronome != nil { return "file-coach-3" }
         return practice.bends == nil ? "file-coach-1" : "file-coach-2"
     }

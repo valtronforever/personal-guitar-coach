@@ -73,6 +73,8 @@ lessons:
   - gallop-patterns
   - displaced-accents
   - missing-clicks
+  - compound-meters
+  - odd-meters
 modules:
   - id: getting-started
     order: 1

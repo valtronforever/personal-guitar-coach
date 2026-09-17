@@ -1,0 +1,984 @@
+schemaVersion: 3
+id: odd-meters
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: five-three-two
+    kind: events
+    exerciseID: odd-meters-five-three-two
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+    activityID: five-three-two
+  - id: five-two-three
+    kind: events
+    exerciseID: odd-meters-five-two-three
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+    activityID: five-two-three
+  - id: seven-two-two-three
+    kind: events
+    exerciseID: odd-meters-seven-two-two-three
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+      - e25
+      - e26
+      - e27
+      - e28
+    activityID: seven-two-two-three
+  - id: seven-three-two-two
+    kind: events
+    exerciseID: odd-meters-seven-three-two-two
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+      - e25
+      - e26
+      - e27
+      - e28
+    activityID: seven-three-two-two
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: odd-meters-five-three-two
+    version: 1
+    ppq: 960
+    timeSignature: 5/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+    beatGrouping:
+      - 3
+      - 2
+  - id: odd-meters-five-two-three
+    version: 1
+    ppq: 960
+    timeSignature: 5/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+    beatGrouping:
+      - 2
+      - 3
+  - id: odd-meters-seven-two-two-three
+    version: 1
+    ppq: 960
+    timeSignature: 7/8
+    defaultBPM: 120
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e9
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e10
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e11
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e12
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e13
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e14
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e15
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e16
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e17
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e18
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e19
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e20
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e21
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e22
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e23
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e24
+        startTick: 11040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e25
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e26
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: e27
+        startTick: 12480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e28
+        startTick: 12960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+    beatGrouping:
+      - 2
+      - 2
+      - 3
+  - id: odd-meters-seven-three-two-two
+    version: 1
+    ppq: 960
+    timeSignature: 7/8
+    defaultBPM: 120
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        accented: true
+      - id: e5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e9
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e10
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e11
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        accented: true
+      - id: e12
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e13
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e14
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e15
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e16
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e17
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e18
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        accented: true
+      - id: e19
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e20
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e21
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e22
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: e23
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e24
+        startTick: 11040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e25
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        accented: true
+      - id: e26
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e27
+        startTick: 12480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        accented: true
+      - id: e28
+        startTick: 12960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+    beatGrouping:
+      - 3
+      - 2
+      - 2
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: five-three-two
+    source:
+      kind: exercise
+      exerciseID: odd-meters-five-three-two
+  - id: five-two-three
+    source:
+      kind: exercise
+      exerciseID: odd-meters-five-two-three
+  - id: seven-two-two-three
+    source:
+      kind: exercise
+      exerciseID: odd-meters-seven-two-two-three
+  - id: seven-three-two-two
+    source:
+      kind: exercise
+      exerciseID: odd-meters-seven-three-two-two
+activities:
+  - id: five-three-two
+    materialID: five-three-two
+  - id: five-two-three
+    materialID: five-two-three
+  - id: seven-two-two-three
+    materialID: seven-two-two-three
+  - id: seven-three-two-two
+    materialID: seven-three-two-two
+fingerings: []
+practiceEntries:
+  - id: five-three-two
+    activityID: five-three-two
+    exerciseID: odd-meters-five-three-two
+  - id: five-two-three
+    activityID: five-two-three
+    exerciseID: odd-meters-five-two-three
+  - id: seven-two-two-three
+    activityID: seven-two-two-three
+    exerciseID: odd-meters-seven-two-two-three
+  - id: seven-three-two-two
+    activityID: seven-three-two-two
+    exerciseID: odd-meters-seven-three-two-two
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - accent
+      - duration
+      - count
+    correctOptionID: accent
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - unit
+      - bar
+      - groups
+curriculum:
+  moduleID: advanced-rhythm
+  ordinal: 71
+  durationMinutes: 30
+  prerequisites:
+    - beat-accents
+    - compound-meters
+  keywords:
+    - 5/4
+    - 7/8
+    - 3+2
+    - 2+3
+    - 2+2+3
+    - 3+2+2
+    - odd meter
+    - непарний розмір
