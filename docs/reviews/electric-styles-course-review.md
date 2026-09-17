@@ -17,3 +17,5 @@ Review findings and decisions:
 Full Learning and signed root-only Release/archive evidence follow below. No real app launch, guitar performance, VoiceOver interaction or provider run was performed.
 
 Full Learning: 142 tests/50 suites passed in 198.818 s (`/tmp/electric-styles-learning-full.log`). UI-test sources type-check; native UI execution remains separate.
+
+Signed root-only Release/archive validates 118 bilingual bundles / 355 YAML files with zero issues, arm64/macOS14, ad-hoc hardened sandbox and expected entitlements. Binary SHA256 `d19a818df6968c30334bb5bf5bd75b944461f01314e330da8411ba394fafbd61`; archive `09b3b04728f8b7411006c070b564f87569f1195fa1daa75816cca9c493ade5dc`. See `docs/benchmarks/electric-styles-release-bundle.json`. Signed sandbox→XPC→invalidRequest passes without invoking a provider. Exact-head CI/merge and actual native/guitar gates remain open.

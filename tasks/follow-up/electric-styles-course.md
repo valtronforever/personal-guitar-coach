@@ -7,3 +7,5 @@ Complete the seven remaining style lessons around the already authored funk topi
 Seven lessons and 29 original activities are authored; 1,160 all-preset/neck cases and full App 184 tests pass. Content validates 118 bundles (112 visible), 915 localized keys and partial inventory 112 authored/16 todo. See [same-agent review](../../docs/reviews/electric-styles-course-review.md). Full Learning, signed Release and exact-head CI/merge remain in progress; hardware/native acceptance stays open.
 
 Full Learning 142 tests/50 suites pass; UI-test sources type-check. Root Release and CI are next.
+
+Signed root-only Release/archive/XPC pass for 118 bilingual bundles. [Bundle evidence](../../docs/benchmarks/electric-styles-release-bundle.json). Exact-head CI/merge and native/guitar acceptance remain open.
