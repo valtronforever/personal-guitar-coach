@@ -1,0 +1,60 @@
+lessonID: clean-crunch-high-gain
+lessonVersion: 1
+locale: en
+title: Compare clean, crunch and high gain
+summary: Hear how increasing drive changes attacks, sustain and unwanted noise.
+goal: Choose a useful gain amount by comparing the same phrase at similar listening levels.
+body: |-
+  Clean, crunch and high gain describe useful regions of a sound rather than universal knob values. Clean preserves a relatively clear attack; crunch adds audible breakup; high gain gives a denser distorted texture. The boundary depends on pickup output, playing strength and the processor. A preset name is not proof of the sound reaching either your headphones or the app input.
+
+  Use one amp model or one amplifier channel if its gain range allows all three comparisons. Keep the cabinet, effects, pickup and phrase unchanged. Begin clean, then add drive in modest steps. Compensate with the processor output or listening volume, not the guitar volume being tested. Check that a louder preset is not clipping the interface or forcing you to play more quietly.
+
+  Play the phrase gently and then with a firmer but comfortable attack at each gain level. Listen for whether the second pass gets louder, more distorted or both. Let the long note decay and count the silent beats after stopping it. High gain can make string noise and incomplete muting easier to hear; an apparently long note is not automatically evidence of better fretting-hand control.
+
+  Choose the lowest drive amount that supports the intended part, then test it in a short rhythmic passage as well as the sustained phrase. Distortion may be useful to your music without being suitable for automatic pitch assessment. Keep a clean route to the analyzer for measured exercises and use the processed monitoring path for this listening task. These comparisons are self-observed: no tone-quality score is generated.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  gain-comparison:
+    title: Compare attack, tail and silence
+    body: Make three passes at matched listening levels. Name one benefit and one cost of each gain region for your
+      part.
+  route-quiz:
+    title: Which input should be graded?
+    body: You enjoy high-gain monitoring but want the app to check individual notes. Which setup matches the current
+      assessment contract?
+activities:
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+learningTasks:
+  gain-comparison:
+    title: Compare attack, tail and silence
+    body: Make three passes at matched listening levels. Name one benefit and one cost of each gain region for your
+      part.
+    items:
+      levels: I compared clean, crunch and high gain without simply choosing the loudest.
+      attack: I compared soft and firmer attacks within every setting.
+      silence: I listened to both the note tail and the intended silence.
+      choice: I chose a gain amount for a stated musical purpose.
+  route-quiz:
+    title: Which input should be graded?
+    body: You enjoy high-gain monitoring but want the app to check individual notes. Which setup matches the current
+      assessment contract?
+    items:
+      clean: Send clean guitar to the selected input and keep distortion on a separate listening path.
+      loud: Raise distortion until the input meter is always full.
+      name: Any input is valid if the preset is named Lead.
+    explanation: The score expects clean sequential notes. A processed listening path can coexist with clean input
+      when your routing supports it.

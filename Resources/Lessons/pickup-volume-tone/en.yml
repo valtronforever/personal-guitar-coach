@@ -1,0 +1,46 @@
+lessonID: pickup-volume-tone
+lessonVersion: 1
+locale: en
+title: Shape sound with the guitar controls
+summary: Compare pickup selection, guitar volume and tone while keeping the phrase stable.
+goal: Find two useful sounds on your own guitar and explain which control changed each one.
+body: |-
+  Start at the guitar rather than searching through many amplifier presets. Pickup selection changes which part of the vibrating string is sensed; the guitar volume changes the signal sent onward; a conventional passive tone control reduces high-frequency content as it is turned down. Active circuits and switching layouts vary, so identify your controls from the instrument manual instead of assuming that every knob does the same job.
+
+  Choose a clean monitoring sound with effects bypassed and learn the two-bar control phrase. Its repeated notes, longer ending and rest let you compare the initial attack, sustained color and background noise. Play it once on each available pickup setting without moving the picking position. A bridge setting often sounds more pointed and a neck setting rounder, but record your own observation rather than treating those descriptions as a target.
+
+  Next keep one pickup and reduce the guitar volume in small steps. Compare both a clean and a mildly driven monitoring sound if available. Lower input may reduce drive as well as loudness; restoring the headphone level later does not restore the same distortion. Keep interface input gain fixed during this comparison and leave enough headroom for the guitar at its highest tested volume.
+
+  Restore the starting volume, then compare three tone-control positions. Listen for the pick edge and whether the upper notes remain distinct. Match listening loudness approximately after each setting so that louder does not automatically win. Do not change pickup, tone and amplifier EQ together. Finish with two reproducible settings: one clearer attack and one softer edge, described by control positions and a musical use.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  controls-test:
+    title: Compare one control at a time
+    body: Use your own guitar controls and repeat the same phrase. If the guitar lacks a control, identify the available
+      alternative without claiming you tested missing hardware.
+activities:
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+learningTasks:
+  controls-test:
+    title: Compare one control at a time
+    body: Use your own guitar controls and repeat the same phrase. If the guitar lacks a control, identify the available
+      alternative without claiming you tested missing hardware.
+    items:
+      pickup: I compared the available pickup settings with the same picking position.
+      volume: I separated the change in input drive from listening loudness.
+      tone: I described the effect of an available tone/EQ control.
+      recall: I wrote two settings that I can reproduce and explained their uses.

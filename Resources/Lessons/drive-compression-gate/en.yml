@@ -1,0 +1,65 @@
+lessonID: drive-compression-gate
+lessonVersion: 1
+locale: en
+title: Give drive, compression and gate separate jobs
+summary: Test attack, decay and silence without asking a processor to hide playing errors.
+goal: Set each available processor for one observable purpose and recognize when it damages the phrase.
+body: |-
+  Drive changes the texture and response by pushing a nonlinear stage. A compressor changes level over time, and a gate attenuates sufficiently quiet input. These tools can interact, but learn their jobs separately first. Bypass all three, play the phrase and its full rest, then enable one processor at a time on your monitoring path. Keep the analyzer input clean for measured practice.
+
+  For drive, compare a modest gain increase with a bypassed pass at a similar listening volume. Listen to the attack and to background noise between phrases. Separate drive or gain from the output-level control. If raising output pushes a later amp harder, it can change distortion there too; record the order and decide which stage is responsible for the sound you want.
+
+  For compression, alternate a gentle and a firmer note. Threshold and ratio set how strongly the compressor responds to level; attack and release shape its response over time. Begin with a modest setting, compare how much initial pick detail remains, then listen for the tail rising relative to the attack. Match output level before judging improvement. Too much processing can flatten intended accents or bring up unwanted noise.
+
+  For the gate, stop the strings and raise the threshold only enough to reduce the idle noise. Then test your quietest intended attack and the end of a sustained note. A setting that closes a gap but chops the note is not yet useful. Adjust release or hold if available; lower the threshold when gentle notes fail to open it. A gate does not remove unwanted strings while a louder intended note keeps it open.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  test-drive:
+    title: Test drive and its output
+    body: Compare drive with bypass, matching the listening level after changing gain.
+  test-compressor:
+    title: Preserve deliberate attacks
+    body: Compare soft and firm attacks, the long tail and bypass. Leave this task unchecked if no compressor is
+      available.
+  test-gate:
+    title: Test the quietest note and the tail
+    body: Tune the gate against silence, a gentle attack and a sustained ending. Leave it unchecked without a gate.
+activities:
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+learningTasks:
+  test-drive:
+    title: Test drive and its output
+    body: Compare drive with bypass, matching the listening level after changing gain.
+    items:
+      texture: I identified a texture change beyond loudness.
+      order: I know whether the drive output pushes a later amp stage.
+      noise: I checked the rest for extra noise.
+  test-compressor:
+    title: Preserve deliberate attacks
+    body: Compare soft and firm attacks, the long tail and bypass. Leave this task unchecked if no compressor is
+      available.
+    items:
+      attack: I compared the initial pick detail before and after compression.
+      tail: I heard the tail and noise relative to the attack.
+      intent: I retained a useful contrast between intended accents.
+  test-gate:
+    title: Test the quietest note and the tail
+    body: Tune the gate against silence, a gentle attack and a sustained ending. Leave it unchecked without a gate.
+    items:
+      idle: The gate reduced idle noise in the intended gap.
+      quiet: My quietest intended note still opened the gate.
+      tail: The ending was not cut off abruptly by the gate.

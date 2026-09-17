@@ -1,0 +1,58 @@
+lessonID: amp-cabinet-ir
+lessonVersion: 1
+locale: en
+title: Separate amplifier, cabinet and IR
+summary: Change one stage of a modeled guitar chain and identify what it contributes.
+goal: Explain your signal chain and compare two cabinet choices without changing the amp setting.
+body: |-
+  A useful modeled chain is guitar input, amplifier model, cabinet or cabinet IR, then any later effects. An amp stage supplies gain, distortion and tone shaping. A cabinet stage colors the result as a speaker and its capture would. Many presets bundle all of these stages, so changing a complete preset cannot tell you which stage caused the difference.
+
+  A cabinet impulse response describes a captured linear response, often including the chosen microphone and its position. It is not a recording of a whole performance and does not by itself recreate the nonlinear response of a driven amplifier. An IR loader applies that response to your input. Keep a record of the IR identity as well as the amp settings if you want to reproduce the sound later.
+
+  In your own modeler or software, hold the amplifier setting constant and compare two cabinets or IRs using the control phrase. Reduce listening volume before bypassing or changing a cabinet stage, because the exposed amp signal may be unexpectedly bright or loud. Restore similar listening levels and describe the attack, low-note definition and upper edge. Avoid loading a second cabinet unintentionally after a preset that already contains one.
+
+  Then keep one cabinet and compare two amp settings. This second comparison answers a different question, so keep separate notes. The app supplies the musical phrase, not an amp model or IR loader. Use equipment you already have; without independent cabinet controls, map the stages and leave the unavailable comparison unchecked. A physical amplifier speaker output is not a line or instrument output: only use connections explicitly supported by the equipment manuals.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  cabinet-test:
+    title: Compare stages independently
+    body: Document your actual processor chain, then make the two controlled comparisons if the equipment exposes
+      those stages.
+  ir-quiz:
+    title: What does the IR supply?
+    body: Which statement describes the cabinet IR used in this lesson?
+activities:
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+learningTasks:
+  cabinet-test:
+    title: Compare stages independently
+    body: Document your actual processor chain, then make the two controlled comparisons if the equipment exposes
+      those stages.
+    items:
+      map: I identified the amp and cabinet stages in my monitoring path.
+      cab: I compared two cabinet/IR choices with one fixed amp setting.
+      amp: I compared two amp settings with one fixed cabinet.
+      save: I recorded enough stage names and settings to recreate my choice.
+  ir-quiz:
+    title: What does the IR supply?
+    body: Which statement describes the cabinet IR used in this lesson?
+    items:
+      response: A captured linear cabinet/capture response applied to a new input.
+      solo: A stored solo that replaces the notes I play.
+      all: Every gain-dependent behavior of a complete amplifier.
+    explanation: The cabinet IR colors the input. Keep the amplifier model and cabinet response distinct when comparing
+      or saving a chain.

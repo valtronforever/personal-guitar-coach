@@ -1256,7 +1256,8 @@ lessons:
       uk: Звукознімачі, Volume і Tone
     outcomeUK: Отримати різні тембри органами керування гітари
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 114
     moduleID: electric-tone
     lessonID: clean-crunch-high-gain
@@ -1265,7 +1266,8 @@ lessons:
       uk: Clean, crunch і high gain
     outcomeUK: Порівняти реакцію різного перевантаження на ту саму гру
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 115
     moduleID: electric-tone
     lessonID: amp-cabinet-ir
@@ -1274,7 +1276,8 @@ lessons:
       uk: Підсилювач, кабінет та IR
     outcomeUK: Зрозуміти внесок кожного елемента в звук
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 116
     moduleID: electric-tone
     lessonID: equalization
@@ -1283,7 +1286,8 @@ lessons:
       uk: Еквалайзер
     outcomeUK: Змінювати бас, середину й верх із конкретною метою
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 117
     moduleID: electric-tone
     lessonID: drive-compression-gate
@@ -1292,7 +1296,8 @@ lessons:
       uk: Drive, compressor і noise gate
     outcomeUK: Налаштувати обробку, не приховуючи нею помилки гри
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 118
     moduleID: electric-tone
     lessonID: time-and-modulation-effects
@@ -1301,7 +1306,8 @@ lessons:
       uk: Delay, reverb і modulation
     outcomeUK: Підібрати ефекти до темпу та музичної ролі
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 119
     moduleID: electric-tone
     lessonID: expressive-hardware
@@ -1310,7 +1316,8 @@ lessons:
       uk: Важіль, volume swells і керований feedback
     outcomeUK: Застосувати виразні прийоми на відповідному обладнанні
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 120
     moduleID: electric-tone
     lessonID: record-di-monitoring
@@ -1319,7 +1326,8 @@ lessons:
       uk: Запис чистого DI та моніторинг
     outcomeUK: Записати чистий сигнал і зрозуміти, що саме чує аналізатор
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 121
     moduleID: independent-musician
     lessonID: transcribe-riff-solo

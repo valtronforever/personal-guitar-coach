@@ -190,3 +190,10 @@ Improvisation topics 85–88 (pending): in the Release, compare motif variants a
 ### Advanced picking and hybrid cues — pending user
 
 Practice `string-skipping`, `economy-picking`, `sweep-picking` and `hybrid-picking` on a clean real input. Check both stroke directions, intentional reset rests and separate monophonic notes. Compare a deliberately wrong/late audible note with the target, while directly observing string muting, pick direction and finger choice as self-checks. Verify that arrows and m/a cues are readable in lesson/practice/results, and that VoiceOver announces the finger role in en/uk without assuming handedness. For sustained notes, the cue belongs to the initial attack only. Test both themes/UI scales/window sizes. A score does not establish a physical sweep, economy path, finger roll or absence of unwanted string ringing. Signed Release and offline/synthetic tests do not replace these checks; no provider/native guitar call was made during automated work.
+
+### Electric-guitar sound lessons 113–120
+
+- Read en/uk in module Electric-guitar sound and verify tone/self-practice/quiz/scored filters. Compare the fixed phrase through available guitar/amp/EQ/effects with comparable listening levels; the app reference remains dry.
+- Perform only available hardware experiments. Verify unavailable arm/feedback/processor checks remain unchecked; no false completion or tone score. Confirm the chord swell stays ungraded.
+- With a clean selected mono input, play both DI activities and review pitch/time provenance. If intentionally using Record & analyze, confirm guitar channel one and generated click reference channel two; test the actual configured provider separately. Generated clicks are not measured headphone audio.
+- Native VoiceOver/keyboard/layout, all physical sound comparisons, actual recording with interface and provider run remain pending_user. Software and synthetic tests do not fulfill these gates.

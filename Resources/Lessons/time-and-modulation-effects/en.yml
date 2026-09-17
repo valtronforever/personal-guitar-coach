@@ -1,0 +1,58 @@
+lessonID: time-and-modulation-effects
+lessonVersion: 1
+locale: en
+title: Place repeats, space and movement
+summary: Match delay to the pulse, control reverb tails and compare modulation depth.
+goal: Choose one effect setting that supports the phrase while preserving its next entrance.
+body: |-
+  Delay produces distinct later repeats; reverb creates a sense of a sounding space; modulation changes aspects of the sound over time. They are different musical choices, even when a preset combines them. Start with a dry signal and the sparse comparison phrase. Its long gaps are deliberate listening time for the processed tail. The app reference stays dry; make the effect changes on your own processor or software.
+
+  For a quarter-note pulse, one beat lasts 60000 divided by BPM milliseconds. At 60 BPM a quarter-note delay is 1000 ms, an eighth-note delay is 500 ms and a dotted-eighth delay is 750 ms. Set the processor to the same tempo as the phrase or enter the time manually. These are musical repeat times, not latency-calibration values. Compare two subdivisions while leaving the original attacks in the same places.
+
+  Keep delay feedback low initially so the repeats decay, then set the wet level so the played note remains identifiable. For reverb, bypass the delay and compare a short and a longer decay at modest mix levels. Listen to whether the next phrase enters clearly. Turning the dry note off does not necessarily stop an effect tail; the tail can be intentional, but it should serve the arrangement.
+
+  Finally bypass the time effects and compare a subtle chorus or another available modulation effect at slow and faster rates. Change rate first, depth second, then wet level; avoid changing all three together. Listen for whether the moving sound supports sustained notes or makes a precise line hard to follow. Keep effects off the measured input: repeats and pitch modulation can be mistaken for additional notes or unstable pitch by a monophonic analyzer.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  effect-test:
+    title: Keep the next entrance clear
+    body: Compare each available effect separately, then save one useful setting. Leave unavailable effect checks
+      open.
+  delay-time:
+    title: Calculate the repeat spacing
+    body: At 60 BPM with a quarter-note pulse, what is the dotted-eighth delay time?
+activities:
+  control:
+    title: Use the same comparison phrase
+    body: 'Learn this dry two-bar phrase, then repeat it through your own sound setup with one setting changed.
+      Keep the tempo, articulation and listening level comparable. The app reference contains no amp or effects
+      simulation. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+learningTasks:
+  effect-test:
+    title: Keep the next entrance clear
+    body: Compare each available effect separately, then save one useful setting. Leave unavailable effect checks
+      open.
+    items:
+      delay: I heard two delay subdivisions against the unchanged pulse.
+      reverb: I compared short and long reverb tails before the next entrance.
+      modulation: I changed modulation rate and depth separately.
+      route: I kept processed repeats and modulation out of the graded input.
+  delay-time:
+    title: Calculate the repeat spacing
+    body: At 60 BPM with a quarter-note pulse, what is the dotted-eighth delay time?
+    items:
+      half: 500 ms
+      dotted: 750 ms
+      beat: 1000 ms
+    explanation: One beat is 1000 ms; three quarters of a beat is 750 ms. This is an effect time, not output-latency
+      compensation.

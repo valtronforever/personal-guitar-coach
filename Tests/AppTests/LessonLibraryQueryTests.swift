@@ -81,4 +81,21 @@ import Persistence
             #expect(search.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules).map(\.id) == ["major-pentatonic"])
         }
     }
+    @Test func toneModuleSeparatesEquipmentSelfPracticeFromCleanNoteGrading() async throws {
+        let store = await library()
+        let expected = ["pickup-volume-tone","clean-crunch-high-gain","amp-cabinet-ir","equalization",
+                        "drive-compression-gate","time-and-modulation-effects","expressive-hardware","record-di-monitoring"]
+        for language in [LessonLanguage.en,.uk] {
+            let filter = LessonFilter(topic: .tone, moduleID: "electric-tone", mode: .selfPractice)
+            let matches = filter.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules)
+            #expect(matches.map(\.id) == expected)
+            #expect(matches.allSatisfy { !LessonLearningMode.listening.includes($0) })
+            let graded = LessonFilter(moduleID: "electric-tone", mode: .scored)
+            #expect(graded.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules).map(\.id) == ["record-di-monitoring"])
+            let search = LessonFilter(query: "кабінет IR", moduleID: "electric-tone")
+            #expect(search.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules).map(\.id) == ["amp-cabinet-ir"])
+            #expect(store.groups(for: matches, sort: .course).map(\.id) == ["electric-tone"])
+        }
+    }
+
 }

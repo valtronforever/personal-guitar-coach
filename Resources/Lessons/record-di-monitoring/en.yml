@@ -1,0 +1,64 @@
+lessonID: record-di-monitoring
+lessonVersion: 1
+locale: en
+title: Record a clean input while choosing what you hear
+summary: Separate captured guitar, monitored effects, metronome reference and timing correction.
+goal: Verify the selected clean mono input and explain the channels and limits of a recorded practice take.
+body: |-
+  Clean DI here means the guitar signal captured before intentional amp distortion and time effects. It is not determined by how clean the headphones sound. Trace the guitar to the actual selected input channel, then trace the monitoring path separately. A processor may provide separate dry and processed outputs; a direct guitar needs a compatible instrument input. Choose the input mode specified for the source and verify it with the meter.
+
+  Use the attack-and-rest exercise to check that notes move the meter and the intended gaps are quiet. Set input gain with your strongest normal attack, leaving headroom; changing headphone volume does not repair input clipping. Direct monitoring routes input to listening outputs with little delay, while software monitoring passes through processing and buffering. Avoid accidentally hearing both paths as a doubled note. Neither route alone proves what the app captures.
+
+  Normal practice performs local note analysis without saving raw audio by default. The Record and analyze action also records the take and prepares it for the configured coaching agent. Use that action only when you want the file-based workflow. Its exported WAV has captured mono guitar in channel one and a generated metronome reference in channel two. Channel two is not a microphone recording of your headphones and cannot measure their real output latency.
+
+  Run the longer clean phrase and review audible notes separately from timing. Output and instrument delay are separate settings; a manual instrument value permits an approximate timing result with its manual label. Recheck the route after changing devices or monitoring software. A local agent launch does not guarantee its provider processes audio entirely on this computer; use the configured provider deliberately. If recording or the agent is unavailable, leave that checklist item open and keep the clean-input practice result distinct.
+steps:
+  prepare:
+    title: Identify the path and starting sound
+    body: Use your own available equipment at a comfortable listening level. The app supplies teaching, timing guides
+      and self-checks; it does not host the effects in this lesson.
+  attack-rest:
+    title: Check attacks and silent gaps
+    body: 'Use the selected clean mono channel and comfortable attacks. The result checks heard pitch and eligible
+      timing, not whether an external processor is bypassed. Sounding notes: {{sequence}}. Use the displayed fingering
+      as a suggestion; the sound does not prove the string or finger.'
+  clean-take:
+    title: Make a documented clean take
+    body: 'First play normally. When you want the file-based coach workflow, use Record and analyze for another
+      take. Keep the same phrase and document the input, monitoring and delay settings. Sounding notes: {{sequence}}.
+      Use the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  di-check:
+    title: Verify capture and monitoring separately
+    body: Confirm each observation on your actual setup. Do not infer a recorded channel from a headphone impression.
+  recording-channels:
+    title: What is the second recorded channel?
+    body: In a practice take exported by Record and analyze, what does channel two represent?
+activities:
+  attack-rest:
+    title: Check attacks and silent gaps
+    body: 'Use the selected clean mono channel and comfortable attacks. The result checks heard pitch and eligible
+      timing, not whether an external processor is bypassed. Sounding notes: {{sequence}}. Use the displayed fingering
+      as a suggestion; the sound does not prove the string or finger.'
+  clean-take:
+    title: Make a documented clean take
+    body: 'First play normally. When you want the file-based coach workflow, use Record and analyze for another
+      take. Keep the same phrase and document the input, monitoring and delay settings. Sounding notes: {{sequence}}.
+      Use the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+learningTasks:
+  di-check:
+    title: Verify capture and monitoring separately
+    body: Confirm each observation on your actual setup. Do not infer a recorded channel from a headphone impression.
+    items:
+      input: I selected the actual clean mono channel and checked attacks and silence.
+      monitor: I can identify my direct or software monitoring path.
+      file: I made an intentional recorded take and distinguished guitar from generated click reference.
+      timing: I checked the delay settings and recognized any manual or uncalibrated timing label.
+  recording-channels:
+    title: What is the second recorded channel?
+    body: In a practice take exported by Record and analyze, what does channel two represent?
+    items:
+      rendered: The generated click reference, not a measured headphone signal.
+      stereo: A second independently captured guitar microphone.
+      latency: A direct measurement of Bluetooth output delay.
+    explanation: Channel one carries the selected mono guitar capture. Channel two is rendered reference timing;
+      the real listening route still needs its own delay setting.
