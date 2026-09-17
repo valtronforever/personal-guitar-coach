@@ -67,4 +67,18 @@ import Persistence
         let fretted = try #require(store.sourceLesson(id: "clean-fretted-note"))
         #expect(LessonLearningMode.selfPractice.includes(fretted) && LessonLearningMode.scored.includes(fretted))
     }
+
+    @Test func completeScaleModuleIsOrderedAndSearchesBothLanguages() async throws {
+        let store = await library()
+        let filter = LessonFilter(moduleID: "scales-positions", mode: .scored)
+        let expected = ["c-major", "natural-minor", "a-minor-pentatonic", "major-pentatonic",
+                        "blues-scale", "connect-scale-positions", "same-notes-new-position", "scale-sequences"]
+        for language in [LessonLanguage.en, .uk] {
+            let matches = filter.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules)
+            #expect(matches.map(\.id) == expected)
+            #expect(matches.allSatisfy { LessonLearningMode.quiz.includes($0) && LessonLearningMode.selfPractice.includes($0) })
+            let search = LessonFilter(query: "пентатоніка major", moduleID: "scales-positions")
+            #expect(search.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules).map(\.id) == ["major-pentatonic"])
+        }
+    }
 }

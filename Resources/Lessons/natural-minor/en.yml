@@ -1,0 +1,75 @@
+lessonID: natural-minor
+lessonVersion: 1
+locale: en
+title: Natural minor
+summary: Hear how lowered third, sixth and seventh degrees change a familiar tonic.
+goal: Play a natural minor scale and distinguish it from major on the same tonic.
+body: |-
+  Natural minor has degrees 1, 2, flat 3, 4, 5, flat 6 and flat 7. Its adjacent steps are 2–1–2–2–1–2–2 semitones. Compared with major on the same tonic, degrees 3, 6 and 7 are one semitone lower; the tonic, second, fourth and fifth remain unchanged. “Flat” here describes an interval relative to major, not necessarily a flat symbol in the current note name.
+
+  Begin with one octave and return without repeating the top note. Hear the semitones between 2–flat 3 and 5–flat 6. Count the scale degrees on a separate pass rather than treating every fret number as a degree. Stop the old string as the next sounds, keeping a clean monophonic input.
+
+  The comparison keeps the tonic fixed: two bars of major, one silent bar, two bars of natural minor and another silent bar. Hear what changes instead of assuming minor is simply a major scale moved bodily to another fret. These are parallel scales, not relative scales with different tonics.
+
+  The short final phrase begins with the minor triad’s 1–flat 3–5–1 and answers with flat 6–flat 7–2–1. Play quarters at 50 BPM and keep its return to 1 deliberate. The musical intervals transpose with the instrument settings; the app’s score checks the written notes and attacks, while tonal recognition and hand choices remain your own observations.
+steps:
+  prepare:
+    title: Find the tonic and octave
+    body: >-
+      Locate the first and highest notes in the scale TAB. Sound them separately, then sing or hum the tonic quietly
+      before starting. Keep the input clean and match the selected tuning to the instrument.
+  up-and-down:
+    title: One octave in both directions
+    body: >-
+      At 50 BPM play one quarter per click. Bars 1–2 ascend and bars 3–4 descend, with the last beat silent. Listen
+      for the small 2–flat 3 and 5–flat 6 steps. Resolved sequence: {{sequence}}.
+  parallel-comparison:
+    title: Major and minor share this tonic
+    body: >-
+      Bars 1–2 are major; bar 3 is silent. Bars 4–5 are natural minor on the same tonic; bar 6 is silent. Listen
+      particularly to the third, sixth and seventh. The starting pitch does not move between the two examples. {{sequence}}.
+  tonic-phrase:
+    title: Make two connected thoughts
+    body: >-
+      Play 1–flat 3–5–1 in bar 1 and flat 6–flat 7–2–1 in bar 2. Do not speed up the descending finish. Repeat three
+      times, hearing both final tonics as destinations.
+  review:
+    title: Separate the interval change from the hand pattern
+    body: >-
+      Return to the comparison and name the three altered degrees. If one transition is unclear, play only that
+      neighboring pair slowly, then repeat the complete scale. Increase tempo only after three steady attempts.
+  knowledge-check:
+    title: Check the musical relationship
+    body: Answer from the structure you practiced.
+activities:
+  up-and-down:
+    title: One octave in both directions
+    body: >-
+      At 50 BPM play one quarter per click. Bars 1–2 ascend and bars 3–4 descend, with the last beat silent. Listen
+      for the small 2–flat 3 and 5–flat 6 steps. Resolved sequence: {{sequence}}.
+  parallel-comparison:
+    title: Major and minor share this tonic
+    body: >-
+      Bars 1–2 are major; bar 3 is silent. Bars 4–5 are natural minor on the same tonic; bar 6 is silent. Listen
+      particularly to the third, sixth and seventh. The starting pitch does not move between the two examples. {{sequence}}.
+  tonic-phrase:
+    title: Make two connected thoughts
+    body: >-
+      Play 1–flat 3–5–1 in bar 1 and flat 6–flat 7–2–1 in bar 2. Do not speed up the descending finish. Repeat three
+      times, hearing both final tonics as destinations.
+learningTasks:
+  knowledge-check:
+    title: Parallel major and minor
+    body: Which degrees are lowered when major becomes natural minor on the same tonic?
+    items:
+      three: 3, 6 and 7
+      two: 2, 4 and 5
+      all: Every degree
+    explanation: Natural minor retains 1, 2, 4 and 5, and lowers 3, 6 and 7 by one semitone.
+  review:
+    title: Review the phrase
+    body: Mark only observations you made yourself.
+    items:
+      steps: I can locate both natural-minor semitone steps.
+      contrast: I compared major and minor without changing the tonic.
+      phrase: I ended both short phrases deliberately on the tonic.

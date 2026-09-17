@@ -1,6 +1,7 @@
 import Foundation
 import Testing
 import Learning
+import Yams
 
 struct LessonYAMLTests {
     private struct Fixture {
@@ -13,6 +14,14 @@ struct LessonYAMLTests {
                                             to: root.appendingPathComponent("lesson-template"))
             try FileManager.default.copyItem(at: repository.appendingPathComponent("Resources/Lessons/c-major"),
                                             to: root.appendingPathComponent("c-major"))
+            // This isolated parser fixture has no full-course prerequisite graph.
+            let manifestURL = root.appendingPathComponent("c-major/lesson.yml")
+            let manifestText = try String(contentsOf: manifestURL, encoding: .utf8)
+            var manifest = try #require(Yams.load(yaml: manifestText) as? [String: Any])
+            var curriculum = try #require(manifest["curriculum"] as? [String: Any])
+            curriculum["prerequisites"] = [String]()
+            manifest["curriculum"] = curriculum
+            try write("c-major/lesson.yml", Yams.dump(object: manifest))
             try write("catalog.yml", "# Display order\nschemaVersion: 1\nlessons: [lesson-template, c-major]\nmodules:\n  - id: scales-positions\n    order: 8\n    titles: {en: Scales, uk: Гами}\n    summaries: {en: Scales, uk: Гами}\n")
         }
         func write(_ path: String, _ text: String) throws {

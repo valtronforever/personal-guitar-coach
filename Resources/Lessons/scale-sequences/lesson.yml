@@ -1,0 +1,680 @@
+schemaVersion: 3
+id: scale-sequences
+version: 1
+difficulty: beginner
+topic: majorScale
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: groups-three
+    kind: events
+    exerciseID: scale-sequences-groups-three
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+    activityID: groups-three
+  - id: groups-four
+    kind: events
+    exerciseID: scale-sequences-groups-four
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+    activityID: groups-four
+  - id: diatonic-thirds
+    kind: events
+    exerciseID: scale-sequences-diatonic-thirds
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+    activityID: diatonic-thirds
+  - id: knowledge-check
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: scale-sequences-groups-three
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+        accented: true
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+        accented: true
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        accented: true
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+        accented: true
+      - id: e17
+        startTick: 15360
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: e18
+        startTick: 16320
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e19
+        startTick: 17280
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e20
+        startTick: 18240
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: scale-sequences-groups-four
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+        accented: true
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+        accented: true
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: e17
+        startTick: 15360
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        accented: true
+      - id: e18
+        startTick: 16320
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e19
+        startTick: 17280
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: e20
+        startTick: 18240
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e21
+        startTick: 19200
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e22
+        startTick: 20160
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e23
+        startTick: 21120
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e24
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: scale-sequences-diatonic-thirds
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+        accented: true
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+        accented: true
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        accented: true
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+        accented: true
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: groups-three
+    source:
+      kind: exercise
+      exerciseID: scale-sequences-groups-three
+    tonalRoot:
+      midi: 48
+  - id: groups-four
+    source:
+      kind: exercise
+      exerciseID: scale-sequences-groups-four
+    tonalRoot:
+      midi: 48
+  - id: diatonic-thirds
+    source:
+      kind: exercise
+      exerciseID: scale-sequences-diatonic-thirds
+    tonalRoot:
+      midi: 48
+activities:
+  - id: groups-three
+    materialID: groups-three
+  - id: groups-four
+    materialID: groups-four
+  - id: diatonic-thirds
+    materialID: diatonic-thirds
+fingerings: []
+practiceEntries:
+  - id: groups-three
+    activityID: groups-three
+    exerciseID: scale-sequences-groups-three
+  - id: groups-four
+    activityID: groups-four
+    exerciseID: scale-sequences-groups-four
+  - id: diatonic-thirds
+    activityID: diatonic-thirds
+    exerciseID: scale-sequences-diatonic-thirds
+learningTasks:
+  - id: knowledge-check
+    stepID: knowledge-check
+    kind: quiz
+    itemIDs:
+      - three
+      - one
+      - four
+    correctOptionID: three
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - rule
+      - pulse
+      - thirds
+curriculum:
+  moduleID: scales-positions
+  ordinal: 64
+  durationMinutes: 25
+  prerequisites:
+    - c-major
+    - same-notes-new-position
+  keywords:
+    - scale
+    - position
+    - гама
+    - позиція

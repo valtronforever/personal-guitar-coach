@@ -1,0 +1,446 @@
+schemaVersion: 3
+id: connect-scale-positions
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: shared-note
+    kind: events
+    exerciseID: connect-scale-positions-shared-note
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+    activityID: shared-note
+  - id: crossing-phrase
+    kind: events
+    exerciseID: connect-scale-positions-crossing-phrase
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+    activityID: crossing-phrase
+  - id: returning-route
+    kind: events
+    exerciseID: connect-scale-positions-returning-route
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+    activityID: returning-route
+  - id: knowledge-check
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: connect-scale-positions-shared-note
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: connect-scale-positions-crossing-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 10
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 10
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+  - id: connect-scale-positions-returning-route
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 10
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: shared-note
+    source:
+      kind: exercise
+      exerciseID: connect-scale-positions-shared-note
+    tonalRoot:
+      midi: 57
+  - id: crossing-phrase
+    source:
+      kind: exercise
+      exerciseID: connect-scale-positions-crossing-phrase
+    tonalRoot:
+      midi: 57
+  - id: returning-route
+    source:
+      kind: exercise
+      exerciseID: connect-scale-positions-returning-route
+    tonalRoot:
+      midi: 57
+activities:
+  - id: shared-note
+    materialID: shared-note
+  - id: crossing-phrase
+    materialID: crossing-phrase
+  - id: returning-route
+    materialID: returning-route
+fingerings: []
+practiceEntries:
+  - id: shared-note
+    activityID: shared-note
+    exerciseID: connect-scale-positions-shared-note
+  - id: crossing-phrase
+    activityID: crossing-phrase
+    exerciseID: connect-scale-positions-crossing-phrase
+  - id: returning-route
+    activityID: returning-route
+    exerciseID: connect-scale-positions-returning-route
+learningTasks:
+  - id: knowledge-check
+    stepID: knowledge-check
+    kind: quiz
+    itemIDs:
+      - same
+      - key
+      - octave
+    correctOptionID: same
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - shared
+      - junction
+      - returning
+curriculum:
+  moduleID: scales-positions
+  ordinal: 62
+  durationMinutes: 25
+  prerequisites:
+    - a-minor-pentatonic
+    - fretboard-map
+  keywords:
+    - scale
+    - position
+    - гама
+    - позиція

@@ -1,6 +1,6 @@
 schemaVersion: 3
 id: c-major
-version: 2
+version: 3
 difficulty: beginner
 topic: majorScale
 steps:
@@ -45,6 +45,14 @@ steps:
     exerciseID: c-major-practice
     eventIDs:
       - finish-rest
+    activityID: lesson
+  - id: scale-question
+    kind: none
+    eventIDs: []
+    activityID: lesson
+  - id: practice-review
+    kind: none
+    eventIDs: []
     activityID: lesson
 exercises:
   - id: c-major-practice
@@ -219,8 +227,26 @@ practiceEntries:
 curriculum:
   moduleID: scales-positions
   ordinal: 57
-  durationMinutes: 10
-  prerequisites: []
+  durationMinutes: 20
+  prerequisites:
+    - tonic-and-degrees
+    - fretboard-map
   keywords:
     - The major scale
     - Мажорна гама
+learningTasks:
+  - id: scale-question
+    stepID: scale-question
+    kind: quiz
+    itemIDs:
+      - correct
+      - early
+      - all
+    correctOptionID: correct
+  - id: practice-review
+    stepID: practice-review
+    kind: selfPractice
+    itemIDs:
+      - structure
+      - pulse
+      - position

@@ -694,7 +694,8 @@ lessons:
       uk: Мажорна гама
     outcomeUK: Зіграти гаму та розпізнавати її ступені
     originalAssessment: Н
-    status: needs_review
+    status: authored
+    acceptance: pending
   - number: 58
     moduleID: scales-positions
     lessonID: natural-minor
@@ -703,7 +704,8 @@ lessons:
       uk: Натуральний мінор
     outcomeUK: Порівняти його будову з мажором
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 59
     moduleID: scales-positions
     lessonID: a-minor-pentatonic
@@ -712,7 +714,8 @@ lessons:
       uk: Мінорна пентатоніка
     outcomeUK: Зіграти основну позицію в обраній тональності
     originalAssessment: Н
-    status: needs_review
+    status: authored
+    acceptance: pending
   - number: 60
     moduleID: scales-positions
     lessonID: major-pentatonic
@@ -721,7 +724,8 @@ lessons:
       uk: Мажорна пентатоніка
     outcomeUK: Застосувати інше групування п’яти нот
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 61
     moduleID: scales-positions
     lessonID: blues-scale
@@ -730,7 +734,8 @@ lessons:
       uk: Блюзова гама
     outcomeUK: Додати блюзову ноту до пентатоніки
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 62
     moduleID: scales-positions
     lessonID: connect-scale-positions
@@ -739,7 +744,8 @@ lessons:
       uk: З’єднання сусідніх позицій
     outcomeUK: Грати фрази за межами одного «боксу»
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 63
     moduleID: scales-positions
     lessonID: same-notes-new-position
@@ -748,7 +754,8 @@ lessons:
       uk: Ті самі ноти в іншій позиції
     outcomeUK: Перенести аплікатуру зі збереженням тональності
     originalAssessment: Н+С
-    status: needs_review
+    status: authored
+    acceptance: pending
   - number: 64
     moduleID: scales-positions
     lessonID: scale-sequences
@@ -757,7 +764,8 @@ lessons:
       uk: Послідовності всередині гами
     outcomeUK: Грати групами по три, чотири та через ступінь
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 65
     moduleID: advanced-rhythm
     lessonID: triplets

@@ -1,0 +1,79 @@
+lessonID: scale-sequences
+lessonVersion: 1
+locale: en
+title: Scale sequences in threes, fours and thirds
+summary: Repeat a small degree pattern from successive steps of the major scale.
+goal: Keep a clear four-beat pulse while moving a melodic pattern through the scale.
+body: |-
+  A scale sequence repeats a pattern starting from successive scale degrees. Instead of running straight from tonic to octave, play 1–2–3, then 2–3–4, then 3–4–5 and continue. This asks you to recognize a small musical rule and restart it at a new place. Learn the rule slowly enough to name the next starting degree before playing it.
+
+  All examples here use quarter notes in 4/4. A group of three quarter notes is not a triplet: a triplet divides an existing time span into three, whereas these notes each take a whole beat. The three-note pattern starts on different beats as it crosses bar lines. The written accent marks the first note of each melodic group; the metronome still marks the regular bar. Keep both layers distinct and do not shorten a group to fit a bar.
+
+  The first sequence has six groups, from 1–2–3 through 6–7–8: eighteen attacks followed by two quarter rests in five bars. The four-note version has five groups, from 1–2–3–4 through 5–6–7–8. Its twenty attacks fill five bars and a sixth silent bar lets you reset. Each group now begins on a bar line, which makes a useful comparison with the three-note grouping.
+
+  Diatonic thirds skip one scale degree: 1–3, 2–4, 3–5, 4–6, 5–7, 6–8. They alternate different fret distances because major-scale thirds include both major and minor intervals. Follow the scale pitches instead of moving every pair by a fixed number of frets. The exercise ends with the lower tonic and three beats of silence, completing four bars.
+
+  Practice each pattern at 50 BPM, then say the starting degrees while listening. If a restart causes hesitation, loop the last two notes of one group and the first two of the next outside the scored attempt. Automatic assessment checks the written pitches and attacks; accent strength and phrase shape remain listening goals. Raise tempo only after the pattern and bar count are both reliable.
+steps:
+  prepare:
+    title: Read the rule before the notes
+    body: >-
+      Recall the major scale and its tonic. Trace one three-note group in the TAB, then identify where the second
+      begins. Count a full bar before starting.
+  groups-three:
+    title: Three quarters across the bar
+    body: >-
+      Play six groups of three quarter notes. Emphasize the marked first note without changing its duration. Count
+      1–2–3–4 continuously and leave the last two beats of bar 5 silent. These are not triplets.
+  groups-four:
+    title: Four-note groups on bar lines
+    body: >-
+      Play five four-note groups, then count the entire sixth bar silently. The pattern restarts one degree higher
+      each time. Compare the alignment with the previous example: group beginnings now coincide with bar beginnings.
+  diatonic-thirds:
+    title: Skip one degree at a time
+    body: >-
+      Play 1–3, 2–4, 3–5, 4–6, 5–7, 6–8, then the lower tonic. The last three beats are silent. Name scale degrees
+      while reviewing; the alternating fret distances are intentional. {{sequence}}.
+  review:
+    title: Separate memory from pulse
+    body: >-
+      Choose the group boundary with the most hesitation and slow it down. Then perform the whole sequence without
+      losing the bar count. Listen for the marked grouping; a pitch/timing score does not verify dynamic accents.
+  knowledge-check:
+    title: Check the musical relationship
+    body: Answer from the structure you practiced.
+activities:
+  groups-three:
+    title: Three quarters across the bar
+    body: >-
+      Play six groups of three quarter notes. Emphasize the marked first note without changing its duration. Count
+      1–2–3–4 continuously and leave the last two beats of bar 5 silent. These are not triplets.
+  groups-four:
+    title: Four-note groups on bar lines
+    body: >-
+      Play five four-note groups, then count the entire sixth bar silently. The pattern restarts one degree higher
+      each time. Compare the alignment with the previous example: group beginnings now coincide with bar beginnings.
+  diatonic-thirds:
+    title: Skip one degree at a time
+    body: >-
+      Play 1–3, 2–4, 3–5, 4–6, 5–7, 6–8, then the lower tonic. The last three beats are silent. Name scale degrees
+      while reviewing; the alternating fret distances are intentional. {{sequence}}.
+learningTasks:
+  knowledge-check:
+    title: Three-note group or triplet?
+    body: Three consecutive quarter notes are grouped by an accent in 4/4. How long is the group?
+    items:
+      three: Three beats; grouping alone does not change note values.
+      one: One beat, because every group of three is a triplet.
+      four: Four beats, because the time signature is 4/4.
+    explanation: >-
+      Each quarter note lasts one beat here. Three quarters last three beats and may cross a bar line. Triplets
+      require a different subdivision, introduced separately.
+  review:
+    title: Review the phrase
+    body: Mark only observations you made yourself.
+    items:
+      rule: I can predict the next group from its degree pattern.
+      pulse: I kept four beats per bar while groups of three crossed the bar lines.
+      thirds: I followed diatonic thirds instead of copying a fixed fret distance.

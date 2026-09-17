@@ -3581,13 +3581,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Major scale"
+            "value": "Scales"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Мажорна гама"
+            "value": "Гами"
           }
         }
       }

@@ -1,6 +1,6 @@
 schemaVersion: 3
 id: a-minor-pentatonic
-version: 2
+version: 3
 difficulty: beginner
 topic: pentatonic
 steps:
@@ -52,6 +52,14 @@ steps:
       - down-10
       - down-11
       - finish-rest
+    activityID: lesson
+  - id: scale-question
+    kind: none
+    eventIDs: []
+    activityID: lesson
+  - id: practice-review
+    kind: none
+    eventIDs: []
     activityID: lesson
 exercises:
   - id: a-minor-pentatonic-practice
@@ -282,8 +290,26 @@ practiceEntries:
 curriculum:
   moduleID: scales-positions
   ordinal: 59
-  durationMinutes: 10
-  prerequisites: []
+  durationMinutes: 20
+  prerequisites:
+    - natural-minor
+    - alternate-picking
   keywords:
     - Minor pentatonic
     - Мінорна пентатоніка
+learningTasks:
+  - id: scale-question
+    stepID: scale-question
+    kind: quiz
+    itemIDs:
+      - minor
+      - major
+      - scale
+    correctOptionID: minor
+  - id: practice-review
+    stepID: practice-review
+    kind: selfPractice
+    itemIDs:
+      - tonic
+      - clean
+      - phrase

@@ -1,29 +1,53 @@
 lessonID: c-major
-lessonVersion: 2
+lessonVersion: 3
 locale: en
 title: Major scale
 summary: Play a major scale up and down over one octave.
 goal: Learn the intervals of a major scale and connect notes across strings.
-body: >-
-  First practice First frets and Steady pulse. The major-scale steps are tone, tone, semitone, tone, tone, tone,
-  semitone. Play one quarter per click at 60 BPM. Learn bars 1–2 ascending and bars 3–4 descending; play the top
-  once. Try 70 BPM after comfortable repeats.
+body: |-
+  A major scale contains seven distinct scale degrees. The octave repeats degree 1 at a higher pitch and is often counted as 8 when practicing. Its adjacent steps are tone, tone, semitone, tone, tone, tone, semitone: 2–2–1–2–2–2–1 semitones. These relationships define the scale in every key; the current activity supplies the actual note names for your tuning.
+
+  Find the starting tonic and its octave before running the pattern. Then play degrees 1–4, listening to the small 3–4 step, and continue 5–8, listening to 7–8. Do not flatten the pulse when crossing strings. Stop the previous string as the next note begins so the monophonic input has one intended pitch at a time.
+
+  At 60 BPM play one quarter per click: bars 1–2 ascend, bars 3–4 descend without repeating the top. The final beat is silent. Count degrees while playing, then say the resolved note names on a separate slow pass. Degree numbers and finger numbers are different: 3 is the third scale degree, not necessarily finger 3.
+
+  Keep Original for the first complete attempt. Later choose another available fret region, read its TAB and retain the same notes and octaves. A region label names its lower boundary, not a promised starting fret. Standard tuning changes transpose the lesson; a position change preserves the sounding music. Compare pitch/attack feedback, and confirm the actual fingering yourself. Increase by 5 BPM after three even, clean repetitions.
 steps:
   root-c:
-    title: 1. Find the root
-    body: 'The first and last sounding note: {{positions}}.'
+    title: Find the root
+    body: |-
+      The first and last sounding note: {{positions}}.
+
+      Sound the low tonic and compare its octave at the top of the pattern. The two names share a pitch class but have different octave numbers.
   lower-half:
-    title: 2. Play the lower half
-    body: 'Bar 1, one note per beat: {{positions}}.'
+    title: Play the lower half
+    body: |-
+      Bar 1, one note per beat: {{positions}}.
+
+      Count 1–2–3–4 as scale degrees on a separate pass. The last move in this group is the first semitone.
   upper-half:
-    title: 3. Play the upper half
-    body: 'Bar 2 reaches the octave: {{positions}}.'
+    title: Play the upper half
+    body: |-
+      Bar 2 reaches the octave: {{positions}}.
+
+      Count 5–6–7–8. Hear the last semitone settle into the higher tonic; do not play that top twice when descending.
   descending:
-    title: 4. Descend to the root
+    title: Descend to the root
     body: 'Bars 3–4 reverse the path without repeating the top note: {{positions}}.'
   finish:
-    title: 5. Finish with a rest
-    body: Stop the last note on the final beat of bar 4 and keep counting.
+    title: Finish with a rest
+    body: |-
+      Stop the last note on the final beat of bar 4 and keep counting.
+
+      The low tonic starts on beat 3 of the last bar; mute on beat 4. After reviewing the full attempt, improvise a four-note 1–2–3–1 phrase away from the graded score.
+  scale-question:
+    title: Check the structure
+    body: Answer from the interval pattern, not the current note names.
+  practice-review:
+    title: Turn the pattern into a phrase
+    body: >-
+      After the complete written exercise, choose a short phrase and finish deliberately on the tonic. Check the
+      musical result and your chosen fingering separately.
 historicalTitle: '{{root}} major across the strings'
 activities:
   lesson:
@@ -32,3 +56,19 @@ activities:
       Play one octave from {{first}} to {{highest}} and return.
 
       Sequence: {{sequence}}.
+learningTasks:
+  scale-question:
+    title: Scale structure
+    body: Which neighboring degrees are a semitone apart in a major scale?
+    items:
+      correct: 3–4 and 7–8
+      early: 2–3 and 6–7
+      all: Every neighboring pair
+    explanation: The 2–2–1–2–2–2–1 pattern puts semitones after degrees 3 and 7. The octave is the repeated tonic.
+  practice-review:
+    title: Review one complete attempt
+    body: Mark only what you checked while playing and listening.
+    items:
+      structure: I can locate the tonic, octave and both semitone steps.
+      pulse: I played the complete up/down line without doubling the top and kept the final rest.
+      position: I checked my actual fret/string choices separately from the sound-based score.

@@ -1,0 +1,473 @@
+schemaVersion: 3
+id: blues-scale
+version: 1
+difficulty: beginner
+topic: majorScale
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: six-note-route
+    kind: events
+    exerciseID: blues-scale-six-note-route
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+    activityID: six-note-route
+  - id: passing-tone
+    kind: events
+    exerciseID: blues-scale-passing-tone
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+    activityID: passing-tone
+  - id: blues-phrase
+    kind: events
+    exerciseID: blues-scale-blues-phrase
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+    activityID: blues-phrase
+  - id: knowledge-check
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: blues-scale-six-note-route
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 6
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 6
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e14
+        startTick: 12480
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e15
+        startTick: 13440
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e16
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: blues-scale-passing-tone
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 6
+      - id: e3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e4
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e6
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 6
+      - id: e7
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e8
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+  - id: blues-scale-blues-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 6
+      - id: e5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: e6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: e8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: e9
+        startTick: 7680
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e10
+        startTick: 8640
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e11
+        startTick: 9600
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e12
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: six-note-route
+    source:
+      kind: exercise
+      exerciseID: blues-scale-six-note-route
+    tonalRoot:
+      midi: 45
+  - id: passing-tone
+    source:
+      kind: exercise
+      exerciseID: blues-scale-passing-tone
+    tonalRoot:
+      midi: 45
+  - id: blues-phrase
+    source:
+      kind: exercise
+      exerciseID: blues-scale-blues-phrase
+    tonalRoot:
+      midi: 45
+activities:
+  - id: six-note-route
+    materialID: six-note-route
+  - id: passing-tone
+    materialID: passing-tone
+  - id: blues-phrase
+    materialID: blues-phrase
+fingerings: []
+practiceEntries:
+  - id: six-note-route
+    activityID: six-note-route
+    exerciseID: blues-scale-six-note-route
+  - id: passing-tone
+    activityID: passing-tone
+    exerciseID: blues-scale-passing-tone
+  - id: blues-phrase
+    activityID: blues-phrase
+    exerciseID: blues-scale-blues-phrase
+learningTasks:
+  - id: knowledge-check
+    stepID: knowledge-check
+    kind: quiz
+    itemIDs:
+      - between
+      - above
+      - below
+    correctOptionID: between
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - pitch
+      - resolution
+      - space
+curriculum:
+  moduleID: scales-positions
+  ordinal: 61
+  durationMinutes: 25
+  prerequisites:
+    - a-minor-pentatonic
+  keywords:
+    - scale
+    - position
+    - гама
+    - позиція

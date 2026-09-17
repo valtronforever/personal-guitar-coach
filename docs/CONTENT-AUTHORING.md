@@ -307,3 +307,14 @@ Initial automatic capability is deliberately bounded: base approximately G3 (195
 `periodic-window-center-1` captures moving periodic estimates separately from stable-note sustain. Results retain the curve and per-phase ±35-cent coverage, silence, unknown coverage and signed median pitch error. Every phase must have ≥80% known evidence. Each phase contributes equally to the bend score; scoring v4 combines that score and existing attack/rhythm score equally before extra-attack penalties (mixed sustain exercises subsequently retain their existing 80/20 sustain weighting). Uncalibrated rhythm still has no overall/timing score. Flux observations inside the bend are kept but are not scored as additional pick attacks. The graph uses the observed initial attack when available, with archived latency applied only once.
 
 `first-bend` and `bend-target-and-release` are complete examples. Slide, hammer-on/pull-off links and vibrato are separate authoring/analysis extensions; do not substitute a bend field for those techniques.
+
+### Complete scale and position module
+
+Topics 57–64 demonstrate three distinct authoring choices without adding another runtime scale model:
+
+- `natural-minor`, `major-pentatonic` and `blues-scale` use explicit note events, interval-preserving adaptation and independent `tonalRoot` values. Scale degrees are teaching text; resolved note labels and scoring come from the shared exercise. Same-tonic contrasts use explicit altered pitches, not a fixed fingering assumed to define a key.
+- `connect-scale-positions` authors a deliberate route across adjacent areas. Its shared-note example uses two different string/fret pairs for the same pitch. No relocation permission is added because the taught physical route is intentional; sound-based grading does not establish use of that route.
+- `same-notes-new-position` retains exact sounding pitches/octaves through a learner-selected note window, whole-scale exploration and a fixed near-seven activity. Its six-fret scale window accommodates Drop geometry; a window is not a mandatory hand stretch. `c-major` retains its narrower five-fret exploration policy, so only fully playable options are offered.
+- `scale-sequences` represents groups of three/four and diatonic thirds as ordinary quarter notes plus accent metadata. Melodic grouping never implies tuplets or changes ticks. The final silent beats/bars are explicit rests.
+
+Each module lesson includes a degree/relationship question and a separate self-observation task. The three expanded baseline lessons increment lesson versions while preserving exercise IDs, versions and musical events. Historical attempts remain frozen. The stable `majorScale` topic key is displayed as “Scales” / “Гами” to accommodate both major and minor families; saved IDs do not change.

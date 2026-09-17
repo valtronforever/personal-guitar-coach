@@ -1,0 +1,77 @@
+lessonID: major-pentatonic
+lessonVersion: 1
+locale: en
+title: Major pentatonic
+summary: Use degrees 1, 2, 3, 5 and 6 to make clear melodic phrases.
+goal: Play major pentatonic and hear its contrast with minor pentatonic on the same tonic.
+body: |-
+  Major pentatonic keeps 1, 2, 3, 5 and 6 from the major scale, omitting 4 and 7. The semitone offsets above its tonic are 0, 2, 4, 7 and 9. Its octave repeats the tonic. Like minor pentatonic it has five pitch classes, but the interval pattern is different.
+
+  First learn the one-octave route without trying to run a large box. Ascend through six written notes including the octave, then return through five without repeating the top. Three bars contain eleven quarter-note attacks and a final quarter rest. The skip from 3 to 5 is larger than the neighboring tone steps; read the string change ahead.
+
+  The comparison stays on one tonic. Bars 1 and 2 contrast the major third with the minor third; bars 3 and 4 contrast the major sixth with the minor seventh. Root and fifth remain common. Do not call a shape major merely because you moved it: the interval relationships to the intended tonic decide its sound.
+
+  Use the final two-bar question and answer as a small melodic idea. Begin with 1–2–3–5; answer with 6–5–2–1. Leave the tonic clearly audible at the end. Notes and key follow the selected tuning, while the degree relationships remain unchanged. Automatic practice checks the written pitches and attacks, not whether an improvised phrase is expressive or whether the hand used a specific fingering.
+steps:
+  prepare:
+    title: Recall the major-scale degrees
+    body: >-
+      Find the tonic and third in the current TAB. Recall the full major scale, then imagine leaving out 4 and 7.
+      Listen to the one-octave example before playing.
+  major-pattern:
+    title: Five degrees and the octave
+    body: >-
+      Play quarters at 50 BPM. Ascend and return once, with no duplicated top and a silent final beat in bar 3.
+      Say 1–2–3–5–6–8 on a separate slow ascent. {{sequence}}.
+  same-tonic-contrast:
+    title: Hear the changed color against one tonic
+    body: >-
+      Bar 1 uses the major third, bar 2 the minor third. Bar 3 uses the major sixth, bar 4 the minor seventh. Keep
+      the same pulse and notice the changed inner note rather than the common root/fifth. These are short comparisons,
+      not two full scales.
+  melodic-answer:
+    title: Question and answer
+    body: >-
+      Play 1–2–3–5, then 6–5–2–1, one quarter per click. Give both bars the same pulse and finish on the tonic.
+      Repeat three times; afterward, make a different order using these five degrees outside the scored attempt.
+  review:
+    title: Keep the tonic in view
+    body: >-
+      If the third is unclear, compare that note alone with the tonic at a slow tempo. Then replay the phrase and
+      name its ending. You should hear a destination rather than simply stop at the highest available fret.
+  knowledge-check:
+    title: Check the musical relationship
+    body: Answer from the structure you practiced.
+activities:
+  major-pattern:
+    title: Five degrees and the octave
+    body: >-
+      Play quarters at 50 BPM. Ascend and return once, with no duplicated top and a silent final beat in bar 3.
+      Say 1–2–3–5–6–8 on a separate slow ascent. {{sequence}}.
+  same-tonic-contrast:
+    title: Hear the changed color against one tonic
+    body: >-
+      Bar 1 uses the major third, bar 2 the minor third. Bar 3 uses the major sixth, bar 4 the minor seventh. Keep
+      the same pulse and notice the changed inner note rather than the common root/fifth. These are short comparisons,
+      not two full scales.
+  melodic-answer:
+    title: Question and answer
+    body: >-
+      Play 1–2–3–5, then 6–5–2–1, one quarter per click. Give both bars the same pulse and finish on the tonic.
+      Repeat three times; afterward, make a different order using these five degrees outside the scored attempt.
+learningTasks:
+  knowledge-check:
+    title: Five notes from major
+    body: Which major-scale degrees are omitted to form major pentatonic?
+    items:
+      four-seven: 4 and 7
+      two-six: 2 and 6
+      three-five: 3 and 5
+    explanation: Removing 4 and 7 leaves 1–2–3–5–6. These are five distinct pitch classes, repeated in each octave.
+  review:
+    title: Review the phrase
+    body: Mark only observations you made yourself.
+    items:
+      degrees: I can name the five major-pentatonic degrees without using finger numbers.
+      contrast: I heard the third/sixth versus minor-third/minor-seventh comparisons on one tonic.
+      phrase: I completed the answer on the tonic and made a separate short phrase.

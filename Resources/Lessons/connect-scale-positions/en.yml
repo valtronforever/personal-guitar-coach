@@ -1,0 +1,79 @@
+lessonID: connect-scale-positions
+lessonVersion: 1
+locale: en
+title: Connect neighboring scale positions
+summary: Use a shared note and a short pentatonic phrase to move beyond one box.
+goal: Connect two fretboard regions without changing the scale or losing the pulse.
+body: |-
+  A position is a convenient area for the hand, not a separate scale. Neighboring minor-pentatonic patterns share pitches. Learning where they overlap lets you continue a phrase instead of stopping at the edge of a box. In this lesson every written note is picked separately: the shift itself is not a slide or a hammer-on.
+
+  Begin with one shared pitch in the same octave. The example alternates string 2 fret 5 and string 3 fret 9, leaving a full beat of silence after each note. Both positions sound the same note in every supplied Standard and Drop preset because these tunings preserve the interval between strings 2 and 3. Compare the timbre and hand location while keeping the pitch unchanged. Dampen the first note before moving, look at the destination, release unnecessary fretting pressure and place the next fingertip just behind the fret.
+
+  The crossing phrase uses minor-pentatonic degrees ♭3–4–5–♭7–8–♭10, then returns 8–♭7–5–4–♭3–1 in pitch order shown by the TAB. Read the actual pitches rather than treating these degree names as finger numbers. The first three notes stay on string 3 while the hand moves toward fret 9; then the phrase crosses to the thinner strings. At the top, reverse the route and land on the tonic on string 4. Plan the shift during the preceding note rather than waiting for the next click.
+
+  The final route starts and finishes on the tonic. Play twelve quarter-note slots, including the last rest, at 50 BPM. Practice the difficult two-note junction on its own, then restore the full three-bar phrase. Increase tempo only after three controlled repetitions. The app can compare pitches and attacks; it cannot hear which string or finger produced a unison. Confirm the displayed route yourself, using a mirror or a separate video if helpful.
+steps:
+  prepare:
+    title: Identify the overlap
+    body: >-
+      Recall minor pentatonic: 1–♭3–4–5–♭7. Read both regions before playing and identify the two locations of the
+      shared note. Keep the fretting wrist comfortable throughout the shift.
+  shared-note:
+    title: Same pitch, two locations
+    body: >-
+      Pick each displayed note once and use the following quarter rest to dampen and move. Alternate 2/5 and 3/9
+      four times in total. The pitch stays the same; string color may change. {{sequence}}.
+  crossing-phrase:
+    title: Cross the edge of the box
+    body: >-
+      Play three bars of quarters. Move along string 3 before crossing to strings 2 and 1. Reverse the path after
+      the top note and finish at the tonic on string 4. Isolate the 3/7 → 3/9 move if it arrives late; do not add
+      a connecting slide.
+  returning-route:
+    title: Leave and return to the tonic
+    body: >-
+      Begin at the tonic, reach the upper tonic and retrace the route. There are eleven attacks and one rest in
+      three bars. Keep the shift quiet and the final rest silent. {{positions}}.
+  review:
+    title: Check the junction, then the phrase
+    body: >-
+      Compare the timing at the position change with the surrounding notes. A good score verifies the sound, so
+      also check that you actually used the displayed route without squeezing the neck.
+  knowledge-check:
+    title: Check the musical relationship
+    body: Answer from the structure you practiced.
+activities:
+  shared-note:
+    title: Same pitch, two locations
+    body: >-
+      Pick each displayed note once and use the following quarter rest to dampen and move. Alternate 2/5 and 3/9
+      four times in total. The pitch stays the same; string color may change. {{sequence}}.
+  crossing-phrase:
+    title: Cross the edge of the box
+    body: >-
+      Play three bars of quarters. Move along string 3 before crossing to strings 2 and 1. Reverse the path after
+      the top note and finish at the tonic on string 4. Isolate the 3/7 → 3/9 move if it arrives late; do not add
+      a connecting slide.
+  returning-route:
+    title: Leave and return to the tonic
+    body: >-
+      Begin at the tonic, reach the upper tonic and retrace the route. There are eleven attacks and one rest in
+      three bars. Keep the shift quiet and the final rest silent. {{positions}}.
+learningTasks:
+  knowledge-check:
+    title: What changes at a position shift?
+    body: You play the same pitch and octave on another string. Which statement is correct?
+    items:
+      same: The fingering and timbre may change, while the pitch remains the same.
+      key: The key must change because the fret number changes.
+      octave: A different string always changes the octave.
+    explanation: >-
+      A unison is the same sounding pitch. Different string/fret pairs can produce it, so moving the hand does not
+      itself transpose the music.
+  review:
+    title: Review the phrase
+    body: Mark only observations you made yourself.
+    items:
+      shared: I compared the shared pitch at both displayed locations.
+      junction: I practiced the shift without an unintended connecting note.
+      returning: I completed the route at an even pulse and returned to the tonic.
