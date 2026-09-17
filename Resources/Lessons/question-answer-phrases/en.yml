@@ -1,0 +1,67 @@
+lessonID: question-answer-phrases
+lessonVersion: 1
+locale: en
+title: Ask, answer and leave space
+summary: Make a musical conversation from a short call, a related answer and deliberate silence.
+goal: Build a related answer with a clear boundary instead of extending every idea indefinitely.
+body: |-
+  A musical question does not need words. A short phrase can invite a response because of its ending, direction or rhythm. The answer may repeat part of that idea, alter its ending or move in a contrasting direction. These are useful compositional choices, not universal rules that make one note automatically a question and another automatically an answer.
+
+  Listen to the first call. It occupies one bar, followed by an empty response bar. In this display-only exercise, that empty bar is your invitation to play, not a rest being graded against your guitar. Enable looping in playback options. Hear the call without playing over it, answer in the next bar, then stop in time for the call to return. Keep the response short enough that the boundary remains audible.
+
+  Begin with an echo using the same pitches and rhythm. Once you can place that echo, change only the ending. Next retain the rhythm but reverse the direction of part of the line. Listen for a connection between call and answer rather than choosing unrelated fast notes. If you cannot remember the call, pause and replay it before inventing a response.
+
+  The second call falls and leaves a short space before its response bar. Do not assume a falling phrase must receive a rising answer. Try both an echo and a contrast, then choose the version whose relationship you can describe. A deliberate pause may be the most useful contrast. Keep counting through it so that silence has a place in the phrase instead of becoming an accidental delay.
+
+  The complete four-bar model demonstrates two related pairs. First copy it and identify the detail retained by each answer. Then lower the reference-tone volume, keep the metronome and play your own four-bar conversation. Let bars 1 and 3 ask related questions; let bars 2 and 4 answer, with the last answer giving a clearer ending. You may use fewer notes than the model.
+
+  Review phrase boundaries, the link between ideas and the amount of space. These are self-observed musical decisions. The app supplies a timed model and a silent answer slot, but it does not award a creativity score or infer intent from the recording. If an answer overlaps the next call, shorten it or leave its final note earlier. Repeat until you can start and stop by choice.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  call-one:
+    title: A call and your answer slot
+    body: 'Center: {{root}} major. Loop two bars: listen in bar 1, invent an answer in the silent bar 2, then stop
+      before the next call. The empty bar is unscored space for your own notes. Sounding notes: {{sequence}}. Use
+      the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  call-two:
+    title: Answer a different direction
+    body: 'Compare an echo, a changed ending and a contrasting answer. Keep the response inside the second bar and
+      retain a recognizable connection to the falling call. Sounding notes: {{sequence}}. Use the displayed fingering
+      as a suggestion; the sound does not prove the string or finger.'
+  conversation:
+    title: A complete four-bar conversation
+    body: 'Bars 1 and 3 ask related questions; bars 2 and 4 answer. Compare the repeated opening, changed rhythm
+      and final return. Then make your own version with the reference tone lowered. Sounding notes: {{sequence}}.
+      Use the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  answer-by-choice:
+    title: Make the relationship audible
+    body: 'Play three response cycles: exact echo, changed ending, contrast. Then create a four-bar conversation
+      and explain what links its phrases.'
+activities:
+  call-one:
+    title: A call and your answer slot
+    body: 'Center: {{root}} major. Loop two bars: listen in bar 1, invent an answer in the silent bar 2, then stop
+      before the next call. The empty bar is unscored space for your own notes. Sounding notes: {{sequence}}. Use
+      the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+  call-two:
+    title: Answer a different direction
+    body: 'Compare an echo, a changed ending and a contrasting answer. Keep the response inside the second bar and
+      retain a recognizable connection to the falling call. Sounding notes: {{sequence}}. Use the displayed fingering
+      as a suggestion; the sound does not prove the string or finger.'
+  conversation:
+    title: A complete four-bar conversation
+    body: 'Bars 1 and 3 ask related questions; bars 2 and 4 answer. Compare the repeated opening, changed rhythm
+      and final return. Then make your own version with the reference tone lowered. Sounding notes: {{sequence}}.
+      Use the displayed fingering as a suggestion; the sound does not prove the string or finger.'
+learningTasks:
+  answer-by-choice:
+    title: Make the relationship audible
+    body: 'Play three response cycles: exact echo, changed ending, contrast. Then create a four-bar conversation
+      and explain what links its phrases.'
+    items:
+      echo: I placed an echo inside the response bar.
+      change: I compared a changed ending with a contrasting answer.
+      boundary: I stopped before the next call instead of overlapping it.
+      space: I counted a deliberate silence and could explain its role.

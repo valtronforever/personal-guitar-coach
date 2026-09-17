@@ -1,0 +1,404 @@
+schemaVersion: 3
+id: question-answer-phrases
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: call-one
+    kind: events
+    exerciseID: question-answer-phrases-call-one
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: call-one
+  - id: call-two
+    kind: events
+    exerciseID: question-answer-phrases-call-two
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+    activityID: call-two
+  - id: conversation
+    kind: events
+    exerciseID: question-answer-phrases-conversation
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+    activityID: conversation
+  - id: answer-by-choice
+    kind: none
+    eventIDs: []
+exercises:
+  - id: question-answer-phrases-call-one
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-3
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-4
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: question-answer-phrases-call-two
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: question-answer-phrases-conversation
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-3
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-4
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-5
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-6
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-7
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-8
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-9
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-10
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-11
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-13
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-14
+        startTick: 13440
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: call-one
+    source:
+      kind: exercise
+      exerciseID: question-answer-phrases-call-one
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 9
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: call-two
+    source:
+      kind: exercise
+      exerciseID: question-answer-phrases-call-two
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 9
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: conversation
+    source:
+      kind: exercise
+      exerciseID: question-answer-phrases-conversation
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 9
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+activities:
+  - id: call-one
+    materialID: call-one
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: call-two
+    materialID: call-two
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: conversation
+    materialID: conversation
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: answer-by-choice
+    stepID: answer-by-choice
+    kind: selfPractice
+    itemIDs:
+      - echo
+      - change
+      - boundary
+      - space
+curriculum:
+  moduleID: ear-improvisation
+  ordinal: 87
+  durationMinutes: 30
+  prerequisites:
+    - two-note-improvisation
+    - transcribe-short-melody
+  keywords:
+    - Ask, answer and leave space
+    - Запитай, відповідай і залиш простір
+    - phrasing
+    - фразування
+    - improvisation
+    - імпровізація

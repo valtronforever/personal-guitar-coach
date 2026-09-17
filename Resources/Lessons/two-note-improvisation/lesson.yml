@@ -1,0 +1,348 @@
+schemaVersion: 3
+id: two-note-improvisation
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: seed
+    kind: events
+    exerciseID: two-note-improvisation-seed
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: seed
+  - id: rhythm-change
+    kind: events
+    exerciseID: two-note-improvisation-rhythm-change
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+    activityID: rhythm-change
+  - id: third-pitch
+    kind: events
+    exerciseID: two-note-improvisation-third-pitch
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+    activityID: third-pitch
+  - id: make-your-motif
+    kind: none
+    eventIDs: []
+exercises:
+  - id: two-note-improvisation-seed
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-4
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: two-note-improvisation-rhythm-change
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: two-note-improvisation-third-pitch
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-5
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-6
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: seed
+    source:
+      kind: exercise
+      exerciseID: two-note-improvisation-seed
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 9
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: rhythm-change
+    source:
+      kind: exercise
+      exerciseID: two-note-improvisation-rhythm-change
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 9
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: third-pitch
+    source:
+      kind: exercise
+      exerciseID: two-note-improvisation-third-pitch
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 9
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+activities:
+  - id: seed
+    materialID: seed
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: rhythm-change
+    materialID: rhythm-change
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: third-pitch
+    materialID: third-pitch
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: make-your-motif
+    stepID: make-your-motif
+    kind: selfPractice
+    itemIDs:
+      - repeat
+      - one
+      - space
+      - compare
+curriculum:
+  moduleID: ear-improvisation
+  ordinal: 85
+  durationMinutes: 30
+  prerequisites:
+    - a-minor-pentatonic
+    - repeat-a-rhythm
+  keywords:
+    - Make a motif from two or three notes
+    - Створи мотив із двох-трьох нот
+    - phrasing
+    - фразування
+    - improvisation
+    - імпровізація
