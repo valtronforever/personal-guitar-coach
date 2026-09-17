@@ -224,3 +224,11 @@ Read the new parentheses and continuation legend in both TAB views, languages an
 ## Jazz and modal topics 105–106, 109–112 — pending user
 
 Read both locales and confirm all eight specialization lessons appear in order with correct self-practice/scored filters. Play the clean separated guide tones, chromatic lines and minor/modal examples through the actual interface. Hear degree6/7 differences against one center; compare the held pedal and prepared suspension without extra attacks. Chord feel, harmonic intention, independent voices and invented answers remain self-reviewed. Verify TAB/staff fallbacks, keyboard/VoiceOver and both themes. Software matrices and synthesized references do not establish this real guitar/native acceptance.
+
+
+Self-practice recording — pending_user:
+
+- In fingerstyle bass/melody or chord-melody, select the complete study and Record self-practice. Verify the selected tuning/neck, BPM pulse label, one-bar count-in, audio-clock metronome, silent guitar reference, meter and scrolling TAB on the actual route. Repeat in en/uk, light/dark, with keyboard and VoiceOver. No microphone permission should be requested merely by opening the lesson or sheet.
+- Play a complete take and an early-stopped take. Confirm the two labels differ and neither supplies a grade or automatically starts a provider. Cancel while preparing/playing; change or unplug the interface and verify capture releases without a fabricated review take.
+- Save WAV to an explicitly selected destination, cancel the picker, try replacing an existing file, and test a denied/unavailable destination. Open the saved file with the default player. Check raw guitar in channel1 and generated click reference in channel2; this click channel is not recorded headphone output. Verify count-in/end and the chosen tempo. A silent input can still produce an ungraded file; only listening establishes performance quality.
+- Close/reopen and start another take to verify the clearly stated temporary lifetime. Check that unrelated files are untouched and the app retains only user-selected-file write permission. Native dialog/player/guitar evidence remains open; synthetic coordinator, WAV-reader and metadata tests do not fulfill it.

@@ -111,6 +111,25 @@ The reader exposes tasks for the selected step. Checklist completion means all c
 
 The scaffold modes use checked-in templates: [theory](templates/lesson-theory/lesson.yml), [self-practice](templates/lesson-selfPractice/lesson.yml), [listening](templates/lesson-listening/lesson.yml), and default [scored practice](templates/lesson/lesson.yml). The listening mode enforces interval adaptation and disallows positioning. All drafts still require editorial review; the scaffold does not generate new pedagogical content.
 
+## Optional self-practice recording
+
+An activity can explicitly offer **Record self-practice** without turning an ungraded technique task into an audio score:
+
+```yaml
+activities:
+  - id: full-study
+    materialID: full-study
+    recording: selfPractice
+```
+
+The material must reference one whole `displayOnly` exercise. This activity cannot have an assessed practice entry, and the exercise cannot be a private listening-question stimulus. Recording is off when the field is omitted. Use a distinct ordinary graded activity for single-note assessment; do not change an exercise's capability merely to expose this action.
+
+The sheet freezes the resolved exercise, positions, tuning, neck, lesson version, source mapping and selected BPM. It records one pass after one bar of count-in, with audio-clock metronome and no reference guitar tones. The musical passage must fit 120s and passage plus count-in 130s at the selected tempo. The loader requires at least one allowed tempo to fit; the sheet disables Start and explains when a slower choice exceeds the limit. A maximum 12s capture tail accommodates the current input/output timing; the overall deadline is 145s within the existing 150s bounded recording buffer. An early stop retains an explicitly incomplete take; cancel, lost packets or changed route do not create a review take.
+
+No file is saved automatically. **Save WAV** opens the native destination picker and atomically writes only the selected file. The stereo WAV contains raw selected input in channel 1 and a generated metronome reference in channel 2. This reference is scheduled against the capture host clock; it does not measure headphone delay, align raw guitar attacks using calibration, or prove audible timing. A versioned `pgcx` RIFF chunk holds the frozen lesson/exercise/instrument/route/timing context, completion flag and channel meaning. Ordinary WAV readers ignore this chunk. The explicit **Open saved WAV** action uses the system's default player; there is no built-in multitrack editor or arbitrary-file playback engine.
+
+A finished take means the transport reached the end and valid capture covered its scheduled extent. It is not proof that the learner played, nor an assessed result or AI recommendation. Listen before checking self-practice criteria. Unsaved audio is temporary and discarded on closing or starting another take. Do not instruct learners to use the existing graded Record & analyze flow for polyphonic/self-practice material. File-picker/player interaction and actual-interface acceptance must be checked separately from synthetic export tests.
+
 ## Tuning adaptation and positioning
 
 Optional `adaptation` contains `policy` and an optional `anchorString` (default 1):

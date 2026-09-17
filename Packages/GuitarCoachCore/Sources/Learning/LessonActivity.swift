@@ -33,12 +33,15 @@ public struct ActivityPositionSelection: Codable, Equatable, Sendable {
     }
     private enum CodingKeys: String, CodingKey { case mode, defaultChoice = "default", value }
 }
+public enum LessonRecordingMode: String, Codable, Sendable { case selfPractice }
+
 public struct LessonActivity: Codable, Equatable, Sendable, Identifiable {
     public let id: String
     public let materialID: String
     public let positionSelection: ActivityPositionSelection?
-    public init(id: String, materialID: String, positionSelection: ActivityPositionSelection? = nil) {
-        self.id = id; self.materialID = materialID; self.positionSelection = positionSelection
+    public let recording: LessonRecordingMode?
+    public init(id: String, materialID: String, positionSelection: ActivityPositionSelection? = nil, recording: LessonRecordingMode? = nil) {
+        self.id = id; self.materialID = materialID; self.positionSelection = positionSelection; self.recording = recording
     }
 }
 public struct LessonSourceFingering: Codable, Equatable, Sendable, Identifiable {

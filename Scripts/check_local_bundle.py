@@ -53,7 +53,7 @@ def verify(app, configuration):
     expected_entitlements = plistlib.loads((ROOT / "App/PersonalGuitarCoach.entitlements").read_bytes())
     require(entitlements == expected_entitlements == {
         "com.apple.security.app-sandbox": True, "com.apple.security.device.audio-input": True,
-        "com.apple.security.files.user-selected.read-only": True
+        "com.apple.security.files.user-selected.read-write": True
     }, "Unexpected sandbox/audio entitlements")
     service = contents / "XPCServices/CoachAgentService.xpc"
     require((service / "Contents/MacOS/CoachAgentService").is_file(), "Missing agent XPC executable")
