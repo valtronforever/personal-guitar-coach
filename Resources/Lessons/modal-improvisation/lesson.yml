@@ -1,0 +1,591 @@
+schemaVersion: 3
+id: modal-improvisation
+version: 1
+difficulty: intermediate
+topic: theory
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: dorian-scale
+    kind: events
+    exerciseID: modal-improvisation-dorian-scale
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: dorian-scale
+  - id: natural-minor-comparison
+    kind: events
+    exerciseID: modal-improvisation-natural-minor-comparison
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: natural-minor-comparison
+  - id: tonic-pedal
+    kind: events
+    exerciseID: modal-improvisation-tonic-pedal
+    eventIDs:
+      - event-1
+    activityID: tonic-pedal
+  - id: dorian-phrase
+    kind: events
+    exerciseID: modal-improvisation-dorian-phrase
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: dorian-phrase
+  - id: phrase-over-pedal
+    kind: events
+    exerciseID: modal-improvisation-phrase-over-pedal
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: phrase-over-pedal
+  - id: modal-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: modal-improvisation-dorian-scale
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 10
+  - id: modal-improvisation-natural-minor-comparison
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 6
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 10
+  - id: modal-improvisation-tonic-pedal
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 7680
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+  - id: modal-improvisation-dorian-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+  - id: modal-improvisation-phrase-over-pedal
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 3
+            fret: 7
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 2
+            fret: 6
+        heldStrings:
+          - 5
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 1
+            fret: 5
+        heldStrings:
+          - 5
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 1
+            fret: 7
+        heldStrings:
+          - 5
+      - id: event-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 1
+            fret: 8
+        heldStrings:
+          - 5
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 1
+            fret: 7
+        heldStrings:
+          - 5
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 1
+            fret: 5
+        heldStrings:
+          - 5
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 3
+            fret: 7
+        heldStrings:
+          - 5
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: dorian-scale
+    source:
+      kind: exercise
+      exerciseID: modal-improvisation-dorian-scale
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 62
+  - id: natural-minor-comparison
+    source:
+      kind: exercise
+      exerciseID: modal-improvisation-natural-minor-comparison
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 62
+  - id: tonic-pedal
+    source:
+      kind: exercise
+      exerciseID: modal-improvisation-tonic-pedal
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 62
+  - id: dorian-phrase
+    source:
+      kind: exercise
+      exerciseID: modal-improvisation-dorian-phrase
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 62
+  - id: phrase-over-pedal
+    source:
+      kind: exercise
+      exerciseID: modal-improvisation-phrase-over-pedal
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 62
+activities:
+  - id: dorian-scale
+    materialID: dorian-scale
+  - id: natural-minor-comparison
+    materialID: natural-minor-comparison
+  - id: tonic-pedal
+    materialID: tonic-pedal
+  - id: dorian-phrase
+    materialID: dorian-phrase
+  - id: phrase-over-pedal
+    materialID: phrase-over-pedal
+practiceEntries:
+  - id: dorian-scale
+    activityID: dorian-scale
+    exerciseID: modal-improvisation-dorian-scale
+  - id: natural-minor-comparison
+    activityID: natural-minor-comparison
+    exerciseID: modal-improvisation-natural-minor-comparison
+  - id: dorian-phrase
+    activityID: dorian-phrase
+    exerciseID: modal-improvisation-dorian-phrase
+fingerings: []
+learningTasks:
+  - id: modal-review
+    stepID: modal-review
+    kind: selfPractice
+    itemIDs:
+      - center
+      - sixth
+      - compare
+      - return
+curriculum:
+  moduleID: specializations
+  ordinal: 109
+  durationMinutes: 35
+  prerequisites:
+    - natural-minor
+    - c-major
+    - two-note-improvisation
+  keywords:
+    - 'Modes: hear the center, then the color'
+    - 'Лади: почуй центр, потім барву'
+    - harmony
+    - гармонія
+    - improvisation
+    - імпровізація

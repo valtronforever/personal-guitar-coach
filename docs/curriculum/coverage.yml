@@ -1194,7 +1194,8 @@ lessons:
       uk: Джазовий акомпанемент
     outcomeUK: Зіграти ii–V–I компактними акордовими формами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 106
     moduleID: specializations
     lessonID: jazz-lines
@@ -1203,7 +1204,8 @@ lessons:
       uk: Джазова сольна лінія
     outcomeUK: Пов’язати акордові звуки хроматичними підходами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 107
     moduleID: specializations
     lessonID: fingerstyle-bass-melody
@@ -1232,7 +1234,8 @@ lessons:
       uk: Лади та модальна імпровізація
     outcomeUK: Почути характер ладу відносно тонального центру
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 110
     moduleID: specializations
     lessonID: harmonic-minor
@@ -1241,7 +1244,8 @@ lessons:
       uk: Гармонічний мінор
     outcomeUK: Застосувати характерні інтервали в мелодії та гармонії
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 111
     moduleID: specializations
     lessonID: melodic-minor
@@ -1250,7 +1254,8 @@ lessons:
       uk: Мелодичний мінор
     outcomeUK: Зіграти характерні фрази й розібрати їх застосування
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 112
     moduleID: specializations
     lessonID: tension-resolution
@@ -1259,7 +1264,8 @@ lessons:
       uk: Напруження та розв’язання
     outcomeUK: Свідомо використовувати неакордові ноти й повертатися до опорних
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 113
     moduleID: electric-tone
     lessonID: pickup-volume-tone

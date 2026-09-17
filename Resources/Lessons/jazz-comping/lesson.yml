@@ -1,0 +1,706 @@
+schemaVersion: 3
+id: jazz-comping
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: shell-route
+    kind: events
+    exerciseID: jazz-comping-shell-route
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: shell-route
+  - id: guide-tone-line
+    kind: events
+    exerciseID: jazz-comping-guide-tone-line
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: guide-tone-line
+  - id: separate-shell-tones
+    kind: events
+    exerciseID: jazz-comping-separate-shell-tones
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+    activityID: separate-shell-tones
+  - id: offbeat-comping
+    kind: events
+    exerciseID: jazz-comping-offbeat-comping
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+    activityID: offbeat-comping
+  - id: comping-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: jazz-comping-shell-route
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 4
+            fret: 3
+          - string: 3
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 4
+            fret: 3
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 2
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 2
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: jazz-comping-guide-tone-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: event-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: event-4
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-5
+        startTick: 7680
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: event-6
+        startTick: 9600
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-7
+        startTick: 11520
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: event-8
+        startTick: 13440
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+  - id: jazz-comping-separate-shell-tones
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-10
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: event-11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-12
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-14
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: event-15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-16
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: jazz-comping-offbeat-comping
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 4
+            fret: 3
+          - string: 3
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+          - string: 4
+            fret: 3
+          - string: 3
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 4
+            fret: 3
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 4800
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 4
+            fret: 3
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-10
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 7680
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 2
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-13
+        startTick: 8640
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 2
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-15
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 11520
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 2
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-18
+        startTick: 12480
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-19
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 2
+          - string: 3
+            fret: 4
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-20
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: shell-route
+    source:
+      kind: exercise
+      exerciseID: jazz-comping-shell-route
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: guide-tone-line
+    source:
+      kind: exercise
+      exerciseID: jazz-comping-guide-tone-line
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: separate-shell-tones
+    source:
+      kind: exercise
+      exerciseID: jazz-comping-separate-shell-tones
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: offbeat-comping
+    source:
+      kind: exercise
+      exerciseID: jazz-comping-offbeat-comping
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: shell-route
+    materialID: shell-route
+  - id: guide-tone-line
+    materialID: guide-tone-line
+  - id: separate-shell-tones
+    materialID: separate-shell-tones
+  - id: offbeat-comping
+    materialID: offbeat-comping
+practiceEntries:
+  - id: guide-tone-line
+    activityID: guide-tone-line
+    exerciseID: jazz-comping-guide-tone-line
+  - id: separate-shell-tones
+    activityID: separate-shell-tones
+    exerciseID: jazz-comping-separate-shell-tones
+fingerings: []
+learningTasks:
+  - id: comping-review
+    stepID: comping-review
+    kind: selfPractice
+    itemIDs:
+      - route
+      - guides
+      - space
+      - release
+      - choice
+curriculum:
+  moduleID: specializations
+  ordinal: 105
+  durationMinutes: 35
+  prerequisites:
+    - seventh-chords
+    - voice-leading
+    - chord-change-arpeggios
+  keywords:
+    - 'Jazz comping: connect compact ii–V–I chords'
+    - 'Джазовий акомпанемент: поєднай компактні ii–V–I'
+    - harmony
+    - гармонія
+    - improvisation
+    - імпровізація

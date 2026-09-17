@@ -1,0 +1,69 @@
+lessonID: modal-improvisation
+lessonVersion: 1
+locale: en
+title: 'Modes: hear the center, then the color'
+summary: Compare Dorian and natural minor over the same tonal center.
+goal: Make a short modal phrase that makes its characteristic sixth audible without losing the tonic.
+body: |-
+  A mode is heard through its relationship to a tonal center, not simply by starting a familiar major-scale shape on another fret. Establish the center, return to it and listen to the other degrees against it. This lesson compares Dorian with natural minor on the same tonic. Both have a minor third and minor seventh; Dorian has a major sixth where natural minor has a minor sixth.
+
+  Play the two scales slowly and compare the sixth degree at the same point in each ascent. Do not speed through the distinguishing note just because the fingering feels familiar. Sing or remember the tonic before starting again, then hear the sixth as a distance from that tonic. The concrete sounding names change with tuning, while this degree relationship stays the same.
+
+  The two-bar pedal supplies only a low tonic and a pulse. Listen once, then play a short upper phrase against the repeated reference. Keep the pedal audible enough to retain the center without covering your guitar. This is reference/self-practice, not measured input practice; the low reference is deliberately present. The combined model demonstrates one continuously held bass under changing upper notes, with parentheses identifying the held string.
+
+  Use a small Dorian vocabulary before running the complete scale: tonic, minor third, fifth and major sixth already establish a useful contrast. Let the sixth appear at a deliberate point and return toward the tonic. Then replace it with the minor sixth and compare the result over the same pedal. Keep rhythm and register unchanged so the color difference is easier to hear.
+
+  The exact monophonic scale and phrase can receive pitch/time feedback. Your own modal phrase is a listening decision: a correct scale alone does not prove an established center or an expressive use of its characteristic note. Finish with two short versions, one Dorian and one natural minor, and describe where their color changed. Avoid adding unrelated chord changes until the common center remains clear.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  dorian-scale:
+    title: Minor third, major sixth
+    body: 'Center: {{root}} Dorian. Hear the major sixth on the sixth note of the ascent.'
+  natural-minor-comparison:
+    title: Change only the sixth
+    body: Keep the same tonic and rhythm; the sixth degree is now one semitone lower.
+  tonic-pedal:
+    title: A two-bar tonic pedal
+    body: Loop the low {{root}} tonic as a reference and play short upper ideas against it. Keep the pulse and listen
+      for the sixth-degree contrast; no automatic score is expected.
+  dorian-phrase:
+    title: Make the sixth part of a phrase
+    body: Rise from tonic through minor third and fifth to the major sixth, turn above it and return home.
+  phrase-over-pedal:
+    title: Hear the phrase over one continuous center
+    body: Attack the low tonic once and keep it through all eight upper notes. Parentheses on string 5 mark continuation
+      across the barline as well.
+  modal-review:
+    title: Compare two colors on one center
+    body: Invent two short phrases with the same rhythm and tonic; change the major sixth to minor sixth in the
+      second.
+activities:
+  dorian-scale:
+    title: Minor third, major sixth
+    body: 'Center: {{root}} Dorian. Hear the major sixth on the sixth note of the ascent.'
+  natural-minor-comparison:
+    title: Change only the sixth
+    body: Keep the same tonic and rhythm; the sixth degree is now one semitone lower.
+  tonic-pedal:
+    title: A two-bar tonic pedal
+    body: Loop the low {{root}} tonic as a reference and play short upper ideas against it. Keep the pulse and listen
+      for the sixth-degree contrast; no automatic score is expected.
+  dorian-phrase:
+    title: Make the sixth part of a phrase
+    body: Rise from tonic through minor third and fifth to the major sixth, turn above it and return home.
+  phrase-over-pedal:
+    title: Hear the phrase over one continuous center
+    body: Attack the low tonic once and keep it through all eight upper notes. Parentheses on string 5 mark continuation
+      across the barline as well.
+learningTasks:
+  modal-review:
+    title: Compare two colors on one center
+    body: Invent two short phrases with the same rhythm and tonic; change the major sixth to minor sixth in the
+      second.
+    items:
+      center: I could hear the tonic before and after the phrase.
+      sixth: The characteristic sixth appeared deliberately.
+      compare: I heard the difference without changing rhythm or register.
+      return: Both versions returned clearly to the same center.

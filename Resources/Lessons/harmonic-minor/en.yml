@@ -1,0 +1,65 @@
+lessonID: harmonic-minor
+lessonVersion: 1
+locale: en
+title: 'Harmonic minor: lead back to the tonic'
+summary: Hear the raised seventh, augmented second and major dominant in a minor key.
+goal: Play harmonic-minor phrases that use the leading tone and compare their dominant-to-tonic resolution.
+body: |-
+  Harmonic minor changes the natural-minor seventh into a leading tone one semitone below the tonic. The tonic, minor third and minor sixth remain unchanged. Hear the raised seventh as a directed approach to home rather than an isolated unusual fret. This change also allows a major third in the dominant chord, which makes a strong contrast with the minor tonic.
+
+  Compare the two complete ascents before working on speed. Only one scale degree changes, so preserve every other pitch and the steady quarter-note rhythm. On the harmonic-minor pass, let the penultimate note lead into the final tonic. Check the concrete note names in your current tuning; the same interval structure may now have a different key name.
+
+  The gap between the minor sixth and raised seventh is an augmented second: three semitones, despite its adjacent scale-degree names. Count it carefully instead of smoothing it into a whole step. The characteristic phrase approaches this gap from the fifth, crosses it toward the tonic and returns. Hear both the wide step and the final semitone; their contrast is part of the scale’s sound.
+
+  The chord reference compares a rootless dominant seventh with a minor tonic triad. Follow the leading tone upward by a semitone into the tonic; the other voices also move to chord members. The missing dominant root is a deliberate compact voicing choice. Listen to the chord reference, then play the separate leading-tone exercise so the audible resolution is clear without simultaneous notes.
+
+  Use clean separate notes for graded practice and compare repeated attempts at one tempo. Work on the augmented-second cell if that interval is missed, or the final half-step if the ending drifts. A scale is a vocabulary, not a requirement to fill every phrase with every degree. Finish by making a short minor phrase with one raised seventh leading home; do not hold it indefinitely without deciding what follows.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  natural-minor-reference:
+    title: Remember the unchanged minor degrees
+    body: 'Center: {{root}} minor. Hear the natural seventh before comparing the raised version.'
+  harmonic-minor-scale:
+    title: Raise the seventh by one semitone
+    body: Keep the minor third and sixth. The seventh now leads upward by a half-step into tonic.
+  characteristic-cell:
+    title: Cross the augmented second deliberately
+    body: Hear fifth–minor sixth–leading tone–tonic, then return. The sixth-to-seventh gap spans three semitones.
+  leading-tone-resolution:
+    title: Give the tonic a clear arrival
+    body: Play the leading tone and tonic in two different rhythmic balances, preserving the same semitone resolution.
+  dominant-to-minor:
+    title: A major dominant leads to a minor tonic
+    body: The first shape contains the dominant’s third, fifth and minor seventh; its root is omitted. The second
+      is the full minor tonic triad. Follow the lowest voice upward by a semitone.
+  interval-review:
+    title: Hear the two characteristic distances
+    body: Repeat the characteristic cell, then make one short phrase that resolves its raised seventh to the tonic.
+activities:
+  natural-minor-reference:
+    title: Remember the unchanged minor degrees
+    body: 'Center: {{root}} minor. Hear the natural seventh before comparing the raised version.'
+  harmonic-minor-scale:
+    title: Raise the seventh by one semitone
+    body: Keep the minor third and sixth. The seventh now leads upward by a half-step into tonic.
+  characteristic-cell:
+    title: Cross the augmented second deliberately
+    body: Hear fifth–minor sixth–leading tone–tonic, then return. The sixth-to-seventh gap spans three semitones.
+  leading-tone-resolution:
+    title: Give the tonic a clear arrival
+    body: Play the leading tone and tonic in two different rhythmic balances, preserving the same semitone resolution.
+  dominant-to-minor:
+    title: A major dominant leads to a minor tonic
+    body: The first shape contains the dominant’s third, fifth and minor seventh; its root is omitted. The second
+      is the full minor tonic triad. Follow the lowest voice upward by a semitone.
+learningTasks:
+  interval-review:
+    title: Hear the two characteristic distances
+    body: Repeat the characteristic cell, then make one short phrase that resolves its raised seventh to the tonic.
+    items:
+      sixth: I retained the minor sixth instead of changing to melodic minor.
+      gap: The augmented second covered three semitones.
+      leading: I heard the leading tone resolve by a semitone.
+      harmony: I connected that motion with the dominant-to-minor chord reference.

@@ -117,9 +117,22 @@ import Persistence
         let store = await library()
         for language in [LessonLanguage.en,.uk] {
             let result = LessonFilter(moduleID: "specializations",mode: .selfPractice).results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
-            #expect(result.map(\.id) == ["fingerstyle-bass-melody","chord-melody"])
+            #expect(result.filter { ["fingerstyle-bass-melody","chord-melody"].contains($0.id) }.map(\.id) == ["fingerstyle-bass-melody","chord-melody"])
             let scored = LessonFilter(moduleID: "specializations",mode: .scored).results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
-            #expect(scored.isEmpty)
+            #expect(!scored.contains { ["fingerstyle-bass-melody","chord-melody"].contains($0.id) })
+        }
+    }
+
+    @Test func completeSpecializationsModulePreservesOrderAndGradingBoundaries() async throws {
+        let store = await library()
+        let expected = ["jazz-comping","jazz-lines","fingerstyle-bass-melody","chord-melody","modal-improvisation","harmonic-minor","melodic-minor","tension-resolution"]
+        for language in [LessonLanguage.en,.uk] {
+            let all = LessonFilter(moduleID: "specializations").results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
+            #expect(all.map(\.id) == expected)
+            let scored = LessonFilter(moduleID: "specializations",mode: .scored).results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
+            #expect(scored.map(\.id) == ["jazz-comping","jazz-lines","modal-improvisation","harmonic-minor","melodic-minor"])
+            let search = LessonFilter(query: "Dorian",moduleID: "specializations").results(store.catalogLessons,language: language,progress: ReadingProgress(),modules: store.modules)
+            #expect(search.map(\.id) == ["modal-improvisation"])
         }
     }
 

@@ -120,6 +120,12 @@ lessons:
   - country-chicken-picking
   - fingerstyle-bass-melody
   - chord-melody
+  - jazz-comping
+  - jazz-lines
+  - modal-improvisation
+  - harmonic-minor
+  - melodic-minor
+  - tension-resolution
 modules:
   - id: getting-started
     order: 1

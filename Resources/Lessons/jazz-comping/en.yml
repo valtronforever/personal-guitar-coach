@@ -1,0 +1,64 @@
+lessonID: jazz-comping
+lessonVersion: 1
+locale: en
+title: 'Jazz comping: connect compact ii–V–I chords'
+summary: Hear guide tones, leave space and support a clear harmonic route.
+goal: Connect four bars of compact ii–V–I harmony with deliberate attack placement and releases.
+body: |-
+  Comping is rhythmic and harmonic support for another musical line. Begin with a small voicing rather than a dense six-string grip. This lesson uses root, third and seventh: enough to hear the main chord quality while leaving space for a melody or partner. The fifth is omitted deliberately. Follow a four-bar route with one bar of the minor ii chord, one of dominant V and two of major I.
+
+  Listen to the guide tones inside the shapes. The minor seventh of ii descends by a semitone to the third of V; the third of ii stays as the seventh of V, then descends to the third of I. These small connections explain why the progression can sound coherent even when the roots move farther. Play the guide-tone line slowly, then hear those same notes inside the compact chords.
+
+  Start with one chord attack per bar and a silent final beat. End the entire chord together rather than allowing an old voice to leak into the next harmony. The separated arpeggio practice checks the audible members one at a time. Let the previous note stop before the next one during that measured preparation; it is not a test of simultaneous chord recognition or of which physical string you used.
+
+  The offbeat model gives the same harmony a different placement. Count the empty first eighth, play a short chord on the following offbeat, and keep counting through the written gaps. The second attack arrives on beat three. Do not change chords early just because the first attack is displaced. Compare sparse and offbeat versions at one tempo, then choose which leaves more room for an imagined melody.
+
+  For independent comping, use the four-bar loop with reference tones lowered and retain the metronome. Change only one attack pattern while keeping the chord route and full duration of each bar. Finish a pass by listening for the two semitone guide-tone motions. Assess space, balance and connection yourself; measured single-note pitch and timing do not establish an appropriate accompaniment or a jazz feel.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  shell-route:
+    title: Root, third and seventh
+    body: 'Center: {{root}} major. Play ii7–V7–Imaj7–Imaj7. Each compact voicing omits its fifth and leaves beat
+      4 quiet.'
+  guide-tone-line:
+    title: Follow the two inside voices
+    body: Play two separated guide tones per bar. Notice the upper semitone descent into V and the lower descent
+      into I; stop each note before the next during graded practice.
+  separate-shell-tones:
+    title: Check each chord member separately
+    body: Play root, third and seventh, then one beat of rest in each bar. This is clean monophonic preparation,
+      not an automatic chord test.
+  offbeat-comping:
+    title: Two attacks with room between them
+    body: Attack on the offbeat after beat 1 and on beat 3. Keep the same ii–V–I route and end the final beat silently.
+  comping-review:
+    title: Support an imagined melody
+    body: Compare the sparse and offbeat models, then create one small rhythmic variation without changing harmony.
+activities:
+  shell-route:
+    title: Root, third and seventh
+    body: 'Center: {{root}} major. Play ii7–V7–Imaj7–Imaj7. Each compact voicing omits its fifth and leaves beat
+      4 quiet.'
+  guide-tone-line:
+    title: Follow the two inside voices
+    body: Play two separated guide tones per bar. Notice the upper semitone descent into V and the lower descent
+      into I; stop each note before the next during graded practice.
+  separate-shell-tones:
+    title: Check each chord member separately
+    body: Play root, third and seventh, then one beat of rest in each bar. This is clean monophonic preparation,
+      not an automatic chord test.
+  offbeat-comping:
+    title: Two attacks with room between them
+    body: Attack on the offbeat after beat 1 and on beat 3. Keep the same ii–V–I route and end the final beat silently.
+learningTasks:
+  comping-review:
+    title: Support an imagined melody
+    body: Compare the sparse and offbeat models, then create one small rhythmic variation without changing harmony.
+    items:
+      route: I retained one bar of ii, one of V and two of I.
+      guides: I heard the two semitone guide-tone connections.
+      space: I left the planned spaces instead of filling every beat.
+      release: Each chord ended before the following harmony.
+      choice: My variation changed attack placement while preserving the progression.

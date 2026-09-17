@@ -1,0 +1,66 @@
+lessonID: jazz-lines
+lessonVersion: 1
+locale: en
+title: 'Jazz lines: approach and connect chord tones'
+summary: Make chromatic notes lead to planned targets across ii–V–I.
+goal: Play a four-bar line with clear chord-tone arrivals, chromatic approaches and an intentional ending.
+body: |-
+  A chromatic note becomes useful when you know where it is going. Begin with a target from the current chord, hear it clearly, and approach it from a nearby pitch. The arrival matters more than collecting outside notes. This lesson follows one bar of ii, one of V and two of I in a major center. The examples are original straight-eighth preparations; they do not require a hidden backing track or claim to reproduce every jazz articulation.
+
+  The target map first places the third of ii, the third of V, the third of I and the tonic into separate bars. Play those notes long enough to remember their role, then count the silent final beat. Add the approach only after you can hear the destination in advance. A half-step below or above can provide motion without becoming a new tonal center.
+
+  Compare the one-note approaches with the two-note enclosures. In an enclosure, pitches on opposite sides surround a target before it arrives. One side may belong to the key while the other is chromatic; the two distances need not match. Keep the short approach notes inside their written slots and give the target its complete duration. Rushing the approach changes the rhythm even if the final pitch is correct.
+
+  The complete line connects the chord areas with eighth notes. Read one bar at a time, name a stable arrival and identify the nearby chromatic motion. The second bar ends on the third of the dominant and the next begins on the tonic. In the third bar, a note above the high tonic descends chromatically into it. Hear those destinations rather than treating every fret as equally important.
+
+  Play the exact line cleanly for pitch and timing feedback, then invent a shorter answer using one of its approaches. Preserve the four-bar route and leave a deliberate gap. The exact-note exercise and your improvised answer have different purposes: the app can check the written monophonic targets, while harmonic intention, articulation and phrase quality remain your listening decisions. Change one approach at a time so you can explain what the new version does.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  target-map:
+    title: Hear the planned arrivals
+    body: 'Center: {{root}} major. Hear the third of ii, third of V, third of I and tonic, one target per bar.'
+  half-step-approaches:
+    title: Approach from a half-step away
+    body: Use the first eighth as an approach and the next dotted quarter as the target. Keep two quiet beats after
+      each cell.
+  enclosures:
+    title: Surround the target from two sides
+    body: The first enclosure arrives on the tonic chord’s third; the second on the dominant’s third. The short
+      notes lead into, rather than replace, each target.
+  four-bar-line:
+    title: Connect four bars of ii–V–I
+    body: Use one bar for ii, one for V and two for I. Hear the dominant third lead to tonic at bar 3, and the final
+      approach close the phrase.
+  line-review:
+    title: Keep a target when changing the line
+    body: Create a shorter four-bar answer with one approach and one intentional gap. Compare the destination and
+      rhythm with the written model.
+activities:
+  target-map:
+    title: Hear the planned arrivals
+    body: 'Center: {{root}} major. Hear the third of ii, third of V, third of I and tonic, one target per bar.'
+  half-step-approaches:
+    title: Approach from a half-step away
+    body: Use the first eighth as an approach and the next dotted quarter as the target. Keep two quiet beats after
+      each cell.
+  enclosures:
+    title: Surround the target from two sides
+    body: The first enclosure arrives on the tonic chord’s third; the second on the dominant’s third. The short
+      notes lead into, rather than replace, each target.
+  four-bar-line:
+    title: Connect four bars of ii–V–I
+    body: Use one bar for ii, one for V and two for I. Hear the dominant third lead to tonic at bar 3, and the final
+      approach close the phrase.
+learningTasks:
+  line-review:
+    title: Keep a target when changing the line
+    body: Create a shorter four-bar answer with one approach and one intentional gap. Compare the destination and
+      rhythm with the written model.
+    items:
+      target: I could name and hear the target before its approach.
+      time: The target arrived in its planned rhythmic slot.
+      route: My answer retained the ii–V–I four-bar route.
+      space: I included a deliberate gap rather than continuous scale motion.
+      change: I could explain which approach I changed and why.

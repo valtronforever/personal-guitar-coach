@@ -1,0 +1,712 @@
+schemaVersion: 3
+id: jazz-lines
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: target-map
+    kind: events
+    exerciseID: jazz-lines-target-map
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: target-map
+  - id: half-step-approaches
+    kind: events
+    exerciseID: jazz-lines-half-step-approaches
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+    activityID: half-step-approaches
+  - id: enclosures
+    kind: events
+    exerciseID: jazz-lines-enclosures
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: enclosures
+  - id: four-bar-line
+    kind: events
+    exerciseID: jazz-lines-four-bar-line
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+    activityID: four-bar-line
+  - id: line-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: jazz-lines-target-map
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-6
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-8
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: jazz-lines-half-step-approaches
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-2
+        startTick: 480
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-3
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 4320
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-6
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-8
+        startTick: 8160
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-9
+        startTick: 9600
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-10
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 6
+      - id: event-11
+        startTick: 12000
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-12
+        startTick: 13440
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: jazz-lines-enclosures
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-4
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+      - id: event-6
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-7
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-8
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: jazz-lines-four-bar-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: event-6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-9
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-10
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 9
+      - id: event-11
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-12
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-13
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-14
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 6
+      - id: event-15
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-16
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-17
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-18
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-19
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-20
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-21
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 10
+      - id: event-22
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 9
+      - id: event-23
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: event-24
+        startTick: 11040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-25
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: event-26
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-27
+        startTick: 12480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-28
+        startTick: 12960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-29
+        startTick: 13440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-30
+        startTick: 13920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-31
+        startTick: 14400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: event-32
+        startTick: 14880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: target-map
+    source:
+      kind: exercise
+      exerciseID: jazz-lines-target-map
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: half-step-approaches
+    source:
+      kind: exercise
+      exerciseID: jazz-lines-half-step-approaches
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: enclosures
+    source:
+      kind: exercise
+      exerciseID: jazz-lines-enclosures
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: four-bar-line
+    source:
+      kind: exercise
+      exerciseID: jazz-lines-four-bar-line
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: target-map
+    materialID: target-map
+  - id: half-step-approaches
+    materialID: half-step-approaches
+  - id: enclosures
+    materialID: enclosures
+  - id: four-bar-line
+    materialID: four-bar-line
+practiceEntries:
+  - id: target-map
+    activityID: target-map
+    exerciseID: jazz-lines-target-map
+  - id: half-step-approaches
+    activityID: half-step-approaches
+    exerciseID: jazz-lines-half-step-approaches
+  - id: enclosures
+    activityID: enclosures
+    exerciseID: jazz-lines-enclosures
+  - id: four-bar-line
+    activityID: four-bar-line
+    exerciseID: jazz-lines-four-bar-line
+fingerings: []
+learningTasks:
+  - id: line-review
+    stepID: line-review
+    kind: selfPractice
+    itemIDs:
+      - target
+      - time
+      - route
+      - space
+      - change
+curriculum:
+  moduleID: specializations
+  ordinal: 106
+  durationMinutes: 35
+  prerequisites:
+    - jazz-comping
+    - chord-tone-targeting
+    - first-frets
+  keywords:
+    - 'Jazz lines: approach and connect chord tones'
+    - 'Джазові лінії: наближайся до акордових звуків'
+    - harmony
+    - гармонія
+    - improvisation
+    - імпровізація
