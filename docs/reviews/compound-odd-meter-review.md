@@ -21,3 +21,7 @@
 ## Remaining acceptance
 
 All 269 Core tests pass explicitly serially: 23 Persistence (0.054 s), 104 Learning (82.484 s), 42 Domain (0.017 s), 94 Audio (286.629 s), 6 AgentBridge (1.604 s). Signed local Release/archive validates 75 bundles /226 YAML files (`docs/benchmarks/compound-odd-meter-release-bundle.json`). Binary SHA256 `237ae665385163fbaa4f9a935063cff012a8d647edb55ea4633cbceb1779be97`; archive SHA256 `f3e8defdb66a6b92501257742e59f265f28b5f0a95c57ebd0122ab098462670b`. The signed sandbox-to-separate-XPC invalid-request probe passes with no provider call. Native launch is not verified; exact-head CI remains pending. Native/hardware acceptance remains pending_user in USER-VALIDATION.md; no real instrument performance is inferred from synthetic schedule, assessment fixtures or offline images. Remaining lead articulations and later curriculum modules are still open.
+
+### CI compiler follow-up
+
+The first exact-head CI run (35170242764) failed during compilation: its Swift compiler could not type-check the combined synthetic attack-onset expression in `MeterAssessmentTests` within its expression budget. Split expected onset, calibration offset and final-note error into explicit Double values and typed the attack array. No expectations or tolerances changed. The local targeted MeterAssessmentTests run passes (1 test, 0.007 s); the new commit requires a fresh exact-head CI run. This is test-only, so the archived Release payload above remains applicable.

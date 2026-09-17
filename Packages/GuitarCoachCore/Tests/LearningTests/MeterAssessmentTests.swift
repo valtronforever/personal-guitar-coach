@@ -18,8 +18,11 @@ struct MeterAssessmentTests {
             let barSeconds = Double(count)*seconds
             #expect(abs(config.durationSeconds-barSeconds)<1e-12 && abs(config.countInSeconds-barSeconds)<1e-12)
             for late in [false,true] {
-                let attacks = try (0..<count).map { i in
-                    try PracticeAttack(id:UInt64(i+1),normalizedOnset:100+barSeconds+Double(i)*seconds+0.12+(late && i==count-1 ? 0.15 : 0),frequency:261.6255653005986,clarity:0.98,reliable:true)
+                let attacks: [PracticeAttack] = try (0..<count).map { i in
+                    let timingError: Double = late && i == count - 1 ? 0.15 : 0
+                    let expectedOnset: Double = 100 + barSeconds + Double(i) * seconds
+                    let observedOnset: Double = expectedOnset + 0.12 + timingError
+                    return try PracticeAttack(id:UInt64(i+1),normalizedOnset:observedOnset,frequency:261.6255653005986,clarity:0.98,reliable:true)
                 }
                 let evidence = try PracticeEvidence(id:UUID(),configuration:config,startedAt:Date(timeIntervalSince1970:1),finishedAt:Date(timeIntervalSince1970:30),phase:.completed,reason:nil,signalConfirmed:true,renderEpochSeconds:100,maximumClockDriftSeconds:0,attacks:attacks,clipping:[],analysisVersion:"fixture")
                 let result = try AssessmentEngine.evaluate(evidence)
