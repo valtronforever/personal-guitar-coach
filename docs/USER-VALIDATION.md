@@ -245,6 +245,6 @@ Independent-musician course (121–128) — pending_user:
 Rapid fixed-note rhythm assessment — pending_user:
 
 - In tremolo picking, try `fast-short` and `fast-long` using a clean fretted note, first slowly then up to 100 BPM; confirm that the displayed contract says rhythm only and no pitch score/cents appear in results/history/coach context.
-- Check the expected calibration boundary: a rough manual setting can allow approximate slow timing while correctly withholding the high-speed score. Refine synchronization or reduce tempo; do not treat an unavailable score as a pass.
+- Check the expected calibration boundary: a rough manual setting can allow approximate slow timing while correctly withholding the high-speed score. An uncalibrated rhythm-only result must show raw captured attacks and neutral calibration/retry guidance, without missed/extra/rest error counts or musical-error advice. Refine synchronization or reduce tempo; do not treat an unavailable score as a pass.
 - With the actual interface, compare consistent bursts, deliberately missed/extra/uneven attacks, count-in playing, attacks in the recovery rest, weaker envelopes, background noise and clipping. Retain screenshots/recordings as explicit opt-in evidence. Synthetic tests do not establish real-guitar onset accuracy.
 - Reopen the saved attempt, retry its frozen tuning/tempo/range, switch en/uk/light/dark, and check keyboard/VoiceOver announcements. Existing monophonic practice must retain its pitch score; the final changing-pitch tremolo study remains self-practice.

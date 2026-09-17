@@ -200,7 +200,7 @@ struct ResultDetailView: View {
                             } else { Text("assessment.sustainUnavailable") }
                         }
                     }
-                    if event.kind == .rest && config.range.contains(event.startTick) {
+                    if !ResultPresentation.hasUnassessedRhythm(result) && event.kind == .rest && config.range.contains(event.startTick) {
                         Text("result.restAttacks \(result.scoredExtras.filter { $0.restID == id }.count)")
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)

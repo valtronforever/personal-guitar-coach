@@ -1,6 +1,6 @@
 # Electric styles — same-agent review
 
-Implementing-agent review, not independent. Status: `in_progress` pending final delivery; actual native/guitar acceptance stays open.
+Implementing-agent review, not independent. Status: `pending_user`; software delivery/merge evidence is recorded below. Actual native/guitar acceptance stays open.
 
 Seven bilingual lessons complete topics 97–104 around the existing funk study: blues accompaniment/solo, classic rock, punk/hardcore, metal, R&B/neo-soul and country. Their 29 activities use the existing reference, notation and self-practice contracts. No production DSP, callback, dependency or assessment capability changed. All are explicitly displayOnly; neither chord voicing nor expressive/physical quality receives a fabricated score.
 

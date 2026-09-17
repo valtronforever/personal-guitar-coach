@@ -1,6 +1,6 @@
 # Jazz and modal specialization course — same-agent review
 
-Implementing-agent review, not independent. Status: `in_progress`, actual native/guitar acceptance remains open.
+Implementing-agent review, not independent. Status: `pending_user`, actual native/guitar acceptance remains open.
 
 Six bilingual lessons complete specialization topics 105–112 around existing fingerstyle/chord melody: ii–V–I comping, chromatic jazz lines, Dorian versus natural minor, harmonic minor, melodic-minor conventions and tension/resolution. There are 27 new activities (18 graded monophonic, nine display-only references) with distinct examples and self-review. No production/DSP/dependency change is needed beyond the held-voice parent extension.
 

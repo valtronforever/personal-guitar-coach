@@ -1,6 +1,6 @@
 # Full electric-guitar curriculum and library UX
 
-Status: `in_progress`
+Status: `pending_user`
 
 ## Authorized objective
 
@@ -8,12 +8,14 @@ Implement all 128 lessons from [the original agreed table](../../docs/CURRICULUM
 
 ## Delivery and audit
 
-1. **Curriculum/library foundation + modules 1–2** — authored; full acceptance audit pending. Stable 16-module organization, ordering, prerequisites/duration, reading progress, continue, combined search/filter/sort, lesson navigation. Preserve exact 128-topic inventory in a coverage ledger.
-2. **Modules 3–6** — authored; native/hardware acceptance remains open. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
-3. **Modules 7–10** — authored. Picking/synchronization, slides/hammer-ons/pull-offs, bends/returns/vibrato, scales/positions, complete advanced rhythm and harmony are implemented with their specific software contracts and stage reviews. Native/hardware acceptance remains pending_user.
-4. **Modules 11–14** — authored. Hidden listen/reproduce, guided improvisation, legato chains/tapping, harmonics, advanced picking, muted attacks, electric styles and jazz/modal/held-voice studies have implementation and stage evidence. PRs 93–95 merged after exact-head CI; native/hardware acceptance remains pending_user.
-5. **Modules 15–16** — authored. Electric-sound studies, original repertoire/composition/ensemble-role work, complete eight-bar performance, explicit ungraded recording and personal practice cycle are implemented. Self-practice recording PR 96 and the final module still need their remaining CI/delivery checks; actual file-picker/player/guitar evidence remains pending_user.
-6. **Full acceptance audit** — open. 128-topic mapping, bilingual/content/musical review, all presets/fret counts, functionality-specific DSP/notation/transport checks, library/filter/reader tests and rendered UX evidence, signed Release, review/PR/merge. Hardware-dependent proof stays explicitly pending_user and never becomes fabricated success.
+All128 agreed topics are authored and locally verified, with the required bounded lesson/audio extensions. The final closeout PR is gated by exact-head CI; this `pending_user` status applies to the merged software delivery, with the checks below remaining open.
+
+-128 visible lessons in16 modules;764 steps,389 exercises,424 activities,251 graded entries,173 learning tasks and12 explicit self-practice recording activities. Six historical aliases remain readable without duplicating the library.
+- All128 coverage rows retain the original outcome/assessment designation, a checked-in editorial/software review and `acceptance: pending_user`. All21 Р topics identify their implemented capabilities. Strict complete inventory passes; this is not a physical-guitar or pedagogical-effectiveness certificate.
+- Whole-course matrix passed for8 tuning presets ×5 fret counts:16,960 reachable localized activity contexts and10,040 minimum/default-tempo practice contexts. Specific stage tests independently check notes, rhythm, expressive paths and maximum tempos.
+- Library groups, advisory prerequisites, continuation, bilingual search, combined filters/sorting and separate read/self/measured progress are implemented. Detailed evidence and scope limits: [final acceptance review](../../docs/reviews/full-curriculum-acceptance-review.md).
+- Root Release contains134 bundles/403 YAML resources and951 UI keys; ad-hoc signature/archive and sandbox→XPC checks pass. No local Debug app or provider call. The preceding full App199 tests pass; final feedback regression/all-course flow5 tests pass after the added calibration guard. [Final rebuilt bundle](../../docs/benchmarks/full-curriculum-release-bundle.json) records the delivered Release hashes. Final delivery requires passing current-head CI for the rapid extension and this audit before merge.
+- Actual interfaces/guitar/monitor delay, recording file picker/player, minimum-window/reader/language/theme/VoiceOver checks stay explicitly [pending user validation](../../docs/USER-VALIDATION.md). The computer-use service failed during native inspection; those checks were not replaced with fake visual success.
 
 ## UX decisions
 
@@ -118,3 +120,6 @@ Specializations105–112 are authored: jazz comping/lines, fingerstyle/chord mel
 
 
 Final audit finding (2026-09-17): topic 96's fast tremolo portion is still display-only under the 0.2s ordinary note limit. Although its moderate-speed preparation is correctly graded, the accepted Р capability cannot be closed solely by counting this authored lesson. [Rapid rhythm assessment](rapid-rhythm-assessment.md) is now in_progress to evaluate rapid repeated attacks with a separate honest timing contract. The original fast-reference/self-practice content stays available; no per-attack pitch or physical-technique success is fabricated. Full 128-topic acceptance remains open.
+
+
+Final software closeout: [acceptance review](../../docs/reviews/full-curriculum-acceptance-review.md) supersedes the historical stage-progress counts below/above. Rapid fixed-note rhythm assessment closes the remaining topic96 software gap; conservative100 BPM sixteenths and calibration limits are explicit. Native/hardware acceptance remains pending_user.

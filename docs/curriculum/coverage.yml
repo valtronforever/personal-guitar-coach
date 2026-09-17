@@ -138,8 +138,9 @@ lessons:
       uk: Будова електрогітари
     outcomeUK: Знайти струни, лади, бридж, звукознімачі та органи керування
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 2
     moduleID: getting-started
     lessonID: guitar-foundations
@@ -148,8 +149,9 @@ lessons:
       uk: Положення гітари сидячи та стоячи
     outcomeUK: Налаштувати ремінь і зручне положення інструменту
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Expanded seated/standing posture lesson; preserves original stable task IDs.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 3
     moduleID: getting-started
     lessonID: pick-grip
@@ -158,8 +160,9 @@ lessons:
       uk: Як тримати медіатор
     outcomeUK: Знайти стабільний хват і невелику амплітуду руху
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 4
     moduleID: getting-started
     lessonID: signal-chain
@@ -168,8 +171,9 @@ lessons:
       uk: Гітара, інтерфейс, підсилювач і навушники
     outcomeUK: Зібрати та зрозуміти свій сигнальний ланцюг
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 5
     moduleID: getting-started
     lessonID: clean-input
@@ -178,8 +182,9 @@ lessons:
       uk: Чистий вхід і рівень сигналу
     outcomeUK: Виставити gain без кліпінгу та зайвого шуму
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 6
     moduleID: getting-started
     lessonID: tune-six-strings
@@ -188,8 +193,9 @@ lessons:
       uk: Налаштування гітари тюнером
     outcomeUK: Налаштувати всі шість струн обраного строю
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 7
     moduleID: getting-started
     lessonID: standard-and-drop
@@ -198,10 +204,11 @@ lessons:
       uk: 'Standard і Drop: у чому різниця'
     outcomeUK: Зрозуміти зміну інтервалів та аплікатур
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: >-
       Version 2 adds scored practice across eight presets and five neck lengths; see docs/reviews/low-register-practice-review.md.
       Full curriculum acceptance remains pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 8
     moduleID: getting-started
     lessonID: practice-preparation
@@ -210,8 +217,9 @@ lessons:
       uk: Підготовка до практики
     outcomeUK: Перевірити стрій, метроном, затримку та вхід
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 9
     moduleID: first-notes
     lessonID: open-strings-intro
@@ -220,8 +228,9 @@ lessons:
       uk: Відкриті струни
     outcomeUK: Знаходити потрібну струну та грати її окремо
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: Existing reviewed starter content; musical events and content versions preserved.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 10
     moduleID: first-notes
     lessonID: first-frets
@@ -230,8 +239,9 @@ lessons:
       uk: Перші лади
     outcomeUK: Зіграти коротку хроматичну послідовність
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: Existing reviewed starter content; musical events and content versions preserved.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 11
     moduleID: first-notes
     lessonID: clean-fretted-note
@@ -240,8 +250,9 @@ lessons:
       uk: Чиста затиснута нота
     outcomeUK: Підібрати положення пальця й достатній тиск
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 12
     moduleID: first-notes
     lessonID: down-up-strokes
@@ -250,8 +261,9 @@ lessons:
       uk: Удари медіатором вниз і вгору
     outcomeUK: Зіграти прості послідовності обома напрямками
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 13
     moduleID: first-notes
     lessonID: adjacent-strings
@@ -260,8 +272,9 @@ lessons:
       uk: Перехід між сусідніми струнами
     outcomeUK: Потрапляти медіатором у потрібну струну
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 14
     moduleID: first-notes
     lessonID: stop-a-note
@@ -270,8 +283,9 @@ lessons:
       uk: Як зупинити звучання ноти
     outcomeUK: Відокремлювати ноти й прибирати небажане звучання
     originalAssessment: С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 15
     moduleID: first-notes
     lessonID: reading-tab
@@ -280,8 +294,9 @@ lessons:
       uk: Як читати TAB
     outcomeUK: Зіставляти номер струни, лад і послідовність нот
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 16
     moduleID: first-notes
     lessonID: first-melody
@@ -290,8 +305,9 @@ lessons:
       uk: Перша мелодія
     outcomeUK: Зіграти короткий завершений твір на двох струнах
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: Module 1–2 editorial and software acceptance pending.
+    reviewPath: docs/reviews/full-curriculum-stage-1-review.md
   - number: 17
     moduleID: basic-rhythm
     lessonID: steady-pulse
@@ -300,8 +316,9 @@ lessons:
       uk: Рівний пульс
     outcomeUK: Грати четверті під метроном
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: Expanded pulse/counting and feedback guidance in both languages; existing musical versions preserved.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 18
     moduleID: basic-rhythm
     lessonID: eighth-notes
@@ -310,10 +327,11 @@ lessons:
       uk: Восьмі ноти
     outcomeUK: Утримувати два рівні звуки на долю
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: >-
       Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
       acceptance remains pending.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 19
     moduleID: basic-rhythm
     lessonID: rhythm-rests
@@ -322,10 +340,11 @@ lessons:
       uk: Паузи та точний початок після паузи
     outcomeUK: Зберігати внутрішній рахунок під час мовчання
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: >-
       Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
       acceptance remains pending.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 20
     moduleID: basic-rhythm
     lessonID: slow-sixteenths
@@ -334,10 +353,11 @@ lessons:
       uk: Шістнадцяті в повільному темпі
     outcomeUK: Рахувати й грати чотири поділи долі
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: >-
       Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
       acceptance remains pending.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 21
     moduleID: basic-rhythm
     lessonID: beat-accents
@@ -346,10 +366,11 @@ lessons:
       uk: Сильні долі та акценти
     outcomeUK: Змінювати акценти, зберігаючи пульс
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: >-
       Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
       acceptance remains pending.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 22
     moduleID: basic-rhythm
     lessonID: dotted-tied-notes
@@ -358,10 +379,13 @@ lessons:
       uk: 'Подовження нот: крапка й ліга'
     outcomeUK: Читати та виконувати довгі й зв’язані тривалості
     originalAssessment: Р
-    status: authored
+    status: verified
     evidence: >-
       Bilingual worked examples and sustain practice; software evidence in docs/reviews/rhythm-duration-review.md.
       Full course acceptance remains pending.
+    reviewPath: docs/reviews/rhythm-duration-review.md
+    capabilities:
+      - tied-duration-and-stable-pitch-sustain
   - number: 23
     moduleID: basic-rhythm
     lessonID: simple-meters
@@ -370,10 +394,11 @@ lessons:
       uk: Розміри 4/4 та 3/4
     outcomeUK: Відчувати початок такту й різне групування долей
     originalAssessment: Н
-    status: authored
+    status: verified
     evidence: >-
       Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
       acceptance remains pending.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 24
     moduleID: basic-rhythm
     lessonID: first-rhythm-study
@@ -382,10 +407,11 @@ lessons:
       uk: Перший ритмічний етюд
     outcomeUK: Зіграти вісім тактів із нотами та паузами
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: >-
       Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
       acceptance remains pending.
+    reviewPath: docs/reviews/basic-rhythm-review.md
   - number: 25
     moduleID: first-chords
     lessonID: minor-chord-shapes
@@ -394,8 +420,9 @@ lessons:
       uk: Прості мінорні акорди
     outcomeUK: Зібрати кілька форм і перевірити кожну струну
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Chord forms and separated-note practice authored; interval/tuning/editorial acceptance pending.
+    reviewPath: docs/reviews/first-chord-forms-review.md
   - number: 26
     moduleID: first-chords
     lessonID: major-chord-shapes
@@ -404,8 +431,9 @@ lessons:
       uk: Прості мажорні акорди
     outcomeUK: Порівняти мажорне та мінорне звучання
     originalAssessment: Н+С
-    status: authored
+    status: verified
     evidence: Chord forms and separated-note practice authored; interval/tuning/editorial acceptance pending.
+    reviewPath: docs/reviews/first-chord-forms-review.md
   - number: 27
     moduleID: first-chords
     lessonID: two-chord-changes
@@ -414,8 +442,9 @@ lessons:
       uk: Зміна двох акордів
     outcomeUK: Переставляти пальці без зупинки пульсу
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/first-accompaniment-review.md
   - number: 28
     moduleID: first-chords
     lessonID: down-up-strumming
@@ -424,8 +453,9 @@ lessons:
       uk: Базовий бій вниз–вгору
     outcomeUK: Зіграти рівний акомпанемент
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/strum-reference-review.md
   - number: 29
     moduleID: first-chords
     lessonID: chord-string-selection
@@ -434,8 +464,9 @@ lessons:
       uk: Які струни мають звучати в акорді
     outcomeUK: Уникати зайвих басових і відкритих струн
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/first-accompaniment-review.md
   - number: 30
     moduleID: first-chords
     lessonID: em-arpeggio
@@ -444,8 +475,9 @@ lessons:
       uk: Від акорду до окремих нот
     outcomeUK: Зіграти форму акорду як послідовне арпеджіо
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/first-accompaniment-review.md
   - number: 31
     moduleID: first-chords
     lessonID: small-barre
@@ -454,8 +486,9 @@ lessons:
       uk: Перше мале баре
     outcomeUK: Затиснути кілька струн одним пальцем
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/first-accompaniment-review.md
   - number: 32
     moduleID: first-chords
     lessonID: first-song-form
@@ -464,8 +497,9 @@ lessons:
       uk: Перша пісенна форма
     outcomeUK: Зіграти куплет і приспів із простих акордів
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/first-accompaniment-review.md
   - number: 33
     moduleID: rock-rhythm
     lessonID: power-chord-self-practice
@@ -474,8 +508,9 @@ lessons:
       uk: 'Power chord: основний тон і квінта'
     outcomeUK: Будувати двозвучні форми від різних нот
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/open-bass-anchor-review.md
   - number: 34
     moduleID: rock-rhythm
     lessonID: moving-power-chords
@@ -484,8 +519,9 @@ lessons:
       uk: Переміщення power chords
     outcomeUK: Зіграти послідовність без зайвого шуму
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rock-rhythm-review.md
   - number: 35
     moduleID: rock-rhythm
     lessonID: palm-muting
@@ -494,8 +530,9 @@ lessons:
       uk: Palm muting
     outcomeUK: Керувати ступенем приглушення біля бриджа
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rock-rhythm-review.md
   - number: 36
     moduleID: rock-rhythm
     lessonID: fretting-hand-muting
@@ -504,8 +541,9 @@ lessons:
       uk: Глушіння лівою рукою
     outcomeUK: Зупиняти акорди й контролювати паузи
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rock-rhythm-review.md
   - number: 37
     moduleID: rock-rhythm
     lessonID: two-hand-muting
@@ -514,8 +552,9 @@ lessons:
       uk: Глушіння обома руками
     outcomeUK: Прибирати резонанс сусідніх струн
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rock-rhythm-review.md
   - number: 38
     moduleID: rock-rhythm
     lessonID: pedal-tone-riffs
@@ -524,8 +563,9 @@ lessons:
       uk: Риф із педальним тоном
     outcomeUK: Чергувати повторювану басову ноту з іншими нотами
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rock-rhythm-review.md
   - number: 39
     moduleID: rock-rhythm
     lessonID: drop-tuning-riffs
@@ -534,8 +574,9 @@ lessons:
       uk: Рифи в Drop-строї
     outcomeUK: Використовувати характерні форми та відкриту нижню струну
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/open-bass-anchor-review.md
   - number: 40
     moduleID: rock-rhythm
     lessonID: first-overdriven-riff
@@ -544,8 +585,9 @@ lessons:
       uk: Перший риф із перевантаженням
     outcomeUK: Поєднати power chords, паузи та palm muting
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rock-rhythm-review.md
   - number: 41
     moduleID: fretboard-theory
     lessonID: fretboard-note-names
@@ -554,8 +596,9 @@ lessons:
       uk: Назви нот на грифі
     outcomeUK: Знаходити задані ноти без прив’язки до одного строю
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 42
     moduleID: fretboard-theory
     lessonID: octaves
@@ -564,8 +607,9 @@ lessons:
       uk: Октави
     outcomeUK: Знаходити ту саму ноту в різних октавах
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 43
     moduleID: fretboard-theory
     lessonID: intervals
@@ -574,8 +618,9 @@ lessons:
       uk: Інтервали на одній і кількох струнах
     outcomeUK: Зіграти секунди, терції, кварти, квінти та октави
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 44
     moduleID: fretboard-theory
     lessonID: tonic-and-degrees
@@ -584,8 +629,9 @@ lessons:
       uk: Тоніка та ступені
     outcomeUK: Розуміти роль ноти щодо тонального центру
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 45
     moduleID: fretboard-theory
     lessonID: building-triads
@@ -594,8 +640,9 @@ lessons:
       uk: Як із нот утворюється тризвук
     outcomeUK: Побудувати мажорний і мінорний акорди
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 46
     moduleID: fretboard-theory
     lessonID: transpose-a-melody
@@ -604,8 +651,9 @@ lessons:
       uk: Перенесення музики в іншу тональність
     outcomeUK: Транспонувати просту мелодію або риф
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 47
     moduleID: fretboard-theory
     lessonID: fingering-key-tuning
@@ -614,8 +662,9 @@ lessons:
       uk: Аплікатура, тональність і стрій
     outcomeUK: Порівняти результат у Standard та Drop
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 48
     moduleID: fretboard-theory
     lessonID: fretboard-map
@@ -624,8 +673,9 @@ lessons:
       uk: Карта грифа
     outcomeUK: Знайти задані ноти кількома способами
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/fretboard-theory-review.md
   - number: 49
     moduleID: lead-foundations
     lessonID: alternate-picking
@@ -634,8 +684,9 @@ lessons:
       uk: Змінний штрих — alternate picking
     outcomeUK: Утримувати послідовне чергування вниз–вгору
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/picking-directions-review.md
   - number: 50
     moduleID: lead-foundations
     lessonID: hand-synchronization
@@ -644,8 +695,9 @@ lessons:
       uk: Синхронізація обох рук
     outcomeUK: Зіграти рівну послідовність без зайвих атак
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/picking-directions-review.md
   - number: 51
     moduleID: lead-foundations
     lessonID: slides
@@ -654,8 +706,11 @@ lessons:
       uk: Slide
     outcomeUK: Переміщуватися між нотами ковзанням
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/pitch-transitions-review.md
+    capabilities:
+      - timed-slide-pitch-transition
   - number: 52
     moduleID: lead-foundations
     lessonID: hammer-ons
@@ -664,8 +719,11 @@ lessons:
       uk: Hammer-on
     outcomeUK: Отримувати наступну ноту ударом пальця
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/pitch-transitions-review.md
+    capabilities:
+      - timed-hammer-on-pitch-transition
   - number: 53
     moduleID: lead-foundations
     lessonID: pull-offs
@@ -674,8 +732,11 @@ lessons:
       uk: Pull-off
     outcomeUK: Отримувати нижчу ноту контрольованим зняттям пальця
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/pitch-transitions-review.md
+    capabilities:
+      - timed-pull-off-pitch-transition
   - number: 54
     moduleID: lead-foundations
     lessonID: first-bend
@@ -684,8 +745,11 @@ lessons:
       uk: Перший bend
     outcomeUK: Підтягувати струну до заданої висоти
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/bend-assessment-review.md
+    capabilities:
+      - timed-bend-target
   - number: 55
     moduleID: lead-foundations
     lessonID: bend-target-and-release
@@ -694,8 +758,11 @@ lessons:
       uk: Точність bend і повернення ноти
     outcomeUK: Порівнювати підтягування з еталонною нотою
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/bend-assessment-review.md
+    capabilities:
+      - timed-bend-release-and-return
   - number: 56
     moduleID: lead-foundations
     lessonID: vibrato
@@ -704,8 +771,11 @@ lessons:
       uk: Vibrato
     outcomeUK: Керувати шириною й швидкістю коливання висоти
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/vibrato-review.md
+    capabilities:
+      - vibrato-contour-width-rate-and-return
   - number: 57
     moduleID: scales-positions
     lessonID: c-major
@@ -714,8 +784,9 @@ lessons:
       uk: Мажорна гама
     outcomeUK: Зіграти гаму та розпізнавати її ступені
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 58
     moduleID: scales-positions
     lessonID: natural-minor
@@ -724,8 +795,9 @@ lessons:
       uk: Натуральний мінор
     outcomeUK: Порівняти його будову з мажором
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 59
     moduleID: scales-positions
     lessonID: a-minor-pentatonic
@@ -734,8 +806,9 @@ lessons:
       uk: Мінорна пентатоніка
     outcomeUK: Зіграти основну позицію в обраній тональності
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 60
     moduleID: scales-positions
     lessonID: major-pentatonic
@@ -744,8 +817,9 @@ lessons:
       uk: Мажорна пентатоніка
     outcomeUK: Застосувати інше групування п’яти нот
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 61
     moduleID: scales-positions
     lessonID: blues-scale
@@ -754,8 +828,9 @@ lessons:
       uk: Блюзова гама
     outcomeUK: Додати блюзову ноту до пентатоніки
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 62
     moduleID: scales-positions
     lessonID: connect-scale-positions
@@ -764,8 +839,9 @@ lessons:
       uk: З’єднання сусідніх позицій
     outcomeUK: Грати фрази за межами одного «боксу»
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 63
     moduleID: scales-positions
     lessonID: same-notes-new-position
@@ -774,8 +850,9 @@ lessons:
       uk: Ті самі ноти в іншій позиції
     outcomeUK: Перенести аплікатуру зі збереженням тональності
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 64
     moduleID: scales-positions
     lessonID: scale-sequences
@@ -784,8 +861,9 @@ lessons:
       uk: Послідовності всередині гами
     outcomeUK: Грати групами по три, чотири та через ступінь
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/scale-position-course-review.md
   - number: 65
     moduleID: advanced-rhythm
     lessonID: triplets
@@ -794,8 +872,11 @@ lessons:
       uk: Тріолі
     outcomeUK: Ділити долю на три рівні частини
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/triplet-notation-review.md
+    capabilities:
+      - explicit-triplet-ticks-and-notation
   - number: 66
     moduleID: advanced-rhythm
     lessonID: swing-shuffle
@@ -804,8 +885,11 @@ lessons:
       uk: Swing і shuffle
     outcomeUK: Відчути нерівномірний поділ долі
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/triplet-notation-review.md
+    capabilities:
+      - shuffle-triplet-subdivision
   - number: 67
     moduleID: advanced-rhythm
     lessonID: syncopation
@@ -814,8 +898,9 @@ lessons:
       uk: Синкопи
     outcomeUK: Акцентувати слабкі частини долі
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rhythm-phrasing-course-review.md
   - number: 68
     moduleID: advanced-rhythm
     lessonID: compound-meters
@@ -824,8 +909,11 @@ lessons:
       uk: Розміри 6/8 та 12/8
     outcomeUK: Грати зі складеним поділом долі
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/compound-odd-meter-review.md
+    capabilities:
+      - compound-meter-pulse-and-assessment
   - number: 69
     moduleID: advanced-rhythm
     lessonID: gallop-patterns
@@ -834,8 +922,9 @@ lessons:
       uk: Галоп і зворотний галоп
     outcomeUK: Виконувати характерні металеві ритми
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rhythm-phrasing-course-review.md
   - number: 70
     moduleID: advanced-rhythm
     lessonID: displaced-accents
@@ -844,8 +933,9 @@ lessons:
       uk: Зміщення ритмічного акценту
     outcomeUK: Повторювати фігуру з різних частин долі
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rhythm-phrasing-course-review.md
   - number: 71
     moduleID: advanced-rhythm
     lessonID: odd-meters
@@ -854,8 +944,11 @@ lessons:
       uk: 'Непарні розміри: 5/4 та 7/8'
     outcomeUK: Рахувати й грати нерівні групи
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/compound-odd-meter-review.md
+    capabilities:
+      - odd-meter-grouping-and-assessment
   - number: 72
     moduleID: advanced-rhythm
     lessonID: missing-clicks
@@ -864,8 +957,11 @@ lessons:
       uk: Метроном із пропущеними кліками
     outcomeUK: Утримувати темп без постійної зовнішньої підказки
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/metronome-gaps-review.md
+    capabilities:
+      - scheduled-metronome-omissions
   - number: 73
     moduleID: harmony
     lessonID: major-barre-chords
@@ -874,8 +970,9 @@ lessons:
       uk: Мажорні акорди з повним баре
     outcomeUK: Переносити форму в різні тональності
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/movable-harmony-course-review.md
   - number: 74
     moduleID: harmony
     lessonID: minor-barre-chords
@@ -884,8 +981,9 @@ lessons:
       uk: Мінорні акорди з повним баре
     outcomeUK: Змінювати якість акорду в рухомій формі
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/movable-harmony-course-review.md
   - number: 75
     moduleID: harmony
     lessonID: caged
@@ -894,8 +992,9 @@ lessons:
       uk: Система CAGED
     outcomeUK: Пов’язати форми акордів із ділянками грифа
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/caged-triad-course-review.md
   - number: 76
     moduleID: harmony
     lessonID: triad-inversions
@@ -904,8 +1003,9 @@ lessons:
       uk: Обернення тризвуків
     outcomeUK: Зіграти один акорд із різними нижніми нотами
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/caged-triad-course-review.md
   - number: 77
     moduleID: harmony
     lessonID: seventh-chords
@@ -914,8 +1014,9 @@ lessons:
       uk: Септакорди
     outcomeUK: Побудувати dominant 7, major 7 і minor 7
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/harmony-progressions-course-review.md
   - number: 78
     moduleID: harmony
     lessonID: harmonic-functions
@@ -924,8 +1025,9 @@ lessons:
       uk: Функції акордів і типові послідовності
     outcomeUK: Розуміти рух між тонікою, субдомінантою й домінантою
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/harmony-progressions-course-review.md
   - number: 79
     moduleID: harmony
     lessonID: voice-leading
@@ -934,8 +1036,9 @@ lessons:
       uk: Голосоведіння
     outcomeUK: Змінювати акорди з мінімальним рухом окремих голосів
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/harmony-progressions-course-review.md
   - number: 80
     moduleID: harmony
     lessonID: chord-change-arpeggios
@@ -944,8 +1047,9 @@ lessons:
       uk: Арпеджіо за змінами акордів
     outcomeUK: Переходити між акордовими звуками вчасно
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/harmony-progressions-course-review.md
   - number: 81
     moduleID: ear-improvisation
     lessonID: find-heard-note
@@ -954,8 +1058,11 @@ lessons:
       uk: Знайди почуту ноту
     outcomeUK: Підібрати окремий звук на грифі
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/listen-and-repeat-review.md
+    capabilities:
+      - hidden-reference-and-recorded-response
   - number: 82
     moduleID: ear-improvisation
     lessonID: hear-pitch-direction
@@ -964,8 +1071,11 @@ lessons:
       uk: Інтервали на слух
     outcomeUK: Розрізняти й відтворювати відстані між нотами
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/listen-and-repeat-review.md
+    capabilities:
+      - hidden-reference-and-recorded-response
   - number: 83
     moduleID: ear-improvisation
     lessonID: repeat-a-rhythm
@@ -974,8 +1084,11 @@ lessons:
       uk: Повтори ритм
     outcomeUK: Відтворити почуту ритмічну фразу
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/listen-and-repeat-review.md
+    capabilities:
+      - hidden-reference-and-recorded-response
   - number: 84
     moduleID: ear-improvisation
     lessonID: transcribe-short-melody
@@ -984,8 +1097,11 @@ lessons:
       uk: Підбір короткої мелодії
     outcomeUK: Знайти фразу без готової табулатури
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/listen-and-repeat-review.md
+    capabilities:
+      - hidden-reference-and-recorded-response
   - number: 85
     moduleID: ear-improvisation
     lessonID: two-note-improvisation
@@ -994,8 +1110,9 @@ lessons:
       uk: Імпровізація з двох-трьох нот
     outcomeUK: Створювати мотиви через ритм і повторення
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/improvisation-course-review.md
   - number: 86
     moduleID: ear-improvisation
     lessonID: chord-tone-targeting
@@ -1004,8 +1121,9 @@ lessons:
       uk: Опорні ноти над акордами
     outcomeUK: Завершувати фрази на акордових звуках
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/improvisation-course-review.md
   - number: 87
     moduleID: ear-improvisation
     lessonID: question-answer-phrases
@@ -1014,8 +1132,9 @@ lessons:
       uk: Запитання, відповідь і паузи
     outcomeUK: Будувати зрозумілі музичні фрази
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/improvisation-course-review.md
   - number: 88
     moduleID: ear-improvisation
     lessonID: build-a-solo
@@ -1024,8 +1143,9 @@ lessons:
       uk: Побудова короткого соло
     outcomeUK: Створити вступ, розвиток і завершення
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/improvisation-course-review.md
   - number: 89
     moduleID: advanced-technique
     lessonID: string-skipping
@@ -1034,8 +1154,9 @@ lessons:
       uk: String skipping
     outcomeUK: Перестрибувати через струни без зайвих звуків
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/advanced-picking-review.md
   - number: 90
     moduleID: advanced-technique
     lessonID: economy-picking
@@ -1044,8 +1165,9 @@ lessons:
       uk: Economy picking
     outcomeUK: Поєднати змінний штрих із рухом між струнами
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/advanced-picking-review.md
   - number: 91
     moduleID: advanced-technique
     lessonID: long-legato
@@ -1054,8 +1176,11 @@ lessons:
       uk: Довгі legato-фрази
     outcomeUK: Поєднувати hammer-on і pull-off через кілька струн
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/legato-chains-review.md
+    capabilities:
+      - multi-target-legato-chain
   - number: 92
     moduleID: advanced-technique
     lessonID: sweep-picking
@@ -1064,8 +1189,11 @@ lessons:
       uk: Sweep picking
     outcomeUK: Зіграти арпеджіо одним послідовним рухом медіатора
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/advanced-picking-review.md
+    capabilities:
+      - authored-pick-direction-and-separated-arpeggio-assessment
   - number: 93
     moduleID: advanced-technique
     lessonID: tapping
@@ -1074,8 +1202,11 @@ lessons:
       uk: Tapping
     outcomeUK: Додати ноти пальцем правої руки
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/legato-chains-review.md
+    capabilities:
+      - timed-tapping-chain
   - number: 94
     moduleID: advanced-technique
     lessonID: harmonics
@@ -1084,8 +1215,11 @@ lessons:
       uk: Натуральні та штучні флажолети
     outcomeUK: Отримувати й контролювати гармоніки
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/harmonic-notes-review.md
+    capabilities:
+      - harmonic-sounding-target-and-touch-role
   - number: 95
     moduleID: advanced-technique
     lessonID: hybrid-picking
@@ -1094,8 +1228,9 @@ lessons:
       uk: Hybrid picking
     outcomeUK: Поєднувати медіатор і пальці
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/advanced-picking-review.md
   - number: 96
     moduleID: advanced-technique
     lessonID: tremolo-picking
@@ -1104,8 +1239,11 @@ lessons:
       uk: Tremolo picking
     outcomeUK: Утримувати швидкі повторні атаки з контрольованим рухом
     originalAssessment: Р
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/rapid-rhythm-assessment-review.md
+    capabilities:
+      - repeated-attack-rhythm-only-assessment
   - number: 97
     moduleID: electric-styles
     lessonID: blues-accompaniment
@@ -1114,8 +1252,9 @@ lessons:
       uk: Блюзовий акомпанемент
     outcomeUK: Зіграти дванадцятитактову форму
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 98
     moduleID: electric-styles
     lessonID: blues-solo
@@ -1124,8 +1263,9 @@ lessons:
       uk: Блюзове соло
     outcomeUK: Поєднати пентатоніку, bend, vibrato та фразування
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 99
     moduleID: electric-styles
     lessonID: classic-rock
@@ -1134,8 +1274,9 @@ lessons:
       uk: Класичний рок
     outcomeUK: Поєднати риф, акордовий акомпанемент і короткі вставки
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 100
     moduleID: electric-styles
     lessonID: punk-hardcore
@@ -1144,8 +1285,9 @@ lessons:
       uk: Панк і хардкор
     outcomeUK: Утримувати енергійний ритм та чіткі зупинки
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 101
     moduleID: electric-styles
     lessonID: metal-study
@@ -1154,8 +1296,9 @@ lessons:
       uk: Метал
     outcomeUK: Поєднати palm muting, галоп, педальний тон і Drop-форми
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 102
     moduleID: electric-styles
     lessonID: funk-study
@@ -1164,8 +1307,9 @@ lessons:
       uk: Фанк
     outcomeUK: Грати короткі акорди, приглушені атаки та синкопи
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/muted-string-attacks-review.md
   - number: 103
     moduleID: electric-styles
     lessonID: rnb-neo-soul
@@ -1174,8 +1318,9 @@ lessons:
       uk: R&B і neo-soul
     outcomeUK: Використовувати компактні акорди, обернення й мелодичні прикраси
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 104
     moduleID: electric-styles
     lessonID: country-chicken-picking
@@ -1184,8 +1329,9 @@ lessons:
       uk: Кантрі та chicken picking
     outcomeUK: Поєднати hybrid picking, короткі ноти та характерні акценти
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-styles-course-review.md
   - number: 105
     moduleID: specializations
     lessonID: jazz-comping
@@ -1194,8 +1340,9 @@ lessons:
       uk: Джазовий акомпанемент
     outcomeUK: Зіграти ii–V–I компактними акордовими формами
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/jazz-modal-course-review.md
   - number: 106
     moduleID: specializations
     lessonID: jazz-lines
@@ -1204,8 +1351,9 @@ lessons:
       uk: Джазова сольна лінія
     outcomeUK: Пов’язати акордові звуки хроматичними підходами
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/jazz-modal-course-review.md
   - number: 107
     moduleID: specializations
     lessonID: fingerstyle-bass-melody
@@ -1214,8 +1362,9 @@ lessons:
       uk: 'Fingerstyle: бас і мелодія'
     outcomeUK: Вести дві музичні лінії пальцями
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/held-voices-review.md
   - number: 108
     moduleID: specializations
     lessonID: chord-melody
@@ -1224,8 +1373,9 @@ lessons:
       uk: Chord melody
     outcomeUK: Поєднати мелодію з акордовою підтримкою
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/held-voices-review.md
   - number: 109
     moduleID: specializations
     lessonID: modal-improvisation
@@ -1234,8 +1384,9 @@ lessons:
       uk: Лади та модальна імпровізація
     outcomeUK: Почути характер ладу відносно тонального центру
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/jazz-modal-course-review.md
   - number: 110
     moduleID: specializations
     lessonID: harmonic-minor
@@ -1244,8 +1395,9 @@ lessons:
       uk: Гармонічний мінор
     outcomeUK: Застосувати характерні інтервали в мелодії та гармонії
     originalAssessment: Н
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/jazz-modal-course-review.md
   - number: 111
     moduleID: specializations
     lessonID: melodic-minor
@@ -1254,8 +1406,9 @@ lessons:
       uk: Мелодичний мінор
     outcomeUK: Зіграти характерні фрази й розібрати їх застосування
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/jazz-modal-course-review.md
   - number: 112
     moduleID: specializations
     lessonID: tension-resolution
@@ -1264,8 +1417,9 @@ lessons:
       uk: Напруження та розв’язання
     outcomeUK: Свідомо використовувати неакордові ноти й повертатися до опорних
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/jazz-modal-course-review.md
   - number: 113
     moduleID: electric-tone
     lessonID: pickup-volume-tone
@@ -1274,8 +1428,9 @@ lessons:
       uk: Звукознімачі, Volume і Tone
     outcomeUK: Отримати різні тембри органами керування гітари
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 114
     moduleID: electric-tone
     lessonID: clean-crunch-high-gain
@@ -1284,8 +1439,9 @@ lessons:
       uk: Clean, crunch і high gain
     outcomeUK: Порівняти реакцію різного перевантаження на ту саму гру
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 115
     moduleID: electric-tone
     lessonID: amp-cabinet-ir
@@ -1294,8 +1450,9 @@ lessons:
       uk: Підсилювач, кабінет та IR
     outcomeUK: Зрозуміти внесок кожного елемента в звук
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 116
     moduleID: electric-tone
     lessonID: equalization
@@ -1304,8 +1461,9 @@ lessons:
       uk: Еквалайзер
     outcomeUK: Змінювати бас, середину й верх із конкретною метою
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 117
     moduleID: electric-tone
     lessonID: drive-compression-gate
@@ -1314,8 +1472,9 @@ lessons:
       uk: Drive, compressor і noise gate
     outcomeUK: Налаштувати обробку, не приховуючи нею помилки гри
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 118
     moduleID: electric-tone
     lessonID: time-and-modulation-effects
@@ -1324,8 +1483,9 @@ lessons:
       uk: Delay, reverb і modulation
     outcomeUK: Підібрати ефекти до темпу та музичної ролі
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 119
     moduleID: electric-tone
     lessonID: expressive-hardware
@@ -1334,8 +1494,9 @@ lessons:
       uk: Важіль, volume swells і керований feedback
     outcomeUK: Застосувати виразні прийоми на відповідному обладнанні
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 120
     moduleID: electric-tone
     lessonID: record-di-monitoring
@@ -1344,8 +1505,9 @@ lessons:
       uk: Запис чистого DI та моніторинг
     outcomeUK: Записати чистий сигнал і зрозуміти, що саме чує аналізатор
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/electric-tone-course-review.md
   - number: 121
     moduleID: independent-musician
     lessonID: transcribe-riff-solo
@@ -1354,8 +1516,9 @@ lessons:
       uk: Підбір повного рифу або соло
     outcomeUK: Розбити запис на фрази та відтворити їх на слух
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 122
     moduleID: independent-musician
     lessonID: reading-music-formats
@@ -1364,8 +1527,9 @@ lessons:
       uk: Читання TAB, нот і акордових схем
     outcomeUK: Зіграти незнайомий нескладний матеріал
     originalAssessment: Н+С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 123
     moduleID: independent-musician
     lessonID: write-a-riff
@@ -1374,8 +1538,9 @@ lessons:
       uk: Створення власного рифу
     outcomeUK: Написати завершену фразу з ритмом і розвитком
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 124
     moduleID: independent-musician
     lessonID: arrange-two-guitars
@@ -1384,8 +1549,9 @@ lessons:
       uk: Аранжування для двох гітар
     outcomeUK: Розподілити регістри та ролі між партіями
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 125
     moduleID: independent-musician
     lessonID: play-with-rhythm-section
@@ -1394,8 +1560,9 @@ lessons:
       uk: Гра з басом і барабанами
     outcomeUK: Узгодити атаки, паузи й музичний простір
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 126
     moduleID: independent-musician
     lessonID: prepare-composition
@@ -1404,8 +1571,9 @@ lessons:
       uk: Підготовка повної композиції
     outcomeUK: Вивчити форму, переходи, початок і завершення
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 127
     moduleID: independent-musician
     lessonID: performance-recording
@@ -1414,8 +1582,9 @@ lessons:
       uk: Контрольний запис виконання
     outcomeUK: Зіграти композицію цілком і скласти список конкретних помилок
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md
   - number: 128
     moduleID: independent-musician
     lessonID: personal-practice-plan
@@ -1424,5 +1593,6 @@ lessons:
       uk: Особиста програма розвитку
     outcomeUK: 'Скласти цикл практики: техніка, ритм, слух, репертуар і повторення'
     originalAssessment: С
-    status: authored
-    acceptance: pending
+    status: verified
+    acceptance: pending_user
+    reviewPath: docs/reviews/independent-musician-course-review.md

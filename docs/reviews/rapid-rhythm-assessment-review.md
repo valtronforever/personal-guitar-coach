@@ -1,6 +1,6 @@
 # Rapid rhythm assessment — same-agent review
 
-Status: local software/Release checks passed; exact-head CI/merge pending. This is a same-agent review, not independent review.
+Status: local software/Release checks passed; PR98 is gated by exact-head CI. Native/physical acceptance remains pending_user after merge. This is a same-agent review, not independent review.
 
 Scope: author schema and current-practice bounds, unchanged pitched assessment, periodic signal versus settled-pitch evidence, sequence assignment/rest/count-in semantics, calibration eligibility, immutable storage/retry, bilingual result/history/coach claims and tremolo lesson adaptation.
 
@@ -25,7 +25,7 @@ The full App regression exposed a historical synthetic course-flow fixture with 
 -134 bilingual bundles/403 YAML files validate with zero issues;951 UI keys in en/uk; project generation and UI-source typecheck pass. Five Python author-tool tests passed17.857s. Partial inventory reports128 authored and makes no full-acceptance claim.
 - Root-only signed Release .app and ZIP built/verified; arm64 macOS14, ad-hoc signature, hardened sandbox/audio/user-selected-read-write and offline en/uk resources. Report `docs/benchmarks/rapid-rhythm-release-bundle.json`. Binary SHA-256 `81dce547c074614ee29be4c22d456f31faa5c84814e676c6f740c545f2a7cb31`; archive `73ee22f46a153c4c3b6950dbd9ee15bd53231313d0b67d2e7f71f06f879a198e`. Signed sandbox→separate XPC→invalidRequest probe passed without a provider call. No local Debug app. Native launch and hardware remain unverified.
 
-Logs: `/tmp/rapid-{core-regression,contracts-final,app-verified,content-final,author-tests,ui,release,bundle,xpc}.log`. Exact-head CI/PR/merge still pending.
+Logs: `/tmp/rapid-{core-regression,contracts-final,app-verified,content-final,author-tests,ui,release,bundle,xpc}.log`. Delivery: [PR98](https://github.com/valtronforever/personal-guitar-coach/pull/98), corrected head `e7833dd58d40e42f13033e89c6bce6add981ff73`. Require the current-head checks to pass; the first failed run is diagnostic history, not the merge gate.
 
 
 CI portability fix: run35207416758 stopped during package compilation because the runner Swift compiler could not type-check the nested zip/contains/pow/range expression within its time budget. Replace that expression with explicitly typed bounds and a simple adjacent-frame loop; the signal-quality contract is unchanged. Repeat focused tests and the root Release, then require a fresh exact-head CI run. This is a compiler failure, not evidence of a passed CI or hardware check.
