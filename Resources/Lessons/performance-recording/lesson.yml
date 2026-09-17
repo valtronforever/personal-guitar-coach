@@ -1,0 +1,537 @@
+schemaVersion: 3
+id: performance-recording
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: complete-performance
+    kind: events
+    exerciseID: performance-recording-complete-performance
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+    activityID: complete-performance
+  - id: transition-repair
+    kind: events
+    exerciseID: performance-recording-transition-repair
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+    activityID: transition-repair
+  - id: ending-repair
+    kind: events
+    exerciseID: performance-recording-ending-repair
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+    activityID: ending-repair
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: performance-recording-complete-performance
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-2
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-3
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-4
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-10
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-11
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-12
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-13
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-15
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-16
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-17
+        startTick: 13440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-18
+        startTick: 13920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-19
+        startTick: 14400
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-20
+        startTick: 15360
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-21
+        startTick: 16320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-22
+        startTick: 16800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-23
+        startTick: 17280
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-24
+        startTick: 18240
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-25
+        startTick: 19200
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 9
+      - id: event-26
+        startTick: 21120
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-27
+        startTick: 23040
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-28
+        startTick: 24000
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-29
+        startTick: 24960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-30
+        startTick: 25920
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-31
+        startTick: 26880
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-32
+        startTick: 28800
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: performance-recording-transition-repair
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-2
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-3
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 9
+      - id: event-7
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+  - id: performance-recording-ending-repair
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-6
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: complete-performance
+    source:
+      kind: exercise
+      exerciseID: performance-recording-complete-performance
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: transition-repair
+    source:
+      kind: exercise
+      exerciseID: performance-recording-transition-repair
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: ending-repair
+    source:
+      kind: exercise
+      exerciseID: performance-recording-ending-repair
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: complete-performance
+    materialID: complete-performance
+    recording: selfPractice
+  - id: transition-repair
+    materialID: transition-repair
+  - id: ending-repair
+    materialID: ending-repair
+practiceEntries:
+  - id: transition-repair
+    activityID: transition-repair
+    exerciseID: performance-recording-transition-repair
+  - id: ending-repair
+    activityID: ending-repair
+    exerciseID: performance-recording-ending-repair
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - saved
+      - locations
+      - action
+      - compare
+      - whole
+curriculum:
+  moduleID: independent-musician
+  ordinal: 127
+  durationMinutes: 35
+  prerequisites:
+    - prepare-composition
+    - record-di-monitoring
+  keywords:
+    - Record a performance and make a useful repair list
+    - Запиши виконання й склади корисний список виправлень
+    - independent practice
+    - самостійна практика

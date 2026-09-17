@@ -1,0 +1,832 @@
+schemaVersion: 3
+id: play-with-rhythm-section
+version: 1
+difficulty: intermediate
+topic: rhythm
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: foundation
+    kind: events
+    exerciseID: play-with-rhythm-section-foundation
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+    activityID: foundation
+  - id: sparse-guitar
+    kind: events
+    exerciseID: play-with-rhythm-section-sparse-guitar
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+    activityID: sparse-guitar
+  - id: offbeat-guitar
+    kind: events
+    exerciseID: play-with-rhythm-section-offbeat-guitar
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+    activityID: offbeat-guitar
+  - id: ensemble-break
+    kind: events
+    exerciseID: play-with-rhythm-section-ensemble-break
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+    activityID: ensemble-break
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: play-with-rhythm-section-foundation
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+      - id: event-6
+        startTick: 4800
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-10
+        startTick: 8640
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-12
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-13
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-14
+        startTick: 12480
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-15
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: event-16
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: play-with-rhythm-section-sparse-guitar
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-2
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-3
+        startTick: 1440
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-5
+        startTick: 3360
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: event-8
+        startTick: 5280
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: event-10
+        startTick: 7200
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 7680
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-13
+        startTick: 9120
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-15
+        startTick: 11040
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 11520
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 12480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-18
+        startTick: 12960
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-19
+        startTick: 14400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-20
+        startTick: 14880
+        durationTicks: 480
+        kind: rest
+        positions: []
+  - id: play-with-rhythm-section-offbeat-guitar
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-3
+        startTick: 960
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: event-8
+        startTick: 4800
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: event-10
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 7680
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-13
+        startTick: 8640
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-15
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 11520
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-18
+        startTick: 12480
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-19
+        startTick: 13920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-20
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: play-with-rhythm-section-ensemble-break
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-2
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-3
+        startTick: 1440
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-5
+        startTick: 3360
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: event-8
+        startTick: 5280
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: event-10
+        startTick: 7200
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 7680
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-13
+        startTick: 9120
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-15
+        startTick: 11040
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-17
+        startTick: 12480
+        durationTicks: 2880
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: foundation
+    source:
+      kind: exercise
+      exerciseID: play-with-rhythm-section-foundation
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: sparse-guitar
+    source:
+      kind: exercise
+      exerciseID: play-with-rhythm-section-sparse-guitar
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: offbeat-guitar
+    source:
+      kind: exercise
+      exerciseID: play-with-rhythm-section-offbeat-guitar
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: ensemble-break
+    source:
+      kind: exercise
+      exerciseID: play-with-rhythm-section-ensemble-break
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: foundation
+    materialID: foundation
+  - id: sparse-guitar
+    materialID: sparse-guitar
+    recording: selfPractice
+  - id: offbeat-guitar
+    materialID: offbeat-guitar
+    recording: selfPractice
+  - id: ensemble-break
+    materialID: ensemble-break
+    recording: selfPractice
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - route
+      - release
+      - break
+      - listen
+      - context
+curriculum:
+  moduleID: independent-musician
+  ordinal: 125
+  durationMinutes: 35
+  prerequisites:
+    - arrange-two-guitars
+    - displaced-accents
+  keywords:
+    - Make room for bass and drums
+    - Залиш місце басу й барабанам
+    - independent practice
+    - самостійна практика

@@ -1,0 +1,74 @@
+lessonID: transcribe-riff-solo
+lessonVersion: 1
+locale: en
+title: Transcribe a complete phrase by ear
+summary: Hear structure first, reconstruct small phrases, then reconnect the whole riff.
+goal: Reproduce the original four-bar example from listening and explain the evidence behind each correction.
+body: |-
+  Transcribing begins with a map of the sound, not a hunt for the first fret. Listen to the complete example twice without playing. Tap its pulse, count the bars and notice where ideas repeat or answer each other. Hum the broad direction before naming pitches. A riff often contains a small idea with a changed ending; a solo may need several such phrases. The same method applies, but choose a short section whose boundaries you can remember.
+
+  Separate rhythm from pitch. Count or speak the attacks on one syllable, including every rest, before trying the guitar. A gap is part of the phrase rather than time to forget the pulse. Then find a stable starting pitch and compare the next note with it: same, higher or lower, close or wide. Verify a candidate by alternating listening and playing; repeatedly moving the same guess to new frets does not supply new evidence.
+
+  Work through the four short references independently, then return to the complete example. Listen and reproduce practice hides its target notation until you deliberately reveal it. Hear the entire reference before starting a response; the new count-in belongs to your attempt. The example and response use the same chosen tempo. Rehearse a difficult boundary by singing the final note of one phrase into the first note of the next.
+
+  Make a provisional transcription on paper: bar numbers, attack positions, pitch names or intervals, and uncertain places. Do not hide uncertainty by writing an elaborate fingering immediately. Check only one doubtful detail at a time. Reveal targets after an honest ear attempt and compare the exact difference; an assisted attempt is useful learning, but it is different evidence from an unrevealed response. Sound alone cannot establish the original player’s string or finger.
+
+  Finish with one complete pass without stopping at a mistake. Mark its location, repair the short passage and try the whole form again. The clean monophonic assessment checks audible notes and, when available, timing; it does not judge your transcription method or identify expressive techniques. For a recording you choose outside this lesson, repeat the same phrase-map procedure in your own player. Importing, slowing or separating arbitrary music is not a feature of this lesson.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  phrase-a:
+    title: Listen and reconstruct phrase A
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  phrase-b:
+    title: Listen and reconstruct phrase B
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  phrase-c:
+    title: Listen and reconstruct phrase C
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  phrase-d:
+    title: Listen and reconstruct phrase D
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  complete-reference:
+    title: Map the complete reference
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  review:
+    title: Document one corrected uncertainty
+    body: Write a bar-specific correction before checking the criteria.
+activities:
+  phrase-a:
+    title: Listen and reconstruct phrase A
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  phrase-b:
+    title: Listen and reconstruct phrase B
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  phrase-c:
+    title: Listen and reconstruct phrase C
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  phrase-d:
+    title: Listen and reconstruct phrase D
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+  complete-reference:
+    title: Map the complete reference
+    body: Open practice and hear the full reference at the chosen tempo. Reproduce its rhythm, rests and pitch direction
+      after the new count-in; reveal notation only when you want a guided comparison.
+learningTasks:
+  review:
+    title: Document one corrected uncertainty
+    body: Write a bar-specific correction before checking the criteria.
+    items:
+      map: I identified phrase boundaries and counted the complete form.
+      rhythm: I reproduced the attacks and rests separately from the pitch search.
+      uncertainty: I compared one uncertain interval or attack with a fresh listen.
+      whole: I played a complete pass and noted its specific remaining error.
+      help: I recorded whether I revealed targets or solved the phrase by ear.

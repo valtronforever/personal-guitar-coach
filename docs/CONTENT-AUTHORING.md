@@ -49,7 +49,7 @@ A lesson requires positive `version`, difficulty (`beginner`, `intermediate`, `a
 
 IDs contain 1–64 lowercase ASCII letters, digits or hyphens, starting with a letter. Lesson and exercise IDs are unique across the catalog; the other IDs are local to their owner. Folder and lesson ID must agree. Invalid lessons produce author diagnostics while healthy lessons remain available.
 
-Six strings use 1 = thinnest and 6 = thickest, with sounding MIDI (C4 = 60). Fret 0 is open; muted strings are separate. PPQ is 960; supported signatures are 3/4 and 4/4. Events are ordered, non-overlapping and have positive duration. Do not duplicate computed target MIDI next to fret positions. Domain derives pitches consistently for every consumer.
+Six strings use 1 = thinnest and 6 = thickest, with sounding MIDI (C4 = 60). Fret 0 is open; muted strings are separate. PPQ is 960; supported signatures are 3/4, 4/4, 6/8, 12/8, 5/4 and 7/8. BPM counts dotted quarters in 6/8 and 12/8, eighths in 7/8, and quarters in the other meters. Events are ordered, non-overlapping and have positive duration. Do not duplicate computed target MIDI next to fret positions. Domain derives pitches consistently for every consumer.
 
 Material `source` is one tagged object. Choose one of these alternatives:
 

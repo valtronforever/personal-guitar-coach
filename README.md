@@ -2,7 +2,7 @@
 
 Нативний macOS-додаток для навчання гри на гітарі українською та англійською: уроки → інтерактивний гриф і табулатура → тюнер → практика під метроном → оцінка та рекомендації.
 
-**Стан:** реалізовано навчальний цикл, тюнер, практику, оцінки й історію. Двомовний курс та система уроків розширюються; актуальний обсяг і перевірки наведено в [плані курсу](tasks/follow-up/full-curriculum.md). Для локального використання збираємо Release .app; фізичне приймання та фінальні UI/VoiceOver перевірки залишаються відкритими.
+**Стан:** реалізовано навчальний цикл, тюнер, практику, оцінки й історію. Усі 128 тем курсу мають матеріали en/uk; повний аудит приймання ще триває. Актуальний обсяг і перевірки наведено в [плані курсу](tasks/follow-up/full-curriculum.md). Для локального використання збираємо Release .app; фізичне приймання та фінальні UI/VoiceOver перевірки залишаються відкритими.
 
 - [AGENTS.md](AGENTS.md) — правила для агентів і розробників.
 - [Опис продукту](docs/PRODUCT.md) — сценарії, межі MVP, інтерфейс.
@@ -101,7 +101,7 @@ Practice checks a stable input signal after explicit physical-tuning confirmatio
 
 Дослідження одночасних акордів завершило програмний експеримент із рішенням [не вмикати оцінювання](docs/research/21-chords.md): методи не пройшли вимоги точності, повноти нот та невизначеності. Показ форми акорду й оцінювання окремих нот арпеджіо залишаються доступними.
 
-У режимі уроку доступний **Staff (prototype) / Нотний стан (прототип)**: та сама послідовність і вибір, гітарна записана октава, ключові знаки, паузи й прості beams. [ADR 007](docs/decisions/007-staff-notation.md) описує межі та майбутнє версіонування ties/tuplets/технік. Для відтворення окремих geometry artifacts: `COACH_STAFF_RENDER_DIR=build/staff-renders DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test --filter StaffRenderTests`. Це не запускає native UI tests.
+У режимі уроку доступний **Staff (prototype) / Нотний стан (прототип)**: та сама послідовність і вибір, гітарна записана октава, ключові знаки, паузи, крапки, ліги, тріолі та підтримувані позначення прийомів. Для непідтримуваного багатоголосся є явний перехід до TAB. [ADR 007](docs/decisions/007-staff-notation.md) описує початкове рішення; актуальні ритмічні й технічні контракти наведено в [посібнику автора](docs/CONTENT-AUTHORING.md). Для відтворення окремих geometry artifacts: `COACH_STAFF_RENDER_DIR=build/staff-renders DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test --filter StaffRenderTests`. Це не запускає native UI tests.
 
 Settings → Instrument offers eight paired presets: **E Standard / Drop D, D Standard / Drop C, C Standard / Drop B♭, B Standard / Drop A**, plus custom tuning. Each Drop lowers only string 6 by a whole tone. Practice scoring supports A1–E6 when the actual target is within 55–1500 Hz; all eight presets qualify at A4 = 440 Hz. Targets below 55 Hz remain explicitly unsupported, including A1 with a lowered A4 reference. See the [preset table](tasks/follow-up/standard-drop-presets.md).
 

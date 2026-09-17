@@ -1354,7 +1354,8 @@ lessons:
       uk: Підбір повного рифу або соло
     outcomeUK: Розбити запис на фрази та відтворити їх на слух
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 122
     moduleID: independent-musician
     lessonID: reading-music-formats
@@ -1363,7 +1364,8 @@ lessons:
       uk: Читання TAB, нот і акордових схем
     outcomeUK: Зіграти незнайомий нескладний матеріал
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 123
     moduleID: independent-musician
     lessonID: write-a-riff
@@ -1372,7 +1374,8 @@ lessons:
       uk: Створення власного рифу
     outcomeUK: Написати завершену фразу з ритмом і розвитком
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 124
     moduleID: independent-musician
     lessonID: arrange-two-guitars
@@ -1381,7 +1384,8 @@ lessons:
       uk: Аранжування для двох гітар
     outcomeUK: Розподілити регістри та ролі між партіями
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 125
     moduleID: independent-musician
     lessonID: play-with-rhythm-section
@@ -1390,7 +1394,8 @@ lessons:
       uk: Гра з басом і барабанами
     outcomeUK: Узгодити атаки, паузи й музичний простір
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 126
     moduleID: independent-musician
     lessonID: prepare-composition
@@ -1399,7 +1404,8 @@ lessons:
       uk: Підготовка повної композиції
     outcomeUK: Вивчити форму, переходи, початок і завершення
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 127
     moduleID: independent-musician
     lessonID: performance-recording
@@ -1408,7 +1414,8 @@ lessons:
       uk: Контрольний запис виконання
     outcomeUK: Зіграти композицію цілком і скласти список конкретних помилок
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 128
     moduleID: independent-musician
     lessonID: personal-practice-plan
@@ -1417,4 +1424,5 @@ lessons:
       uk: Особиста програма розвитку
     outcomeUK: 'Скласти цикл практики: техніка, ритм, слух, репертуар і повторення'
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending

@@ -1,0 +1,520 @@
+schemaVersion: 3
+id: reading-music-formats
+version: 1
+difficulty: intermediate
+topic: theory
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: first-reading
+    kind: events
+    exerciseID: reading-music-formats-first-reading
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: first-reading
+  - id: compact-shape
+    kind: fingering
+    exerciseID: reading-music-formats-compact-shape
+    eventIDs: []
+    activityID: compact-shape
+    fingeringID: compact-shape
+  - id: timed-chord
+    kind: events
+    exerciseID: reading-music-formats-timed-chord
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+    activityID: timed-chord
+  - id: chord-tone-reading
+    kind: events
+    exerciseID: reading-music-formats-chord-tone-reading
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: chord-tone-reading
+  - id: second-reading
+    kind: events
+    exerciseID: reading-music-formats-second-reading
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: second-reading
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: reading-music-formats-first-reading
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-3
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-7
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-8
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+  - id: reading-music-formats-compact-shape
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+  - id: reading-music-formats-timed-chord
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: event-5
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: reading-music-formats-chord-tone-reading
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: reading-music-formats-second-reading
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-3
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-4
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-6
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-7
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: event-8
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: first-reading
+    source:
+      kind: exercise
+      exerciseID: reading-music-formats-first-reading
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: compact-shape
+    source:
+      kind: fingering
+      fingeringID: compact-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: timed-chord
+    source:
+      kind: exercise
+      exerciseID: reading-music-formats-timed-chord
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: chord-tone-reading
+    source:
+      kind: exercise
+      exerciseID: reading-music-formats-chord-tone-reading
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: second-reading
+    source:
+      kind: exercise
+      exerciseID: reading-music-formats-second-reading
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: first-reading
+    materialID: first-reading
+  - id: compact-shape
+    materialID: compact-shape
+  - id: timed-chord
+    materialID: timed-chord
+  - id: chord-tone-reading
+    materialID: chord-tone-reading
+  - id: second-reading
+    materialID: second-reading
+practiceEntries:
+  - id: first-reading
+    activityID: first-reading
+    exerciseID: reading-music-formats-first-reading
+  - id: chord-tone-reading
+    activityID: chord-tone-reading
+    exerciseID: reading-music-formats-chord-tone-reading
+  - id: second-reading
+    activityID: second-reading
+    exerciseID: reading-music-formats-second-reading
+fingerings:
+  - id: compact-shape
+    exerciseID: reading-music-formats-compact-shape
+    fingering:
+      positions:
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '1': 1
+        '2': 3
+        '3': 2
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - scan
+      - representations
+      - shape
+      - continuity
+curriculum:
+  moduleID: independent-musician
+  ordinal: 122
+  durationMinutes: 35
+  prerequisites:
+    - question-answer-phrases
+    - triad-inversions
+  keywords:
+    - Read one piece through three representations
+    - Прочитай п’єсу через три способи запису
+    - independent practice
+    - самостійна практика

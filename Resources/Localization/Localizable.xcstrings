@@ -8433,13 +8433,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guitar notes are written one octave above their sound. Key signatures change spelling only. This prototype shows single notes and rests; bends, slides, legato, tuplets and tempo changes are not represented or assessed."
+            "value": "Guitar notes are written one octave above their sound. Key signatures change spelling only. TAB shows strings, frets and technique cues; the app explains when a passage cannot be shown on this staff."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ноти гітари записано на октаву вище їхнього звучання. Ключові знаки змінюють лише запис. Прототип показує окремі ноти й паузи; підтягування, слайди, легато, тріолі та зміни темпу тут не відображаються й не оцінюються."
+            "value": "Ноти гітари записано на октаву вище їхнього звучання. Ключові знаки змінюють лише запис. TAB показує струни, лади й позначення прийомів; додаток пояснює, якщо уривок неможливо показати на цьому нотному стані."
           }
         }
       }
@@ -15342,13 +15342,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "N.H.: lightly touch the node shown in angle brackets. A.H.: stop the plain fret and touch the bracketed fret above it. Staff notes show sounding pitch; the score cannot prove the physical gesture."
+            "value": "N.H.: lightly touch the node shown in angle brackets. A.H.: stop the plain fret and touch the bracketed fret above it. Staff shows the harmonic’s resulting pitch in octave-up guitar notation; the score cannot prove the physical gesture."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "N.H.: легко торкнися вузла в кутових дужках. A.H.: затисни звичайний лад і торкнися ладу в дужках над ним. Ноти показують висоту звучання; оцінка не доводить фізичний прийом."
+            "value": "N.H.: легко торкнися вузла в кутових дужках. A.H.: затисни звичайний лад і торкнися ладу в дужках над ним. Нотний стан показує результат флажолета на октаву вище звучання; оцінка не доводить фізичний прийом."
           }
         }
       }

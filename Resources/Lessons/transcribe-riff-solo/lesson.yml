@@ -1,0 +1,549 @@
+schemaVersion: 3
+id: transcribe-riff-solo
+version: 1
+difficulty: intermediate
+topic: earTraining
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: complete-reference
+    kind: none
+    eventIDs: []
+    activityID: complete-reference
+  - id: phrase-a
+    kind: none
+    eventIDs: []
+    activityID: phrase-a
+  - id: phrase-b
+    kind: none
+    eventIDs: []
+    activityID: phrase-b
+  - id: phrase-c
+    kind: none
+    eventIDs: []
+    activityID: phrase-c
+  - id: phrase-d
+    kind: none
+    eventIDs: []
+    activityID: phrase-d
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: transcribe-riff-solo-complete-reference
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-7
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-8
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-9
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-10
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-12
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-13
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-14
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-15
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-16
+        startTick: 10560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-17
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-18
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-19
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-20
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: transcribe-riff-solo-phrase-a
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: transcribe-riff-solo-phrase-b
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-2
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-3
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-4
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-5
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: transcribe-riff-solo-phrase-c
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-4
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-5
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-6
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+  - id: transcribe-riff-solo-phrase-d
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: complete-reference
+    source:
+      kind: exercise
+      exerciseID: transcribe-riff-solo-complete-reference
+  - id: phrase-a
+    source:
+      kind: exercise
+      exerciseID: transcribe-riff-solo-phrase-a
+  - id: phrase-b
+    source:
+      kind: exercise
+      exerciseID: transcribe-riff-solo-phrase-b
+  - id: phrase-c
+    source:
+      kind: exercise
+      exerciseID: transcribe-riff-solo-phrase-c
+  - id: phrase-d
+    source:
+      kind: exercise
+      exerciseID: transcribe-riff-solo-phrase-d
+activities:
+  - id: complete-reference
+    materialID: complete-reference
+  - id: phrase-a
+    materialID: phrase-a
+  - id: phrase-b
+    materialID: phrase-b
+  - id: phrase-c
+    materialID: phrase-c
+  - id: phrase-d
+    materialID: phrase-d
+practiceEntries:
+  - id: complete-reference
+    activityID: complete-reference
+    exerciseID: transcribe-riff-solo-complete-reference
+    presentation: listenAndRepeat
+  - id: phrase-a
+    activityID: phrase-a
+    exerciseID: transcribe-riff-solo-phrase-a
+    presentation: listenAndRepeat
+  - id: phrase-b
+    activityID: phrase-b
+    exerciseID: transcribe-riff-solo-phrase-b
+    presentation: listenAndRepeat
+  - id: phrase-c
+    activityID: phrase-c
+    exerciseID: transcribe-riff-solo-phrase-c
+    presentation: listenAndRepeat
+  - id: phrase-d
+    activityID: phrase-d
+    exerciseID: transcribe-riff-solo-phrase-d
+    presentation: listenAndRepeat
+fingerings: []
+learningTasks:
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - map
+      - rhythm
+      - uncertainty
+      - whole
+      - help
+curriculum:
+  moduleID: independent-musician
+  ordinal: 121
+  durationMinutes: 35
+  prerequisites:
+    - transcribe-short-melody
+    - question-answer-phrases
+  keywords:
+    - Transcribe a complete phrase by ear
+    - Підбери завершену фразу на слух
+    - independent practice
+    - самостійна практика

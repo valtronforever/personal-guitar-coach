@@ -27,3 +27,7 @@ The split-target regression passed locally: 1,160 cases, 4.181 s (`/tmp/electric
 Second exact-head run35197569159 still hit the Swift complexity limit, now isolated to the long blues-solo array-concatenation expression; child held-voice run35197627680 inherited that test failure. Replaced overloaded array-plus chains with one typed variadic joining helper across the expected fixtures, preserving every independent note. No product/resource change. Third exact-head verification is required.
 
 Typed joining-helper regression: all1,160 cases passed in4.173s (`/tmp/electric-styles-ci-fix2.log`). Full music fixtures are unchanged.
+
+## Merged software evidence (2026-09-17)
+
+[PR 93](https://github.com/valtronforever/personal-guitar-coach/pull/93) merged as `2f8a33e672873c93281ebd832ac2d129198a3269` after [CI 35198219244](https://github.com/valtronforever/personal-guitar-coach/actions/runs/35198219244) passed on exact head `8dceceae76a63c0627c9b8949611cb54666ca167`. Signed Release/software evidence above remains valid; native and actual-guitar acceptance remains `pending_user`. Earlier in-progress notes describe historical checkpoints.
