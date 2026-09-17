@@ -25,3 +25,5 @@ All 269 Core tests pass explicitly serially: 23 Persistence (0.054 s), 104 Learn
 ### CI compiler follow-up
 
 The first exact-head CI run (35170242764) failed during compilation: its Swift compiler could not type-check the combined synthetic attack-onset expression in `MeterAssessmentTests` within its expression budget. Split expected onset, calibration offset and final-note error into explicit Double values and typed the attack array. No expectations or tolerances changed. The local targeted MeterAssessmentTests run passes (1 test, 0.007 s); the new commit requires a fresh exact-head CI run. This is test-only, so the archived Release payload above remains applicable.
+
+Exact-head CI 35170881942 passed on 27da78cf2b360359852e59e0120c9eba819d1fd9, including Core/App tests, audio regression, synthetic soak, signed Release/archive/XPC and CI build configurations. PR #79 merged. Native/hardware acceptance remains open.

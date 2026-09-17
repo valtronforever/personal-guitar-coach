@@ -1,0 +1,746 @@
+schemaVersion: 3
+id: triad-inversions
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: root-position-shape
+    kind: fingering
+    exerciseID: triad-inversions-root-position
+    eventIDs: []
+    activityID: root-position-shape
+    fingeringID: root-position-shape
+  - id: root-position-notes
+    kind: events
+    exerciseID: triad-inversions-root-position
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - release
+    activityID: root-position-notes
+  - id: first-inversion-shape
+    kind: fingering
+    exerciseID: triad-inversions-first-inversion
+    eventIDs: []
+    activityID: first-inversion-shape
+    fingeringID: first-inversion-shape
+  - id: first-inversion-notes
+    kind: events
+    exerciseID: triad-inversions-first-inversion
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - release
+    activityID: first-inversion-notes
+  - id: second-inversion-shape
+    kind: fingering
+    exerciseID: triad-inversions-second-inversion
+    eventIDs: []
+    activityID: second-inversion-shape
+    fingeringID: second-inversion-shape
+  - id: second-inversion-notes
+    kind: events
+    exerciseID: triad-inversions-second-inversion
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - release
+    activityID: second-inversion-notes
+  - id: ascending-regions
+    kind: events
+    exerciseID: triad-inversions-ascending-regions
+    eventIDs:
+      - b1-n1
+      - b1-n2
+      - b1-n3
+      - b1-rest
+      - b2-n1
+      - b2-n2
+      - b2-n3
+      - b2-rest
+      - b3-n1
+      - b3-n2
+      - b3-n3
+      - b3-rest
+      - b4-n1
+      - b4-n2
+      - b4-n3
+      - b4-rest
+    activityID: ascending-regions
+  - id: read-the-bass
+    kind: events
+    exerciseID: triad-inversions-read-the-bass
+    eventIDs:
+      - b1-n1
+      - b1-n2
+      - b1-n3
+      - b1-rest
+      - b2-n1
+      - b2-n2
+      - b2-n3
+      - b2-rest
+      - b3-n1
+      - b3-n2
+      - b3-n3
+      - b3-rest
+      - b4-n1
+      - b4-n2
+      - b4-n3
+      - b4-rest
+    activityID: read-the-bass
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: triad-inversions-root-position
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: triad-inversions-first-inversion
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: triad-inversions-second-inversion
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 13
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 12
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: triad-inversions-ascending-regions
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b1-n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b1-n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b1-rest
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-n1
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: b2-n2
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: b2-n3
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: b2-rest
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-n1
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+      - id: b3-n2
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 13
+      - id: b3-n3
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 12
+      - id: b3-rest
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-n1
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: b4-n2
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: b4-n3
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: b4-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: triad-inversions-read-the-bass
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: b1-n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: b1-n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: b1-rest
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-n1
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b2-n2
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b2-n3
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b2-rest
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-n1
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+      - id: b3-n2
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 13
+      - id: b3-n3
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 12
+      - id: b3-rest
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-n1
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b4-n2
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b4-n3
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b4-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: root-position-shape
+    source:
+      kind: fingering
+      fingeringID: root-position-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: root-position-notes
+    source:
+      kind: exercise
+      exerciseID: triad-inversions-root-position
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: first-inversion-shape
+    source:
+      kind: fingering
+      fingeringID: first-inversion-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: first-inversion-notes
+    source:
+      kind: exercise
+      exerciseID: triad-inversions-first-inversion
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: second-inversion-shape
+    source:
+      kind: fingering
+      fingeringID: second-inversion-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: second-inversion-notes
+    source:
+      kind: exercise
+      exerciseID: triad-inversions-second-inversion
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: ascending-regions
+    source:
+      kind: exercise
+      exerciseID: triad-inversions-ascending-regions
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: read-the-bass
+    source:
+      kind: exercise
+      exerciseID: triad-inversions-read-the-bass
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: root-position-shape
+    materialID: root-position-shape
+  - id: root-position-notes
+    materialID: root-position-notes
+  - id: first-inversion-shape
+    materialID: first-inversion-shape
+  - id: first-inversion-notes
+    materialID: first-inversion-notes
+  - id: second-inversion-shape
+    materialID: second-inversion-shape
+  - id: second-inversion-notes
+    materialID: second-inversion-notes
+  - id: ascending-regions
+    materialID: ascending-regions
+  - id: read-the-bass
+    materialID: read-the-bass
+practiceEntries:
+  - id: root-position-notes
+    activityID: root-position-notes
+    exerciseID: triad-inversions-root-position
+  - id: first-inversion-notes
+    activityID: first-inversion-notes
+    exerciseID: triad-inversions-first-inversion
+  - id: second-inversion-notes
+    activityID: second-inversion-notes
+    exerciseID: triad-inversions-second-inversion
+  - id: ascending-regions
+    activityID: ascending-regions
+    exerciseID: triad-inversions-ascending-regions
+  - id: read-the-bass
+    activityID: read-the-bass
+    exerciseID: triad-inversions-read-the-bass
+fingerings:
+  - id: root-position-shape
+    exerciseID: triad-inversions-root-position
+    fingering:
+      positions:
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 3
+        '1': 1
+  - id: first-inversion-shape
+    exerciseID: triad-inversions-first-inversion
+    fingering:
+      positions:
+        - string: 3
+          fret: 9
+        - string: 2
+          fret: 8
+        - string: 1
+          fret: 8
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: second-inversion-shape
+    exerciseID: triad-inversions-second-inversion
+    fingering:
+      positions:
+        - string: 3
+          fret: 12
+        - string: 2
+          fret: 13
+        - string: 1
+          fret: 12
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 1
+        '2': 2
+        '1': 1
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - first
+      - minor
+      - new
+    correctOptionID: first
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - roles
+      - root
+      - phrases
+      - chords
+curriculum:
+  moduleID: harmony
+  ordinal: 76
+  durationMinutes: 30
+  prerequisites:
+    - caged
+    - building-triads
+  keywords:
+    - triad
+    - inversion
+    - bass note
+    - root position
+    - тризвук
+    - обернення
+    - бас

@@ -1,0 +1,130 @@
+lessonID: triad-inversions
+lessonVersion: 1
+locale: en
+title: 'Triad inversions: change the bass, keep the chord'
+summary: >-
+  Play one major triad in root position and two inversions on the top three strings, then connect them in short
+  phrases.
+goal: Identify root, third or fifth as the lowest voice while keeping the same harmonic root and major quality.
+body: |-
+  The root of a chord names its harmony. The bass is the lowest note actually sounding. They are the same in root position, but need not be the same in an inversion. A major triad always contains a root, a major third and a perfect fifth; putting a different member at the bottom changes its inversion, not its major quality.
+
+  This lesson uses only strings 3, 2 and 1. Keep the lower three strings silent. In the first form the voices rise as root–third–fifth. The lowest note therefore names both the bass and the harmonic root. Pluck the three notes slowly, then try a quiet three-string chord outside scored practice. Read the resolved root and note names for your selected tuning rather than memorizing the concert-pitch name in one setup.
+
+  In first inversion the ascending roles are third–fifth–root. The root has moved to the highest voice, and the third is now the bass. In second inversion they are fifth–root–third, with the fifth in the bass. These are close-position voicings: the neighboring chord tones fit within one octave. The fingering moves to different regions of the same three strings, and some tones change octave. This is different from the lesson-position control that searches for the same exact pitches elsewhere.
+
+  Compare the three displayed shapes before running their separate-note checks. State the lowest tone's role, then find the root inside the shape. Do not rename the chord after its bass. All three shapes retain the same harmonic root. In these top-string examples the Drop string is unused, so the same family of Standard/Drop tunings yields the same upper-string targets.
+
+  Next connect root position→first inversion→second inversion→first inversion. Each bar contains three ascending quarter notes and one quarter rest; use the rest to release and prepare the next position. At 50 BPM, prioritize the next first note rather than racing the shift. The final phrase changes the order to first inversion→root position→second inversion→root position, so the exercise requires reading the bass role instead of memorizing one upward path.
+
+  Listen for the changing low voice under the unchanged harmony. The timed practices check separately sounded pitches and their attacks. They cannot prove that the three-string chord was held, that a particular finger was used, or that the shift was economical. Compare the complete triads and the comfort of the moves separately, using short attempts.
+steps:
+  prepare:
+    title: Name the bass role, then the root
+    body: >-
+      Use strings 3–1 and keep strings 6–4 silent. Before each shape, identify its lowest tone as root, third or
+      fifth, then find the harmonic root. Start without a timer.
+  review:
+    title: Keep harmony separate from register
+    body: >-
+      Compare the complete three-string shapes quietly outside scored practice. Describe the changing bass role
+      and the unchanged harmonic root. Then try the two four-bar orders and use each rest to prepare the next location.
+  root-position-shape:
+    title: 'Root position: root–third–fifth'
+    body: >-
+      Harmonic root: {{root}}. The note on string 3 is also the bass and the root. Strings 2 and 1 supply the third
+      and fifth. {{positions}}. Hear the three voices from low to high.
+  root-position-notes:
+    title: '{{root}} major — root position (string check)'
+    body: >-
+      Play strings 3, 2 and 1 low to high, one per click at 50 BPM. Stop the preceding sound each time, then count
+      the remaining written rests to finish two bars. Identify the bass role before the first note. The score checks
+      separate pitches and timing. {{positions}}.
+  first-inversion-shape:
+    title: 'First inversion: third–fifth–root'
+    body: >-
+      The harmonic root remains {{root}}; it is now on string 1. String 3 supplies the third in the bass, followed
+      by the fifth on string 2. {{positions}}. A different bass does not turn this into a new triad.
+  first-inversion-notes:
+    title: '{{root}} major — first inversion (string check)'
+    body: >-
+      Play strings 3, 2 and 1 low to high, one per click at 50 BPM. Stop the preceding sound each time, then count
+      the remaining written rests to finish two bars. Identify the bass role before the first note. The score checks
+      separate pitches and timing. {{positions}}.
+  second-inversion-shape:
+    title: 'Second inversion: fifth–root–third'
+    body: >-
+      The harmonic root remains {{root}}, now on string 2. The bass on string 3 is the fifth, and string 1 supplies
+      the third. {{positions}}. Compare the bass role with the previous two forms.
+  second-inversion-notes:
+    title: '{{root}} major — second inversion (string check)'
+    body: >-
+      Play strings 3, 2 and 1 low to high, one per click at 50 BPM. Stop the preceding sound each time, then count
+      the remaining written rests to finish two bars. Identify the bass role before the first note. The score checks
+      separate pitches and timing. {{positions}}.
+  question:
+    title: An inversion or a new chord?
+    body: Compare the chord-tone roles before answering.
+  ascending-regions:
+    title: Connect the three regions
+    body: >-
+      Harmonic root: {{root}}. Play root position → first → second → first. Each bar has three quarter-note attacks
+      on strings 3–1, then a quarter rest to prepare the next location. Start at 50 BPM and keep previous notes
+      from overlapping. {{sequence}}.
+  read-the-bass:
+    title: Read the changing bass role
+    body: >-
+      Harmonic root: {{root}}. Play first → root position → second → root position. Each bar has three quarter-note
+      attacks on strings 3–1, then a quarter rest to prepare the next location. Start at 50 BPM and keep previous
+      notes from overlapping. {{sequence}}.
+activities:
+  root-position-shape:
+    title: '{{root}} major — root position (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  root-position-notes:
+    title: '{{root}} major — root position (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  first-inversion-shape:
+    title: '{{root}} major — first inversion (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  first-inversion-notes:
+    title: '{{root}} major — first inversion (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  second-inversion-shape:
+    title: '{{root}} major — second inversion (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  second-inversion-notes:
+    title: '{{root}} major — second inversion (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  ascending-regions:
+    title: Connect the three regions
+    body: >-
+      Harmonic root: {{root}}. Play root position → first → second → first. Each bar has three quarter-note attacks
+      on strings 3–1, then a quarter rest to prepare the next location. Start at 50 BPM and keep previous notes
+      from overlapping. {{sequence}}.
+  read-the-bass:
+    title: Read the changing bass role
+    body: >-
+      Harmonic root: {{root}}. Play first → root position → second → root position. Each bar has three quarter-note
+      attacks on strings 3–1, then a quarter rest to prepare the next location. Start at 50 BPM and keep previous
+      notes from overlapping. {{sequence}}.
+learningTasks:
+  question:
+    title: An inversion or a new chord?
+    body: A major triad has its third as the lowest sounding note. Which description is correct?
+    items:
+      first: It is first inversion; the original harmonic root still names the chord.
+      minor: It becomes minor because its third is below the root.
+      new: The bass becomes a new harmonic root automatically.
+    explanation: >-
+      Inversion identifies which chord member is in the bass. Third in the bass is first inversion, fifth in the
+      bass is second inversion. The intervals defining the triad relative to its harmonic root retain its major
+      quality.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      roles: I named the bass roles root, third and fifth in the three shapes.
+      root: I found the unchanged harmonic root on a different string in each shape.
+      phrases: I tried both four-bar orders and prepared the next position during the rest.
+      chords: I compared complete triads separately from the measured single-note practice.

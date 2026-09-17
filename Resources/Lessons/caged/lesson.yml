@@ -1,0 +1,825 @@
+schemaVersion: 3
+id: caged
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: c-family-shape
+    kind: fingering
+    exerciseID: caged-c-family
+    eventIDs: []
+    activityID: c-family-shape
+    fingeringID: c-family-shape
+  - id: c-family-notes
+    kind: events
+    exerciseID: caged-c-family
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - release
+    activityID: c-family-notes
+  - id: a-family-shape
+    kind: fingering
+    exerciseID: caged-a-family
+    eventIDs: []
+    activityID: a-family-shape
+    fingeringID: a-family-shape
+  - id: a-family-notes
+    kind: events
+    exerciseID: caged-a-family
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - release
+    activityID: a-family-notes
+  - id: g-family-map-shape
+    kind: events
+    exerciseID: caged-g-family-map
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - n6
+      - release
+    activityID: g-family-map-shape
+  - id: g-family-fragment-shape
+    kind: fingering
+    exerciseID: caged-g-family-fragment
+    eventIDs: []
+    activityID: g-family-fragment-shape
+    fingeringID: g-family-fragment-shape
+  - id: g-family-fragment-notes
+    kind: events
+    exerciseID: caged-g-family-fragment
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - release
+    activityID: g-family-fragment-notes
+  - id: e-family-shape
+    kind: fingering
+    exerciseID: caged-e-family
+    eventIDs: []
+    activityID: e-family-shape
+    fingeringID: e-family-shape
+  - id: e-family-notes
+    kind: events
+    exerciseID: caged-e-family
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - n6
+      - release
+    activityID: e-family-notes
+  - id: d-family-shape
+    kind: fingering
+    exerciseID: caged-d-family
+    eventIDs: []
+    activityID: d-family-shape
+    fingeringID: d-family-shape
+  - id: d-family-notes
+    kind: events
+    exerciseID: caged-d-family
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - release
+    activityID: d-family-notes
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: caged-c-family
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 0
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+      - id: release
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: caged-a-family
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: release
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: caged-g-family-map
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: caged-g-family-fragment
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: release
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: caged-e-family
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 8
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 10
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: caged-d-family
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 10
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 13
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 12
+      - id: release
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: c-family-shape
+    source:
+      kind: fingering
+      fingeringID: c-family-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: c-family-notes
+    source:
+      kind: exercise
+      exerciseID: caged-c-family
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: a-family-shape
+    source:
+      kind: fingering
+      fingeringID: a-family-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: a-family-notes
+    source:
+      kind: exercise
+      exerciseID: caged-a-family
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: g-family-map-shape
+    source:
+      kind: exercise
+      exerciseID: caged-g-family-map
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: g-family-fragment-shape
+    source:
+      kind: fingering
+      fingeringID: g-family-fragment-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: g-family-fragment-notes
+    source:
+      kind: exercise
+      exerciseID: caged-g-family-fragment
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: e-family-shape
+    source:
+      kind: fingering
+      fingeringID: e-family-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: e-family-notes
+    source:
+      kind: exercise
+      exerciseID: caged-e-family
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: d-family-shape
+    source:
+      kind: fingering
+      fingeringID: d-family-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: d-family-notes
+    source:
+      kind: exercise
+      exerciseID: caged-d-family
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+activities:
+  - id: c-family-shape
+    materialID: c-family-shape
+  - id: c-family-notes
+    materialID: c-family-notes
+  - id: a-family-shape
+    materialID: a-family-shape
+  - id: a-family-notes
+    materialID: a-family-notes
+  - id: g-family-map-shape
+    materialID: g-family-map-shape
+  - id: g-family-fragment-shape
+    materialID: g-family-fragment-shape
+  - id: g-family-fragment-notes
+    materialID: g-family-fragment-notes
+  - id: e-family-shape
+    materialID: e-family-shape
+  - id: e-family-notes
+    materialID: e-family-notes
+  - id: d-family-shape
+    materialID: d-family-shape
+  - id: d-family-notes
+    materialID: d-family-notes
+practiceEntries:
+  - id: c-family-notes
+    activityID: c-family-notes
+    exerciseID: caged-c-family
+  - id: a-family-notes
+    activityID: a-family-notes
+    exerciseID: caged-a-family
+  - id: g-family-fragment-notes
+    activityID: g-family-fragment-notes
+    exerciseID: caged-g-family-fragment
+  - id: e-family-notes
+    activityID: e-family-notes
+    exerciseID: caged-e-family
+  - id: d-family-notes
+    activityID: d-family-notes
+    exerciseID: caged-d-family
+fingerings:
+  - id: c-family-shape
+    exerciseID: caged-c-family
+    fingering:
+      positions:
+        - string: 5
+          fret: 3
+        - string: 4
+          fret: 2
+        - string: 3
+          fret: 0
+        - string: 2
+          fret: 1
+        - string: 1
+          fret: 0
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '5': 3
+        '4': 2
+        '2': 1
+  - id: a-family-shape
+    exerciseID: caged-a-family
+    fingering:
+      positions:
+        - string: 5
+          fret: 3
+        - string: 4
+          fret: 5
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 2
+        '3': 3
+        '2': 4
+        '1': 1
+  - id: g-family-fragment-shape
+    exerciseID: caged-g-family-fragment
+    fingering:
+      positions:
+        - string: 4
+          fret: 5
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 8
+      mutedStrings:
+        - 5
+        - 6
+      fingerNumbers:
+        '4': 1
+        '3': 1
+        '2': 1
+        '1': 4
+  - id: e-family-shape
+    exerciseID: caged-e-family
+    fingering:
+      positions:
+        - string: 6
+          fret: 8
+        - string: 5
+          fret: 10
+        - string: 4
+          fret: 10
+        - string: 3
+          fret: 9
+        - string: 2
+          fret: 8
+        - string: 1
+          fret: 8
+      mutedStrings: []
+      fingerNumbers:
+        '6': 1
+        '5': 3
+        '4': 4
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: d-family-shape
+    exerciseID: caged-d-family
+    fingering:
+      positions:
+        - string: 4
+          fret: 10
+        - string: 3
+          fret: 12
+        - string: 2
+          fret: 13
+        - string: 1
+          fret: 12
+      mutedStrings:
+        - 5
+        - 6
+      fingerNumbers:
+        '4': 1
+        '3': 2
+        '2': 4
+        '1': 3
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - families
+      - keys
+      - bass
+    correctOptionID: families
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - roots
+      - fourth
+      - fragment
+      - harmony
+curriculum:
+  moduleID: harmony
+  ordinal: 75
+  durationMinutes: 30
+  prerequisites:
+    - major-barre-chords
+    - octaves
+  keywords:
+    - CAGED
+    - chord families
+    - fretboard map
+    - voicing
+    - CAGED
+    - форми акордів
+    - гриф
