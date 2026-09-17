@@ -1,0 +1,121 @@
+lessonID: seventh-chords
+lessonVersion: 1
+locale: en
+title: 'Seventh chords: maj7, 7 and m7'
+summary: Compare four-string major-seventh, dominant-seventh and minor-seventh voicings, then move a dominant shape.
+goal: Read the chord suffix and locate the third and seventh that distinguish its quality.
+body: |-
+  A seventh chord adds a seventh above the root to a triad. The suffix matters: maj7 uses a major triad plus a major seventh; 7 uses a major triad plus a minor seventh; m7 uses a minor triad plus a minor seventh. A plain 7 symbol does not mean a major seventh. Relative to the root, their pitch-class intervals in semitones are 0–4–7–11, 0–4–7–10 and 0–3–7–10.
+
+  The three comparison shapes share a harmonic root and use strings 5, 4, 3 and 2. Keep strings 6 and 1 silent. Their low-to-high voice order is root–fifth–seventh–third. Locating these roles is more useful than memorizing which chord is “one finger different.” Read the resolved root in each activity; the chosen tuning can change the sounding chord name while the quality remains.
+
+  Begin with maj7. The third is on string 2 and the major seventh is on string 3. Play the four notes separately, then try a quiet complete chord outside scored practice. Compare the root with its seventh: a major seventh is one semitone below the next root octave, but the two strings here do not have to sit next to that octave on the neck.
+
+  Change maj7 to 7 by lowering only string 3 one fret. The seventh changes from major to minor, while root, fifth and major third remain. Then change 7 to m7 by lowering only string 2 one fret. The third becomes minor while the seventh stays minor. Alternate each neighboring pair slowly and identify the one changing voice by ear and on the fretboard.
+
+  The last form moves the complete dominant-seventh voicing two frets higher. Now the root changes by a whole tone, while both the major third and minor seventh retain their roles. This is transposition of a 7 chord, not conversion to maj7. Because the sixth string is unused, the corresponding Standard/Drop tuning pair has the same positions for these voicings.
+
+  Use short, relaxed attempts and check one string at a time if a note is dull. In timed practice, stop the preceding sound before the next attack; the remaining written rests complete two bars. The score checks individual pitches and timing, not recognition of a simultaneously strummed seventh chord. Save the complete-chord comparisons for self-practice.
+steps:
+  prepare:
+    title: Read the suffix before forming the chord
+    body: >-
+      Use strings 5–2 and keep strings 6 and 1 quiet. Find the root on string 5, then the seventh on string 3 and
+      the third on string 2. Read maj7, 7 or m7 before pressing.
+  review:
+    title: Change one voice, then move every voice
+    body: >-
+      Compare maj7→7 by changing the seventh, and 7→m7 by changing the third. Then compare the two dominant positions.
+      Describe which action changes quality and which transposes the root; try complete chords separately from scored
+      notes.
+  major-seventh-shape:
+    title: 'maj7: major third and major seventh'
+    body: >-
+      Root: {{root}}. From string 5 to string 2, the roles are root, fifth, major seventh and major third. {{positions}}.
+      Listen for the seventh on string 3 before comparing the following dominant form.
+  major-seventh-notes:
+    title: '{{root}}maj7 — string check'
+    body: >-
+      Play strings 5, 4, 3 and 2 low to high, one per click at 50 BPM. Stop the previous sound before each attack,
+      then count the four written rest beats to finish two bars. Keep strings 6 and 1 quiet. The score checks separate
+      pitches and timing, not a simultaneously played seventh chord. {{positions}}.
+  dominant-seventh-shape:
+    title: '7: lower the seventh'
+    body: >-
+      Root: {{root}}. Lower string 3 by one fret from the preceding maj7 form, keeping the other three pitches.
+      The chord now has a major third and minor seventh. {{positions}}. A plain 7 suffix names this quality.
+  dominant-seventh-notes:
+    title: '{{root}}7 — string check'
+    body: >-
+      Play strings 5, 4, 3 and 2 low to high, one per click at 50 BPM. Stop the previous sound before each attack,
+      then count the four written rest beats to finish two bars. Keep strings 6 and 1 quiet. The score checks separate
+      pitches and timing, not a simultaneously played seventh chord. {{positions}}.
+  minor-seventh-shape:
+    title: 'm7: also lower the third'
+    body: >-
+      Root: {{root}}. Compared with the preceding 7 form, lower string 2 by one fret and retain the other pitches.
+      The third and seventh are now both minor. {{positions}}. Check that the string-3 seventh has not moved again.
+  minor-seventh-notes:
+    title: '{{root}}m7 — string check'
+    body: >-
+      Play strings 5, 4, 3 and 2 low to high, one per click at 50 BPM. Stop the previous sound before each attack,
+      then count the four written rest beats to finish two bars. Keep strings 6 and 1 quiet. The score checks separate
+      pitches and timing, not a simultaneously played seventh chord. {{positions}}.
+  moved-dominant-shape:
+    title: Move the complete 7 form
+    body: >-
+      New root: {{root}}. Every position is two frets above the first dominant form. The chord is still 7: major
+      third, minor seventh. {{positions}}. Move the whole shape without leaving one inner voice behind.
+  moved-dominant-notes:
+    title: '{{root}}7 — string check'
+    body: >-
+      Play strings 5, 4, 3 and 2 low to high, one per click at 50 BPM. Stop the previous sound before each attack,
+      then count the four written rest beats to finish two bars. Keep strings 6 and 1 quiet. The score checks separate
+      pitches and timing, not a simultaneously played seventh chord. {{positions}}.
+  question:
+    title: What does a plain 7 suffix require?
+    body: Compare the chord-tone roles before answering.
+activities:
+  major-seventh-shape:
+    title: '{{root}}maj7 — shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  major-seventh-notes:
+    title: '{{root}}maj7 — string check'
+    body: Play every target separately, then release. {{sequence}}.
+  dominant-seventh-shape:
+    title: '{{root}}7 — shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  dominant-seventh-notes:
+    title: '{{root}}7 — string check'
+    body: Play every target separately, then release. {{sequence}}.
+  minor-seventh-shape:
+    title: '{{root}}m7 — shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  minor-seventh-notes:
+    title: '{{root}}m7 — string check'
+    body: Play every target separately, then release. {{sequence}}.
+  moved-dominant-shape:
+    title: '{{root}}7 — shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  moved-dominant-notes:
+    title: '{{root}}7 — string check'
+    body: Play every target separately, then release. {{sequence}}.
+learningTasks:
+  question:
+    title: What does a plain 7 suffix require?
+    body: Which pair of intervals distinguishes a dominant-seventh chord from maj7 and m7?
+    items:
+      dominant: A major third and a minor seventh above the root.
+      major: A major third and a major seventh above the root.
+      minor: A minor third and a minor seventh above the root.
+    explanation: >-
+      A 7 chord contains root, major third, fifth and minor seventh. maj7 raises the seventh; m7 lowers the third.
+      The bass or the number of strings does not determine these suffixes.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      roles: I located the third on string 2 and the seventh on string 3.
+      seventh: I changed maj7 to 7 by lowering only the seventh.
+      third: I changed 7 to m7 by lowering only the third.
+      move: I moved the complete dominant form and retained its 7 quality.

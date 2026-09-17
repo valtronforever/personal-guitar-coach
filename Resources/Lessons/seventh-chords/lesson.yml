@@ -1,0 +1,558 @@
+schemaVersion: 3
+id: seventh-chords
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: major-seventh-shape
+    kind: fingering
+    exerciseID: seventh-chords-major-seventh
+    eventIDs: []
+    activityID: major-seventh-shape
+    fingeringID: major-seventh-shape
+  - id: major-seventh-notes
+    kind: events
+    exerciseID: seventh-chords-major-seventh
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - release
+    activityID: major-seventh-notes
+  - id: dominant-seventh-shape
+    kind: fingering
+    exerciseID: seventh-chords-dominant-seventh
+    eventIDs: []
+    activityID: dominant-seventh-shape
+    fingeringID: dominant-seventh-shape
+  - id: dominant-seventh-notes
+    kind: events
+    exerciseID: seventh-chords-dominant-seventh
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - release
+    activityID: dominant-seventh-notes
+  - id: minor-seventh-shape
+    kind: fingering
+    exerciseID: seventh-chords-minor-seventh
+    eventIDs: []
+    activityID: minor-seventh-shape
+    fingeringID: minor-seventh-shape
+  - id: minor-seventh-notes
+    kind: events
+    exerciseID: seventh-chords-minor-seventh
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - release
+    activityID: minor-seventh-notes
+  - id: moved-dominant-shape
+    kind: fingering
+    exerciseID: seventh-chords-moved-dominant
+    eventIDs: []
+    activityID: moved-dominant-shape
+    fingeringID: moved-dominant-shape
+  - id: moved-dominant-notes
+    kind: events
+    exerciseID: seventh-chords-moved-dominant
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - release
+    activityID: moved-dominant-notes
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: seventh-chords-major-seventh
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: release
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: seventh-chords-dominant-seventh
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: release
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: seventh-chords-minor-seventh
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 4
+      - id: release
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: seventh-chords-moved-dominant
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 7
+      - id: release
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: major-seventh-shape
+    source:
+      kind: fingering
+      fingeringID: major-seventh-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: major-seventh-notes
+    source:
+      kind: exercise
+      exerciseID: seventh-chords-major-seventh
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: dominant-seventh-shape
+    source:
+      kind: fingering
+      fingeringID: dominant-seventh-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: dominant-seventh-notes
+    source:
+      kind: exercise
+      exerciseID: seventh-chords-dominant-seventh
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: minor-seventh-shape
+    source:
+      kind: fingering
+      fingeringID: minor-seventh-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: minor-seventh-notes
+    source:
+      kind: exercise
+      exerciseID: seventh-chords-minor-seventh
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 48
+  - id: moved-dominant-shape
+    source:
+      kind: fingering
+      fingeringID: moved-dominant-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: moved-dominant-notes
+    source:
+      kind: exercise
+      exerciseID: seventh-chords-moved-dominant
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+activities:
+  - id: major-seventh-shape
+    materialID: major-seventh-shape
+  - id: major-seventh-notes
+    materialID: major-seventh-notes
+  - id: dominant-seventh-shape
+    materialID: dominant-seventh-shape
+  - id: dominant-seventh-notes
+    materialID: dominant-seventh-notes
+  - id: minor-seventh-shape
+    materialID: minor-seventh-shape
+  - id: minor-seventh-notes
+    materialID: minor-seventh-notes
+  - id: moved-dominant-shape
+    materialID: moved-dominant-shape
+  - id: moved-dominant-notes
+    materialID: moved-dominant-notes
+practiceEntries:
+  - id: major-seventh-notes
+    activityID: major-seventh-notes
+    exerciseID: seventh-chords-major-seventh
+  - id: dominant-seventh-notes
+    activityID: dominant-seventh-notes
+    exerciseID: seventh-chords-dominant-seventh
+  - id: minor-seventh-notes
+    activityID: minor-seventh-notes
+    exerciseID: seventh-chords-minor-seventh
+  - id: moved-dominant-notes
+    activityID: moved-dominant-notes
+    exerciseID: seventh-chords-moved-dominant
+fingerings:
+  - id: major-seventh-shape
+    exerciseID: seventh-chords-major-seventh
+    fingering:
+      positions:
+        - string: 5
+          fret: 3
+        - string: 4
+          fret: 5
+        - string: 3
+          fret: 4
+        - string: 2
+          fret: 5
+      mutedStrings:
+        - 1
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 3
+        '3': 2
+        '2': 4
+  - id: dominant-seventh-shape
+    exerciseID: seventh-chords-dominant-seventh
+    fingering:
+      positions:
+        - string: 5
+          fret: 3
+        - string: 4
+          fret: 5
+        - string: 3
+          fret: 3
+        - string: 2
+          fret: 5
+      mutedStrings:
+        - 1
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 3
+        '3': 1
+        '2': 4
+  - id: minor-seventh-shape
+    exerciseID: seventh-chords-minor-seventh
+    fingering:
+      positions:
+        - string: 5
+          fret: 3
+        - string: 4
+          fret: 5
+        - string: 3
+          fret: 3
+        - string: 2
+          fret: 4
+      mutedStrings:
+        - 1
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 3
+        '3': 1
+        '2': 2
+  - id: moved-dominant-shape
+    exerciseID: seventh-chords-moved-dominant
+    fingering:
+      positions:
+        - string: 5
+          fret: 5
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 7
+      mutedStrings:
+        - 1
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 3
+        '3': 1
+        '2': 4
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - dominant
+      - major
+      - minor
+    correctOptionID: dominant
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - roles
+      - seventh
+      - third
+      - move
+curriculum:
+  moduleID: harmony
+  ordinal: 77
+  durationMinutes: 30
+  prerequisites:
+    - triad-inversions
+    - minor-barre-chords
+  keywords:
+    - seventh chords
+    - maj7
+    - m7
+    - dominant seventh
+    - септакорди
+    - велика септима
+    - мала септима

@@ -910,7 +910,8 @@ lessons:
       uk: Септакорди
     outcomeUK: Побудувати dominant 7, major 7 і minor 7
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 78
     moduleID: harmony
     lessonID: harmonic-functions
@@ -919,7 +920,8 @@ lessons:
       uk: Функції акордів і типові послідовності
     outcomeUK: Розуміти рух між тонікою, субдомінантою й домінантою
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 79
     moduleID: harmony
     lessonID: voice-leading
@@ -928,7 +930,8 @@ lessons:
       uk: Голосоведіння
     outcomeUK: Змінювати акорди з мінімальним рухом окремих голосів
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 80
     moduleID: harmony
     lessonID: chord-change-arpeggios
@@ -937,7 +940,8 @@ lessons:
       uk: Арпеджіо за змінами акордів
     outcomeUK: Переходити між акордовими звуками вчасно
     originalAssessment: Н
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 81
     moduleID: ear-improvisation
     lessonID: find-heard-note

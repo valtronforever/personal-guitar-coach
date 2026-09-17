@@ -1,0 +1,900 @@
+schemaVersion: 3
+id: chord-change-arpeggios
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: hear-the-change
+    kind: events
+    exerciseID: chord-change-arpeggios-hear-the-change
+    eventIDs:
+      - b1-e1
+      - b1-e2
+      - b1-e3
+      - b1-e4
+      - b2-e1
+      - b2-e2
+      - b2-e3
+      - b2-e4
+      - b3-e1
+      - b3-e2
+      - b3-e3
+      - b3-e4
+      - b4-e1
+      - b4-e2
+      - b4-e3
+      - b4-e4
+    activityID: hear-the-change
+  - id: four-chord-flow
+    kind: events
+    exerciseID: chord-change-arpeggios-four-chord-flow
+    eventIDs:
+      - b1-e1
+      - b1-e2
+      - b1-e3
+      - b1-e4
+      - b1-e5
+      - b1-e6
+      - b1-e7
+      - b1-e8
+      - b2-e1
+      - b2-e2
+      - b2-e3
+      - b2-e4
+      - b2-e5
+      - b2-e6
+      - b2-e7
+      - b2-e8
+      - b3-e1
+      - b3-e2
+      - b3-e3
+      - b3-e4
+      - b3-e5
+      - b3-e6
+      - b3-e7
+      - b3-e8
+      - b4-e1
+      - b4-e2
+      - b4-e3
+      - b4-e4
+      - b4-e5
+      - b4-e6
+      - b4-e7
+      - b4-e8
+    activityID: four-chord-flow
+  - id: changing-chord-study
+    kind: events
+    exerciseID: chord-change-arpeggios-changing-chord-study
+    eventIDs:
+      - b1-e1
+      - b1-e2
+      - b1-e3
+      - b1-e4
+      - b2-e1
+      - b2-e2
+      - b2-e3
+      - b2-e4
+      - b3-e1
+      - b3-e2
+      - b3-e3
+      - b3-e4
+      - b3-e5
+      - b3-e6
+      - b3-e7
+      - b4-e1
+      - b4-e2
+      - b4-e3
+      - b4-e4
+      - b5-e1
+      - b5-e2
+      - b5-e3
+      - b5-e4
+      - b5-e5
+      - b5-e6
+      - b5-e7
+      - b5-e8
+      - b6-e1
+      - b6-e2
+      - b6-e3
+      - b6-e4
+      - b7-e1
+      - b7-e2
+      - b7-e3
+      - b7-e4
+      - b8-e1
+      - b8-e2
+      - b8-e3
+    activityID: changing-chord-study
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: chord-change-arpeggios-hear-the-change
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: b1-e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b1-e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b1-e4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-e1
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: b2-e2
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b2-e3
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b2-e4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-e1
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        accented: true
+      - id: b3-e2
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: b3-e3
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: b3-e4
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-e1
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: b4-e2
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b4-e3
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b4-e4
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: chord-change-arpeggios-four-chord-flow
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-e1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: b1-e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b1-e3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b1-e4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: b1-e5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b1-e6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b1-e7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b1-e8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b2-e1
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+        accented: true
+      - id: b2-e2
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b2-e3
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+      - id: b2-e4
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: b2-e5
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+      - id: b2-e6
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b2-e7
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b2-e8
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b3-e1
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: b3-e2
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b3-e3
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b3-e4
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 1
+      - id: b3-e5
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b3-e6
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b3-e7
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+      - id: b3-e8
+        startTick: 11040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b4-e1
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        accented: true
+      - id: b4-e2
+        startTick: 12000
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: b4-e3
+        startTick: 12480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: b4-e4
+        startTick: 12960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b4-e5
+        startTick: 13440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: b4-e6
+        startTick: 13920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: b4-e7
+        startTick: 14400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: b4-e8
+        startTick: 14880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+  - id: chord-change-arpeggios-changing-chord-study
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: b1-e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b1-e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b1-e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: b2-e1
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        accented: true
+      - id: b2-e2
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+      - id: b2-e3
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b2-e4
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b3-e1
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: b3-e2
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b3-e3
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b3-e4
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 1
+      - id: b3-e5
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b3-e6
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b3-e7
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-e1
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+        accented: true
+      - id: b4-e2
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: b4-e3
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b4-e4
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b5-e1
+        startTick: 15360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        accented: true
+      - id: b5-e2
+        startTick: 15840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b5-e3
+        startTick: 16320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b5-e4
+        startTick: 16800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: b5-e5
+        startTick: 17280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b5-e6
+        startTick: 17760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b5-e7
+        startTick: 18240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b5-e8
+        startTick: 18720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b6-e1
+        startTick: 19200
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 3
+        accented: true
+      - id: b6-e2
+        startTick: 20160
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: b6-e3
+        startTick: 21120
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: b6-e4
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b7-e1
+        startTick: 23040
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        accented: true
+      - id: b7-e2
+        startTick: 24000
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: b7-e3
+        startTick: 24960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: b7-e4
+        startTick: 25920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: b8-e1
+        startTick: 26880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        accented: true
+      - id: b8-e2
+        startTick: 27840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b8-e3
+        startTick: 28800
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        assessSustain: true
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: hear-the-change
+    source:
+      kind: exercise
+      exerciseID: chord-change-arpeggios-hear-the-change
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: four-chord-flow
+    source:
+      kind: exercise
+      exerciseID: chord-change-arpeggios-four-chord-flow
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: changing-chord-study
+    source:
+      kind: exercise
+      exerciseID: chord-change-arpeggios-changing-chord-study
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: hear-the-change
+    materialID: hear-the-change
+  - id: four-chord-flow
+    materialID: four-chord-flow
+  - id: changing-chord-study
+    materialID: changing-chord-study
+practiceEntries:
+  - id: hear-the-change
+    activityID: hear-the-change
+    exerciseID: chord-change-arpeggios-hear-the-change
+  - id: four-chord-flow
+    activityID: four-chord-flow
+    exerciseID: chord-change-arpeggios-four-chord-flow
+  - id: changing-chord-study
+    activityID: changing-chord-study
+    exerciseID: chord-change-arpeggios-changing-chord-study
+fingerings: []
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - current
+      - previous
+      - any
+    correctOptionID: current
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - prepare
+      - minor
+      - pulse
+      - finish
+curriculum:
+  moduleID: harmony
+  ordinal: 80
+  durationMinutes: 35
+  prerequisites:
+    - harmonic-functions
+    - voice-leading
+    - seventh-chords
+  keywords:
+    - arpeggio
+    - chord changes
+    - I vi IV V
+    - арпеджіо
+    - зміни акордів

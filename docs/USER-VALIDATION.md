@@ -156,3 +156,7 @@ Pending user: read the major/minor forms in English and Ukrainian in the native 
 ### CAGED and inversion course topics 75–76
 
 Pending user: verify native en/uk family/inversion labels, step-to-map transitions and VoiceOver reading. In Drop, inspect the complete G-family sequence map, then select its upper-four-string fragment; the map must not imply a simultaneously playable six-string grip. Try the five CAGED string checks and three inversion checks/two transition phrases on a clean interface signal. Confirm that the root label remains the harmonic root even when the bass is a fifth or third. Physical comfort and clean simultaneous triads are self-observations, not audio-verified outcomes.
+
+### Harmony progression course topics 77–80
+
+Pending user: compare maj7/7/m7 and moved dominant labels in en/uk; follow I–IV–V–I and I–vi–IV–V chord references with inverted basses. Inspect wide and connected voice leading, then run the three sustained single-voice lines and connected arpeggio with clean interface input. Reattack repeated notes at each bar, leave the written fourth-beat rests, and verify that a missing/released sound is not described as bad finger contact. Run the two four-bar arpeggios and eight-bar study; check reading ahead, mixed eighth/quarter rhythm, pauses and final two-beat sustain. Full-chord clarity and physical fingering remain self-reported.
