@@ -4,7 +4,7 @@ import Domain
 @testable import Learning
 
 struct TremoloPickingCourseTests {
-    @Test func burstsKeepCountsRestsAndDirectionsWhileFastApplicationRemainsUnscored() throws {
+    @Test func burstsKeepCountsRestsDirectionsAndExplicitAssessmentModes() throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
@@ -13,7 +13,7 @@ struct TremoloPickingCourseTests {
             "fast-short": Array(repeating: 60, count: 12), "fast-long": Array(repeating: 60, count: 16),
             "burst-study": Array(repeating: 60, count: 4) + Array(repeating: 62, count: 4) + Array(repeating: 64, count: 8) + Array(repeating: 62, count: 16) + Array(repeating: 60, count: 8)]
         let lengths: [String: Int64] = ["subdivision": 7680, "measured-bursts": 15360, "fast-short": 7680, "fast-long": 7680, "burst-study": 15360]
-        #expect(lesson.manifest.practiceEntries.map(\.id) == ["subdivision", "measured-bursts"])
+        #expect(lesson.manifest.practiceEntries.map(\.id) == ["subdivision", "measured-bursts", "fast-short", "fast-long"])
         var cases = 0
         for (index,tuning) in TuningProfile.presets.enumerated() {
             let shift = [0,0,-2,-2,-4,-4,-5,-5][index]
@@ -36,6 +36,9 @@ struct TremoloPickingCourseTests {
                     if graded {
                         #expect(exercise.assessmentMode == .monophonic)
                         for bpm in [40.0,60.0,120.0] { try exercise.validateForPractice(instrument: tuning, bpm: bpm) }
+                    } else if activity.id == "fast-short" || activity.id == "fast-long" {
+                        #expect(exercise.assessmentMode == .rhythmOnly && exercise.maximumBPM == 100)
+                        for bpm in [40.0,60.0,100.0] { try exercise.validateForPractice(instrument: tuning, bpm: bpm) }
                     } else {
                         #expect(exercise.assessmentMode == .displayOnly && exercise.maximumBPM == 160)
                         #expect(exercise.events.filter { $0.kind == .note }.allSatisfy { $0.durationTicks == 240 })
@@ -53,7 +56,7 @@ struct TremoloPickingCourseTests {
             }
         }
         #expect(cases == 200)
-        let context = LessonTaskContext(lessonVersion: 1, instrument: InstrumentProfile())
+        let context = LessonTaskContext(lessonVersion: 2, instrument: InstrumentProfile())
         let task = try #require(lesson.manifest.tasks.first { $0.kind == .selfPractice })
         #expect(!task.isComplete(LessonTaskProgress(context: context, checkedIDs: ["even"]), context: context))
         let quiz = try #require(lesson.manifest.tasks.first { $0.kind == .quiz })

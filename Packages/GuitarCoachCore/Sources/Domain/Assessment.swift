@@ -16,6 +16,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public let extraPenalty: Double
     public let onsetUncertaintySeconds: Double
     public static let current = AssessmentParameters()
+    public static let rhythmOnly = AssessmentParameters(version: "repeated-attack-assessment-1")
     public static let withBends = AssessmentParameters(version: "monophonic-assessment-4")
     public static let withHarmonics = AssessmentParameters(version: "monophonic-assessment-8")
     public static let withLegatoChains = AssessmentParameters(version: "monophonic-assessment-7")
@@ -24,7 +25,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     private init(version: String = "monophonic-assessment-3") {
         self.version = version; pitchToleranceCents = 50; rhythmToleranceSeconds = 0.1
         rhythmIntervalFraction = 0.45; maximumMatchSeconds = 0.3; matchIntervalFraction = 0.49
-        uncertaintyFraction = 0.2; pitchWeight = 0.6; extraPenalty = 20; onsetUncertaintySeconds = 0.03
+        uncertaintyFraction = 0.2; pitchWeight = 0.6; extraPenalty = 20; onsetUncertaintySeconds = version == "repeated-attack-assessment-1" ? 0.02 : 0.03
     }
     public func maximumRhythmTolerance(personal: Bool) -> Double {
         rhythmToleranceSeconds * (personal && version != "monophonic-assessment-1" ? 2 : 1)
@@ -36,7 +37,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         let version = try v.decode(String.self, forKey: .version)
-        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version, Self.withBends.version, Self.withPitchTransitions.version, Self.withVibrato.version, Self.withLegatoChains.version, Self.withHarmonics.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
+        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version, Self.withBends.version, Self.withPitchTransitions.version, Self.withVibrato.version, Self.withLegatoChains.version, Self.withHarmonics.version, Self.rhythmOnly.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
         self.init(version: version)
         let fields: [(CodingKeys, Double)] = [(.pitchToleranceCents, pitchToleranceCents), (.rhythmToleranceSeconds, rhythmToleranceSeconds),
             (.rhythmIntervalFraction, rhythmIntervalFraction), (.maximumMatchSeconds, maximumMatchSeconds),
@@ -111,8 +112,14 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
     public init(evidence: PracticeEvidence, parameters: AssessmentParameters = .current, validity: AssessmentValidity,
                 rhythmCapability: RhythmCapability, rhythmToleranceSeconds: Double, notes: [AssessedNote], extras: [AssessedExtra],
                 overallScore: Double?, pitchScore: Double?, timingScore: Double?, sustain: SustainAssessment? = nil, bends: BendAssessment? = nil, pitchTransitions: PitchTransitionAssessment? = nil, vibrato: VibratoAssessment? = nil, legatoChains: LegatoChainAssessment? = nil) throws {
+        let rhythmOnly = evidence.configuration.exercise.assessmentMode == .rhythmOnly
+        guard rhythmOnly == (parameters == .rhythmOnly),
+              !rhythmOnly || (pitchScore == nil && notes.allSatisfy { $0.centsError == nil }) else { throw AssessmentError.invalidResult }
         let expected = evidence.configuration.selectedEvents.filter { $0.kind == .note }
         guard !expected.contains(where: { $0.harmonic != nil }) || parameters.version == AssessmentParameters.withHarmonics.version else { throw AssessmentError.invalidResult }
+        if rhythmOnly && [.valid, .uncalibrated].contains(validity) {
+            guard evidence.pitchContour != nil, evidence.configuration.capabilityVersion == MonophonicCapability.rhythmVersion else { throw AssessmentError.invalidResult }
+        }
         let ids = notes.compactMap(\.attackID) + extras.map(\.id)
         let attacks = Set(evidence.attacks.map(\.id))
         let bendEvents = expected.filter { $0.bend != nil }
@@ -182,10 +189,10 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         switch validity {
         case .valid:
             guard evidence.phase == .completed, rhythmCapability.allowsTiming,
-                  overallScore != nil, pitchScore != nil, timingScore != nil else { throw AssessmentError.invalidResult }
+                  overallScore != nil, rhythmOnly || pitchScore != nil, timingScore != nil else { throw AssessmentError.invalidResult }
         case .uncalibrated:
             guard evidence.phase == .completed, !rhythmCapability.allowsTiming,
-                  overallScore == nil, timingScore == nil, pitchScore != nil else { throw AssessmentError.invalidResult }
+                  overallScore == nil, timingScore == nil, rhythmOnly || pitchScore != nil else { throw AssessmentError.invalidResult }
         case .insufficientSignal, .interrupted:
             guard overallScore == nil, pitchScore == nil, timingScore == nil else { throw AssessmentError.invalidResult }
         }

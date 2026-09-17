@@ -1,6 +1,6 @@
 # Independent musician course (121–128)
 
-Status: `in_progress`
+Status: `pending_user`
 
 Complete the remaining agreed module using original bilingual music and instruction: transcribe a riff/solo by phrases; read unfamiliar TAB/staff/chord shapes; compose a developed riff; arrange two guitar roles; coordinate with bass/drums; prepare a complete form; record and review a performance; construct an evidence-based personal practice cycle. Use actual listen-and-repeat, notation, held voices and opt-in self-practice recording where appropriate. Do not claim a multitrack/backing-track engine, polyphonic grading, identification of playing technique, or hardware/provider acceptance that does not exist.
 
@@ -26,3 +26,6 @@ Full Learning: 149 tests/54 suites passed 242.340s. Full App after the three inv
 Root-only Release and ZIP rebuilt with 134 bilingual bundles/403 YAML files (128 visible course lessons), 948 localized keys, arm64 and macOS 14 minimum. Ad-hoc signature, hardened runtime, exact sandbox/audio/user-selected read-write entitlements, archive and offline resources verified. [Bundle report](../../docs/benchmarks/independent-musician-release-bundle.json). Binary SHA-256 `f1b62a9c8454f4f9648db07564f4060c178a15ed5c12de31cb55a43de3bc7325`; archive SHA-256 `7980c293cd236181b7d1923aa183332591045bac2e62940d0098abc616b367cb`. Signed sandbox→XPC→invalidRequest probe passed; no provider invoked. No local Debug .app was built. Native app-launch/actual-guitar fields remain false.
 
 Logs: `/tmp/independent-{learning-focused,app-focused,learning-full,app-final,content-final,release,bundle,xpc}.log`. Exact-head CI/merge and final 128-topic acceptance audit remain open.
+
+
+Exact-head CI35203848426 passed on `6bb7bdbcd2d1637e5b807d98f594dbcf38a8514a` at2026-09-17 09:49:08 UTC. PR97 merged as `b6ca2e0de11405a41c3d174f7a920ef1baa3404a` at09:50:32 UTC. Software delivery is accepted; native/hardware/user checks remain `pending_user`.

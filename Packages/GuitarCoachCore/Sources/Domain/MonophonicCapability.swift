@@ -2,6 +2,9 @@ import Foundation
 
 /// Versioned software capability from the task 12 corpus. Physical-route validation remains separate.
 public enum MonophonicCapability {
+    public static let rhythmVersion = "repeated-attack-capability-1"
+    public static let rhythmMinimumNoteSeconds = 0.15
+    public static let rhythmFrequencyRange = 110.0...440.0
     public static let harmonicVersion = "mono-capability-7"
     public static let legatoChainVersion = "mono-capability-6"
     public static let version = "mono-capability-3"
@@ -35,6 +38,13 @@ public enum MonophonicCapability {
             let duration = try MusicalTime.seconds(forTicks: resolved.event.durationTicks, bpm: bpm, pulseTicks: exercise.timeSignature.pulseTicks)
             if !supportsTarget(pitch, referenceA4: tuning.referenceA4) || !frequencyRange.contains(hz) {
                 return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
+            }
+            if exercise.assessmentMode == .rhythmOnly {
+                if !rhythmFrequencyRange.contains(hz) {
+                    return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
+                }
+                return duration + 1e-9 < rhythmMinimumNoteSeconds
+                    ? Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration) : nil
             }
             if let bend = resolved.event.bend {
                 if !BendCapability.baseFrequencyRange.contains(hz) || hz * pow(2, Double(bend.semitones) / 12) > BendCapability.maximumTargetFrequency {

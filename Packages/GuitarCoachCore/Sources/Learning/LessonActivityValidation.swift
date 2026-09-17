@@ -125,9 +125,10 @@ extension LessonCatalogLoader {
             guard let activity = activityMap[entry.activityID], let material = materialMap[activity.materialID], let exercise = exercises[entry.exerciseID] else { throw ContentFailure(.unknownExercise, "Unknown practice activity/exercise") }
             try require(material.source.kind != .fingering && material.exerciseIDs(in: manifest).contains(exercise.id), "Practice exercise is outside the material")
             let selected = exercise.events.filter { material.eventIDs(in: exercise).contains($0.id) }
-            guard exercise.assessmentMode == .monophonic else { throw ContentFailure(.unsupportedMode, "Practice entry needs a monophonic exercise") }
+            guard exercise.assessmentMode != .displayOnly else { throw ContentFailure(.unsupportedMode, "Practice entry needs an assessable exercise") }
             try require(selected.contains { $0.kind == .note && $0.positions.count == 1 }, "Practice entry needs sounding monophonic events")
             if entry.presentation == .listenAndRepeat {
+                try require(exercise.assessmentMode == .monophonic, "Hidden responses require note-and-pitch assessment")
                 let steps = manifest.steps.filter { $0.activityID == activity.id }
                 try require(exercise.events.first?.startTick == 0 && zip(exercise.events, exercise.events.dropFirst()).allSatisfy { $0.endTick == $1.startTick },
                     "Listening responses need explicit rests so revealed notation has no gaps")

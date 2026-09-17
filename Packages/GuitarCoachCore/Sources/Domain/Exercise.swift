@@ -19,7 +19,7 @@ public struct StrumPattern: Hashable, Codable, Sendable {
 }
 
 public enum MusicalEventKind: String, Codable, Sendable { case note, rest }
-public enum AssessmentMode: String, Codable, Sendable { case monophonic, displayOnly }
+public enum AssessmentMode: String, Codable, Sendable { case monophonic, rhythmOnly, displayOnly }
 public enum TuningPolicy: String, Codable, Sendable { case fixedTuning, followsInstrument }
 
 public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
@@ -209,9 +209,14 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         guard (tuningPolicy == .fixedTuning) == (requiredTuning != nil) else { throw MusicError.invalidTuning }
         // Short muted input has no validated pitch/timbre assessment contract yet.
         guard assessmentMode == .displayOnly || !events.contains(where: { $0.palmMuted || $0.mutedAttack != nil }) else { throw MusicError.invalidExercise }
-        if assessmentMode == .monophonic {
+        if assessmentMode != .displayOnly {
             guard events.contains(where: { $0.kind == .note }) else { throw MusicError.invalidExercise }
             guard events.allSatisfy({ $0.positions.count <= 1 }) else { throw MusicError.unsupportedPolyphony }
+        }
+        if assessmentMode == .rhythmOnly {
+            let notes = events.filter { $0.kind == .note }
+            // First rhythm-only contract: one fixed-pitch, clean, repeatedly picked note.
+            guard notes.allSatisfy({ $0.positions == notes.first?.positions && $0.bend == nil && $0.pitchTransition == nil && $0.vibrato == nil && $0.legatoChain == nil && $0.harmonic == nil && $0.strum == nil }) else { throw MusicError.invalidExercise }
         }
         guard assessmentMode == .monophonic || !events.contains(where: \.assessSustain) else { throw MusicError.invalidExercise }
         if events.contains(where: { !$0.heldStrings.isEmpty }) {
@@ -263,7 +268,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
 
     /// Structural snapshot validation is independent of today's audio capability limits.
     public func validatePracticeSnapshot(instrument: TuningProfile, bpm: Double) throws {
-        guard assessmentMode == .monophonic else { throw MusicError.displayOnlyExercise }
+        guard assessmentMode != .displayOnly else { throw MusicError.displayOnlyExercise }
         try MusicalTime.validateTempo(bpm)
         guard (minimumBPM...maximumBPM).contains(bpm) else { throw MusicError.invalidTempo }
         if let requiredTuning, !requiredTuning.hasSamePitches(as: instrument) { throw MusicError.tuningMismatch }

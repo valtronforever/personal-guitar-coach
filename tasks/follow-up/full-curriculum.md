@@ -115,3 +115,6 @@ Specializations105–112 are authored: jazz comping/lines, fingerstyle/chord mel
 
 
 2026-09-17 — Remaining independent-musician module authored: all 128 agreed topics now have en/uk teaching and runtime placement. Its 36 activities include 14 graded entries, six hidden listening responses and ten opt-in ungraded recording activities. 134 total bundles validate; no placeholder lessons were substituted for the 8 final topics. Exact music/hold/form expectations cover 1,440 combinations, App flow checks cover 400 recording and 240 hidden contexts. Full-course editorial/software acceptance, updated final Release and remaining CI/merges still remain open. Hardware/native gates remain pending_user.
+
+
+Final audit finding (2026-09-17): topic 96's fast tremolo portion is still display-only under the 0.2s ordinary note limit. Although its moderate-speed preparation is correctly graded, the accepted Р capability cannot be closed solely by counting this authored lesson. [Rapid rhythm assessment](rapid-rhythm-assessment.md) is now in_progress to evaluate rapid repeated attacks with a separate honest timing contract. The original fast-reference/self-practice content stays available; no per-attack pitch or physical-technique success is fabricated. Full 128-topic acceptance remains open.

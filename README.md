@@ -118,3 +118,5 @@ python3 Scripts/check_agent_xpc.py --configuration release
 ```
 
 Only when explicitly testing a configured account, `--live-synthetic codex` or `--live-synthetic claude` sends a generated sine test's metadata to that provider and may consume account usage; it never uses a personal recording.
+
+Для повторюваної швидкої ноти доступне окреме оцінювання лише ритму: час атак, пропуски й зайві атаки без оцінки висоти. Урок тремоло має дві такі вправи до 100 BPM шістнадцятими; похибка калібрування може вимагати повільнішого темпу. Деталі — [контракт аудіо](docs/AUDIO-AND-ASSESSMENT.md).

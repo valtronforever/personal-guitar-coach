@@ -52,7 +52,7 @@ import Audio
                     (0...Int(ceil((end - start + 0.4) / 0.02))).map { i in
                         try SustainFrame(id: UInt64(i + 1), normalizedTime: start - 0.1 + Double(i) * 0.02, state: .silence, frequency: nil)
                     }) : nil
-                let contour: PitchContourTrace? = try configuration.selectedEvents.contains(where: { $0.bend != nil || $0.pitchTransition != nil || $0.vibrato != nil || $0.legatoChain != nil }) ? PitchContourTrace(frames:
+                let contour: PitchContourTrace? = try configuration.exercise.assessmentMode == .rhythmOnly || configuration.selectedEvents.contains(where: { $0.bend != nil || $0.pitchTransition != nil || $0.vibrato != nil || $0.legatoChain != nil }) ? PitchContourTrace(frames:
                     (0...Int(ceil((end - start + 0.4) / 0.02))).map { i in
                         try SustainFrame(id: UInt64(i + 1), normalizedTime: start - 0.1 + Double(i) * 0.02, state: .silence, frequency: nil)
                     }) : nil
@@ -61,7 +61,7 @@ import Audio
                     renderEpochSeconds: 100, maximumClockDriftSeconds: 0, attacks: [], clipping: [], sustainTrace: trace, pitchContour: contour, analysisVersion: "course-events-1")
                 #expect(await assessment.receive(evidence))
                 let result = try #require(assessment.latest)
-                #expect(result.validity == .uncalibrated && result.pitchScore == 0 && result.overallScore == nil)
+                #expect(result.validity == .uncalibrated && result.pitchScore == (configuration.exercise.assessmentMode == .rhythmOnly ? nil : 0) && result.overallScore == nil)
                 let advice = try #require(FeedbackEngine.recommendations(for: result).first { $0.action == .repeatFragment })
                 let retry = try #require(PracticeRequest(result: result, recommendation: advice))
                 navigation.openPractice(retry); practice.configure(navigation.practiceRequest)

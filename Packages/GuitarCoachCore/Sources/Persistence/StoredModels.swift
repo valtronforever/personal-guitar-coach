@@ -99,9 +99,11 @@ public struct AssessmentSnapshot: Codable, Equatable, Sendable {
               [overallScore, pitchScore, timingScore].compactMap({ $0 }).allSatisfy({ $0.isFinite && (0...100).contains($0) }) else {
             throw StorageError.invalidRecord
         }
+        let rhythmOnly = algorithmVersion == AssessmentParameters.rhythmOnly.version
+        guard !rhythmOnly || pitchScore == nil else { throw StorageError.invalidRecord }
         switch validity {
         case .valid:
-            guard overallScore != nil, pitchScore != nil, timingScore != nil else { throw StorageError.invalidRecord }
+            guard overallScore != nil, rhythmOnly || pitchScore != nil, timingScore != nil else { throw StorageError.invalidRecord }
         case .uncalibrated:
             guard overallScore == nil, timingScore == nil else { throw StorageError.invalidRecord }
         case .insufficientSignal, .interrupted:
@@ -161,6 +163,7 @@ public struct PracticeRecord: Codable, Equatable, Sendable, Identifiable {
     public func validate() throws {
         guard result.schemaVersion == 1 else { throw StorageError.unsupportedVersion(result.schemaVersion) }
         try result.payload.validate()
+        guard (exercise.assessmentMode == .rhythmOnly) == (result.payload.algorithmVersion == AssessmentParameters.rhythmOnly.version) else { throw StorageError.invalidRecord }
         if let assessment {
             guard assessment.schemaVersion == 1 else { throw StorageError.unsupportedVersion(assessment.schemaVersion) }
             let value = assessment.payload, input = value.evidence, configuration = input.configuration

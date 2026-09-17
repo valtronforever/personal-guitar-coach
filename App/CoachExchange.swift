@@ -128,6 +128,7 @@ enum CoachExchange {
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if exercise.assessmentMode == .rhythmOnly { return "file-coach-11" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.harmonic != nil }) { return "file-coach-10" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.pluckFinger != nil }) { return "file-coach-9" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.legatoChain != nil }) { return "file-coach-8" }

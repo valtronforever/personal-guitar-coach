@@ -241,3 +241,10 @@ Independent-musician course (121–128) — pending_user:
 - Compare isolated lower/upper and combined two-guitar references; verify held bass continuity on the actual guitar. Rehearse bass/drum role examples with partners or a separate accompaniment when possible. No multitrack/drum-stem or automatic ensemble acceptance is implied by built-in metronome playback.
 - Prepare and record the identical eight-bar miniature in 126/127, including opening/final silence. Save separate takes, open them in the default player, make a bar-specific repair list and compare one correction at the same tempo. Validate native save/cancel/replace/failure behavior and actual guitar capture.
 - Complete an adjustable practice cycle in 128 using real valid results, hidden listening, music and review. Keep physical/self-reported observations separate from automated single-note pitch/timing. Mathematical checks cannot certify technique, expression, ensemble balance or actual performance quality.
+
+Rapid fixed-note rhythm assessment — pending_user:
+
+- In tremolo picking, try `fast-short` and `fast-long` using a clean fretted note, first slowly then up to 100 BPM; confirm that the displayed contract says rhythm only and no pitch score/cents appear in results/history/coach context.
+- Check the expected calibration boundary: a rough manual setting can allow approximate slow timing while correctly withholding the high-speed score. Refine synchronization or reduce tempo; do not treat an unavailable score as a pass.
+- With the actual interface, compare consistent bursts, deliberately missed/extra/uneven attacks, count-in playing, attacks in the recovery rest, weaker envelopes, background noise and clipping. Retain screenshots/recordings as explicit opt-in evidence. Synthetic tests do not establish real-guitar onset accuracy.
+- Reopen the saved attempt, retry its frozen tuning/tempo/range, switch en/uk/light/dark, and check keyboard/VoiceOver announcements. Existing monophonic practice must retain its pitch score; the final changing-pitch tremolo study remains self-practice.

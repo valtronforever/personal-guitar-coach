@@ -153,7 +153,7 @@ struct PracticeRequest: Equatable, Sendable {
                   lesson.manifest.exercises.contains { $0.id == mapping.exerciseID && $0.version == mapping.exerciseVersion }
               }),
               let entry = lesson.manifest.practiceEntries.first(where: { $0.id == entryID && $0.activityID == snapshot.activity.id }),
-              let exercise = snapshot.exercises.first(where: { $0.id == entry.exerciseID }), exercise.assessmentMode == .monophonic,
+              let exercise = snapshot.exercises.first(where: { $0.id == entry.exerciseID }), exercise.assessmentMode != .displayOnly,
               let source = snapshot.sourceMappings.first(where: { $0.exerciseID == exercise.id }) else { return nil }
         guard let reference = try? PracticeActivityReference(activityID: snapshot.activity.id, materialID: snapshot.material.id,
             entryID: entryID, choice: snapshot.choice, positioning: snapshot.material.policy,

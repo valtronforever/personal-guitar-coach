@@ -16061,6 +16061,54 @@
           }
         }
       }
+    },
+    "rhythmOnly.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rapid-attack rhythm"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ритм швидких атак"
+          }
+        }
+      }
+    },
+    "rhythmOnly.explanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rhythm only: attack timing, misses and extra attacks. Pitch, accents and pick direction are not graded. Play one clean repeated note at up to about 6.7 attacks per second (sixteenths at 100 BPM). Timing needs eligible calibration; manual alignment remains approximate."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лише ритм: час атак, пропуски й зайві атаки. Висота, акценти й напрямок медіатора не оцінюються. Грай одну чисту повторювану ноту — до приблизно 6,7 атаки за секунду (шістнадцяті при 100 BPM). Для оцінки часу потрібне придатне калібрування; ручне налаштування дає приблизний результат."
+          }
+        }
+      }
+    },
+    "rhythmOnly.uncalibrated": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No rhythm score: calibration is not precise enough or is unavailable. Try a lower tempo or refine synchronization."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка ритму недоступна: калібрування недостатньо точне або відсутнє. Спробуй нижчий темп чи уточни синхронізацію."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
