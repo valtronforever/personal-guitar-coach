@@ -111,6 +111,13 @@ lessons:
   - harmonics
   - tremolo-picking
   - funk-study
+  - blues-accompaniment
+  - blues-solo
+  - classic-rock
+  - punk-hardcore
+  - metal-study
+  - rnb-neo-soul
+  - country-chicken-picking
 modules:
   - id: getting-started
     order: 1

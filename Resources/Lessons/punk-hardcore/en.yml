@@ -1,0 +1,66 @@
+lessonID: punk-hardcore
+lessonVersion: 1
+locale: en
+title: 'Punk and hardcore: drive, space and stops'
+summary: Maintain a direct chord pulse and make the silent boundaries as clear as the attacks.
+goal: Play a compact eight-bar power-chord form with repeatable energy and exact stops.
+body: |-
+  This study focuses on a direct repeated chord rhythm and deliberate stops. Energy comes from coordinated attacks and a clear form, not from pressing harder or choosing the highest tempo. Start with a clean or lightly driven sound that lets you hear every release. The model marks downstrokes as one possible approach; if they are not repeatable, lower the tempo and shorten the burst before extending it.
+
+  Learn one bar of eighth-note power chords followed by a whole bar of silence. Keep counting while the hand recovers. Listen for attacks that arrive together across the indicated strings and for unwanted strings between them. The reference is synthesized and does not verify your picking direction, chord balance or muting. Use the repeated bar to establish an even motion, then compare several takes at the same tempo.
+
+  The stop exercise shortens each burst: three beats, two beats, one beat and a single quarter-note chord. End at the written boundary, then keep the remaining beats silent. Do not use the rest to add an extra closing stroke. Prepare the next chord shape during the gap and test the first attack after it, because a clean stop is useful only if the restart also lands deliberately.
+
+  The spacious contrast keeps the same metronome but places chords on beats one and three. It feels broader because the guitar attacks are less frequent; the clock has not slowed down. Compare this with the continuous eighths before combining them in the form. Keep the silent beats long enough to hear the change in density instead of filling them from habit.
+
+  The eight-bar arrangement combines continuous motion, shorter bursts and a tonic stop. Memorize the route before increasing speed. If a chord change becomes late, isolate that boundary at a lower tempo rather than accelerating the next bar to catch up. This is self-practice for an original style study: no automatic score claims to measure aggressive tone, genre authenticity or physical endurance. Record one useful observation about timing, release or balance for the next session.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  steady-eighths:
+    title: Eight attacks and a recovery bar
+    body: 'Center: {{root}}. Alternate one bar of eighth-note power chords with one full silent bar. Keep counting
+      both.'
+  hard-stops:
+    title: Shorten the burst, keep the bar
+    body: The four bars sound for three, two, one and one beats respectively. Count the remaining space and prepare
+      the restart.
+  broad-pulse:
+    title: A broader guitar pulse at one tempo
+    body: Attacks on beats 1 and 3 leave beats 2 and 4 quiet. The metronome and four-beat bar stay unchanged.
+  eight-bar-form:
+    title: Eight bars with a final tonic stop
+    body: The first four bars establish the route; the last four progressively open space and return to the tonic.
+      Keep the final three beats silent.
+  stop-review:
+    title: Repeat the energy without losing the stops
+    body: Play the form twice at a repeatable tempo and compare the last attack before each rest with the first
+      attack after it.
+activities:
+  steady-eighths:
+    title: Eight attacks and a recovery bar
+    body: 'Center: {{root}}. Alternate one bar of eighth-note power chords with one full silent bar. Keep counting
+      both.'
+  hard-stops:
+    title: Shorten the burst, keep the bar
+    body: The four bars sound for three, two, one and one beats respectively. Count the remaining space and prepare
+      the restart.
+  broad-pulse:
+    title: A broader guitar pulse at one tempo
+    body: Attacks on beats 1 and 3 leave beats 2 and 4 quiet. The metronome and four-beat bar stay unchanged.
+  eight-bar-form:
+    title: Eight bars with a final tonic stop
+    body: The first four bars establish the route; the last four progressively open space and return to the tonic.
+      Keep the final three beats silent.
+learningTasks:
+  stop-review:
+    title: Repeat the energy without losing the stops
+    body: Play the form twice at a repeatable tempo and compare the last attack before each rest with the first
+      attack after it.
+    items:
+      pulse: Repeated chords kept one tempo across changes.
+      stop: I stopped at each boundary without an extra stroke.
+      restart: I prepared the next shape during the rest and restarted on time.
+      density: I heard the contrast between continuous eighths and spacious beats.
+      repeat: The chosen tempo remained controlled over repeated cycles.

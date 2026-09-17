@@ -98,4 +98,19 @@ import Persistence
         }
     }
 
+    @Test func allEightElectricStylesAreOrderedAndDiscoverableAsSelfPractice() async throws {
+        let store = await library()
+        let expected = ["blues-accompaniment","blues-solo","classic-rock","punk-hardcore","metal-study","funk-study","rnb-neo-soul","country-chicken-picking"]
+        for language in [LessonLanguage.en,.uk] {
+            let filter = LessonFilter(moduleID: "electric-styles", mode: .selfPractice)
+            let matches = filter.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules)
+            #expect(matches.map(\.id) == expected)
+            #expect(store.groups(for: matches, sort: .course).map(\.id) == ["electric-styles"])
+            let scored = LessonFilter(moduleID: "electric-styles", mode: .scored)
+            #expect(scored.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules).isEmpty)
+            let search = LessonFilter(query: "neo-soul", moduleID: "electric-styles")
+            #expect(search.results(store.catalogLessons, language: language, progress: ReadingProgress(), modules: store.modules).map(\.id) == ["rnb-neo-soul"])
+        }
+    }
+
 }

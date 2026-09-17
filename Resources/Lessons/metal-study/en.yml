@@ -1,0 +1,66 @@
+lessonID: metal-study
+lessonVersion: 1
+locale: en
+title: 'Metal: pedal, gallop, power chords and silence'
+summary: Combine a low repeated root with muted subdivisions and tuning-aware power-chord shapes.
+goal: Play a four-bar riff that contrasts a muted pedal with ringing chords and a precise stop.
+body: |-
+  This study combines a low pedal tone, gallop subdivisions, power chords and a planned stop. The tonal center follows the actual lowest open string, so the riff remains open-string based in Standard and Drop tunings. Check the displayed notes and shapes after changing tuning. Drop lowers only the sixth string relative to its Standard family, so a power chord may use a different shape even though its root, fifth and octave keep the same relationship.
+
+  Begin with the pedal at a clean, readable level. Use the palm-muted cue to shorten the low note while retaining a definite pitch, and keep unused strings quiet. Compare a muted pedal with the ringing chord model. More gain can lengthen noise as well as the intended sound, so establish the separation first and revisit it after changing your external sound. The app does not host the distortion or infer your palm position.
+
+  The gallop is one eighth followed by two sixteenths inside each quarter-note beat. Count all four sixteenth slots, including the space occupied by the longer first note. The displayed pick directions alternate across the complete run; the first stroke of successive groups can therefore change direction. Keep the three attacks inside one beat instead of turning the figure into three equal notes. Start with one bar and a full recovery bar.
+
+  Work on the power-chord route separately. Sound only the selected lower strings and prepare each new root before the attack. In Drop, the lower-string shapes may become same-fret shapes; in Standard, keep the staggered fingering shown by the app. Do not copy a memorized Drop shape onto a Standard guitar and assume the intervals remain correct. Listen to the reference again after any tuning change.
+
+  The final four bars alternate the gallop with chord responses and finish with a full silent beat. Make the contrast audible without changing the underlying tempo. Loop a transition if the palm mute spills onto a ringing chord or if an unwanted string survives the stop. This lesson is self-practice because short muted sounds and simultaneous chords are outside the current grading contract. Review the pulse, separation and form directly rather than expecting a tone-quality score.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  low-pedal:
+    title: Anchor the riff to the lowest open string
+    body: 'Center: {{root}}, the current lowest open pitch. Keep its muted attacks distinct before moving to the
+      two fretted responses.'
+  gallop-burst:
+    title: Three attacks inside a four-slot beat
+    body: Play eighth–sixteenth–sixteenth, then leave a recovery bar. This is a straight subdivision, not an equal
+      triplet.
+  tuning-shapes:
+    title: Power-chord shapes for your tuning
+    body: Read the actual frets for root–fifth–octave. The shape changes between Standard and Drop while the interval
+      pattern remains.
+  four-bar-riff:
+    title: 'Four bars: mute, answer, return, stop'
+    body: Bars 1 and 3 carry the gallop. Bar 2 opens into chords; bar 4 answers and stops for the final beat.
+  metal-review:
+    title: Keep the contrast and the stop
+    body: Repeat the four bars with a quiet reference, then compare clean and your chosen external sound at a controlled
+      level if available.
+activities:
+  low-pedal:
+    title: Anchor the riff to the lowest open string
+    body: 'Center: {{root}}, the current lowest open pitch. Keep its muted attacks distinct before moving to the
+      two fretted responses.'
+  gallop-burst:
+    title: Three attacks inside a four-slot beat
+    body: Play eighth–sixteenth–sixteenth, then leave a recovery bar. This is a straight subdivision, not an equal
+      triplet.
+  tuning-shapes:
+    title: Power-chord shapes for your tuning
+    body: Read the actual frets for root–fifth–octave. The shape changes between Standard and Drop while the interval
+      pattern remains.
+  four-bar-riff:
+    title: 'Four bars: mute, answer, return, stop'
+    body: Bars 1 and 3 carry the gallop. Bar 2 opens into chords; bar 4 answers and stops for the final beat.
+learningTasks:
+  metal-review:
+    title: Keep the contrast and the stop
+    body: Repeat the four bars with a quiet reference, then compare clean and your chosen external sound at a controlled
+      level if available.
+    items:
+      subdivision: The gallop stayed eighth–sixteenth–sixteenth rather than an equal triplet.
+      pitch: The muted pedal retained a definite pitch and unused strings stayed quiet.
+      shapes: I used the displayed interval-correct shapes for my actual tuning.
+      contrast: Ringing chords contrasted with the muted pedal without a tempo change.
+      stop: The last beat was silent before the next cycle.

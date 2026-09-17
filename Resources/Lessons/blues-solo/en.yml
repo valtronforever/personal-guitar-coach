@@ -1,0 +1,64 @@
+lessonID: blues-solo
+lessonVersion: 1
+locale: en
+title: 'Blues soloing: a phrase before a scale'
+summary: Use pentatonic ideas, targeted bends, delayed vibrato and space inside a counted form.
+goal: Build a twelve-bar solo whose bends, vibrato, rests and ending serve a recognizable phrase.
+body: |-
+  Start with a short phrase you can sing or recall, then choose where a bend or vibrato helps it. Playing every note of the pentatonic shape is not the goal. This study uses a minor-pentatonic vocabulary over the counted twelve-bar route introduced in accompaniment. The synthesized lead does not include a rhythm section; count the harmonic form yourself, or use a compatible partner or external accompaniment if available.
+
+  Learn the unornamented call first. It rises from the root through the minor third to the fourth and leaves a beat empty. The bend version starts from that fourth and rises a whole tone toward the fifth. Hear the target before attempting the bend. Keep the beginning and end of the phrase in time; reaching a pitch late changes the musical gesture even if the final height is correct.
+
+  The answer descends and settles on the root. Hold its beginning steady before adding a small vibrato. Listen for the contrast between the stable arrival and the later motion. In these examples bend and vibrato occur on separate notes, so each has a clear role. Do not ornament every note or let a pitch movement fill a written rest. Compare the plain and expressive versions at the same tempo.
+
+  For the full study, think in three four-bar sections: introduce the call, develop its answer, and return to a chosen ending. Several bars are deliberately sparse. Count through them instead of treating silence as lost time. The final phrase lands on the root before the next cycle. Once the model is familiar, keep its opening rhythm and replace only one answer with your own small idea.
+
+  Review a specific musical choice: whether the bend reached its intended target, whether vibrato began after a stable note, and whether the repeated motif remained recognizable. This lesson uses self-practice; it does not assign a creativity or blues-feel score. For separate measured pitch-motion work, revisit the bend and vibrato lessons. Here those techniques are tools for phrasing, and leaving an intentional gap can be the strongest choice.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  plain-call:
+    title: Hear the call before decorating it
+    body: 'Center: {{root}} minor vocabulary. Remember the rising rhythm and the final empty beat.'
+  bent-call:
+    title: Bend the fourth toward the fifth
+    body: The long third note rises a whole tone after its stable beginning. Listen for the target while preserving
+      the last rest.
+  vibrato-answer:
+    title: Answer and delay the vibrato
+    body: Let the root arrive first, then add four small pitch cycles. The motion does not create extra picked notes.
+  twelve-bar-solo:
+    title: Twelve bars with a recurring idea
+    body: Use the ending variant I I I I | IV IV I I | V IV I I. Calls return in bars 1 and 5; bar 12 ends on the
+      tonic and leaves space.
+  phrase-review:
+    title: Keep a motif and choose one change
+    body: Play the twelve-bar study, then replace one answer while keeping its bar boundary. Compare that decision
+      with the model.
+activities:
+  plain-call:
+    title: Hear the call before decorating it
+    body: 'Center: {{root}} minor vocabulary. Remember the rising rhythm and the final empty beat.'
+  bent-call:
+    title: Bend the fourth toward the fifth
+    body: The long third note rises a whole tone after its stable beginning. Listen for the target while preserving
+      the last rest.
+  vibrato-answer:
+    title: Answer and delay the vibrato
+    body: Let the root arrive first, then add four small pitch cycles. The motion does not create extra picked notes.
+  twelve-bar-solo:
+    title: Twelve bars with a recurring idea
+    body: Use the ending variant I I I I | IV IV I I | V IV I I. Calls return in bars 1 and 5; bar 12 ends on the
+      tonic and leaves space.
+learningTasks:
+  phrase-review:
+    title: Keep a motif and choose one change
+    body: Play the twelve-bar study, then replace one answer while keeping its bar boundary. Compare that decision
+      with the model.
+    items:
+      motif: The returning call remained recognizable.
+      bend: I compared the bend with its target instead of guessing from hand motion.
+      vibrato: I let the chosen note settle before adding vibrato.
+      space: I counted the empty bars and reached the final root deliberately.
+      answer: I changed one answer without extending the form.

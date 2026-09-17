@@ -1,0 +1,904 @@
+schemaVersion: 3
+id: metal-study
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: low-pedal
+    kind: events
+    exerciseID: metal-study-low-pedal
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+    activityID: low-pedal
+  - id: gallop-burst
+    kind: events
+    exerciseID: metal-study-gallop-burst
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+    activityID: gallop-burst
+  - id: tuning-shapes
+    kind: events
+    exerciseID: metal-study-tuning-shapes
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: tuning-shapes
+  - id: four-bar-riff
+    kind: events
+    exerciseID: metal-study-four-bar-riff
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+      - event-33
+      - event-34
+    activityID: four-bar-riff
+  - id: metal-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: metal-study-low-pedal
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-9
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+        palmMuted: true
+        pickStroke: down
+      - id: event-10
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+        palmMuted: true
+        pickStroke: up
+      - id: event-11
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-12
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: metal-study-gallop-burst
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-2
+        startTick: 480
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-3
+        startTick: 720
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-4
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-5
+        startTick: 1440
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-6
+        startTick: 1680
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-7
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-8
+        startTick: 2400
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-9
+        startTick: 2640
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-10
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-11
+        startTick: 3360
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-12
+        startTick: 3600
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-13
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: metal-study-tuning-shapes
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+          - string: 5
+            fret: 2
+          - string: 4
+            fret: 2
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 5
+            fret: 5
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+          - string: 5
+            fret: 7
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+          - string: 5
+            fret: 2
+          - string: 4
+            fret: 2
+        strum:
+          direction: down
+          spreadTicks: 30
+  - id: metal-study-four-bar-riff
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-2
+        startTick: 480
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-3
+        startTick: 720
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-4
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-5
+        startTick: 1440
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-6
+        startTick: 1680
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-7
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-8
+        startTick: 2400
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-9
+        startTick: 2640
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-10
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-11
+        startTick: 3360
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-12
+        startTick: 3600
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-13
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-14
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-15
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-16
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-17
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 5
+            fret: 5
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-18
+        startTick: 6720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+          - string: 5
+            fret: 7
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-19
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-20
+        startTick: 8160
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-21
+        startTick: 8400
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-22
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-23
+        startTick: 9120
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-24
+        startTick: 9360
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-25
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-26
+        startTick: 10080
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-27
+        startTick: 10320
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-28
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-29
+        startTick: 11040
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: down
+      - id: event-30
+        startTick: 11280
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+        palmMuted: true
+        pickStroke: up
+      - id: event-31
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 5
+            fret: 5
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-32
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+          - string: 5
+            fret: 7
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-33
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 0
+          - string: 5
+            fret: 2
+          - string: 4
+            fret: 2
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-34
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+  anchorString: 6
+materials:
+  - id: low-pedal
+    source:
+      kind: exercise
+      exerciseID: metal-study-low-pedal
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: gallop-burst
+    source:
+      kind: exercise
+      exerciseID: metal-study-gallop-burst
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: tuning-shapes
+    source:
+      kind: exercise
+      exerciseID: metal-study-tuning-shapes
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+  - id: four-bar-riff
+    source:
+      kind: exercise
+      exerciseID: metal-study-four-bar-riff
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 40
+activities:
+  - id: low-pedal
+    materialID: low-pedal
+  - id: gallop-burst
+    materialID: gallop-burst
+  - id: tuning-shapes
+    materialID: tuning-shapes
+  - id: four-bar-riff
+    materialID: four-bar-riff
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: metal-review
+    stepID: metal-review
+    kind: selfPractice
+    itemIDs:
+      - subdivision
+      - pitch
+      - shapes
+      - contrast
+      - stop
+curriculum:
+  moduleID: electric-styles
+  ordinal: 101
+  durationMinutes: 35
+  prerequisites:
+    - palm-muting
+    - gallop-patterns
+    - drop-tuning-riffs
+  keywords:
+    - 'Metal: pedal, gallop, power chords and silence'
+    - 'Метал: педаль, галоп, пауер-акорди й тиша'
+    - electric guitar
+    - електрогітара
+    - style study
+    - етюд

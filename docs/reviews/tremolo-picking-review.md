@@ -1,6 +1,6 @@
 # Tremolo picking — same-agent review
 
-Implementing-agent review, not independent. Status: verification in progress.
+Implementing-agent review, not independent. Status: `pending_user` for native/hardware acceptance.
 
 Topic 96 now has five bilingual activities: quarter/eighth subdivision comparison, measured eighth-note bursts and recovery, fast one/two-beat sixteenth bursts, a whole-bar burst and a four-bar pitch-changing study. Two moderate-speed activities use existing clean monophonic grading; three fast examples use reference/metronome/self-practice. A five-criterion physical review and a factual subdivision quiz complete the lesson.
 
@@ -19,3 +19,5 @@ Evidence:
 Full App: 180 tests/55 suites passed in 219.379 s (`/tmp/tremolo-app-full.log`), including the complete 110-bundle catalog. Generated project is current. Full Learning and Release evidence follow below.
 
 Full Learning: 139 tests/48 suites, 166.323 s (`/tmp/tremolo-learning.log`). Root Release validates 110 bilingual bundles with zero issues. Signed archive/bundle checks pass: arm64/macOS14, ad-hoc hardened sandbox, expected entitlements, 331 YAML resources and both locales. Binary SHA256 `f5bf75ae94b2cfd849c64fe0ff3f77cdabc8cddb3daa432a68edb1723dc73b90`; archive `ddf28c14f75e1de0e34dff46919e37a3dd6435233cead33eb197074a4056874b`. See `docs/benchmarks/tremolo-picking-release-bundle.json`. Signed sandbox→XPC→invalidRequest passed without a provider invocation. Exact-head CI/merge and native/hardware gates remain open.
+
+Exact-head CI 35191893422 passed in 26m48s on `d49081ba56aab635a0d3285e7229ea32e85b6d08`; PR #91 merged as `a0a6b883d8244210c5c57cb978c05bec2e2db5b6` at 2026-09-17T07:23:54Z. Native/hardware gates remain open.
