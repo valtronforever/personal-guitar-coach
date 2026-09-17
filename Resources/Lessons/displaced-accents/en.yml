@@ -1,0 +1,81 @@
+lessonID: displaced-accents
+lessonVersion: 1
+locale: en
+title: Move the rhythmic accent
+summary: Keep a figure intact while its beginning shifts against the bar and beat.
+goal: Count 4/4 through three-eighth groups and begin the same phrase on different subdivisions.
+body: |-
+  A rhythmic figure can keep its notes and durations while starting at another place in the bar. This displacement changes its relationship to strong and weak beats. The metronome does not follow the figure: you retain the bar’s pulse and hear the pattern against it. Begin by distinguishing the first note of a phrase from beat 1 of a bar; they need not coincide.
+
+  The first example repeats three eighth notes, emphasizing the first of each group. Every note is still an ordinary eighth, half a beat long. A group therefore lasts one and a half beats, not one triplet beat. Count 1-and-2-and-3-and-4-and underneath the groups. Eight groups fill three bars, so the same alignment returns after that three-bar cycle. Do not add a note or pause at the barline to restart the melodic group.
+
+  The next example shifts the entire cycle by one eighth. Begin with an eighth rest, then play exactly the same twenty-four notes and accents. The last note now falls on beat 1 of bar 4; the remaining three and a half beats are silent. Listen to where the marked group beginnings fall relative to the clicks. You are moving the phrase’s placement, not changing its scale, speed or internal spacing.
+
+  The final comparison gives a shorter four-eighth motif four starting points: beat 1 in bar 1, 1-and in bar 2, beat 2 in bar 3 and 2-and in bar 4. Each version preserves its four pitches and two-beat length. Count the written leading rests before entering and the trailing rests after finishing. Emphasize the motif’s first note even when it is not on a numbered beat.
+
+  Start at 60 BPM with a clean tone. The synthetic reference makes the authored accents audible; the app scores pitches and attack placement, not how strongly you picked the accent. If the pulse drifts, remove the pitch changes temporarily and tap the group against the metronome outside the scored attempt. Restore the written notes once you can name the current bar beat independently of the phrase’s beginning.
+steps:
+  prepare:
+    title: Keep two counts separate
+    body: >-
+      Tap four quarter beats while speaking eighths. Then accent every third eighth with your voice. Keep the next
+      bar’s 1 in place even when the accented group continues through it.
+  three-eighth-cycle:
+    title: Eight groups across three bars
+    body: >-
+      Play the three-note figure eight times, one eighth per note. The first note of every group is accented. Keep
+      the bar count through all three bars; no extra attack or rest appears at a barline. {{sequence}}.
+  shifted-cycle:
+    title: Start the same cycle an eighth later
+    body: >-
+      Count the initial eighth rest, then repeat the same twenty-four notes. The final note is on beat 1 of bar
+      4; remain silent for its remaining three and a half beats. Compare the new accent locations with the first
+      exercise.
+  four-starting-points:
+    title: Begin on 1, 1-and, 2 and 2-and
+    body: >-
+      Play the same four-note motif once per bar after its written leading rest. The motif always lasts two beats.
+      Keep the first-note accent and count the remaining silence before the next bar. {{positions}}.
+  review:
+    title: Locate the figure without moving the beat
+    body: >-
+      Choose the starting point that caused hesitation and count its leading rest aloud. Review early/late entrances,
+      then listen separately to accent strength. Be able to name both the bar beat and the figure’s first note.
+  question:
+    title: What does displacement change?
+    body: Count the subdivision before answering.
+activities:
+  three-eighth-cycle:
+    title: Eight groups across three bars
+    body: >-
+      Play the three-note figure eight times, one eighth per note. The first note of every group is accented. Keep
+      the bar count through all three bars; no extra attack or rest appears at a barline. {{sequence}}.
+  shifted-cycle:
+    title: Start the same cycle an eighth later
+    body: >-
+      Count the initial eighth rest, then repeat the same twenty-four notes. The final note is on beat 1 of bar
+      4; remain silent for its remaining three and a half beats. Compare the new accent locations with the first
+      exercise.
+  four-starting-points:
+    title: Begin on 1, 1-and, 2 and 2-and
+    body: >-
+      Play the same four-note motif once per bar after its written leading rest. The motif always lasts two beats.
+      Keep the first-note accent and count the remaining silence before the next bar. {{positions}}.
+learningTasks:
+  question:
+    title: What does displacement change?
+    body: The same motif starts one eighth later, with unchanged note lengths and tempo. What changed?
+    items:
+      placement: Its placement against the beat and bar.
+      tempo: The metronome tempo became slower.
+      triplet: Its ordinary eighths automatically became triplets.
+    explanation: >-
+      Moving the entry shifts the whole figure relative to the meter. Internal durations, tempo and pitch intervals
+      remain unchanged.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      cycle: I counted all three bars while the three-eighth groups crossed their boundaries.
+      entry: I played the four starting points after the correct leading rests.
+      accent: I listened to the first-note accents separately from pitch/attack grading.

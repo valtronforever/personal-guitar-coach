@@ -1,0 +1,782 @@
+schemaVersion: 3
+id: displaced-accents
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: three-eighth-cycle
+    kind: events
+    exerciseID: displaced-accents-three-eighth-cycle
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+    activityID: three-eighth-cycle
+  - id: shifted-cycle
+    kind: events
+    exerciseID: displaced-accents-shifted-cycle
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+      - e25
+      - e26
+    activityID: shifted-cycle
+  - id: four-starting-points
+    kind: events
+    exerciseID: displaced-accents-four-starting-points
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+    activityID: four-starting-points
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: displaced-accents-three-eighth-cycle
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e9
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e10
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e11
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e12
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e13
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e14
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e15
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e16
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e17
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e18
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e19
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e20
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e21
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e22
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e23
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e24
+        startTick: 11040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+  - id: displaced-accents-shifted-cycle
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e5
+        startTick: 1920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e6
+        startTick: 2400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e7
+        startTick: 2880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e8
+        startTick: 3360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e9
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e10
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e11
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e12
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e13
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e14
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e15
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e16
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e17
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e18
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e19
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e20
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e21
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e22
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e23
+        startTick: 10560
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e24
+        startTick: 11040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e25
+        startTick: 11520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e26
+        startTick: 12000
+        durationTicks: 3360
+        kind: rest
+        positions: []
+  - id: displaced-accents-four-starting-points
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e3
+        startTick: 960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e4
+        startTick: 1440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e5
+        startTick: 1920
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: e6
+        startTick: 3840
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: e7
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e8
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e9
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e10
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e11
+        startTick: 6240
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: e12
+        startTick: 7680
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e13
+        startTick: 8640
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e14
+        startTick: 9120
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e15
+        startTick: 9600
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e16
+        startTick: 10080
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e17
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e18
+        startTick: 11520
+        durationTicks: 1440
+        kind: rest
+        positions: []
+      - id: e19
+        startTick: 12960
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+        accented: true
+      - id: e20
+        startTick: 13440
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: e21
+        startTick: 13920
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 2
+      - id: e22
+        startTick: 14400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+      - id: e23
+        startTick: 14880
+        durationTicks: 480
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: three-eighth-cycle
+    source:
+      kind: exercise
+      exerciseID: displaced-accents-three-eighth-cycle
+  - id: shifted-cycle
+    source:
+      kind: exercise
+      exerciseID: displaced-accents-shifted-cycle
+  - id: four-starting-points
+    source:
+      kind: exercise
+      exerciseID: displaced-accents-four-starting-points
+activities:
+  - id: three-eighth-cycle
+    materialID: three-eighth-cycle
+  - id: shifted-cycle
+    materialID: shifted-cycle
+  - id: four-starting-points
+    materialID: four-starting-points
+fingerings: []
+practiceEntries:
+  - id: three-eighth-cycle
+    activityID: three-eighth-cycle
+    exerciseID: displaced-accents-three-eighth-cycle
+  - id: shifted-cycle
+    activityID: shifted-cycle
+    exerciseID: displaced-accents-shifted-cycle
+  - id: four-starting-points
+    activityID: four-starting-points
+    exerciseID: displaced-accents-four-starting-points
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - placement
+      - tempo
+      - triplet
+    correctOptionID: placement
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - cycle
+      - entry
+      - accent
+curriculum:
+  moduleID: advanced-rhythm
+  ordinal: 70
+  durationMinutes: 25
+  prerequisites:
+    - beat-accents
+    - syncopation
+  keywords:
+    - displacement
+    - accent
+    - offbeat
+    - зміщення
+    - акцент
+    - ритм

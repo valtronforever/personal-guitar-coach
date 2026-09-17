@@ -1,0 +1,80 @@
+lessonID: syncopation
+lessonVersion: 1
+locale: en
+title: Offbeat attacks and syncopation
+summary: Let a weak subdivision carry emphasis while the beat continues underneath.
+goal: Play offbeat attacks and hold a note across a stronger beat without repicking it.
+body: |-
+  Syncopation makes a weak part of the meter feel prominent. One common form is an attack between clicks that continues across the following beat. The expected strong-beat attack is displaced or absent, while the underlying pulse continues. You must know where the beat is to hear the syncopation; an accidentally late note is not the same musical instruction.
+
+  Start by counting 1-and-2-and-3-and-4-and. Tap your foot on the numbers and pick on each and. The first exercise has an eighth rest followed by an eighth note on every beat. The written accents emphasize the offbeats, but their strength is a listening goal. Do not move the foot or metronome to match the offbeat attacks.
+
+  The held example starts with an eighth rest, then a dotted-quarter note beginning on 1-and. Keep that same note sounding through beat 2; release it at beat 3. Repeat the pattern on 3-and through beat 4. There are only two pick attacks in the bar. The staff may split the held value into tied fragments to show the beat clearly. A tie continues one sound and does not ask for another attack at the click.
+
+  The final two-bar phrase combines offbeat entries, string changes and a held note across a barline. Count the empty first half-beat, then read ahead to the last offbeat of bar 1. That note carries through the first beat of bar 2 and ends at its second beat. Continue with two eighths, a quarter-note tonic and a final quarter rest. Keep counting the beginning of bar 2 even though your picking hand is quiet there.
+
+  Use a clean tone at 60 BPM or slower. Automatic practice compares note pitches and attack times; the marked long notes also use measured sustain coverage. A repeated pick during a written hold may appear as an extra attack. If the held sound fades early, check the measured coverage and listen before changing your technique. Accent strength, the actual fingering and physical ease are your own observations, not conclusions from a pitch score.
+steps:
+  prepare:
+    title: Separate pulse from attacks
+    body: >-
+      Count eight even syllables in 4/4 while tapping only the numbered beats. Then clap or pick only on and. Keep
+      the click as the reference instead of redefining the beat around your attacks.
+  offbeat-attacks:
+    title: Four offbeat entries
+    body: >-
+      Each click begins an eighth rest; play the note halfway to the next click. Count through all four beats. The
+      written > marks the expected offbeat emphasis, whose loudness you check by ear.
+  hold-over-the-beat:
+    title: Two attacks across stronger beats
+    body: >-
+      Pick on 1-and and 3-and. Hold the first note through beat 2, the second through beat 4. Do not repick tied
+      staff fragments. In a repeat, the next bar begins with another eighth rest.
+  cross-bar-phrase:
+    title: Carry the last offbeat into the next bar
+    body: >-
+      The note on 4-and of bar 1 continues through beat 1 of bar 2. Keep the bar count and start the following two
+      eighths on beat 2. Finish with a tonic on beat 3 and silence on beat 4. {{sequence}}.
+  review:
+    title: Check placement and continuation separately
+    body: >-
+      Review whether the offbeat attacks were early or late, then inspect the marked sustain coverage. Repeat the
+      barline connection slowly without a new attack on the downbeat. Separately listen for intentional emphasis
+      rather than accidental rushing.
+  question:
+    title: What happens on the tied downbeat?
+    body: Count the subdivision before answering.
+activities:
+  offbeat-attacks:
+    title: Four offbeat entries
+    body: >-
+      Each click begins an eighth rest; play the note halfway to the next click. Count through all four beats. The
+      written > marks the expected offbeat emphasis, whose loudness you check by ear.
+  hold-over-the-beat:
+    title: Two attacks across stronger beats
+    body: >-
+      Pick on 1-and and 3-and. Hold the first note through beat 2, the second through beat 4. Do not repick tied
+      staff fragments. In a repeat, the next bar begins with another eighth rest.
+  cross-bar-phrase:
+    title: Carry the last offbeat into the next bar
+    body: >-
+      The note on 4-and of bar 1 continues through beat 1 of bar 2. Keep the bar count and start the following two
+      eighths on beat 2. Finish with a tonic on beat 3 and silence on beat 4. {{sequence}}.
+learningTasks:
+  question:
+    title: What happens on the tied downbeat?
+    body: A note begins on 4-and and is tied through beat 1 of the next bar. What should you do on that downbeat?
+    items:
+      hold: Keep counting and sustain the existing note without another pick attack.
+      pick: Pick the note again because every bar must begin with an attack.
+      pause: Stop counting until the next written attack.
+    explanation: >-
+      The tie preserves one continuous note while the beat and bar count continue. The missing downbeat attack is
+      part of the written syncopation.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      pulse: I kept the numbered beat independent of the offbeat picking.
+      hold: I held across the stronger beat without a deliberate extra attack.
+      accent: I listened for the marked offbeat emphasis separately from the automatic score.
