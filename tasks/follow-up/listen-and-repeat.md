@@ -10,6 +10,8 @@ Use the existing coordinator/transport for a listen → prepare → practice seq
 
 Provide substantive bilingual progressively harder examples for topics 81–84, using private quizzes where useful for recognition and real scored responses for reproduction. Validate every preset/fret count, localization/accessibility, synthetic evidence, same-agent review, root-only signed Release and exact-head CI/merge. Native hardware validation stays pending_user. No local Debug app.
 
-Implementation and targeted software checks are complete; full suites/Release/CI remain in progress. Topics 81–84 now contain 17 private instrument responses and separate recognition/self-observation tasks. Topic 82 is version 2. The library listening filter includes both recognition and reproduction. Inventory: 90 loaded bundles / 84 visible, 84 authored topics / 44 todo. See [same-agent review](../../docs/reviews/listen-and-repeat-review.md).
+Local implementation, full suites and signed Release checks are complete; exact-head CI/merge remain in progress. Topics 81–84 now contain 17 private instrument responses and separate recognition/self-observation tasks. Topic 82 is version 2. The library listening filter includes both recognition and reproduction. Inventory: 90 loaded bundles / 84 visible, 84 authored topics / 44 todo. See [same-agent review](../../docs/reviews/listen-and-repeat-review.md).
 
 Parent vibrato PR 84 merged at `850d76574fbbae841fd1ed142ade524e98ed1d10` after exact-head CI `35179866487` passed; merge `78db84b1b5f70dc1897216d889f636cc2cf85287`. Hardware acceptance and the full 128-topic course remain open.
+
+Local evidence: 310 Core / 167 App tests pass; final loader regressions pass; 90 bilingual bundles and 888 localization keys validate; signed root-only Release/archive/XPC checks pass. The review records exact logs, hashes and remaining native/hardware gates.

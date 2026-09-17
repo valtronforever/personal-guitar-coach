@@ -1,6 +1,6 @@
 # Listen and repeat — same-agent review
 
-Status: implementation under verification; not an independent review. Scope: private response authoring, frozen guidance conditions, coordinated reference/response lifecycle, hidden-target UI and topics 81–84. No native app launch or hardware acceptance is claimed.
+Status: local software/Release checks passed; exact-head CI/merge pending. Not an independent review. Scope: private response authoring, frozen guidance conditions, coordinated reference/response lifecycle, hidden-target UI and topics 81–84. No native app launch or hardware acceptance is claimed.
 
 Findings and corrections:
 
@@ -18,4 +18,13 @@ Current targeted evidence:
 - Five targeted response/matching/state tests pass after corrections: reference requires no input or recording; actual response uses one capture and a practice transport with tone volume zero; cancellation/settings changes reject preparation; guided conditions persist; correct/wrong/late/missing-signal fixtures retain truthful scores and calibrated timing limits. Historical Codable omission and malformed-condition guards are covered separately.
 - The inventory now has 84 authored topics and 44 todo. Topic 82 is version 2 and includes its original private direction question, three interval-recognition questions and five real instrument responses. Topics 81/83/84 add 4 responses each. The body texts teach distinct comparison methods in both languages; fixed examples are not claimed as randomized unseen tests.
 
-Full suites, signed Release and exact-head CI evidence are still being collected. Full course acceptance remains open.
+Verification collected:
+
+- Full Core: 23 Persistence tests (0.054 s), 126 Learning (120.922 s), 53 Domain (0.335 s), 102 Audio (433.747 s), 6 AgentBridge (1.638 s): 310 total, all passed. `/tmp/listen-core-full.log`.
+- After the explicit-rest loader guard: 6 Learning tests in 2 suites (6.719 s) and 3 Domain tests (0.005 s) passed. `/tmp/listen-core-final-regressions.log`.
+- After course/notation fixture and explicit-rest corrections: 33 App tests in 8 suites passed (57.676 s). `/tmp/listen-final-app-regressions.log`. Final full App: 167 tests in 49 suites passed (189.144 s), including the final privacy-boundary guards. `/tmp/listen-app-final.log`.
+- Four Python authoring/audit tests pass (10.164 s); 888 localization keys pass; generated Xcode project is current; UI-test sources type-check. This does not execute native UI tests.
+- Root-only signed Release and archive pass `docs/benchmarks/listen-and-repeat-release-bundle.json`: arm64, macOS 14, ad-hoc signature, hardened runtime, expected sandbox/audio entitlements, 90 bundles / 271 YAML files. Binary SHA256 `0cbccad45e2ece7a98a47b6c611f2a8bc72ac36ff1166665ff54eac3b8f981da`; archive SHA256 `f786d123490e838e527540dba134f9b03c8a613d96587abbd9fd6bbbb06141ec`. `/tmp/listen-release.log`, `/tmp/listen-bundle.log`.
+- Signed sandbox → separate XPC → invalidRequest probe passed; no provider was called. `/tmp/listen-xpc.log`.
+
+Exact-head CI/merge and native/hardware acceptance remain open. Full course acceptance remains open.
