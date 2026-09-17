@@ -25,3 +25,7 @@ Final checks and Release evidence are recorded below after completion. Native re
 - 149 App tests /42 suites pass (154.032 s), including automatic tuning, reader/practice integration and full-corpus notation.
 - 77 bilingual bundles validate with zero issues; all 840 UI keys validate. Partial 128-topic inventory: 70 authored, 1 needs_review, 57 todo; not full-course acceptance.
 - Four Python author-tool tests pass (7.869 s); generated project is current; UI test sources type-check. Native UI execution was not claimed.
+
+## Signed local Release
+
+Root-only `build_local.py --configuration release --archive` passes. Bundle/archive audit verifies 77 lessons /232 YAML files, en/uk offline resources, arm64 macOS 14 minimum, ad-hoc signature, hardened runtime and expected sandbox entitlements. Binary SHA256: `f5085dfa926edfcba456393e212b84441ea3b62f0725a1d67a318e5d0b1008d7`; archive: `2419b8b18e324861bf60679a4a6867eab7b71cdc9137a16017c5b9613ed04969`. The signed sandbox→separate XPC invalid-request check passes without invoking an AI provider. [Bundle report](../benchmarks/movable-harmony-release-bundle.json). No local Debug app was built; native launch and hardware verification remain false. Exact-head CI/merge remain open.
