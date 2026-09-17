@@ -23,3 +23,7 @@ Signed root-only Release/archive validates 118 bilingual bundles / 355 YAML file
 CI run 35195553741 failed while type-checking the single large nested expected-music dictionary in ElectricStylesCourseTests (runner Swift compiler complexity limit). Split the same independent targets into separately typed dictionary assignments; no lesson/application behavior changed. Targeted rerun and a fresh exact-head CI are required below.
 
 The split-target regression passed locally: 1,160 cases, 4.181 s (`/tmp/electric-styles-ci-fix.log`). This test-only fix leaves the verified Release binary/resources unchanged; fresh CI is pending.
+
+Second exact-head run35197569159 still hit the Swift complexity limit, now isolated to the long blues-solo array-concatenation expression; child held-voice run35197627680 inherited that test failure. Replaced overloaded array-plus chains with one typed variadic joining helper across the expected fixtures, preserving every independent note. No product/resource change. Third exact-head verification is required.
+
+Typed joining-helper regression: all1,160 cases passed in4.173s (`/tmp/electric-styles-ci-fix2.log`). Full music fixtures are unchanged.

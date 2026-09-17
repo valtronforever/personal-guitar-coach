@@ -8,6 +8,7 @@ struct ElectricStylesCourseTests {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let report = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
         #expect(report.issues.isEmpty)
+        func joined(_ parts: [Int]...) -> [Int] { parts.flatMap { $0 } }
         func repeated(_ notes: [Int], _ count: Int) -> [Int] { (0..<count).flatMap { _ in notes } }
         let bluesRoute = [0,0,0,0,5,5,0,0,7,5,0,7]
         let bluesChords = bluesRoute.flatMap { n in [58+n,64+n,67+n] }
@@ -15,7 +16,7 @@ struct ElectricStylesCourseTests {
         let call = [60,63,65], answer = [67,65,63,60]
         let rock = [48,48,51,53,55,53,48], rockChords = [48,55,60,44,51,56,46,53,58], fill = [60,63,65,67,65,63,60]
         let c = [48,55,60], f = [53,60,65], ab = [56,63,68], bb = [58,65,70]
-        let stops = repeated(c,6) + repeated(f,4) + repeated(ab,2) + c
+        let stops = joined(repeated(c,6), repeated(f,4), repeated(ab,2), c)
         let e5 = [40,47,52], g5 = [43,50,55], a5 = [45,52,57]
         let cm7 = [60,64,71], am7 = [60,64,67], dm7 = [60,65,69], g9 = [59,65,69]
         let country = [48,64,67,64,48,69,67,53,65,69,65,53,72,69]
@@ -23,18 +24,18 @@ struct ElectricStylesCourseTests {
         targets["blues-accompaniment"] = ["chord-map": bluesChords, "shuffle-cell": shuffle,
                 "shuffle-form": bluesRoute.flatMap { n in shuffle.map { $0+n } }, "ending": [7,5,0,0].flatMap { n in [58+n,64+n,67+n] }]
         targets["blues-solo"] = ["plain-call": call, "bent-call": call, "vibrato-answer": answer,
-                "twelve-bar-solo": call + [60] + answer + call + [65,63,60] + answer + [67,70,67,65,63,60] + answer + [60]]
-        targets["classic-rock"] = ["main-riff": rock+rock, "rhythm-part": rockChords+rockChords, "one-bar-fill": fill,
-                "eight-bar-arrangement": rock+rock+rockChords+rockChords+rock+rock+fill+c]
-        targets["punk-hardcore"] = ["steady-eighths": repeated(c,8), "hard-stops": stops, "broad-pulse": c+c+f+f,
-                "eight-bar-form": repeated(c,8)+repeated(f,8)+repeated(ab,8)+repeated(bb,4)+stops]
-        targets["metal-study"] = ["low-pedal": repeated([40],8)+[43,45,40], "gallop-burst": repeated([40],12),
-                "tuning-shapes": e5+g5+a5+e5, "four-bar-riff": repeated([40],16)+g5+a5+repeated([40],12)+g5+a5+e5]
-        targets["rnb-neo-soul"] = ["color-chords": cm7+am7+dm7+g9, "top-line": [71,67,69,69],
-                "inversion-choice": [60,64,67,64,67,72], "ornament-answer": cm7+[64]+dm7+[65],
-                "color-study": cm7+[64]+am7+dm7+[65]+g9+cm7]
+                "twelve-bar-solo": joined(call, [60], answer, call, [65,63,60], answer, [67,70,67,65,63,60], answer, [60])]
+        targets["classic-rock"] = ["main-riff": joined(rock, rock), "rhythm-part": joined(rockChords, rockChords), "one-bar-fill": fill,
+                "eight-bar-arrangement": joined(rock, rock, rockChords, rockChords, rock, rock, fill, c)]
+        targets["punk-hardcore"] = ["steady-eighths": repeated(c,8), "hard-stops": stops, "broad-pulse": joined(c, c, f, f),
+                "eight-bar-form": joined(repeated(c,8), repeated(f,8), repeated(ab,8), repeated(bb,4), stops)]
+        targets["metal-study"] = ["low-pedal": joined(repeated([40],8), [43,45,40]), "gallop-burst": repeated([40],12),
+                "tuning-shapes": joined(e5, g5, a5, e5), "four-bar-riff": joined(repeated([40],16), g5, a5, repeated([40],12), g5, a5, e5)]
+        targets["rnb-neo-soul"] = ["color-chords": joined(cm7, am7, dm7, g9), "top-line": [71,67,69,69],
+                "inversion-choice": [60,64,67,64,67,72], "ornament-answer": joined(cm7, [64], dm7, [65]),
+                "color-study": joined(cm7, [64], am7, dm7, [65], g9, cm7)]
         targets["country-chicken-picking"] = ["pick-finger-exchange": country, "short-upper-notes": [64,67,69,67,64,62,60,60],
-                "scratch-response": [64,67,69,67], "country-study": country+[64,67,69,67]+[48,64,67,72,64,60]]
+                "scratch-response": [64,67,69,67], "country-study": joined(country, [64,67,69,67], [48,64,67,72,64,60])]
         let bars: [String: [String: Int64]] = [
             "blues-accompaniment": ["chord-map":12,"shuffle-cell":1,"shuffle-form":12,"ending":2],
             "blues-solo": ["plain-call":1,"bent-call":1,"vibrato-answer":1,"twelve-bar-solo":12],
