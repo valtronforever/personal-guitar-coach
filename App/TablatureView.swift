@@ -190,6 +190,7 @@ struct TablatureView: View {
         var marks: [String] = []
         if let bend = event.bend { marks.append("b" + String(bend.semitones) + (bend.releaseEndTick == nil ? "" : "r")) }
         if event.palmMuted { marks.append("P.M.") }
+        if let harmonic = event.harmonic { marks.append(harmonic.notationLabel) }
         if event.accented && !segment.isContinuation { marks.append(">") }
         if let stroke = event.pickingDirection, !segment.isContinuation { marks.append(stroke == .down ? "↓" : "↑") }
         if let finger = event.pluckFinger, !segment.isContinuation { marks.append(finger.symbol) }
@@ -221,6 +222,8 @@ struct TablatureView: View {
                 }
                 if event.kind == .rest {
                     Image(systemName: "pause.circle").font(.title2).frame(width: width, height: rowHeight * 6).offset(y: gridTop)
+                } else if event.harmonic != nil {
+                    HarmonicTabContent(event: event, width: width, gridTop: gridTop, stringSpacing: rowHeight)
                 } else if event.pitchTransition != nil || event.legatoChain != nil {
                     PitchTransitionTabContent(segment: segment, width: width, gridTop: gridTop, stringSpacing: rowHeight,
                         anchorX: min(22, width / 2), zoom: 1, compact: false)
@@ -269,6 +272,7 @@ struct TablatureView: View {
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if event.harmonic != nil { notes = HarmonicPresentation.spoken(event: event, tuning: model.tuning, locale: settings.locale, localized: settings.localized) }
         if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }
         if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
         if event.pitchTransition != nil || event.legatoChain != nil {

@@ -68,8 +68,8 @@ public struct TransportPlan: Sendable {
         silentBeatTicks = Set(request.exercise.metronome?.silentBeatTicks ?? [])
         groupAccents = request.exercise.accentedPulseIndices
         events = try request.exercise.resolvedEvents(instrument: request.tuning)
-        let reference = (request.exercise.requiredTuning ?? request.tuning).referenceA4
-        frequencies = try events.map { try $0.pitches.map { try $0.frequency(referenceA4: reference) } }
+        let tuning = request.exercise.requiredTuning ?? request.tuning
+        frequencies = try events.map { try $0.event.soundingFrequencies(in: tuning) }
         bendPoints = events.map { $0.event.bend?.points(durationTicks: $0.event.durationTicks) ?? [] }
         var waveforms: [Int: VibratoWaveform] = [:]
         vibratoReferences = try events.map { item in
@@ -187,7 +187,7 @@ public struct TransportPlan: Sendable {
                     continue
                 }
                 // Muted references keep their decay age when seeking into an existing note.
-                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil || item.event.vibrato != nil || item.event.legatoChain != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
+                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil || item.event.vibrato != nil || item.event.legatoChain != nil || item.event.harmonic != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
                 for sample in a..<b {
                     let age = Double(sample - toneOnset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))

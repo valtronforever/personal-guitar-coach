@@ -25,6 +25,7 @@ struct FretboardView: View {
                 Label("fretboard.selected", systemImage: "square")
                 Text("fretboard.openMuted")
             }.font(.caption)
+            if model.hasHarmonics { Text("harmonic.board.legend").font(.caption).foregroundStyle(.secondary) }
             if !model.fingers.isEmpty { Text("fretboard.fingerLegend").font(.caption).foregroundStyle(.secondary) }
             ScrollViewReader { proxy in
                 HStack {
@@ -114,11 +115,14 @@ struct FretboardView: View {
         } label: {
             ZStack {
                 if chosen { RoundedRectangle(cornerRadius: 7).fill(Color.accentColor.opacity(0.15)).overlay(RoundedRectangle(cornerRadius: 7).strokeBorder(.primary, lineWidth: 2)) }
-                if expected { Circle().fill(.background).overlay(Circle().strokeBorder(.primary, lineWidth: 2)).padding(.horizontal, 11) }
+                if expected {
+                    if model.hasTouch(at: position) { Image(systemName: "diamond").resizable().foregroundStyle(.primary).frame(width: 42, height: rowHeight - 5) }
+                    else { Circle().fill(.background).overlay(Circle().strokeBorder(.primary, lineWidth: 2)).padding(.horizontal, 11) }
+                }
                 VStack(spacing: 0) {
                     if muted { Text(verbatim: "×").font(.title2.bold()) }
                     else if visible {
-                        Text(verbatim: model.pitch(at: position)?.name(spelling: model.tuning.preferredSpelling) ?? "—").font(.caption.bold().monospaced())
+                        Text(verbatim: model.displayName(at: position)).font(.caption.bold().monospaced())
                         if position.fret == 0 { Text(verbatim: "○").font(.caption2) }
                         else if let finger = model.finger(at: position) { Text(verbatim: String(finger)).font(.caption2.bold()) }
                     }
@@ -140,7 +144,8 @@ struct FretboardView: View {
 
     private func description(_ position: FretPosition) -> Text {
         if model.isMuted(position) { return Text("fretboard.mutedPosition \(position.string)") }
-        let name = model.pitch(at: position)?.name(spelling: model.tuning.preferredSpelling) ?? "—"
+        let name = model.displayName(at: position)
+        if model.hasTouch(at: position) { return Text("harmonic.board.touch \(position.string) \(position.fret) \(name)") }
         if position.fret == 0 { return Text("fretboard.openPosition \(position.string) \(name)") }
         return Text("fretboard.position \(position.string) \(position.fret) \(name)")
     }

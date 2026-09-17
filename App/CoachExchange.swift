@@ -90,7 +90,7 @@ enum CoachExchange {
         let config = practice.evidence.configuration
         let tuning = config.exercise.requiredTuning ?? config.instrument.tuning
         let expected = try config.selectedEvents.map { event -> String in
-            let names = try event.positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: ", ")
+            let names = try event.soundingPitches(in: tuning).map { $0.name(spelling: tuning.preferredSpelling) }.joined(separator: ", ")
             let motion: String
             if let chain = event.legatoChain {
                 let reached = try chain.targets.enumerated().map { index, target in
@@ -105,7 +105,13 @@ enum CoachExchange {
                 let rate = config.bpm * Double(config.exercise.timeSignature.pulseTicks) / 60 / Double(vibrato.periodTicks)
                 motion = "; vibratoWidthCents=\(vibrato.extentCents), vibratoRateHz=\(rate), modulationStartTick=\(event.startTick + vibrato.startTick), modulationEndTick=\(event.startTick + vibrato.endTick); upward cycles returning to base, one initial pick target, gesture unverified"
             } else { motion = "" }
-            return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)" + motion + (event.pluckFinger.map { "; pickingHandFinger=" + $0.rawValue + "; authored cue, gesture unverified" } ?? "")
+            let harmonicDetail: String
+            if let harmonic = event.harmonic, let position = event.positions.first {
+                let touch = try harmonic.touchPosition(from: position)
+                let frequency = try event.soundingFrequencies(in: tuning)[0]
+                harmonicDetail = "; harmonic=\(harmonic.kind.rawValue), partial=\(harmonic.partial), string=\(position.string), baseFret=\(try harmonic.basePosition(from: position).fret), touchNearFret=\(touch.fret), exactTargetHz=\(frequency); physical production and timbre unverified"
+            } else { harmonicDetail = "" }
+            return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)" + motion + harmonicDetail + (event.pluckFinger.map { "; pickingHandFinger=" + $0.rawValue + "; authored cue, gesture unverified" } ?? "")
         }
         return CoachAnalysisRequest(schemaVersion: 1, promptVersion: promptVersion(for: practice), id: id,
             language: language == "uk" ? "uk" : "en", practiceDigest: try digest(practice),
@@ -122,6 +128,7 @@ enum CoachExchange {
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if practice.evidence.configuration.selectedEvents.contains(where: { $0.harmonic != nil }) { return "file-coach-10" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.pluckFinger != nil }) { return "file-coach-9" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.legatoChain != nil }) { return "file-coach-8" }
         if practice.evidence.configuration.listeningConditions != nil { return "file-coach-7" }

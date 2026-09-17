@@ -6,13 +6,14 @@ public enum AssessmentEngine {
     public static func evaluate(_ evidence: PracticeEvidence) throws -> AssessedPractice {
         let config = evidence.configuration
         let parameters: AssessmentParameters
-        if config.selectedEvents.contains(where: { $0.legatoChain != nil }) { parameters = .withLegatoChains }
+        if config.selectedEvents.contains(where: { $0.harmonic != nil }) { parameters = .withHarmonics }
+        else if config.selectedEvents.contains(where: { $0.legatoChain != nil }) { parameters = .withLegatoChains }
         else if config.selectedEvents.contains(where: { $0.vibrato != nil }) { parameters = .withVibrato }
         else if config.selectedEvents.contains(where: { $0.pitchTransition != nil }) { parameters = .withPitchTransitions }
         else { parameters = config.selectedEvents.contains { $0.bend != nil } ? .withBends : .current }
         let expected = config.selectedEvents.filter { $0.kind == .note }
         let tuning = config.exercise.requiredTuning ?? config.instrument.tuning
-        let frequencies = try expected.map { try tuning.pitch(at: $0.positions[0]).frequency(referenceA4: tuning.referenceA4) }
+        let frequencies = try expected.map { try $0.soundingFrequencies(in: tuning)[0] }
         let secondsPerTick = config.exercise.timeSignature.secondsPerTick(bpm: config.bpm)
         let relative = expected.map { Double($0.startTick - config.range.lowerBound) * secondsPerTick }
         let intervals = zip(relative, relative.dropFirst()).map { $1 - $0 }

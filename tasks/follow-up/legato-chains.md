@@ -1,6 +1,6 @@
 # Multi-target legato and tapping phrases
 
-Status: `in_progress`
+Status: `pending_user`
 
 Implement the required multi-target unpicked pitch workflow for topics 91 (longer legato) and 93 (tapping). The current single PitchTransition can express only a base and one target. Do not author a longer unpicked phrase as separately picked events or replace its measured pitch outcome with generic self-confirmation.
 
@@ -15,3 +15,5 @@ Parent improvisation PR 86 at `cf1bfb4` is pending CI and stacked on listen-and-
 Implemented the new event-local chain, capability/assessment versions, shared resolver/reference/contour/notation/result/coach flow and substantive topics 91/93. Inventory: 90 authored /38 todo, 96 bundles /90 visible. String-crossing lesson activity preserves its fixed pattern; other activities expose playable relocations. Parent PRs 85/86 merged after exact-head CI. See [same-agent review](../../docs/reviews/legato-chains-review.md) for concrete fixes and software evidence. Full Core/final mixed test, signed root-only Release, CI/merge and native/hardware acceptance remain open at this checkpoint.
 
 Local delivery is verified: 323-test full Core suite plus the new mixed-technique case; 171-test full App suite plus coach/render cases; 520 musical resolutions; 96 bilingual bundles/900 UI keys; five Python checks; generated project/UI-source checks; signed root-only Release/archive/XPC. The review records all logs/hashes. Exact-head CI/merge remain in progress. Native/hardware acceptance stays open.
+
+PR 87 merged after exact-head CI 35186738251 passed on 038363f13e331cc44367ddf1c571b03e7fa400ac. Merge e3e2dd53141cfccecc461f436aa21c9921cf6599 (2026-09-17). Hardware/native acceptance remains open.

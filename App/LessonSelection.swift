@@ -120,12 +120,14 @@ final class LessonSelection {
     func fretboard(instrument: InstrumentProfile) -> FretboardModel {
         if !range.ids.isEmpty, let exercise {
             return FretboardModel(tuning: exercise.requiredTuning ?? instrument.tuning, orientation: instrument.orientation, frets: instrument.frets,
-                positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.techniquePositions))
+                positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.techniquePositions),
+                targets: (try? exercise.events.filter { range.ids.contains($0.id) }.flatMap { try $0.visualTargets(in: exercise.requiredTuning ?? instrument.tuning) }) ?? [])
         }
         if let stepID, let visual = try? snapshot?.visual(stepID: stepID) {
             return FretboardModel(tuning: visual.tuning, orientation: instrument.orientation, frets: instrument.frets, positions: visual.positions.map(\.position),
                 mutedStrings: visual.mutedStrings,
-                fingers: Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } }))
+                fingers: Dictionary(uniqueKeysWithValues: visual.positions.compactMap { item in item.finger.map { (item.position.string, $0) } }),
+                targets: visual.positions.map { EventFretTarget(position: $0.position, pitch: $0.pitch, role: $0.role) })
         }
         return FretboardModel(tuning: instrument.tuning, orientation: instrument.orientation, frets: instrument.frets, positions: [])
     }

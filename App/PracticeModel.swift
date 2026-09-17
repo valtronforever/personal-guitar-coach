@@ -67,14 +67,16 @@ final class PracticeModel {
         guard (phase == .running || phase == .finalizing), let cursorTick else { return nil }
         return machine.configuration?.selectedEvents.first { $0.startTick <= cursorTick && cursorTick < $0.endTick }
     }
-    var expectedPositions: [FretPosition] {
-        guard !hidesTargets else { return [] }
-        if phase == .running { return activeEvent?.techniquePositions ?? [] }
-        guard phase != .finalizing, let exercise = request?.exercise else { return [] }
+    var expectedPositions: [FretPosition] { expectedEvent?.techniquePositions ?? [] }
+    func expectedFretTargets(in tuning: TuningProfile) -> [EventFretTarget] { (try? expectedEvent?.visualTargets(in: tuning)) ?? [] }
+    private var expectedEvent: MusicalEvent? {
+        guard !hidesTargets else { return nil }
+        if phase == .running { return activeEvent }
+        guard phase != .finalizing, let exercise = request?.exercise else { return nil }
         let lower = Int64(firstBar - 1) * exercise.timeSignature.ticksPerBar
         let upper = Int64(lastBar).multipliedReportingOverflow(by: exercise.timeSignature.ticksPerBar)
         let end = upper.overflow ? exercise.durationTicks : min(exercise.durationTicks, upper.partialValue)
-        return exercise.events.first { $0.startTick >= lower && $0.startTick < end && $0.kind == .note }?.techniquePositions ?? []
+        return exercise.events.first { $0.startTick >= lower && $0.startTick < end && $0.kind == .note }
     }
     init(audio: AudioSessionStore, calibration: CalibrationStore) { self.audio = audio; self.calibration = calibration }
     func takeRecording() -> CoachRecordedTake? { defer { recordedTake = nil }; return recordedTake }

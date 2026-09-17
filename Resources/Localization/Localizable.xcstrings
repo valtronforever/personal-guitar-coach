@@ -15335,6 +15335,108 @@
           }
         }
       }
+    },
+    "harmonic.instructions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "N.H.: lightly touch the node shown in angle brackets. A.H.: stop the plain fret and touch the bracketed fret above it. Staff notes show sounding pitch; the score cannot prove the physical gesture."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "N.H.: легко торкнися вузла в кутових дужках. A.H.: затисни звичайний лад і торкнися ладу в дужках над ним. Ноти показують висоту звучання; оцінка не доводить фізичний прийом."
+          }
+        }
+      }
+    },
+    "harmonic.board.legend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diamond: harmonic touch near the marked fret; do not press it down. Plain base positions remain stopped. Multiple selected events may share a location."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ромб: легкий дотик флажолета біля позначеного ладу; не притискай його. Звичайні опорні позиції залишаються затиснутими. Кілька обраних подій можуть мати спільну позицію."
+          }
+        }
+      }
+    },
+    "harmonic.board.touch %lld %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "String %lld, near fret %lld. Selected pitches: %@. This location includes a harmonic touch."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Струна %lld, біля ладу %lld. Обрані висоти: %@. Ця позиція містить дотик флажолета."
+          }
+        }
+      }
+    },
+    "harmonic.natural.spoken %lld %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Natural harmonic: string %lld, lightly touch near fret %lld; sounding pitch %@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Натуральний флажолет: струна %lld, легкий дотик біля ладу %lld; висота звучання %@."
+          }
+        }
+      }
+    },
+    "harmonic.artificial.spoken %lld %lld %lld %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artificial octave harmonic: string %lld, stop fret %lld and lightly touch near fret %lld; sounding pitch %@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Штучний октавний флажолет: струна %lld, затисни лад %lld і легко торкнися біля ладу %lld; висота звучання %@."
+          }
+        }
+      }
+    },
+    "harmonic.assessmentLimits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The score checks audible pitch and eligible timing. It does not verify the touch, hand, pinch gesture or harmonic timbre. Third-partial targets use their ideal frequency, about 2 cents above the nearest note label."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка перевіряє чутну висоту й доступний таймінг. Вона не перевіряє дотик, руку, pinch-прийом чи тембр флажолета. Цілі третьої гармоніки мають ідеальну частоту, приблизно на 2 центи вище найближчої назви ноти."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

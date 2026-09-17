@@ -27,3 +27,5 @@ Four bilingual technique lessons (89 string skipping, 90 economy, 92 sweep, 95 h
 Signed root-only Release/archive/XPC and exact-head CI/merge remain to be recorded. Native/hardware acceptance stays pending_user.
 
 Signed root-only Release/archive verified with 100 bilingual bundles (301 YAML files), arm64/macOS14, ad-hoc hardened sandbox and expected audio/read-selected-file entitlements. Binary SHA256 `cfa1ad6cf8298b342c9edfd6865853f451448f3c5e7e234419ebfec33e6c25b7`; archive `e887f533724739820e26c35042b470e58d0e566b450568c2988b9bb8799bf9fe`. See `docs/benchmarks/advanced-picking-release-bundle.json`. Signed sandbox→separate XPC service→invalidRequest passes; no provider called. Native app launch/hardware remain unverified; no local Debug app built. Exact-head CI/merge remains open.
+
+Exact-head CI 35187518296 passed in 26m00s at 7e40da2c95bb01720572ca8fb40d029ea56a499a. PR 88 merged as 829c29fc06ad9fec9e378882bb6af1c5fde38cc6 on 2026-09-17. Remaining acceptance is native/hardware pending_user.

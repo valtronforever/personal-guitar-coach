@@ -22,6 +22,7 @@ struct AssessmentSummaryView: View {
                     if result.bends != nil { metric("bend.score", result.bendScore) }
                     if result.sustain != nil { metric("assessment.sustain", result.sustainScore) }
                 }
+                if result.evidence.configuration.selectedEvents.contains(where: { $0.harmonic != nil }) { Text("harmonic.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
                 if result.vibrato != nil { Text("vibrato.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
                 if result.legatoChains != nil { Text("legato.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
                 if result.pitchTransitions != nil { Text("transition.assessmentLimits").font(.caption).foregroundStyle(.secondary) }

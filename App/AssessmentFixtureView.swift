@@ -29,7 +29,7 @@ struct AssessmentFixtureView: View {
             bpm: 60, route: route, calibration: selected == "uncalibrated" ? nil : profile)
         let attacks = try events.enumerated().map { index, event in
             try PracticeAttack(id: UInt64(index + 1), normalizedOnset: 104 + Double(index) + (index == 2 ? 0.05 : 0),
-                frequency: config.instrument.tuning.pitch(at: event.positions[0]).frequency(referenceA4: 440),
+                frequency: event.soundingFrequencies(in: config.instrument.tuning)[0],
                 clarity: 0.99, reliable: selected != "insufficientSignal")
         }
         let evidence = try PracticeEvidence(id: UUID(), configuration: config, startedAt: Date(timeIntervalSince1970: 1),
