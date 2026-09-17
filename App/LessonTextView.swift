@@ -9,6 +9,7 @@ struct LessonTextView: View {
     private let restoresBookmark: Bool
     @State private var selection: LessonSelection
     @State private var preview = PreviewModel()
+    @State private var recordingContext: SelfPracticeRecordingContext?
     @Environment(AudioSessionStore.self) private var audio
     @State private var showsLessonAudio = false
     @State private var visualMode = "fretboard"
@@ -45,6 +46,17 @@ struct LessonTextView: View {
                     }.frame(minHeight: 140)
                     Divider()
                     if !selection.isListeningPractice, selection.exercise != nil { PreviewControls(model: preview, listeningOnly: selection.isListeningQuestion) }
+                    if selection.activity?.recording == .selfPractice, !selection.isListeningPractice, !selection.isListeningQuestion,
+                       let snapshot = selection.snapshot, let exercise = selection.exercise {
+                        Button("selfRecording.open") {
+                            guard let context = try? SelfPracticeRecordingContext(snapshot: snapshot, exercise: exercise) else { return }
+                            let token = selection.previewContextID
+                            Task {
+                                await preview.stop(audio: audio)
+                                if selection.previewContextID == token { recordingContext = context }
+                            }
+                        }.padding(.bottom, 8).accessibilityIdentifier("lesson.selfRecording")
+                    }
                     if selection.showsMusicalVisuals {
                     Picker("tab.visualMode", selection: $visualMode) {
                         Text("fretboard.title").tag("fretboard")
@@ -72,6 +84,7 @@ struct LessonTextView: View {
                 }
         }
         .sheet(isPresented: $showsLessonAudio) { AudioProbeView().environment(\.locale, settings.locale) }
+        .sheet(item: $recordingContext) { context in SelfPracticeRecordingView(context: context).environment(\.locale, settings.locale) }
         .onAppear { saveBookmark() }
         .onChange(of: localData.preferences.instrument) { _, instrument in
             selection.updateInstrument(instrument); saveBookmark()

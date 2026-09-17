@@ -84,6 +84,15 @@ extension LessonCatalogLoader {
         }
         for activity in activities {
             guard let material = materialMap[activity.materialID] else { throw ContentFailure(.invalidStep, "Unknown activity material") }
+            if activity.recording != nil {
+                guard material.source.kind == .exercise, let id = material.source.exerciseID, let exercise = exercises[id] else {
+                    throw ContentFailure(.invalidStep, "Self-practice recording needs one whole exercise")
+                }
+                try require(exercise.assessmentMode == .displayOnly && !entries.contains(where: { $0.activityID == activity.id }), "Self-practice recording cannot create a graded entry")
+                try require(!manifest.tasks.contains(where: { $0.stimulusExerciseID == id }), "Private listening stimuli cannot expose a recording activity")
+                try require(try MusicalTime.seconds(forTicks: exercise.durationTicks, bpm: exercise.maximumBPM, pulseTicks: exercise.timeSignature.pulseTicks) <= 120, "Recording must fit 120 seconds at an available tempo")
+                try require(try MusicalTime.seconds(forTicks: exercise.durationTicks + exercise.timeSignature.ticksPerBar, bpm: exercise.maximumBPM, pulseTicks: exercise.timeSignature.pulseTicks) <= 130, "Recording plus count-in must fit 130 seconds")
+            }
             if material.policy.enabled {
                 guard let selection = activity.positionSelection else { throw ContentFailure(.invalidStep, "Enabled material needs an explicit activity choice") }
                 try require(selection.mode == .learner ? selection.defaultChoice != nil && selection.value == nil : selection.value != nil && selection.defaultChoice == nil, "Invalid learner/fixed choice fields")

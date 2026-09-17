@@ -1,0 +1,28 @@
+# Opt-in recording for self-practice
+
+Status: `in_progress`
+
+Support the final performance-recording lesson and ungraded musical work without fabricating an AssessedPractice result. An explicitly authored self-practice recording activity freezes the resolved lesson/exercise/instrument and tempo, records one bounded take through the existing capture coordinator and schedules the metronome on the existing audio clock. Reference guitar tones stay silent. Preserve clear errors, route/cancellation lifecycle and no default raw-audio storage. Provide a usable saved-recording review path with en/uk UI/accessibility and honest distinction from the existing graded Record & analyze action. Test lifecycle, data loss, recording/WAV/context, no grading and relevant native presentation; root-only signed Release and exact-head CI required. Actual guitar/native/player/provider acceptance remains pending.
+
+Design exploration: current AgentCoachStore/CoachExchange require AssessedPractice and cannot silently accept ungraded recordings. Reuse AudioSessionCoordinator .practice owner and beginRecording/endRecording, TransportRequest .practice, and the existing bounded worker recording buffer. Keep the initial self-practice capture distinct from numerical assessments and existing AI advice; do not synthesize a successful score to unlock recording. Freeze metadata and explicitly label the generated click channel as a reference, not measured headphone audio. A separate optional local take store/review action is appropriate; inspect storage/export permissions before choosing the final UI.
+
+## Implemented bounded scenario
+
+- Add optional activity-level `recording: selfPractice` to LessonActivity (nil remains off/old encoding). Initially require one whole displayOnly exercise and no scored/listening entry for that activity. This gives the author an explicit affordance rather than guessing from prose.
+- Open a native recording sheet from that resolved activity. Freeze lesson/version, activity/material/choice, instrument/exercise and source mapping before capture. Provide BPM, one count-in bar, selected audio setup/meter, Start, Stop-and-review and Cancel. Limit musical duration to120s so count-in/tail fit the existing150s worker buffer. No guitar reference tones, no AssessedPractice, no automatic AI call.
+- Keep the completed take temporary in memory until explicit Save WAV. Use NSSavePanel and update the main app's user-selected-file entitlement from read-only to read-write, along with bundle/tests/docs. Do not add blanket filesystem access. Save atomically; cancel/data loss/route change must not overwrite a prior file or manufacture a completed take. Explain that an unsaved take is discarded on closing the sheet.
+- Reuse CoachRecordedTake's stereo writer (guitar channel1, generated click reference channel2). Embed a bounded versioned JSON context in a custom RIFF metadata chunk so the exported WAV retains exercise/tuning/route/time provenance without a hidden sidecar permission. Test actual WAV readability and metadata roundtrip. This is an ungraded recording, explicitly labeled; generated clicks are not measured headphone audio.
+- An explicit Open saved recording action may use the system's default audio player. This is preferable to pretending the existing coordinator supports arbitrary file playback; no such backend currently exists. The user can listen/export in that player. Native file dialogs/player/guitar acceptance stays pending.
+- Capture lifecycle should reuse AudioSessionCoordinator.start(.practice), beginRecording/endRecording and startTransport(.practice). Poll state/route ownership; stop/cancel/disappear/settings changes must release only this capture owner. Finish after transport plus bounded output/input tail, preserving early-stop status in the context. Review exact tail rules in PracticeConfiguration before implementing.
+
+Implementation is present in the recording branch. Both complete held-voice studies explicitly opt in; the catalog remains 120 visible lessons (126 bundles), with independent-musician topics 121–128 still to author. A source change adds no assessed history or AI invocation. The main sandbox receives only user-selected-file read-write permission for explicit WAV export; the service contract is unchanged.
+
+## Evidence
+
+- Six final focused App tests passed 3.912s with synthetic coordinator/capture: 40 tuning/neck contexts; complete and early recordings; cancel and other-owner protection; permission/data-loss/route/unplug/endRecording errors; WAV readability, frozen metadata, stereo alignment, atomic failure preservation and retry state.
+- Two author-validation tests passed 0.011s. Full Learning suite: 147 tests/53 suites passed 224.825s.
+- Generated project check, 948 localized UI keys, five author-tool tests 16.525s and UI-source typecheck pass. Curriculum auditor reports 120 authored / 8 todo and explicitly does not claim full-course acceptance.
+- Full App suite: 193 tests/60 suites passed 257.793s. After the final seek guard, open-player failure copy and late-cancellation test, all six recording tests rebuilt/passed 3.912s. Content validator: 126 bilingual bundles, zero issues. Root Release/bundle/XPC and exact-head CI remain pending.
+- [Same-agent local review](../../docs/reviews/self-practice-recording-review.md); native file picker/player/UI/VoiceOver and actual guitar recording remain [pending user checks](../../docs/USER-VALIDATION.md).
+
+A suspended endRecording race is covered: cancel releases the owner, a new tuner starts, and the old completion neither publishes a take nor stops that tuner. Opening a saved file also has translated failure feedback when the system cannot launch a player.

@@ -622,6 +622,7 @@ activities:
     materialID: retain-the-chord
   - id: chord-melody-study
     materialID: chord-melody-study
+    recording: selfPractice
 practiceEntries: []
 fingerings: []
 learningTasks:

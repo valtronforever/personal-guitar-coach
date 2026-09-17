@@ -718,6 +718,7 @@ activities:
     materialID: hold-the-melody
   - id: two-line-study
     materialID: two-line-study
+    recording: selfPractice
 practiceEntries: []
 fingerings: []
 learningTasks:

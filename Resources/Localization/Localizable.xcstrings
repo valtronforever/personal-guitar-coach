@@ -15535,6 +15535,532 @@
           }
         }
       }
+    },
+    "selfRecording.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record self-practice…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записати самопрактику…"
+          }
+        }
+      }
+    },
+    "selfRecording.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Self-practice recording"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запис самопрактики"
+          }
+        }
+      }
+    },
+    "selfRecording.close": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закрити"
+          }
+        }
+      }
+    },
+    "selfRecording.help": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record one take with a count-in and metronome. Guitar reference tones are silent. This recording has no automatic music score or AI analysis."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запиши один прохід із відліком і метрономом. Еталонні гітарні ноти вимкнені. Цей запис не має автоматичної музичної оцінки чи AI-аналізу."
+          }
+        }
+      }
+    },
+    "selfRecording.instrument": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrument"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Інструмент"
+          }
+        }
+      }
+    },
+    "selfRecording.instrumentValue %@ %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld frets"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld ладів"
+          }
+        }
+      }
+    },
+    "selfRecording.tempo %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempo: %lld BPM"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Темп: %lld BPM"
+          }
+        }
+      }
+    },
+    "selfRecording.duration %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld s, plus count-in and tail"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld с, плюс відлік і завершення"
+          }
+        }
+      }
+    },
+    "selfRecording.tooLong": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a faster tempo. A take allows up to 120 seconds of music and 130 seconds including the count-in."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оберіть швидший темп. Запис обмежено 120 секундами музики та 130 секундами разом із відліком."
+          }
+        }
+      }
+    },
+    "selfRecording.audioSetup": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Audio input and output…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудіовхід і вихід…"
+          }
+        }
+      }
+    },
+    "selfRecording.phase.idle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready to record"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готово до запису"
+          }
+        }
+      }
+    },
+    "selfRecording.phase.preparing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing audio…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підготовка аудіо…"
+          }
+        }
+      }
+    },
+    "selfRecording.phase.recording": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recording — follow the metronome"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запис — орієнтуйся на метроном"
+          }
+        }
+      }
+    },
+    "selfRecording.phase.draining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Capturing the final sound…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запис завершального звучання…"
+          }
+        }
+      }
+    },
+    "selfRecording.phase.review": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Take ready for review"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прохід готовий до перегляду"
+          }
+        }
+      }
+    },
+    "selfRecording.phase.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recording interrupted"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запис перервано"
+          }
+        }
+      }
+    },
+    "selfRecording.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recording could not be completed. Check the audio route and try again; no successful take was created."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося завершити запис. Перевір аудіомаршрут і повтори; завершеного запису не створено."
+          }
+        }
+      }
+    },
+    "selfRecording.saveFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save the WAV. The take is still available here; choose another destination and retry."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося зберегти WAV. Запис ще доступний тут; обери інше місце й повтори."
+          }
+        }
+      }
+    },
+    "selfRecording.complete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Complete take · ungraded"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повний прохід · без оцінки"
+          }
+        }
+      }
+    },
+    "selfRecording.early": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped early · ungraded"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупинено раніше · без оцінки"
+          }
+        }
+      }
+    },
+    "selfRecording.recordedTempo %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded at %lld BPM"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записано на %lld BPM"
+          }
+        }
+      }
+    },
+    "selfRecording.channels": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WAV channel 1: guitar. Channel 2: generated metronome reference, not measured headphone sound. Lesson and instrument conditions are embedded in the file."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Канал WAV 1: гітара. Канал 2: згенерований еталон метронома, а не виміряний звук навушників. Умови уроку та інструменту вбудовані у файл."
+          }
+        }
+      }
+    },
+    "selfRecording.temporary": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save before closing or recording again: an unsaved take is discarded. Open saved WAV uses your system’s audio player."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збережи перед закриттям або новим записом: незбережений прохід буде втрачено. Збережений WAV відкривається в системному аудіопрогравачі."
+          }
+        }
+      }
+    },
+    "selfRecording.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start recording"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати запис"
+          }
+        }
+      }
+    },
+    "selfRecording.again": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record again"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записати знову"
+          }
+        }
+      }
+    },
+    "selfRecording.stop": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop and review"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зупинити й переглянути"
+          }
+        }
+      }
+    },
+    "selfRecording.cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel recording"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасувати запис"
+          }
+        }
+      }
+    },
+    "selfRecording.save": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save WAV…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зберегти WAV…"
+          }
+        }
+      }
+    },
+    "selfRecording.openSaved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open saved WAV"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відкрити збережений WAV"
+          }
+        }
+      }
+    },
+    "selfRecording.saving": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving recording"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збереження запису"
+          }
+        }
+      }
+    },
+    "selfRecording.openFailed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The saved WAV could not be opened. Choose an audio player or check that the file is still available."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося відкрити збережений WAV. Оберіть аудіопрогравач або перевірте, чи файл досі доступний."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
