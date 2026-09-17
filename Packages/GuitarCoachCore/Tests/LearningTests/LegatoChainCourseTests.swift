@@ -15,6 +15,7 @@ struct LegatoChainCourseTests {
         var count = 0
         for id in golden.keys.sorted() {
             let lesson = try #require(report.lessons.first { $0.id == id })
+            #expect(lesson.manifest.topic == .technique)
             #expect(lesson.manifest.practiceEntries.count == 3 && lesson.manifest.tasks.contains { $0.kind == .selfPractice })
             for (index,tuning) in TuningProfile.presets.enumerated() {
                 let shift = [0,0,-2,-2,-4,-4,-5,-5][index]

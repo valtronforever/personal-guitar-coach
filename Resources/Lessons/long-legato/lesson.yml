@@ -2,7 +2,7 @@ schemaVersion: 3
 id: long-legato
 version: 1
 difficulty: intermediate
-topic: chords
+topic: technique
 steps:
   - id: prepare
     kind: none
