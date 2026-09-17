@@ -1,0 +1,88 @@
+lessonID: chord-change-arpeggios
+lessonVersion: 1
+locale: en
+title: Arpeggios through chord changes
+summary: >-
+  Follow changing I, vi, IV and V chord tones with quarter notes, flowing eighths and an original eight-bar study.
+goal: Prepare the next chord tones before the bar changes and keep every target separate and in time.
+body: |-
+  An arpeggio sounds chord tones one after another. Through a progression, its target notes must follow the current chord rather than continue the previous shape blindly. This lesson uses a major tonal center with I, minor vi, IV and V. Read the Roman sequence and the resolved note targets together. A note can belong to the overall scale and still fall outside the triad currently being outlined.
+
+  The first phrase is I–IV–V–I. Each bar plays the current chord's root, third and fifth as quarter notes, followed by a quarter rest. Before the rest ends, identify the next root and its string. The roots occupy practical registers; they need not all rise along one string. Start at 60 BPM or reduce the tempo if the first note after a change arrives late. Stop each preceding note so the input remains monophonic.
+
+  The second phrase follows I–vi–IV–V with eight eighth notes per bar. For each chord, play root–third–fifth–octave–fifth–third–root–third. The vi third is minor; the other triads here are major. Keep the eighth-note pulse even instead of pausing at a string change. Scan the next bar during the descending half of the current pattern. This example ends on V, so a repeat returns to the first I; a practice repeat may use a fresh count-in.
+
+  The final eight-bar study follows I–vi–IV–V–I–IV–V–I. Bar 1 ascends in quarters; bar 2 descends. Bar 3 has six eighths and a quarter rest; bar 4 begins from the third of V. Bar 5 uses the complete eighth-note pattern. Bar 6 returns to three quarters and a rest, bar 7 outlines V in quarters, and bar 8 resolves through fifth and third to a two-beat tonic root. Not every bar has to begin on a root to describe its chord.
+
+  Work on one difficult bar and its following first note before running the whole study. Use the rests to look ahead, and keep the final root sounding for its written two beats; that final note has an audible-sustain check. The other targets are assessed as separate notes and attacks. Accents mark useful reference attacks, not an automatic test of your picking force.
+
+  After an attempt, distinguish a wrong target from a late chord change. Lower the tempo for timing errors; inspect the next chord's root, third and fifth for pitch errors. The score cannot verify which string or finger produced a pitch. Compare the notation with your intended fingering yourself and listen to the full phrase before increasing speed.
+steps:
+  prepare:
+    title: Read the next chord before its first note
+    body: >-
+      Use a clean sound and select a comfortable tempo. Name I, vi, IV or V at each bar, then find the next target
+      on the TAB. Stop previous notes so chord tones do not overlap.
+  review:
+    title: Separate chord-tone errors from late changes
+    body: >-
+      Review pitch and timing feedback separately. Retry a bar boundary slowly if the next chord starts late; inspect
+      its root, third and fifth if the target was wrong. Check your intended strings yourself and hold the final
+      root for its written duration.
+  hear-the-change:
+    title: 'Quarter notes: I–IV–V–I'
+    body: >-
+      Tonal center: {{root}} major. Four bars: I–IV–V–I. Play root, third and fifth on beats 1–3, then rest on beat
+      4 and prepare the next chord. Start at 60 BPM. {{sequence}}.
+  four-chord-flow:
+    title: 'Eighth notes: I–vi–IV–V'
+    body: >-
+      Tonal center: {{root}} major. Four bars: I–vi–IV–V. Play eight even eighth notes per chord: root, third, fifth,
+      octave, fifth, third, root, third. Read the next bar before its first attack. {{sequence}}.
+  changing-chord-study:
+    title: Eight-bar chord-change study
+    body: >-
+      Tonal center: {{root}} major. Eight bars: I–vi–IV–V–I–IV–V–I. Follow the changing quarter/eighth rhythms and
+      written rests; bar 4 begins on the third. Hold the final root for two beats. Start at 60 BPM and isolate a
+      difficult change before increasing tempo. {{sequence}}.
+  question:
+    title: The scale or the current chord?
+    body: Use the current chord and the written order.
+activities:
+  hear-the-change:
+    title: 'Quarter notes: I–IV–V–I'
+    body: >-
+      Tonal center: {{root}} major. Four bars: I–IV–V–I. Play root, third and fifth on beats 1–3, then rest on beat
+      4 and prepare the next chord. Start at 60 BPM. {{sequence}}.
+  four-chord-flow:
+    title: 'Eighth notes: I–vi–IV–V'
+    body: >-
+      Tonal center: {{root}} major. Four bars: I–vi–IV–V. Play eight even eighth notes per chord: root, third, fifth,
+      octave, fifth, third, root, third. Read the next bar before its first attack. {{sequence}}.
+  changing-chord-study:
+    title: Eight-bar chord-change study
+    body: >-
+      Tonal center: {{root}} major. Eight bars: I–vi–IV–V–I–IV–V–I. Follow the changing quarter/eighth rhythms and
+      written rests; bar 4 begins on the third. Hold the final root for two beats. Start at 60 BPM and isolate a
+      difficult change before increasing tempo. {{sequence}}.
+learningTasks:
+  question:
+    title: The scale or the current chord?
+    body: >-
+      When an arpeggio crosses into the next bar of this progression, what determines its intended chord-tone targets?
+    items:
+      current: The root, third and fifth of the chord active in that bar, in the written order and register.
+      previous: The previous chord shape until the end of the entire phrase.
+      any: Any scale note is interchangeable because the key has not changed.
+    explanation: >-
+      The key supplies the tonal context, but the arpeggio outlines the current chord. Some scale notes lie outside
+      that triad. Read the written order too: an arpeggio may start from its third or fifth, and the note octave
+      is part of the target.
+  review:
+    title: Review the changing harmony
+    body: Mark what you actually practiced.
+    items:
+      prepare: I located the next bar’s first target before the chord changed.
+      minor: I distinguished the minor vi third from the major thirds in I, IV and V.
+      pulse: I kept quarter and eighth-note passages in their written pulse and used the rests to look ahead.
+      finish: I held the final tonic root for two beats and reviewed pitch errors separately from late attacks.

@@ -1,0 +1,109 @@
+lessonID: harmonic-functions
+lessonVersion: 1
+locale: en
+title: 'Harmonic functions: hear departure and return'
+summary: Connect I, IV, V and vi to a major tonal center and compare two short chord progressions.
+goal: Follow chord functions through a four-bar progression without confusing an inversion with a new harmonic root.
+body: |-
+  A chord has a quality of its own and a role in the surrounding key. Roman numerals describe its root's scale degree relative to the tonal center. In a major key, I, IV and V are major triads; vi is minor. Uppercase and lowercase matter. These labels remain useful when your selected tuning transposes the complete lesson into another key.
+
+  I is the tonic: the reference point for this exercise. IV is the subdominant and V the dominant. In the first progression, I→IV moves away from the opening harmony, V prepares a return, and the final I restores the starting center. These are useful relationships in this musical context, not a rule that every listener must feel a fixed emotion or every song must use the same order.
+
+  Inspect the three-string shapes first. The I form has its root in the lowest voice. The IV and V forms use first inversion, so their lowest notes are thirds, not chord roots. Their Roman labels still come from the harmonic roots. Read the root shown for each form and find it inside the voicing. All shapes use strings 3–1; silence the other strings.
+
+  Listen to the complete four-bar I–IV–V–I example before playing along. Each chord begins on beat 1 and lasts a bar in the reference. Count four beats for each bar and say the Roman numeral at its start. Then make the changes yourself using comfortable three-string chords. If the transition is not ready, slow the preview rather than squeezing through the change. The chord reference is synthetic; the app does not score your simultaneous chords here.
+
+  The second progression is I–vi–IV–V. The minor vi shares two chord tones with I in this key, but its root and quality differ. Its inclusion changes the route through the harmony. The example ends on V rather than I; replaying it connects that V to the initial I. Compare stopping after V with adding or returning to I, and describe what you hear without treating one ending as universally correct.
+
+  Finally, close the sounding chord names and follow only the Roman sequence while you play. Reopen each shape to check its root and bass role if needed. A different Standard tuning changes the names together, while corresponding Drop variants leave these upper-string shapes unchanged. This lesson uses listening, a quiz and self-observation; separate-note timing assessment appears in the later arpeggio-through-changes lesson.
+steps:
+  prepare:
+    title: Establish the center before the sequence
+    body: >-
+      Use a clean sound, three upper strings and a comfortable tempo. Read I as the reference major chord. Locate
+      the harmonic root of every shape even when it is not the bass.
+  review:
+    title: Compare a return with an open ending
+    body: >-
+      Listen and play I–IV–V–I, then I–vi–IV–V. Compare the final chord and the effect of looping back to the first
+      I. Say each numeral on beat 1; judge your complete chord changes yourself.
+  tonic-shape:
+    title: 'I: the tonic reference'
+    body: >-
+      This chord root is {{root}}. It is the tonal-center reference for the progressions. Its bass is also the root.
+      {{positions}}. Listen to the complete shape before moving away from it.
+  subdominant-shape:
+    title: 'IV: a different root, first-inversion bass'
+    body: >-
+      This chord root is {{root}}. It belongs to scale degree IV of the lesson key. The lowest voice is its third;
+      the root is higher in the shape. {{positions}}. Do not rename IV from that bass note.
+  dominant-shape:
+    title: 'V: prepare the return to I'
+    body: >-
+      This chord root is {{root}}. It belongs to scale degree V. Its lowest voice is also a third because this is
+      first inversion. {{positions}}. Listen to V followed by the opening I in the full example.
+  relative-minor-shape:
+    title: 'vi: the minor chord in the second route'
+    body: >-
+      This chord root is {{root}}. The lowercase vi identifies a minor triad on scale degree six. Its chord tones
+      overlap with I, but its root and minor quality differ. {{positions}}. Compare the sound with the tonic before
+      trying the second progression.
+  question:
+    title: Does a different bass rename the function?
+    body: Compare the chord-tone roles before answering.
+  return-to-tonic:
+    title: I–IV–V–I — listen, then play
+    body: >-
+      Tonal center: {{root}} major. Bars 1–4 follow I–IV–V–I. Each chord begins on beat 1 and lasts four quarter-note
+      beats at 60 BPM. Listen first, then play comfortable three-string chords while counting. This reference and
+      self-practice have no automatic chord score. Sounding targets: {{sequence}}.
+  minor-detour:
+    title: I–vi–IV–V — listen, then play
+    body: >-
+      Tonal center: {{root}} major. Bars 1–4 follow I–vi–IV–V. Each chord begins on beat 1 and lasts four quarter-note
+      beats at 60 BPM. Listen first, then play comfortable three-string chords while counting. This reference and
+      self-practice have no automatic chord score. Sounding targets: {{sequence}}.
+activities:
+  tonic-shape:
+    title: I — {{root}} major
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  subdominant-shape:
+    title: IV — {{root}} major
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  dominant-shape:
+    title: V — {{root}} major
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  relative-minor-shape:
+    title: vi — {{root}} minor
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  return-to-tonic:
+    title: I–IV–V–I — listen, then play
+    body: >-
+      Tonal center: {{root}} major. Bars 1–4 follow I–IV–V–I. Each chord begins on beat 1 and lasts four quarter-note
+      beats at 60 BPM. Listen first, then play comfortable three-string chords while counting. This reference and
+      self-practice have no automatic chord score. Sounding targets: {{sequence}}.
+  minor-detour:
+    title: I–vi–IV–V — listen, then play
+    body: >-
+      Tonal center: {{root}} major. Bars 1–4 follow I–vi–IV–V. Each chord begins on beat 1 and lasts four quarter-note
+      beats at 60 BPM. Listen first, then play comfortable three-string chords while counting. This reference and
+      self-practice have no automatic chord score. Sounding targets: {{sequence}}.
+learningTasks:
+  question:
+    title: Does a different bass rename the function?
+    body: The chord rooted on scale degree IV has its third in the bass. How should you label it in this lesson?
+    items:
+      iv: IV in first inversion; the chord root still determines its scale degree.
+      vi: vi, because a third in the bass makes the chord minor.
+      i: I, because every lowest voice becomes the tonal center.
+    explanation: >-
+      A Roman numeral follows the harmonic root relative to the key. An inversion changes the bass member without
+      changing the triad root or quality. The IV example remains major and keeps its IV function.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      numerals: I identified major I/IV/V and minor vi from their Roman numerals.
+      bass: I located the harmonic roots in IV and V despite their third-in-bass voicings.
+      count: I counted four beats per bar and named the function on beat 1.
+      endings: I compared ending on I with ending on V and then looping back to I.

@@ -1,0 +1,626 @@
+schemaVersion: 3
+id: harmonic-functions
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: tonic-shape
+    kind: fingering
+    exerciseID: harmonic-functions-tonic
+    eventIDs: []
+    activityID: tonic-shape
+    fingeringID: tonic-shape
+  - id: subdominant-shape
+    kind: fingering
+    exerciseID: harmonic-functions-subdominant
+    eventIDs: []
+    activityID: subdominant-shape
+    fingeringID: subdominant-shape
+  - id: dominant-shape
+    kind: fingering
+    exerciseID: harmonic-functions-dominant
+    eventIDs: []
+    activityID: dominant-shape
+    fingeringID: dominant-shape
+  - id: relative-minor-shape
+    kind: fingering
+    exerciseID: harmonic-functions-relative-minor
+    eventIDs: []
+    activityID: relative-minor-shape
+    fingeringID: relative-minor-shape
+  - id: return-to-tonic
+    kind: events
+    exerciseID: harmonic-functions-return-to-tonic
+    eventIDs:
+      - bar1
+      - bar2
+      - bar3
+      - bar4
+    activityID: return-to-tonic
+  - id: minor-detour
+    kind: events
+    exerciseID: harmonic-functions-minor-detour
+    eventIDs:
+      - bar1
+      - bar2
+      - bar3
+      - bar4
+    activityID: minor-detour
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: harmonic-functions-tonic
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: harmonic-functions-subdominant
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 1
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: harmonic-functions-dominant
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: harmonic-functions-relative-minor
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 1
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 0
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: harmonic-functions-return-to-tonic
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: bar1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: bar2
+        startTick: 3840
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 1
+          - string: 1
+            fret: 1
+      - id: bar3
+        startTick: 7680
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: bar4
+        startTick: 11520
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+  - id: harmonic-functions-minor-detour
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: bar1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: bar2
+        startTick: 3840
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 1
+          - string: 1
+            fret: 0
+      - id: bar3
+        startTick: 7680
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 1
+          - string: 1
+            fret: 1
+      - id: bar4
+        startTick: 11520
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: tonic-shape
+    source:
+      kind: fingering
+      fingeringID: tonic-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: subdominant-shape
+    source:
+      kind: fingering
+      fingeringID: subdominant-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 65
+  - id: dominant-shape
+    source:
+      kind: fingering
+      fingeringID: dominant-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 67
+  - id: relative-minor-shape
+    source:
+      kind: fingering
+      fingeringID: relative-minor-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 57
+  - id: return-to-tonic
+    source:
+      kind: exercise
+      exerciseID: harmonic-functions-return-to-tonic
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: minor-detour
+    source:
+      kind: exercise
+      exerciseID: harmonic-functions-minor-detour
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: tonic-shape
+    materialID: tonic-shape
+  - id: subdominant-shape
+    materialID: subdominant-shape
+  - id: dominant-shape
+    materialID: dominant-shape
+  - id: relative-minor-shape
+    materialID: relative-minor-shape
+  - id: return-to-tonic
+    materialID: return-to-tonic
+  - id: minor-detour
+    materialID: minor-detour
+practiceEntries: []
+fingerings:
+  - id: tonic-shape
+    exerciseID: harmonic-functions-tonic
+    fingering:
+      positions:
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 3
+        '1': 1
+  - id: subdominant-shape
+    exerciseID: harmonic-functions-subdominant
+    fingering:
+      positions:
+        - string: 3
+          fret: 2
+        - string: 2
+          fret: 1
+        - string: 1
+          fret: 1
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: dominant-shape
+    exerciseID: harmonic-functions-dominant
+    fingering:
+      positions:
+        - string: 3
+          fret: 4
+        - string: 2
+          fret: 3
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: relative-minor-shape
+    exerciseID: harmonic-functions-relative-minor
+    fingering:
+      positions:
+        - string: 3
+          fret: 2
+        - string: 2
+          fret: 1
+        - string: 1
+          fret: 0
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 1
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - iv
+      - vi
+      - i
+    correctOptionID: iv
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - numerals
+      - bass
+      - count
+      - endings
+curriculum:
+  moduleID: harmony
+  ordinal: 78
+  durationMinutes: 30
+  prerequisites:
+    - triad-inversions
+    - tonic-and-degrees
+    - first-song-form
+  keywords:
+    - harmonic functions
+    - tonic
+    - subdominant
+    - dominant
+    - I IV V
+    - I vi IV V
+    - гармонічні функції
+    - тоніка
+    - домінанта

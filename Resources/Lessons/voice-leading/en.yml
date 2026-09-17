@@ -1,0 +1,163 @@
+lessonID: voice-leading
+lessonVersion: 1
+locale: en
+title: 'Voice leading: follow each line through chords'
+summary: >-
+  Compare wide root-position jumps with connected inversions, then practice the low, middle and high voices separately.
+goal: >-
+  Track common tones and small moves through I–IV–V–I while distinguishing the musical line from a claim about fingering
+  efficiency.
+body: |-
+  Voice leading follows individual musical lines through changing chords. A chord progression tells us which harmonies occur; a voicing chooses their registers and order. Different voicings of the same progression can make each line travel a very different distance. Small moves and common tones are useful choices, not a rule that every arrangement must minimize motion.
+
+  First inspect and listen to the wide I–IV–V–I reference. All three upper-string triads use root position. Every voice rises five semitones from I to IV, then two to V, before dropping seven back to I. This is a valid sound, but it asks for broad changes of neck region. Do not confuse the distance with a wrong chord.
+
+  The connected reference keeps I in root position, uses IV with its fifth in the bass, and V with its third in the bass. On string 3 the line is tonic–tonic–leading tone–tonic. On string 2 it is third–fourth–second–third. On string 1 it is fifth–sixth–fifth–fifth. The chord roots still follow I–IV–V–I. Find the shared note on string 3 between I and IV and on string 1 between V and I; the other voices supply the harmonic change.
+
+  Practice each voice alone over four bars. At 60 BPM, attack on beat 1, sustain for three beats, then leave beat 4 silent while preparing the next note. Rearticulate a repeated common tone at the next bar even if its contact can remain on the same fret. The sustain check measures audible coverage of the note, not whether a finger stayed down. The line's written string is the intended fingering; sound alone cannot prove which string you used.
+
+  Then play the connected chords as separate-note arpeggios: low, middle, high on beats 1–3, rest on beat 4. This combines the three lines while retaining monophonic assessment. Outside scored practice, try the simultaneous connected triads and compare them with the wide version. Listen to one voice at a time instead of judging the entire chord only as a block.
+
+  Name the function and the bass member separately, and use the resolved notes for your tuning. All examples stay on strings 3–1, so corresponding Standard/Drop pairs share their positions. If a physical move feels awkward, release and rebuild it slowly; the audio score cannot certify an economical hand movement.
+steps:
+  prepare:
+    title: Choose one voice to follow
+    body: >-
+      Use a clean sound and silence strings 6–4. Identify each chord root, then follow just the low, middle or high
+      voice through the four bars. Inspect both sets of voicings before playing.
+  review:
+    title: Compare the same harmony with two routes
+    body: >-
+      Listen to the wide and connected references. Try comfortable simultaneous triads outside scoring, then compare
+      your three separate-voice results. Identify one common tone and one moving voice without claiming that audio
+      proves a particular fingering.
+  tonic-shape:
+    title: 'I: the shared starting and ending form'
+    body: >-
+      Chord root: {{root}}. This root-position form begins and ends both examples. {{positions}}. Keep its three
+      voices in mind when comparing the two IV forms.
+  wide-four-shape:
+    title: 'IV: move the root-position form'
+    body: >-
+      Chord root: {{root}}. Every voice lies five semitones above the initial I in this reference. {{positions}}.
+      This is the wide route, not an incorrect harmony.
+  wide-five-shape:
+    title: 'V: continue upward in root position'
+    body: >-
+      Chord root: {{root}}. Each voice is two semitones above the preceding wide IV; returning to the initial I
+      drops each by seven. {{positions}}. Compare the required region change with the connected V later.
+  close-four-shape:
+    title: 'IV: retain a common low voice'
+    body: >-
+      Chord root: {{root}}. The lowest voice is the fifth of this chord and stays on the same string-3 fret as the
+      initial I. The middle voice rises one semitone and the top rises two. {{positions}}.
+  close-five-shape:
+    title: 'V: place its third in the bass'
+    body: >-
+      Chord root: {{root}}. The lowest voice is the third. From the connected IV, the three voices move down one,
+      three and two semitones. {{positions}}. Returning to I raises the low and middle voices while the high voice
+      stays.
+  question:
+    title: A common tone with a changing function
+    body: Compare the chord-tone roles before answering.
+  wide-reference:
+    title: 'Listen: wide root positions'
+    body: >-
+      Tonal center: {{root}} major. Listen to four bars of I–IV–V–I at 60 BPM, one complete chord per bar. Follow
+      each of the three voices and compare the other reference. This example has no automatic chord score. {{sequence}}.
+  connected-reference:
+    title: 'Listen: connected inversions'
+    body: >-
+      Tonal center: {{root}} major. Listen to four bars of I–IV–V–I at 60 BPM, one complete chord per bar. Follow
+      each of the three voices and compare the other reference. This example has no automatic chord score. {{sequence}}.
+  low-line:
+    title: Low voice on string 3
+    body: >-
+      Tonal center: {{root}} major. Play one voice over four bars of I–IV–V–I at 60 BPM. Attack on beat 1, sustain
+      three beats and leave beat 4 silent. Reattack repeated pitches on the next bar. The score checks pitch, attack
+      timing and audible sustain, not retained finger contact. {{sequence}}.
+  middle-line:
+    title: Middle voice on string 2
+    body: >-
+      Tonal center: {{root}} major. Play one voice over four bars of I–IV–V–I at 60 BPM. Attack on beat 1, sustain
+      three beats and leave beat 4 silent. Reattack repeated pitches on the next bar. The score checks pitch, attack
+      timing and audible sustain, not retained finger contact. {{sequence}}.
+  high-line:
+    title: High voice on string 1
+    body: >-
+      Tonal center: {{root}} major. Play one voice over four bars of I–IV–V–I at 60 BPM. Attack on beat 1, sustain
+      three beats and leave beat 4 silent. Reattack repeated pitches on the next bar. The score checks pitch, attack
+      timing and audible sustain, not retained finger contact. {{sequence}}.
+  connected-arpeggio:
+    title: Combine the lines as an arpeggio
+    body: >-
+      Tonal center: {{root}} major. Over I–IV–V–I, play low, middle and high voices on beats 1–3; silence beat 4
+      and prepare the next shape. Stop each previous note so the practice remains monophonic. {{sequence}}.
+activities:
+  tonic-shape:
+    title: 'I: root position — {{root}}'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  wide-four-shape:
+    title: 'IV: wide route — {{root}}'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  wide-five-shape:
+    title: 'V: wide route — {{root}}'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  close-four-shape:
+    title: 'IV: connected route — {{root}}'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  close-five-shape:
+    title: 'V: connected route — {{root}}'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  wide-reference:
+    title: 'Listen: wide root positions'
+    body: >-
+      Tonal center: {{root}} major. Listen to four bars of I–IV–V–I at 60 BPM, one complete chord per bar. Follow
+      each of the three voices and compare the other reference. This example has no automatic chord score. {{sequence}}.
+  connected-reference:
+    title: 'Listen: connected inversions'
+    body: >-
+      Tonal center: {{root}} major. Listen to four bars of I–IV–V–I at 60 BPM, one complete chord per bar. Follow
+      each of the three voices and compare the other reference. This example has no automatic chord score. {{sequence}}.
+  low-line:
+    title: Low voice on string 3
+    body: >-
+      Tonal center: {{root}} major. Play one voice over four bars of I–IV–V–I at 60 BPM. Attack on beat 1, sustain
+      three beats and leave beat 4 silent. Reattack repeated pitches on the next bar. The score checks pitch, attack
+      timing and audible sustain, not retained finger contact. {{sequence}}.
+  middle-line:
+    title: Middle voice on string 2
+    body: >-
+      Tonal center: {{root}} major. Play one voice over four bars of I–IV–V–I at 60 BPM. Attack on beat 1, sustain
+      three beats and leave beat 4 silent. Reattack repeated pitches on the next bar. The score checks pitch, attack
+      timing and audible sustain, not retained finger contact. {{sequence}}.
+  high-line:
+    title: High voice on string 1
+    body: >-
+      Tonal center: {{root}} major. Play one voice over four bars of I–IV–V–I at 60 BPM. Attack on beat 1, sustain
+      three beats and leave beat 4 silent. Reattack repeated pitches on the next bar. The score checks pitch, attack
+      timing and audible sustain, not retained finger contact. {{sequence}}.
+  connected-arpeggio:
+    title: Combine the lines as an arpeggio
+    body: >-
+      Tonal center: {{root}} major. Over I–IV–V–I, play low, middle and high voices on beats 1–3; silence beat 4
+      and prepare the next shape. Stop each previous note so the practice remains monophonic. {{sequence}}.
+learningTasks:
+  question:
+    title: A common tone with a changing function
+    body: The lowest voice remains on the same pitch between the initial I and connected IV. What does that mean?
+    items:
+      common: One pitch belongs to both chords; the other voices change the harmony.
+      same: The entire chord must still be I.
+      root: That note must be the root of both chords.
+    explanation: >-
+      The common note is the root of I but the fifth of IV. A held or repeated pitch can change its chord-tone role
+      while other voices establish the next harmony.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      wide: I heard the broad register shifts in the root-position reference.
+      common: I located the shared low tone in I→IV and the shared high tone in V→I.
+      lines: I practiced all three voices with three sounded beats and a silent fourth beat.
+      compare: I compared full triads separately from the graded lines and arpeggio.

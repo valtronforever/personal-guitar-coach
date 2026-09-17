@@ -1,0 +1,1226 @@
+schemaVersion: 3
+id: voice-leading
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: tonic-shape
+    kind: fingering
+    exerciseID: voice-leading-tonic
+    eventIDs: []
+    activityID: tonic-shape
+    fingeringID: tonic-shape
+  - id: wide-four-shape
+    kind: fingering
+    exerciseID: voice-leading-wide-four
+    eventIDs: []
+    activityID: wide-four-shape
+    fingeringID: wide-four-shape
+  - id: wide-five-shape
+    kind: fingering
+    exerciseID: voice-leading-wide-five
+    eventIDs: []
+    activityID: wide-five-shape
+    fingeringID: wide-five-shape
+  - id: close-four-shape
+    kind: fingering
+    exerciseID: voice-leading-close-four
+    eventIDs: []
+    activityID: close-four-shape
+    fingeringID: close-four-shape
+  - id: close-five-shape
+    kind: fingering
+    exerciseID: voice-leading-close-five
+    eventIDs: []
+    activityID: close-five-shape
+    fingeringID: close-five-shape
+  - id: wide-reference
+    kind: events
+    exerciseID: voice-leading-wide-reference
+    eventIDs:
+      - b1
+      - b2
+      - b3
+      - b4
+    activityID: wide-reference
+  - id: connected-reference
+    kind: events
+    exerciseID: voice-leading-connected-reference
+    eventIDs:
+      - b1
+      - b2
+      - b3
+      - b4
+    activityID: connected-reference
+  - id: low-line
+    kind: events
+    exerciseID: voice-leading-low-line
+    eventIDs:
+      - b1-note
+      - b1-rest
+      - b2-note
+      - b2-rest
+      - b3-note
+      - b3-rest
+      - b4-note
+      - b4-rest
+    activityID: low-line
+  - id: middle-line
+    kind: events
+    exerciseID: voice-leading-middle-line
+    eventIDs:
+      - b1-note
+      - b1-rest
+      - b2-note
+      - b2-rest
+      - b3-note
+      - b3-rest
+      - b4-note
+      - b4-rest
+    activityID: middle-line
+  - id: high-line
+    kind: events
+    exerciseID: voice-leading-high-line
+    eventIDs:
+      - b1-note
+      - b1-rest
+      - b2-note
+      - b2-rest
+      - b3-note
+      - b3-rest
+      - b4-note
+      - b4-rest
+    activityID: high-line
+  - id: connected-arpeggio
+    kind: events
+    exerciseID: voice-leading-connected-arpeggio
+    eventIDs:
+      - b1-n1
+      - b1-n2
+      - b1-n3
+      - b1-rest
+      - b2-n1
+      - b2-n2
+      - b2-n3
+      - b2-rest
+      - b3-n1
+      - b3-n2
+      - b3-n3
+      - b3-rest
+      - b4-n1
+      - b4-n2
+      - b4-n3
+      - b4-rest
+    activityID: connected-arpeggio
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: voice-leading-tonic
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: voice-leading-wide-four
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 10
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 10
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 8
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: voice-leading-wide-five
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 12
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 10
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: voice-leading-close-four
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: voice-leading-close-five
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: release
+        startTick: 2880
+        durationTicks: 4800
+        kind: rest
+        positions: []
+  - id: voice-leading-wide-reference
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: b1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: b2
+        startTick: 3840
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 10
+          - string: 2
+            fret: 10
+          - string: 1
+            fret: 8
+      - id: b3
+        startTick: 7680
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+          - string: 2
+            fret: 12
+          - string: 1
+            fret: 10
+      - id: b4
+        startTick: 11520
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+  - id: voice-leading-connected-reference
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: b1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+      - id: b2
+        startTick: 3840
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 6
+          - string: 1
+            fret: 5
+      - id: b3
+        startTick: 7680
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 3
+          - string: 1
+            fret: 3
+      - id: b4
+        startTick: 11520
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+  - id: voice-leading-low-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-note
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        assessSustain: true
+      - id: b1-rest
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-note
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        assessSustain: true
+      - id: b2-rest
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-note
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+        assessSustain: true
+      - id: b3-rest
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-note
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        assessSustain: true
+      - id: b4-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: voice-leading-middle-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-note
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        assessSustain: true
+      - id: b1-rest
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-note
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        assessSustain: true
+      - id: b2-rest
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-note
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+        assessSustain: true
+      - id: b3-rest
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-note
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        assessSustain: true
+      - id: b4-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: voice-leading-high-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-note
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        assessSustain: true
+      - id: b1-rest
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-note
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+        assessSustain: true
+      - id: b2-rest
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-note
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        assessSustain: true
+      - id: b3-rest
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-note
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+        assessSustain: true
+      - id: b4-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: voice-leading-connected-arpeggio
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: b1-n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b1-n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b1-n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b1-rest
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b2-n1
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b2-n2
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: b2-n3
+        startTick: 5760
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: b2-rest
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b3-n1
+        startTick: 7680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+      - id: b3-n2
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 3
+      - id: b3-n3
+        startTick: 9600
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b3-rest
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: b4-n1
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: b4-n2
+        startTick: 12480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: b4-n3
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: b4-rest
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: tonic-shape
+    source:
+      kind: fingering
+      fingeringID: tonic-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: wide-four-shape
+    source:
+      kind: fingering
+      fingeringID: wide-four-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 65
+  - id: wide-five-shape
+    source:
+      kind: fingering
+      fingeringID: wide-five-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 67
+  - id: close-four-shape
+    source:
+      kind: fingering
+      fingeringID: close-four-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 65
+  - id: close-five-shape
+    source:
+      kind: fingering
+      fingeringID: close-five-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 67
+  - id: wide-reference
+    source:
+      kind: exercise
+      exerciseID: voice-leading-wide-reference
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: connected-reference
+    source:
+      kind: exercise
+      exerciseID: voice-leading-connected-reference
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: low-line
+    source:
+      kind: exercise
+      exerciseID: voice-leading-low-line
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: middle-line
+    source:
+      kind: exercise
+      exerciseID: voice-leading-middle-line
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: high-line
+    source:
+      kind: exercise
+      exerciseID: voice-leading-high-line
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: connected-arpeggio
+    source:
+      kind: exercise
+      exerciseID: voice-leading-connected-arpeggio
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: tonic-shape
+    materialID: tonic-shape
+  - id: wide-four-shape
+    materialID: wide-four-shape
+  - id: wide-five-shape
+    materialID: wide-five-shape
+  - id: close-four-shape
+    materialID: close-four-shape
+  - id: close-five-shape
+    materialID: close-five-shape
+  - id: wide-reference
+    materialID: wide-reference
+  - id: connected-reference
+    materialID: connected-reference
+  - id: low-line
+    materialID: low-line
+  - id: middle-line
+    materialID: middle-line
+  - id: high-line
+    materialID: high-line
+  - id: connected-arpeggio
+    materialID: connected-arpeggio
+practiceEntries:
+  - id: low-line
+    activityID: low-line
+    exerciseID: voice-leading-low-line
+  - id: middle-line
+    activityID: middle-line
+    exerciseID: voice-leading-middle-line
+  - id: high-line
+    activityID: high-line
+    exerciseID: voice-leading-high-line
+  - id: connected-arpeggio
+    activityID: connected-arpeggio
+    exerciseID: voice-leading-connected-arpeggio
+fingerings:
+  - id: tonic-shape
+    exerciseID: voice-leading-tonic
+    fingering:
+      positions:
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 3
+        '1': 1
+  - id: wide-four-shape
+    exerciseID: voice-leading-wide-four
+    fingering:
+      positions:
+        - string: 3
+          fret: 10
+        - string: 2
+          fret: 10
+        - string: 1
+          fret: 8
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 3
+        '1': 1
+  - id: wide-five-shape
+    exerciseID: voice-leading-wide-five
+    fingering:
+      positions:
+        - string: 3
+          fret: 12
+        - string: 2
+          fret: 12
+        - string: 1
+          fret: 10
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 3
+        '1': 1
+  - id: close-four-shape
+    exerciseID: voice-leading-close-four
+    fingering:
+      positions:
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 6
+        - string: 1
+          fret: 5
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 1
+        '2': 2
+        '1': 1
+  - id: close-five-shape
+    exerciseID: voice-leading-close-five
+    fingering:
+      positions:
+        - string: 3
+          fret: 4
+        - string: 2
+          fret: 3
+        - string: 1
+          fret: 3
+      mutedStrings:
+        - 4
+        - 5
+        - 6
+      fingerNumbers:
+        '3': 2
+        '2': 1
+        '1': 1
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - common
+      - same
+      - root
+    correctOptionID: common
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - wide
+      - common
+      - lines
+      - compare
+curriculum:
+  moduleID: harmony
+  ordinal: 79
+  durationMinutes: 35
+  prerequisites:
+    - harmonic-functions
+    - triad-inversions
+    - dotted-tied-notes
+  keywords:
+    - voice leading
+    - common tones
+    - chord inversions
+    - I IV V
+    - голосоведення
+    - спільні звуки

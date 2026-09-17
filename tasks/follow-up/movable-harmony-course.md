@@ -20,3 +20,9 @@ Authored CAGED with five family regions, an explicit same-harmony root, a sequen
 Triad inversions retain one harmonic root while root/third/fifth occupy the lowest voice. Three separate shape checks lead to two four-bar phrases in different orders, with a quarter rest in each bar to prepare the shift. Distinct family/inversion labels identify every practice entry in both languages. Both topics are intermediate in library filters.
 
 Independent MIDI/fret/role goldens cover all presets and neck lengths; App selection coverage verifies the Drop map's six markers, lack of finger claims/scoring, single-note selection and transition to the graded fragment. Final verification/release/CI remains open. Topics 77–80 and the full course remain in progress.
+
+## Third delivery: seventh chords and progressions (77–80)
+
+All eight harmony topics are now authored; this remains `in_progress` until delivery checks and merge complete. Topics 77–80 add four seventh-chord string checks, two unscored functional progressions with inverted basses, wide-versus-connected voice-leading references, three graded sustained voice lines plus an arpeggio, and three progressive arpeggio-through-changes exercises including an original eight-bar study. These reuse explicit material roots, display-only chords, opt-in sustain and monophonic practice rather than adding duplicate runtime music models.
+
+Independent four-test goldens cover all presets/fret choices, chord suffixes and harmonic roots, exact pitch order, timing, rests and final sustain. Full Learning/App, author-tool and Release evidence are recorded in [the third-delivery review](../../docs/reviews/harmony-progressions-course-review.md). Native and actual instrument acceptance remain open. The larger course still requires the remaining lead-technique extensions and modules 11–16.

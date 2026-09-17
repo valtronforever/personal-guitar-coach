@@ -79,6 +79,10 @@ lessons:
   - minor-barre-chords
   - caged
   - triad-inversions
+  - seventh-chords
+  - harmonic-functions
+  - voice-leading
+  - chord-change-arpeggios
 modules:
   - id: getting-started
     order: 1
