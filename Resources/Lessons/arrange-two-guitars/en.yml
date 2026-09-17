@@ -1,0 +1,66 @@
+lessonID: arrange-two-guitars
+lessonVersion: 1
+locale: en
+title: Give two guitars different jobs
+summary: Separate register, attack placement and sustain instead of duplicating every note.
+goal: Build a four-bar arrangement with a stable lower part and a complementary upper answer.
+body: |-
+  An arrangement decides who carries each musical function. Two guitars can both play chords, yet still need different registers, rhythms or densities to remain clear. Start by assigning one part the foundation and the other a short answer. The lower part in this example sustains a root through each bar; the upper part enters after the first beat. Their difference creates space without requiring either player to perform something complicated.
+
+  Learn the lower and upper parts separately while counting the same four-bar form. The upper rest at the beginning of each bar is intentional. Do not fill it just because your hands are ready. Hear how the sustained lower pitch supports the later entrance. When playing with another guitarist, agree on tempo, count-in, chord changes and the exact final release before discussing tone or effects. An unclear ending remains unclear through a larger amplifier.
+
+  The combined reference shows both roles together. Parenthesized held frets continue sounding without a new attack while the other voice moves. This is a synthesized illustration of timing and pitch relationships, not two independently recorded guitar tracks. You may play the combined study alone if the fingering is comfortable, or split its roles between two players. The isolated examples make that division explicit rather than asking both players to copy the complete texture.
+
+  Make one arrangement change and listen to its effect. Try a shorter foundation, a higher answer or one fewer upper attack. Keep the harmonic route stable while comparing. If both parts feel crowded, first reduce overlap or register duplication rather than immediately turning one down. Volume balance matters, but a structural conflict may remain at any level. Let each player name the other part’s main entrance so listening extends beyond personal fingering.
+
+  Record the combined study or your assigned part for self-review. The app captures one selected mono input; it does not record two interfaces as separate tracks or mix an imported accompaniment. To hear two real players together, use an appropriate external recording setup or listen in the room. Evaluate role separation, timing of entrances and releases yourself. Polyphonic sound is not automatically graded, and a clear reference does not prove that your two live parts balanced well.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  lower-role:
+    title: 'Lower guitar: one stable foundation'
+    body: 'Center: {{root}} major. Sustain one lower note through each whole bar. Release and reattack only at the
+      written change.'
+  upper-role:
+    title: 'Upper guitar: enter after the foundation'
+    body: Rest on beat 1, play on beat 2 and give the second upper note beats 3–4. Keep counting while the other
+      role begins.
+  combined-roles:
+    title: Hear both jobs together
+    body: Keep the parenthesized lower fret sounding while upper notes enter and change. The reference illustrates
+      both roles; a recording captures only the selected input.
+  more-space:
+    title: Try a sparser upper answer
+    body: Compare one upper attack on beat 3 with the original two attacks. Leave beat 4 clear rather than sustaining
+      over the next foundation.
+  review:
+    title: Check the relationship between parts
+    body: Listen to entrances and empty spaces before changing tone.
+activities:
+  lower-role:
+    title: 'Lower guitar: one stable foundation'
+    body: 'Center: {{root}} major. Sustain one lower note through each whole bar. Release and reattack only at the
+      written change.'
+  upper-role:
+    title: 'Upper guitar: enter after the foundation'
+    body: Rest on beat 1, play on beat 2 and give the second upper note beats 3–4. Keep counting while the other
+      role begins.
+  combined-roles:
+    title: Hear both jobs together
+    body: Keep the parenthesized lower fret sounding while upper notes enter and change. The reference illustrates
+      both roles; a recording captures only the selected input.
+  more-space:
+    title: Try a sparser upper answer
+    body: Compare one upper attack on beat 3 with the original two attacks. Leave beat 4 clear rather than sustaining
+      over the next foundation.
+learningTasks:
+  review:
+    title: Check the relationship between parts
+    body: Listen to entrances and empty spaces before changing tone.
+    items:
+      roles: I can state each guitar’s distinct musical job.
+      entrances: I kept the upper entrance after the lower attack.
+      holds: The lower note continued while the upper voice changed.
+      space: I compared a sparser version without changing the harmony.
+      release: Both roles have an agreed final release.

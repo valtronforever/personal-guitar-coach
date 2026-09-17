@@ -1,0 +1,58 @@
+lessonID: performance-recording
+lessonVersion: 1
+locale: en
+title: Record a performance and make a useful repair list
+summary: Capture the complete miniature, separate observation from judgment and retest one repair.
+goal: Save an uninterrupted take and identify specific bar-level corrections before making a comparison take.
+body: |-
+  A control recording answers a specific question: can the prepared piece survive one continuous performance? Use the eight-bar miniature from the preceding lesson, with the same form and a realistic tempo. Decide in advance that small mistakes will not stop the take. Keep a separate repair session for repeated fragments. This distinction prevents a collection of polished beginnings from being mistaken for readiness to play the whole piece.
+
+  Select the complete performance activity and open Record self-practice. Check the instrument, input channel, output and tempo before starting. The sheet provides one count-in bar and a metronome while guitar reference tones stay silent. Remember that the piece itself begins with two silent beats. Record through the final release and remaining rest. If you deliberately stop early, the take is labeled accordingly rather than presented as a complete performance.
+
+  Save the WAV before closing the sheet or recording again; an unsaved take is temporary. Open the saved file in your system player. The first channel contains the selected guitar input and the second a generated click reference. The reference follows the scheduled clock and is not a recording of the sound arriving at your headphones. This activity does not apply an automatic music score or ask an AI provider to judge your performance.
+
+  Listen once without the instrument and follow the form map. On the second listen write a short repair list with a bar number, an audible observation and a proposed next action. For example, distinguish a missing note from an early attack, unwanted ringing or a lost section entrance. Write what you actually heard rather than a diagnosis about fingers that the recording cannot prove. Begin with two important corrections instead of treating every detail as equally urgent.
+
+  Repair one chosen boundary at a slower tempo, include the preceding bar and then record another full take at the original comparison tempo. Save it as a separate file so the earlier evidence remains available. Compare the same passage in both takes: did the intended change improve, and did it survive the rest of the form? A completed recording only confirms that capture reached the end. Readiness, expression and ensemble fit still require honest listening and broader musical context.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  complete-performance:
+    title: One complete eight-bar take
+    body: 'Use the learned form: introduction, A, varied A, bridge, ending. Record self-practice, save WAV, and
+      review before recording again. The displayed score is the reference for your repair list.'
+  transition-repair:
+    title: Repair one boundary in context
+    body: This is the transition from bars 5 to 6 of the full take. Use it only if listening identified a problem
+      here; otherwise choose the actual problem passage in your practice.
+  ending-repair:
+    title: Hear the final approach and release
+    body: These are bars 7–8. Keep the rest before the final center and release after its two beats. Use your take
+      to decide whether this repair is relevant.
+  review:
+    title: Keep a small evidence-based repair list
+    body: Write details on paper or in your own notes; the checkboxes confirm your review, not an automatic result.
+activities:
+  complete-performance:
+    title: One complete eight-bar take
+    body: 'Use the learned form: introduction, A, varied A, bridge, ending. Record self-practice, save WAV, and
+      review before recording again. The displayed score is the reference for your repair list.'
+  transition-repair:
+    title: Repair one boundary in context
+    body: This is the transition from bars 5 to 6 of the full take. Use it only if listening identified a problem
+      here; otherwise choose the actual problem passage in your practice.
+  ending-repair:
+    title: Hear the final approach and release
+    body: These are bars 7–8. Keep the rest before the final center and release after its two beats. Use your take
+      to decide whether this repair is relevant.
+learningTasks:
+  review:
+    title: Keep a small evidence-based repair list
+    body: Write details on paper or in your own notes; the checkboxes confirm your review, not an automatic result.
+    items:
+      saved: I saved a complete take and listened before making another.
+      locations: I named at most two priority issues with bar numbers and audible evidence.
+      action: I chose a specific repair action rather than guessing a physical diagnosis.
+      compare: I kept the first file and compared a second take at the same tempo.
+      whole: I checked whether the repair survived a complete performance.

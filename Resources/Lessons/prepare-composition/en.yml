@@ -1,0 +1,84 @@
+lessonID: prepare-composition
+lessonVersion: 1
+locale: en
+title: Prepare an entire miniature, including its silence
+summary: Map an eight-bar form, practise transitions and finish without restarting.
+goal: Perform the complete original miniature with a planned entrance, section transitions and final release.
+body: |-
+  A complete performance requires more than knowing several isolated phrases. Make a form map before practising details: this original miniature has one introductory bar, two bars of idea A, two bars of a varied return, two contrasting bridge bars and one ending bar. Number all eight bars. The count-in comes before the piece and is not its introductory bar. Say the section names over a steady pulse until their order is clear without the guitar.
+
+  Learn each section slowly enough to plan the next movement. Keep the opening rests intact: a confident entrance begins while you are still silent. In the ending, stop the final note where written and continue counting the remaining rest. Starting immediately after the count-in or letting the last note ring indefinitely changes this form. Accurate silence makes the beginning and ending intentional rather than accidental.
+
+  Practise transitions as overlapping windows. Play the end of the varied return into the start of the bridge; do not rehearse only the first note of the difficult section. Look ahead to the new register while maintaining the last bar’s count. Once a boundary is stable, widen the window by adding a preceding and following phrase. This tests whether the repair survives the context that originally made it difficult.
+
+  Separate repair passes from performance passes. During repair, stop at a known problem and make a specific correction. During a performance, keep the form moving after a minor mistake and rejoin at the next reliable point. Do not practise recovering only by restarting from bar one: that trains the opening far more than the ending. A slower uninterrupted pass provides better preparation than repeatedly abandoning the second half at a faster tempo.
+
+  Finish by recording one complete pass at a tempo where the transitions remain planned. Use the full-study recording action; the short transition also has a separate monophonic practice entry for measured preparation. Do not treat that fragment’s score as evidence that the whole piece is ready. Listen for the map, recovery and final release yourself. For a longer repertoire piece, apply the same section-map and overlapping-window method with appropriately sized rehearsal segments.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  entrance:
+    title: Start inside the first bar
+    body: Count two silent beats after the count-in, then play on beats 3 and 4. This is bar 1 of the composition.
+  main-idea:
+    title: Two bars of idea A
+    body: 'Center: {{root}} minor. Keep the final rests in both bars. These are bars 2–3 of the whole form.'
+  varied-return:
+    title: A varied return
+    body: Hear the busier first bar followed by the familiar answer. These are bars 4–5; keep their lengths unchanged.
+  bridge:
+    title: A contrast before the ending
+    body: Sustain the two opening notes for two beats each, then descend and leave the final beat quiet. These are
+      bars 6–7.
+  join-into-bridge:
+    title: Connect bar 5 into bar 6
+    body: Keep counting through the last rest before the bridge’s higher entrance. This two-bar fragment prepares
+      a boundary; it does not grade the complete piece.
+  ending:
+    title: Release, then count the silence
+    body: Hold the center for beats 1–2, release on beat 3 and count through beat 4. This is the full ending bar,
+      not a cutoff halfway through the form.
+  complete-miniature:
+    title: Perform all eight bars
+    body: 'Map: 1 introduction; 2–3 A; 4–5 varied A; 6–7 bridge; 8 ending. Record one uninterrupted pass and distinguish
+      it from a repair attempt.'
+  review:
+    title: Check readiness across the whole form
+    body: Use evidence from a complete pass, not only your easiest phrase.
+activities:
+  entrance:
+    title: Start inside the first bar
+    body: Count two silent beats after the count-in, then play on beats 3 and 4. This is bar 1 of the composition.
+  main-idea:
+    title: Two bars of idea A
+    body: 'Center: {{root}} minor. Keep the final rests in both bars. These are bars 2–3 of the whole form.'
+  varied-return:
+    title: A varied return
+    body: Hear the busier first bar followed by the familiar answer. These are bars 4–5; keep their lengths unchanged.
+  bridge:
+    title: A contrast before the ending
+    body: Sustain the two opening notes for two beats each, then descend and leave the final beat quiet. These are
+      bars 6–7.
+  join-into-bridge:
+    title: Connect bar 5 into bar 6
+    body: Keep counting through the last rest before the bridge’s higher entrance. This two-bar fragment prepares
+      a boundary; it does not grade the complete piece.
+  ending:
+    title: Release, then count the silence
+    body: Hold the center for beats 1–2, release on beat 3 and count through beat 4. This is the full ending bar,
+      not a cutoff halfway through the form.
+  complete-miniature:
+    title: Perform all eight bars
+    body: 'Map: 1 introduction; 2–3 A; 4–5 varied A; 6–7 bridge; 8 ending. Record one uninterrupted pass and distinguish
+      it from a repair attempt.'
+learningTasks:
+  review:
+    title: Check readiness across the whole form
+    body: Use evidence from a complete pass, not only your easiest phrase.
+    items:
+      map: I can name all sections and their bar numbers.
+      start: I counted the opening silence and entered deliberately.
+      transition: I connected the varied return to the bridge in context.
+      recovery: I completed a pass without restarting after a small error.
+      ending: I released on the written beat and counted the remaining silence.

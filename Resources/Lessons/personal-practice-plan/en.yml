@@ -1,0 +1,66 @@
+lessonID: personal-practice-plan
+lessonVersion: 1
+locale: en
+title: Build a practice cycle from actual evidence
+summary: Balance technique, rhythm, ear work, repertoire and deliberate review.
+goal: Write and complete a repeatable practice cycle with one measurable priority and a scheduled comparison.
+body: |-
+  A personal plan begins with a musical goal and a small amount of evidence. Review recent practice results and one saved performance before selecting new material. Distinguish reliable pitch or timing observations from self-reported technique criteria. An interrupted or insufficient-signal attempt is a setup problem, not proof of poor musicianship. Choose one priority that affects the music you want to play, such as entering after rests or connecting a difficult section without losing the pulse.
+
+  Use a short balanced cycle as a starting experiment. For example, allocate five minutes to controlled technique, five to rhythm, five to ear work, eight to a repertoire passage and two to review. The exact durations are adjustable; preserve the roles rather than treating the numbers as a rule. Write the chosen lesson or passage for each block before beginning so browsing does not consume the session. Start with a tempo where you can hear and explain errors.
+
+  The sample technique and rhythm activities are compact checks, not mandatory lifelong exercises. Use their measured results to decide whether the selected difficulty is useful. Timing comparisons require the app’s stated calibration conditions; a manual setting remains an approximation. If the error is consistent, reduce the tempo or isolate the transition and repeat with the same instrument setup. If the recording or result is invalid, restore the conditions before drawing musical conclusions.
+
+  Keep ear work independent of visual memorization. Hear the short hidden response, sing its direction and then find it on the guitar. Reveal targets only for a deliberate comparison. Follow that concentrated task with music: the repertoire model here offers a complete four-bar phrase for an ungraded recording, but your own prepared piece may be more relevant. A practice plan that improves drills without returning to music has not yet tested transfer.
+
+  End by writing what changed, what remained difficult and what you will compare next time. Keep one stable exercise and tempo across several sessions while rotating the remaining material. At the next review, listen to a fresh performance before increasing difficulty. The app stores lesson progress and assessed results; your schedule, written priorities and interpretation remain your decisions. Self-practice checkmarks confirm actions you report, not mastery automatically certified by the software.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  technique-check:
+    title: One controlled technique cell
+    body: Play the short chromatic ascent and return with even separated attacks. Select a slower tempo if continuity
+      or clean changes need work.
+  rhythm-check:
+    title: Re-enter after different gaps
+    body: Keep one pitch and compare the attack positions after short and long rests. The empty first beat of bar
+      2 still belongs to your count.
+  ear-check:
+    title: A fresh listening response
+    body: Hear the complete two-bar reference before finding it on the instrument. Use a hidden attempt first and
+      reveal only for a guided comparison.
+  musical-transfer:
+    title: Return to a complete musical phrase
+    body: Record this four-bar phrase or an equally long prepared variation. Listen for your chosen priority in
+      context; the reference score remains the supplied phrase.
+  review:
+    title: Write the next practice decision
+    body: Use your own notes for the schedule and observation; check only actions you actually completed.
+activities:
+  technique-check:
+    title: One controlled technique cell
+    body: Play the short chromatic ascent and return with even separated attacks. Select a slower tempo if continuity
+      or clean changes need work.
+  rhythm-check:
+    title: Re-enter after different gaps
+    body: Keep one pitch and compare the attack positions after short and long rests. The empty first beat of bar
+      2 still belongs to your count.
+  ear-check:
+    title: A fresh listening response
+    body: Hear the complete two-bar reference before finding it on the instrument. Use a hidden attempt first and
+      reveal only for a guided comparison.
+  musical-transfer:
+    title: Return to a complete musical phrase
+    body: Record this four-bar phrase or an equally long prepared variation. Listen for your chosen priority in
+      context; the reference score remains the supplied phrase.
+learningTasks:
+  review:
+    title: Write the next practice decision
+    body: Use your own notes for the schedule and observation; check only actions you actually completed.
+    items:
+      priority: I selected one priority using a valid result or a specific audible observation.
+      balance: My cycle included technique, rhythm, listening, repertoire and review.
+      conditions: I kept the comparison tempo and instrument conditions explicit.
+      transfer: I checked the chosen skill in a complete musical phrase.
+      next: I wrote the next comparison and what evidence will guide a change.

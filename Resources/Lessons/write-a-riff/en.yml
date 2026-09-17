@@ -1,0 +1,63 @@
+lessonID: write-a-riff
+lessonVersion: 1
+locale: en
+title: Write a riff with a recognizable return
+summary: Develop one idea through rhythm, register and a deliberate ending.
+goal: Create and record a four-bar riff whose repeated idea and changed ending can be identified by ear.
+body: |-
+  Begin with a constraint that makes choices audible. Select three or four nearby notes, a comfortable pulse and one bar of rhythm. Play the seed model, then stop and remember its rhythm without the instrument. If the idea disappears as soon as you stop playing, simplify it. A riff does not need many pitches to have an identity; repeated attack placement, rests and a characteristic ending can make a small cell recognizable.
+
+  Repeat the seed exactly before changing it. Exact repetition establishes something for the listener to recognize. Next move one attack or replace the last note while keeping the rest stable. Compare both versions at the same tempo. Changing pitches, rhythm, register and articulation simultaneously makes it difficult to hear which decision helped. Keep the version whose change creates a clear question, answer or return rather than simply more activity.
+
+  The four-bar model follows seed, repeated seed, variation and ending. Count each whole bar, including the gap at the end of the first idea. The variation changes its attack density, while the final bar settles on the center and leaves a full beat of space. Learn this complete example before substituting your own material, so a forgotten bar length does not masquerade as an intentional compositional change.
+
+  For your own riff, retain the four-bar frame and write the attack counts or a small TAB sketch on paper. Choose one feature that must stay recognizable and one that may change. Play the new idea several times with the metronome, checking that its ending can lead back into the beginning. Then compare a single final performance with a looping version: a convincing loop and a convincing final stop are related but different decisions.
+
+  Use Record self-practice on the four-bar model to capture your own version within that same duration. The displayed notes remain the supplied reference; the app is not a composition editor and does not rewrite them from your playing. Save the WAV deliberately and listen for the feature you meant to preserve. Judge memorability, balance and a clear ending yourself. No automatic score in this activity decides whether your composition is good.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  seed:
+    title: Keep a small identity
+    body: 'Center: {{root}} minor. Repeat the opening pitch, move upward and leave the fourth beat empty. Learn
+      this rhythm before changing the note choices.'
+  variation:
+    title: Change attack density
+    body: Keep the same pitch set and final rest while redistributing the first two beats into four eighth-note
+      attacks.
+  ending:
+    title: Give the phrase an ending
+    body: Descend to the center and leave one full beat of silence. Count that gap before either stopping or returning.
+  four-bar-riff:
+    title: Seed, repeat, variation, ending
+    body: Play the model once, then compose your own version in the same four-bar frame. Recording preserves the
+      reference score as context; it does not transcribe your new notes.
+  review:
+    title: Explain the compositional choice
+    body: Name the unchanged feature and one deliberate difference in your four bars.
+activities:
+  seed:
+    title: Keep a small identity
+    body: 'Center: {{root}} minor. Repeat the opening pitch, move upward and leave the fourth beat empty. Learn
+      this rhythm before changing the note choices.'
+  variation:
+    title: Change attack density
+    body: Keep the same pitch set and final rest while redistributing the first two beats into four eighth-note
+      attacks.
+  ending:
+    title: Give the phrase an ending
+    body: Descend to the center and leave one full beat of silence. Count that gap before either stopping or returning.
+  four-bar-riff:
+    title: Seed, repeat, variation, ending
+    body: Play the model once, then compose your own version in the same four-bar frame. Recording preserves the
+      reference score as context; it does not transcribe your new notes.
+learningTasks:
+  review:
+    title: Explain the compositional choice
+    body: Name the unchanged feature and one deliberate difference in your four bars.
+    items:
+      identity: I can sing or tap the seed without looking.
+      change: I changed one feature and compared it at the same tempo.
+      form: My four bars include a deliberate return or final stop.
+      listen: I listened to my saved take and named one useful revision.

@@ -138,7 +138,7 @@ UI використовує note names з octave, підтримує ASCII/Unico
 
 `Learning` містить LessonManifest/Step/Text, read-only LessonCatalogLoader та LoadedLesson. Тільки валідатор створює LoadedLesson для UI. Catalog order і global exercise IDs задаються manifest; en/uk мають однакові lesson/step IDs і version. Пошкоджений урок породжує ContentIssue, але не приховує інші валідні уроки.
 
-`LoadedLesson.visual(stepID:instrument:)` повертає events, display tuning, позиції/висоти/підказані пальці та muted strings. Event set може мати кілька ладів на одній струні для гами; fingering лишається одночасною формою. Text-only/rest кроки не залишають stale note markers. Жодного пошуку нот у prose. Див. CONTENT-AUTHORING.md для JSON-контракту.
+`ResolvedLessonActivity.visual(stepID:)` повертає events, display tuning, позиції/висоти/підказані пальці та muted strings. Event set може мати кілька ладів на одній струні для гами; fingering лишається одночасною формою. Text-only/rest кроки не залишають stale note markers. Жодного пошуку нот у prose. Див. CONTENT-AUTHORING.md для YAML-контракту уроків.
 
 LessonLibraryStore завантажує app-bundle ресурси на worker. Reader використовує `LessonSelection` для двобічного вибору кроків і подій табулатури. CLI ValidateLessonContent перевіряє actual bundled content у CI, без audio services.
 

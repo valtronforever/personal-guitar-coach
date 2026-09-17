@@ -1,0 +1,68 @@
+lessonID: play-with-rhythm-section
+lessonVersion: 1
+locale: en
+title: Make room for bass and drums
+summary: Coordinate a guitar part with the pulse, backbeat and low-register foundation.
+goal: Maintain a four-bar guitar role while listening for agreed attacks, rests and the next section entrance.
+body: |-
+  Playing with a rhythm section requires a shared plan, not simply simultaneous sound. Agree on the form, pulse and count-in, then decide which instrument supplies the low foundation and which attacks should coincide. For this exercise imagine a steady four-beat groove with a backbeat on two and four. This is one rehearsal model, not a rule for every style. Listen to actual partners before imposing that pattern on their music.
+
+  Learn the low foundation example to understand where the harmonic roots move. It is a guitar-register representation of the bass role, not an electric-bass recording. Next play the sparse upper guitar part. Its two short attacks leave space around the low entrance and stop before the next bar. Keep counting during the rests. A sustained chord that covers every empty beat can obscure a groove even if its initial attack was accurately placed.
+
+  Compare the offbeat version without changing the four-bar harmonic route. Say the subdivisions before playing so that an offbeat entrance remains tied to a known pulse. Do not pull the next chord change earlier because your current attack is displaced. With a bassist and drummer, first rehearse quietly and with few notes. Ask whether your attacks reinforce their choices or compete with them; their answer is more useful than automatically making your part denser.
+
+  Practise an agreed break in the final bar. The guitar stops after the opening attack while the group continues counting through the empty space. Re-enter only at the next agreed beginning. Watch or listen for the chosen cue, but retain your internal count in case the gesture is small. A fill is not permission to forget the form. Repeat the transition from the preceding bar so the break becomes part of the groove rather than an isolated trick.
+
+  The app supplies a metronome and synthesized guitar references here; it does not supply drum stems or a backing-track mixer. Rehearse the same plan with real partners or a separately played accompaniment when available. Record self-practice captures your selected guitar input, so review its attacks and releases against the click reference without claiming to hear the whole band. Judge musical fit through actual ensemble listening; this activity has no automatic groove or chord score.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  foundation:
+    title: Understand the low foundation
+    body: 'Center: {{root}} major. Follow I–V–I–I, with low attacks on beats 1 and 3. Treat this as a role model
+      played on guitar.'
+  sparse-guitar:
+    title: Short guitar attacks on two and four
+    body: Attack on beats 2 and 4, release after each eighth note and hear the spaces. Play the same four-bar route
+      as the foundation.
+  offbeat-guitar:
+    title: Move the attacks while keeping the route
+    body: Attack on the offbeats after beats 1 and 3. The harmonic change still belongs to the beginning of its
+      bar.
+  ensemble-break:
+    title: Agree on a final-bar break
+    body: Use the sparse pattern for three bars. In bar 4, attack only on beat 1, release on beat 2 and count all
+      remaining beats before the next entrance.
+  review:
+    title: Listen beyond the guitar part
+    body: Use a partner rehearsal when possible; otherwise label this as metronome preparation, not an ensemble
+      test.
+activities:
+  foundation:
+    title: Understand the low foundation
+    body: 'Center: {{root}} major. Follow I–V–I–I, with low attacks on beats 1 and 3. Treat this as a role model
+      played on guitar.'
+  sparse-guitar:
+    title: Short guitar attacks on two and four
+    body: Attack on beats 2 and 4, release after each eighth note and hear the spaces. Play the same four-bar route
+      as the foundation.
+  offbeat-guitar:
+    title: Move the attacks while keeping the route
+    body: Attack on the offbeats after beats 1 and 3. The harmonic change still belongs to the beginning of its
+      bar.
+  ensemble-break:
+    title: Agree on a final-bar break
+    body: Use the sparse pattern for three bars. In bar 4, attack only on beat 1, release on beat 2 and count all
+      remaining beats before the next entrance.
+learningTasks:
+  review:
+    title: Listen beyond the guitar part
+    body: Use a partner rehearsal when possible; otherwise label this as metronome preparation, not an ensemble
+      test.
+    items:
+      route: I followed all four harmonic bars without moving a change early.
+      release: I stopped each short chord and left the written gaps audible.
+      break: I counted the final-bar break and knew the next entrance.
+      listen: I identified whether the guitar supported or crowded the other roles.
+      context: I distinguished solo click practice from playing with real partners.

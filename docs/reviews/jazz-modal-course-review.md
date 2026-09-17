@@ -20,3 +20,7 @@ Evidence:
 Full Learning: 145 tests/52 suites passed in304.611s; full App:188 tests/59 suites passed in330.715s (`/tmp/jazz-modal-learning-full.log`, `/tmp/jazz-modal-app-full.log`). UI-test sources type-check. Parent typed-helper CI fix was fast-forwarded with identical test data and its separate regression pass; no production behavior changed. Signed root-only Release and fresh CI are next.
 
 Signed root-only Release/archive validates126 bilingual bundles / 379 YAML files with zero issues, arm64/macOS14, ad-hoc hardened sandbox and expected entitlements. Binary SHA256 `5c6afa369f623da9db700164dd055e7909e9bf7ba517d31d65eb262194558e58`; archive `c72fb42b14cad4af1b70b7a42f00636f05b86af763315417afd3fcbeaf06237a`. See `docs/benchmarks/jazz-modal-release-bundle.json`. Signed sandbox→XPC→invalidRequest passes without a provider call. Actual native app/guitar/provider acceptance remains open; exact-head CI/merge are pending.
+
+## Merged software evidence (2026-09-17)
+
+[PR 95](https://github.com/valtronforever/personal-guitar-coach/pull/95) merged as `5e1c557de85f4b00ac21990d8dee0aa490472f65` after [CI 35198635079](https://github.com/valtronforever/personal-guitar-coach/actions/runs/35198635079) passed on exact head `8d5e5d015b5691a6e9d7a64c9283a637bffb3f29`. Signed Release/software evidence above remains valid; native and actual-guitar acceptance remains `pending_user`. Earlier in-progress notes describe historical checkpoints.

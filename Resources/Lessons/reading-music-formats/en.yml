@@ -1,0 +1,71 @@
+lessonID: reading-music-formats
+lessonVersion: 1
+locale: en
+title: Read one piece through three representations
+summary: Connect timing and sounding pitch with TAB, staff and a chord shape.
+goal: Play an unfamiliar short melody from notation, then explain what a chord diagram does and does not specify.
+body: |-
+  Reading is a translation from marks to planned sound. Before playing, find the time signature, pulse unit, first position and total number of bars. Scan for rests, changes of string and the longest note. Count one silent bar at your chosen tempo. This preview makes the first attempt a manageable reading task rather than a series of reactions to each new symbol. Keep your eyes a little ahead of the sounding note.
+
+  TAB identifies string and fret. The top line is string one, the thinnest; zero means an open string. Read its rhythmic notation and spacing as well as the fret numbers. Two notes with the same number can have different sounding pitches on different strings. The app’s selected tuning changes the note names derived from those positions, while interval-preserving lessons keep their intended musical relationships. Check the displayed instrument before treating a remembered shape as the right sound.
+
+  Staff notation prioritizes pitch and duration rather than a unique guitar fingering. Guitar staff notation is written one octave above its sound; the fretboard and target note names identify sounding pitch. Switch to Staff for the first melody, identify its contour and count its note lengths, then play slowly before hearing preview. Switch to TAB afterwards to compare the suggested positions. Several physical fingerings may produce the same melody; the microphone cannot prove which one you used.
+
+  A chord shape is a spatial instruction: which frets to hold, which strings to leave open and which to silence. It does not by itself tell you when to strum or how long to sustain. Select the compact shape and inspect it on the fretboard, then use the separate timed chord example for attack and release. Finally play the chord tones one at a time in the arpeggio practice; that measured preparation is not a test of the simultaneous chord.
+
+  For the second short melody, choose the representation you read less confidently. Give yourself a brief scan and one uninterrupted slow attempt. If you lose your place, continue counting and rejoin at the next bar rather than restarting every time. Afterwards distinguish a reading error, an execution error and a forgotten count. Practise the actual cause: clap the rhythm, name the next notes or rehearse one string crossing.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  first-reading:
+    title: Read before listening
+    body: 'Center: {{root}} major. Choose Staff, count two bars, and attempt the melody before preview. Compare
+      the suggested TAB only after your first reading.'
+  compact-shape:
+    title: Read the chord shape
+    body: Inspect {{positions}} on the fretboard. Play strings 3, 2 and 1; silence strings 6, 5 and 4. The shape
+      alone does not specify a strumming rhythm.
+  timed-chord:
+    title: Give the shape a rhythm
+    body: In bar 1 attack on beat 1 and release on beat 3. In bar 2 attack on beat 2 and release on beat 3. Read
+      the rests, not just the grip.
+  chord-tone-reading:
+    title: Read the members one at a time
+    body: Stop each preceding note before the next during this monophonic check. These pitches correspond to the
+      displayed compact major chord.
+  second-reading:
+    title: An unfamiliar entry after a rest
+    body: Scan the empty first beat and the final two-beat note, then attempt the complete two bars without restarting.
+  review:
+    title: Name the source of the mistake
+    body: Compare your first reading with a slow corrected pass.
+activities:
+  first-reading:
+    title: Read before listening
+    body: 'Center: {{root}} major. Choose Staff, count two bars, and attempt the melody before preview. Compare
+      the suggested TAB only after your first reading.'
+  compact-shape:
+    title: Read the chord shape
+    body: Inspect {{positions}} on the fretboard. Play strings 3, 2 and 1; silence strings 6, 5 and 4. The shape
+      alone does not specify a strumming rhythm.
+  timed-chord:
+    title: Give the shape a rhythm
+    body: In bar 1 attack on beat 1 and release on beat 3. In bar 2 attack on beat 2 and release on beat 3. Read
+      the rests, not just the grip.
+  chord-tone-reading:
+    title: Read the members one at a time
+    body: Stop each preceding note before the next during this monophonic check. These pitches correspond to the
+      displayed compact major chord.
+  second-reading:
+    title: An unfamiliar entry after a rest
+    body: Scan the empty first beat and the final two-beat note, then attempt the complete two bars without restarting.
+learningTasks:
+  review:
+    title: Name the source of the mistake
+    body: Compare your first reading with a slow corrected pass.
+    items:
+      scan: I scanned meter, rests and string changes before starting.
+      representations: I compared the same notes in Staff and TAB using the selected tuning.
+      shape: I distinguished the chord shape from its timed attack/release pattern.
+      continuity: I kept counting after an error and identified its specific cause.
