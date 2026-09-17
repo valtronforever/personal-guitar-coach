@@ -155,6 +155,7 @@ struct PracticeEntryView: View {
             }
             Toggle("practice.repeat", isOn: Binding(get: { model.repeatEnabled }, set: { model.setRepeat($0) }))
             Text("practice.repeatExplanation").font(.caption).foregroundStyle(.secondary)
+            if exercise.metronome != nil { Label("practice.metronomeGaps", systemImage: "speaker.slash").font(.caption).foregroundStyle(.secondary) }
             HStack {
                 Text("playback.clickVolume")
                 Slider(value: Binding(get: { model.clickVolume }, set: { model.setClickVolume($0) }), in: 0...1)

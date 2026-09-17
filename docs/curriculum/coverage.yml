@@ -858,7 +858,8 @@ lessons:
       uk: Метроном із пропущеними кліками
     outcomeUK: Утримувати темп без постійної зовнішньої підказки
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 73
     moduleID: harmony
     lessonID: major-barre-chords

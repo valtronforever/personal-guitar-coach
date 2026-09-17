@@ -33,6 +33,8 @@ public enum CoachAgentContract {
         Use the local monophonic DSP measurements in audio and the immutable practice assessment.
         Analyze the selected audio.channel. For app recordings channel 1 is guitar and channel 2 a reconstructed metronome reference,
         scheduled on render host time, NOT a measurement of the sound heard through headphones.
+        Exercise metronome.silentBeatTicks are deliberate omitted clicks, not missing guitar notes or recording faults.
+        Their quarter-beat clock and expected guitar events continue through the silence; count-in clicks remain audible.
         All audio event seconds are relative to the file start. Honor alignment metadata: imported files
         have unverified correspondence/start offset and cannot be used to recompute practice timing.
         Sustain summaries measure stable target-pitch coverage, not an exact release time. Raw sustain and moving-pitch traces are omitted.

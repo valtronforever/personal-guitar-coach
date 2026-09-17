@@ -68,7 +68,15 @@ struct PracticeScoreRow: View {
                 }
             }.accessibilityHidden(true)
             if let bar {
-                Text("tab.bar \(bar + 1)", bundle: localizationBundle).font(.caption.bold()).padding(.leading, 4).accessibilityHidden(true)
+                HStack(spacing: 5) {
+                    Text("tab.bar \(bar + 1)", bundle: localizationBundle)
+                    let silent = model.silentBeatNumbers(in: bar)
+                    if !silent.isEmpty {
+                        Label(silent.map(String.init).joined(separator: ", "), systemImage: "speaker.slash")
+                            .accessibilityLabel(Text("practice.silentBeats \(silent.map(String.init).joined(separator: ", "))", bundle: localizationBundle))
+                            .help(Text("practice.silentBeats \(silent.map(String.init).joined(separator: ", "))", bundle: localizationBundle))
+                    }
+                }.font(.caption.bold()).padding(.leading, 4)
                 ForEach(model.segments(in: bar)) { segment in
                     let width = Double(segment.endTick - segment.startTick) / Double(layout.ticksPerBar) * layout.barWidth
                     eventButton(segment, layout: layout)

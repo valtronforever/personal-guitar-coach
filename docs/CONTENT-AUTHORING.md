@@ -343,3 +343,18 @@ Both TAB forms show written values and a 3 bracket; staff beams full three-note 
 Topics 67/69/70 reuse authoritative ordinary event ticks rather than a separate rhythm-pattern engine. `syncopation` places attacks after explicit eighth rests and marks only the long held notes with `assessSustain`; a cross-bar hold remains one event/attack while notation fragments it with ties. `gallop-patterns` uses 480+240+240 and 240+240+480 groups, continuous alternate-pick cues, a sixth-string transposition anchor and a conservative 40–70 BPM practice range. The open bass and upper seventh/ninth/tenth-semitone replies retain their intervals in Standard and Drop. Muted tone and physical picking direction remain self-observation.
 
 `displaced-accents` repeats ordinary eighths in three-note groups across three 4/4 bars, shifts the entire cycle by an eighth, and compares four entries for the same two-beat motif. Accent metadata changes reference emphasis, not tempo or scoring. None of these exercises declares a triplet. Leading/trailing silence is explicit, including offbeat long rests that may require multiple written rest fragments; fragments retain one source event ID and never acquire ties.
+
+### Deliberate metronome omissions
+
+An exercise may declare an optional metronome pattern:
+
+```yaml
+metronome:
+  silentBeatTicks: [3840, 4800, 5760, 6720]
+```
+
+This example silences all four quarter clicks in bar 2 of 4/4. Values are strictly increasing, unique, nonnegative quarter-beat onsets (multiples of PPQ 960), strictly before the exercise end; at most 4096 omissions are accepted. The exercise must end on a quarter boundary. Omit the object for ordinary continuous clicks; an empty array is rejected. The contract describes omitted quarter clicks, not a tempo change, guitar rest or arbitrary metronome subdivision.
+
+The full count-in remains audible. Preview and practice honor the authored omissions; practice still emits no reference guitar tones. Seek and repeated ranges use source exercise coordinates, so the same bar retains the same omissions. Keep an audible return inside a practice range when the educational task depends on comparing it with the gap. Event-scoped materials must contain whole quarter beats; resolution filters and rebases omission ticks along with the music. A fingering-only display has no metronome pattern.
+
+The compact score names silent beat numbers beside a crossed-out speaker; the setup notice explains that the guitar continues. Every written note remains in assessment, including silence in the click track. Saved exercise snapshots retain the pattern; absent fields preserve old canonical encoding. The recorded reference channel uses the same transport plan and therefore the same omissions. New gapped coach requests use `file-coach-3` and explain deliberate silence; ordinary/bend requests retain versions 1/2. `missing-clicks` provides sparse 2/4 clicks, single silent bars and a two-bar gap, with explicit audible returns and internal-pulse self-observation.

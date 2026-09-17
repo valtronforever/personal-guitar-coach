@@ -14193,6 +14193,40 @@
           }
         }
       }
+    },
+    "practice.metronomeGaps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This exercise deliberately omits marked clicks. Keep playing through the silence; the count-in is complete."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У цій вправі позначені кліки навмисно пропущено. Продовжуйте грати в тиші; вступний відлік повний."
+          }
+        }
+      }
+    },
+    "practice.silentBeats %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silent metronome beats: %@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тихі долі метронома: %@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

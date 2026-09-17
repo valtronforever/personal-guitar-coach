@@ -29,6 +29,11 @@ struct TimelineModel: Sendable {
     let tuning: TuningProfile
     private let tripletsByEvent: [String: TripletGroup]
     private let tripletsByBar: [Int64: [TimelineTriplet]]
+    func silentBeatNumbers(in bar: Int64) -> [Int] {
+        let start = bar * ticksPerBar
+        return (exercise.metronome?.silentBeatTicks ?? []).filter { $0 >= start && $0 < start + ticksPerBar }
+            .map { Int(($0 - start) / MusicalTime.ppq) + 1 }
+    }
     var ticksPerBar: Int64 { exercise.timeSignature.ticksPerBar }
     var barCount: Int64 { (exercise.durationTicks - 1) / ticksPerBar + 1 }
 
