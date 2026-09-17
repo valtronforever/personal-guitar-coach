@@ -94,3 +94,5 @@ Topics 85–88 are authored: motifs, chord-tone landings, call/response slots an
 Improvisation local delivery verified: 127 Learning /169 App tests, 94 bundles/888 localization keys and signed root-only Release/archive/XPC pass. Exact-head CI/merge pending. Module 11 is authored; 40 advanced-technique/style/composition topics and full acceptance remain required.
 
 PR 85 merged after exact-head CI. Legato-chain extension and topics 91/93 are being verified: 90 authored /38 todo, 96 bundles /90 visible. This adds multiple unpicked pitch targets, wider positioning search regions for tapping, notation, reference/contour assessment and explicit physical self-checks. No hardware/full-course acceptance is implied.
+
+Legato-chain local delivery verified with full Core/App suites, final mixed-technique/coach/notation checks, 520 resolved musical cases and signed root-only Release/archive/XPC. Topics 91/93 are authored; inventory remains 90 authored /38 todo. The follow-up is awaiting exact-head CI/merge; remaining course/hardware acceptance is still required.

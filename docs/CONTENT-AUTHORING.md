@@ -29,7 +29,7 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-pat
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons --positions same-notes-new-position > /tmp/positions.json
 ```
 
-The scaffold defaults to positioning disabled. `--starts` accepts `auto`, a sorted unique list such as `3,7`, or an inclusive range such as `3:12:1`. It requires `--positioning-window` (1–6). Edit both translations and the source exercise before publishing a draft. The position report evaluates one lesson against eight tuning presets and five neck sizes, using the actual resolver. It lists each choice and its failure reason. Mathematical feasibility does not establish ergonomic comfort or audio assessment capability.
+The scaffold defaults to positioning disabled. `--starts` accepts `auto`, a sorted unique list such as `3,7`, or an inclusive range such as `3:12:1`. It requires `--positioning-window` (1–12). Edit both translations and the source exercise before publishing a draft. The position report evaluates one lesson against eight tuning presets and five neck sizes, using the actual resolver. It lists each choice and its failure reason. Mathematical feasibility does not establish ergonomic comfort or audio assessment capability.
 
 The [minimal template](templates/lesson/lesson.yml) and [complete demonstration](../Resources/Lessons/same-notes-new-position/lesson.yml) are loadable examples. The demonstration shares one exercise across note exploration, scale exploration, fixed Original and fixed near-seven performances. Use it to author a teaching sequence without writing Swift.
 

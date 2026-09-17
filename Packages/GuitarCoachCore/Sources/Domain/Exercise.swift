@@ -42,7 +42,7 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let pitchTransition: PitchTransition?
     public let vibrato: PitchVibrato?
     public let legatoChain: LegatoChain?
-    /// Endpoints for visualization/reachability; the initial attack still has only its starting pitch.
+    /// All technique targets for visualization/reachability; the initial attack has only its starting pitch.
     public var techniquePositions: [FretPosition] {
         if let legatoChain, let start = positions.first { return (try? legatoChain.positions(from: start)) ?? positions }
         guard let pitchTransition, let start = positions.first, let target = try? pitchTransition.targetPosition(from: start) else { return positions }

@@ -52,6 +52,6 @@ struct LegatoChainCourseTests {
                 }
             }
         }
-        #expect(count >= 480)
+        #expect(count == 520)
     }
 }
