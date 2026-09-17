@@ -18,3 +18,7 @@ Evidence:
 - Content loader: 120 bundles, zero issues; inventory 114 authored/14 todo. Localization 917 keys and generated project checks pass. Full Core/App and signed root-only Release evidence follow below.
 
 Python author/bundle script tests: five passed (14.761 s). UI-test sources type-check. Full Core/App remain running; no completion claim yet.
+
+Full Core passes: Persistence 23/4 (0.054 s), Learning 144/51 (197.746 s), Domain 65/21 (0.345 s), Audio 112/39 (509.300 s), AgentBridge 6/1 (1.608 s): 350 tests total. Full App passes 187 tests/59 suites (236.398 s). Logs: `/tmp/held-core-full.log`, `/tmp/held-app-full.log`. Parent test-only CI complexity fix was merged after these suites; its own 1,160-case rerun passed, with no product changes.
+
+Signed root-only Release/archive validates 120 bilingual bundles / 361 YAML files, arm64/macOS14, ad-hoc hardened sandbox and expected entitlements. Binary SHA256 `75609ebea69608d20cee7dd4fecbbec797f63e556850569c9a934d49bc6eb8b3`; archive `41ed0f0dadb1a40ccb1ba4b1f7780aa5f13d778b39f818fae3b3727a6e29db67`. See `docs/benchmarks/held-voices-release-bundle.json`. Signed sandbox→XPC→invalidRequest passes without invoking a provider. No actual app launch or guitar acceptance is claimed. Exact-head CI/merge remain open.
