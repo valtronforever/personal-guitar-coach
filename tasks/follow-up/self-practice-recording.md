@@ -26,3 +26,9 @@ Implementation is present in the recording branch. Both complete held-voice stud
 - [Same-agent local review](../../docs/reviews/self-practice-recording-review.md); native file picker/player/UI/VoiceOver and actual guitar recording remain [pending user checks](../../docs/USER-VALIDATION.md).
 
 A suspended endRecording race is covered: cancel releases the owner, a new tuner starts, and the old completion neither publishes a take nor stops that tuner. Opening a saved file also has translated failure feedback when the system cannot launch a player.
+
+## Local Release evidence (2026-09-17)
+
+Root-only Release .app and ZIP rebuilt successfully with 126 bilingual bundles/379 YAML files and 948 UI keys. Bundle verifier: arm64, macOS 14 minimum, ad-hoc signature, hardened runtime, sandbox/audio-input and user-selected read-write only, en/uk resources and archive verified. Report: `docs/benchmarks/self-practice-recording-release-bundle.json`. Binary SHA-256 `69b80f65ac22c0d2d49726aefd399162c2351bb52f3ab46c8b7c34f692b7f8ab`; archive SHA-256 `0207404dcd787a947b43007dbd70d4257ba7a4ce83ad002d8f1641ecc903b3c7`. Signed sandbox→separate XPC→invalidRequest check passed; no provider called. No Debug app was built locally. Native app launch, real guitar and file-picker/player acceptance remain unverified.
+
+Local logs: `/tmp/self-recording-{focused-final,learning-full,app-full,content,release,bundle,xpc}.log`. Exact-head CI/merge remains open.
