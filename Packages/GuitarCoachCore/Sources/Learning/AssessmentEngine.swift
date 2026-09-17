@@ -124,10 +124,14 @@ public enum AssessmentEngine {
         let periodic = frames.compactMap { $0.state == .pitched ? $0.frequency : nil }
         // Two periodic frames, within the tested register and mutually consistent, permit
         // timing only. No target-frequency comparison or invented cents value occurs.
-        return !zip(periodic, periodic.dropFirst()).contains { a, b in
-            (110 / pow(2, 1.0 / 12)...440 * pow(2, 1.0 / 12)).contains(a) && (110 / pow(2, 1.0 / 12)...440 * pow(2, 1.0 / 12)).contains(b)
-                && abs(1200 * log2(a / b)) <= 100
+        let semitone = pow(2.0, 1.0 / 12.0)
+        let observedRange: ClosedRange<Double> = (110.0 / semitone)...(440.0 * semitone)
+        for index in periodic.indices.dropFirst() {
+            let previous = periodic[index - 1], current = periodic[index]
+            let cents = abs(1200.0 * log2(previous / current))
+            if observedRange.contains(previous), observedRange.contains(current), cents <= 100 { return false }
         }
+        return true
     }
 
     private static func align(expected: [Double], observed: [Double], radii: [Double], restIDs: [String?]) -> [Int?] {
