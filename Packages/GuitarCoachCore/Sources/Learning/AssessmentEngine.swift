@@ -6,7 +6,8 @@ public enum AssessmentEngine {
     public static func evaluate(_ evidence: PracticeEvidence) throws -> AssessedPractice {
         let config = evidence.configuration
         let parameters: AssessmentParameters
-        if config.selectedEvents.contains(where: { $0.vibrato != nil }) { parameters = .withVibrato }
+        if config.selectedEvents.contains(where: { $0.legatoChain != nil }) { parameters = .withLegatoChains }
+        else if config.selectedEvents.contains(where: { $0.vibrato != nil }) { parameters = .withVibrato }
         else if config.selectedEvents.contains(where: { $0.pitchTransition != nil }) { parameters = .withPitchTransitions }
         else { parameters = config.selectedEvents.contains { $0.bend != nil } ? .withBends : .current }
         let expected = config.selectedEvents.filter { $0.kind == .note }
@@ -70,11 +71,12 @@ public enum AssessmentEngine {
         let extras = try attacks.indices.filter { !used.contains($0) }.map {
             try AssessedExtra(id: attacks[$0].id, restID: restIDs[$0], uncertain: !attacks[$0].reliable)
         }
-        let unscoredMotionIDs = evidence.bendObservationIDs(notes: notes).union(evidence.pitchTransitionObservationIDs(notes: notes)).union(evidence.vibratoObservationIDs(notes: notes))
+        let unscoredMotionIDs = evidence.bendObservationIDs(notes: notes).union(evidence.pitchTransitionObservationIDs(notes: notes)).union(evidence.vibratoObservationIDs(notes: notes)).union(evidence.legatoChainObservationIDs(notes: notes))
         let scoredExtras = extras.filter { !unscoredMotionIDs.contains($0.id) }
         let uncertain = notes.filter(\.uncertain).count + scoredExtras.filter(\.uncertain).count
         let bends = try BendEvaluator.evaluate(evidence, notes: notes)
         let transitions = try PitchTransitionEvaluator.evaluate(evidence, notes: notes)
+        let chains = try LegatoChainEvaluator.evaluate(evidence, notes: notes)
         let vibrato = try VibratoEvaluator.evaluate(evidence, notes: notes)
         let sustain = try SustainEvaluator.evaluate(evidence, notes: notes)
         let validity: AssessmentValidity
@@ -82,6 +84,7 @@ public enum AssessmentEngine {
         else if evidence.phase != .completed { validity = .interrupted }
         else if bends != nil && bends?.score == nil { validity = .insufficientSignal }
         else if transitions != nil && transitions?.score == nil { validity = .insufficientSignal }
+        else if chains != nil && chains?.score == nil { validity = .insufficientSignal }
         else if vibrato != nil && vibrato?.score == nil { validity = .insufficientSignal }
         else if sustain != nil && sustain?.score == nil { validity = .insufficientSignal }
         else if Double(uncertain) / Double(expected.count) > parameters.uncertaintyFraction { validity = .insufficientSignal }
@@ -89,8 +92,8 @@ public enum AssessmentEngine {
         let pitch = 100 * pitchPoints / Double(expected.count), rhythm = 100 * rhythmPoints / Double(expected.count)
         let attackScore = parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
         let movingScore: Double?
-        if transitions != nil || vibrato != nil {
-            let scores = (bends?.notes.compactMap(\.score) ?? []) + (transitions?.notes.compactMap(\.score) ?? []) + (vibrato?.notes.compactMap(\.score) ?? [])
+        if transitions != nil || vibrato != nil || chains != nil {
+            let scores = (bends?.notes.compactMap(\.score) ?? []) + (transitions?.notes.compactMap(\.score) ?? []) + (vibrato?.notes.compactMap(\.score) ?? []) + (chains?.notes.compactMap(\.score) ?? [])
             movingScore = scores.isEmpty ? nil : scores.reduce(0, +) / Double(scores.count)
         } else { movingScore = bends?.score }
         let baseScore = movingScore.map { 0.5 * attackScore + 0.5 * $0 } ?? attackScore
@@ -100,7 +103,7 @@ public enum AssessmentEngine {
             rhythmToleranceSeconds: tolerance, notes: notes, extras: extras,
             overallScore: validity == .valid ? overall : nil,
             pitchScore: validity == .valid || validity == .uncalibrated ? pitch : nil,
-            timingScore: validity == .valid ? rhythm : nil, sustain: sustain, bends: bends, pitchTransitions: transitions, vibrato: vibrato)
+            timingScore: validity == .valid ? rhythm : nil, sustain: sustain, bends: bends, pitchTransitions: transitions, vibrato: vibrato, legatoChains: chains)
     }
 
     private static func align(expected: [Double], observed: [Double], radii: [Double], restIDs: [String?]) -> [Int?] {

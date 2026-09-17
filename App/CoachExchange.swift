@@ -19,6 +19,7 @@ struct CoachAnalysisRequest: Codable, Sendable {
     let renderEpochHostSeconds: Double?
     let expectedNotes: [String]
     let unscoredBendObservationIDs: [UInt64]?
+    var unscoredLegatoChainObservationIDs: [UInt64]? = nil
     var unscoredVibratoObservationIDs: [UInt64]? = nil
     var unscoredPitchTransitionObservationIDs: [UInt64]? = nil
 
@@ -67,6 +68,12 @@ enum CoachExchange {
         return practice.extras.filter { excluded.contains($0.id) }.map(\.id)
     }
 
+    private static func unscoredChainIDs(_ practice: AssessedPractice) -> [UInt64]? {
+        guard practice.legatoChains != nil else { return nil }
+        let excluded = practice.evidence.legatoChainObservationIDs(notes: practice.notes)
+        return practice.extras.filter { excluded.contains($0.id) }.map(\.id)
+    }
+
     private static func unscoredVibratoIDs(_ practice: AssessedPractice) -> [UInt64]? {
         guard practice.vibrato != nil else { return nil }
         let excluded = practice.evidence.vibratoObservationIDs(notes: practice.notes)
@@ -85,7 +92,13 @@ enum CoachExchange {
         let expected = try config.selectedEvents.map { event -> String in
             let names = try event.positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: ", ")
             let motion: String
-            if let transition = event.pitchTransition, let target = event.techniquePositions.last {
+            if let chain = event.legatoChain {
+                let reached = try chain.targets.enumerated().map { index, target in
+                    let pitch = try tuning.pitch(at: event.techniquePositions[index + 1]).name(spelling: tuning.preferredSpelling)
+                    return "\(target.kind.rawValue):tick=\(event.startTick + target.startTick),pitch=\(pitch)"
+                }.joined(separator: "; ")
+                motion = "; legatoChain=[" + reached + "]; one initial pick target; subsequent gestures and absence of repicking unverified"
+            } else if let transition = event.pitchTransition, let target = event.techniquePositions.last {
                 let targetName = try tuning.pitch(at: target).name(spelling: tuning.preferredSpelling)
                 motion = "; pitchTransition=\(transition.kind.rawValue), changeStartTick=\(event.startTick + transition.startTick), targetTick=\(event.startTick + transition.endTick), targetPitch=\(targetName); one initial pick target, gesture unverified"
             } else if let vibrato = event.vibrato {
@@ -102,12 +115,14 @@ enum CoachExchange {
             recordingStartHostSeconds: take?.recording.firstHostSeconds ?? previous?.recordingStartHostSeconds,
             renderEpochHostSeconds: take?.renderEpoch ?? previous?.renderEpochHostSeconds, expectedNotes: expected,
             unscoredBendObservationIDs: unscoredBendIDs(practice),
+            unscoredLegatoChainObservationIDs: unscoredChainIDs(practice),
             unscoredVibratoObservationIDs: unscoredVibratoIDs(practice),
             unscoredPitchTransitionObservationIDs: unscoredTransitionIDs(practice))
     }
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if practice.evidence.configuration.selectedEvents.contains(where: { $0.legatoChain != nil }) { return "file-coach-8" }
         if practice.evidence.configuration.listeningConditions != nil { return "file-coach-7" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.vibrato != nil }) { return "file-coach-6" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.pitchTransition != nil }) { return "file-coach-5" }
@@ -125,6 +140,7 @@ enum CoachExchange {
         let request = value.request, feedback = value.feedback
         guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == (promptVersion(for: practice)),
               request.unscoredBendObservationIDs == (unscoredBendIDs(practice)),
+              request.unscoredLegatoChainObservationIDs == (unscoredChainIDs(practice)),
               request.unscoredVibratoObservationIDs == (unscoredVibratoIDs(practice)),
               request.unscoredPitchTransitionObservationIDs == (unscoredTransitionIDs(practice)),
               request.practice.id == practice.id, request.practiceDigest == (try digest(practice)),

@@ -4,17 +4,18 @@ import Domain
 /// Bounded deterministic assignment; identical pitches are never substituted across octaves.
 enum LessonFingeringResolver {
     static func resolve(_ positions: [FretPosition], sourceTuning: TuningProfile, tuning: TuningProfile,
-                        shift: Int, maximumFret: Int, region: FretRegion?, minimumFret: Int = 0, linkedFretOffset: Int = 0) throws -> [FretPosition] {
+                        shift: Int, maximumFret: Int, region: FretRegion?, minimumFret: Int = 0, linkedFretOffset: Int = 0, linkedFretOffsets: [Int] = []) throws -> [FretPosition] {
         guard !positions.isEmpty else { return [] }
         let candidates = try positions.map { position -> [FretPosition] in
             let midi = try sourceTuning.pitch(at: position).midi + shift
             return tuning.strings.compactMap { string in
                 try? FretPosition(string: string.number, fret: midi - string.openPitch.midi)
             }.filter { candidate in
-                guard candidate.fret >= minimumFret, candidate.fret <= maximumFret,
-                      let target = try? FretPosition(string: candidate.string, fret: candidate.fret + linkedFretOffset),
-                      target.fret >= minimumFret, target.fret <= maximumFret else { return false }
-                return (region?.contains(candidate, maximumFret: maximumFret) ?? true) && (region?.contains(target, maximumFret: maximumFret) ?? true)
+                return ([0, linkedFretOffset] + linkedFretOffsets).allSatisfy { offset in
+                    guard let target = try? FretPosition(string: candidate.string, fret: candidate.fret + offset),
+                          target.fret >= minimumFret, target.fret <= maximumFret else { return false }
+                    return region?.contains(target, maximumFret: maximumFret) ?? true
+                }
             }.sorted {
                 let a = abs($0.string - position.string) * 12 + abs($0.fret - position.fret)
                 let b = abs($1.string - position.string) * 12 + abs($1.fret - position.fret)

@@ -8,7 +8,7 @@ public struct FretRegion: Codable, Equatable, Hashable, Sendable {
     public let firstFret: Int
     public let windowFrets: Int
     public init(firstFret: Int, windowFrets: Int) throws {
-        guard (0...24).contains(firstFret), (1...6).contains(windowFrets) else { throw PositioningError.invalidPolicy }
+        guard (0...24).contains(firstFret), (1...12).contains(windowFrets) else { throw PositioningError.invalidPolicy }
         self.firstFret = firstFret; self.windowFrets = windowFrets
     }
     public func contains(_ position: FretPosition, maximumFret: Int) -> Bool {
@@ -108,7 +108,7 @@ public struct PositioningPolicy: Codable, Equatable, Sendable {
         guard enabled else {
             guard preserve == nil, windowFrets == nil, allowedStarts == nil, allowOriginal == nil else { throw PositioningError.invalidPolicy }; return
         }
-        guard preserve == "soundingPitch", let windowFrets, (1...6).contains(windowFrets), let allowedStarts, allowOriginal != nil else { throw PositioningError.invalidPolicy }
+        guard preserve == "soundingPitch", let windowFrets, (1...12).contains(windowFrets), let allowedStarts, allowOriginal != nil else { throw PositioningError.invalidPolicy }
         try allowedStarts.validate()
     }
     public func permits(_ choice: PositionChoice) -> Bool {

@@ -27,7 +27,7 @@ extension LoadedLesson {
         guard let first = sourceExercises.first else { throw ContentFailure(.unknownExercise, "Material has no source exercise") }
         let tuning = manifest.adaptation == nil ? first.requiredTuning ?? instrument.tuning : instrument.tuning
         let shapes = manifest.fingerings.filter { material.shapeIDs(in: manifest).contains($0.id) }
-        func resolvePositions(_ positions: [FretPosition], source: Exercise, minimumFret: Int = 0, linkedFretOffset: Int = 0) throws -> [FretPosition] {
+        func resolvePositions(_ positions: [FretPosition], source: Exercise, minimumFret: Int = 0, linkedFretOffset: Int = 0, linkedFretOffsets: [Int] = []) throws -> [FretPosition] {
             if region == nil && manifest.adaptation?.policy != .transposeIntervals {
                 guard positions.allSatisfy({ $0.fret <= instrument.fretCount }) else { throw PositioningError.beyondFretCount }
                 return positions
@@ -40,7 +40,7 @@ extension LoadedLesson {
             } else { reference = tuning; shift = 0 }
             do {
                 return try LessonFingeringResolver.resolve(positions, sourceTuning: reference, tuning: tuning, shift: shift,
-                    maximumFret: instrument.fretCount, region: region, minimumFret: minimumFret, linkedFretOffset: linkedFretOffset)
+                    maximumFret: instrument.fretCount, region: region, minimumFret: minimumFret, linkedFretOffset: linkedFretOffset, linkedFretOffsets: linkedFretOffsets)
             } catch LessonAdaptationError.unplayable { throw PositioningError.regionUnplayable }
         }
         var sharedMapping: [FretPosition: FretPosition] = [:]
@@ -70,13 +70,16 @@ extension LoadedLesson {
                 events = try selected.map { event in
                     let positions: [FretPosition]
                     if event.positions.allSatisfy({ sharedMapping[$0] != nil }) { positions = event.positions.compactMap { sharedMapping[$0] } }
-                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend != nil || event.vibrato != nil || event.pitchTransition?.kind == .slide ? 1 : 0, linkedFretOffset: event.pitchTransition?.semitones ?? 0) }
+                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend != nil || event.vibrato != nil || event.pitchTransition?.kind == .slide ? 1 : 0, linkedFretOffset: event.pitchTransition?.semitones ?? 0, linkedFretOffsets: event.legatoChain?.semitoneOffsets ?? []) }
                     if let transition = event.pitchTransition, let base = positions.first {
                         let target = try transition.targetPosition(from: base)
                         guard instrument.contains(target), region?.contains(target, maximumFret: instrument.fretCount) ?? true else { throw PositioningError.regionUnplayable }
                     }
+                    if let chain = event.legatoChain, let base = positions.first {
+                        guard try chain.positions(from: base).allSatisfy({ instrument.contains($0) && (region?.contains($0, maximumFret: instrument.fretCount) ?? true) }) else { throw PositioningError.regionUnplayable }
+                    }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain)
                 }
             }
             let selectedIDs = Set(events.map(\.id))

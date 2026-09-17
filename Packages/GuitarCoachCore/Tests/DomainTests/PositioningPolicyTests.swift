@@ -20,7 +20,7 @@ struct PositioningPolicyTests {
     @Test func corruptTagsAndMalformedPoliciesFailDecoding() throws {
         let invalid = [
             #"{"enabled":true,"preserve":"pitchClass","windowFrets":5,"allowedStarts":{"kind":"auto"},"allowOriginal":true}"#,
-            #"{"enabled":true,"preserve":"soundingPitch","windowFrets":7,"allowedStarts":{"kind":"auto"},"allowOriginal":true}"#,
+            #"{"enabled":true,"preserve":"soundingPitch","windowFrets":13,"allowedStarts":{"kind":"auto"},"allowOriginal":true}"#,
             #"{"enabled":false,"windowFrets":5}"#,
             #"{"enabled":true}"#,
             #"{"enabled":true,"preserve":"soundingPitch","windowFrets":5,"allowedStarts":{"kind":"explicit","frets":[7,3]},"allowOriginal":true}"#,

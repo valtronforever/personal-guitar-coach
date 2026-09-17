@@ -4,7 +4,7 @@ import Learning
 import Persistence
 
 enum ResultAnnotation: String, CaseIterable {
-    case uncertain, missing, pitch, early, late, sustain, bend, pitchTransition, vibrato, matched, restExtra
+    case uncertain, missing, pitch, early, late, sustain, bend, pitchTransition, vibrato, legatoChain, matched, restExtra
     var key: String { "result.annotation." + rawValue }
     var symbol: String {
         switch self {
@@ -15,6 +15,7 @@ enum ResultAnnotation: String, CaseIterable {
         case .late: "arrow.right.circle"
         case .sustain: "hourglass"
         case .bend: "arrow.up.right"
+        case .legatoChain: "arrow.triangle.branch"
         case .vibrato: "waveform.path"
         case .pitchTransition: "arrow.right"
         case .matched: "link"
@@ -29,10 +30,11 @@ enum ResultPresentation {
         var annotations: [String: ResultAnnotation] = [:]
         let sustain = Dictionary(uniqueKeysWithValues: (result.sustain?.notes ?? []).map { ($0.id, $0) })
         let transitions = Dictionary(uniqueKeysWithValues: (result.pitchTransitions?.notes ?? []).map { ($0.id, $0) })
+        let chains = Dictionary(uniqueKeysWithValues: (result.legatoChains?.notes ?? []).map { ($0.id, $0) })
         let vibrato = Dictionary(uniqueKeysWithValues: (result.vibrato?.notes ?? []).map { ($0.id, $0) })
         let bends = Dictionary(uniqueKeysWithValues: (result.bends?.notes ?? []).map { ($0.id, $0) })
         for note in result.notes {
-            if vibrato[note.id].map({ $0.score == nil }) == true || transitions[note.id].map({ $0.score == nil }) == true || note.uncertain || sustain[note.id]?.state == .uncertain || bends[note.id].map({ $0.score == nil }) == true { annotations[note.id] = .uncertain }
+            if chains[note.id].map({ $0.score == nil }) == true || vibrato[note.id].map({ $0.score == nil }) == true || transitions[note.id].map({ $0.score == nil }) == true || note.uncertain || sustain[note.id]?.state == .uncertain || bends[note.id].map({ $0.score == nil }) == true { annotations[note.id] = .uncertain }
             else if note.attackID == nil { if graded { annotations[note.id] = .missing } }
             else if graded && abs(note.centsError ?? 0) >= 15 { annotations[note.id] = .pitch }
             else if result.validity == .valid, let timing = note.timingErrorSeconds, abs(timing) > result.rhythmToleranceSeconds {
@@ -41,6 +43,8 @@ enum ResultPresentation {
                 annotations[note.id] = .sustain
             } else if graded, transitions[note.id]?.phases.contains(where: { ($0.matchedFraction ?? 1) < 0.8 }) == true {
                 annotations[note.id] = .pitchTransition
+            } else if graded, chains[note.id]?.phases.contains(where: { ($0.matchedFraction ?? 1) < 0.8 }) == true {
+                annotations[note.id] = .legatoChain
             } else if graded, vibrato[note.id]?.phases.contains(where: { ($0.matchedFraction ?? 1) < 0.8 }) == true {
                 annotations[note.id] = .vibrato
             } else if graded, let score = bends[note.id]?.score, score < 80 {

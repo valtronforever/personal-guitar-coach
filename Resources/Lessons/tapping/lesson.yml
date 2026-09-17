@@ -1,0 +1,330 @@
+schemaVersion: 3
+id: tapping
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: tap-return
+    kind: events
+    exerciseID: tapping-tap-return
+    eventIDs:
+      - phrase-1
+      - rest-1
+    activityID: tap-return
+  - id: minor-triad
+    kind: events
+    exerciseID: tapping-minor-triad
+    eventIDs:
+      - phrase-1
+      - rest-1
+    activityID: minor-triad
+  - id: two-cycles
+    kind: events
+    exerciseID: tapping-two-cycles
+    eventIDs:
+      - phrase-1
+      - rest-1
+    activityID: two-cycles
+  - id: check-tap
+    kind: none
+    eventIDs: []
+exercises:
+  - id: tapping-tap-return
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: phrase-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: tap
+              semitones: 7
+              startTick: 960
+            - kind: pullOff
+              semitones: -7
+              startTick: 1920
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: tapping-minor-triad
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: phrase-1
+        startTick: 0
+        durationTicks: 4800
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 3
+              startTick: 960
+            - kind: tap
+              semitones: 4
+              startTick: 1920
+            - kind: pullOff
+              semitones: -4
+              startTick: 2880
+            - kind: pullOff
+              semitones: -3
+              startTick: 3840
+      - id: rest-1
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: tapping-two-cycles
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: phrase-1
+        startTick: 0
+        durationTicks: 8640
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 3
+              startTick: 960
+            - kind: tap
+              semitones: 4
+              startTick: 1920
+            - kind: pullOff
+              semitones: -4
+              startTick: 2880
+            - kind: pullOff
+              semitones: -3
+              startTick: 3840
+            - kind: hammerOn
+              semitones: 3
+              startTick: 4800
+            - kind: tap
+              semitones: 4
+              startTick: 5760
+            - kind: pullOff
+              semitones: -4
+              startTick: 6720
+            - kind: pullOff
+              semitones: -3
+              startTick: 7680
+      - id: rest-1
+        startTick: 8640
+        durationTicks: 2880
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: tap-return
+    source:
+      kind: exercise
+      exerciseID: tapping-tap-return
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 8
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 7
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: minor-triad
+    source:
+      kind: exercise
+      exerciseID: tapping-minor-triad
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 8
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 7
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+  - id: two-cycles
+    source:
+      kind: exercise
+      exerciseID: tapping-two-cycles
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 8
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 7
+          - 12
+      allowOriginal: true
+    tonalRoot:
+      midi: 60
+activities:
+  - id: tap-return
+    materialID: tap-return
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: minor-triad
+    materialID: minor-triad
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: two-cycles
+    materialID: two-cycles
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+practiceEntries:
+  - id: tap-return
+    activityID: tap-return
+    exerciseID: tapping-tap-return
+  - id: minor-triad
+    activityID: minor-triad
+    exerciseID: tapping-minor-triad
+  - id: two-cycles
+    activityID: two-cycles
+    exerciseID: tapping-two-cycles
+fingerings: []
+learningTasks:
+  - id: check-tap
+    stepID: check-tap
+    kind: selfPractice
+    itemIDs:
+      - contact
+      - return
+      - mute
+      - pick
+curriculum:
+  moduleID: advanced-technique
+  ordinal: 93
+  durationMinutes: 30
+  prerequisites:
+    - long-legato
+  keywords:
+    - Add tapped notes to a legato phrase
+    - Додай тепінг до фрази legato
+    - legato
+    - tapping
+    - тепінг
+    - hammer-on
+    - pull-off

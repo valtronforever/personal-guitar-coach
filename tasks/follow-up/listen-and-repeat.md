@@ -1,6 +1,6 @@
 # Listen and reproduce without target notation
 
-Status: `in_progress`
+Status: `pending_user`
 
 Implement the required instrument-response workflow for curriculum topics 81–84: find a heard note, hear and reproduce an interval, repeat a rhythm, and reproduce a short melody without prepared TAB. Existing private listening quizzes cover recognition choices, but currently scored practice always reveals target fretboard/TAB. Do not replace these practical outcomes with generic self-confirmation.
 
@@ -15,3 +15,5 @@ Local implementation, full suites and signed Release checks are complete; exact-
 Parent vibrato PR 84 merged at `850d76574fbbae841fd1ed142ade524e98ed1d10` after exact-head CI `35179866487` passed; merge `78db84b1b5f70dc1897216d889f636cc2cf85287`. Hardware acceptance and the full 128-topic course remain open.
 
 Local evidence: 310 Core / 167 App tests pass; final loader regressions pass; 90 bilingual bundles and 888 localization keys validate; signed root-only Release/archive/XPC checks pass. The review records exact logs, hashes and remaining native/hardware gates.
+
+Exact-head CI `35182284916` passed (24m36s) at `0a26f34357a5008de69f9e08d3fd1455fdc0e239`. PR 85 merged on 2026-09-17 as `6611c3b70af016c9423a104be2adbd6adffc5d2b`. Remaining native/hardware acceptance is tracked in USER-VALIDATION.

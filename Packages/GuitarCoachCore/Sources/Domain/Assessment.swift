@@ -17,6 +17,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public let onsetUncertaintySeconds: Double
     public static let current = AssessmentParameters()
     public static let withBends = AssessmentParameters(version: "monophonic-assessment-4")
+    public static let withLegatoChains = AssessmentParameters(version: "monophonic-assessment-7")
     public static let withVibrato = AssessmentParameters(version: "monophonic-assessment-6")
     public static let withPitchTransitions = AssessmentParameters(version: "monophonic-assessment-5")
     private init(version: String = "monophonic-assessment-3") {
@@ -34,7 +35,7 @@ public struct AssessmentParameters: Codable, Equatable, Sendable {
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         let version = try v.decode(String.self, forKey: .version)
-        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version, Self.withBends.version, Self.withPitchTransitions.version, Self.withVibrato.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
+        guard ["monophonic-assessment-1", "monophonic-assessment-2", Self.current.version, Self.withBends.version, Self.withPitchTransitions.version, Self.withVibrato.version, Self.withLegatoChains.version].contains(version) else { throw AssessmentError.unsupportedVersion(version) }
         self.init(version: version)
         let fields: [(CodingKeys, Double)] = [(.pitchToleranceCents, pitchToleranceCents), (.rhythmToleranceSeconds, rhythmToleranceSeconds),
             (.rhythmIntervalFraction, rhythmIntervalFraction), (.maximumMatchSeconds, maximumMatchSeconds),
@@ -90,6 +91,8 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
     public var bendScore: Double? { validity == .valid || validity == .uncalibrated ? bends?.score : nil }
     public let vibrato: VibratoAssessment?
     public var vibratoScore: Double? { validity == .valid || validity == .uncalibrated ? vibrato?.score : nil }
+    public let legatoChains: LegatoChainAssessment?
+    public var legatoChainScore: Double? { validity == .valid || validity == .uncalibrated ? legatoChains?.score : nil }
     public let pitchTransitions: PitchTransitionAssessment?
     public var pitchTransitionScore: Double? { validity == .valid || validity == .uncalibrated ? pitchTransitions?.score : nil }
     private let unscoredPitchMotionIDs: Set<UInt64>
@@ -106,13 +109,13 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
 
     public init(evidence: PracticeEvidence, parameters: AssessmentParameters = .current, validity: AssessmentValidity,
                 rhythmCapability: RhythmCapability, rhythmToleranceSeconds: Double, notes: [AssessedNote], extras: [AssessedExtra],
-                overallScore: Double?, pitchScore: Double?, timingScore: Double?, sustain: SustainAssessment? = nil, bends: BendAssessment? = nil, pitchTransitions: PitchTransitionAssessment? = nil, vibrato: VibratoAssessment? = nil) throws {
+                overallScore: Double?, pitchScore: Double?, timingScore: Double?, sustain: SustainAssessment? = nil, bends: BendAssessment? = nil, pitchTransitions: PitchTransitionAssessment? = nil, vibrato: VibratoAssessment? = nil, legatoChains: LegatoChainAssessment? = nil) throws {
         let expected = evidence.configuration.selectedEvents.filter { $0.kind == .note }
         let ids = notes.compactMap(\.attackID) + extras.map(\.id)
         let attacks = Set(evidence.attacks.map(\.id))
         let bendEvents = expected.filter { $0.bend != nil }
         guard bends.map({ $0.notes.map(\.id) == bendEvents.map(\.id) }) ?? true,
-              bends == nil || (!bendEvents.isEmpty && [AssessmentParameters.withBends.version, AssessmentParameters.withPitchTransitions.version, AssessmentParameters.withVibrato.version].contains(parameters.version)),
+              bends == nil || (!bendEvents.isEmpty && [AssessmentParameters.withBends.version, AssessmentParameters.withPitchTransitions.version, AssessmentParameters.withVibrato.version, AssessmentParameters.withLegatoChains.version].contains(parameters.version)),
               ![AssessmentValidity.valid, .uncalibrated].contains(validity) || bendEvents.isEmpty || bends?.score != nil else { throw AssessmentError.invalidResult }
         if let bends {
             for (event, note) in zip(bendEvents, bends.notes) {
@@ -121,7 +124,7 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         }
         let transitionEvents = expected.filter { $0.pitchTransition != nil }
         guard pitchTransitions.map({ $0.notes.map(\.id) == transitionEvents.map(\.id) }) ?? true,
-              transitionEvents.isEmpty || [AssessmentParameters.withPitchTransitions.version, AssessmentParameters.withVibrato.version].contains(parameters.version),
+              transitionEvents.isEmpty || [AssessmentParameters.withPitchTransitions.version, AssessmentParameters.withVibrato.version, AssessmentParameters.withLegatoChains.version].contains(parameters.version),
               pitchTransitions == nil || !transitionEvents.isEmpty,
               ![AssessmentValidity.valid, .uncalibrated].contains(validity) || transitionEvents.isEmpty || pitchTransitions?.score != nil else { throw AssessmentError.invalidResult }
         if let pitchTransitions {
@@ -131,9 +134,19 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         }
         let vibratoEvents = expected.filter { $0.vibrato != nil }
         guard vibrato.map({ $0.notes.map(\.id) == vibratoEvents.map(\.id) }) ?? true,
-              vibratoEvents.isEmpty || parameters.version == AssessmentParameters.withVibrato.version,
+              vibratoEvents.isEmpty || [AssessmentParameters.withVibrato.version, AssessmentParameters.withLegatoChains.version].contains(parameters.version),
               vibrato == nil || !vibratoEvents.isEmpty,
               ![AssessmentValidity.valid, .uncalibrated].contains(validity) || vibratoEvents.isEmpty || vibrato?.score != nil else { throw AssessmentError.invalidResult }
+        let chainEvents = expected.filter { $0.legatoChain != nil }
+        guard legatoChains.map({ $0.notes.map(\.id) == chainEvents.map(\.id) }) ?? true,
+              chainEvents.isEmpty || parameters.version == AssessmentParameters.withLegatoChains.version,
+              legatoChains == nil || !chainEvents.isEmpty,
+              ![AssessmentValidity.valid, .uncalibrated].contains(validity) || chainEvents.isEmpty || legatoChains?.score != nil else { throw AssessmentError.invalidResult }
+        if let legatoChains {
+            for (event, note) in zip(chainEvents, legatoChains.notes) {
+                guard note.semitoneOffsets == event.legatoChain?.semitoneOffsets else { throw AssessmentError.invalidResult }
+            }
+        }
         let sustainIDs = expected.filter(\.assessSustain).map(\.id)
         guard sustain.map({ $0.notes.map(\.id) == sustainIDs }) ?? true,
               sustain == nil || !sustainIDs.isEmpty,
@@ -177,10 +190,11 @@ public struct AssessedPractice: Codable, Equatable, Sendable, Identifiable {
         self.evidence = evidence; self.parameters = parameters; self.validity = validity; self.rhythmCapability = rhythmCapability
         self.rhythmToleranceSeconds = rhythmToleranceSeconds; self.notes = notes; self.extras = extras
         self.overallScore = overallScore; self.pitchScore = pitchScore; self.timingScore = timingScore
-        self.sustain = sustain; self.bends = bends; self.pitchTransitions = pitchTransitions; self.vibrato = vibrato
+        self.sustain = sustain; self.bends = bends; self.pitchTransitions = pitchTransitions; self.vibrato = vibrato; self.legatoChains = legatoChains
         self.unscoredPitchMotionIDs = (bends == nil ? [] : evidence.bendObservationIDs(notes: notes))
             .union(pitchTransitions == nil ? [] : evidence.pitchTransitionObservationIDs(notes: notes))
             .union(vibrato == nil ? [] : evidence.vibratoObservationIDs(notes: notes))
+            .union(legatoChains == nil ? [] : evidence.legatoChainObservationIDs(notes: notes))
     }
     private static func mean(_ values: [Double]) -> Double? { values.isEmpty ? nil : values.reduce(0, +) / Double(values.count) }
     private static func median(_ values: [Double]) -> Double? {
@@ -213,7 +227,7 @@ extension AssessedExtra {
 }
 
 extension AssessedPractice {
-    private enum CodingKeys: String, CodingKey { case evidence, parameters, validity, rhythmCapability, rhythmToleranceSeconds, notes, extras, overallScore, pitchScore, timingScore, sustain, bends, pitchTransitions, vibrato }
+    private enum CodingKeys: String, CodingKey { case evidence, parameters, validity, rhythmCapability, rhythmToleranceSeconds, notes, extras, overallScore, pitchScore, timingScore, sustain, bends, pitchTransitions, vibrato, legatoChains }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(evidence: v.decode(PracticeEvidence.self, forKey: .evidence),
@@ -229,6 +243,7 @@ extension AssessedPractice {
             sustain: v.decodeIfPresent(SustainAssessment.self, forKey: .sustain),
             bends: v.decodeIfPresent(BendAssessment.self, forKey: .bends),
             pitchTransitions: v.decodeIfPresent(PitchTransitionAssessment.self, forKey: .pitchTransitions),
-            vibrato: v.decodeIfPresent(VibratoAssessment.self, forKey: .vibrato))
+            vibrato: v.decodeIfPresent(VibratoAssessment.self, forKey: .vibrato),
+            legatoChains: v.decodeIfPresent(LegatoChainAssessment.self, forKey: .legatoChains))
     }
 }

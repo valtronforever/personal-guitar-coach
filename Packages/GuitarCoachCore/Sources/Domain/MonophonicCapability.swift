@@ -2,6 +2,7 @@ import Foundation
 
 /// Versioned software capability from the task 12 corpus. Physical-route validation remains separate.
 public enum MonophonicCapability {
+    public static let legatoChainVersion = "mono-capability-6"
     public static let version = "mono-capability-3"
     public static let vibratoVersion = "mono-capability-5"
     public static let pitchTransitionVersion = "mono-capability-4"
@@ -47,6 +48,14 @@ public enum MonophonicCapability {
                     return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
                 }
                 if !PitchTransitionCapability.supports(transition: transition, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz, pulseTicks: exercise.timeSignature.pulseTicks) {
+                    return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
+                }
+            }
+            if let chain = resolved.event.legatoChain {
+                if !LegatoChainCapability.supportsFrequencies(chain, frequency: hz) {
+                    return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
+                }
+                if !LegatoChainCapability.supports(chain: chain, durationTicks: resolved.event.durationTicks, bpm: bpm, frequency: hz, pulseTicks: exercise.timeSignature.pulseTicks) {
                     return Limitation(eventID: resolved.id, reason: .duration, frequency: hz, durationSeconds: duration)
                 }
             }

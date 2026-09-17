@@ -16,6 +16,15 @@ struct BendCurveView: View {
         if let transition = event.pitchTransition {
             return [(0, 0), (Double(transition.startTick), 0), (Double(transition.endTick), Double(transition.semitones * 100)), (Double(event.durationTicks), Double(transition.semitones * 100))]
         }
+        if let chain = event.legatoChain {
+            let offsets = chain.semitoneOffsets
+            var points: [(Double, Double)] = [(0, 0)]
+            for (index, target) in chain.targets.enumerated() {
+                points += [(Double(target.startTick), Double(offsets[index] * 100)), (Double(target.startTick), Double(offsets[index + 1] * 100))]
+            }
+            points.append((Double(event.durationTicks), Double(offsets.last! * 100)))
+            return points
+        }
         if let vibrato = event.vibrato {
             let count = Int(min(2048, max(64, Double(vibrato.cycles) * 32)))
             return [(0, 0)] + (0...count).map { index in
@@ -29,7 +38,7 @@ struct BendCurveView: View {
     var body: some View {
         if !targetPoints.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text(LocalizedStringKey(event.vibrato != nil ? "vibrato.curveTitle" : event.pitchTransition == nil ? "bend.curveTitle" : "transition.curveTitle"), bundle: localizationBundle).font(.headline)
+                Text(LocalizedStringKey(event.legatoChain != nil ? "legato.curveTitle" : event.vibrato != nil ? "vibrato.curveTitle" : event.pitchTransition == nil ? "bend.curveTitle" : "transition.curveTitle"), bundle: localizationBundle).font(.headline)
                 HStack(spacing: 20) {
                     Label { Text("bend.expected", bundle: localizationBundle) } icon: { Image(systemName: "line.diagonal") }.foregroundStyle(.secondary)
                     if normalizedStart != nil { Label { Text("bend.observed", bundle: localizationBundle) } icon: { Image(systemName: "waveform.path") }.foregroundStyle(Color.accentColor) }
@@ -44,13 +53,13 @@ struct BendCurveView: View {
                         guard let hz = frame.frequency, let base = baseFrequency else { return nil }
                         return 1200 * (log2(hz) - log2(base))
                     }
-                    let lower = floor(min(-50, targetCents - 50, observed.min() ?? 0) / 50) * 50
-                    let upper = ceil(max(50, targetCents + 50, observed.max() ?? 0) / 50) * 50
+                    let lower = floor(min(-50, (targetPoints.map(\.cents).min() ?? 0) - 50, observed.min() ?? 0) / 50) * 50
+                    let upper = ceil(max(50, (targetPoints.map(\.cents).max() ?? 0) + 50, observed.max() ?? 0) / 50) * 50
                     func point(beat: Double, cents: Double) -> CGPoint {
                         CGPoint(x: left + min(duration, max(0, beat)) / duration * width,
                                 y: top + (upper - min(upper, max(lower, cents))) / (upper - lower) * height)
                     }
-                    for value in [lower, 0, targetCents, upper] {
+                    for value in Set([lower, 0, targetCents, upper] + (event.legatoChain?.semitoneOffsets.map { Double($0 * 100) } ?? [])).sorted() {
                         var line = Path(); line.move(to: point(beat: 0, cents: value)); line.addLine(to: point(beat: duration, cents: value))
                         context.stroke(line, with: .color(.secondary.opacity(0.25)), lineWidth: 1)
                         context.draw(Text(verbatim: String(Int(value))).font(.caption2.monospacedDigit()), at: CGPoint(x: left - 8, y: point(beat: 0, cents: value).y), anchor: .trailing)
@@ -83,7 +92,7 @@ struct BendCurveView: View {
                         context.stroke(path, with: .color(.accentColor), lineWidth: 2)
                     }
                 }.frame(height: 210).accessibilityHidden(true)
-                Text(LocalizedStringKey(event.pitchTransition == nil ? "bend.axes" : "transition.axes"), bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
+                Text(LocalizedStringKey(event.pitchTransition == nil && event.legatoChain == nil ? "bend.axes" : "transition.axes"), bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
                 if let bend = event.bend { Text("bend.targetSemitones \(bend.semitones)", bundle: localizationBundle).font(.caption) }
                 if let transition = event.pitchTransition {
                     Text(LocalizedStringKey("transition.kind." + transition.kind.rawValue), bundle: localizationBundle).font(.caption)
@@ -93,6 +102,7 @@ struct BendCurveView: View {
                     Text("vibrato.targetWidth \(vibrato.extentCents)", bundle: localizationBundle).font(.caption)
                     Text("vibrato.curveExplanation", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
                 }
+                if event.legatoChain != nil { Text("legato.assessmentLimits", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary) }
                 if normalizedStart != nil { Text("bend.traceGaps", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary) }
             }.accessibilityElement(children: .contain)
         }
@@ -182,6 +192,33 @@ struct VibratoResultView: View {
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }.accessibilityIdentifier("vibrato.result")
+        }
+    }
+}
+
+struct LegatoChainResultView: View {
+    let result: AssessedPractice
+    let note: LegatoChainNoteAssessment
+    var body: some View {
+        if let event = result.evidence.configuration.selectedEvents.first(where: { $0.id == note.id }),
+           let assessed = result.notes.first(where: { $0.id == note.id }) {
+            GroupBox("legato.resultTitle") {
+                VStack(alignment: .leading, spacing: 12) {
+                    BendCurveView(event: event, bpm: result.evidence.configuration.bpm, pulseTicks: result.evidence.configuration.exercise.timeSignature.pulseTicks,
+                        frames: result.evidence.pitchContour?.frames ?? [], normalizedStart: note.normalizedStart, baseFrequency: assessed.targetFrequency)
+                    ForEach(note.phases.indices, id: \.self) { index in
+                        let phase = note.phases[index]
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("legato.phase \(index + 1)").font(.headline)
+                            if let matched = phase.matchedFraction, result.legatoChainScore != nil {
+                                Text("bend.matched \(Int((matched * 100).rounded()))")
+                                if let cents = phase.medianErrorCents { Text("bend.error \(Int(cents.rounded()))") }
+                            } else { Text("bend.unavailable") }
+                            Text("bend.coverage \(Int((phase.silentFraction * 100).rounded())) \(Int((phase.unknownFraction * 100).rounded()))").font(.caption)
+                        }.accessibilityElement(children: .combine)
+                    }
+                }.frame(maxWidth: .infinity, alignment: .leading)
+            }.accessibilityIdentifier("legato.result")
         }
     }
 }

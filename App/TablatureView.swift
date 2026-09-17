@@ -101,7 +101,7 @@ struct TablatureView: View {
             }
             Text(LocalizedStringKey(instructionsKey)).font(.caption).foregroundStyle(.secondary)
                 .lineLimit(3).frame(minHeight: 44, alignment: .topLeading)
-            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && ($0.event.bend != nil || $0.event.pitchTransition != nil || $0.event.vibrato != nil) })?.event {
+            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && ($0.event.bend != nil || $0.event.pitchTransition != nil || $0.event.legatoChain != nil || $0.event.vibrato != nil) })?.event {
                 BendCurveView(event: event, pulseTicks: model.pulseTicks)
             }
             if let tick = cursorTick, let bar = model.cursorBar(tick) {
@@ -197,7 +197,7 @@ struct TablatureView: View {
                     RoundedRectangle(cornerRadius: 5).fill(Color.accentColor.opacity(0.12))
                         .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(.primary, lineWidth: 2))
                 }
-                if event.pitchTransition == nil { VStack(alignment: .leading, spacing: 2) {
+                if event.pitchTransition == nil && event.legatoChain == nil { VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 3) {
                         if let bend = event.bend { Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r")).bold() }
                         if event.palmMuted { Text(verbatim: "P.M.").bold() }
@@ -211,7 +211,7 @@ struct TablatureView: View {
                 }.padding(.horizontal, 4).offset(y: 23) }
                 if event.kind == .rest {
                     Image(systemName: "pause.circle").font(.title2).frame(width: width, height: rowHeight * 6).offset(y: gridTop)
-                } else if event.pitchTransition != nil {
+                } else if event.pitchTransition != nil || event.legatoChain != nil {
                     PitchTransitionTabContent(segment: segment, width: width, gridTop: gridTop, stringSpacing: rowHeight,
                         anchorX: min(22, width / 2), zoom: 1, compact: false)
                 } else {
@@ -261,7 +261,7 @@ struct TablatureView: View {
         }.joined(separator: "; ")
         if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }
         if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
-        if event.pitchTransition != nil {
+        if event.pitchTransition != nil || event.legatoChain != nil {
             notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: settings.locale, localized: settings.localized)
         }
         if event.palmMuted { notes = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, notes) }

@@ -17,8 +17,20 @@ struct TimelineSegment: Identifiable, Sendable {
         guard let transition = resolved.event.pitchTransition else { return false }
         return startTick >= resolved.event.startTick + transition.endTick
     }
-    var displayPositions: [FretPosition] { displaysTransitionTarget ? Array(resolved.event.techniquePositions.suffix(1)) : resolved.event.positions }
-    var displayPitches: [Pitch] { displaysTransitionTarget ? resolved.transitionTargetPitch.map { [$0] } ?? [] : resolved.pitches }
+    var displayPositions: [FretPosition] {
+        if let chain = resolved.event.legatoChain {
+            let index = chain.boundaryTicks.lastIndex(where: { $0 <= startTick - resolved.event.startTick }) ?? 0
+            return [resolved.event.techniquePositions[index]]
+        }
+        return displaysTransitionTarget ? Array(resolved.event.techniquePositions.suffix(1)) : resolved.event.positions
+    }
+    var displayPitches: [Pitch] {
+        if let chain = resolved.event.legatoChain, let base = resolved.pitches.first {
+            let offset = Int(chain.cents(at: Double(startTick - resolved.event.startTick)) / 100)
+            return (try? Pitch(midi: base.midi + offset)).map { [$0] } ?? []
+        }
+        return displaysTransitionTarget ? resolved.transitionTargetPitch.map { [$0] } ?? [] : resolved.pitches
+    }
 }
 
 struct TimelineTriplet: Identifiable, Sendable {

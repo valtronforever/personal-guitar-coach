@@ -82,7 +82,10 @@ extension PracticeEvidence {
     public func vibratoObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
         movingPitchObservationIDs(notes: notes, technique: .vibrato)
     }
-    private enum MotionKind { case bend, transition, vibrato }
+    public func legatoChainObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
+        movingPitchObservationIDs(notes: notes, technique: .chain)
+    }
+    private enum MotionKind { case bend, transition, vibrato, chain }
     private func movingPitchObservationIDs(notes: [AssessedNote], technique: MotionKind) -> Set<UInt64> {
         guard let epoch = renderEpochSeconds else { return [] }
         let offset = configuration.calibration?.residualOffsetSeconds ?? 0
@@ -90,7 +93,7 @@ extension PracticeEvidence {
         let notesByID = Dictionary(uniqueKeysWithValues: notes.map { ($0.id, $0) })
         let attacksByID = Dictionary(uniqueKeysWithValues: attacks.map { ($0.id, $0) })
         let intervals: [Range<Double>] = configuration.selectedEvents.compactMap { event in
-            guard let changeTick = technique == .vibrato ? event.vibrato?.startTick : technique == .transition ? event.pitchTransition?.startTick : event.bend?.riseStartTick,
+            guard let changeTick = technique == .chain ? event.legatoChain?.targets.first?.startTick : technique == .vibrato ? event.vibrato?.startTick : technique == .transition ? event.pitchTransition?.startTick : event.bend?.riseStartTick,
                   let start = try? configuration.route.expectedTime(renderEpochSeconds: epoch,
                     sampleFrame: Int64(((configuration.countInSeconds + Double(event.startTick - configuration.range.lowerBound) * secondsPerTick) * configuration.route.output.sampleRate).rounded())) else { return nil }
             let observedStart = notesByID[event.id]?.attackID.flatMap { attacksByID[$0]?.normalizedOnset } ?? start + offset

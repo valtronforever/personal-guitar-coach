@@ -110,7 +110,7 @@ struct PracticeScoreRow: View {
                     RoundedRectangle(cornerRadius: 3).fill(Color.accentColor.opacity(0.1))
                         .overlay(RoundedRectangle(cornerRadius: 3).strokeBorder(.primary.opacity(0.5), lineWidth: 1))
                 }
-                if event.pitchTransition == nil {
+                if event.pitchTransition == nil && event.legatoChain == nil {
                     durationMark(segment.writtenDurationTicks, continuation: segment.isContinuation)
                         .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
                 }
@@ -131,7 +131,7 @@ struct PracticeScoreRow: View {
                 if event.kind == .rest {
                     Image(systemName: "pause.fill").font(.caption)
                         .frame(width: width, height: 6 * stringSpacing).offset(y: gridTop)
-                } else if event.pitchTransition != nil {
+                } else if event.pitchTransition != nil || event.legatoChain != nil {
                     PitchTransitionTabContent(segment: segment, width: width, gridTop: gridTop, stringSpacing: stringSpacing,
                         anchorX: min(8 * zoom, width / 2), zoom: zoom, compact: true)
                 } else {
@@ -181,7 +181,7 @@ struct PracticeScoreRow: View {
         }.joined(separator: "; ")
         if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }
         if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
-        if event.pitchTransition != nil {
+        if event.pitchTransition != nil || event.legatoChain != nil {
             notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) })
         }
         if event.palmMuted { notes = String(format: localizationBundle.localizedString(forKey: "tab.palmMutedNotes %@", value: nil, table: nil), locale: locale, notes) }

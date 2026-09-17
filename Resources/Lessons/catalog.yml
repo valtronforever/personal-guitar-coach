@@ -94,6 +94,8 @@ lessons:
   - hammer-ons
   - pull-offs
   - vibrato
+  - long-legato
+  - tapping
 modules:
   - id: getting-started
     order: 1

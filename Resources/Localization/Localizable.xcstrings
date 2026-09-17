@@ -15063,6 +15063,198 @@
           }
         }
       }
+    },
+    "legato.score": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legato chain"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ланцюжок legato"
+          }
+        }
+      }
+    },
+    "legato.curveTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch targets through the phrase"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цільові висоти протягом фрази"
+          }
+        }
+      }
+    },
+    "legato.resultTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured legato phrase"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряна фраза legato"
+          }
+        }
+      }
+    },
+    "legato.phase %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note %lld in the chain"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нота %lld у ланцюжку"
+          }
+        }
+      }
+    },
+    "legato.kind.hammerOn": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hammer-on"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hammer-on"
+          }
+        }
+      }
+    },
+    "legato.kind.pullOff": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pull-off"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pull-off"
+          }
+        }
+      }
+    },
+    "legato.kind.tap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тепінг"
+          }
+        }
+      }
+    },
+    "legato.spoken %@ %@ %lld %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ at beat %2$@ within the phrase: fret %3$lld, %4$@."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ на долі %2$@ всередині фрази: лад %3$lld, %4$@."
+          }
+        }
+      }
+    },
+    "legato.assessmentLimits": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The score combines the initial attack with audible pitch coverage of every note (±35 cents). Silent and unknown input remain distinct. Sound cannot prove the hand, finger, string, fret or absence of repicking."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка поєднує початкову атаку з чутним утриманням висоти кожної ноти (±35 центів). Тиша й невизначений сигнал мають різні результати. Звук не доводить руку, палець, струну, лад чи відсутність повторних ударів."
+          }
+        }
+      }
+    },
+    "legato.practiceInstructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick the first note once, then follow the h (hammer-on), p (pull-off) and t (tap) targets without another pick. Use a clean signal and sustain every marked pitch. Measurement supports slow phrases with at least 0.4 seconds per note; check the physical technique yourself."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте першу ноту одним ударом, далі виконуйте цілі h (hammer-on), p (pull-off) і t (тепінг) без нового удару медіатором. Використовуйте чистий сигнал та утримуйте кожну позначену висоту. Вимірювання підтримує повільні фрази з тривалістю кожної ноти щонайменше 0,4 с; фізичну техніку перевіряйте самостійно."
+          }
+        }
+      }
+    },
+    "result.annotation.legatoChain": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch targets in the chain need work"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Варто попрацювати над висотами нот у ланцюжку"
+          }
+        }
+      }
+    },
+    "feedback.legatoChain": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeat the phrase slowly. Compare each measured plateau with its target and sustain the intermediate notes for their marked duration. The score measures sound; check the hand motions separately."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторіть фразу повільно. Порівняйте кожну виміряну ділянку з цільовою та утримуйте проміжні ноти протягом позначеної тривалості. Оцінка вимірює звук; рухи рук перевіряйте окремо."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

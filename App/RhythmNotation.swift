@@ -39,7 +39,7 @@ struct NotationFragment: Identifiable, Sendable {
 enum RhythmNotation {
     /// Simple-meter notation down to sixteenths. Unsupported grids remain explicit.
     static func fragments(_ segment: TimelineSegment) throws -> [NotationFragment] {
-        if let transition = segment.resolved.event.pitchTransition { return try transitionFragments(segment, transition: transition) }
+        if segment.resolved.event.pitchTransition != nil || segment.resolved.event.legatoChain != nil { return try transitionFragments(segment) }
         if let group = segment.triplet {
             guard segment.startTick == segment.resolved.event.startTick,
                   segment.endTick == segment.resolved.event.endTick,
@@ -69,10 +69,19 @@ enum RhythmNotation {
         }
         return result
     }
-    private static func transitionFragments(_ segment: TimelineSegment, transition: PitchTransition) throws -> [NotationFragment] {
-        let event = segment.resolved.event, targetTick = event.startTick + transition.endTick
+    private static func transitionFragments(_ segment: TimelineSegment) throws -> [NotationFragment] {
+        let event = segment.resolved.event
+        let boundaries: [Int64], offsets: [Int]
+        if let chain = event.legatoChain {
+            boundaries = (chain.boundaryTicks + [event.durationTicks]).map { event.startTick + $0 }
+            offsets = chain.semitoneOffsets
+        } else if let transition = event.pitchTransition {
+            boundaries = [event.startTick, event.startTick + transition.endTick, event.endTick]
+            offsets = [0, transition.semitones]
+        } else { return [] }
         var result: [NotationFragment] = []
-        for (phaseStart, phaseEnd, offset) in [(event.startTick, targetTick, 0), (targetTick, event.endTick, transition.semitones)] {
+        for index in offsets.indices {
+            let phaseStart = boundaries[index], phaseEnd = boundaries[index + 1], offset = offsets[index]
             var tick = max(segment.startTick, phaseStart)
             let end = min(segment.endTick, phaseEnd)
             while tick < end {
@@ -86,7 +95,7 @@ enum RhythmNotation {
                 guard let value = choices.first(where: { $0.ticks <= available }), available % (segment.triplet == nil ? 240 : 160) == 0 else { throw StaffLimitation.duration }
                 result.append(NotationFragment(id: .init(eventID: event.id, startTick: tick), duration: value,
                     tieFromPrevious: tick > phaseStart, tieToNext: tick + value.ticks < phaseEnd,
-                    tripletID: segment.triplet?.id, pitchOffset: offset, isTechniqueTarget: tick == targetTick))
+                    tripletID: segment.triplet?.id, pitchOffset: offset, isTechniqueTarget: index > 0 && tick == phaseStart))
                 tick += value.ticks
             }
         }

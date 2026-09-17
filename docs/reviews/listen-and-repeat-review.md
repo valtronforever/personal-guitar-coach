@@ -28,3 +28,5 @@ Verification collected:
 - Signed sandbox → separate XPC → invalidRequest probe passed; no provider was called. `/tmp/listen-xpc.log`.
 
 Exact-head CI/merge and native/hardware acceptance remain open. Full course acceptance remains open.
+
+PR 85 exact-head CI `35182284916` passed in 24m36s at `0a26f34357a5008de69f9e08d3fd1455fdc0e239`; merged as `6611c3b70af016c9423a104be2adbd6adffc5d2b`. Status is pending_user for native/hardware acceptance.
