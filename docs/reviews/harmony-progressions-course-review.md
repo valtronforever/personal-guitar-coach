@@ -26,3 +26,7 @@ Initial targeted musical run: four tests pass (3.746 s), covering every preset/f
 - Final App run: 150 tests /43 suites pass (165.233 s), including complete-corpus staff/reader/practice and tuning checks.
 - Validator: 83 bilingual bundles, zero issues. Localization: all 840 UI keys pass. Partial curriculum audit: 76 authored, 1 needs_review, 51 todo; this is not full-course acceptance.
 - Four Python author-tool tests pass (9.161 s), generated project is current, UI test sources type-check. No native UI execution or real-interface claim.
+
+## Signed local Release
+
+Root-only Release/archive build passes. Audit verifies 83 lessons /250 YAML files, en/uk offline resources, arm64 macOS 14 minimum, ad-hoc signature, hardened runtime and expected sandbox entitlements. Binary SHA256: `55ddba41f38d8723e5b10392fae29f1b5f747c8e769e22d7f7d4c3974af8e32f`; archive: `228801006c8d13f6319a7c132eb4a02934c8aa6079f780fb308ed3bc860fb77b`. Signed sandbox→separate XPC→invalidRequest passes without an AI provider. [Bundle report](../benchmarks/harmony-progressions-release-bundle.json). No local Debug app was built. Native launch/hardware remain unverified; exact-head CI/merge remain open.
