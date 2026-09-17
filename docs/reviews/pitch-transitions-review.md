@@ -33,3 +33,11 @@ The first complete App run exposed old catalog counts (83 total /77 visible), a 
 A final UI review found that Foundation localization in the new spoken description used Bundle.main instead of the user's in-app language. Pass the selected localization function explicitly. Five targeted notation/render tests pass (0.375 s), including en/uk target names and event-local beat coordinates. Re-inspected the corrected Ukrainian light render; signed descending axes and all labels are legible. Four Python author-tool tests pass (9.428 s); UI-test sources type-check. No native interaction or audio claim.
 
 Complete core runs so far: Persistence 23 tests /4 suites (0.058 s), Learning 118 /35 (112.298 s), Domain 45 /14 (0.028 s) pass. The complete Audio run is still active. Additional mixed bend/transition/sustain weighting and capability/Drop-bass regression tests were added during review and are queued after it; do not count them as passed yet. Release packaging and CI remain pending.
+
+Complete core verification finished successfully: 23 Persistence, 118 Learning, 45 Domain, 99 Audio and 6 AgentBridge tests (Audio 377.030 s, AgentBridge 1.769 s). Additional review regressions pass: four Learning tests /two suites (0.024 s) cover mixed bend/transition/sustain weighting and linked Drop-bass endpoints; four Domain tests (0.013 s) cover explicit pulse, minimum phase/travel rate and both frequency bounds. The mixed fixture independently expects bend=100, hammer-on=50, sustain=100 and overall=90. No failed assertions were suppressed. Release packaging remains the next gate.
+
+## Signed root Release
+
+Root-only Release/archive build passes. [Bundle audit](../benchmarks/pitch-transitions-release-bundle.json) confirms 86 lesson bundles /259 YAML files, both localizations, offline resources, arm64 macOS 14 minimum, ad-hoc signature, hardened runtime and expected sandbox entitlements. Binary SHA256: `a267f60182257e747f8b891adaad34d0780133fc48ef73becd250344167e40bd`; archive SHA256: `3a511f0bc3633a13a26c55076b05d1effbe40309c8734714536144a607bfe439`.
+
+Signed sandbox→separate XPC→invalidRequest passes; no AI provider was called. No local Debug app was built. App launch/hardware remain unverified. Exact-head CI/merge is the remaining delivery gate; all other curriculum work remains active.
