@@ -250,7 +250,8 @@ struct LessonTextView: View {
     private var playbackFretboard: FretboardModel? {
         guard preview.requestID != nil, let exercise = preview.exercise else { return nil }
         return FretboardModel(tuning: exercise.requiredTuning ?? localData.preferences.instrument.tuning,
-            orientation: localData.preferences.instrument.orientation, frets: localData.preferences.instrument.frets, positions: preview.activeEvent()?.techniquePositions ?? [])
+            orientation: localData.preferences.instrument.orientation, frets: localData.preferences.instrument.frets, positions: preview.activeEvent()?.techniquePositions ?? [],
+            targets: (try? preview.activeEvent()?.visualTargets(in: exercise.requiredTuning ?? localData.preferences.instrument.tuning)) ?? [])
     }
     private func saveBookmark() { reading.visit(lessonID: lesson.id, version: lesson.manifest.version, stepID: selection.stepID, activityChoices: selection.activityChoices, activityConfirmations: selection.activityConfirmations) }
 }

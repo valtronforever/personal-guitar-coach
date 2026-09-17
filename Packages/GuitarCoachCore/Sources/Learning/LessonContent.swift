@@ -92,6 +92,10 @@ public struct HighlightedPosition: Sendable, Equatable {
     public let position: FretPosition
     public let pitch: Pitch
     public let finger: Int?
+    public let role: EventFretRole
+    public init(position: FretPosition, pitch: Pitch, finger: Int?, role: EventFretRole = .ordinary) {
+        self.position = position; self.pitch = pitch; self.finger = finger; self.role = role
+    }
 }
 
 public struct LessonVisualSnapshot: Sendable {

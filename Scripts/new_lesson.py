@@ -23,8 +23,8 @@ def create(lesson_id: str, catalog_root: Path, policy: str, window: int | None =
         raise ValueError("Listening examples require transposeIntervals")
     position_policy = None
     if window is not None:
-        if not 1 <= window <= 12:
-            raise ValueError("Position window must contain 1–12 frets")
+        if not 1 <= window <= 13:
+            raise ValueError("Position window must contain 1–13 frets")
         allowed = {"kind": "auto"}
         if starts != "auto":
             if ":" in starts:
@@ -111,7 +111,7 @@ def main():
     parser.add_argument("--catalog", type=Path, default=ROOT / "Resources/Lessons", help="Existing lesson catalog directory")
     parser.add_argument("--policy", choices=["fretPattern", "transposeIntervals"], default=None)
     parser.add_argument("--mode", choices=["scored", "theory", "selfPractice", "listening"], default="scored")
-    parser.add_argument("--positioning-window", type=int, help="Opt into positioning, width 1–12 frets")
+    parser.add_argument("--positioning-window", type=int, help="Opt into positioning, width 1–13 frets")
     parser.add_argument("--starts", default="auto", help="Allowed starts: auto, 3,7 or 3:12:1")
     args = parser.parse_args()
     try:

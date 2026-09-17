@@ -126,6 +126,7 @@ struct StaffView: View {
                 let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
+            if symbol.resolved.event.harmonic != nil { sounding += "; " + HarmonicPresentation.spoken(event: symbol.resolved.event, tuning: model.timeline.tuning, locale: settings.locale, localized: settings.localized) }
             if let finger = symbol.resolved.event.pluckFinger, symbol.startTick == symbol.resolved.event.startTick { sounding += "; " + settings.localized(finger.instructionKey) }
             if let bend = symbol.resolved.event.bend { sounding = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, sounding, bend.semitones * 100) }
             if let vibrato = symbol.resolved.event.vibrato { sounding += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: timeline.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
@@ -194,7 +195,11 @@ struct StaffDrawing {
             if let pitch = symbol.pitch {
                 let y = StaffModel.y(step: pitch.step)
                 for ledger in StaffModel.ledgerSteps(for: pitch.step) { line(CGPoint(x: position - 13, y: StaffModel.y(step: ledger)), CGPoint(x: position + 13, y: StaffModel.y(step: ledger))) }
-                let head = Path(ellipseIn: CGRect(x: position - 7.5, y: y - 5, width: 15, height: 10))
+                var head = Path()
+                if symbol.resolved.event.harmonic != nil {
+                    head.move(to: CGPoint(x: position - 7.5, y: y)); head.addLine(to: CGPoint(x: position, y: y - 6))
+                    head.addLine(to: CGPoint(x: position + 7.5, y: y)); head.addLine(to: CGPoint(x: position, y: y + 6)); head.closeSubpath()
+                } else { head = Path(ellipseIn: CGRect(x: position - 7.5, y: y - 5, width: 15, height: 10)) }
                 if symbol.hollow {
                     var erase = context; erase.blendMode = .destinationOut
                     erase.fill(head, with: .color(.white)); context.stroke(head, with: .color(ink), lineWidth: 1.7)
@@ -251,6 +256,9 @@ struct StaffDrawing {
             if let finger = symbol.resolved.event.pluckFinger, symbol.startTick == symbol.resolved.event.startTick {
                 context.draw(Text(verbatim: finger.symbol).font(.system(size: 12, weight: .bold)),
                     at: CGPoint(x: position, y: StaffModel.canvasHeight - 42))
+            }
+            if let harmonic = symbol.resolved.event.harmonic {
+                context.draw(Text(verbatim: harmonic.notationLabel).font(.system(size: 10, weight: .bold)), at: CGPoint(x: position, y: StaffModel.canvasHeight - 26))
             }
             if let bend = symbol.resolved.event.bend {
                 context.draw(Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r")).font(.system(size: 10, weight: .bold)),

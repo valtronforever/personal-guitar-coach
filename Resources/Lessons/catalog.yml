@@ -108,6 +108,7 @@ lessons:
   - time-and-modulation-effects
   - expressive-hardware
   - record-di-monitoring
+  - harmonics
 modules:
   - id: getting-started
     order: 1

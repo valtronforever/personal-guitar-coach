@@ -118,6 +118,7 @@ struct PracticeScoreRow: View {
                     Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r"))
                         .font(.system(size: 9 * zoom, weight: .bold)).offset(x: 1, y: 137 * zoom).accessibilityHidden(true)
                 }
+                if let harmonic = event.harmonic { Text(verbatim: harmonic.notationLabel).font(.system(size: 9 * zoom, weight: .bold)).offset(x: 1, y: 139 * zoom).accessibilityHidden(true) }
                 if event.vibrato != nil { VibratoTabMark(segment: segment, width: width, y: 141 * zoom) }
                 if event.palmMuted {
                     Text(verbatim: "P.M.").font(.system(size: 8 * zoom, weight: .bold))
@@ -131,6 +132,8 @@ struct PracticeScoreRow: View {
                 if event.kind == .rest {
                     Image(systemName: "pause.fill").font(.caption)
                         .frame(width: width, height: 6 * stringSpacing).offset(y: gridTop)
+                } else if event.harmonic != nil {
+                    HarmonicTabContent(event: event, width: width, gridTop: gridTop, stringSpacing: stringSpacing, zoom: zoom, compact: true)
                 } else if event.pitchTransition != nil || event.legatoChain != nil {
                     PitchTransitionTabContent(segment: segment, width: width, gridTop: gridTop, stringSpacing: stringSpacing,
                         anchorX: min(8 * zoom, width / 2), zoom: zoom, compact: true)
@@ -179,6 +182,7 @@ struct PracticeScoreRow: View {
         var notes = zip(segment.displayPositions, segment.displayPitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if event.harmonic != nil { notes = HarmonicPresentation.spoken(event: event, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }
         if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if event.pitchTransition != nil || event.legatoChain != nil {

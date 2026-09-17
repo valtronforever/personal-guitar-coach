@@ -1084,7 +1084,8 @@ lessons:
       uk: Натуральні та штучні флажолети
     outcomeUK: Отримувати й контролювати гармоніки
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 95
     moduleID: advanced-technique
     lessonID: hybrid-picking

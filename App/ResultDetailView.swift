@@ -184,7 +184,9 @@ struct ResultDetailView: View {
                     if let annotation = annotations[id] { Label(LocalizedStringKey(annotation.key), systemImage: annotation.symbol) }
                     else { Text("result.unassessed") }
                     if let note = result.notes.first(where: { $0.id == id }) {
-                        if let position = event.positions.first, let pitch = try? tuning.pitch(at: position) {
+                        if event.harmonic != nil {
+                            Text(verbatim: HarmonicPresentation.spoken(event: event, tuning: tuning, locale: settings.locale, localized: settings.localized))
+                        } else if let position = event.positions.first, let pitch = try? event.soundingPitches(in: tuning).first {
                             Text("result.expectedPosition \(pitch.name(spelling: tuning.preferredSpelling)) \(position.string) \(position.fret)")
                         }
                         Text("result.targetFrequency \(number(note.targetFrequency))")

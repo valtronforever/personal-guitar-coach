@@ -1,0 +1,596 @@
+schemaVersion: 3
+id: harmonics
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: natural-octaves
+    kind: events
+    exerciseID: harmonics-natural-octaves
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset
+    activityID: natural-octaves
+  - id: natural-partials
+    kind: events
+    exerciseID: harmonics-natural-partials
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset
+    activityID: natural-partials
+  - id: natural-bass
+    kind: events
+    exerciseID: harmonics-natural-bass
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - reset
+    activityID: natural-bass
+  - id: artificial-octave
+    kind: events
+    exerciseID: harmonics-artificial-octave
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - reset
+    activityID: artificial-octave
+  - id: artificial-line
+    kind: events
+    exerciseID: harmonics-artificial-line
+    eventIDs:
+      - note-1
+      - note-2
+      - note-3
+      - note-4
+      - reset
+    activityID: artificial-line
+  - id: artificial-region
+    kind: events
+    exerciseID: harmonics-artificial-region
+    eventIDs:
+      - note-1
+      - reset
+    activityID: artificial-region
+  - id: harmonic-check
+    kind: none
+    eventIDs: []
+  - id: node-quiz
+    kind: none
+    eventIDs: []
+exercises:
+  - id: harmonics-natural-octaves
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+        assessSustain: true
+      - id: note-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+        assessSustain: true
+      - id: note-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+        assessSustain: true
+      - id: reset
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: harmonics-natural-partials
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+      - id: note-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+        harmonic:
+          kind: natural
+          partial: 3
+      - id: note-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 5
+        harmonic:
+          kind: natural
+          partial: 4
+      - id: reset
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: harmonics-natural-bass
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 6
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+      - id: note-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 5
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+      - id: note-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 4
+            fret: 12
+        harmonic:
+          kind: natural
+          partial: 2
+      - id: reset
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: harmonics-artificial-octave
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: note-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: note-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: note-4
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: reset
+        startTick: 7680
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: harmonics-artificial-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: note-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: note-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: note-4
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: reset
+        startTick: 7680
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: harmonics-artificial-region
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 100
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: note-1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        harmonic:
+          kind: artificial
+          partial: 2
+      - id: reset
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+adaptation:
+  policy: fretPattern
+materials:
+  - id: natural-octaves
+    source:
+      kind: exercise
+      exerciseID: harmonics-natural-octaves
+    positioning:
+      enabled: false
+  - id: natural-partials
+    source:
+      kind: exercise
+      exerciseID: harmonics-natural-partials
+    positioning:
+      enabled: false
+  - id: natural-bass
+    source:
+      kind: exercise
+      exerciseID: harmonics-natural-bass
+    positioning:
+      enabled: false
+  - id: artificial-octave
+    source:
+      kind: exercise
+      exerciseID: harmonics-artificial-octave
+    positioning:
+      enabled: false
+  - id: artificial-line
+    source:
+      kind: exercise
+      exerciseID: harmonics-artificial-line
+    positioning:
+      enabled: false
+  - id: artificial-region
+    source:
+      kind: exercise
+      exerciseID: harmonics-artificial-region
+    positioning:
+      enabled: true
+      preserve: soundingPitch
+      windowFrets: 13
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 5
+          - 10
+      allowOriginal: true
+activities:
+  - id: natural-octaves
+    materialID: natural-octaves
+  - id: natural-partials
+    materialID: natural-partials
+  - id: natural-bass
+    materialID: natural-bass
+  - id: artificial-octave
+    materialID: artificial-octave
+  - id: artificial-line
+    materialID: artificial-line
+  - id: artificial-region
+    materialID: artificial-region
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+practiceEntries:
+  - id: natural-octaves
+    activityID: natural-octaves
+    exerciseID: harmonics-natural-octaves
+  - id: natural-partials
+    activityID: natural-partials
+    exerciseID: harmonics-natural-partials
+  - id: natural-bass
+    activityID: natural-bass
+    exerciseID: harmonics-natural-bass
+  - id: artificial-octave
+    activityID: artificial-octave
+    exerciseID: harmonics-artificial-octave
+  - id: artificial-line
+    activityID: artificial-line
+    exerciseID: harmonics-artificial-line
+  - id: artificial-region
+    activityID: artificial-region
+    exerciseID: harmonics-artificial-region
+fingerings: []
+learningTasks:
+  - id: harmonic-check
+    stepID: harmonic-check
+    kind: selfPractice
+    itemIDs:
+      - light
+      - release
+      - base
+      - quiet
+  - id: node-quiz
+    stepID: node-quiz
+    kind: quiz
+    itemIDs:
+      - partial
+      - fret
+      - octave
+    correctOptionID: partial
+curriculum:
+  moduleID: advanced-technique
+  ordinal: 94
+  durationMinutes: 35
+  prerequisites:
+    - clean-fretted-note
+    - tapping
+  keywords:
+    - harmonics
+    - флажолети
+    - natural
+    - artificial
+    - nodes
+    - вузли

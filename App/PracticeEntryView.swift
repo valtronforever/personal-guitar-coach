@@ -62,7 +62,7 @@ struct PracticeEntryView: View {
                     }.pickerStyle(.segmented)
                     if visualMode == "fretboard" {
                         FretboardView(model: FretboardModel(tuning: tuning, orientation: instrument.orientation, frets: instrument.frets,
-                            positions: model.expectedPositions), selected: $selectedPosition,
+                            positions: model.expectedPositions, targets: model.expectedFretTargets(in: tuning)), selected: $selectedPosition,
                             detectedPitch: detectedPitch, compact: true)
                     } else if let timeline = try? TimelineModel(exercise: request.exercise, instrument: tuning) {
                         PracticeTablatureView(model: timeline, selectedIDs: model.selectedEventIDs,
@@ -141,6 +141,7 @@ struct PracticeEntryView: View {
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
             }
             Text("practice.stringOrder").font(.caption)
+            if exercise.events.contains(where: { $0.harmonic != nil }) { Text("harmonic.instructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: { $0.pluckFinger != nil }) { Text("pluck.instructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: { $0.legatoChain != nil }) { Text("legato.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: { $0.pitchTransition != nil }) { Text("transition.practiceInstructions").font(.caption).foregroundStyle(.secondary) }

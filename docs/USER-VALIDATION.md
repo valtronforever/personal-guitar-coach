@@ -197,3 +197,10 @@ Practice `string-skipping`, `economy-picking`, `sweep-picking` and `hybrid-picki
 - Perform only available hardware experiments. Verify unavailable arm/feedback/processor checks remain unchecked; no false completion or tone score. Confirm the chord swell stays ungraded.
 - With a clean selected mono input, play both DI activities and review pitch/time provenance. If intentionally using Record & analyze, confirm guitar channel one and generated click reference channel two; test the actual configured provider separately. Generated clicks are not measured headphone audio.
 - Native VoiceOver/keyboard/layout, all physical sound comparisons, actual recording with interface and provider run remain pending_user. Software and synthetic tests do not fulfill these gates.
+
+## Harmonic notes and topic 94 — pending user
+
+- In the root Release, read natural angle-bracket nodes, artificial base/touch pairs and sounding diamond staff heads in both languages/themes, including VoiceOver. Verify selection, playback and practice targets agree and remain legible at the user's window size.
+- On clean guitar input, try natural octave/third/fourth partials and touched artificial octaves; record wrong stopped notes, residual fundamental, decay, clipping and weak/noisy cases. Confirm missing/uncertain evidence is distinct from a musical error. Synthetic PCM is not this acceptance evidence.
+- With C Standard and the matching Drop preset, verify the open-bass harmonic changes with string six. On 19/20/21-fret profiles, the artificial region requiring fret22 must be unavailable; 22/24 should show the linked base/touch pair.
+- Check the separate physical criteria manually. A pitch score is not evidence of the correct node, finger, string or pinch gesture. Optional provider analysis remains unverified without an actual authorized run.

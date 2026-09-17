@@ -79,6 +79,7 @@ extension LegatoChainTests {
         #expect(!String(decoding: data, as: UTF8.self).contains("legatoChain"))
         #expect(try JSONDecoder().decode(MusicalEvent.self, from: data) == ordinary)
         #expect(try PositioningPolicy(windowFrets: 12).windowFrets == 12)
-        #expect(throws: PositioningError.invalidPolicy) { try PositioningPolicy(windowFrets: 13) }
+        #expect(try PositioningPolicy(windowFrets: 13).windowFrets == 13) // Two-hand artificial octave region.
+        #expect(throws: PositioningError.invalidPolicy) { try PositioningPolicy(windowFrets: 14) }
     }
 }

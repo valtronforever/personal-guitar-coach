@@ -1,0 +1,107 @@
+lessonID: harmonics
+lessonVersion: 1
+locale: en
+title: Find natural and artificial harmonics
+summary: Separate a light touch node from a stopped fret and listen for the intended higher pitch.
+goal: Play selected natural partials and a touched artificial octave while explaining the sounding target and hand
+  roles.
+body: |-
+  A lightly touched harmonic favors a vibration pattern whose node lies at the touch point. You are not shortening the string by pressing it onto that fret. This is why the number in angle brackets is a touch landmark rather than the usual stopped-note pitch. Begin with a clean sound, a comfortable pluck and only one ringing string. Keep the other strings quiet enough to hear which pitch remains after the touch.
+
+  For the natural octave, lightly touch near the twelfth fret, pluck away from the node and lift the touching finger after the note begins. Too much pressure gives a stopped note; too much damping can leave little sound. Move the touch slightly if necessary rather than pressing harder. The fret wire is a useful landmark, but real string setup can move the best contact point a little. Repeat on the indicated middle strings before trying the lower-string set.
+
+  The three natural landmarks teach different sounding targets. Near fret twelve the second partial sounds an octave above the open string. Near fret seven the third partial sounds approximately an octave plus a fifth above it. Near fret five the fourth partial sounds two octaves above it. The third partial is about two cents above its nearest equal-tempered note label; the app uses the ideal partial frequency as the target. Do not tune away that small difference by treating the node as an ordinary fretted note.
+
+  For a touched artificial octave, stop the plain-numbered base fret normally and lightly touch twelve frets above it with the picking hand. Pluck with another available finger or a comfortable pick/finger arrangement, then release the touch while retaining the stopped base. Compare the ordinary base note with its artificial octave. This lesson teaches a deliberate octave touch; it does not claim to teach or detect every pinch-harmonic contact near the bridge.
+
+  Natural nodes stay on their physical landmarks when tuning changes, so their pitches follow each open string, including a dropped sixth string. Artificial examples need space for both the base and the touch; the optional relocation activity offers only regions that fit your configured neck. Read N.H. and A.H. in TAB and the sounding diamond notes on the staff. Pitch, eligible timing and the specifically enabled sustain check describe the audible result. They cannot prove which finger touched the string or whether the tone was produced by a harmonic gesture. Use the separate self-check for those observations.
+steps:
+  prepare:
+    title: Prepare a clear single string
+    body: Tune the instrument and begin clean and slowly. Read angle brackets as light touches; the displayed note
+      names are the sounding targets.
+  natural-octaves:
+    title: Touch the natural octave
+    body: 'Touch lightly near fret twelve on each indicated string. Sustain each note through its two beats; this
+      activity explicitly checks audible held-pitch coverage as well as the initial note. Sounding sequence: {{sequence}}.
+      Physical instructions: {{positions}}.'
+  natural-partials:
+    title: Compare three partials on one string
+    body: 'Stay on string four and compare the octave, third partial and double octave. Fret seven is a touch point,
+      not the ordinary fretted pitch. Sounding sequence: {{sequence}}. Physical instructions: {{positions}}.'
+  natural-bass:
+    title: Follow the actual open-string tuning
+    body: 'Keep the octave node on each low string. In a Drop tuning the sixth-string target follows that lowered
+      open string; the touch point stays near fret twelve. Sounding sequence: {{sequence}}. Physical instructions:
+      {{positions}}.'
+  artificial-octave:
+    title: Compare a base note with its touched octave
+    body: 'Alternate the ordinary stopped base and its artificial octave. For A.H., keep the base stopped while
+      touching the bracketed node twelve frets above it. Sounding sequence: {{sequence}}. Physical instructions:
+      {{positions}}.'
+  artificial-line:
+    title: Move the base and touch together
+    body: 'Move both hand targets by the same number of frets. The touch remains twelve frets above the stopped
+      base; all original targets fit a nineteen-fret neck. Sounding sequence: {{sequence}}. Physical instructions:
+      {{positions}}.'
+  artificial-region:
+    title: Preserve the octave in another reachable region
+    body: 'Try an available region while preserving sounding pitch. A lower-string base can require a touch beyond
+      fret nineteen, so some regions disappear on shorter necks. This search window includes both hands, not a fretting-hand
+      stretch. Sounding sequence: {{sequence}}. Physical instructions: {{positions}}.'
+  harmonic-check:
+    title: Separate audible results from touch technique
+    body: Repeat slowly and mark only the physical observations you made yourself. A correct pitch alone cannot
+      confirm these actions.
+  node-quiz:
+    title: What does the bracketed fret mean?
+    body: For a natural third partial near fret seven, which pitch relationship is intended?
+activities:
+  natural-octaves:
+    title: Touch the natural octave
+    body: 'Touch lightly near fret twelve on each indicated string. Sustain each note through its two beats; this
+      activity explicitly checks audible held-pitch coverage as well as the initial note. Sounding sequence: {{sequence}}.
+      Physical instructions: {{positions}}.'
+  natural-partials:
+    title: Compare three partials on one string
+    body: 'Stay on string four and compare the octave, third partial and double octave. Fret seven is a touch point,
+      not the ordinary fretted pitch. Sounding sequence: {{sequence}}. Physical instructions: {{positions}}.'
+  natural-bass:
+    title: Follow the actual open-string tuning
+    body: 'Keep the octave node on each low string. In a Drop tuning the sixth-string target follows that lowered
+      open string; the touch point stays near fret twelve. Sounding sequence: {{sequence}}. Physical instructions:
+      {{positions}}.'
+  artificial-octave:
+    title: Compare a base note with its touched octave
+    body: 'Alternate the ordinary stopped base and its artificial octave. For A.H., keep the base stopped while
+      touching the bracketed node twelve frets above it. Sounding sequence: {{sequence}}. Physical instructions:
+      {{positions}}.'
+  artificial-line:
+    title: Move the base and touch together
+    body: 'Move both hand targets by the same number of frets. The touch remains twelve frets above the stopped
+      base; all original targets fit a nineteen-fret neck. Sounding sequence: {{sequence}}. Physical instructions:
+      {{positions}}.'
+  artificial-region:
+    title: Preserve the octave in another reachable region
+    body: 'Try an available region while preserving sounding pitch. A lower-string base can require a touch beyond
+      fret nineteen, so some regions disappear on shorter necks. This search window includes both hands, not a fretting-hand
+      stretch. Sounding sequence: {{sequence}}. Physical instructions: {{positions}}.'
+learningTasks:
+  harmonic-check:
+    title: Separate audible results from touch technique
+    body: Repeat slowly and mark only the physical observations you made yourself. A correct pitch alone cannot
+      confirm these actions.
+    items:
+      light: I used a light node touch rather than pressing the natural harmonic fret down.
+      release: I released the touch after onset without stopping the intended string.
+      base: I retained the stopped base while producing the artificial octave.
+      quiet: I listened for other ringing strings and controlled them.
+  node-quiz:
+    title: What does the bracketed fret mean?
+    body: For a natural third partial near fret seven, which pitch relationship is intended?
+    items:
+      partial: 'Approximately three times the open-string frequency: octave plus fifth.'
+      fret: The ordinary stopped note seven semitones above the open string.
+      octave: Always exactly one octave, regardless of the node.
+    explanation: The node selects the third partial; the target is open frequency ×3. The fret is a physical landmark,
+      not the stopped-note calculation.

@@ -69,8 +69,17 @@ extension LoadedLesson {
             } else {
                 events = try selected.map { event in
                     let positions: [FretPosition]
-                    if event.positions.allSatisfy({ sharedMapping[$0] != nil }) { positions = event.positions.compactMap { sharedMapping[$0] } }
-                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend != nil || event.vibrato != nil || event.pitchTransition?.kind == .slide ? 1 : 0, linkedFretOffset: event.pitchTransition?.semitones ?? 0, linkedFretOffsets: event.legatoChain?.semitoneOffsets ?? []) }
+                    if event.harmonic?.kind == .natural {
+                        positions = event.positions
+                        guard positions.allSatisfy({ instrument.contains($0) && (region?.contains($0, maximumFret: instrument.fretCount) ?? true) }) else { throw PositioningError.regionUnplayable }
+                        if let adaptation = manifest.adaptation, adaptation.policy == .transposeIntervals {
+                            let reference = source.requiredTuning ?? .standard
+                            let shift = adaptation.transposition(from: reference, to: tuning)
+                            let wanted = try event.soundingPitches(in: reference).map { $0.midi + shift }
+                            guard try event.soundingPitches(in: tuning).map(\.midi) == wanted else { throw PositioningError.incompatibleTuning }
+                        }
+                    } else if event.positions.allSatisfy({ sharedMapping[$0] != nil }) { positions = event.positions.compactMap { sharedMapping[$0] } }
+                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend != nil || event.vibrato != nil || event.pitchTransition?.kind == .slide || event.harmonic?.kind == .artificial ? 1 : 0, linkedFretOffset: event.harmonic?.kind == .artificial ? 12 : event.pitchTransition?.semitones ?? 0, linkedFretOffsets: event.legatoChain?.semitoneOffsets ?? []) }
                     if let transition = event.pitchTransition, let base = positions.first {
                         let target = try transition.targetPosition(from: base)
                         guard instrument.contains(target), region?.contains(target, maximumFret: instrument.fretCount) ?? true else { throw PositioningError.regionUnplayable }
@@ -78,8 +87,12 @@ extension LoadedLesson {
                     if let chain = event.legatoChain, let base = positions.first {
                         guard try chain.positions(from: base).allSatisfy({ instrument.contains($0) && (region?.contains($0, maximumFret: instrument.fretCount) ?? true) }) else { throw PositioningError.regionUnplayable }
                     }
+                    if let harmonic = event.harmonic, let base = positions.first {
+                        let touch = try harmonic.touchPosition(from: base)
+                        guard instrument.contains(touch), region?.contains(touch, maximumFret: instrument.fretCount) ?? true else { throw PositioningError.regionUnplayable }
+                    }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger, harmonic: event.harmonic)
                 }
             }
             let selectedIDs = Set(events.map(\.id))

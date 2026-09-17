@@ -2,6 +2,7 @@ import Foundation
 
 /// Versioned software capability from the task 12 corpus. Physical-route validation remains separate.
 public enum MonophonicCapability {
+    public static let harmonicVersion = "mono-capability-7"
     public static let legatoChainVersion = "mono-capability-6"
     public static let version = "mono-capability-3"
     public static let vibratoVersion = "mono-capability-5"
@@ -30,9 +31,9 @@ public enum MonophonicCapability {
         let tuning = exercise.requiredTuning ?? instrument
         return try exercise.resolvedEvents(instrument: instrument).compactMap { resolved in
             guard let pitch = resolved.pitches.first else { return nil }
-            let hz = try pitch.frequency(referenceA4: tuning.referenceA4)
+            let hz = try resolved.event.soundingFrequencies(in: tuning)[0]
             let duration = try MusicalTime.seconds(forTicks: resolved.event.durationTicks, bpm: bpm, pulseTicks: exercise.timeSignature.pulseTicks)
-            if !supportsTarget(pitch, referenceA4: tuning.referenceA4) {
+            if !supportsTarget(pitch, referenceA4: tuning.referenceA4) || !frequencyRange.contains(hz) {
                 return Limitation(eventID: resolved.id, reason: .frequency, frequency: hz, durationSeconds: duration)
             }
             if let bend = resolved.event.bend {

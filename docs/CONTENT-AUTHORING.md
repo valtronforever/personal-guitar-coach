@@ -29,7 +29,7 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-pat
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift run --package-path Packages/GuitarCoachCore ValidateLessonContent Resources/Lessons --positions same-notes-new-position > /tmp/positions.json
 ```
 
-The scaffold defaults to positioning disabled. `--starts` accepts `auto`, a sorted unique list such as `3,7`, or an inclusive range such as `3:12:1`. It requires `--positioning-window` (1–12). Edit both translations and the source exercise before publishing a draft. The position report evaluates one lesson against eight tuning presets and five neck sizes, using the actual resolver. It lists each choice and its failure reason. Mathematical feasibility does not establish ergonomic comfort or audio assessment capability.
+The scaffold defaults to positioning disabled. `--starts` accepts `auto`, a sorted unique list such as `3,7`, or an inclusive range such as `3:12:1`. It requires `--positioning-window` (1–13). Edit both translations and the source exercise before publishing a draft. The position report evaluates one lesson against eight tuning presets and five neck sizes, using the actual resolver. It lists each choice and its failure reason. Mathematical feasibility does not establish ergonomic comfort or audio assessment capability.
 
 The [minimal template](templates/lesson/lesson.yml) and [complete demonstration](../Resources/Lessons/same-notes-new-position/lesson.yml) are loadable examples. The demonstration shares one exercise across note exploration, scale exploration, fixed Original and fixed near-seven performances. Use it to author a teaching sequence without writing Swift.
 
@@ -193,7 +193,7 @@ curriculum:
   keywords: [melody, мелодія]
 ```
 
-`ordinal` is a unique global course number (1–1024). Duration is an estimate for one visit (1–120 minutes), not a deadline or unlock condition. Prerequisites and keywords are optional lists, defaulting to empty. Prerequisites must reference other catalog lessons; cycles are rejected. They are suggested preparation, not access restrictions. Standalone author templates may omit curriculum entirely; the library places them after the organized course. Editorial rearrangement alone does not invalidate musical results; changes to teaching/task meaning still require a lesson-version bump.
+`ordinal` is a unique global course number (1–1024). Duration is an estimate for one visit (1–130 minutes), not a deadline or unlock condition. Prerequisites and keywords are optional lists, defaulting to empty. Prerequisites must reference other catalog lessons; cycles are rejected. They are suggested preparation, not access restrictions. Standalone author templates may omit curriculum entirely; the library places them after the organized course. Editorial rearrangement alone does not invalidate musical results; changes to teaching/task meaning still require a lesson-version bump.
 
 Search matches every query term against both language editions' title, summary and goal, musical keywords and module titles. Module, difficulty, topic, practice mode and reading-state filters combine with search. Course order is the default, with title and estimated duration alternatives. Reading progress means reading only, never successful playing. Continue restores the unfinished last lesson, or offers the next unread available lesson after a read one. The reader offers step navigation and the next available course lesson.
 
@@ -469,7 +469,7 @@ With a 4800-tick parent this is five quarter notes: base, +3, +7, +3, base. TAB/
 
 The clean monophonic envelope requires initial 195.9–880 Hz, all plateaus 195.9–1100 Hz, and at least 0.4 s per plateau at the requested meter pulse/BPM. Display/reference are broader than assessment. The app measures audible pitch coverage, not the hand/finger, fret, string or absence of repicking. Add a separate physical self-check rather than reporting the gesture as measured.
 
-Positioning checks every intermediate target when choosing a starting position. `windowFrets` now permits 1–12: this is a search region, **not** a claim of a feasible one-hand stretch. Chord voicings retain the existing four-fret span constraint. Wider regions can describe two-handed tapping, while physically essential string-crossing tasks should disable relocation. Available choices are pruned against the actual instrument/fret count. Topics 91/93 demonstrate short→long chains, fixed three-string crossings and repeated tapped minor-triad cycles. Missing optional fields preserve earlier canonical encoding and saved grades.
+Positioning checks every intermediate target when choosing a starting position. `windowFrets` now permits 1–13: this is a search region, **not** a claim of a feasible one-hand stretch. Chord voicings retain the existing four-fret span constraint. Wider regions can describe two-handed tapping, while physically essential string-crossing tasks should disable relocation. Available choices are pruned against the actual instrument/fret count. Topics 91/93 demonstrate short→long chains, fixed three-string crossings and repeated tapped minor-triad cycles. Missing optional fields preserve earlier canonical encoding and saved grades.
 
 ### Picking-hand finger cues
 
@@ -485,3 +485,30 @@ Optional `pluckFinger: thumb | index | middle | ring` labels an ordinary single-
 ```
 
 Topics 89/90/92/95 retain fixed string patterns for skipping/economy/sweep/hybrid teaching. Their ordinary note assessment checks audible pitch/time, while explicit self-checks cover picking direction, hand use, finger rolling, string separation and muting. Hybrid examples use arrows for the pick and m/a for upper strings. Describe intentional monophonic release in measured practice; do not imply that the same score assesses an overlapping chord texture. Changes to an existing lesson's physical cues require a new lesson/exercise version; these new lessons begin at version 1.
+
+### Natural and touched artificial harmonics
+
+Optional `harmonic` separates a note's physical locations from its audible target. The initial contract supports natural partials 2/3/4 near frets 12/7/5, and touched artificial octave harmonics (partial 2 only). For a natural harmonic, `positions` contains the touch landmark; for an artificial harmonic, it contains the stopped base. Each event has exactly one voice and one initial attack. Harmonics cannot be combined on one event with a bend, transition, vibrato, chain, palm mute or picking-finger cue. `pickStroke` describes the initial attack; optional `assessSustain` measures audible duration. Rests and chord events cannot carry this metadata.
+
+```yaml
+- id: natural-third
+  kind: note
+  startTick: 0
+  durationTicks: 1920
+  positions: [{string: 3, fret: 7}]
+  harmonic: {kind: natural, partial: 3}
+- id: touched-octave
+  kind: note
+  startTick: 1920
+  durationTicks: 1920
+  positions: [{string: 3, fret: 5}]
+  harmonic: {kind: artificial, partial: 2}
+```
+
+In E Standard these sound approximately D5 and C5. The first target is the open G3 frequency multiplied by three, rather than stopped-fret D4. The third partial is about 1.955 cents above its equal-tempered MIDI label; Domain supplies that exact ideal multiplier to both synthesized reference and assessment. A real string's node may lie slightly away from its fret landmark. Artificial bases must be frets 1–12, with a second physical touch at base +12; both must fit the instrument and chosen region.
+
+Natural nodes retain their physical locations under `fretPattern`, deriving the sound from each tuned open string, including Drop's sixth string. Under `transposeIntervals`, an unchanged node must produce the intended transposed pitch or the activity is unavailable; it is never moved as an ordinary stopped note. Artificial octave bases can be relocated while preserving the sounding pitch with the linked +12 touch bound. `windowFrets: 13` can include both positions and describes a two-hand region, not a one-hand stretch. Named-fingering sources from an exercise containing harmonics are rejected in this first contract, preventing a fingering projection from discarding harmonic metadata.
+
+TAB uses angle brackets for a natural touch and an ordinary base with the touched fret above it for artificial harmonics. Staff uses sounding pitches and diamond heads; N.H./A.H. identify the authored type. The fretboard uses distinct touch diamonds and explicit base/touch targets. Text `sequence`/`notes` describes the audible pitches, while `positions` describes physical touch/stop roles. Lesson 94 (`harmonics`) demonstrates six progressive activities, including an artificial octave relocation whose higher region is unavailable on short necks.
+
+The score checks audible monophonic pitch, onset and optionally sustain within the existing capability envelope. It does not detect the hand, node, string, pinch gesture or harmonic timbre. Physical execution and unwanted strings remain self-checks. The reference is synthesized, not a recorded harmonic demonstration. Harmonic attempts opt into `mono-capability-7`, `monophonic-assessment-8` and `file-coach-10`; ordinary events omit the new field and preserve prior encoding/versions. Stored exact targets are validated and never silently regraded.
