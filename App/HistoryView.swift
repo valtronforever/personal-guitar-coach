@@ -82,10 +82,11 @@ struct HistoryView: View {
             } else { Text("result.savedExercise").font(.headline) }
             Text(record.startedAt, format: .dateTime.year().month().day().hour().minute()).foregroundStyle(.secondary)
             HStack { TuningName(profile: record.instrument.tuning); Text("practice.selectedTempo \(Int(record.bpm))"); Text("result.fretCount \(record.instrument.fretCount)") }
+            if record.exercise.assessmentMode == .rhythmOnly { Text("rhythmOnly.title").font(.caption) }
             if let score = record.result.payload.overallScore {
                 Text("history.score \(Int(score.rounded()))").font(.title3.bold())
             } else {
-                Text(LocalizedStringKey("history.validity." + record.result.payload.validity.rawValue))
+                Text(LocalizedStringKey(record.exercise.assessmentMode == .rhythmOnly && record.result.payload.validity == .uncalibrated ? "rhythmOnly.uncalibrated" : "history.validity." + record.result.payload.validity.rawValue))
                 if let pitch = record.result.payload.pitchScore { Text("history.pitchScore \(Int(pitch.rounded()))") }
             }
         }.padding(.vertical, 8).accessibilityElement(children: .combine)

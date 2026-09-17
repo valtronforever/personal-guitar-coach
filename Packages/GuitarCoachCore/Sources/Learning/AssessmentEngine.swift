@@ -5,8 +5,10 @@ public enum AssessmentEngine {
     /// Bounded dynamic programming: pitch never changes the assignment of an attack to a note.
     public static func evaluate(_ evidence: PracticeEvidence) throws -> AssessedPractice {
         let config = evidence.configuration
+        let rhythmOnly = config.exercise.assessmentMode == .rhythmOnly
         let parameters: AssessmentParameters
-        if config.selectedEvents.contains(where: { $0.harmonic != nil }) { parameters = .withHarmonics }
+        if rhythmOnly { parameters = .rhythmOnly }
+        else if config.selectedEvents.contains(where: { $0.harmonic != nil }) { parameters = .withHarmonics }
         else if config.selectedEvents.contains(where: { $0.legatoChain != nil }) { parameters = .withLegatoChains }
         else if config.selectedEvents.contains(where: { $0.vibrato != nil }) { parameters = .withVibrato }
         else if config.selectedEvents.contains(where: { $0.pitchTransition != nil }) { parameters = .withPitchTransitions }
@@ -57,9 +59,11 @@ public enum AssessmentEngine {
             let uncertainDuration = evidence.uncertainSignal.reduce(0.0) { total, span in
                 total + max(0, min(qualityEnd, span.interval.end - offset) - max(qualityStart, span.interval.start - offset))
             }
-            let uncertain = clipped || (attack.map { !$0.reliable } ?? (uncertainDuration >= 0.1))
+            let uncertain = rhythmOnly
+                ? clipped || rhythmUncertain(evidence, attack: attack, start: qualityStart + offset, end: qualityEnd + offset)
+                : clipped || (attack.map { !$0.reliable } ?? (uncertainDuration >= 0.1))
             let cents: Double?
-            if !uncertain, let frequency = attack?.frequency {
+            if !rhythmOnly, !uncertain, let frequency = attack?.frequency {
                 // Subtract logarithms to keep very small finite input frequencies from underflowing a ratio.
                 cents = 1200 * (log2(frequency) - log2(frequencies[i]))
             } else { cents = nil }
@@ -70,7 +74,7 @@ public enum AssessmentEngine {
                 centsError: cents, timingErrorSeconds: timing, uncertain: uncertain))
         }
         let extras = try attacks.indices.filter { !used.contains($0) }.map {
-            try AssessedExtra(id: attacks[$0].id, restID: restIDs[$0], uncertain: !attacks[$0].reliable)
+            try AssessedExtra(id: attacks[$0].id, restID: restIDs[$0], uncertain: rhythmOnly ? rhythmUncertain(evidence, attack: attacks[$0], start: attacks[$0].normalizedOnset, end: attacks[$0].normalizedOnset + 0.125) : !attacks[$0].reliable)
         }
         let unscoredMotionIDs = evidence.bendObservationIDs(notes: notes).union(evidence.pitchTransitionObservationIDs(notes: notes)).union(evidence.vibratoObservationIDs(notes: notes)).union(evidence.legatoChainObservationIDs(notes: notes))
         let scoredExtras = extras.filter { !unscoredMotionIDs.contains($0.id) }
@@ -88,10 +92,11 @@ public enum AssessmentEngine {
         else if chains != nil && chains?.score == nil { validity = .insufficientSignal }
         else if vibrato != nil && vibrato?.score == nil { validity = .insufficientSignal }
         else if sustain != nil && sustain?.score == nil { validity = .insufficientSignal }
+        else if rhythmOnly && evidence.pitchContour == nil { validity = .insufficientSignal }
         else if Double(uncertain) / Double(expected.count) > parameters.uncertaintyFraction { validity = .insufficientSignal }
         else { validity = capability.allowsTiming ? .valid : .uncalibrated }
         let pitch = 100 * pitchPoints / Double(expected.count), rhythm = 100 * rhythmPoints / Double(expected.count)
-        let attackScore = parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
+        let attackScore = rhythmOnly ? rhythm : parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
         let movingScore: Double?
         if transitions != nil || vibrato != nil || chains != nil {
             let scores = (bends?.notes.compactMap(\.score) ?? []) + (transitions?.notes.compactMap(\.score) ?? []) + (vibrato?.notes.compactMap(\.score) ?? []) + (chains?.notes.compactMap(\.score) ?? [])
@@ -103,8 +108,26 @@ public enum AssessmentEngine {
         return try AssessedPractice(evidence: evidence, parameters: parameters, validity: validity, rhythmCapability: capability,
             rhythmToleranceSeconds: tolerance, notes: notes, extras: extras,
             overallScore: validity == .valid ? overall : nil,
-            pitchScore: validity == .valid || validity == .uncalibrated ? pitch : nil,
+            pitchScore: !rhythmOnly && (validity == .valid || validity == .uncalibrated) ? pitch : nil,
             timingScore: validity == .valid ? rhythm : nil, sustain: sustain, bends: bends, pitchTransitions: transitions, vibrato: vibrato, legatoChains: chains)
+    }
+
+    /// The onset detector supplies timestamps; independent periodic windows reject noise.
+    /// These windows do not constitute a settled, per-attack note/pitch measurement.
+    private static func rhythmUncertain(_ evidence: PracticeEvidence, attack: PracticeAttack?, start: Double, end: Double) -> Bool {
+        guard let trace = evidence.pitchContour, end > start else { return true }
+        let upper = min(end, start + 0.125)
+        let frames = trace.frames.filter { $0.normalizedTime >= start && $0.normalizedTime < upper }
+        guard frames.count >= 2 else { return true }
+        if evidence.clipping.contains(where: { $0.start < upper && $0.end >= start }) { return true }
+        if attack == nil { return frames.contains { $0.state == .uncertain } }
+        let periodic = frames.compactMap { $0.state == .pitched ? $0.frequency : nil }
+        // Two periodic frames, within the tested register and mutually consistent, permit
+        // timing only. No target-frequency comparison or invented cents value occurs.
+        return !zip(periodic, periodic.dropFirst()).contains { a, b in
+            (110 / pow(2, 1.0 / 12)...440 * pow(2, 1.0 / 12)).contains(a) && (110 / pow(2, 1.0 / 12)...440 * pow(2, 1.0 / 12)).contains(b)
+                && abs(1200 * log2(a / b)) <= 100
+        }
     }
 
     private static func align(expected: [Double], observed: [Double], radii: [Double], restIDs: [String?]) -> [Int?] {

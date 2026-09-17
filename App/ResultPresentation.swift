@@ -26,6 +26,7 @@ enum ResultAnnotation: String, CaseIterable {
 
 enum ResultPresentation {
     static func annotations(_ result: AssessedPractice) -> [String: ResultAnnotation] {
+        if result.evidence.configuration.exercise.assessmentMode == .rhythmOnly && result.validity == .uncalibrated { return [:] }
         let graded = result.validity == .valid || result.validity == .uncalibrated
         var annotations: [String: ResultAnnotation] = [:]
         let sustain = Dictionary(uniqueKeysWithValues: (result.sustain?.notes ?? []).map { ($0.id, $0) })

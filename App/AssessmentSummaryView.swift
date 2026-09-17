@@ -6,15 +6,16 @@ struct AssessmentSummaryView: View {
     var body: some View {
         GroupBox {
             VStack(alignment: .leading, spacing: 10) {
-                Text(LocalizedStringKey("assessment.validity." + result.validity.rawValue)).font(.headline)
+                Text(LocalizedStringKey(result.evidence.configuration.exercise.assessmentMode == .rhythmOnly && result.validity == .uncalibrated ? "rhythmOnly.uncalibrated" : "assessment.validity." + result.validity.rawValue)).font(.headline)
                     .accessibilityIdentifier("assessment.validity")
+                if result.evidence.configuration.exercise.assessmentMode == .rhythmOnly { Text("rhythmOnly.explanation").font(.callout).accessibilityIdentifier("assessment.rhythmOnly") }
                 if let conditions = result.evidence.configuration.listeningConditions {
                     Label(LocalizedStringKey(conditions.usedHiddenTargets ? "listening.resultHidden" : "listening.guided"), systemImage: conditions.usedHiddenTargets ? "ear" : "eye")
                     Text("listening.resultLimits").font(.caption).foregroundStyle(.secondary)
                 }
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 110), alignment: .leading)], alignment: .leading, spacing: 16) {
                     metric("assessment.overall", result.overallScore)
-                    metric("assessment.pitch", result.pitchScore)
+                    if result.evidence.configuration.exercise.assessmentMode != .rhythmOnly { metric("assessment.pitch", result.pitchScore) }
                     metric("assessment.rhythm", result.timingScore)
                     if result.legatoChains != nil { metric("legato.score", result.legatoChainScore) }
                     if result.pitchTransitions != nil { metric("transition.score", result.pitchTransitionScore) }

@@ -25,7 +25,7 @@ public struct PracticeEvidenceCollector: Sendable {
         lastEvent = baseline.totalEvents; lastSpan = baseline.totalQualitySpans
         collectsSustain = configuration.selectedEvents.contains(where: \.assessSustain)
         lastSustainFrame = baseline.sustainTrace?.totalFrames ?? 0
-        collectsContour = configuration.selectedEvents.contains { $0.bend != nil || $0.pitchTransition != nil || $0.vibrato != nil || $0.legatoChain != nil }
+        collectsContour = configuration.exercise.assessmentMode == .rhythmOnly || configuration.selectedEvents.contains { $0.bend != nil || $0.pitchTransition != nil || $0.vibrato != nil || $0.legatoChain != nil }
         lastContourFrame = baseline.pitchContour?.totalFrames ?? 0
     }
 

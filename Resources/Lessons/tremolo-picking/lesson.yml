@@ -1,6 +1,6 @@
 schemaVersion: 3
 id: tremolo-picking
-version: 1
+version: 2
 difficulty: intermediate
 topic: technique
 steps:
@@ -450,12 +450,12 @@ exercises:
         kind: rest
         positions: []
   - id: tremolo-picking-fast-short
-    version: 1
+    version: 2
     ppq: 960
     timeSignature: 4/4
     defaultBPM: 80
     minimumBPM: 40
-    maximumBPM: 160
+    maximumBPM: 100
     tuningPolicy: fixedTuning
     requiredTuning:
       id: standard
@@ -481,7 +481,7 @@ exercises:
         - number: 6
           openPitch:
             midi: 40
-    assessmentMode: displayOnly
+    assessmentMode: rhythmOnly
     events:
       - id: event-1
         startTick: 0
@@ -593,12 +593,12 @@ exercises:
         kind: rest
         positions: []
   - id: tremolo-picking-fast-long
-    version: 1
+    version: 2
     ppq: 960
     timeSignature: 4/4
     defaultBPM: 80
     minimumBPM: 40
-    maximumBPM: 160
+    maximumBPM: 100
     tuningPolicy: fixedTuning
     requiredTuning:
       id: standard
@@ -624,7 +624,7 @@ exercises:
         - number: 6
           openPitch:
             midi: 40
-    assessmentMode: displayOnly
+    assessmentMode: rhythmOnly
     events:
       - id: event-1
         startTick: 0
@@ -1208,6 +1208,12 @@ practiceEntries:
   - id: measured-bursts
     activityID: measured-bursts
     exerciseID: tremolo-picking-measured-bursts
+  - id: fast-short
+    activityID: fast-short
+    exerciseID: tremolo-picking-fast-short
+  - id: fast-long
+    activityID: fast-long
+    exerciseID: tremolo-picking-fast-long
 fingerings: []
 learningTasks:
   - id: burst-review

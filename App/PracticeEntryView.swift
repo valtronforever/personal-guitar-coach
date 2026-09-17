@@ -52,6 +52,7 @@ struct PracticeEntryView: View {
                     DisclosureGroup("practice.options", isExpanded: $showsOptions) {
                         options(request.exercise).padding(.top, 10)
                     }
+                    if request.exercise.assessmentMode == .rhythmOnly { Label("rhythmOnly.title", systemImage: "metronome"); Text("rhythmOnly.explanation").font(.callout) }
                     status
                     if exceedsFretCount { Label("practice.error.fretCount", systemImage: "exclamationmark.triangle").foregroundStyle(.secondary) }
                     if model.isListeningPractice { listeningControls }
