@@ -890,7 +890,8 @@ lessons:
       uk: Система CAGED
     outcomeUK: Пов’язати форми акордів із ділянками грифа
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 76
     moduleID: harmony
     lessonID: triad-inversions
@@ -899,7 +900,8 @@ lessons:
       uk: Обернення тризвуків
     outcomeUK: Зіграти один акорд із різними нижніми нотами
     originalAssessment: Н+С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 77
     moduleID: harmony
     lessonID: seventh-chords

@@ -152,3 +152,7 @@ Compound/odd-meter follow-up — pending_user: read the named BPM unit and compa
 ### Full-barre course topics 73–74
 
 Pending user: read the major/minor forms in English and Ukrainian in the native Release app; confirm step selection, root labels and all string/finger markers remain readable at the minimum window size and with VoiceOver. Compare Standard and Drop sixth-string adaptation. Try the complete chords comfortably, and separately run the six monophonic string checks through the interface using a clean sound. Check that self-reported chord/barre observations remain distinct from measured note/timing scores. Synthetic and content tests cannot establish physical comfort, actual barre use or clean simultaneous chords.
+
+### CAGED and inversion course topics 75–76
+
+Pending user: verify native en/uk family/inversion labels, step-to-map transitions and VoiceOver reading. In Drop, inspect the complete G-family sequence map, then select its upper-four-string fragment; the map must not imply a simultaneously playable six-string grip. Try the five CAGED string checks and three inversion checks/two transition phrases on a clean interface signal. Confirm that the root label remains the harmonic root even when the bass is a fifth or third. Physical comfort and clean simultaneous triads are self-observations, not audio-verified outcomes.

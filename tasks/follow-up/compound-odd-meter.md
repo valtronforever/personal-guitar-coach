@@ -1,6 +1,6 @@
 # Compound and odd meter / tempo pulse
 
-Status: `in_progress`
+Status: `pending_user`
 
 Part of the authorized full curriculum, topics 68 and 71. Add explicit meter/pulse semantics, not only additional time-signature labels. 3/4 and 4/4 retain their historical quarter-note BPM. 6/8 and 12/8 use dotted-quarter BPM; 5/4 uses quarter BPM; 7/8 uses eighth-note BPM and grouped emphasis. Music stays at PPQ 960; no duplicated per-note seconds.
 
@@ -19,4 +19,4 @@ Author substantive bilingual 6/8–12/8 comparison and 5/4–7/8 grouping lesson
 
 ## Implemented and verified
 
-TimeSignature pulse/group contracts, musical-time consumers, transport, notation, UI labels, coach version 4 and two bilingual lessons are implemented. The [same-agent review](../../docs/reviews/compound-odd-meter-review.md) records 269 Core /149 App tests, the final 13-test render/timeline/coach run, content and localization checks, independent sample/musical goldens and deferred native/hardware acceptance. The signed 75-bundle Release/archive and XPC checks pass, with hashes recorded in the review. Exact-head CI/merge remains open; hardware/native acceptance is deferred.
+TimeSignature pulse/group contracts, musical-time consumers, transport, notation, UI labels, coach version 4 and two bilingual lessons are implemented. The [same-agent review](../../docs/reviews/compound-odd-meter-review.md) records 269 Core /149 App tests, the final 13-test render/timeline/coach run, content and localization checks, independent sample/musical goldens and deferred native/hardware acceptance. The signed 75-bundle Release/archive and XPC checks pass, with hashes recorded in the review. PR #79 merged after exact-head CI 35170881942 passed on 27da78cf2b360359852e59e0120c9eba819d1fd9. Hardware/native acceptance remains deferred.

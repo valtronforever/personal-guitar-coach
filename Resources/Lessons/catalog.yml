@@ -77,6 +77,8 @@ lessons:
   - odd-meters
   - major-barre-chords
   - minor-barre-chords
+  - caged
+  - triad-inversions
 modules:
   - id: getting-started
     order: 1

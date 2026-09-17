@@ -1,0 +1,152 @@
+lessonID: caged
+lessonVersion: 1
+locale: en
+title: 'CAGED: connect five major-chord families'
+summary: >-
+  Follow one major harmony through five reference shapes and use practical fragments to connect regions of the neck.
+goal: Locate repeated roots and chord tones across C–A–G–E–D without confusing a shape name with the sounding chord.
+body: |-
+  CAGED is an ordered map of five familiar major-chord families: C, A, G, E and D. Their letters describe reference fingerings. They do not prescribe five different sounding chords. In this lesson the harmony stays the same while the voicing and neck region change. Read the current harmonic root in the activity; your selected Standard tuning transposes the examples together, and Drop adapts the sixth-string contact.
+
+  Begin with the C-family form near the nut. Find its lowest root on string 5, then the higher root on string 2. The following A-family form shares that string-5 root at fret 3 in the reference fingering. Its upper notes are arranged differently. Play both string checks and listen for a common major character even though the top note changes. These are different voicings of one harmony, not exact-pitch copies moved to another string.
+
+  The G-family map covers the next region. Find the repeated roots on strings 6, 3 and 1. Inspect the complete map, but do not force the whole grip: the graded example uses only strings 4–1. Its lowest sounding note is the fifth, while the chord root remains the same. This is a useful fragment of the map rather than a different chord family. In Drop, the full-map bass may be further from the inner notes; the fragment avoids that reach.
+
+  The E-family form shares the reference root on string 6 at fret 8 with the G-family map. Compare the inner thirds and fifths, then find the octave root on string 4. That string-4 root at fret 10 becomes the lowest note of the D-family form. The D-family chord uses only four strings and sits higher in register, yet its pitch classes are still root, major third and perfect fifth. Choose the displayed partial voicing instead of insisting on six strings every time.
+
+  After the five families, the pattern repeats an octave higher when the neck has room. You do not need to learn every full grip at once. First recognize the root anchors and small groups of chord tones, then connect neighboring regions. Work through C→A, G-fragment→E and E→D slowly; select each step to compare its markers and name the unchanged harmonic root.
+
+  For the timed checks, play one string per click and stop the preceding sound. Outside scored practice, try comfortable complete or partial voicings and compare their color. A single-note score cannot establish that a full shape was held. The goal is a connected map of harmony, not endurance in the widest grip.
+steps:
+  prepare:
+    title: One harmony, five reference families
+    body: >-
+      Start with a clean sound and locate the displayed harmonic root. In each form, distinguish its family letter
+      from the chord you hear. Follow the adapted markers, especially on string 6 in Drop.
+  review:
+    title: Connect neighboring regions
+    body: >-
+      Without the timer, compare C→A, the G fragment→E, and E→D. Find the shared root anchor or its octave before
+      playing. Use only comfortable fragments and describe which upper voice changes while the harmony stays the
+      same.
+  c-family-shape:
+    title: 'C-family: roots near the nut'
+    body: >-
+      Harmonic root: {{root}}. Find the root on string 5 and its octave on string 2. Strings 3 and 1 are open in
+      the reference form; string 6 is silent. Check {{positions}}, then notice the top chord tone before the A-family
+      comparison.
+  c-family-notes:
+    title: '{{root}} major — C-family (string check)'
+    body: >-
+      Play the displayed strings low to high, one per click at 50 BPM. Stop the previous sound before the next attack,
+      then count the written rests to finish two bars. Use the shown complete or partial voicing; a score checks
+      separate pitches and timing, not a held chord shape. {{positions}}.
+  a-family-shape:
+    title: 'A-family: keep the fifth-string root'
+    body: >-
+      Harmonic root: {{root}}. The string-5 root stays at the same reference fret as the preceding C-family form;
+      the upper voices change. Keep string 6 silent and compare the new top note. {{positions}}.
+  a-family-notes:
+    title: '{{root}} major — A-family (string check)'
+    body: >-
+      Play the displayed strings low to high, one per click at 50 BPM. Stop the previous sound before the next attack,
+      then count the written rests to finish two bars. Use the shown complete or partial voicing; a score checks
+      separate pitches and timing, not a held chord shape. {{positions}}.
+  g-family-map-shape:
+    title: 'G-family: inspect the complete map'
+    body: >-
+      Harmonic root: {{root}}. Locate its repetitions on strings 6, 3 and 1. {{positions}}. This complete map is
+      for orientation; do not force a broad simultaneous grip. The next activity uses its upper four strings for
+      practice. The note map shows successive targets, not one required simultaneous grip; preview plays them separately.
+  g-family-fragment-shape:
+    title: Use the upper G-family fragment
+    body: >-
+      The harmonic root is still {{root}}, even though the lowest sounding note is its fifth. Play only strings
+      4–1 and keep strings 6 and 5 silent. The roots lie inside and at the top of the fragment: {{positions}}. This
+      is a practical part of the preceding map.
+  g-family-fragment-notes:
+    title: '{{root}} major — G-family fragment (string check)'
+    body: >-
+      Play the displayed strings low to high, one per click at 50 BPM. Stop the previous sound before the next attack,
+      then count the written rests to finish two bars. Use the shown complete or partial voicing; a score checks
+      separate pitches and timing, not a held chord shape. {{positions}}.
+  e-family-shape:
+    title: 'E-family: share the sixth-string root'
+    body: >-
+      Harmonic root: {{root}}. Compare the string-6 root with the G-family map, then find its octave on string 4.
+      The inner arrangement changes to the E-family form. Follow {{positions}}; Drop may change the bass contact
+      and remove the reference finger suggestions.
+  e-family-notes:
+    title: '{{root}} major — E-family (string check)'
+    body: >-
+      Play the displayed strings low to high, one per click at 50 BPM. Stop the previous sound before the next attack,
+      then count the written rests to finish two bars. Use the shown complete or partial voicing; a score checks
+      separate pitches and timing, not a held chord shape. {{positions}}.
+  d-family-shape:
+    title: 'D-family: the fourth-string root'
+    body: >-
+      Harmonic root: {{root}}. The root on string 4 matches the corresponding octave in the E-family form. Use only
+      strings 4–1 and keep the bass strings silent. {{positions}}. Hear the higher register while retaining the
+      same major harmony.
+  d-family-notes:
+    title: '{{root}} major — D-family (string check)'
+    body: >-
+      Play the displayed strings low to high, one per click at 50 BPM. Stop the previous sound before the next attack,
+      then count the written rests to finish two bars. Use the shown complete or partial voicing; a score checks
+      separate pitches and timing, not a held chord shape. {{positions}}.
+  question:
+    title: What do the CAGED letters name?
+    body: Compare the chord-tone roles before answering.
+activities:
+  c-family-shape:
+    title: '{{root}} major — C-family (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  c-family-notes:
+    title: '{{root}} major — C-family (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  a-family-shape:
+    title: '{{root}} major — A-family (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  a-family-notes:
+    title: '{{root}} major — A-family (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  g-family-map-shape:
+    title: '{{root}} major — G-family note map'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  g-family-fragment-shape:
+    title: '{{root}} major — G-family fragment (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  g-family-fragment-notes:
+    title: '{{root}} major — G-family fragment (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  e-family-shape:
+    title: '{{root}} major — E-family (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  e-family-notes:
+    title: '{{root}} major — E-family (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+  d-family-shape:
+    title: '{{root}} major — D-family (shape)'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  d-family-notes:
+    title: '{{root}} major — D-family (string check)'
+    body: Play every target separately, then release. {{sequence}}.
+learningTasks:
+  question:
+    title: What do the CAGED letters name?
+    body: All five families in this lesson use the same displayed harmonic root. Why do their names differ?
+    items:
+      families: The letters name reference shapes; different voicings can keep the same harmony.
+      keys: Each letter requires changing to a new concert-pitch chord.
+      bass: Every fragment must begin with the harmonic root as its lowest note.
+    explanation: >-
+      CAGED labels fingerboard families. Their root positions let you place each family in the same harmony. Octave
+      placement, doubled tones and the lowest sounding chord tone may change without changing the triad.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      roots: I found the shared string-5 root in C/A and the shared string-6 root in G/E.
+      fourth: I connected the string-4 octave root in E to the lowest note of D.
+      fragment: I tried the upper G-family fragment without forcing the complete map into one grip.
+      harmony: I distinguished the unchanged harmonic root from changing bass or top voices.
