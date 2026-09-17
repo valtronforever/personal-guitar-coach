@@ -32,8 +32,11 @@ struct LegatoChainReferenceTests {
                 // Independent accumulated areas for C4→Eb4→G4→C4, including nonzero phase at the return.
                 for seconds in [0.5, 1.25, 2.25, 3.25, 4.5] {
                     let index = Int64(rate * seconds), time = Double(index) / rate
-                    let phase = min(time, 1) + min(max(0, time - 1), 1) * pow(2, 3.0 / 12)
-                        + min(max(0, time - 2), 1) * pow(2, 7.0 / 12) + max(0, time - 3)
+                    let initial: Double = min(time, 1.0)
+                    let third: Double = min(max(0.0, time - 1.0), 1.0) * pow(2.0, 3.0 / 12.0)
+                    let fifth: Double = min(max(0.0, time - 2.0), 1.0) * pow(2.0, 7.0 / 12.0)
+                    let returned: Double = max(0.0, time - 3.0)
+                    let phase: Double = initial + third + fifth + returned
                     let sample = try #require(plan.render(startFrame: index, count: 1).first)
                     #expect(abs(Double(sample) - sin(2 * .pi * 261.6255653005986 * phase) * 0.1) < 1e-6)
                 }
