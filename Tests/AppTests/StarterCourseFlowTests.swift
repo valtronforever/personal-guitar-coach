@@ -10,7 +10,7 @@ import Audio
     @Test func EachBundledLessonConnectsTextVisualsPracticeSavedResultAndRetry() async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.issues.isEmpty && library.lessons.count == 109)
+        #expect(library.issues.isEmpty && library.lessons.count == 110)
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), assessment = AssessmentStore(repository: repository)
