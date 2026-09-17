@@ -29,3 +29,6 @@ Logs: `/tmp/rapid-{core-regression,contracts-final,app-verified,content-final,au
 
 
 CI portability fix: run35207416758 stopped during package compilation because the runner Swift compiler could not type-check the nested zip/contains/pow/range expression within its time budget. Replace that expression with explicitly typed bounds and a simple adjacent-frame loop; the signal-quality contract is unchanged. Repeat focused tests and the root Release, then require a fresh exact-head CI run. This is a compiler failure, not evidence of a passed CI or hardware check.
+
+
+Portability-fix verification: final focused Learning contracts/tremolo2 tests passed2.177s and rapid PCM3 tests passed106.351s with unchanged assertions. Root Release/archive rebuilt; content134 bundles and signed sandbox→XPC probe pass. Latest binary SHA-256 `59ffe9fc33bc22e2f73a2ee3463ce2c4bd9a4b8018b12e0d5e97a1fc829eae23`; archive `dbf58373ae26a90bdd4750b1c673260f0143103a2bdc6717f3f4aa97c5a457c3`. The benchmark JSON is updated; earlier hashes above are historical. Logs: `/tmp/rapid-portable-{focused,release,bundle,xpc}.log`. The failed CI run is superseded only after a fresh exact-head run passes.

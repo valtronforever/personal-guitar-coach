@@ -3,9 +3,9 @@
   "architectures": [
     "arm64"
   ],
-  "archiveSHA256": "73ee22f46a153c4c3b6950dbd9ee15bd53231313d0b67d2e7f71f06f879a198e",
+  "archiveSHA256": "dbf58373ae26a90bdd4750b1c673260f0143103a2bdc6717f3f4aa97c5a457c3",
   "archiveVerified": true,
-  "binarySHA256": "81dce547c074614ee29be4c22d456f31faa5c84814e676c6f740c545f2a7cb31",
+  "binarySHA256": "59ffe9fc33bc22e2f73a2ee3463ce2c4bd9a4b8018b12e0d5e97a1fc829eae23",
   "build": "1",
   "configuration": "release",
   "entitlements": {
