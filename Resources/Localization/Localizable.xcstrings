@@ -6206,13 +6206,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Some selected notes are outside the supported pitch or duration range. Reduce the tempo or choose another fragment."
+            "value": "Some targets are outside the supported pitch, duration or technique limits. Choose a supported tempo or another fragment."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Деякі вибрані ноти виходять за підтримувану висоту або тривалість. Зменште темп або виберіть інший фрагмент."
+            "value": "Деякі цілі виходять за підтримувані межі висоти, тривалості або техніки. Виберіть підтримуваний темп чи інший фрагмент."
           }
         }
       }
@@ -14797,13 +14797,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Play the initial note once, hold its pitch, then apply vibrato for the marked interval and return to the base pitch. Use a clean input. The wavy mark indicates vibrato; the curve and lesson describe its width and rate."
+            "value": "Play the initial note once, hold its pitch, then apply vibrato for the marked interval and return to the base pitch. Use a clean input. The wavy mark indicates vibrato; the curve and lesson describe its width and rate. Measurement supports 30–100 cents, 1–3 cycles/second and at least four cycles, with at least 0.4 seconds of stable pitch before and after."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Зіграйте початкову ноту один раз, утримайте її висоту, виконайте вібрато в позначеному проміжку й поверніться до початкової висоти. Використовуйте чистий сигнал. Хвиляста лінія позначає вібрато; ширину й швидкість описано на кривій та в уроці."
+            "value": "Зіграйте початкову ноту один раз, утримайте її висоту, виконайте вібрато в позначеному проміжку й поверніться до початкової висоти. Використовуйте чистий сигнал. Хвиляста лінія позначає вібрато; ширину й швидкість описано на кривій та в уроці. Вимірювання підтримує 30–100 центів, 1–3 коливання/с і щонайменше чотири цикли, із принаймні 0,4 с стабільної висоти до та після."
           }
         }
       }
