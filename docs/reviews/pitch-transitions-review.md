@@ -41,3 +41,5 @@ Complete core verification finished successfully: 23 Persistence, 118 Learning, 
 Root-only Release/archive build passes. [Bundle audit](../benchmarks/pitch-transitions-release-bundle.json) confirms 86 lesson bundles /259 YAML files, both localizations, offline resources, arm64 macOS 14 minimum, ad-hoc signature, hardened runtime and expected sandbox entitlements. Binary SHA256: `a267f60182257e747f8b891adaad34d0780133fc48ef73becd250344167e40bd`; archive SHA256: `3a511f0bc3633a13a26c55076b05d1effbe40309c8734714536144a607bfe439`.
 
 Signed sandbox→separate XPC→invalidRequest passes; no AI provider was called. No local Debug app was built. App launch/hardware remain unverified. Exact-head CI/merge is the remaining delivery gate; all other curriculum work remains active.
+
+CI35177204960 passed all checks at exact head4339b51b2acabc052c5e799c160a7eb1e9e08785 (24m58s); PR83 merged2026-09-17. This does not replace pending real-instrument acceptance.

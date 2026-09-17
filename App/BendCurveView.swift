@@ -11,18 +11,25 @@ struct BendCurveView: View {
     var baseFrequency: Double? = nil
     var localizationBundle: Bundle = .main
 
-    private var targetPoints: [(tick: Int64, cents: Double)] {
-        if let bend = event.bend { return bend.points(durationTicks: event.durationTicks).map { ($0.tick, $0.cents) } }
+    private var targetPoints: [(tick: Double, cents: Double)] {
+        if let bend = event.bend { return bend.points(durationTicks: event.durationTicks).map { (Double($0.tick), $0.cents) } }
         if let transition = event.pitchTransition {
-            return [(0, 0), (transition.startTick, 0), (transition.endTick, Double(transition.semitones * 100)), (event.durationTicks, Double(transition.semitones * 100))]
+            return [(0, 0), (Double(transition.startTick), 0), (Double(transition.endTick), Double(transition.semitones * 100)), (Double(event.durationTicks), Double(transition.semitones * 100))]
+        }
+        if let vibrato = event.vibrato {
+            let count = Int(min(2048, max(64, Double(vibrato.cycles) * 32)))
+            return [(0, 0)] + (0...count).map { index in
+                let tick = Double(vibrato.startTick) + Double(vibrato.endTick - vibrato.startTick) * Double(index) / Double(count)
+                return (tick, vibrato.cents(at: tick))
+            } + [(Double(event.durationTicks), 0)]
         }
         return []
     }
-    private var targetCents: Double { Double((event.bend?.semitones ?? event.pitchTransition?.semitones ?? 0) * 100) }
+    private var targetCents: Double { Double(event.vibrato?.extentCents ?? ((event.bend?.semitones ?? event.pitchTransition?.semitones ?? 0) * 100)) }
     var body: some View {
         if !targetPoints.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text(LocalizedStringKey(event.pitchTransition == nil ? "bend.curveTitle" : "transition.curveTitle"), bundle: localizationBundle).font(.headline)
+                Text(LocalizedStringKey(event.vibrato != nil ? "vibrato.curveTitle" : event.pitchTransition == nil ? "bend.curveTitle" : "transition.curveTitle"), bundle: localizationBundle).font(.headline)
                 HStack(spacing: 20) {
                     Label { Text("bend.expected", bundle: localizationBundle) } icon: { Image(systemName: "line.diagonal") }.foregroundStyle(.secondary)
                     if normalizedStart != nil { Label { Text("bend.observed", bundle: localizationBundle) } icon: { Image(systemName: "waveform.path") }.foregroundStyle(Color.accentColor) }
@@ -82,6 +89,10 @@ struct BendCurveView: View {
                     Text(LocalizedStringKey("transition.kind." + transition.kind.rawValue), bundle: localizationBundle).font(.caption)
                     Text("transition.curveExplanation", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
                 }
+                if let vibrato = event.vibrato {
+                    Text("vibrato.targetWidth \(vibrato.extentCents)", bundle: localizationBundle).font(.caption)
+                    Text("vibrato.curveExplanation", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary)
+                }
                 if normalizedStart != nil { Text("bend.traceGaps", bundle: localizationBundle).font(.caption).foregroundStyle(.secondary) }
             }.accessibilityElement(children: .contain)
         }
@@ -136,6 +147,41 @@ struct PitchTransitionResultView: View {
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }.accessibilityIdentifier("transition.result")
+        }
+    }
+}
+
+struct VibratoResultView: View {
+    let result: AssessedPractice
+    let note: VibratoNoteAssessment
+    var body: some View {
+        if let event = result.evidence.configuration.selectedEvents.first(where: { $0.id == note.id }),
+           let assessed = result.notes.first(where: { $0.id == note.id }) {
+            GroupBox("vibrato.resultTitle") {
+                VStack(alignment: .leading, spacing: 12) {
+                    BendCurveView(event: event, bpm: result.evidence.configuration.bpm, pulseTicks: result.evidence.configuration.exercise.timeSignature.pulseTicks,
+                        frames: result.evidence.pitchContour?.frames ?? [], normalizedStart: note.normalizedStart, baseFrequency: assessed.targetFrequency)
+                    if result.vibratoScore != nil {
+                        if let width = note.modulation.widthCents { Text("vibrato.measuredWidth \(Int(width.rounded()))") }
+                        if let rate = note.modulation.rateHz { Text("vibrato.measuredRate \(rate, format: .number.precision(.fractionLength(2)))") }
+                        if let slowest = note.modulation.slowestRateHz, let fastest = note.modulation.fastestRateHz {
+                            Text("vibrato.measuredRateRange \(slowest, format: .number.precision(.fractionLength(2))) \(fastest, format: .number.precision(.fractionLength(2)))")
+                        }
+                        if let variation = note.modulation.periodVariation { Text("vibrato.measuredVariation \(Int((variation * 100).rounded()))") }
+                        Text("vibrato.measuredPeriods \(note.modulation.measuredPeriods)").font(.caption)
+                    }
+                    ForEach(note.phases, id: \.kind) { phase in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(LocalizedStringKey("vibrato.phase." + phase.kind.rawValue)).font(.headline)
+                            if let matched = phase.matchedFraction, result.vibratoScore != nil {
+                                Text("bend.matched \(Int((matched * 100).rounded()))")
+                                if let cents = phase.medianErrorCents { Text("bend.error \(Int(cents.rounded()))") }
+                            } else { Text("bend.unavailable") }
+                            Text("bend.coverage \(Int((phase.silentFraction * 100).rounded())) \(Int((phase.unknownFraction * 100).rounded()))").font(.caption)
+                        }.accessibilityElement(children: .combine)
+                    }
+                }.frame(maxWidth: .infinity, alignment: .leading)
+            }.accessibilityIdentifier("vibrato.result")
         }
     }
 }

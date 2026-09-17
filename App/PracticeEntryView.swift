@@ -137,6 +137,7 @@ struct PracticeEntryView: View {
             }
             Text("practice.stringOrder").font(.caption)
             if exercise.events.contains(where: { $0.pitchTransition != nil }) { Text("transition.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
+            if exercise.events.contains(where: { $0.vibrato != nil }) { Text("vibrato.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: { $0.bend != nil }) { Text("bend.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: \.assessSustain) {
                 Text("practice.sustainRequirement").font(.caption).foregroundStyle(.secondary)

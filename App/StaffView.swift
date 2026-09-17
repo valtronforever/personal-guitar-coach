@@ -127,6 +127,7 @@ struct StaffView: View {
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
             if let bend = symbol.resolved.event.bend { sounding = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, sounding, bend.semitones * 100) }
+            if let vibrato = symbol.resolved.event.vibrato { sounding += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: timeline.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
             if symbol.resolved.event.pitchTransition != nil {
                 sounding += "; " + PitchTransitionPresentation.spoken(event: symbol.resolved, pulseTicks: timeline.pulseTicks,
                     tuning: timeline.tuning, locale: settings.locale, localized: settings.localized)
@@ -280,6 +281,11 @@ struct StaffDrawing {
                 let offset = Double(flag) * (beam.stemsUp ? 7 : -7), stemOffset = beam.stemsUp ? 7.0 : -7.0
                 line(CGPoint(x: x(first) + stemOffset, y: y + offset), CGPoint(x: x(last) + stemOffset, y: y + offset), thickness: 4)
             }
+        }
+        for segment in timeline.segments(in: currentBar) {
+            guard let span = VibratoPresentation.span(segment) else { continue }
+            VibratoPresentation.draw(context: &context, start: leading + timeline.x(tick: span.lowerBound, bar: currentBar, zoom: 1),
+                end: leading + timeline.x(tick: span.upperBound, bar: currentBar, zoom: 1), y: StaffModel.canvasHeight - 46)
         }
         for segment in timeline.segments(in: currentBar) where segment.resolved.event.pitchTransition != nil {
             let event = segment.resolved.event, transition = event.pitchTransition!

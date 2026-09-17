@@ -1,6 +1,6 @@
 # Authored pitch transitions: slides and legato
 
-Status: `in_progress`
+Status: `pending_user`
 
 Part of the full-course objective: implement topics 51–53 (slides, hammer-on, pull-off) with real notation/reference/assessment support, not generic self-check replacements. Topic 56 vibrato remains a separate modulation contract. Use the existing bounded periodic contour and one audio coordinator; no new capture callback work or automatic raw recording.
 
@@ -35,3 +35,5 @@ Targeted checks and review findings are recorded in [same-agent review](../../do
 Complete core suites now pass (291 tests across Persistence/Learning/Domain/Audio/AgentBridge), followed by the additional capability, mixed-score and Drop-bass regressions. Corrected complete App suite passes 155 tests; five final notation/localization/render checks pass after the spoken-language fix. Four Python tests, content/localization/project checks and UI source type-check pass. Signed root-only Release packaging is in progress; no Debug app build or real-interface validation was performed.
 
 Signed root Release/archive and bundle audit pass: 86 lessons /259 YAML, en/uk, arm64 macOS 14, expected sandbox and ad-hoc hardened signature. The separate XPC probe passes without a provider call. [Evidence](../../docs/benchmarks/pitch-transitions-release-bundle.json). Local implementation is reviewable; exact-head CI/merge remains open, with native/hardware validation pending afterward.
+
+Exact-head CI35177204960 passed (24m58s) for4339b51b2acabc052c5e799c160a7eb1e9e08785; PR83 merged2026-09-17. Real-instrument/native user validation remains pending.

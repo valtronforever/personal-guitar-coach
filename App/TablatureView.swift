@@ -101,7 +101,7 @@ struct TablatureView: View {
             }
             Text(LocalizedStringKey(instructionsKey)).font(.caption).foregroundStyle(.secondary)
                 .lineLimit(3).frame(minHeight: 44, alignment: .topLeading)
-            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && ($0.event.bend != nil || $0.event.pitchTransition != nil) })?.event {
+            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && ($0.event.bend != nil || $0.event.pitchTransition != nil || $0.event.vibrato != nil) })?.event {
                 BendCurveView(event: event, pulseTicks: model.pulseTicks)
             }
             if let tick = cursorTick, let bar = model.cursorBar(tick) {
@@ -221,6 +221,7 @@ struct TablatureView: View {
                             .position(x: min(22, width / 2), y: gridTop + (CGFloat(position.string) - 0.5) * rowHeight)
                     }
                 }
+                if event.vibrato != nil { VibratoTabMark(segment: segment, width: width, y: gridTop - 7) }
                 if let annotation = annotations[event.id] {
                     Image(systemName: annotation.symbol).font(.body).frame(width: min(width, 44), height: 22)
                         .offset(y: gridTop + rowHeight * 6).accessibilityHidden(true)
@@ -259,6 +260,7 @@ struct TablatureView: View {
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }
+        if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }
         if event.pitchTransition != nil {
             notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: settings.locale, localized: settings.localized)
         }

@@ -73,20 +73,24 @@ extension PracticeEvidence {
     /// Spectral-flux events inside a bend cannot establish additional pick attacks.
     /// Keep these observations in evidence, but exclude them from extra-attack penalties.
     public func bendObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
-        movingPitchObservationIDs(notes: notes, transitions: false)
+        movingPitchObservationIDs(notes: notes, technique: .bend)
     }
     /// Pitch motion can itself produce spectral flux; these events do not prove a repick.
     public func pitchTransitionObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
-        movingPitchObservationIDs(notes: notes, transitions: true)
+        movingPitchObservationIDs(notes: notes, technique: .transition)
     }
-    private func movingPitchObservationIDs(notes: [AssessedNote], transitions: Bool) -> Set<UInt64> {
+    public func vibratoObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
+        movingPitchObservationIDs(notes: notes, technique: .vibrato)
+    }
+    private enum MotionKind { case bend, transition, vibrato }
+    private func movingPitchObservationIDs(notes: [AssessedNote], technique: MotionKind) -> Set<UInt64> {
         guard let epoch = renderEpochSeconds else { return [] }
         let offset = configuration.calibration?.residualOffsetSeconds ?? 0
         let secondsPerTick = configuration.exercise.timeSignature.secondsPerTick(bpm: configuration.bpm)
         let notesByID = Dictionary(uniqueKeysWithValues: notes.map { ($0.id, $0) })
         let attacksByID = Dictionary(uniqueKeysWithValues: attacks.map { ($0.id, $0) })
         let intervals: [Range<Double>] = configuration.selectedEvents.compactMap { event in
-            guard let changeTick = transitions ? event.pitchTransition?.startTick : event.bend?.riseStartTick,
+            guard let changeTick = technique == .vibrato ? event.vibrato?.startTick : technique == .transition ? event.pitchTransition?.startTick : event.bend?.riseStartTick,
                   let start = try? configuration.route.expectedTime(renderEpochSeconds: epoch,
                     sampleFrame: Int64(((configuration.countInSeconds + Double(event.startTick - configuration.range.lowerBound) * secondsPerTick) * configuration.route.output.sampleRate).rounded())) else { return nil }
             let observedStart = notesByID[event.id]?.attackID.flatMap { attacksByID[$0]?.normalizedOnset } ?? start + offset

@@ -118,6 +118,7 @@ struct PracticeScoreRow: View {
                     Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r"))
                         .font(.system(size: 9 * zoom, weight: .bold)).offset(x: 1, y: 137 * zoom).accessibilityHidden(true)
                 }
+                if event.vibrato != nil { VibratoTabMark(segment: segment, width: width, y: 141 * zoom) }
                 if event.palmMuted {
                     Text(verbatim: "P.M.").font(.system(size: 8 * zoom, weight: .bold))
                         .frame(width: max(1, width - 2), alignment: .leading).lineLimit(1).minimumScaleFactor(0.7)
@@ -179,6 +180,7 @@ struct PracticeScoreRow: View {
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }
+        if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if event.pitchTransition != nil {
             notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) })
         }

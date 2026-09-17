@@ -51,6 +51,7 @@ public struct TransportPlan: Sendable {
     private let events: [ResolvedEvent]
     private let frequencies: [[Double]]
     private let strumOffsets: [[Int64]]
+    private let vibratoReferences: [VibratoReference?]
     private let bendPoints: [[PitchBend.Point]]
     private let silentBeatTicks: Set<Int64>
     private let groupAccents: Set<Int>
@@ -70,6 +71,17 @@ public struct TransportPlan: Sendable {
         let reference = (request.exercise.requiredTuning ?? request.tuning).referenceA4
         frequencies = try events.map { try $0.pitches.map { try $0.frequency(referenceA4: reference) } }
         bendPoints = events.map { $0.event.bend?.points(durationTicks: $0.event.durationTicks) ?? [] }
+        var waveforms: [Int: VibratoWaveform] = [:]
+        vibratoReferences = try events.map { item in
+            guard let vibrato = item.event.vibrato else { return nil }
+            let waveform: VibratoWaveform
+            if let existing = waveforms[vibrato.extentCents] { waveform = existing }
+            else {
+                waveform = try VibratoWaveform(extentCents: vibrato.extentCents)
+                waveforms[vibrato.extentCents] = waveform
+            }
+            return try VibratoReference(vibrato: vibrato, waveform: waveform)
+        }
         strumOffsets = events.map { item in
             guard let pattern = item.event.strum else { return [] }
             let strings = item.event.positions.map(\.string).sorted(by: pattern.direction == .down ? (>) : (<))
@@ -175,7 +187,7 @@ public struct TransportPlan: Sendable {
                     continue
                 }
                 // Muted references keep their decay age when seeking into an existing note.
-                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
+                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil || item.event.vibrato != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
                 for sample in a..<b {
                     let age = Double(sample - toneOnset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))
@@ -186,6 +198,9 @@ public struct TransportPlan: Sendable {
                     } else if let transition = item.event.pitchTransition {
                         let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
                         phaseSeconds = transition.integratedMultiplier(to: age / sampleRate / secondsPerTick, durationTicks: item.event.durationTicks) * secondsPerTick
+                    } else if let reference = vibratoReferences[index] {
+                        let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
+                        phaseSeconds = reference.integratedMultiplier(to: age / sampleRate / secondsPerTick, durationTicks: item.event.durationTicks) * secondsPerTick
                     } else { phaseSeconds = age / sampleRate }
                     let tone = frequencies[index].reduce(0.0) { $0 + sin(2 * .pi * $1 * phaseSeconds) }
                     output[Int(sample - startFrame)] += Float(tone * gain * envelope * (item.event.palmMuted ? exp(-age / (sampleRate * 0.09)) : 1))

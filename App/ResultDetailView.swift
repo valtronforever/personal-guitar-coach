@@ -55,6 +55,9 @@ struct ResultDetailView: View {
                 if let transition = result.pitchTransitions?.notes.first(where: { $0.id == (selectedID ?? result.notes[0].id) }) {
                     PitchTransitionResultView(result: result, note: transition)
                 }
+                if let vibrato = result.vibrato?.notes.first(where: { $0.id == (selectedID ?? result.notes[0].id) }) {
+                    VibratoResultView(result: result, note: vibrato)
+                }
                 if let bend = result.bends?.notes.first(where: { $0.id == (selectedID ?? result.notes[0].id) }) {
                     BendResultView(result: result, note: bend)
                 }
@@ -137,7 +140,7 @@ struct ResultDetailView: View {
             switch advice.kind {
             case .inputLevel: Text("feedback.clippingEvidence \(advice.evidenceCount)")
             case .signal: Text("feedback.signalEvidence \(advice.evidenceCount) \(advice.denominator)")
-            case .early, .late, .missed, .pitch, .tuning, .sustain, .bend, .pitchTransition:
+            case .early, .late, .missed, .pitch, .tuning, .sustain, .bend, .pitchTransition, .vibrato:
                 Text("feedback.noteEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .rests: Text("feedback.restEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .repeatFragment: Text("feedback.repeatEvidence \(advice.denominator)")

@@ -14567,6 +14567,294 @@
           }
         }
       }
+    },
+    "vibrato.score": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vibrato"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вібрато"
+          }
+        }
+      }
+    },
+    "vibrato.curveTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vibrato width and rate"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ширина й швидкість вібрато"
+          }
+        }
+      }
+    },
+    "vibrato.resultTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured vibrato"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряне вібрато"
+          }
+        }
+      }
+    },
+    "vibrato.phase.base": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stable starting note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стабільна початкова нота"
+          }
+        }
+      }
+    },
+    "vibrato.phase.modulation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pitch oscillation"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Коливання висоти"
+          }
+        }
+      }
+    },
+    "vibrato.phase.returned": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Return to the starting note"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повернення до початкової ноти"
+          }
+        }
+      }
+    },
+    "vibrato.spoken %lld %@ %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vibrato: %1$lld cents wide, %2$@ cycles per beat, from beat %3$@ to beat %4$@ within the note."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вібрато: ширина %1$lld центів, %2$@ коливань за долю, від долі %3$@ до долі %4$@ всередині ноти."
+          }
+        }
+      }
+    },
+    "vibrato.targetWidth %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target width: %lld cents"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цільова ширина: %lld центів"
+          }
+        }
+      }
+    },
+    "vibrato.measuredWidth %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured width: %lld cents"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряна ширина: %lld центів"
+          }
+        }
+      }
+    },
+    "vibrato.measuredRate %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured rate: %@ cycles/second"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряна швидкість: %@ коливань/с"
+          }
+        }
+      }
+    },
+    "vibrato.measuredVariation %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Largest cycle-period deviation: %lld%%"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Найбільше відхилення тривалості циклу: %lld%%"
+          }
+        }
+      }
+    },
+    "vibrato.measuredPeriods %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measured cycle intervals: %lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виміряно інтервалів між циклами: %lld"
+          }
+        }
+      }
+    },
+    "vibrato.curveExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The dashed line illustrates the intended width and rate. The score compares audible width, rate and regularity; it does not require each oscillation to match the curve’s exact phase."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пунктир показує цільову ширину й швидкість. Оцінка порівнює чутну ширину, швидкість і рівномірність; кожне коливання не мусить точно збігатися з фазою кривої."
+          }
+        }
+      }
+    },
+    "vibrato.assessmentLimits": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The score combines the initial attack with the starting pitch, vibrato and return. Modulation checks width (±25%, at least ±10 cents), lower pitch (±20 cents), rate (±20%) and cycle regularity (≤20% deviation). Sound cannot prove a finger motion, fret, string or absence of repicking."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка поєднує початкову атаку зі стабільною висотою, вібрато й поверненням. Перевіряємо ширину (±25%, щонайменше ±10 центів), нижню висоту (±20 центів), швидкість (±20%) і рівномірність циклів (відхилення ≤20%). Звук не доводить рух пальця, лад, струну чи відсутність повторних ударів."
+          }
+        }
+      }
+    },
+    "vibrato.practiceInstructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play the initial note once, hold its pitch, then apply vibrato for the marked interval and return to the base pitch. Use a clean input. The wavy mark indicates vibrato; the curve and lesson describe its width and rate."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зіграйте початкову ноту один раз, утримайте її висоту, виконайте вібрато в позначеному проміжку й поверніться до початкової висоти. Використовуйте чистий сигнал. Хвиляста лінія позначає вібрато; ширину й швидкість описано на кривій та в уроці."
+          }
+        }
+      }
+    },
+    "result.annotation.vibrato": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vibrato needs work"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Варто попрацювати над вібрато"
+          }
+        }
+      }
+    },
+    "feedback.vibrato": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeat this fragment and compare the measured vibrato width, rate and regularity with the target. Keep the starting and returned note steady."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторіть фрагмент і порівняйте виміряну ширину, швидкість та рівномірність вібрато з цільовими. Утримуйте стабільну висоту перед вібрато й після повернення."
+          }
+        }
+      }
+    },
+    "vibrato.measuredRateRange %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cycle rates: %1$@–%2$@ cycles/second"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Швидкості циклів: %1$@–%2$@ коливань/с"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

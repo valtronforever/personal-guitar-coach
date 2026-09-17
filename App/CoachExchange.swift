@@ -19,6 +19,7 @@ struct CoachAnalysisRequest: Codable, Sendable {
     let renderEpochHostSeconds: Double?
     let expectedNotes: [String]
     let unscoredBendObservationIDs: [UInt64]?
+    var unscoredVibratoObservationIDs: [UInt64]? = nil
     var unscoredPitchTransitionObservationIDs: [UInt64]? = nil
 
     var evidenceIDs: Set<String> {
@@ -66,6 +67,12 @@ enum CoachExchange {
         return practice.extras.filter { excluded.contains($0.id) }.map(\.id)
     }
 
+    private static func unscoredVibratoIDs(_ practice: AssessedPractice) -> [UInt64]? {
+        guard practice.vibrato != nil else { return nil }
+        let excluded = practice.evidence.vibratoObservationIDs(notes: practice.notes)
+        return practice.extras.filter { excluded.contains($0.id) }.map(\.id)
+    }
+
     static func digest(_ practice: AssessedPractice) throws -> String { CoachAudioFile.hash(try encode(practice)) }
 
     static func prepare(audio: URL, channel: Int, practice: AssessedPractice, language: String,
@@ -81,6 +88,9 @@ enum CoachExchange {
             if let transition = event.pitchTransition, let target = event.techniquePositions.last {
                 let targetName = try tuning.pitch(at: target).name(spelling: tuning.preferredSpelling)
                 motion = "; pitchTransition=\(transition.kind.rawValue), changeStartTick=\(event.startTick + transition.startTick), targetTick=\(event.startTick + transition.endTick), targetPitch=\(targetName); one initial pick target, gesture unverified"
+            } else if let vibrato = event.vibrato {
+                let rate = config.bpm * Double(config.exercise.timeSignature.pulseTicks) / 60 / Double(vibrato.periodTicks)
+                motion = "; vibratoWidthCents=\(vibrato.extentCents), vibratoRateHz=\(rate), modulationStartTick=\(event.startTick + vibrato.startTick), modulationEndTick=\(event.startTick + vibrato.endTick); upward cycles returning to base, one initial pick target, gesture unverified"
             } else { motion = "" }
             return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)" + motion
         }
@@ -92,11 +102,13 @@ enum CoachExchange {
             recordingStartHostSeconds: take?.recording.firstHostSeconds ?? previous?.recordingStartHostSeconds,
             renderEpochHostSeconds: take?.renderEpoch ?? previous?.renderEpochHostSeconds, expectedNotes: expected,
             unscoredBendObservationIDs: unscoredBendIDs(practice),
+            unscoredVibratoObservationIDs: unscoredVibratoIDs(practice),
             unscoredPitchTransitionObservationIDs: unscoredTransitionIDs(practice))
     }
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if practice.evidence.configuration.selectedEvents.contains(where: { $0.vibrato != nil }) { return "file-coach-6" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.pitchTransition != nil }) { return "file-coach-5" }
         if ![TimeSignature.threeFour, .fourFour].contains(exercise.timeSignature) || exercise.beatGrouping != nil { return "file-coach-4" }
         if practice.evidence.configuration.exercise.metronome != nil { return "file-coach-3" }
@@ -112,6 +124,7 @@ enum CoachExchange {
         let request = value.request, feedback = value.feedback
         guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == (promptVersion(for: practice)),
               request.unscoredBendObservationIDs == (unscoredBendIDs(practice)),
+              request.unscoredVibratoObservationIDs == (unscoredVibratoIDs(practice)),
               request.unscoredPitchTransitionObservationIDs == (unscoredTransitionIDs(practice)),
               request.practice.id == practice.id, request.practiceDigest == (try digest(practice)),
               (try digest(request.practice)) == request.practiceDigest,

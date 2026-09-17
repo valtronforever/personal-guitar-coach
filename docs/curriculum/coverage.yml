@@ -704,7 +704,8 @@ lessons:
       uk: Vibrato
     outcomeUK: Керувати шириною й швидкістю коливання висоти
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 57
     moduleID: scales-positions
     lessonID: c-major
