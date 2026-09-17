@@ -1,0 +1,67 @@
+lessonID: triplets
+lessonVersion: 1
+locale: en
+title: Eighth-note triplets
+summary: Fit three equal notes into one beat while keeping the quarter-note pulse unchanged.
+goal: Switch between one, two and three notes per beat and play a short triplet melody.
+body: |-
+  A quarter-note beat can be divided into two equal eighth notes or three equal eighth-note triplets. The tempo still describes the quarter-note pulse: at 60 BPM one beat lasts one second, each straight eighth lasts half a second, and each triplet slot lasts one third of a second. Do not speed up the metronome when changing subdivision.
+
+  The bracket marked 3 groups three written eighth-note slots into the time normally occupied by two. Count one-trip-let, two-trip-let, three-trip-let, four-trip-let, spacing all three syllables evenly. A group of three ordinary quarter notes is different: it takes three beats. Say the triplet count and tap only the numbered beats before playing.
+
+  The comparison uses four bars: quarters, straight eighths, triplets, then one quarter note and three silent beats. Keep the same sounding pitch so timing is the only changing target. Listen to the example first, count aloud on the second pass, then play at 60 BPM or slower. The straight eighth after the click is halfway to the next click; the second and third triplet slots are one third and two thirds of the way there.
+
+  Next play two bars of repeated triplets. Aim for equal spacing rather than a long-short pattern. Use small comfortable picking movements and stop if the hand becomes tense. The melodic example introduces string changes with the same subdivision. Its last note occupies the first triplet slot; a written quarter rest inside the bracket occupies the other two slots. Keep counting during that rest instead of ending early.
+
+  Automatic practice compares each written pitch and onset with the same timeline used by the reference. It does not verify pick direction or hand relaxation. If only the third slot arrives late, isolate one beat and preserve space for all three notes before reconnecting bars. Raise tempo in small steps after three clean, even attempts.
+steps:
+  prepare:
+    title: Count three equal slots
+    body: >-
+      Set 60 BPM and tap quarters while speaking three evenly spaced syllables per click. Listen before playing.
+      Keep the guitar tone clean and use only the selected string for the repeated-note examples.
+  duple-and-triple: &id001
+    title: One, two, then three per beat
+    body: >-
+      Bar 1 has four quarters, bar 2 eight straight eighths, bar 3 twelve triplet notes. Bar 4 has one quarter and
+      three silent beats. The click rate does not change. Notice the new subdivisions between the same clicks.
+  triplet-pulse: &id002
+    title: Keep all three spaces equal
+    body: >-
+      Play twenty-four notes in two bars. Count all three slots on every beat and keep the next numbered beat aligned
+      with the click. If a beat collapses into a rush, stop and repeat one group slowly.
+  triplet-melody: &id003
+    title: Carry the subdivision across strings
+    body: >-
+      Play the ascending and returning three-note groups. Read the next string before crossing. In the last beat,
+      play one eighth-note triplet and leave the remaining two slots silent. {{sequence}}.
+  review:
+    title: Find the uneven slot
+    body: >-
+      Review whether errors cluster on slot 2, slot 3 or the next beat. Repeat a single beat with equal spacing,
+      then the complete two-bar line. Check picking comfort separately from the timing result.
+  question:
+    title: How much time do three triplets take?
+    body: Count the subdivision before answering.
+activities:
+  duple-and-triple: *id001
+  triplet-pulse: *id002
+  triplet-melody: *id003
+learningTasks:
+  question:
+    title: How much time do three triplets take?
+    body: At 60 BPM, how long do three eighth-note triplets take together?
+    items:
+      one: 'One second: one quarter-note beat.'
+      three: 'Three seconds: three quarter-note beats.'
+      half: 'Half a second: half a beat.'
+    explanation: >-
+      The three equal slots share one beat. At 60 quarter-note beats per minute, that beat is one second; the subdivision
+      does not change the tempo.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      count: I counted three equal slots while keeping the numbered beat on the click.
+      switching: I changed from straight eighths to triplets without changing the pulse.
+      rest: I counted both silent triplet slots at the end of the melody.

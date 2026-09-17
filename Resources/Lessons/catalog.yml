@@ -67,6 +67,8 @@ lessons:
   - blues-scale
   - connect-scale-positions
   - scale-sequences
+  - triplets
+  - swing-shuffle
 modules:
   - id: getting-started
     order: 1

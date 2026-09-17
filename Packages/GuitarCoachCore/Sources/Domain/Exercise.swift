@@ -108,6 +108,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
     public let version: Int
     public let ppq: Int64
     public let events: [MusicalEvent]
+    public let triplets: [TripletGroup]
     public let timeSignature: TimeSignature
     public let defaultBPM: Double
     public let minimumBPM: Double
@@ -122,7 +123,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
                 timeSignature: TimeSignature = .fourFour, defaultBPM: Double = 60,
                 minimumBPM: Double = 40, maximumBPM: Double = 200,
                 tuningPolicy: TuningPolicy = .followsInstrument, requiredTuning: TuningProfile? = nil,
-                assessmentMode: AssessmentMode = .monophonic) throws {
+                assessmentMode: AssessmentMode = .monophonic, triplets: [TripletGroup] = []) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, version > 0,
               ppq == MusicalTime.ppq, !events.isEmpty else { throw MusicError.invalidExercise }
         try MusicalTime.validateTempo(minimumBPM)
@@ -141,6 +142,8 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
             guard events.allSatisfy({ $0.positions.count <= 1 }) else { throw MusicError.unsupportedPolyphony }
         }
         guard assessmentMode == .monophonic || !events.contains(where: \.assessSustain) else { throw MusicError.invalidExercise }
+        try TripletGroup.validate(triplets, events: events)
+        self.triplets = triplets
         self.id = id; self.version = version; self.ppq = ppq; self.events = events
         self.timeSignature = timeSignature; self.defaultBPM = defaultBPM
         self.minimumBPM = minimumBPM; self.maximumBPM = maximumBPM
@@ -173,8 +176,21 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         }
     }
 
+    public func encode(to encoder: Encoder) throws {
+        var values = encoder.container(keyedBy: CodingKeys.self)
+        try values.encode(id, forKey: .id); try values.encode(version, forKey: .version)
+        try values.encode(ppq, forKey: .ppq); try values.encode(events, forKey: .events)
+        try values.encode(timeSignature, forKey: .timeSignature)
+        try values.encode(defaultBPM, forKey: .defaultBPM)
+        try values.encode(minimumBPM, forKey: .minimumBPM); try values.encode(maximumBPM, forKey: .maximumBPM)
+        try values.encode(tuningPolicy, forKey: .tuningPolicy)
+        try values.encodeIfPresent(requiredTuning, forKey: .requiredTuning)
+        try values.encode(assessmentMode, forKey: .assessmentMode)
+        if !triplets.isEmpty { try values.encode(triplets, forKey: .triplets) }
+    }
+
     private enum CodingKeys: String, CodingKey {
-        case id, version, ppq, events, timeSignature, defaultBPM, minimumBPM, maximumBPM, tuningPolicy, requiredTuning, assessmentMode
+        case id, version, ppq, events, timeSignature, defaultBPM, minimumBPM, maximumBPM, tuningPolicy, requiredTuning, assessmentMode, triplets
     }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -184,6 +200,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
             minimumBPM: values.decode(Double.self, forKey: .minimumBPM), maximumBPM: values.decode(Double.self, forKey: .maximumBPM),
             tuningPolicy: values.decode(TuningPolicy.self, forKey: .tuningPolicy),
             requiredTuning: values.decodeIfPresent(TuningProfile.self, forKey: .requiredTuning),
-            assessmentMode: values.decode(AssessmentMode.self, forKey: .assessmentMode))
+            assessmentMode: values.decode(AssessmentMode.self, forKey: .assessmentMode),
+            triplets: values.decodeIfPresent([TripletGroup].self, forKey: .triplets) ?? [])
     }
 }

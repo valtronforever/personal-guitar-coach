@@ -199,7 +199,9 @@ lessons:
     outcomeUK: Зрозуміти зміну інтервалів та аплікатур
     originalAssessment: Н+С
     status: authored
-    evidence: Version 2 adds scored practice across eight presets and five neck lengths; see docs/reviews/low-register-practice-review.md. Full curriculum acceptance remains pending.
+    evidence: >-
+      Version 2 adds scored practice across eight presets and five neck lengths; see docs/reviews/low-register-practice-review.md.
+      Full curriculum acceptance remains pending.
   - number: 8
     moduleID: getting-started
     lessonID: practice-preparation
@@ -309,7 +311,9 @@ lessons:
     outcomeUK: Утримувати два рівні звуки на долю
     originalAssessment: Н
     status: authored
-    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
+    evidence: >-
+      Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
+      acceptance remains pending.
   - number: 19
     moduleID: basic-rhythm
     lessonID: rhythm-rests
@@ -319,7 +323,9 @@ lessons:
     outcomeUK: Зберігати внутрішній рахунок під час мовчання
     originalAssessment: Н+С
     status: authored
-    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
+    evidence: >-
+      Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
+      acceptance remains pending.
   - number: 20
     moduleID: basic-rhythm
     lessonID: slow-sixteenths
@@ -329,7 +335,9 @@ lessons:
     outcomeUK: Рахувати й грати чотири поділи долі
     originalAssessment: Н
     status: authored
-    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
+    evidence: >-
+      Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
+      acceptance remains pending.
   - number: 21
     moduleID: basic-rhythm
     lessonID: beat-accents
@@ -339,7 +347,9 @@ lessons:
     outcomeUK: Змінювати акценти, зберігаючи пульс
     originalAssessment: Н+С
     status: authored
-    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
+    evidence: >-
+      Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
+      acceptance remains pending.
   - number: 22
     moduleID: basic-rhythm
     lessonID: dotted-tied-notes
@@ -349,7 +359,9 @@ lessons:
     outcomeUK: Читати та виконувати довгі й зв’язані тривалості
     originalAssessment: Р
     status: authored
-    evidence: Bilingual worked examples and sustain practice; software evidence in docs/reviews/rhythm-duration-review.md. Full course acceptance remains pending.
+    evidence: >-
+      Bilingual worked examples and sustain practice; software evidence in docs/reviews/rhythm-duration-review.md.
+      Full course acceptance remains pending.
   - number: 23
     moduleID: basic-rhythm
     lessonID: simple-meters
@@ -359,7 +371,9 @@ lessons:
     outcomeUK: Відчувати початок такту й різне групування долей
     originalAssessment: Н
     status: authored
-    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
+    evidence: >-
+      Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
+      acceptance remains pending.
   - number: 24
     moduleID: basic-rhythm
     lessonID: first-rhythm-study
@@ -369,7 +383,9 @@ lessons:
     outcomeUK: Зіграти вісім тактів із нотами та паузами
     originalAssessment: Н+С
     status: authored
-    evidence: Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full acceptance remains pending.
+    evidence: >-
+      Original bilingual worked examples; software/editorial review in docs/reviews/basic-rhythm-review.md. Full
+      acceptance remains pending.
   - number: 25
     moduleID: first-chords
     lessonID: minor-chord-shapes
@@ -774,7 +790,8 @@ lessons:
       uk: Тріолі
     outcomeUK: Ділити долю на три рівні частини
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 66
     moduleID: advanced-rhythm
     lessonID: swing-shuffle
@@ -783,7 +800,8 @@ lessons:
       uk: Swing і shuffle
     outcomeUK: Відчути нерівномірний поділ долі
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 67
     moduleID: advanced-rhythm
     lessonID: syncopation

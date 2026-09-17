@@ -1,0 +1,68 @@
+lessonID: swing-shuffle
+lessonVersion: 1
+locale: en
+title: Straight eighths and shuffle
+summary: Place the short note on the third triplet slot to create an even long-short groove.
+goal: Hear and play the difference between straight eighths and an introductory 2:1 shuffle.
+body: |-
+  Straight eighths split a beat into two equal halves. A basic triplet shuffle uses the first and third triplet slots: the first note lasts two slots and the second lasts one. Count one-trip-let and play on one and let. The long-short duration ratio in this lesson is exactly 2:1; at 60 BPM the second attack comes two thirds of a second after the click.
+
+  The notation writes a quarter note plus an eighth under a triplet bracket. This shows a long note occupying the first two slots without asking you to pick again in the middle. A dotted eighth followed by a sixteenth would produce 3:1, a sharper rhythm that is not the target here. The metronome continues quarter-note clicks, and the long note starts on each click.
+
+  Listen to the two-bar comparison: bar 1 is straight, bar 2 shuffled. Keep the pitch, volume and click rate unchanged so the placement of the second attack is easy to hear. First speak or tap the rhythm; then pick a clean repeated note. Do not rush the short note toward the following beat or give it the same length as the long note.
+
+  The repeated shuffle has eight long-short pairs in two bars. Let each long note occupy its space, then play the short note before returning to the next click. The melodic phrase uses six such pairs, returning to the same bass note while the answering pitch changes. Beat 3 of its second bar is a quarter-note tonic, and beat 4 is silent. Read the string crossings in advance and keep one intended pitch sounding at a time.
+
+  Swing in actual performances is not restricted to a universal fixed ratio; tempo, style and phrasing can change the placement. This lesson teaches one explicit beginner shuffle target. The app grades those written pitches and attacks, not the authenticity or expressiveness of every swing style. After three controlled attempts, compare the straight and shuffle versions again by ear without watching the score.
+steps:
+  prepare:
+    title: Recall the three-slot grid
+    body: >-
+      Speak three equal syllables per click, then say or tap only the first and third. Keep the middle slot in your
+      internal count. Set 60 BPM and listen before playing.
+  straight-and-shuffle: &id001
+    title: Compare half-beat and third-slot placement
+    body: >-
+      Bar 1 divides each beat equally. In bar 2, the second attack moves from halfway through the beat to its third
+      triplet slot. Keep the numbered beat on the same click and notice the longer first note.
+  shuffle-pulse: &id002
+    title: Repeat eight long-short pairs
+    body: >-
+      Play two bars with the short note at two thirds of each beat. Do not attack the middle slot. If the short
+      note is late, count all three slots aloud again, then return to two attacks.
+  shuffle-phrase: &id003
+    title: Keep the groove through a bass-return phrase
+    body: >-
+      Play six long-short pairs, then the tonic as a quarter on beat 3 of bar 2, followed by a quarter rest. The
+      changing answering note must not change the shuffle spacing. {{sequence}}.
+  review:
+    title: Hear the ratio without the picture
+    body: >-
+      Replay the straight and shuffle comparison, then close your eyes for a separate listening pass. Review the
+      second attacks in your recorded timing results. A measured 2:1 match is the target of this exercise, not a
+      rule for every style.
+  question:
+    title: Where is the short shuffle note?
+    body: Count the subdivision before answering.
+activities:
+  straight-and-shuffle: *id001
+  shuffle-pulse: *id002
+  shuffle-phrase: *id003
+learningTasks:
+  question:
+    title: Where is the short shuffle note?
+    body: In this 2:1 shuffle, which of three equal triplet slots begins the second note?
+    items:
+      third: The third slot; the first note occupies the first two.
+      second: The second slot, halfway through the beat.
+      next: The next beat, after three complete slots.
+    explanation: >-
+      The short note begins at 2/3 of the beat. Straight eighths place it at 1/2; dotted-eighth/sixteenth places
+      it at 3/4. Those are different targets.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      compare: I heard the difference between straight and shuffled eighths.
+      spacing: I kept the long-short spacing without an extra middle attack.
+      phrase: I preserved the pulse through the string crossings and final rest.

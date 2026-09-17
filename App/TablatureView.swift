@@ -22,7 +22,7 @@ struct TablatureView: View {
     @FocusState private var focus: TimelineFocus?
     private let rowHeight: CGFloat = 26
     private let gridTop: CGFloat = 48
-    private var height: CGFloat { gridTop + rowHeight * 6 + 24 }
+    private var height: CGFloat { gridTop + rowHeight * 6 + 24 + (model.exercise.triplets.isEmpty ? 0 : 18) }
     private var page: Range<Int64> { model.page(containing: pageBar) }
 
     var body: some View {
@@ -153,6 +153,11 @@ struct TablatureView: View {
                     var line = Path(); line.move(to: CGPoint(x: x, y: gridTop - 6)); line.addLine(to: CGPoint(x: x, y: gridTop + rowHeight * 6))
                     context.stroke(line, with: .color(.secondary.opacity(beat == 0 ? 1 : 0.35)), style: StrokeStyle(lineWidth: beat == 0 ? 2 : 1, dash: beat == 0 ? [] : [3, 4]))
                 }
+                for group in model.triplets(in: bar) {
+                    TripletBracket.draw(context: &context,
+                        start: model.x(tick: group.startTick, bar: bar, zoom: zoom) + 6,
+                        end: model.x(tick: group.endTick, bar: bar, zoom: zoom) - 6, y: Double(height) - 8)
+                }
             }.accessibilityHidden(true)
             Text("tab.bar \(bar + 1)").font(.caption.bold()).padding(.leading, 6).accessibilityHidden(true)
             ForEach(model.segments(in: bar)) { segment in
@@ -197,7 +202,7 @@ struct TablatureView: View {
                         if let stroke = event.pickingDirection, !segment.isContinuation { Text(verbatim: stroke == .down ? "↓" : "↑").bold() }
                         if segment.isContinuation { Image(systemName: "arrow.turn.down.right") }
                         if event.kind == .rest { Image(systemName: "pause.fill") }
-                        Text(verbatim: TimelineModel.durationLabel(event.durationTicks)).monospacedDigit()
+                        Text(verbatim: TimelineModel.durationLabel(segment.writtenDurationTicks)).monospacedDigit()
                     }.font(.caption).lineLimit(1).minimumScaleFactor(0.7)
                     Rectangle().fill(.secondary).frame(height: 2)
                 }.padding(.horizontal, 4).offset(y: 23)
@@ -239,7 +244,8 @@ struct TablatureView: View {
     }
     private func description(_ segment: TimelineSegment) -> Text {
         let event = segment.resolved.event
-        let duration = TimelineModel.durationLabel(event.durationTicks)
+        let written = TimelineModel.durationLabel(segment.writtenDurationTicks)
+        let duration = segment.triplet == nil ? written : String(format: settings.localized("rhythm.tripletDuration %@"), locale: settings.locale, written)
         let beat = beatText(segment.startTick, bar: segment.bar)
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)") }
         var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in

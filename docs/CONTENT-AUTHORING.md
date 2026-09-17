@@ -318,3 +318,22 @@ Topics 57–64 demonstrate three distinct authoring choices without adding anoth
 - `scale-sequences` represents groups of three/four and diatonic thirds as ordinary quarter notes plus accent metadata. Melodic grouping never implies tuplets or changes ticks. The final silent beats/bars are explicit rests.
 
 Each module lesson includes a degree/relationship question and a separate self-observation task. The three expanded baseline lessons increment lesson versions while preserving exercise IDs, versions and musical events. Historical attempts remain frozen. The stable `majorScale` topic key is displayed as “Scales” / “Гами” to accommodate both major and minor families; saved IDs do not change.
+
+### Eighth-note triplet groups and introductory shuffle
+
+Triplet intent is explicit on the exercise. Its event ticks remain the sole sounding-time source:
+
+```yaml
+events:
+  - {id: a, startTick: 0, durationTicks: 320, kind: note, positions: [{string: 3, fret: 5}]}
+  - {id: b, startTick: 320, durationTicks: 320, kind: rest, positions: []}
+  - {id: c, startTick: 640, durationTicks: 320, kind: note, positions: [{string: 3, fret: 7}]}
+triplets:
+  - {id: first-beat, eventIDs: [a, b, c]}
+```
+
+This first contract covers three written eighth-note slots in one quarter beat (3:2). Each group starts at a 960-tick beat boundary and consists of two or three contiguous, ordered events totaling 960 ticks. Each event occupies one slot (320 ticks) or two (640 ticks). Two-slot events are written as quarter notes/rests inside the bracket: a 640+320 pair is the explicit 2:1 beginner shuffle. Rests may belong to the group; IDs are unique and an event cannot belong to two groups. Missing/reordered/partial/overlapping groups are rejected. Other tuplets, arbitrary swing ratios and groups spanning beats are outside this contract.
+
+Ordinary events remain unchanged. Three ordinary quarters are not a triplet merely because there are three of them; absent metadata does not trigger guessed conventional notation for a 320-tick grid. Empty triplet arrays are omitted from canonical encoding, preserving old practice/coach digests. A material selecting events must include any intersected group in full and, if groups are present, begin at a quarter boundary so normalization preserves their placement. A visual step may highlight a single group member while its activity retains the complete exercise.
+
+Both TAB forms show written values and a 3 bracket; staff beams full three-note runs and keeps the bracket when a rest or quarter/eighth pair prevents beaming. Spoken note/rest descriptions name the triplet subdivision. Compact rows reserve extra space only for exercises with groups, preserving ordinary row density. Reference, metronome, cursor and assessment still use actual event ticks; no extra click or hidden tempo change is introduced. The `triplets` and `swing-shuffle` lessons use clean monophonic practice at 40–90 BPM. Real swing timing can vary: the latter lesson explicitly teaches a fixed target, not an authenticity score for all styles.
