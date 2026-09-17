@@ -1,0 +1,23 @@
+# Deliberate metronome omissions — local review
+
+2026-09-17. Same-agent Domain/Learning/audio/recording/UI review. Scope: authored missing quarter clicks and topic 72; full curriculum remains in progress.
+
+## Contract and findings
+
+- `Exercise.metronome.silentBeatTicks` is an optional immutable collection of strictly increasing, unique, nonnegative quarter-click onsets before a whole-quarter exercise end. Empty/duplicate/unsorted/off-grid/out-of-range values fail validation. At most 4096 omissions are accepted. Missing metadata encodes exactly as before; this does not reinterpret old results or alter tempo units.
+- The transport caches a set before rendering and skips only those source click onsets. Full count-in, audio clock, event schedule, preview guitar notes, practice silence from reference guitar, source-based seek/loop and cursor remain intact. Calibration mode retains its separate click protocol. No realtime callback or DSP changes were added.
+- Event materials containing a pattern must select whole quarter beats. Resolution filters and rebases the pattern together with the selected source interval; a shape-only display drops the pattern. All guitar notes remain expected during metronome silence. Tests compare ordinary/gapped assessments with deliberate lateness and a missing guitar attack: note results, timing score and missed count are identical.
+- One substantive bilingual lesson has three progressive activities: clicks only on 2/4, alternating single silent bars, then a two-bar gap inside an eight-bar motif. It explicitly preserves audible returns and distinguishes metronome silence from guitar rests. Reading ahead is allowed; internal-pulse self-observation asks the learner to look away once familiar. The audio score cannot establish use of visual guidance or a physical cause of drift.
+- Compact TAB names silent beat numbers with a crossed-out speaker and localized help/accessibility text. Setup explains the complete count-in and continued guitar playing. Offline Ukrainian/light and English/dark images were inspected at 600-point width: count-in, normal/silent/return bars, all guitar notes and cursor remain readable. These images are retained in `docs/reviews/metronome-gaps/`; offline rendering does not establish native VoiceOver or hardware behavior.
+- Channel 1 of a generated test take is sample-for-sample unchanged after WAV writing; reconstructed channel 2 contains the same full count-in and omitted/returning clicks. New gapped coach requests use `file-coach-3`, with explicit prompt guidance that quiet reference beats are intentional. Ordinary/bend requests retain versions 1/2 and historical validation.
+- The inventory audit caught an initial authoring slug that differed from the agreed `missing-clicks` ledger entry. Renamed the bundle and all references to the stable agreed ID, then the partial audit passed (66 authored, 1 needing review, 61 todo). No accepted historical attempt used the temporary name.
+
+## Verification
+
+- Targeted Domain/Audio checks pass at 44.1/48 kHz and 60/137 BPM: full count-in, exact omitted/remaining samples, clock/cursor equivalence, partial initial pass, repeated source ranges, arbitrary chunk boundaries, muted master click and preserved preview tones.
+- All 143 existing App tests pass in 147.547 s. After the coach-version addition, nine targeted App/coach tests pass in 2.939 s, including three new metronome tests (prompt version, WAV/score markers, four en/uk × light/dark exports). No provider is invoked.
+- All 265 Core tests pass explicitly serially: 23 Persistence (0.060 s), 102 Learning (81.481 s), 41 Domain (0.017 s), 93 Audio (287.891 s), 6 AgentBridge (1.668 s). After the stable lesson-ID correction, its adaptation/scoping regression passes again (0.791 s) and the content validator accepts 73 bilingual bundles with zero issues. Signed Release evidence follows separately. Project, 837 UI keys, author-tool tests, UI-source type-check and partial inventory pass.
+
+## Remaining acceptance
+
+Native keyboard/VoiceOver, minimum-window/theme usability and real interface/headphone/guitar behavior remain pending_user in USER-VALIDATION.md. This feature validates omitted quarter clicks, not arbitrary subdivision or compound-meter tempo semantics. The remaining 61 topics and one existing topic needing review are not completed by this stage.

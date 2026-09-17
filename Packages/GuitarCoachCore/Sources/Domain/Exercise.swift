@@ -109,6 +109,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
     public let ppq: Int64
     public let events: [MusicalEvent]
     public let triplets: [TripletGroup]
+    public let metronome: MetronomePattern?
     public let timeSignature: TimeSignature
     public let defaultBPM: Double
     public let minimumBPM: Double
@@ -123,7 +124,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
                 timeSignature: TimeSignature = .fourFour, defaultBPM: Double = 60,
                 minimumBPM: Double = 40, maximumBPM: Double = 200,
                 tuningPolicy: TuningPolicy = .followsInstrument, requiredTuning: TuningProfile? = nil,
-                assessmentMode: AssessmentMode = .monophonic, triplets: [TripletGroup] = []) throws {
+                assessmentMode: AssessmentMode = .monophonic, triplets: [TripletGroup] = [], metronome: MetronomePattern? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, version > 0,
               ppq == MusicalTime.ppq, !events.isEmpty else { throw MusicError.invalidExercise }
         try MusicalTime.validateTempo(minimumBPM)
@@ -143,6 +144,11 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         }
         guard assessmentMode == .monophonic || !events.contains(where: \.assessSustain) else { throw MusicError.invalidExercise }
         try TripletGroup.validate(triplets, events: events)
+        if let metronome {
+            guard events.last!.endTick % MusicalTime.ppq == 0,
+                  metronome.silentBeatTicks.last! < events.last!.endTick else { throw MusicError.invalidTime }
+        }
+        self.metronome = metronome
         self.triplets = triplets
         self.id = id; self.version = version; self.ppq = ppq; self.events = events
         self.timeSignature = timeSignature; self.defaultBPM = defaultBPM
@@ -187,10 +193,11 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         try values.encodeIfPresent(requiredTuning, forKey: .requiredTuning)
         try values.encode(assessmentMode, forKey: .assessmentMode)
         if !triplets.isEmpty { try values.encode(triplets, forKey: .triplets) }
+        try values.encodeIfPresent(metronome, forKey: .metronome)
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, version, ppq, events, timeSignature, defaultBPM, minimumBPM, maximumBPM, tuningPolicy, requiredTuning, assessmentMode, triplets
+        case id, version, ppq, events, timeSignature, defaultBPM, minimumBPM, maximumBPM, tuningPolicy, requiredTuning, assessmentMode, triplets, metronome
     }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -201,6 +208,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
             tuningPolicy: values.decode(TuningPolicy.self, forKey: .tuningPolicy),
             requiredTuning: values.decodeIfPresent(TuningProfile.self, forKey: .requiredTuning),
             assessmentMode: values.decode(AssessmentMode.self, forKey: .assessmentMode),
-            triplets: values.decodeIfPresent([TripletGroup].self, forKey: .triplets) ?? [])
+            triplets: values.decodeIfPresent([TripletGroup].self, forKey: .triplets) ?? [],
+            metronome: values.decodeIfPresent(MetronomePattern.self, forKey: .metronome))
     }
 }

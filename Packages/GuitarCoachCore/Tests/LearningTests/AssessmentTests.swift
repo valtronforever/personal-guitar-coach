@@ -57,6 +57,22 @@ struct AssessmentTests {
             attacks: attacks, clipping: clipped ? [interval] : [],
             uncertainSignal: noisy ? [PracticeUncertainSpan(interval: interval, reason: .ambiguous)] : [], analysisVersion: "fixture-analysis-1")
     }
+    @Test func omittedClicksNeverRemoveExpectedGuitarNotesOrTimingErrors() throws {
+        for evidence in [try input(shifts: [4: 0.12, 5: 0.17]), try input(missing: [4])] {
+            let baseline = try AssessmentEngine.evaluate(evidence)
+            var json = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(evidence)) as? [String:Any])
+            var config = try #require(json["configuration"] as? [String:Any])
+            var exercise = try #require(config["exercise"] as? [String:Any])
+            exercise["metronome"] = ["silentBeatTicks": [3840,4800,5760,6720]]
+            config["exercise"] = exercise; json["configuration"] = config
+            let withGaps = try JSONDecoder().decode(PracticeEvidence.self, from: JSONSerialization.data(withJSONObject:json))
+            let result = try AssessmentEngine.evaluate(withGaps)
+            #expect(result.notes == baseline.notes && result.overallScore == baseline.overallScore)
+            #expect(result.timingScore == baseline.timingScore && result.missedCount == baseline.missedCount)
+            #expect(result.evidence.configuration.exercise.metronome?.silentBeatTicks == [3840,4800,5760,6720])
+            #expect(try JSONDecoder().decode(AssessedPractice.self, from: JSONEncoder().encode(result)) == result)
+        }
+    }
     @Test(arguments: ["monophonic-assessment-1", "monophonic-assessment-2"])
     func historicalResultsRemainReadableWithoutRerating(version: String) throws {
         let result = try AssessmentEngine.evaluate(input(shifts: [0: 0.05]))

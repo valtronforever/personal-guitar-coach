@@ -52,6 +52,7 @@ public struct TransportPlan: Sendable {
     private let frequencies: [[Double]]
     private let strumOffsets: [[Int64]]
     private let bendPoints: [[PitchBend.Point]]
+    private let silentBeatTicks: Set<Int64>
     private var firstTicks: Int64 { request.range.upperBound - request.startTick }
     private var cycleTicks: Int64 { request.range.upperBound - request.range.lowerBound }
     public var endFrame: Int64? { request.loops ? nil : frame(at: countInTicks + firstTicks) }
@@ -61,6 +62,7 @@ public struct TransportPlan: Sendable {
         guard sampleRate.isFinite, (8000...192000).contains(sampleRate) else { throw AudioBackendError.invalidFormat }
         self.request = request; self.sampleRate = sampleRate
         countInTicks = Int64(request.countInBars) * request.exercise.timeSignature.ticksPerBar
+        silentBeatTicks = Set(request.exercise.metronome?.silentBeatTicks ?? [])
         events = try request.exercise.resolvedEvents(instrument: request.tuning)
         let reference = (request.exercise.requiredTuning ?? request.tuning).referenceA4
         frequencies = try events.map { try $0.pitches.map { try $0.frequency(referenceA4: reference) } }
@@ -139,7 +141,7 @@ public struct TransportPlan: Sendable {
                 let firstBeat = max(sourceStart, sourceLow) / 960
                 if sourceHigh > sourceStart { for beat in firstBeat...sourceHigh / 960 {
                     let tick = beat * 960
-                    if tick >= sourceStart && tick < request.range.upperBound {
+                    if tick >= sourceStart && tick < request.range.upperBound && !silentBeatTicks.contains(tick) {
                         addClick(at: frame(at: epoch + tick - sourceStart), accented: beat % Int64(request.exercise.timeSignature.beatsPerBar) == 0,
                                  stop: frame(at: segmentEnd), start: startFrame, output: &output)
                     }

@@ -64,3 +64,7 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - PR #75 merged as 00da753 after exact-head CI run 35164627711 passed. Triplet PR #76 was retargeted to main with its base branch retained.
 
 - Rhythm-phrasing continuation: topics 67/69/70 authored with offbeat/held syncopation, ordinary/reverse gallop and displaced eighth-note groups. Existing sustain, pick-cue, accent and open-bass policies supply their distinct practice contracts. Inventory: 72 bundles/66 visible, 65 authored topics, 1 needing review, 62 todo. See [same-agent review](../../docs/reviews/rhythm-phrasing-course-review.md): 100 Learning /143 App tests and the signed 72-bundle Release/archive/XPC checks pass; exact-head CI is pending. Full curriculum remains in progress; native/hardware acceptance remains pending.
+
+- PR #76 merged as d2250e2 after exact-head CI run 35166516387 passed; rhythm-phrasing PR #77 was retargeted to main.
+
+- Metronome omission extension and topic 72 authored: explicit silent quarter clicks retain count-in, audio clock, all guitar targets and source-coordinate repeat behavior. Compact score markers and recorded reference reflect the same omissions. Inventory: 73 bundles/67 visible, 66 authored topics, 1 needing review, 61 todo. Software/release evidence is recorded in [same-agent review](../../docs/reviews/metronome-gaps-review.md); full curriculum and native/hardware acceptance remain open.

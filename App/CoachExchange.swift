@@ -72,7 +72,7 @@ enum CoachExchange {
             let names = try event.positions.map { try tuning.pitch(at: $0).name(spelling: tuning.preferredSpelling) }.joined(separator: ", ")
             return "\(event.id): tick=\(event.startTick), durationTicks=\(event.durationTicks), sounding pitches=\(names), kind=\(event.kind.rawValue)"
         }
-        return CoachAnalysisRequest(schemaVersion: 1, promptVersion: practice.bends == nil ? "file-coach-1" : "file-coach-2", id: id,
+        return CoachAnalysisRequest(schemaVersion: 1, promptVersion: promptVersion(for: practice), id: id,
             language: language == "uk" ? "uk" : "en", practiceDigest: try digest(practice),
             audioFile: "audio." + audio.pathExtension.lowercased(), audio: report, practice: practice,
             alignment: previous?.alignment ?? (take == nil ? "user-supplied-file; correspondence-and-start-offset-unverified" : "capture-host-time; metronome-render-reference; audible-output-delay-not-measured"),
@@ -82,6 +82,11 @@ enum CoachExchange {
             unscoredBendObservationIDs: unscoredBendIDs(practice))
     }
 
+    static func promptVersion(for practice: AssessedPractice) -> String {
+        if practice.evidence.configuration.exercise.metronome != nil { return "file-coach-3" }
+        return practice.bends == nil ? "file-coach-1" : "file-coach-2"
+    }
+
     static func readResponse(_ url: URL, practice: AssessedPractice) throws -> CoachAnalysisResponse {
         let handle = try FileHandle(forReadingFrom: url); defer { try? handle.close() }
         let data = try handle.read(upToCount: CoachAgentContract.maximumEnvelopeBytes + 1) ?? Data()
@@ -89,7 +94,7 @@ enum CoachExchange {
         let decoder = JSONDecoder(); decoder.dateDecodingStrategy = .iso8601
         let value = try decoder.decode(CoachAnalysisResponse.self, from: data)
         let request = value.request, feedback = value.feedback
-        guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == (practice.bends == nil ? "file-coach-1" : "file-coach-2"),
+        guard value.schemaVersion == 1, request.schemaVersion == 1, request.promptVersion == (promptVersion(for: practice)),
               request.unscoredBendObservationIDs == (unscoredBendIDs(practice)),
               request.practice.id == practice.id, request.practiceDigest == (try digest(practice)),
               (try digest(request.practice)) == request.practiceDigest,

@@ -34,6 +34,10 @@ extension LessonCatalogLoader {
                     let selected = exercise.events.enumerated().filter { ids.contains($0.element.id) }
                     try require(selected.map(\.element.id) == ids, "Unknown/out-of-order material events")
                     try require(selected.last!.offset - selected.first!.offset + 1 == selected.count, "Material events must be contiguous, including rests")
+                    if exercise.metronome != nil {
+                        try require(selected.first!.element.startTick % MusicalTime.ppq == 0 && selected.last!.element.endTick % MusicalTime.ppq == 0,
+                            "Materials with metronome omissions must contain whole quarter beats")
+                    }
                     let selectedIDs = Set(ids)
                     let groups = exercise.triplets.filter { $0.eventIDs.contains(where: selectedIDs.contains) }
                     try require(groups.allSatisfy { Set($0.eventIDs).isSubset(of: selectedIDs) }, "Event materials must include complete triplet groups")

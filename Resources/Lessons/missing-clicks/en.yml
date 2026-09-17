@@ -1,0 +1,82 @@
+lessonID: missing-clicks
+lessonVersion: 1
+locale: en
+title: Keep time through missing clicks
+summary: Continue the beat when metronome reminders become sparse or disappear for whole bars.
+goal: Play the written notes through silent metronome beats and meet the returning click without changing tempo.
+body: |-
+  A metronome can check your internal pulse without supplying every beat. In these exercises the clock continues normally while selected clicks are deliberately silent. The guitar notes do not disappear with them: play every note in the TAB, including notes inside a silent bar. The complete count-in establishes the tempo before the authored omissions begin.
+
+  Start at 60 BPM with a single comfortable pitch. The first four-bar exercise keeps only clicks on beats 2 and 4. Count all four numbers; the first guitar note belongs on beat 1 even though its click is absent. Avoid renaming the two audible clicks as 1 and 2 or doubling the tempo. In the practice TAB, speaker-with-slash markers identify which metronome beats are intentionally quiet.
+
+  The next exercise lasts six bars. Bar 1 has all four clicks, bar 2 none, bar 3 all four, and bar 4 none. Bars 5 and 6 restore the complete click. Continue four equal guitar attacks in every bar. Keep counting through the silent bars and listen to whether the first returning click meets your next attack. If it does not, finish the attempt at your current pace rather than making a sudden correction that hides the drift.
+
+  Finally play a four-note motif in each of eight bars. Bars 1–2 establish the pulse; bars 3–4 have no clicks; bars 5–8 bring them back. Preserve the four pitches and one-note-per-beat spacing throughout. Two silent bars test a longer interval, so return to the one-bar exercise if the count becomes uncertain. A clean, simple sound makes each attack easier to hear.
+
+  The app still measures every expected note against its continuous timeline. Check the timing errors within the quiet section and at the returning click, not only the overall score. Increasing lateness suggests that this attempt slowed; increasingly early attacks suggest it sped up. One error alone does not establish a trend or its physical cause. For an internal-pulse challenge, look away from the moving cursor once you know the pattern: a timing score cannot tell whether you followed the screen. Read the result afterward and repeat the full gap plus its return; looping only the silent bar removes the useful audible comparison.
+steps:
+  prepare:
+    title: Count through silence
+    body: >-
+      Set 60 BPM, listen to the full count-in, and keep the clean guitar ready. Silent metronome beats are intentional;
+      they are not guitar rests. Keep the click volume audible for its return.
+  sparse-clicks:
+    title: Hear only beats 2 and 4
+    body: >-
+      Four bars, four quarter-note guitar attacks per bar. The metronome omits 1 and 3. Count 1–2–3–4 without doubling
+      the tempo. Begin playing on 1 after the complete count-in.
+  one-silent-bar:
+    title: Cross one silent bar
+    body: >-
+      Play all six bars. Clicks are absent in bars 2 and 4 and present in 1, 3, 5 and 6. Count the silent four beats
+      and compare your next attack with the returning click. Keep the gap and return together when choosing a practice
+      range.
+  two-silent-bars:
+    title: Carry a motif through two quiet bars
+    body: >-
+      Repeat the four-note motif in every bar. Hear complete clicks in 1–2, no clicks in 3–4, then complete clicks
+      in 5–8. All guitar notes remain required. {{sequence}}.
+  review:
+    title: Compare the gap with its return
+    body: >-
+      Inspect the attacks during silence and on the first returning click. Look for a consistent early/late trend
+      before drawing a conclusion. Repeat the shorter gap if needed; observe separately whether you relied on the
+      moving cursor.
+  question:
+    title: What stops during a silent metronome bar?
+    body: Count the subdivision before answering.
+activities:
+  sparse-clicks:
+    title: Hear only beats 2 and 4
+    body: >-
+      Four bars, four quarter-note guitar attacks per bar. The metronome omits 1 and 3. Count 1–2–3–4 without doubling
+      the tempo. Begin playing on 1 after the complete count-in.
+  one-silent-bar:
+    title: Cross one silent bar
+    body: >-
+      Play all six bars. Clicks are absent in bars 2 and 4 and present in 1, 3, 5 and 6. Count the silent four beats
+      and compare your next attack with the returning click. Keep the gap and return together when choosing a practice
+      range.
+  two-silent-bars:
+    title: Carry a motif through two quiet bars
+    body: >-
+      Repeat the four-note motif in every bar. Hear complete clicks in 1–2, no clicks in 3–4, then complete clicks
+      in 5–8. All guitar notes remain required. {{sequence}}.
+learningTasks:
+  question:
+    title: What stops during a silent metronome bar?
+    body: The metronome is quiet in bar 2, but four quarter notes are written. What should you do?
+    items:
+      continue: Play all four notes and keep the same count; only the click sound is omitted.
+      rest: Stop the guitar because no click means a musical rest.
+      wait: Pause the tempo until the metronome returns.
+    explanation: >-
+      A missing click removes an external reminder, not time or a written note. The clock and assessment continue,
+      so the returning click checks your accumulated timing.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      count: I counted the missing beats and kept every written guitar attack.
+      returning: I compared my pulse with the first returning click without hiding drift with a sudden jump.
+      visual: I checked whether I could keep the pattern while looking away from the cursor.
