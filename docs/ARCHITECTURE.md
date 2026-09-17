@@ -80,7 +80,7 @@ The tuning’s string-1 transposition selects chromatic sharp/flat display spell
 
 Реалізація Domain: `Pitch` з MIDI 0…127; профіль A4 400…480 Hz; відкриті струни MIDI 0…103, щоб усі 24 лади лишалися валідними MIDI-нотами. Ці технічні межі ширші за перевірений DSP-діапазон; оцінювання окремо перевіряє підтримувані частоти. `TuningProfile.strings` зберігається за явними номерами 1→6. Codable-декодування використовує ті самі валідатори, що й public init. `ResolvedEvent` обчислюється з вправи та строю і не декодується як незалежне джерело висот.
 
-PPQ = 960, четверта = 960 ticks; у MVP підтримуються 3/4 та 4/4, без tempo map, swing і tuplets. Темп однієї спроби сталий. Пауза займає час, але не очікує ноти. Одночасні позиції допустимі для показу акордів, проте monophonic assessment їх відхиляє до запуску.
+PPQ = 960, чверть = 960 ticks. TimeSignature підтримує 3/4, 4/4 та 5/4 із BPM чвертей, 6/8 та 12/8 із BPM чвертей із крапкою, 7/8 із BPM восьмих. Темп однієї спроби сталий, tempo map немає. Тріолі 3:2 та початковий shuffle задаються явними групами й фактичними ticks. Пауза займає час, але не очікує ноти. Одночасні позиції допустимі для показу акордів, проте monophonic assessment їх відхиляє до запуску.
 
 ## Локалізація оболонки
 
@@ -297,3 +297,10 @@ Single-note pickStroke and multi-string strum share a derived notation direction
 A mixed 900-second sustain/bend attempt can contain two bounded traces. Local AI exchange now allows 24 MB requests /28 MB saved responses; the maximum-trace serialization test retains at least 3 MB request headroom. Raw traces are stripped from CLI prompts, retaining per-note metrics. Bend requests use `file-coach-2` and explicit validated `unscoredBendObservationIDs`; ordinary historical requests remain `file-coach-1`. No new automatic provider calls or audio uploads are introduced.
 
 `Exercise.triplets` holds validated ordered event-ID groups for three eighth-note slots per quarter beat. It is notation metadata; event ticks remain authoritative for transport, capture and matching. Loader validation prevents partial/off-boundary scoped materials, and the activity resolver preserves complete groups while normalizing their event times. TimelineModel indexes group membership and bar ranges once; both TABs and staff use these indexes. Written quarter/eighth values under a bracket do not create extra canonical events or attacks. Empty groups retain the previous canonical encoding.
+
+
+### Meter pulse and grouping
+
+TimeSignature owns numerator/denominator, pulseTicks and pulses per bar. Optional Exercise.beatGrouping stores positive pulse counts summing to one bar; default simple/compound click accents remain on the downbeat, while odd meters default to 3+2 (5/4) and 2+2+3 (7/8). Explicit groups accent their beginnings. Optional fields retain prior canonical defaults. Event-scoped non-baseline/grouped materials include whole bars, preserving phase; baseline metronome-only fragments retain whole-pulse scoping.
+
+MusicalTime conversion accepts an explicit pulse, defaulting to historical quarter units. Transport, capability, session duration, matching, sustain/bend evaluation and pitch-curve geometry derive seconds from the frozen signature. UI labels the tempo unit; no hidden quarter-equivalent BPM or re-rating of old results is used. Metronome omission ticks validate on that pulse grid. Count-in display uses the same half-sample boundary rule as scheduled click onsets. Notation prints the actual signature and uses compound/odd beam boundaries while retaining canonical event IDs.

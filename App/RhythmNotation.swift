@@ -49,8 +49,14 @@ enum RhythmNotation {
         var tick = segment.startTick, result: [NotationFragment] = []
         while tick < segment.endTick {
             // Split a long off-beat note at the next beat, keeping the pulse readable.
-            let beatRemainder = tick % MusicalTime.ppq
-            let available = min(segment.endTick - tick, beatRemainder == 0 ? Int64.max : MusicalTime.ppq - beatRemainder)
+            let untilBoundary: Int64
+            if segment.notationBoundaries.isEmpty {
+                let remainder = tick % MusicalTime.ppq
+                untilBoundary = remainder == 0 ? .max : MusicalTime.ppq - remainder
+            } else {
+                untilBoundary = segment.notationBoundaries.contains(tick) ? .max : (segment.notationBoundaries.first(where: { $0 > tick }) ?? segment.endTick) - tick
+            }
+            let available = min(segment.endTick - tick, untilBoundary)
             guard let value = NotationDuration.values.first(where: { $0.ticks <= available }) else { throw StaffLimitation.duration }
             let note = segment.resolved.event.kind == .note
             result.append(NotationFragment(id: .init(eventID: segment.resolved.id, startTick: tick), duration: value,

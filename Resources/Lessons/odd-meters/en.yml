@@ -1,0 +1,89 @@
+lessonID: odd-meters
+lessonVersion: 1
+locale: en
+title: Group 5/4 and 7/8
+summary: Build an uneven bar from familiar short groups without changing the spacing inside them.
+goal: Play five-quarter and seven-eighth bars with two alternative accent groupings each.
+body: |-
+  An odd meter has a bar length that does not fit the familiar equal groups of 4/4. You can learn it through smaller groups instead of treating each bar as a long list. In 5/4, five quarter-note beats may be organized as 3+2 or 2+3. In 7/8, seven eighth-note units commonly form 2+2+3, 3+2+2 or 2+3+2. The last grouping is another useful possibility; this lesson practices the first two seven-unit patterns.
+
+  First check the tempo-unit label. The 5/4 exercises start at 80 quarter-note BPM: every quarter occupies one click interval, and there are five count-in clicks. The 7/8 exercises start at 120 eighth-note BPM: every eighth occupies one click interval, and there are seven count-in clicks. At that setting, a 7/8 bar lasts three and a half seconds. The written denominator and named pulse are essential; equal numerical BPM values with different pulse units do not mean equal note speeds.
+
+  Begin with the three-bar 5/4 phrase. Count ONE-two-three, ONE-two for 3+2, while keeping all five quarter spaces equal. The reference click emphasizes each group beginning; the bar still begins only once, at the first group. Play the same five pitches in every bar and avoid adding a sixth beat while returning to the first note. For 2+3, keep those pitches, note lengths and tempo unchanged but move the second group accent one beat earlier: ONE-two, ONE-two-three.
+
+  Next play four bars of 7/8 at the displayed eighth-note BPM. For 2+2+3, count ONE-two, ONE-two, ONE-two-three. The group lengths are one second, one second and one and a half seconds at 120 BPM, while every written eighth is still half a second. In 3+2+2 the long group comes first. Read the beams and group label, and keep the same seven-note motif when switching versions. Do not shorten the three-note group to make all groups equally long.
+
+  Practice one complete bar plus the next downbeat, then connect the full phrase. A range ending before the return can hide an extra or missing beat. Automatic assessment checks each pitch and attack on the written timeline; it does not grade accent loudness or infer how you counted. Listen to your own group beginnings separately. If you lose your place, return to speaking the short groups with the complete click before adding the guitar. The goal is a steady underlying unit with an intentionally uneven bar, not a periodically rushed or slowed tempo.
+steps:
+  prepare:
+    title: Name the unit and groups
+    body: >-
+      Read quarter-note BPM for 5/4 and eighth-note BPM for 7/8. Speak the selected group lengths before playing.
+      Count every unit through the full count-in; the emphasized middle click starts a group, not a new bar.
+  five-three-two:
+    title: Five quarters as 3+2
+    body: >-
+      At 80 quarter-note BPM, repeat the five-note motif for three bars. Count ONE-two-three, ONE-two. Keep all
+      quarter spaces equal and enter the next bar after exactly five.
+  five-two-three:
+    title: Move the inner accent to 2+3
+    body: >-
+      Use the identical motif and tempo, now counting ONE-two, ONE-two-three. The second group begins on bar beat
+      3 instead of 4. Pitch and timing targets remain unchanged; listen for the new accent yourself.
+  seven-two-two-three:
+    title: Seven eighths as 2+2+3
+    body: >-
+      At 120 eighth-note BPM, play four seven-note bars. Count two short groups and one longer group. Each note
+      gets one equal click interval; after seven, return to the start. {{sequence}}.
+  seven-three-two-two:
+    title: Put the long group first
+    body: >-
+      Keep the same notes and eighth-note tempo, now in 3+2+2. Group starts are units 1, 4 and 6. Follow the changed
+      beam groups without adding or removing a note.
+  review:
+    title: Keep the unit steady through the barline
+    body: >-
+      Check early/late attacks and whether the return follows exactly five or seven units. Separately listen to
+      group emphasis. Repeat the version that caused an extra beat before reconnecting the whole phrase.
+  question:
+    title: What changes between 7/8 groupings?
+    body: Count the subdivision before answering.
+activities:
+  five-three-two:
+    title: Five quarters as 3+2
+    body: >-
+      At 80 quarter-note BPM, repeat the five-note motif for three bars. Count ONE-two-three, ONE-two. Keep all
+      quarter spaces equal and enter the next bar after exactly five.
+  five-two-three:
+    title: Move the inner accent to 2+3
+    body: >-
+      Use the identical motif and tempo, now counting ONE-two, ONE-two-three. The second group begins on bar beat
+      3 instead of 4. Pitch and timing targets remain unchanged; listen for the new accent yourself.
+  seven-two-two-three:
+    title: Seven eighths as 2+2+3
+    body: >-
+      At 120 eighth-note BPM, play four seven-note bars. Count two short groups and one longer group. Each note
+      gets one equal click interval; after seven, return to the start. {{sequence}}.
+  seven-three-two-two:
+    title: Put the long group first
+    body: >-
+      Keep the same notes and eighth-note tempo, now in 3+2+2. Group starts are units 1, 4 and 6. Follow the changed
+      beam groups without adding or removing a note.
+learningTasks:
+  question:
+    title: What changes between 7/8 groupings?
+    body: The same seven eighth notes switch from 2+2+3 to 3+2+2 at the same eighth-note BPM. What changes?
+    items:
+      accent: Group emphasis and beam grouping; all seven note lengths and the bar duration stay the same.
+      duration: The bar becomes longer because its first group is longer.
+      count: One extra eighth is added at the barline.
+    explanation: >-
+      Both groupings total seven equal eighth units. They place the longer group differently, so the internal accents
+      change while the clock and note sequence stay intact.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      unit: I checked the pulse unit instead of comparing BPM numbers alone.
+      bar: I returned after exactly five or seven equal units without inserting an extra beat.
+      groups: I heard the different group accents separately from the pitch/timing score.

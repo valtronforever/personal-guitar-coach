@@ -14227,6 +14227,57 @@
           }
         }
       }
+    },
+    "tempo.quarter": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quarter-note pulse"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пульс чвертей"
+          }
+        }
+      }
+    },
+    "tempo.dottedQuarter": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dotted-quarter pulse"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пульс чвертей із крапкою"
+          }
+        }
+      }
+    },
+    "tempo.eighth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eighth-note pulse"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пульс восьмих"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

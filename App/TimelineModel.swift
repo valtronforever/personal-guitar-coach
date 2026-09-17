@@ -9,6 +9,7 @@ struct TimelineSegment: Identifiable, Sendable {
     let startTick: Int64
     let endTick: Int64
     var triplet: TripletGroup? = nil
+    var notationBoundaries: [Int64] = []
     var writtenDurationTicks: Int64 { triplet == nil ? resolved.event.durationTicks : resolved.event.durationTicks / 2 * 3 }
     var id: String { resolved.id }
     var isContinuation: Bool { startTick > resolved.event.startTick }
@@ -30,9 +31,35 @@ struct TimelineModel: Sendable {
     private let tripletsByEvent: [String: TripletGroup]
     private let tripletsByBar: [Int64: [TimelineTriplet]]
     func silentBeatNumbers(in bar: Int64) -> [Int] {
+        guard (0..<barCount).contains(bar) else { return [] }
         let start = bar * ticksPerBar
-        return (exercise.metronome?.silentBeatTicks ?? []).filter { $0 >= start && $0 < start + ticksPerBar }
-            .map { Int(($0 - start) / MusicalTime.ppq) + 1 }
+        return (exercise.metronome?.silentBeatTicks ?? []).filter { $0 >= start && $0 - start < ticksPerBar }
+            .map { Int(($0 - start) / exercise.timeSignature.pulseTicks) + 1 }
+    }
+    var groupingLabel: String? {
+        exercise.beatGrouping != nil || [TimeSignature.fiveFour, .sevenEight].contains(exercise.timeSignature)
+            ? exercise.effectiveBeatGrouping.map(String.init).joined(separator: "+") : nil
+    }
+    var pulseTicks: Int64 { exercise.timeSignature.pulseTicks }
+    var beatWidth: Double { Self.baseBeatWidth * max(1, Double(pulseTicks) / 960) }
+    func notationBoundaries(in bar: Int64) -> [Int64] {
+        guard (0..<barCount).contains(bar) else { return [] }
+        let start = bar * ticksPerBar
+        let available = min(ticksPerBar, exercise.durationTicks - start)
+        var offsets: [Int64] = [0]
+        if exercise.timeSignature.denominator == 4 {
+            offsets = (0...exercise.timeSignature.numerator).map { Int64($0) * MusicalTime.ppq }
+        } else {
+            var offset: Int64 = 0
+            for group in exercise.effectiveBeatGrouping { offset += Int64(group) * pulseTicks; offsets.append(offset) }
+        }
+        // The last partial bar can end at Int64.max in a valid display-only timeline.
+        var result = offsets.filter { $0 <= available }.map { start + $0 }
+        if result.last != start + available { result.append(start + available) }
+        return result
+    }
+    func notationGroupStart(at tick: Int64) -> Int64 {
+        notationBoundaries(in: tick / ticksPerBar).last(where: { $0 <= tick }) ?? 0
     }
     var ticksPerBar: Int64 { exercise.timeSignature.ticksPerBar }
     var barCount: Int64 { (exercise.durationTicks - 1) / ticksPerBar + 1 }
@@ -61,15 +88,15 @@ struct TimelineModel: Sendable {
         let first = bounded / Self.barsPerPage * Self.barsPerPage
         return first..<min(barCount, first + Self.barsPerPage)
     }
-    func barWidth(zoom: Double) -> Double { Double(exercise.timeSignature.beatsPerBar) * Self.baseBeatWidth * boundedZoom(zoom) }
+    func barWidth(zoom: Double) -> Double { Double(exercise.timeSignature.beatsPerBar) * beatWidth * boundedZoom(zoom) }
     func x(tick: Int64, bar: Int64, zoom: Double) -> Double {
         let start = startTick(of: bar)
         let offset = tick <= start ? 0 : min(ticksPerBar, tick - start)
-        return Double(offset) / Double(MusicalTime.ppq) * Self.baseBeatWidth * boundedZoom(zoom)
+        return Double(offset) / Double(pulseTicks) * beatWidth * boundedZoom(zoom)
     }
     func tick(x: Double, bar: Int64, zoom: Double) -> Int64? {
         guard x.isFinite, x >= 0, x < barWidth(zoom: zoom) else { return nil }
-        let offset = Int64((x / (Self.baseBeatWidth * boundedZoom(zoom)) * Double(MusicalTime.ppq)).rounded(.down))
+        let offset = Int64((x / (beatWidth * boundedZoom(zoom)) * Double(pulseTicks)).rounded(.down))
         let start = startTick(of: bar)
         guard offset <= exercise.durationTicks - start else { return nil }
         return start + offset
@@ -87,7 +114,7 @@ struct TimelineModel: Sendable {
         var result: [TimelineSegment] = []
         while lower < events.count, events[lower].event.startTick < end {
             let event = events[lower]
-            result.append(TimelineSegment(resolved: event, bar: bar, startTick: max(start, event.event.startTick), endTick: min(end, event.event.endTick), triplet: tripletsByEvent[event.id]))
+            result.append(TimelineSegment(resolved: event, bar: bar, startTick: max(start, event.event.startTick), endTick: min(end, event.event.endTick), triplet: tripletsByEvent[event.id], notationBoundaries: notationBoundaries(in: bar)))
             lower += 1
         }
         return result
@@ -109,7 +136,7 @@ struct TimelineModel: Sendable {
     /// Following half-beat cells keeps the cursor visible at 2× zoom without scrolling every audio/UI frame.
     func followTarget(_ tick: Int64?) -> TimelineFollowTarget? {
         guard let tick, let bar = cursorBar(tick) else { return nil }
-        return TimelineFollowTarget(bar: bar, halfBeat: Int((tick - startTick(of: bar)) / (MusicalTime.ppq / 2)))
+        return TimelineFollowTarget(bar: bar, halfBeat: Int((tick - startTick(of: bar)) / (pulseTicks / 2)))
     }
     static func durationLabel(_ ticks: Int64) -> String {
         var a = ticks, b = MusicalTime.ppq * 4

@@ -9,8 +9,8 @@ Implement all 128 lessons from [the original agreed table](../../docs/CURRICULUM
 ## Delivery and audit
 
 1. **Curriculum/library foundation + modules 1–2** — authored; full acceptance audit pending. Stable 16-module organization, ordering, prerequisites/duration, reading progress, continue, combined search/filter/sort, lesson navigation. Preserve exact 128-topic inventory in a coverage ledger.
-2. **Modules 3–6** — in progress; all eight module-3 topics now authored. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
-3. **Modules 7–10** — todo. Articulation-aware lesson/notation and measurable pitch-contour practice for slides/legato/bends/vibrato; scales; compound/odd time, triplets/shuffle, missing clicks; harmony.
+2. **Modules 3–6** — authored; native/hardware acceptance remains open. Rhythm/notation extensions (dotted/tied notes), chord/strumming examples, rock/metal rhythm, fretboard theory. No chord recognition claims from monophonic evidence.
+3. **Modules 7–10** — in progress. Picking/synchronization, bends/returns, scales/positions and the complete advanced-rhythm module are authored with their software extensions. Slides/legato/vibrato and harmony still require implementation.
 4. **Modules 11–14** — todo. Listen/reproduce tasks, guided improvisation; advanced guitar techniques and original genre studies. Add required functionality rather than silently reducing R lessons to generic checklists.
 5. **Modules 15–16** — todo. Sound/recording and repertoire/composition workflow, original complete studies, self-practice recording support where required.
 6. **Full acceptance audit** — todo. 128-topic mapping, bilingual/content/musical review, all presets/fret counts, functionality-specific DSP/notation/transport checks, library/filter/reader tests and rendered UX evidence, signed Release, review/PR/merge. Hardware-dependent proof stays explicitly pending_user and never becomes fabricated success.
@@ -68,3 +68,9 @@ Primary references: [Apple Searching](https://developer.apple.com/design/human-i
 - PR #76 merged as d2250e2 after exact-head CI run 35166516387 passed; rhythm-phrasing PR #77 was retargeted to main.
 
 - Metronome omission extension and topic 72 authored: explicit silent quarter clicks retain count-in, audio clock, all guitar targets and source-coordinate repeat behavior. Compact score markers and recorded reference reflect the same omissions. Inventory: 73 bundles/67 visible, 66 authored topics, 1 needing review, 61 todo. All 265 Core tests, 143 existing App tests plus nine targeted App/coach checks, content/localization/render checks and signed 73-bundle Release/archive/XPC pass; [same-agent review](../../docs/reviews/metronome-gaps-review.md) records evidence. Exact-head CI is pending; full curriculum and native/hardware acceptance remain open.
+
+- PR #77 merged after exact-head CI run 35167647580 passed; metronome-gap PR #78 was retargeted to main without deleting its base branch.
+
+- Compound/odd-meter extension and topics 68/71 authored: explicit dotted-quarter/eighth BPM, validated group accents, shared seconds conversion, correct signature/beams and named pulse in UI. The advanced-rhythm module 65–72 is now authored. Inventory: 75 bundles/69 visible, 68 authored topics, 1 needing review, 59 todo. [Extension task](compound-odd-meter.md) and [same-agent review](../../docs/reviews/compound-odd-meter-review.md) track software/release evidence; full curriculum remains in progress and native/hardware acceptance remains open.
+
+- PR #78 passed exact-head CI run 35168654409 and was merged. Its stable 73-bundle Release remains the local build while the compound/odd continuation is under validation.

@@ -7,7 +7,7 @@ enum BendEvaluator {
         guard !targets.isEmpty else { return nil }
         let assessed = Dictionary(uniqueKeysWithValues: notes.map { ($0.id, $0) })
         let attacks = Dictionary(uniqueKeysWithValues: evidence.attacks.map { ($0.id, $0) })
-        let frames = evidence.pitchContour?.frames ?? [], secondsPerTick = 60 / config.bpm / 960
+        let frames = evidence.pitchContour?.frames ?? [], secondsPerTick = config.exercise.timeSignature.secondsPerTick(bpm: config.bpm)
         return try BendAssessment(notes: targets.map { event in
             let bend = event.bend!, points = bend.points(durationTicks: event.durationTicks)
             let kinds: [BendPhaseAssessment.Kind] = bend.releaseEndTick == nil ? [.base, .rise, .target] : [.base, .rise, .target, .release, .returned]

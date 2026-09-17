@@ -110,6 +110,8 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
     public let events: [MusicalEvent]
     public let triplets: [TripletGroup]
     public let metronome: MetronomePattern?
+    public let beatGrouping: [Int]?
+    public var effectiveBeatGrouping: [Int] { beatGrouping ?? timeSignature.defaultGrouping }
     public let timeSignature: TimeSignature
     public let defaultBPM: Double
     public let minimumBPM: Double
@@ -124,7 +126,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
                 timeSignature: TimeSignature = .fourFour, defaultBPM: Double = 60,
                 minimumBPM: Double = 40, maximumBPM: Double = 200,
                 tuningPolicy: TuningPolicy = .followsInstrument, requiredTuning: TuningProfile? = nil,
-                assessmentMode: AssessmentMode = .monophonic, triplets: [TripletGroup] = [], metronome: MetronomePattern? = nil) throws {
+                assessmentMode: AssessmentMode = .monophonic, triplets: [TripletGroup] = [], metronome: MetronomePattern? = nil, beatGrouping: [Int]? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, version > 0,
               ppq == MusicalTime.ppq, !events.isEmpty else { throw MusicError.invalidExercise }
         try MusicalTime.validateTempo(minimumBPM)
@@ -144,16 +146,31 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         }
         guard assessmentMode == .monophonic || !events.contains(where: \.assessSustain) else { throw MusicError.invalidExercise }
         try TripletGroup.validate(triplets, events: events)
+        if let beatGrouping {
+            guard !beatGrouping.isEmpty, beatGrouping.count <= timeSignature.beatsPerBar,
+                  beatGrouping.allSatisfy({ (1...timeSignature.beatsPerBar).contains($0) }),
+                  beatGrouping.reduce(0, +) == timeSignature.beatsPerBar else { throw MusicError.invalidTime }
+        }
         if let metronome {
-            guard events.last!.endTick % MusicalTime.ppq == 0,
+            guard events.last!.endTick % timeSignature.pulseTicks == 0,
+                  metronome.silentBeatTicks.allSatisfy({ $0 % timeSignature.pulseTicks == 0 }),
                   metronome.silentBeatTicks.last! < events.last!.endTick else { throw MusicError.invalidTime }
         }
+        self.beatGrouping = beatGrouping
         self.metronome = metronome
         self.triplets = triplets
         self.id = id; self.version = version; self.ppq = ppq; self.events = events
         self.timeSignature = timeSignature; self.defaultBPM = defaultBPM
         self.minimumBPM = minimumBPM; self.maximumBPM = maximumBPM
         self.tuningPolicy = tuningPolicy; self.requiredTuning = requiredTuning; self.assessmentMode = assessmentMode
+    }
+
+    /// Pulse indices receiving group emphasis inside the bar.
+    public var accentedPulseIndices: Set<Int> {
+        var index = 0, result: Set<Int> = [0]
+        for count in effectiveBeatGrouping.dropLast() { index += count; result.insert(index) }
+        // Simple/compound ordinary meters retain just the downbeat accent.
+        return beatGrouping == nil && ![TimeSignature.fiveFour, .sevenEight].contains(timeSignature) ? [0] : result
     }
 
     /// Preview can show the required tuning even when the user's guitar is different.
@@ -194,10 +211,11 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
         try values.encode(assessmentMode, forKey: .assessmentMode)
         if !triplets.isEmpty { try values.encode(triplets, forKey: .triplets) }
         try values.encodeIfPresent(metronome, forKey: .metronome)
+        try values.encodeIfPresent(beatGrouping, forKey: .beatGrouping)
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, version, ppq, events, timeSignature, defaultBPM, minimumBPM, maximumBPM, tuningPolicy, requiredTuning, assessmentMode, triplets, metronome
+        case id, version, ppq, events, timeSignature, defaultBPM, minimumBPM, maximumBPM, tuningPolicy, requiredTuning, assessmentMode, triplets, metronome, beatGrouping
     }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -209,6 +227,7 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
             requiredTuning: values.decodeIfPresent(TuningProfile.self, forKey: .requiredTuning),
             assessmentMode: values.decode(AssessmentMode.self, forKey: .assessmentMode),
             triplets: values.decodeIfPresent([TripletGroup].self, forKey: .triplets) ?? [],
-            metronome: values.decodeIfPresent(MetronomePattern.self, forKey: .metronome))
+            metronome: values.decodeIfPresent(MetronomePattern.self, forKey: .metronome),
+            beatGrouping: values.decodeIfPresent([Int].self, forKey: .beatGrouping))
     }
 }

@@ -358,3 +358,24 @@ This example silences all four quarter clicks in bar 2 of 4/4. Values are strict
 The full count-in remains audible. Preview and practice honor the authored omissions; practice still emits no reference guitar tones. Seek and repeated ranges use source exercise coordinates, so the same bar retains the same omissions. Keep an audible return inside a practice range when the educational task depends on comparing it with the gap. Event-scoped materials must contain whole quarter beats; resolution filters and rebases omission ticks along with the music. A fingering-only display has no metronome pattern.
 
 The compact score names silent beat numbers beside a crossed-out speaker; the setup notice explains that the guitar continues. Every written note remains in assessment, including silence in the click track. Saved exercise snapshots retain the pattern; absent fields preserve old canonical encoding. The recorded reference channel uses the same transport plan and therefore the same omissions. New gapped coach requests use `file-coach-3` and explain deliberate silence; ordinary/bend requests retain versions 1/2. `missing-clicks` provides sparse 2/4 clicks, single silent bars and a two-bar gap, with explicit audible returns and internal-pulse self-observation.
+
+### Compound and odd meters: what BPM counts
+
+| Signature | BPM/click unit | Pulses per bar | Default grouped emphasis |
+| --- | --- | --- | --- |
+| 3/4 | Quarter, 960 ticks | 3 | Downbeat |
+| 4/4 | Quarter, 960 ticks | 4 | Downbeat |
+| 5/4 | Quarter, 960 ticks | 5 | 3+2 |
+| 6/8 | Dotted quarter, 1440 ticks | 2 | Downbeat |
+| 12/8 | Dotted quarter, 1440 ticks | 4 | Downbeat |
+| 7/8 | Eighth, 480 ticks | 7 | 2+2+3 |
+
+The denominator describes written notation; the named pulse defines BPM. At 60 dotted-quarter BPM, a 6/8 bar lasts two seconds and each eighth lasts one third of a second. At 120 eighth-note BPM, a 7/8 bar lasts 3.5 seconds and each eighth lasts half a second. Count-in uses one whole bar of these pulses. PPQ remains 960 for every signature. Tempo is constant within an exercise; no tempo map or mixed-signature bar sequence is implied.
+
+An optional `beatGrouping: [3, 2, 2]` on a 7/8 exercise changes group starts to units 1, 4 and 6. Positive counts must sum to the pulse count. Explicit groups emphasize each beginning; default simple/compound meters only emphasize the bar downbeat. Grouping changes neither note events nor bar duration, and does not itself mark guitar-note accents: use existing event `accented` values to author that separate reference target. The `odd-meters` lesson compares alternative groups with identical note pitches/times. A pitch/timing score does not verify accent strength.
+
+Metronome omissions now validate against the signature's pulse grid: e.g. 1440 is the second 6/8 pulse; 960 is not a click there. The pattern's standalone grid accepts multiples of 480; Exercise applies the actual pulse and duration constraints. Existing quarter-meter patterns retain their previous meaning. Grouped/non-baseline event materials must span whole bars so rebasing cannot silently change group phase; ordinary 3/4/4/4 omission-only materials may still span whole quarter pulses. Fingering-only displays retain a complete bar.
+
+Staff beams three eighths per compound pulse and the authored groups in 7/8. Simple-meter eighths retain beat-pair beaming even when 5/4 click accents group quarters. Long offbeat notes split at notation-group boundaries with ties and one canonical attack. Both TAB layouts, cursor/follow positions, spoken beat coordinates and bend-curve axes use the named pulse. Preview, practice and result tempo labels identify that unit. Practice duration and pitch/sustain/bend capability gates use actual seconds; changing the signature cannot bypass minimum note/phase duration.
+
+`compound-meters` compares a four-bar 6/8 melody with the same music in two 12/8 bars and a final sustained dotted-quarter tonic. `odd-meters` provides 3+2/2+3 quarters and 2+2+3/3+2+2 eighths. New grouped/non-baseline coach requests use `file-coach-4`, carrying the signature and grouping; previous ordinary, bend and omission request versions remain valid for their historical conditions.

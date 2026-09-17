@@ -13,7 +13,7 @@ import Persistence
     }
     @Test func oneCatalogAndLegacyBookmarksReachTheSameAdaptiveCourse() async throws {
         let library = await library()
-        #expect(library.catalogLessons.count == 67 && library.lessons.count == 73)
+        #expect(library.catalogLessons.count == 69 && library.lessons.count == 75)
         #expect(library.sourceLesson(id: "ab-major-c-standard")?.id == "c-major")
         let source = try #require(library.sourceLesson(id: "c-major"))
         let selection = LessonSelection(lesson: source, tuning: .standard)

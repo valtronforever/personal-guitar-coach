@@ -51,7 +51,7 @@ struct PreviewControls: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("playback.optionsExplanation").font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                     HStack {
-                        Stepper(value: $model.bpm, in: 40...200, step: 1) { Text("playback.tempo \(Int(model.bpm))") }
+                        Stepper(value: $model.bpm, in: 40...200, step: 1) { HStack { Text("playback.tempo \(Int(model.bpm))"); Text(LocalizedStringKey((model.exercise?.timeSignature ?? .fourFour).tempoUnitKey)) } }
                             .accessibilityIdentifier("playback.tempo")
                         Text(verbatim: model.exercise?.timeSignature.rawValue ?? "4/4")
                         Picker("playback.countIn", selection: $model.countInBars) {

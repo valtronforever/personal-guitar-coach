@@ -70,6 +70,7 @@ struct PracticeScoreRow: View {
             if let bar {
                 HStack(spacing: 5) {
                     Text("tab.bar \(bar + 1)", bundle: localizationBundle)
+                    if let grouping = model.groupingLabel { Text(verbatim: grouping).foregroundStyle(.secondary) }
                     let silent = model.silentBeatNumbers(in: bar)
                     if !silent.isEmpty {
                         Label(silent.map(String.init).joined(separator: ", "), systemImage: "speaker.slash")
@@ -162,7 +163,7 @@ struct PracticeScoreRow: View {
     }
     private func description(_ segment: TimelineSegment) -> Text {
         let event = segment.resolved.event
-        let beat = (Double(segment.startTick - model.startTick(of: segment.bar)) / Double(MusicalTime.ppq) + 1)
+        let beat = (Double(segment.startTick - model.startTick(of: segment.bar)) / Double(model.pulseTicks) + 1)
             .formatted(.number.precision(.fractionLength(0...2)).locale(locale))
         let written = TimelineModel.durationLabel(segment.writtenDurationTicks)
         let tripletFormat = localizationBundle.localizedString(forKey: "rhythm.tripletDuration %@", value: nil, table: nil)

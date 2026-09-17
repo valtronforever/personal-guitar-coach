@@ -1,0 +1,80 @@
+lessonID: compound-meters
+lessonVersion: 1
+locale: en
+title: Feel 6/8 and 12/8
+summary: Group written eighths into dotted-quarter pulses and distinguish pulse from bar length.
+goal: Play groups of three eighths with two pulses in 6/8 and four in 12/8.
+body: |-
+  In compound meter, a main pulse divides naturally into three equal parts. The six eighth notes of 6/8 form two dotted-quarter pulses: ONE-two-three, TWO-two-three. In 12/8 there are four such pulses: ONE, TWO, THREE and FOUR, each with its own three subdivisions. The numerator counts written eighth-note units; it does not require that many main metronome clicks.
+
+  The app names the tempo unit next to BPM. For these exercises, 60 BPM means sixty dotted quarters per minute. A pulse lasts one second, an eighth lasts one third of a second, a 6/8 bar lasts two seconds, and a 12/8 bar lasts four seconds. The full count-in follows the same unit: two clicks before 6/8, four before 12/8. Do not interpret this as 60 individual eighths per minute.
+
+  Begin with four bars of repeated eighths in 6/8. Speak three even syllables per click and emphasize the start of each main pulse gently. Keep two main pulses per bar. Although 3/4 can also contain six eighths, its ordinary grouping is three pairs, not two groups of three. Watch the beams and feel the pulse instead of treating the denominator as an instruction to pick on every click only.
+
+  Next play the four-bar melodic phrase. Each of its first three bars contains six separate eighth-note attacks; the last bar has three eighths followed by one dotted-quarter tonic. That final note fills the entire second pulse, so pick once and let it ring. Its marked sustain coverage checks whether the target continues, not which finger or technique held it.
+
+  The 12/8 example uses the same pitches and durations as the melodic 6/8 example, but groups the music into two longer bars. The tempo unit remains a dotted quarter. The metronome still clicks once per pulse, while the strongest bar accent arrives every four pulses instead of every two. Read ahead across the former short-bar boundaries without adding an attack. Compare both examples at the same BPM to hear the changed organization rather than a speed change. Review note timing and the final hold, and judge your sense of grouping separately from the automatic score.
+steps:
+  prepare:
+    title: Read the tempo unit first
+    body: >-
+      Set 60 BPM and confirm dotted-quarter pulse. Speak three equal subdivisions per click. Expect two full count-in
+      clicks for 6/8 and four for 12/8.
+  six-eight-pulse:
+    title: Two pulses, six eighths
+    body: >-
+      Play four 6/8 bars on one pitch. Count ONE-two-three, TWO-two-three. Each bracketless group of three ordinary
+      eighths occupies a dotted quarter; these are not written eighth-note triplets.
+  six-eight-phrase:
+    title: Shape a four-bar phrase
+    body: >-
+      Play the six eighths in each of the first three bars. In bar 4, play three eighths then hold the tonic for
+      the complete second dotted-quarter pulse. Do not repick the held note. {{sequence}}.
+  twelve-eight-flow:
+    title: Keep the notes, lengthen the bar
+    body: >-
+      Play the same melodic events in two 12/8 bars at the same dotted-quarter BPM. Count four main pulses per bar.
+      The written barline and strongest reference accent move; pitches, note lengths and final hold remain the same.
+  review:
+    title: Separate subdivision from bar count
+    body: >-
+      Review uneven spaces inside a pulse and the final sustain. Then listen for two-pulse versus four-pulse organization.
+      Repeat on one pitch if the bar count distracts from the three equal subdivisions.
+  question:
+    title: What does 60 BPM mean here?
+    body: Count the subdivision before answering.
+activities:
+  six-eight-pulse:
+    title: Two pulses, six eighths
+    body: >-
+      Play four 6/8 bars on one pitch. Count ONE-two-three, TWO-two-three. Each bracketless group of three ordinary
+      eighths occupies a dotted quarter; these are not written eighth-note triplets.
+  six-eight-phrase:
+    title: Shape a four-bar phrase
+    body: >-
+      Play the six eighths in each of the first three bars. In bar 4, play three eighths then hold the tonic for
+      the complete second dotted-quarter pulse. Do not repick the held note. {{sequence}}.
+  twelve-eight-flow:
+    title: Keep the notes, lengthen the bar
+    body: >-
+      Play the same melodic events in two 12/8 bars at the same dotted-quarter BPM. Count four main pulses per bar.
+      The written barline and strongest reference accent move; pitches, note lengths and final hold remain the same.
+learningTasks:
+  question:
+    title: What does 60 BPM mean here?
+    body: The exercise shows 6/8 and a dotted-quarter pulse at 60 BPM. How many main clicks and seconds are in one
+      bar?
+    items:
+      two: Two main clicks; the bar lasts two seconds.
+      six: Six main clicks; the bar lasts six seconds.
+      three: Three quarter-note clicks; the bar lasts three seconds.
+    explanation: >-
+      Six written eighths form two dotted quarters. Each dotted-quarter pulse lasts one second at this tempo. The
+      tempo-unit label determines what BPM counts.
+  review:
+    title: Review your pulse
+    body: Mark only what you checked yourself.
+    items:
+      unit: I read dotted-quarter BPM and counted the correct two/four-pulse bar.
+      subdivision: I kept three equal eighths inside each main pulse without speeding up.
+      hold: I let the final dotted-quarter tonic ring for one pulse with a single attack.

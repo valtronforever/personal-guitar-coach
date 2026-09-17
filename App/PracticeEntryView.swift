@@ -146,7 +146,10 @@ struct PracticeEntryView: View {
             HStack {
                 Stepper("practice.selectedTempo \(Int(model.bpm))", value: Binding(get: { model.bpm }, set: { model.setTempo($0) }),
                     in: exercise.minimumBPM...exercise.maximumBPM, step: 1).accessibilityIdentifier("practice.tempo")
+                Text(LocalizedStringKey(exercise.timeSignature.tempoUnitKey)).font(.caption).foregroundStyle(.secondary)
                 Spacer()
+            }
+            HStack {
                 Stepper("practice.firstBarValue \(model.firstBar)", value: Binding(get: { model.firstBar }, set: { model.setBars(first: $0, last: model.lastBar) }), in: 1...model.barCount)
                 Stepper("practice.lastBarValue \(model.lastBar)", value: Binding(get: { model.lastBar }, set: { model.setBars(first: model.firstBar, last: $0) }), in: model.firstBar...max(model.firstBar, model.barCount))
             }

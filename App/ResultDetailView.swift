@@ -89,7 +89,7 @@ struct ResultDetailView: View {
     private var conditions: some View {
         GroupBox("result.conditions") {
             VStack(alignment: .leading, spacing: 8) {
-                HStack { TuningName(profile: tuning); Text("practice.selectedTempo \(Int(config.bpm))") }
+                HStack { TuningName(profile: tuning); Text("practice.selectedTempo \(Int(config.bpm))"); Text(LocalizedStringKey(config.exercise.timeSignature.tempoUnitKey)) }
                 Text("result.bars \(Int(config.range.lowerBound / config.exercise.timeSignature.ticksPerBar) + 1) \(Int((config.range.upperBound - 1) / config.exercise.timeSignature.ticksPerBar) + 1)")
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
                 Text("practice.stringOrder").font(.caption)
@@ -161,7 +161,7 @@ struct ResultDetailView: View {
                     ForEach(advice.eventIDs, id: \.self) { id in
                         if let event = config.selectedEvents.first(where: { $0.id == id }) {
                             let bar = event.startTick / config.exercise.timeSignature.ticksPerBar + 1
-                            let beat = number(Double(event.startTick % config.exercise.timeSignature.ticksPerBar) / 960 + 1)
+                            let beat = number(Double(event.startTick % config.exercise.timeSignature.ticksPerBar) / Double(config.exercise.timeSignature.pulseTicks) + 1)
                             Button { selectedID = id } label: { Text("result.evidenceEvent \(bar) \(beat)") }
                         }
                     }
