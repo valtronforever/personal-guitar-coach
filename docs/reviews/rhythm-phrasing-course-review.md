@@ -12,7 +12,7 @@
 ## Verification
 
 - All 100 Learning tests pass in 79.784 s. Two new independent musical tests exercise every activity across eight tuning presets × five fret counts: pitches/intervals, onset ticks, durations, accents, marked holds, quarter/eighth/sixteenth grouping, continuous pick cues, open bass, tempo capability and frozen JSON.
-- Initial 142-App-test run had only the two rest-fragment expectation failures described above. The final explicit-serial rerun passes all 143 App tests in 145.337 s, including the added rest regression. The content validator accepts 72 bilingual bundles with zero issues. Local Release verification follows separately.
+- Initial 142-App-test run had only the two rest-fragment expectation failures described above. The final explicit-serial rerun passes all 143 App tests in 145.337 s, including the added rest regression. The content validator accepts 72 bilingual bundles with zero issues. Signed local Release/archive validates 72 bundles /217 YAML files (`docs/benchmarks/rhythm-phrasing-release-bundle.json`). Binary SHA256 `be8ecf28cffd4b0f9ba3d69b7197600ef43c626bdb7c45d53ef2a1dec9351c40`; archive SHA256 `f653ff75a1406b678f2333c00eb420a08c0fad063cea0dc27cf3278c8fc933d7`. Signed sandbox-to-separate-XPC invalid-request probe passes without a provider invocation. Native launch is not verified; exact-head CI remains pending.
 - Generated project, 835 English/Ukrainian UI keys, four Python author-tool tests, partial 128-topic inventory audit and UI-source type-check pass. Inventory is 65 authored, 1 needing review, 62 todo; partial success is not full-course acceptance.
 
 ## Remaining acceptance
