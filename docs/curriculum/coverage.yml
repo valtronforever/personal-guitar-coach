@@ -1104,7 +1104,8 @@ lessons:
       uk: Tremolo picking
     outcomeUK: Утримувати швидкі повторні атаки з контрольованим рухом
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 97
     moduleID: electric-styles
     lessonID: blues-accompaniment

@@ -204,3 +204,7 @@ Practice `string-skipping`, `economy-picking`, `sweep-picking` and `hybrid-picki
 - On clean guitar input, try natural octave/third/fourth partials and touched artificial octaves; record wrong stopped notes, residual fundamental, decay, clipping and weak/noisy cases. Confirm missing/uncertain evidence is distinct from a musical error. Synthetic PCM is not this acceptance evidence.
 - With C Standard and the matching Drop preset, verify the open-bass harmonic changes with string six. On 19/20/21-fret profiles, the artificial region requiring fret22 must be unavailable; 22/24 should show the linked base/touch pair.
 - Check the separate physical criteria manually. A pitch score is not evidence of the correct node, finger, string or pinch gesture. Optional provider analysis remains unverified without an actual authorized run.
+
+## Tremolo picking (96) — pending user
+
+Try the two moderate graded preparations with clean input and a valid instrument timing profile. Check repeated attacks, burst cutoffs and rests; manual timing remains approximate. Use the three fast examples with metronome/reference and self-review only. Confirm arrows, beat accents and rests are legible during playback in both languages and that fast exercises do not present an automatic individual-note score. Actual high-speed picking, comfort and gesture checks are not established by synthetic/reference or content tests.

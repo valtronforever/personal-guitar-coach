@@ -1,0 +1,99 @@
+lessonID: tremolo-picking
+lessonVersion: 1
+locale: en
+title: 'Tremolo picking: bursts, recovery and control'
+summary: Build even repeated attacks from short alternating bursts, then connect them into a phrase.
+goal: Play controlled repeated-note bursts with clear starts, rests and pitch changes at a repeatable tempo.
+body: |-
+  Tremolo picking repeats a pitch rapidly with alternating downstrokes and upstrokes. It is a picking technique, distinct from an amplifier tremolo effect or a vibrato arm. Speed is only one feature: the start, ending, evenness and recovery between bursts make the sound useful in a phrase. Begin on one comfortable fretted note with a clean sound so each attack is audible.
+
+  First compare one note per click with two equally spaced notes per click. Keep the click unchanged and listen for the halfway point. The arrows show the intended alternating direction; they are instructions, not detected hand movements. Use only enough pick travel to clear the string. If the movement becomes forced or the attacks lose their spacing, shorten the burst and return to a comfortable tempo before trying again.
+
+  The graded preparation uses eighth notes and explicit rests. Stop at the written boundary instead of letting one extra attack fall into the rest. Count the silent beats and restart deliberately. Listen for a repeated loud downstroke followed by a weak upstroke; aim for an even pair before extending the burst. The software checks pitch and timing at this moderate speed, while direction, movement and comfort remain your self-checks.
+
+  Fast practice changes the subdivision to four sixteenths per click. Begin with one beat of playing and three beats of silence, then try two playing beats and two silent beats. Use the metronome and the displayed attacks to locate the boundaries; do not chase the cursor with your hand. Increase tempo in small steps only after several comparable clean bursts, and keep a slower setting available for correction.
+
+  In the final study, keep the repeated pitch through each burst and change the fretted note at the next marked group. Prepare the new fret during the rest without sounding an unintended note. Compare a short burst with a full-bar burst at the same tempo. A useful result is a controlled phrase that can be repeated, not one isolated maximum-speed attempt. End the final burst cleanly and count the remaining silence.
+
+  The faster sixteenth-note examples use playback and self-practice rather than automatic grading. Their shortest notes can fall below the current 0.2-second note-analysis limit; the app must not present those attacks as individually verified. Keep the synthesized reference quiet enough to hear your own playing, or lower it while retaining the metronome. Record a chosen tempo and one concrete observation in your practice notes before the next visit.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  subdivision:
+    title: One then two attacks per click
+    body: 'Keep 60 BPM initially. Bar 1 uses quarters; bar 2 uses eighths. Hear the subdivision change without doubling
+      the metronome. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  measured-bursts:
+    title: 'Measured preparation: burst and rest'
+    body: 'Play one, two, then four beats of eighth notes; count each recovery. Compare timing only with valid calibration;
+      manual alignment gives an approximate result. Sounding notes: {{sequence}}. Use the displayed fingering as
+      a suggestion; the sound does not prove the string or finger.'
+  fast-short:
+    title: 'Fast bursts: self-practice'
+    body: 'Four attacks per click. Start at 80 BPM; lower reference volume, retain clicks and compare the first
+      and last attack of every burst. No automatic fast-note score. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  fast-long:
+    title: A whole-bar burst and full recovery
+    body: 'Hold the same pitch for sixteen alternating attacks, then leave a full bar quiet. Compare repeatability
+      before changing speed. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound
+      does not prove the string or finger.'
+  burst-study:
+    title: Four-bar repeated-note study
+    body: 'Move between three frets on one string at the group boundaries. Bars 1–4 develop short bursts into a
+      full bar, then finish with space. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion;
+      the sound does not prove the string or finger.'
+  burst-review:
+    title: Review control at a chosen tempo
+    body: Choose a tempo you can repeat. Play three comparable cycles, then change only the burst length or tempo
+      and compare.
+  subdivision-check:
+    title: Count a sixteenth-note burst
+    body: In 4/4 with a quarter-note click, how many attacks fill one beat of continuous sixteenths?
+activities:
+  subdivision:
+    title: One then two attacks per click
+    body: 'Keep 60 BPM initially. Bar 1 uses quarters; bar 2 uses eighths. Hear the subdivision change without doubling
+      the metronome. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound does not
+      prove the string or finger.'
+  measured-bursts:
+    title: 'Measured preparation: burst and rest'
+    body: 'Play one, two, then four beats of eighth notes; count each recovery. Compare timing only with valid calibration;
+      manual alignment gives an approximate result. Sounding notes: {{sequence}}. Use the displayed fingering as
+      a suggestion; the sound does not prove the string or finger.'
+  fast-short:
+    title: 'Fast bursts: self-practice'
+    body: 'Four attacks per click. Start at 80 BPM; lower reference volume, retain clicks and compare the first
+      and last attack of every burst. No automatic fast-note score. Sounding notes: {{sequence}}. Use the displayed
+      fingering as a suggestion; the sound does not prove the string or finger.'
+  fast-long:
+    title: A whole-bar burst and full recovery
+    body: 'Hold the same pitch for sixteen alternating attacks, then leave a full bar quiet. Compare repeatability
+      before changing speed. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion; the sound
+      does not prove the string or finger.'
+  burst-study:
+    title: Four-bar repeated-note study
+    body: 'Move between three frets on one string at the group boundaries. Bars 1–4 develop short bursts into a
+      full bar, then finish with space. Sounding notes: {{sequence}}. Use the displayed fingering as a suggestion;
+      the sound does not prove the string or finger.'
+learningTasks:
+  burst-review:
+    title: Review control at a chosen tempo
+    body: Choose a tempo you can repeat. Play three comparable cycles, then change only the burst length or tempo
+      and compare.
+    items:
+      alternate: I checked alternating direction and a small, comfortable movement myself.
+      even: The pairs of attacks sounded even enough to repeat consistently.
+      boundaries: I started and stopped at the intended boundaries and counted the rests.
+      change: I changed pitch at a group boundary without losing the pulse.
+      record: I noted the tempo and one specific change for the next visit.
+  subdivision-check:
+    title: Count a sixteenth-note burst
+    body: In 4/4 with a quarter-note click, how many attacks fill one beat of continuous sixteenths?
+    items:
+      two: Two
+      four: Four
+      sixteen: Sixteen
+    explanation: Four sixteenths fill a quarter-note beat; sixteen fill the whole 4/4 bar.

@@ -109,6 +109,7 @@ lessons:
   - expressive-hardware
   - record-di-monitoring
   - harmonics
+  - tremolo-picking
 modules:
   - id: getting-started
     order: 1
