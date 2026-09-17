@@ -24,7 +24,7 @@ struct PracticeEntryView: View {
     private var tuning: TuningProfile { model.request?.archivedTuning ?? model.request?.exercise.requiredTuning ?? instrument.tuning }
     private var exceedsFretCount: Bool {
         guard !model.phase.active, let exercise = model.request?.exercise else { return false }
-        return exercise.events.filter { model.selectedEventIDs.contains($0.id) }.flatMap(\.positions).contains { !instrument.contains($0) }
+        return exercise.events.filter { model.selectedEventIDs.contains($0.id) }.flatMap(\.techniquePositions).contains { !instrument.contains($0) }
     }
     private var detectedPitch: Pitch? { model.latestFrequency.flatMap { try? Pitch.nearest(to: $0, referenceA4: tuning.referenceA4) } }
 
@@ -136,6 +136,7 @@ struct PracticeEntryView: View {
                 Text(verbatim: tuning.strings.reversed().map { $0.openPitch.name(spelling: tuning.preferredSpelling) }.joined(separator: " · "))
             }
             Text("practice.stringOrder").font(.caption)
+            if exercise.events.contains(where: { $0.pitchTransition != nil }) { Text("transition.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: { $0.bend != nil }) { Text("bend.practiceInstructions").font(.caption).foregroundStyle(.secondary) }
             if exercise.events.contains(where: \.assessSustain) {
                 Text("practice.sustainRequirement").font(.caption).foregroundStyle(.secondary)

@@ -42,6 +42,10 @@ public enum CoachAgentContract {
         Sustain summaries measure stable target-pitch coverage, not an exact release time. Raw sustain and moving-pitch traces are omitted.
         Bend summaries measure the audible base/rise/target/release/return against an authored path, not finger motion.
         Spectral events inside bends are retained observations, not scored extra pick attacks. Honor the request’s unscoredBendObservationIDs; never diagnose an extra physical pick stroke from those events.
+        Pitch-transition summaries measure base/travel/target for slides and base/target for hammer-on/pull-off.
+        Their timing score concerns the initial attack; phase coverage is not an exact second-attack time or proof of a physical technique.
+        Slide travel allows fretted pitch steps and checks intermediate pitches for multi-fret motion; the reference curve is abstract pitch guidance.
+        Honor unscoredPitchTransitionObservationIDs as retained flux observations, never evidence of a repick.
         Interpret practice calibration, validity, rhythmCapability, uncertainty and algorithm versions.
         Personal synchronization is approximate and includes player bias. Bluetooth output delay is
         not independently measured. Never invent an exact latency, new score or reliable rhythm evidence.

@@ -5,7 +5,9 @@ public enum AssessmentEngine {
     /// Bounded dynamic programming: pitch never changes the assignment of an attack to a note.
     public static func evaluate(_ evidence: PracticeEvidence) throws -> AssessedPractice {
         let config = evidence.configuration
-        let parameters = config.selectedEvents.contains { $0.bend != nil } ? AssessmentParameters.withBends : .current
+        let parameters: AssessmentParameters
+        if config.selectedEvents.contains(where: { $0.pitchTransition != nil }) { parameters = .withPitchTransitions }
+        else { parameters = config.selectedEvents.contains { $0.bend != nil } ? .withBends : .current }
         let expected = config.selectedEvents.filter { $0.kind == .note }
         let tuning = config.exercise.requiredTuning ?? config.instrument.tuning
         let frequencies = try expected.map { try tuning.pitch(at: $0.positions[0]).frequency(referenceA4: tuning.referenceA4) }
@@ -67,28 +69,35 @@ public enum AssessmentEngine {
         let extras = try attacks.indices.filter { !used.contains($0) }.map {
             try AssessedExtra(id: attacks[$0].id, restID: restIDs[$0], uncertain: !attacks[$0].reliable)
         }
-        let unscoredBendIDs = evidence.bendObservationIDs(notes: notes)
-        let scoredExtras = extras.filter { !unscoredBendIDs.contains($0.id) }
+        let unscoredMotionIDs = evidence.bendObservationIDs(notes: notes).union(evidence.pitchTransitionObservationIDs(notes: notes))
+        let scoredExtras = extras.filter { !unscoredMotionIDs.contains($0.id) }
         let uncertain = notes.filter(\.uncertain).count + scoredExtras.filter(\.uncertain).count
         let bends = try BendEvaluator.evaluate(evidence, notes: notes)
+        let transitions = try PitchTransitionEvaluator.evaluate(evidence, notes: notes)
         let sustain = try SustainEvaluator.evaluate(evidence, notes: notes)
         let validity: AssessmentValidity
         if !evidence.signalConfirmed { validity = .insufficientSignal }
         else if evidence.phase != .completed { validity = .interrupted }
         else if bends != nil && bends?.score == nil { validity = .insufficientSignal }
+        else if transitions != nil && transitions?.score == nil { validity = .insufficientSignal }
         else if sustain != nil && sustain?.score == nil { validity = .insufficientSignal }
         else if Double(uncertain) / Double(expected.count) > parameters.uncertaintyFraction { validity = .insufficientSignal }
         else { validity = capability.allowsTiming ? .valid : .uncalibrated }
         let pitch = 100 * pitchPoints / Double(expected.count), rhythm = 100 * rhythmPoints / Double(expected.count)
         let attackScore = parameters.pitchWeight * pitch + (1 - parameters.pitchWeight) * rhythm
-        let baseScore = bends?.score.map { 0.5 * attackScore + 0.5 * $0 } ?? attackScore
+        let movingScore: Double?
+        if let transitions {
+            let scores = (bends?.notes.compactMap(\.score) ?? []) + transitions.notes.compactMap(\.score)
+            movingScore = scores.isEmpty ? nil : scores.reduce(0, +) / Double(scores.count)
+        } else { movingScore = bends?.score }
+        let baseScore = movingScore.map { 0.5 * attackScore + 0.5 * $0 } ?? attackScore
         let combined = sustain?.score.map { 0.8 * baseScore + 0.2 * $0 } ?? baseScore
         let overall = min(100, max(0, (combined - parameters.extraPenalty * Double(scoredExtras.count) / Double(expected.count + scoredExtras.count)).rounded()))
         return try AssessedPractice(evidence: evidence, parameters: parameters, validity: validity, rhythmCapability: capability,
             rhythmToleranceSeconds: tolerance, notes: notes, extras: extras,
             overallScore: validity == .valid ? overall : nil,
             pitchScore: validity == .valid || validity == .uncalibrated ? pitch : nil,
-            timingScore: validity == .valid ? rhythm : nil, sustain: sustain, bends: bends)
+            timingScore: validity == .valid ? rhythm : nil, sustain: sustain, bends: bends, pitchTransitions: transitions)
     }
 
     private static func align(expected: [Double], observed: [Double], radii: [Double], restIDs: [String?]) -> [Int?] {

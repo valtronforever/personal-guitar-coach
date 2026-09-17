@@ -654,7 +654,8 @@ lessons:
       uk: Slide
     outcomeUK: Переміщуватися між нотами ковзанням
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 52
     moduleID: lead-foundations
     lessonID: hammer-ons
@@ -663,7 +664,8 @@ lessons:
       uk: Hammer-on
     outcomeUK: Отримувати наступну ноту ударом пальця
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 53
     moduleID: lead-foundations
     lessonID: pull-offs
@@ -672,7 +674,8 @@ lessons:
       uk: Pull-off
     outcomeUK: Отримувати нижчу ноту контрольованим зняттям пальця
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 54
     moduleID: lead-foundations
     lessonID: first-bend

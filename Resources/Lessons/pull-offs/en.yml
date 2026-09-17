@@ -1,0 +1,88 @@
+lessonID: pull-offs
+lessonVersion: 1
+locale: en
+title: 'Pull-offs: let the lower note speak'
+summary: Prepare a lower fretted note, release to it cleanly, then try open-string endings and a descending phrase.
+goal: Make the lower target sound at the written time while keeping neighboring strings quiet.
+body: |-
+  A pull-off connects a sounding higher note to a lower note on the same string. The lower note may already be held by another finger or may be the open string. In TAB, p joins the two fret numbers. Pick the higher note once, then use the fretting hand to set the lower note sounding when the higher finger leaves.
+
+  Start with two fretted notes. Prepare the lower finger before picking the higher note. With a two-fret spacing, index and ring fingers are a useful first option, but use a comfortable position. Sound the higher note on beat 1. On beat 2, release the higher finger with a small controlled motion that gives the string enough energy to keep sounding at the lower fret. Keep the lower finger stable through beats 2 and 3 and mute on beat 4.
+
+  Simply lifting straight away can leave a weak lower note; pulling too far can bend the string or catch a neighboring one. Explore a small motion with light pressure rather than a large sideways snap. Keep the release compact and stop if the hand tightens. Listen for the intended lower pitch, not just a loud click from the finger. Pick the lower note separately to establish its clean sound before comparing the connected version.
+
+  The open-string exercise removes the lower finger. Once the higher finger leaves, avoid touching the same string again and accidentally stopping the open note. At the same time, keep neighboring strings muted. This exercise stays in its original open-string position because moving it to a fretted pair would change the preparation being taught.
+
+  The final four-bar phrase descends through whole-step pairs and one half-step pair. Locate both frets before each initial attack. Read ahead during beat 4, prepare the next lower finger, and begin the next bar with a fresh pick. The fretted exercises can also move to permitted neck regions while preserving both sounding endpoints. A tuning change may rename the notes without changing the interval of the pull-off.
+
+  Review base and target pitch coverage separately. If the starting pitch is correct but the target is not, inspect the lower fret and listen again. The app cannot infer that you lifted a particular finger, failed to prepare it, or struck a neighboring string from pitch alone. It measures the initial attack time and audible phases around the change; it does not report an exact second attack. Check your hand movement and whether you picked again yourself. Keep a clean tone and slow tempo until the lower note remains clear without extra tension.
+steps:
+  prepare:
+    title: Prepare the lower note before picking
+    body: >-
+      Place the lower finger first, then the higher finger on the same string. Pick the high note once and use a
+      small controlled release to make the lower note sound. Hear both endpoints separately first.
+  review:
+    title: Listen to the lower note after release
+    body: >-
+      Inspect the base and target phases. Check whether the lower pitch stayed clear and whether neighboring strings
+      remained quiet. Confirm finger preparation and absence of repicking yourself.
+  question:
+    title: What must be ready first?
+    body: Use the instructed gesture, not only the final pitch.
+  fretted-pair:
+    title: Pull-off to a prepared lower fret
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+  open-string:
+    title: Pull-off to the open string
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}. Keep this open-string preparation in its original position.
+  legato-phrase:
+    title: A descending legato phrase
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+activities:
+  fretted-pair:
+    title: Pull-off to a prepared lower fret
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+  open-string:
+    title: Pull-off to the open string
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}. Keep this open-string preparation in its original position.
+  legato-phrase:
+    title: A descending legato phrase
+    body: >-
+      Pick on beat 1. Make the target with the fretting hand on beat 2, hold it through beat 3 and rest on beat
+      4. Repeat with a fresh initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions:
+      {{positions}}.
+learningTasks:
+  question:
+    title: What must be ready first?
+    body: Before a pull-off to another fretted note, what should be prepared?
+    items:
+      lower: The lower finger at the destination fret on the same string.
+      lift: Both fingers lifted so the string is always open.
+      pick: A strong second pick stroke on the destination note.
+    explanation: >-
+      Preparing the lower finger allows the target fret to sound when the higher finger leaves. An open-string ending
+      is a different case. The audio measurement cannot prove finger preparation.
+  review:
+    title: Observe the physical technique yourself
+    body: Mark only what you actually practiced; the pitch score does not confirm these gestures.
+    items:
+      prepare: I prepared the lower finger before each fretted pull-off.
+      release: I used a compact release and listened for the intended lower pitch.
+      open: I let open-string endings ring without touching the string again.
+      quiet: I kept other strings quiet and used beat 4 to relax and read ahead.

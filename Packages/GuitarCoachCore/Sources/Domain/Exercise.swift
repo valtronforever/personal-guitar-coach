@@ -39,9 +39,15 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     /// Opt-in audible sustain coverage; it does not identify a physical technique or finger.
     public let assessSustain: Bool
     public let bend: PitchBend?
+    public let pitchTransition: PitchTransition?
+    /// Endpoints for visualization/reachability; the initial attack still has only its starting pitch.
+    public var techniquePositions: [FretPosition] {
+        guard let pitchTransition, let start = positions.first, let target = try? pitchTransition.targetPosition(from: start) else { return positions }
+        return positions + [target]
+    }
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil, bend: PitchBend? = nil) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil, bend: PitchBend? = nil, pitchTransition: PitchTransition? = nil) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
@@ -57,6 +63,11 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             guard kind == .note, positions.count == 1, positions[0].fret > 0, !assessSustain, !palmMuted else { throw MusicError.invalidEvent }
             try bend.validate(durationTicks: durationTicks)
         }
+        if let pitchTransition {
+            guard kind == .note, positions.count == 1, bend == nil, !assessSustain, !palmMuted else { throw MusicError.invalidEvent }
+            try pitchTransition.validate(durationTicks: durationTicks, position: positions[0])
+        }
+        self.pitchTransition = pitchTransition
         self.bend = bend
         self.pickStroke = pickStroke
         self.palmMuted = palmMuted
@@ -78,9 +89,10 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         if palmMuted { try values.encode(true, forKey: .palmMuted) }
         try values.encodeIfPresent(pickStroke, forKey: .pickStroke)
         try values.encodeIfPresent(bend, forKey: .bend)
+        try values.encodeIfPresent(pitchTransition, forKey: .pitchTransition)
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke, bend }
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke, bend, pitchTransition }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
@@ -91,7 +103,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             strum: values.decodeIfPresent(StrumPattern.self, forKey: .strum),
             palmMuted: values.decodeIfPresent(Bool.self, forKey: .palmMuted) ?? false,
             pickStroke: values.decodeIfPresent(StrumDirection.self, forKey: .pickStroke),
-            bend: values.decodeIfPresent(PitchBend.self, forKey: .bend))
+            bend: values.decodeIfPresent(PitchBend.self, forKey: .bend),
+            pitchTransition: values.decodeIfPresent(PitchTransition.self, forKey: .pitchTransition))
     }
 }
 
@@ -99,6 +112,10 @@ public struct ResolvedEvent: Hashable, Sendable, Identifiable {
     public let event: MusicalEvent
     public let pitches: [Pitch]
     public var id: String { event.id }
+    public var transitionTargetPitch: Pitch? {
+        guard let transition = event.pitchTransition, let pitch = pitches.first else { return nil }
+        return try? Pitch(midi: pitch.midi + transition.semitones)
+    }
 }
 
 public struct Exercise: Hashable, Codable, Identifiable, Sendable {
@@ -177,7 +194,10 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
     public func resolvedEvents(instrument: TuningProfile) throws -> [ResolvedEvent] {
         let tuning = requiredTuning ?? instrument
         return try events.map { event in
-            try ResolvedEvent(event: event, pitches: event.positions.map { try tuning.pitch(at: $0) })
+            if let transition = event.pitchTransition, let position = event.positions.first {
+                _ = try tuning.pitch(at: transition.targetPosition(from: position))
+            }
+            return try ResolvedEvent(event: event, pitches: event.positions.map { try tuning.pitch(at: $0) })
         }
     }
 

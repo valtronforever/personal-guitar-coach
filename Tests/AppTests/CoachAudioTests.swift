@@ -121,5 +121,40 @@ struct CoachAudioTests {
         try JSONSerialization.data(withJSONObject: object).write(to: file)
         #expect(throws: CoachFileError.response) { try CoachExchange.readResponse(file, practice: result) }
     }
+    @Test func transitionExchangeHasItsOwnVersionTargetsAndExcludedObservations() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("transition-coach-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let url = root.appendingPathComponent("audio.wav"); try wav(url)
+        let event = try MusicalEvent(id: "motion", startTick: 0, durationTicks: 2880, kind: .note,
+            positions: [FretPosition(string: 3, fret: 9)], pitchTransition: PitchTransition(kind: .hammerOn, semitones: 2, startTick: 960))
+        let endpoint = try CalibrationEndpoint(uid: "transition-coach", channel: 1, sampleRate: 48000, bufferFrames: 512)
+        let config = try PracticeConfiguration(exercise: Exercise(id: "transition-coach", events: [event]), instrument: InstrumentProfile(), bpm: 60,
+            route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "fixture"))
+        let start = try config.expectedStart(renderEpochSeconds: 100), hz = try Pitch(midi: 64).frequency()
+        let trace = try PitchContourTrace(frames: (0..<161).map { try SustainFrame(id: UInt64($0 + 1), normalizedTime: start - 0.1 + Double($0) * 0.02, state: .pitched, frequency: hz) })
+        let evidence = try PracticeEvidence(id: UUID(), configuration: config, startedAt: Date(timeIntervalSince1970: 1), finishedAt: Date(timeIntervalSince1970: 10),
+            phase: .completed, reason: nil, signalConfirmed: true, renderEpochSeconds: 100, maximumClockDriftSeconds: 0,
+            attacks: [PracticeAttack(id: 1, normalizedOnset: start, frequency: hz, clarity: 0.99, reliable: true),
+                      PracticeAttack(id: 2, normalizedOnset: start + 1.2, frequency: nil, clarity: nil, reliable: false)],
+            clipping: [], pitchContour: trace, analysisVersion: "fixture")
+        let result = try AssessmentEngine.evaluate(evidence)
+        let request = try CoachExchange.prepare(audio: url, channel: 1, practice: result, language: "uk", lessonContext: "Hammer-on")
+        #expect(request.promptVersion == "file-coach-5" && request.unscoredPitchTransitionObservationIDs == [2])
+        #expect(request.unscoredBendObservationIDs == nil)
+        #expect(request.expectedNotes.first?.contains("targetTick=960, targetPitch=F♯4") == true)
+        #expect(ResultPresentation.annotations(result)["motion"] == .pitchTransition)
+        #expect(FeedbackEngine.recommendations(for: result).contains { $0.kind == .pitchTransition && $0.eventIDs == ["motion"] })
+        let response = CoachAnalysisResponse(schemaVersion: 1, provider: .codex, createdAt: Date(), request: request,
+            feedback: CoachFeedback(schemaVersion: 1, requestID: request.id, language: "uk", summary: "Bend", findings: [CoachFinding(text: "Target", evidenceIDs: ["practice:motion"])]))
+        let file = root.appendingPathComponent("response.json"), bytes = try CoachExchange.encode(response)
+        try bytes.write(to: file)
+        #expect(try CoachExchange.readResponse(file, practice: result).request.unscoredPitchTransitionObservationIDs == [2])
+        var object = try #require(JSONSerialization.jsonObject(with: bytes) as? [String: Any])
+        var altered = try #require(object["request"] as? [String: Any]); altered["unscoredPitchTransitionObservationIDs"] = []
+        object["request"] = altered
+        try JSONSerialization.data(withJSONObject: object).write(to: file)
+        #expect(throws: CoachFileError.response) { try CoachExchange.readResponse(file, practice: result) }
+    }
 
 }

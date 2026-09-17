@@ -91,7 +91,7 @@ struct StaffTests {
     @MainActor @Test func allCoursePracticeBarsShareIDsPitchesAndSelectionWithTAB() throws {
         let root = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory:root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.lessons.count == 83)
+        #expect(library.lessons.count == 86)
         for lesson in library.lessons {
             let selection = LessonSelection(lesson:lesson)
             for entry in lesson.manifest.practiceEntries {
@@ -110,7 +110,14 @@ struct StaffTests {
                     #expect(symbols.compactMap(\.pitch).map(\.name) == ["A♭3","B♭3","C4","D♭4","E♭4","F4","G4","A♭4","G4","F4","E♭4","D♭4","C4","B♭3","A♭3"])
                     #expect(try staff.symbols(in: 0).map(\.accidental) == ["♭", "♭", nil, "♭"])
                 }
-                #expect(symbols.compactMap(\.pitch).map(\.writtenMIDI) == symbols.flatMap { $0.resolved.pitches }.map { $0.midi + 12 })
+                let expectedWritten = symbols.flatMap { symbol -> [Int] in
+                    let event = symbol.resolved.event
+                    let interval: Int
+                    if let transition = event.pitchTransition, symbol.startTick >= event.startTick + transition.endTick { interval = transition.semitones }
+                    else { interval = 0 }
+                    return symbol.resolved.pitches.map { $0.midi + interval + 12 }
+                }
+                #expect(symbols.compactMap(\.pitch).map(\.writtenMIDI) == expectedWritten)
                 for symbol in symbols {
                     selection.selectEvent(symbol.eventID,exerciseID:exercise.id,extending:false)
                     #expect(selection.selectedIDs == [symbol.eventID])

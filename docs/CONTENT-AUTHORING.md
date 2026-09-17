@@ -379,3 +379,34 @@ Metronome omissions now validate against the signature's pulse grid: e.g. 1440 i
 Staff beams three eighths per compound pulse and the authored groups in 7/8. Simple-meter eighths retain beat-pair beaming even when 5/4 click accents group quarters. Long offbeat notes split at notation-group boundaries with ties and one canonical attack. Both TAB layouts, cursor/follow positions, spoken beat coordinates and bend-curve axes use the named pulse. Preview, practice and result tempo labels identify that unit. Practice duration and pitch/sustain/bend capability gates use actual seconds; changing the signature cannot bypass minimum note/phase duration.
 
 `compound-meters` compares a four-bar 6/8 melody with the same music in two 12/8 bars and a final sustained dotted-quarter tonic. `odd-meters` provides 3+2/2+3 quarters and 2+2+3/3+2+2 eighths. New grouped/non-baseline coach requests use `file-coach-4`, carrying the signature and grouping; previous ordinary, bend and omission request versions remain valid for their historical conditions.
+
+## Slides and legato pitch transitions
+
+A single monophonic note may carry `pitchTransition`. It keeps **one initial attack target**, with the destination inferred on the same string by its signed semitone/fret interval. This is separate from a bend and cannot coexist with `bend`, `assessSustain`, `palmMuted`, a chord or a rest on the same event. An initial `pickStroke` is allowed.
+
+```yaml
+id: slide-up
+startTick: 0
+durationTicks: 2880
+kind: note
+positions:
+  - string: 3
+    fret: 5
+pitchTransition:
+  kind: slide
+  semitones: 2
+  startTick: 960
+  travelTicks: 960
+```
+
+At 60 quarter-note BPM this holds C4 for the first beat, travels during the second and holds D4 during the third. `startTick` inside the transition is relative to the event. A slide requires positive `travelTicks` and both endpoints fretted. `hammerOn` requires a positive interval; `pullOff` a negative interval. Both use zero/omitted `travelTicks`, so the target arrives exactly at the local `startTick`. Open endpoints are permitted for legato. Intervals are nonzero and bounded to ±12 semitones; start is positive and target arrival must precede event end.
+
+The resolver preserves the interval and both endpoints on one string. Every endpoint must fit the instrument and any selected region. A region that contains only the starting fret is unavailable. Open-string technique materials can disable repositioning to retain their teaching purpose. Text `positions`/`sequence` includes both endpoints; source selection and practice ranges retain the complete event.
+
+TAB places each endpoint at its musical time with h/p/slide connection. Conventional staff notation separates the target pitch and never ties two different pitches. Written subdivisions must fit the supported sixteenth or explicit-triplet grid; other timings retain TAB/curve presentation and an explicit staff limitation. Reference playback is an abstract continuous-phase pitch model, not a timbral simulation of finger contact.
+
+Graded practice currently uses a conservative clean-input envelope: base 195.9–880 Hz, target 195.9–1100 Hz, base/target plateaus at least 0.4 s. Slides additionally need at least 0.5 s travel and at most 200 cents/s. Timing uses the exercise's actual metronome pulse. Unsupported frequency/speed is unavailable rather than automatically simplified. The shipped introductory exercises use 40–60 BPM.
+
+`pitch-transition-assessment-1` measures base/travel/target for slides and base/target for legato. Endpoints use ±35 cents; slide travel allows ±85 cents around its reference to accommodate fret steps. Multi-fret slides additionally need at least 0.1 s of pitched coverage within ±35 cents of each intermediate semitone. A one-fret slide has no intermediate fret and cannot be distinguished from a well-timed pitch step by this check. More than 20% unknown coverage in any phase withholds the score. Initial settling is excluded for 200 ms; phase boundaries have 60 ms guards. Known silence is a measured failure, not unknown evidence.
+
+Only the initial attack has an attack-timing score. Phase coverage is not an exact secondary-attack timestamp. Internal flux observations remain archived but are excluded from extra-pick penalties. Sound cannot identify the actual finger/string or prove a slide, hammer-on, pull-off or absence of repicking. Author explicit self-observation alongside measured practice. Physical-interface validation remains separate from synthetic tests.

@@ -117,7 +117,7 @@ final class LessonSelection {
     func fretboard(instrument: InstrumentProfile) -> FretboardModel {
         if !range.ids.isEmpty, let exercise {
             return FretboardModel(tuning: exercise.requiredTuning ?? instrument.tuning, orientation: instrument.orientation, frets: instrument.frets,
-                positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.positions))
+                positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.techniquePositions))
         }
         if let stepID, let visual = try? snapshot?.visual(stepID: stepID) {
             return FretboardModel(tuning: visual.tuning, orientation: instrument.orientation, frets: instrument.frets, positions: visual.positions.map(\.position),

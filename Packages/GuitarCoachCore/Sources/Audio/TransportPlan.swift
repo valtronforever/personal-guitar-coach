@@ -175,7 +175,7 @@ public struct TransportPlan: Sendable {
                     continue
                 }
                 // Muted references keep their decay age when seeking into an existing note.
-                let toneOnset = item.event.palmMuted || item.event.bend != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
+                let toneOnset = item.event.palmMuted || item.event.bend != nil || item.event.pitchTransition != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
                 for sample in a..<b {
                     let age = Double(sample - toneOnset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))
@@ -183,8 +183,11 @@ public struct TransportPlan: Sendable {
                     if item.event.bend != nil {
                         let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
                         phaseSeconds = PitchBend.integratedMultiplier(to: age / sampleRate / secondsPerTick, points: bendPoints[index]) * secondsPerTick
+                    } else if let transition = item.event.pitchTransition {
+                        let secondsPerTick = 60 / (request.bpm * Double(pulseTicks))
+                        phaseSeconds = transition.integratedMultiplier(to: age / sampleRate / secondsPerTick, durationTicks: item.event.durationTicks) * secondsPerTick
                     } else { phaseSeconds = age / sampleRate }
-                    let tone = frequencies[index].reduce(0.0) { $0 + sin(item.event.bend == nil ? 2 * .pi * $1 * age / sampleRate : 2 * .pi * $1 * phaseSeconds) }
+                    let tone = frequencies[index].reduce(0.0) { $0 + sin(2 * .pi * $1 * phaseSeconds) }
                     output[Int(sample - startFrame)] += Float(tone * gain * envelope * (item.event.palmMuted ? exp(-age / (sampleRate * 0.09)) : 1))
                 }
             }

@@ -18,7 +18,8 @@ enum BendEvaluator {
                     sampleFrame: Int64(((config.countInSeconds + Double(event.startTick - config.range.lowerBound) * secondsPerTick) * config.route.output.sampleRate).rounded())) + (config.calibration?.residualOffsetSeconds ?? 0)
             } else { expected = nil }
             let start = note.attackID.flatMap { attacks[$0]?.normalizedOnset } ?? expected
-            let supported = BendCapability.supports(bend: bend, durationTicks: event.durationTicks, bpm: config.bpm, frequency: note.targetFrequency)
+            let supported = BendCapability.supports(bend: bend, durationTicks: event.durationTicks, bpm: config.bpm,
+                frequency: note.targetFrequency, pulseTicks: config.exercise.timeSignature.pulseTicks)
             let phases = try kinds.indices.map { index -> BendPhaseAssessment in
                 guard let start, supported, frames.count >= 2 else {
                     return try BendPhaseAssessment(kind: kinds[index], matchedFraction: nil, silentFraction: 0, unknownFraction: 1, medianErrorCents: nil)

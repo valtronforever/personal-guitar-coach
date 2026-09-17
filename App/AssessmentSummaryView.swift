@@ -12,10 +12,12 @@ struct AssessmentSummaryView: View {
                     metric("assessment.overall", result.overallScore)
                     metric("assessment.pitch", result.pitchScore)
                     metric("assessment.rhythm", result.timingScore)
+                    if result.pitchTransitions != nil { metric("transition.score", result.pitchTransitionScore) }
                     if result.bends != nil { metric("bend.score", result.bendScore) }
                     if result.sustain != nil { metric("assessment.sustain", result.sustainScore) }
                 }
-                if result.bends != nil { Text(LocalizedStringKey(result.sustain == nil ? "bend.assessmentLimits" : "bend.assessmentMixedLimits")).font(.caption).foregroundStyle(.secondary) }
+                if result.pitchTransitions != nil { Text("transition.assessmentLimits").font(.caption).foregroundStyle(.secondary) }
+                if result.bends != nil && result.pitchTransitions == nil { Text(LocalizedStringKey(result.sustain == nil ? "bend.assessmentLimits" : "bend.assessmentMixedLimits")).font(.caption).foregroundStyle(.secondary) }
                 if result.sustain != nil {
                     Text("assessment.sustainExplanation").font(.caption).foregroundStyle(.secondary)
                     if result.sustain?.score == nil { Text("assessment.sustainUnavailable").foregroundStyle(.secondary) }

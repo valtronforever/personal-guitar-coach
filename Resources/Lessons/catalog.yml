@@ -83,6 +83,9 @@ lessons:
   - harmonic-functions
   - voice-leading
   - chord-change-arpeggios
+  - slides
+  - hammer-ons
+  - pull-offs
 modules:
   - id: getting-started
     order: 1

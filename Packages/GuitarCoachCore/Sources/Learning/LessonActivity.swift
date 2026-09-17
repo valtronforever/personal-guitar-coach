@@ -84,9 +84,12 @@ public struct ResolvedLessonActivity: Equatable, Sendable {
         }
         let events = try exercise.resolvedEvents(instrument: tuning).filter { step.eventIDs.contains($0.id) }
         var seen = Set<FretPosition>()
-        let positions = events.flatMap { event in zip(event.event.positions, event.pitches).compactMap { position, pitch in
-            seen.insert(position).inserted ? HighlightedPosition(position: position, pitch: pitch, finger: nil) : nil
-        } }
+        var positions: [HighlightedPosition] = []
+        for event in events {
+            for position in event.event.techniquePositions where seen.insert(position).inserted {
+                positions.append(try HighlightedPosition(position: position, pitch: tuning.pitch(at: position), finger: nil))
+            }
+        }
         return LessonVisualSnapshot(exerciseID: exercise.id, tuning: tuning, events: events, positions: positions, mutedStrings: [])
     }
 }

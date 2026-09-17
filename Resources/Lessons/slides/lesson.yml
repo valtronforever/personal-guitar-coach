@@ -1,0 +1,385 @@
+schemaVersion: 3
+id: slides
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: upward
+    kind: events
+    exerciseID: slides-upward
+    eventIDs:
+      - pair-1
+      - rest-1
+      - pair-2
+      - rest-2
+    activityID: upward
+  - id: downward
+    kind: events
+    exerciseID: slides-downward
+    eventIDs:
+      - pair-1
+      - rest-1
+      - pair-2
+      - rest-2
+    activityID: downward
+  - id: connected-phrase
+    kind: events
+    exerciseID: slides-connected-phrase
+    eventIDs:
+      - pair-1
+      - rest-1
+      - pair-2
+      - rest-2
+      - pair-3
+      - rest-3
+      - pair-4
+      - rest-4
+    activityID: connected-phrase
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: slides-upward
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 60
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: pair-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: 2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-2
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: 2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-2
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: slides-downward
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 60
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: pair-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: -2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-2
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: -2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-2
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: slides-connected-phrase
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 60
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: pair-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: 2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-1
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-2
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: 2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-2
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-3
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: -2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-3
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: pair-4
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+        pickStroke: down
+        pitchTransition:
+          kind: slide
+          semitones: -2
+          startTick: 960
+          travelTicks: 960
+      - id: rest-4
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: upward
+    source:
+      kind: exercise
+      exerciseID: slides-upward
+    positioning:
+      enabled: true
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      preserve: soundingPitch
+      allowOriginal: true
+  - id: downward
+    source:
+      kind: exercise
+      exerciseID: slides-downward
+    positioning:
+      enabled: true
+      windowFrets: 6
+      allowedStarts:
+        kind: explicit
+        frets:
+          - 7
+          - 12
+      preserve: soundingPitch
+      allowOriginal: true
+  - id: connected-phrase
+    source:
+      kind: exercise
+      exerciseID: slides-connected-phrase
+    positioning:
+      enabled: false
+activities:
+  - id: upward
+    materialID: upward
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: downward
+    materialID: downward
+    positionSelection:
+      mode: learner
+      default:
+        kind: original
+  - id: connected-phrase
+    materialID: connected-phrase
+practiceEntries:
+  - id: upward
+    activityID: upward
+    exerciseID: slides-upward
+  - id: downward
+    activityID: downward
+    exerciseID: slides-downward
+  - id: connected-phrase
+    activityID: connected-phrase
+    exerciseID: slides-connected-phrase
+fingerings: []
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - slide
+      - bend
+      - pick
+    correctOptionID: slide
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - contact
+      - arrival
+      - quiet
+      - review
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 51
+  durationMinutes: 25
+  prerequisites:
+    - hand-synchronization
+  keywords:
+    - slides
+    - slide
+    - legato
+    - легато
+    - перехід висоти

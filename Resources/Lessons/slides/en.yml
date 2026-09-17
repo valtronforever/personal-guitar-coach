@@ -1,0 +1,85 @@
+lessonID: slides
+lessonVersion: 1
+locale: en
+title: 'Slides: travel to the next fret'
+summary: >-
+  Connect two fretted notes with controlled upward and downward slides, then place the movement inside a four-bar
+  phrase.
+goal: >-
+  Keep the starting note audible, move along one string and arrive at the written target without a second pick attack.
+body: |-
+  A slide connects two fretted notes by moving a fretting finger along the same string while the sound continues. The pitch changes because the speaking length of the string changes at successive frets. This differs from a bend, which raises pitch by stretching the string at one fret. A fretted slide can contain small pitch steps; it does not need to sound like a perfectly smooth synthesizer sweep.
+
+  Begin with a clean tone and a comfortable two-fret distance. Locate both fret markers before playing. Pick the lower note once, keep enough contact for a clear sound and move the finger toward the higher fret. Aim just behind the destination fret without squeezing harder as you move. Mute neighboring strings with the available parts of both hands. Reset during the rest. If your hand tightens, stop and reduce the distance or pressure before another attempt.
+
+  In the upward exercise, pick on beat 1 and keep the starting pitch through that beat. Begin moving on beat 2, reach the target on beat 3, keep it sounding through beat 3 and stop for beat 4. Listen to the target first by playing it separately, then compare the slide arrival with that pitch. The preview is a timing and pitch reference, not a recording of a guitar slide.
+
+  For the downward exercise, begin at the higher fret and use the same schedule. Keep contact as you move toward the nut; lifting the finger completely can expose the open string instead of the intended lower fretted note. Prepare the destination without dragging neighboring strings. The slash and the two fret numbers show the intended movement; the target number has its own time position.
+
+  The final phrase rises twice and returns twice. Each bar still contains one initial pick, one slide and a quiet fourth beat. Read the next starting fret during that rest rather than extending one slide into the next bar. You can choose a different permitted neck region for these fretted exercises. Both endpoints move together on one string while their sounding pitches remain fixed within the selected tuning.
+
+  Review starting pitch, travel and target separately. A wrong destination differs from a direct jump that skips the intermediate pitch in a two-fret slide. The app measures the audible path and the timing of the initial attack. It cannot identify the finger, prove a physical slide, or decide from an internal spectral change alone that you picked again. Compare your hand movement with the instruction yourself. Practice remains deliberately slow so the individual phases can be measured.
+steps:
+  prepare:
+    title: Hear both endpoints first
+    body: >-
+      Use a clean tone. Pick each displayed endpoint separately, then try one connected slide. Keep neighboring
+      strings quiet and release excess pressure during the rest.
+  review:
+    title: Review the path and the landing
+    body: >-
+      Inspect the base, travel and target phases. If the destination is wrong, rehearse its fret separately; if
+      travel is weak, slow the move and listen for the intermediate pitch. Judge finger movement and repicking yourself.
+  question:
+    title: A slide or a bend?
+    body: Use the instructed gesture, not only the final pitch.
+  upward:
+    title: Slide upward by a whole step
+    body: >-
+      Pick on beat 1. Begin the slide on beat 2, reach the target on beat 3 and rest on beat 4. Repeat with a fresh
+      initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions: {{positions}}.
+  downward:
+    title: Slide downward by a whole step
+    body: >-
+      Pick on beat 1. Begin the slide on beat 2, reach the target on beat 3 and rest on beat 4. Repeat with a fresh
+      initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions: {{positions}}.
+  connected-phrase:
+    title: Four-bar slide phrase
+    body: >-
+      Pick on beat 1. Begin the slide on beat 2, reach the target on beat 3 and rest on beat 4. Repeat with a fresh
+      initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions: {{positions}}.
+activities:
+  upward:
+    title: Slide upward by a whole step
+    body: >-
+      Pick on beat 1. Begin the slide on beat 2, reach the target on beat 3 and rest on beat 4. Repeat with a fresh
+      initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions: {{positions}}.
+  downward:
+    title: Slide downward by a whole step
+    body: >-
+      Pick on beat 1. Begin the slide on beat 2, reach the target on beat 3 and rest on beat 4. Repeat with a fresh
+      initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions: {{positions}}.
+  connected-phrase:
+    title: Four-bar slide phrase
+    body: >-
+      Pick on beat 1. Begin the slide on beat 2, reach the target on beat 3 and rest on beat 4. Repeat with a fresh
+      initial pick in each bar. Start at 60 BPM. Targets in your tuning: {{sequence}}. Positions: {{positions}}.
+learningTasks:
+  question:
+    title: A slide or a bend?
+    body: What is the intended way to reach the higher note in this exercise?
+    items:
+      slide: Move the fretting finger along the same string to the shown higher fret.
+      bend: Stay on the original fret and stretch the string upward in pitch.
+      pick: Lift completely and pick any higher note on another string.
+    explanation: >-
+      The exercise asks for a slide between two frets on one string. A bend changes tension at one fret. Audio checks
+      the pitch path; your own observation confirms which motion you used.
+  review:
+    title: Observe the physical technique yourself
+    body: Mark only what you actually practiced; the pitch score does not confirm these gestures.
+    items:
+      contact: I kept contact with the same string during each slide.
+      arrival: I began moving on beat 2 and reached the destination on beat 3.
+      quiet: I muted neighboring strings and left beat 4 quiet.
+      review: I compared the measured path with the intended movement without treating audio as proof of my fingering.

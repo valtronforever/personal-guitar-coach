@@ -37,13 +37,14 @@ struct StaffSymbol: Identifiable, Sendable {
     let accidental: String?
     var id: NotationFragmentID { fragment.id }
     var eventID: String { resolved.id }
-    var accentedAttack: Bool { resolved.event.accented && !fragment.tieFromPrevious }
+    var accentedAttack: Bool { resolved.event.accented && fragment.startTick == resolved.event.startTick }
     var startTick: Int64 { fragment.startTick }
     var endTick: Int64 { fragment.endTick }
     var flags: Int { fragment.duration.flags }
     var hollow: Bool { fragment.duration.baseTicks >= 1920 }
     var hasStem: Bool { fragment.duration.baseTicks != 3840 && pitch != nil }
     var hintKey: String {
+        if fragment.isTechniqueTarget { return "staff.transitionTarget" }
         if fragment.tieFromPrevious && fragment.tieToNext { return "staff.tie.middle" }
         if fragment.tieFromPrevious { return "staff.tie.end" }
         if fragment.tieToNext { return "staff.tie.start" }
@@ -72,9 +73,10 @@ struct StaffModel: Sendable {
             let resolved = segment.resolved
             guard segment.startTick == end else { throw StaffLimitation.gaps }
             guard resolved.pitches.count <= 1 else { throw StaffLimitation.polyphony }
-            let pitch = resolved.pitches.first.map { StaffPitch(sounding: $0, key: key, preferredSpelling: timeline.tuning.preferredSpelling) }
-            if let pitch, !(33...88).contains(pitch.soundingMIDI) { throw StaffLimitation.range }
             for fragment in try RhythmNotation.fragments(segment) {
+                let sounding = fragment.pitchOffset == 0 ? resolved.pitches.first : resolved.transitionTargetPitch
+                let pitch = sounding.map { StaffPitch(sounding: $0, key: key, preferredSpelling: timeline.tuning.preferredSpelling) }
+                if let pitch, !(33...88).contains(pitch.soundingMIDI) { throw StaffLimitation.range }
                 var accidental: String?
                 // A tie carries its pitch over the barline, but does not establish an
                 // accidental for a later, freshly attacked note in this new bar.

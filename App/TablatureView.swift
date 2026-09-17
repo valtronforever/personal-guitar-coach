@@ -101,7 +101,7 @@ struct TablatureView: View {
             }
             Text(LocalizedStringKey(instructionsKey)).font(.caption).foregroundStyle(.secondary)
                 .lineLimit(3).frame(minHeight: 44, alignment: .topLeading)
-            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && $0.event.bend != nil })?.event {
+            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && ($0.event.bend != nil || $0.event.pitchTransition != nil) })?.event {
                 BendCurveView(event: event, pulseTicks: model.pulseTicks)
             }
             if let tick = cursorTick, let bar = model.cursorBar(tick) {
@@ -197,7 +197,7 @@ struct TablatureView: View {
                     RoundedRectangle(cornerRadius: 5).fill(Color.accentColor.opacity(0.12))
                         .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(.primary, lineWidth: 2))
                 }
-                VStack(alignment: .leading, spacing: 2) {
+                if event.pitchTransition == nil { VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 3) {
                         if let bend = event.bend { Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r")).bold() }
                         if event.palmMuted { Text(verbatim: "P.M.").bold() }
@@ -208,9 +208,12 @@ struct TablatureView: View {
                         Text(verbatim: TimelineModel.durationLabel(segment.writtenDurationTicks)).monospacedDigit()
                     }.font(.caption).lineLimit(1).minimumScaleFactor(0.7)
                     Rectangle().fill(.secondary).frame(height: 2)
-                }.padding(.horizontal, 4).offset(y: 23)
+                }.padding(.horizontal, 4).offset(y: 23) }
                 if event.kind == .rest {
                     Image(systemName: "pause.circle").font(.title2).frame(width: width, height: rowHeight * 6).offset(y: gridTop)
+                } else if event.pitchTransition != nil {
+                    PitchTransitionTabContent(segment: segment, width: width, gridTop: gridTop, stringSpacing: rowHeight,
+                        anchorX: min(22, width / 2), zoom: 1, compact: false)
                 } else {
                     ForEach(event.positions, id: \.self) { position in
                         Text(verbatim: String(position.fret)).font(.body.bold().monospacedDigit())
@@ -251,11 +254,14 @@ struct TablatureView: View {
         let duration = segment.triplet == nil ? written : String(format: settings.localized("rhythm.tripletDuration %@"), locale: settings.locale, written)
         let beat = beatText(segment.startTick, bar: segment.bar)
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)") }
-        var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
+        var notes = zip(segment.displayPositions, segment.displayPitches).map { position, pitch in
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
         if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }
+        if event.pitchTransition != nil {
+            notes += "; " + PitchTransitionPresentation.spoken(event: segment.resolved, pulseTicks: model.pulseTicks, tuning: model.tuning, locale: settings.locale, localized: settings.localized)
+        }
         if event.palmMuted { notes = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, notes) }
         if let stroke = event.pickingDirection, !segment.isContinuation {
             let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")

@@ -73,17 +73,24 @@ extension PracticeEvidence {
     /// Spectral-flux events inside a bend cannot establish additional pick attacks.
     /// Keep these observations in evidence, but exclude them from extra-attack penalties.
     public func bendObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
+        movingPitchObservationIDs(notes: notes, transitions: false)
+    }
+    /// Pitch motion can itself produce spectral flux; these events do not prove a repick.
+    public func pitchTransitionObservationIDs(notes: [AssessedNote]) -> Set<UInt64> {
+        movingPitchObservationIDs(notes: notes, transitions: true)
+    }
+    private func movingPitchObservationIDs(notes: [AssessedNote], transitions: Bool) -> Set<UInt64> {
         guard let epoch = renderEpochSeconds else { return [] }
         let offset = configuration.calibration?.residualOffsetSeconds ?? 0
         let secondsPerTick = configuration.exercise.timeSignature.secondsPerTick(bpm: configuration.bpm)
         let notesByID = Dictionary(uniqueKeysWithValues: notes.map { ($0.id, $0) })
         let attacksByID = Dictionary(uniqueKeysWithValues: attacks.map { ($0.id, $0) })
         let intervals: [Range<Double>] = configuration.selectedEvents.compactMap { event in
-            guard let bend = event.bend,
+            guard let changeTick = transitions ? event.pitchTransition?.startTick : event.bend?.riseStartTick,
                   let start = try? configuration.route.expectedTime(renderEpochSeconds: epoch,
                     sampleFrame: Int64(((configuration.countInSeconds + Double(event.startTick - configuration.range.lowerBound) * secondsPerTick) * configuration.route.output.sampleRate).rounded())) else { return nil }
             let observedStart = notesByID[event.id]?.attackID.flatMap { attacksByID[$0]?.normalizedOnset } ?? start + offset
-            return (observedStart + Double(bend.riseStartTick) * secondsPerTick - 0.06)..<(observedStart + Double(event.durationTicks) * secondsPerTick)
+            return (observedStart + Double(changeTick) * secondsPerTick - 0.06)..<(observedStart + Double(event.durationTicks) * secondsPerTick)
         }
         guard !intervals.isEmpty else { return [] }
         return Set(attacks.filter { attack in intervals.contains { $0.contains(attack.normalizedOnset) } }.map(\.id))
