@@ -1,0 +1,68 @@
+lessonID: country-chicken-picking
+lessonVersion: 1
+locale: en
+title: 'Country and chicken picking: pick, fingers and short notes'
+summary: Contrast a picked lower note with plucked upper responses and controlled muted attacks.
+goal: Play a short hybrid-picking study with clear accents, short releases and a deliberate ending.
+body: |-
+  This introduction combines a picked lower voice with upper notes plucked by a free finger. The contrast can make a short phrase sound lively without requiring a very fast run. The plectrum arrows and m/a labels show intended picking-hand roles; they do not prove which finger produced the sound. Begin with a comfortable clean sound so the attack, pitch and release of each note remain easy to distinguish.
+
+  Learn the pick-and-finger exchange slowly. Give the lower note its place, release it before the upper response, and keep the subdivision even. This first texture is deliberately sequential rather than a sustained bass under a separate melody. Match the useful balance of the two attacks instead of making the finger-plucked note as loud as possible. A small controlled release is enough for the intended contrast.
+
+  The short-note exercise separates each upper pitch with an equal silent slot. Stop with the fretting hand without allowing a different string to ring. Listen for the clean ending as well as the attack. If the upper note is sharp because the string is being pulled too far sideways, reduce the motion and compare it with the tuner or an ordinary reference note. Tone and pitch control matter more here than an exaggerated snap.
+
+  A muted lower-string attack can answer a pitched upper note, but a scratch is not a missing note. The crosses identify the string to damp and strike without a definite pitch. Compare the scratch-response pattern with the fully pitched exchange and with a true rest. Keep the upper notes in the same rhythmic places so the only change you judge is the lower attack type.
+
+  The four-bar study moves through two pitched exchanges, a scratch-response bar and a short tonic ending. Let the accents clarify the phrase without changing the tempo. Once the model is comfortable, replace one upper answer with a nearby note from the same vocabulary and keep its ending time. The lesson uses self-practice: synthesized tones/noise show timing, while finger choice, articulation, balance and stylistic character are not automatically graded.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  pick-finger-exchange:
+    title: Pick the lower voice, pluck the answer
+    body: 'Center: {{root}} major. The lower notes use the pick; m/a mark the upper responses. Release each note
+      before the next.'
+  short-upper-notes:
+    title: Short pitch, equal silence
+    body: Each upper note occupies one sixteenth followed by one sixteenth rest. Keep the release as deliberate
+      as the pluck.
+  scratch-response:
+    title: A muted attack and a pitched answer
+    body: Strike the damped third string at each cross, then pluck the upper answer. Compare it with replacing the
+      cross by a true rest.
+  country-study:
+    title: Four bars and a clear ending
+    body: The first two bars exchange picked and plucked notes; bar 3 adds crosses; bar 4 returns to the tonic and
+      leaves the last beat quiet.
+  country-review:
+    title: Compare articulation without rushing
+    body: Play the study twice and compare one upper response with a nearby-note variation. Keep the same rhythm
+      and final rest.
+activities:
+  pick-finger-exchange:
+    title: Pick the lower voice, pluck the answer
+    body: 'Center: {{root}} major. The lower notes use the pick; m/a mark the upper responses. Release each note
+      before the next.'
+  short-upper-notes:
+    title: Short pitch, equal silence
+    body: Each upper note occupies one sixteenth followed by one sixteenth rest. Keep the release as deliberate
+      as the pluck.
+  scratch-response:
+    title: A muted attack and a pitched answer
+    body: Strike the damped third string at each cross, then pluck the upper answer. Compare it with replacing the
+      cross by a true rest.
+  country-study:
+    title: Four bars and a clear ending
+    body: The first two bars exchange picked and plucked notes; bar 3 adds crosses; bar 4 returns to the tonic and
+      leaves the last beat quiet.
+learningTasks:
+  country-review:
+    title: Compare articulation without rushing
+    body: Play the study twice and compare one upper response with a nearby-note variation. Keep the same rhythm
+      and final rest.
+    items:
+      roles: I checked the intended pick and finger roles myself.
+      balance: Lower and upper attacks had a useful, controlled balance.
+      short: Short notes ended clearly without unwanted open strings.
+      scratch: I distinguished a scratch from a pitched note and a rest.
+      ending: The variation kept its bar boundary and the final silence.

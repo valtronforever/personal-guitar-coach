@@ -1,6 +1,6 @@
 # Harmonic notes — same-agent review
 
-Implementing-agent review, not an independent review. Status: software verification in progress.
+Implementing-agent review, not an independent review. Status: `pending_user` for native/hardware acceptance.
 
 ## Scope and findings
 
@@ -32,3 +32,5 @@ Full App: 180 tests/55 suites, 215.728 s (`/tmp/harmonic-app-full.log`). Full Le
 Final Domain rerun: 61 tests/19 suites, 0.341 s (`/tmp/harmonic-domain-final.log`), including the corrected 13/14-fret boundary. Root signed Release/archive contains 109 bilingual bundles (328 YAML), arm64/macOS14, ad-hoc hardened sandbox with expected entitlements. Binary SHA256 `c362bc8006b72b7f97e981447d9ca3a6a81d3cd7690fb6ac531899974914aee7`; archive `d8d5e7ddba70cedb6ea6c8c8c0aeb32d25ad766ac618bf839a8e21fa17b9f194`. See `docs/benchmarks/harmonic-notes-release-bundle.json`. Signed sandbox→separate XPC→invalidRequest passed without a provider call. No native app launch or hardware acceptance claim.
 
 Full Core run completed: 110 Audio tests/37 suites passed in 513.522 s; 23 Persistence tests/four suites passed in 0.058 s; six AgentBridge tests passed in 1.642 s. The only failing target in that initial invocation was Domain's two obsolete width assertions, fixed and rerun successfully above. All affected suites now have passing evidence; no claim that the initial aggregate invocation returned success. Exact-head CI/merge remains open.
+
+Exact-head CI 35191320476 passed in 28m34s on `88b17c366c65b9adfef86fac8ff3da505eabc209`; PR #90 merged as `ec767f36f8c2e40e2eb85d1e465493d4aea86837` at 2026-09-17T07:17:00Z. Native/hardware/provider gates remain open.

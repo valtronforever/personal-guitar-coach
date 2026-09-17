@@ -1114,7 +1114,8 @@ lessons:
       uk: Блюзовий акомпанемент
     outcomeUK: Зіграти дванадцятитактову форму
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 98
     moduleID: electric-styles
     lessonID: blues-solo
@@ -1123,7 +1124,8 @@ lessons:
       uk: Блюзове соло
     outcomeUK: Поєднати пентатоніку, bend, vibrato та фразування
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 99
     moduleID: electric-styles
     lessonID: classic-rock
@@ -1132,7 +1134,8 @@ lessons:
       uk: Класичний рок
     outcomeUK: Поєднати риф, акордовий акомпанемент і короткі вставки
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 100
     moduleID: electric-styles
     lessonID: punk-hardcore
@@ -1141,7 +1144,8 @@ lessons:
       uk: Панк і хардкор
     outcomeUK: Утримувати енергійний ритм та чіткі зупинки
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 101
     moduleID: electric-styles
     lessonID: metal-study
@@ -1150,7 +1154,8 @@ lessons:
       uk: Метал
     outcomeUK: Поєднати palm muting, галоп, педальний тон і Drop-форми
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 102
     moduleID: electric-styles
     lessonID: funk-study
@@ -1169,7 +1174,8 @@ lessons:
       uk: R&B і neo-soul
     outcomeUK: Використовувати компактні акорди, обернення й мелодичні прикраси
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 104
     moduleID: electric-styles
     lessonID: country-chicken-picking
@@ -1178,7 +1184,8 @@ lessons:
       uk: Кантрі та chicken picking
     outcomeUK: Поєднати hybrid picking, короткі ноти та характерні акценти
     originalAssessment: С
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 105
     moduleID: specializations
     lessonID: jazz-comping

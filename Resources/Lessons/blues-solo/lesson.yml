@@ -1,0 +1,675 @@
+schemaVersion: 3
+id: blues-solo
+version: 1
+difficulty: intermediate
+topic: technique
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: plain-call
+    kind: events
+    exerciseID: blues-solo-plain-call
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: plain-call
+  - id: bent-call
+    kind: events
+    exerciseID: blues-solo-bent-call
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: bent-call
+  - id: vibrato-answer
+    kind: events
+    exerciseID: blues-solo-vibrato-answer
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+    activityID: vibrato-answer
+  - id: twelve-bar-solo
+    kind: events
+    exerciseID: blues-solo-twelve-bar-solo
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+      - event-33
+      - event-34
+      - event-35
+      - event-36
+      - event-37
+      - event-38
+      - event-39
+      - event-40
+      - event-41
+    activityID: twelve-bar-solo
+  - id: phrase-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: blues-solo-plain-call
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 960
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: blues-solo-bent-call
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 960
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        bend:
+          semitones: 2
+          riseStartTick: 480
+          riseEndTick: 960
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: blues-solo-vibrato-answer
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-3
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-4
+        startTick: 1920
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        vibrato:
+          extentCents: 40
+          startTick: 240
+          endTick: 1200
+          periodTicks: 240
+      - id: event-5
+        startTick: 3360
+        durationTicks: 480
+        kind: rest
+        positions: []
+  - id: blues-solo-twelve-bar-solo
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-2
+        startTick: 480
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-3
+        startTick: 960
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        bend:
+          semitones: 2
+          riseStartTick: 480
+          riseEndTick: 960
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-6
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 7680
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-8
+        startTick: 8160
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-9
+        startTick: 8640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-10
+        startTick: 9600
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        vibrato:
+          extentCents: 40
+          startTick: 240
+          endTick: 1200
+          periodTicks: 240
+      - id: event-11
+        startTick: 11040
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 11520
+        durationTicks: 3840
+        kind: rest
+        positions: []
+      - id: event-13
+        startTick: 15360
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-14
+        startTick: 15840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-15
+        startTick: 16320
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        bend:
+          semitones: 2
+          riseStartTick: 480
+          riseEndTick: 960
+      - id: event-16
+        startTick: 18240
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 19200
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-18
+        startTick: 20160
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-19
+        startTick: 21120
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-20
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-21
+        startTick: 23040
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-22
+        startTick: 23520
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-23
+        startTick: 24000
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-24
+        startTick: 24960
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        vibrato:
+          extentCents: 40
+          startTick: 240
+          endTick: 1200
+          periodTicks: 240
+      - id: event-25
+        startTick: 26400
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-26
+        startTick: 26880
+        durationTicks: 3840
+        kind: rest
+        positions: []
+      - id: event-27
+        startTick: 30720
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-28
+        startTick: 31680
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 6
+      - id: event-29
+        startTick: 32640
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-30
+        startTick: 33600
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-31
+        startTick: 34560
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-32
+        startTick: 35520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-33
+        startTick: 36480
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-34
+        startTick: 37440
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-35
+        startTick: 38400
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 8
+      - id: event-36
+        startTick: 38880
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: event-37
+        startTick: 39360
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+      - id: event-38
+        startTick: 40320
+        durationTicks: 1440
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+        vibrato:
+          extentCents: 40
+          startTick: 240
+          endTick: 1200
+          periodTicks: 240
+      - id: event-39
+        startTick: 41760
+        durationTicks: 480
+        kind: rest
+        positions: []
+      - id: event-40
+        startTick: 42240
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: event-41
+        startTick: 44160
+        durationTicks: 1920
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: plain-call
+    source:
+      kind: exercise
+      exerciseID: blues-solo-plain-call
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: bent-call
+    source:
+      kind: exercise
+      exerciseID: blues-solo-bent-call
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: vibrato-answer
+    source:
+      kind: exercise
+      exerciseID: blues-solo-vibrato-answer
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: twelve-bar-solo
+    source:
+      kind: exercise
+      exerciseID: blues-solo-twelve-bar-solo
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: plain-call
+    materialID: plain-call
+  - id: bent-call
+    materialID: bent-call
+  - id: vibrato-answer
+    materialID: vibrato-answer
+  - id: twelve-bar-solo
+    materialID: twelve-bar-solo
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: phrase-review
+    stepID: phrase-review
+    kind: selfPractice
+    itemIDs:
+      - motif
+      - bend
+      - vibrato
+      - space
+      - answer
+curriculum:
+  moduleID: electric-styles
+  ordinal: 98
+  durationMinutes: 35
+  prerequisites:
+    - blues-accompaniment
+    - blues-scale
+    - first-bend
+    - vibrato
+  keywords:
+    - 'Blues soloing: a phrase before a scale'
+    - 'Блюзове соло: фраза перед гамою'
+    - electric guitar
+    - електрогітара
+    - style study
+    - етюд

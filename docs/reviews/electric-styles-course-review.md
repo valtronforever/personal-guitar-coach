@@ -1,0 +1,19 @@
+# Electric styles — same-agent review
+
+Implementing-agent review, not independent. Status: `in_progress` pending final delivery; actual native/guitar acceptance stays open.
+
+Seven bilingual lessons complete topics 97–104 around the existing funk study: blues accompaniment/solo, classic rock, punk/hardcore, metal, R&B/neo-soul and country. Their 29 activities use the existing reference, notation and self-practice contracts. No production DSP, callback, dependency or assessment capability changed. All are explicitly displayOnly; neither chord voicing nor expressive/physical quality receives a fabricated score.
+
+Review findings and decisions:
+- Blues accompaniment preserves all twelve bars of I–IV–V, with independent 640/320-tick shuffle pairs. The solo ending deliberately resolves the last bar to I; its localized instructions name that ending variant. Bends and vibrato use separate canonical notes.
+- Rock and punk studies contain actual complete forms and explicit cutoffs/re-entry rests. Short practice bursts provide recovery; the content does not make an endurance or hand-technique diagnosis.
+- Metal uses anchor string 6, preserving the open-bass center in Standard and Drop. Power-chord fifth/octave intervals are preserved while the Drop shape changes. Gallop and palm-mute reference cues remain self-reviewed.
+- Rootless blues/R&B shapes explicitly identify omitted roots and harmonic context. Neo-soul ornaments release the chord first; this lesson does not claim an independent held bass beneath a moving line.
+- Country distinguishes picked bass, fingered upper notes, short notes with explicit rests, and four unpitched scratches. Written finger choice remains an instruction, not an audible fact.
+- The course test compares independent numeric pitch arrays, bar counts, rests, triplets, technique timing and Standard/Drop shapes for all 29 activities × eight presets × five neck lengths (1,160 cases). It passed in 4.092 s. An initial test compile error from a key-path inside a Testing macro was fixed with an explicit closure; no production workaround.
+- New library checks verify all eight style lessons in order, both languages, self-practice/scored filters and keyword discovery. Full App: 184 tests/57 suites passed in 238.066 s (`/tmp/electric-styles-app-full.log`).
+- Content loader: 118 bundles, zero issues. Partial inventory: 112 authored/16 todo. All 915 localization keys and generated-project checks pass. Generic body text remains tuning-independent and rendered musical tokens resolve in both languages.
+
+Full Learning and signed root-only Release/archive evidence follow below. No real app launch, guitar performance, VoiceOver interaction or provider run was performed.
+
+Full Learning: 142 tests/50 suites passed in 198.818 s (`/tmp/electric-styles-learning-full.log`). UI-test sources type-check; native UI execution remains separate.

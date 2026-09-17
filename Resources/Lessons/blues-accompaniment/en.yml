@@ -1,0 +1,65 @@
+lessonID: blues-accompaniment
+lessonVersion: 1
+locale: en
+title: 'Blues accompaniment: keep the twelve-bar form'
+summary: Learn the harmonic route, a shuffle cell and a deliberate turnaround.
+goal: Complete repeated twelve-bar cycles without losing the chord changes or the return to bar one.
+body: |-
+  A twelve-bar blues is a form you can count and recognize, not only a scale or a rhythm. This lesson uses one explicit version: four bars of I, two of IV, two of I, then V, IV, I and V. Other blues forms exist, so agree on the version before playing with someone. Here the last V leads back to the next cycle; a separate ending returns to I and stops.
+
+  Begin with the sparse chord map. Each compact dominant-seventh voicing sounds once per bar, leaving time to name the next chord degree. The shapes omit the root and contain its minor seventh, third and fifth; the declared tonal center supplies their function. Count four beats even when your hand is not moving. Mark the changes at bars 5, 7, 9, 10, 11 and 12 before adding a busier pattern.
+
+  The shuffle cell alternates a root-and-fifth pair with a root-and-sixth pair. Its long-short timing divides each beat into three equal parts and uses the first and third attack points. Hear the triplet pulse before copying the cell. Keep the lower root steady while the upper note changes. If the reach is uncomfortable, use the compact chord-map version while learning the form, then work on the cell separately.
+
+  Connect the cell through the complete form at one tempo. Name the upcoming degree during the final beat of the current bar instead of waiting for the change to surprise you. Practice the boundary from bar 12 back to bar 1 in a loop. A correct isolated shape does not yet mean the accompaniment works: the transition must occupy its planned beat without an added pause.
+
+  Finally compare a turnaround with an ending. The turnaround keeps the cycle open; the ending reaches the tonic and leaves silence. These are original study patterns, not a transcription of a recording. Playback provides synthesized timing and pitches, while chord balance, shuffle feel and muting are self-reviewed. Lower the reference and complete two cycles, then signal and play the ending deliberately.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  chord-map:
+    title: 'Twelve bars: I, IV and V'
+    body: 'Center: {{root}}. Follow I I I I | IV IV I I | V IV I V. Each chord lasts three beats and the fourth
+      beat is silent.'
+  shuffle-cell:
+    title: One root, fifth and sixth cell
+    body: The lower note stays fixed. The upper voice alternates fifth and sixth on long-short subdivisions; count
+      the three-part beat underneath.
+  shuffle-form:
+    title: Carry the cell through the whole form
+    body: Use the same twelve-bar route. Loop the whole selection and prepare the V-to-I return before the next
+      first beat.
+  ending:
+    title: Choose an ending instead of another cycle
+    body: Two bars move V–IV–I, then rest, tonic and a final silence. Announce the ending before playing it.
+  form-review:
+    title: Two cycles and an ending
+    body: Play two complete cycles, then the ending. If a boundary fails, isolate the bars on each side and reconnect
+      them.
+activities:
+  chord-map:
+    title: 'Twelve bars: I, IV and V'
+    body: 'Center: {{root}}. Follow I I I I | IV IV I I | V IV I V. Each chord lasts three beats and the fourth
+      beat is silent.'
+  shuffle-cell:
+    title: One root, fifth and sixth cell
+    body: The lower note stays fixed. The upper voice alternates fifth and sixth on long-short subdivisions; count
+      the three-part beat underneath.
+  shuffle-form:
+    title: Carry the cell through the whole form
+    body: Use the same twelve-bar route. Loop the whole selection and prepare the V-to-I return before the next
+      first beat.
+  ending:
+    title: Choose an ending instead of another cycle
+    body: Two bars move V–IV–I, then rest, tonic and a final silence. Announce the ending before playing it.
+learningTasks:
+  form-review:
+    title: Two cycles and an ending
+    body: Play two complete cycles, then the ending. If a boundary fails, isolate the bars on each side and reconnect
+      them.
+    items:
+      form: I kept the 12-bar chord route without inserting or skipping a bar.
+      shuffle: I heard a consistent long-short subdivision under the chord changes.
+      return: I connected bar 12 to bar 1 without an extra pause.
+      ending: I distinguished the turnaround from a deliberate tonic ending.

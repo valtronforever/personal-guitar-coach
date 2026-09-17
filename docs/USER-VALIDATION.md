@@ -212,3 +212,7 @@ Try the two moderate graded preparations with clean input and a valid instrument
 ## Muted attacks and funk (102) — pending user
 
 In both languages/themes, distinguish × attacks from rests and pitched fret numbers during preview. Read direction/accent cues, compare the selected strings on the board, and verify VoiceOver describes an unpitched attack rather than a note/rest. The staff's existing simultaneous-chord limitation remains explicit. Play short chord stabs and damped scratches on the chosen guitar; check accidental open strings/harmonics and the intended silent slots manually. Confirm the five funk activities do not offer an automatic chord/noisy-attack grade. Offline notation renders, deterministic noise tests and content matrices are not evidence of live guitar execution.
+
+## Electric styles 97–104 — pending user
+
+Read all eight style lessons in en/uk, follow the complete twelve/eight/four-bar forms and compare reference, TAB and highlighted strings. Check clean physical playing and self-criteria separately from synthesized pitch/time. In metal, compare actual Standard and Drop open-bass power shapes. In R&B, release the chord before the one-string ornament; in country, distinguish short pitched notes from × scratches. Verify self-practice filters, keyboard/VoiceOver and both themes on the native app. No automatic chord, stylistic-feel, fast-gesture or physical-finger score is expected.

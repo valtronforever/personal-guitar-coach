@@ -1,0 +1,2124 @@
+schemaVersion: 3
+id: blues-accompaniment
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: chord-map
+    kind: events
+    exerciseID: blues-accompaniment-chord-map
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+    activityID: chord-map
+  - id: shuffle-cell
+    kind: events
+    exerciseID: blues-accompaniment-shuffle-cell
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: shuffle-cell
+  - id: shuffle-form
+    kind: events
+    exerciseID: blues-accompaniment-shuffle-form
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+      - event-33
+      - event-34
+      - event-35
+      - event-36
+      - event-37
+      - event-38
+      - event-39
+      - event-40
+      - event-41
+      - event-42
+      - event-43
+      - event-44
+      - event-45
+      - event-46
+      - event-47
+      - event-48
+      - event-49
+      - event-50
+      - event-51
+      - event-52
+      - event-53
+      - event-54
+      - event-55
+      - event-56
+      - event-57
+      - event-58
+      - event-59
+      - event-60
+      - event-61
+      - event-62
+      - event-63
+      - event-64
+      - event-65
+      - event-66
+      - event-67
+      - event-68
+      - event-69
+      - event-70
+      - event-71
+      - event-72
+      - event-73
+      - event-74
+      - event-75
+      - event-76
+      - event-77
+      - event-78
+      - event-79
+      - event-80
+      - event-81
+      - event-82
+      - event-83
+      - event-84
+      - event-85
+      - event-86
+      - event-87
+      - event-88
+      - event-89
+      - event-90
+      - event-91
+      - event-92
+      - event-93
+      - event-94
+      - event-95
+      - event-96
+    activityID: shuffle-form
+  - id: ending
+    kind: events
+    exerciseID: blues-accompaniment-ending
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+    activityID: ending
+  - id: form-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: blues-accompaniment-chord-map
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 15360
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+          - string: 2
+            fret: 10
+          - string: 1
+            fret: 8
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-10
+        startTick: 18240
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 19200
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+          - string: 2
+            fret: 10
+          - string: 1
+            fret: 8
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-12
+        startTick: 22080
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-13
+        startTick: 23040
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-14
+        startTick: 25920
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-15
+        startTick: 26880
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-16
+        startTick: 29760
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 30720
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 10
+          - string: 2
+            fret: 12
+          - string: 1
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-18
+        startTick: 33600
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-19
+        startTick: 34560
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+          - string: 2
+            fret: 10
+          - string: 1
+            fret: 8
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-20
+        startTick: 37440
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-21
+        startTick: 38400
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-22
+        startTick: 41280
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-23
+        startTick: 42240
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 10
+          - string: 2
+            fret: 12
+          - string: 1
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-24
+        startTick: 45120
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: blues-accompaniment-shuffle-cell
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 640
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-3
+        startTick: 960
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 1600
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-5
+        startTick: 1920
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 2560
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-7
+        startTick: 2880
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 3520
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+    triplets:
+      - id: t-0
+        eventIDs:
+          - event-1
+          - event-2
+      - id: t-1
+        eventIDs:
+          - event-3
+          - event-4
+      - id: t-2
+        eventIDs:
+          - event-5
+          - event-6
+      - id: t-3
+        eventIDs:
+          - event-7
+          - event-8
+  - id: blues-accompaniment-shuffle-form
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 640
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-3
+        startTick: 960
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 1600
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-5
+        startTick: 1920
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 2560
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-7
+        startTick: 2880
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 3520
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-9
+        startTick: 3840
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-10
+        startTick: 4480
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-11
+        startTick: 4800
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-12
+        startTick: 5440
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-13
+        startTick: 5760
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-14
+        startTick: 6400
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-15
+        startTick: 6720
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-16
+        startTick: 7360
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-17
+        startTick: 7680
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-18
+        startTick: 8320
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-19
+        startTick: 8640
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-20
+        startTick: 9280
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-21
+        startTick: 9600
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-22
+        startTick: 10240
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-23
+        startTick: 10560
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-24
+        startTick: 11200
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-25
+        startTick: 11520
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-26
+        startTick: 12160
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-27
+        startTick: 12480
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-28
+        startTick: 13120
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-29
+        startTick: 13440
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-30
+        startTick: 14080
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-31
+        startTick: 14400
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-32
+        startTick: 15040
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-33
+        startTick: 15360
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-34
+        startTick: 16000
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-35
+        startTick: 16320
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-36
+        startTick: 16960
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-37
+        startTick: 17280
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-38
+        startTick: 17920
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-39
+        startTick: 18240
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-40
+        startTick: 18880
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-41
+        startTick: 19200
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-42
+        startTick: 19840
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-43
+        startTick: 20160
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-44
+        startTick: 20800
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-45
+        startTick: 21120
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-46
+        startTick: 21760
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-47
+        startTick: 22080
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-48
+        startTick: 22720
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-49
+        startTick: 23040
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-50
+        startTick: 23680
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-51
+        startTick: 24000
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-52
+        startTick: 24640
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-53
+        startTick: 24960
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-54
+        startTick: 25600
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-55
+        startTick: 25920
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-56
+        startTick: 26560
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-57
+        startTick: 26880
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-58
+        startTick: 27520
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-59
+        startTick: 27840
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-60
+        startTick: 28480
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-61
+        startTick: 28800
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-62
+        startTick: 29440
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-63
+        startTick: 29760
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-64
+        startTick: 30400
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-65
+        startTick: 30720
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-66
+        startTick: 31360
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-67
+        startTick: 31680
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-68
+        startTick: 32320
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-69
+        startTick: 32640
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-70
+        startTick: 33280
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-71
+        startTick: 33600
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-72
+        startTick: 34240
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-73
+        startTick: 34560
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-74
+        startTick: 35200
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-75
+        startTick: 35520
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-76
+        startTick: 36160
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-77
+        startTick: 36480
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-78
+        startTick: 37120
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-79
+        startTick: 37440
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-80
+        startTick: 38080
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 8
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-81
+        startTick: 38400
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-82
+        startTick: 39040
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-83
+        startTick: 39360
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-84
+        startTick: 40000
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-85
+        startTick: 40320
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-86
+        startTick: 40960
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-87
+        startTick: 41280
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-88
+        startTick: 41920
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 4
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-89
+        startTick: 42240
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-90
+        startTick: 42880
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-91
+        startTick: 43200
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-92
+        startTick: 43840
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-93
+        startTick: 44160
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-94
+        startTick: 44800
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-95
+        startTick: 45120
+        durationTicks: 640
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 12
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-96
+        startTick: 45760
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 5
+            fret: 10
+          - string: 4
+            fret: 14
+        strum:
+          direction: down
+          spreadTicks: 30
+    triplets:
+      - id: t-0
+        eventIDs:
+          - event-1
+          - event-2
+      - id: t-1
+        eventIDs:
+          - event-3
+          - event-4
+      - id: t-2
+        eventIDs:
+          - event-5
+          - event-6
+      - id: t-3
+        eventIDs:
+          - event-7
+          - event-8
+      - id: t-4
+        eventIDs:
+          - event-9
+          - event-10
+      - id: t-5
+        eventIDs:
+          - event-11
+          - event-12
+      - id: t-6
+        eventIDs:
+          - event-13
+          - event-14
+      - id: t-7
+        eventIDs:
+          - event-15
+          - event-16
+      - id: t-8
+        eventIDs:
+          - event-17
+          - event-18
+      - id: t-9
+        eventIDs:
+          - event-19
+          - event-20
+      - id: t-10
+        eventIDs:
+          - event-21
+          - event-22
+      - id: t-11
+        eventIDs:
+          - event-23
+          - event-24
+      - id: t-12
+        eventIDs:
+          - event-25
+          - event-26
+      - id: t-13
+        eventIDs:
+          - event-27
+          - event-28
+      - id: t-14
+        eventIDs:
+          - event-29
+          - event-30
+      - id: t-15
+        eventIDs:
+          - event-31
+          - event-32
+      - id: t-16
+        eventIDs:
+          - event-33
+          - event-34
+      - id: t-17
+        eventIDs:
+          - event-35
+          - event-36
+      - id: t-18
+        eventIDs:
+          - event-37
+          - event-38
+      - id: t-19
+        eventIDs:
+          - event-39
+          - event-40
+      - id: t-20
+        eventIDs:
+          - event-41
+          - event-42
+      - id: t-21
+        eventIDs:
+          - event-43
+          - event-44
+      - id: t-22
+        eventIDs:
+          - event-45
+          - event-46
+      - id: t-23
+        eventIDs:
+          - event-47
+          - event-48
+      - id: t-24
+        eventIDs:
+          - event-49
+          - event-50
+      - id: t-25
+        eventIDs:
+          - event-51
+          - event-52
+      - id: t-26
+        eventIDs:
+          - event-53
+          - event-54
+      - id: t-27
+        eventIDs:
+          - event-55
+          - event-56
+      - id: t-28
+        eventIDs:
+          - event-57
+          - event-58
+      - id: t-29
+        eventIDs:
+          - event-59
+          - event-60
+      - id: t-30
+        eventIDs:
+          - event-61
+          - event-62
+      - id: t-31
+        eventIDs:
+          - event-63
+          - event-64
+      - id: t-32
+        eventIDs:
+          - event-65
+          - event-66
+      - id: t-33
+        eventIDs:
+          - event-67
+          - event-68
+      - id: t-34
+        eventIDs:
+          - event-69
+          - event-70
+      - id: t-35
+        eventIDs:
+          - event-71
+          - event-72
+      - id: t-36
+        eventIDs:
+          - event-73
+          - event-74
+      - id: t-37
+        eventIDs:
+          - event-75
+          - event-76
+      - id: t-38
+        eventIDs:
+          - event-77
+          - event-78
+      - id: t-39
+        eventIDs:
+          - event-79
+          - event-80
+      - id: t-40
+        eventIDs:
+          - event-81
+          - event-82
+      - id: t-41
+        eventIDs:
+          - event-83
+          - event-84
+      - id: t-42
+        eventIDs:
+          - event-85
+          - event-86
+      - id: t-43
+        eventIDs:
+          - event-87
+          - event-88
+      - id: t-44
+        eventIDs:
+          - event-89
+          - event-90
+      - id: t-45
+        eventIDs:
+          - event-91
+          - event-92
+      - id: t-46
+        eventIDs:
+          - event-93
+          - event-94
+      - id: t-47
+        eventIDs:
+          - event-95
+          - event-96
+  - id: blues-accompaniment-ending
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 10
+          - string: 2
+            fret: 12
+          - string: 1
+            fret: 10
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 8
+          - string: 2
+            fret: 10
+          - string: 1
+            fret: 8
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: chord-map
+    source:
+      kind: exercise
+      exerciseID: blues-accompaniment-chord-map
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: shuffle-cell
+    source:
+      kind: exercise
+      exerciseID: blues-accompaniment-shuffle-cell
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: shuffle-form
+    source:
+      kind: exercise
+      exerciseID: blues-accompaniment-shuffle-form
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: ending
+    source:
+      kind: exercise
+      exerciseID: blues-accompaniment-ending
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: chord-map
+    materialID: chord-map
+  - id: shuffle-cell
+    materialID: shuffle-cell
+  - id: shuffle-form
+    materialID: shuffle-form
+  - id: ending
+    materialID: ending
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: form-review
+    stepID: form-review
+    kind: selfPractice
+    itemIDs:
+      - form
+      - shuffle
+      - return
+      - ending
+curriculum:
+  moduleID: electric-styles
+  ordinal: 97
+  durationMinutes: 35
+  prerequisites:
+    - swing-shuffle
+    - first-song-form
+  keywords:
+    - 'Blues accompaniment: keep the twelve-bar form'
+    - 'Блюзовий акомпанемент: утримай дванадцятитактову форму'
+    - electric guitar
+    - електрогітара
+    - style study
+    - етюд

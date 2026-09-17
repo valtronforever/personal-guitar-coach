@@ -1,0 +1,659 @@
+schemaVersion: 3
+id: rnb-neo-soul
+version: 1
+difficulty: intermediate
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: color-chords
+    kind: events
+    exerciseID: rnb-neo-soul-color-chords
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: color-chords
+  - id: top-line
+    kind: events
+    exerciseID: rnb-neo-soul-top-line
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+    activityID: top-line
+  - id: inversion-choice
+    kind: events
+    exerciseID: rnb-neo-soul-inversion-choice
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: inversion-choice
+  - id: ornament-answer
+    kind: events
+    exerciseID: rnb-neo-soul-ornament-answer
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: ornament-answer
+  - id: color-study
+    kind: events
+    exerciseID: rnb-neo-soul-color-study
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+    activityID: color-study
+  - id: voice-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: rnb-neo-soul-color-chords
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 6
+          - string: 1
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 6
+          - string: 1
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: rnb-neo-soul-top-line
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 7680
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-6
+        startTick: 10560
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 11520
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: event-8
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: rnb-neo-soul-inversion-choice
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 2880
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 9
+          - string: 2
+            fret: 8
+          - string: 1
+            fret: 8
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+  - id: rnb-neo-soul-ornament-answer
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 1
+              startTick: 640
+            - kind: pullOff
+              semitones: -1
+              startTick: 1280
+      - id: event-3
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 6
+          - string: 1
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 2
+              startTick: 640
+            - kind: pullOff
+              semitones: -2
+              startTick: 1280
+  - id: rnb-neo-soul-color-study
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 160
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-2
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 1
+              startTick: 640
+            - kind: pullOff
+              semitones: -1
+              startTick: 1280
+      - id: event-3
+        startTick: 3840
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-4
+        startTick: 6720
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 7680
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 6
+          - string: 1
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-6
+        startTick: 9600
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+        legatoChain:
+          targets:
+            - kind: hammerOn
+              semitones: 2
+              startTick: 640
+            - kind: pullOff
+              semitones: -2
+              startTick: 1280
+      - id: event-7
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 4
+          - string: 2
+            fret: 6
+          - string: 1
+            fret: 5
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 12480
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 13440
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 7
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-10
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: color-chords
+    source:
+      kind: exercise
+      exerciseID: rnb-neo-soul-color-chords
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: top-line
+    source:
+      kind: exercise
+      exerciseID: rnb-neo-soul-top-line
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: inversion-choice
+    source:
+      kind: exercise
+      exerciseID: rnb-neo-soul-inversion-choice
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: ornament-answer
+    source:
+      kind: exercise
+      exerciseID: rnb-neo-soul-ornament-answer
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: color-study
+    source:
+      kind: exercise
+      exerciseID: rnb-neo-soul-color-study
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: color-chords
+    materialID: color-chords
+  - id: top-line
+    materialID: top-line
+  - id: inversion-choice
+    materialID: inversion-choice
+  - id: ornament-answer
+    materialID: ornament-answer
+  - id: color-study
+    materialID: color-study
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: voice-review
+    stepID: voice-review
+    kind: selfPractice
+    itemIDs:
+      - colors
+      - top
+      - inversion
+      - ornament
+      - choice
+curriculum:
+  moduleID: electric-styles
+  ordinal: 103
+  durationMinutes: 35
+  prerequisites:
+    - seventh-chords
+    - voice-leading
+    - triad-inversions
+    - long-legato
+  keywords:
+    - 'R&B and neo-soul: connect voices and small ornaments'
+    - 'R&B і neo-soul: поєднай голоси й невеликі прикраси'
+    - electric guitar
+    - електрогітара
+    - style study
+    - етюд

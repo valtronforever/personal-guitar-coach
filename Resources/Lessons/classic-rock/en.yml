@@ -1,0 +1,60 @@
+lessonID: classic-rock
+lessonVersion: 1
+locale: en
+title: 'Classic rock: riff, rhythm part and fill'
+summary: Give three guitar roles different space and join them without breaking the pulse.
+goal: Play an eight-bar arrangement that moves clearly between a riff, chord support and a short fill.
+body: |-
+  A guitar part can change role while the tempo stays constant. A riff provides a recurring identity, chord support leaves room for another lead voice, and a fill occupies a chosen gap. Learn these roles separately before combining them. The original study in this lesson is a small arrangement, not a quotation from a song; its structure matters more than adding a particular amplifier sound.
+
+  Start with the low single-note riff. It repeats the tonic before moving through a small minor vocabulary and returning. Count its short opening attacks and longer ending without speeding up the repeated notes. Choose clean releases between notes first. If you later add an external overdriven sound, check that it has not hidden the endings or allowed unused strings to ring.
+
+  The chord part uses power-chord shapes and longer spaces. Strike only the indicated strings and prepare the next shape before its beat. Keep the rhythm part smaller than the riff in your musical attention: it should support the form rather than become an unrelated solo. The displayed Standard or Drop fingering may differ at the sixth string, while the intended intervals and harmonic route remain consistent.
+
+  The fill moves into a higher register for one bar and then gets out of the way. Practice its final note followed immediately by the next section, so it cannot borrow an extra beat. A useful fill answers what came before and makes the return clearer. It does not need to be fast. Compare a full fill with a version containing fewer notes and the same ending time.
+
+  The complete eight bars are riff twice, chord support twice, riff twice, fill once and a final tonic chord with silence. Say those roles before starting. If a transition is weak, loop its last and first bars rather than always restarting the whole piece. This arrangement uses self-review: the app provides timed notes and synthesized examples, while balance, tone, muting and the success of the fill remain your musical judgments.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  main-riff:
+    title: Give the riff a clear return
+    body: 'Center: {{root}} minor. Repeat the low riff without shortening the last note or rushing into the next
+      first beat.'
+  rhythm-part:
+    title: Support with power chords and space
+    body: The tonic, lowered sixth and lowered seventh support the minor center. Preserve the final eighth rest.
+  one-bar-fill:
+    title: A fill with a fixed boundary
+    body: Use the upper register for one bar, leave the last eighth quiet and be ready for the next role.
+  eight-bar-arrangement:
+    title: Eight bars with three roles
+    body: Bars 1–2 riff, 3–4 support, 5–6 riff, 7 fill, 8 ending. Prepare each role before its boundary.
+  arrangement-review:
+    title: Make every role recognizable
+    body: Perform the eight bars twice. Simplify one fill on the second pass while retaining the same form and ending.
+activities:
+  main-riff:
+    title: Give the riff a clear return
+    body: 'Center: {{root}} minor. Repeat the low riff without shortening the last note or rushing into the next
+      first beat.'
+  rhythm-part:
+    title: Support with power chords and space
+    body: The tonic, lowered sixth and lowered seventh support the minor center. Preserve the final eighth rest.
+  one-bar-fill:
+    title: A fill with a fixed boundary
+    body: Use the upper register for one bar, leave the last eighth quiet and be ready for the next role.
+  eight-bar-arrangement:
+    title: Eight bars with three roles
+    body: Bars 1–2 riff, 3–4 support, 5–6 riff, 7 fill, 8 ending. Prepare each role before its boundary.
+learningTasks:
+  arrangement-review:
+    title: Make every role recognizable
+    body: Perform the eight bars twice. Simplify one fill on the second pass while retaining the same form and ending.
+    items:
+      roles: I could identify riff, support and fill by ear.
+      changes: My shape and register changes did not add pauses.
+      space: The fill ended on time and the written rests stayed quiet.
+      tone: I checked unwanted strings and chord balance in my chosen sound.
+      variation: I compared a simpler fill without changing the arrangement length.

@@ -1,0 +1,76 @@
+lessonID: rnb-neo-soul
+lessonVersion: 1
+locale: en
+title: 'R&B and neo-soul: connect voices and small ornaments'
+summary: Use compact chord colors, a clear top line and short melodic answers.
+goal: Connect a four-bar chord route with audible voice leading and a chosen melodic ornament.
+body: |-
+  Begin with the voices inside a chord rather than collecting more shapes. A small voicing can suggest a rich harmony when its important tones connect clearly to the next chord. This study uses a major-seventh color, two minor-seventh colors and a dominant ninth before returning home. Some voicings omit the root or fifth; their labels describe the harmonic context, not a claim that every chord member is physically present.
+
+  Play the four color chords slowly and identify the highest note of each. Then play only that top line on the first string. Listen to how much the melody moves while some lower voices stay near one another. Return to the chords without losing the top line in the balance. A louder chord is not automatically a clearer chord; adjust the attack so the voice you want to follow remains audible.
+
+  The inversion comparison temporarily returns to a simple major triad. Its root-position and first-inversion shapes contain the same three pitch classes with different lowest notes. Hear the change in register and balance before treating the shapes as interchangeable. Choose a voicing because it connects to the next musical idea, not only because it is familiar under the hand.
+
+  The ornament exercise plays a chord, releases it, then answers with a short hammer-on and pull-off on one string. The reference does not ask you to sustain an independent chord underneath that line. Keep the small melodic return inside its allotted beats and let the next chord arrive without a gap. Compare the ornament with a plain held note so you can decide whether the movement actually improves the phrase.
+
+  Connect the four-bar study and leave its written spaces open. First retain the exact note placement, then make one personal choice of balance or ornament while keeping the form. These examples are a focused introduction, not a formula for an entire genre. Chord balance, feel and hand technique are self-reviewed; the synthesized reference illustrates pitch and time. Listen to one concrete transition on each pass instead of judging the whole take with a vague good-or-bad label.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  color-chords:
+    title: Four compact colors
+    body: 'Center: {{root}} major. The route is Imaj7–vi7–ii7–V9; read the actual sounding notes and the implied
+      harmonic roles separately.'
+  top-line:
+    title: Hear the top voice alone
+    body: These are the highest notes of the four chord shapes, on string 1. Preserve this line when returning to
+      the full voicings.
+  inversion-choice:
+    title: One major triad, two bass choices
+    body: Compare root position and first inversion of {{root}} major. The pitch classes stay the same while the
+      lowest note changes.
+  ornament-answer:
+    title: Release the chord, answer melodically
+    body: After each two-beat chord, play the indicated one-string hammer-on/pull-off answer. Keep it inside the
+      next two beats.
+  color-study:
+    title: Four bars with two small answers
+    body: Keep the chord route, the two melodic responses and the final dominant-to-tonic arrival distinct. Leave
+      the final beat quiet.
+  voice-review:
+    title: Choose what the listener follows
+    body: Play the study twice. On one pass follow the highest chord voice; on the next compare an ornament with
+      its plain-note alternative.
+activities:
+  color-chords:
+    title: Four compact colors
+    body: 'Center: {{root}} major. The route is Imaj7–vi7–ii7–V9; read the actual sounding notes and the implied
+      harmonic roles separately.'
+  top-line:
+    title: Hear the top voice alone
+    body: These are the highest notes of the four chord shapes, on string 1. Preserve this line when returning to
+      the full voicings.
+  inversion-choice:
+    title: One major triad, two bass choices
+    body: Compare root position and first inversion of {{root}} major. The pitch classes stay the same while the
+      lowest note changes.
+  ornament-answer:
+    title: Release the chord, answer melodically
+    body: After each two-beat chord, play the indicated one-string hammer-on/pull-off answer. Keep it inside the
+      next two beats.
+  color-study:
+    title: Four bars with two small answers
+    body: Keep the chord route, the two melodic responses and the final dominant-to-tonic arrival distinct. Leave
+      the final beat quiet.
+learningTasks:
+  voice-review:
+    title: Choose what the listener follows
+    body: Play the study twice. On one pass follow the highest chord voice; on the next compare an ornament with
+      its plain-note alternative.
+    items:
+      colors: I could identify the four chord colors in their route.
+      top: The top voice remained audible inside the chords.
+      inversion: I heard the different lowest note in the inversion comparison.
+      ornament: The one-string ornament returned on time before the next chord.
+      choice: I compared one specific balance or ornament choice.
