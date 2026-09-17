@@ -132,6 +132,8 @@ struct PracticeScoreRow: View {
                 if event.kind == .rest {
                     Image(systemName: "pause.fill").font(.caption)
                         .frame(width: width, height: 6 * stringSpacing).offset(y: gridTop)
+                } else if let attack = event.mutedAttack {
+                    MutedAttackTabContent(attack: attack, width: width, gridTop: gridTop, stringSpacing: stringSpacing, zoom: zoom, compact: true)
                 } else if event.harmonic != nil {
                     HarmonicTabContent(event: event, width: width, gridTop: gridTop, stringSpacing: stringSpacing, zoom: zoom, compact: true)
                 } else if event.pitchTransition != nil || event.legatoChain != nil {
@@ -182,6 +184,7 @@ struct PracticeScoreRow: View {
         var notes = zip(segment.displayPositions, segment.displayPitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if let attack = event.mutedAttack { notes = MutedAttackPresentation.spoken(attack, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if event.harmonic != nil { notes = HarmonicPresentation.spoken(event: event, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }
         if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }

@@ -34,6 +34,7 @@ struct StaffView: View {
                 Button("tab.next") { bar = min(timeline.barCount - 1, currentBar + 1) }.disabled(currentBar + 1 >= timeline.barCount)
                 Spacer()
             }
+            if timeline.exercise.events.contains(where: { $0.mutedAttack != nil }) { Text("mutedAttack.legend").font(.caption).foregroundStyle(.secondary) }
             if timeline.exercise.durationTicks % timeline.ticksPerBar != 0 { Text("staff.fragment").font(.caption).foregroundStyle(.secondary) }
             if let symbols {
                 ScrollViewReader { proxy in
@@ -120,9 +121,17 @@ struct StaffView: View {
     private func accessibility(_ symbol: StaffSymbol) -> Text {
         let written = TimelineModel.durationLabel(symbol.fragment.duration.triplet ? symbol.fragment.duration.baseTicks : symbol.fragment.duration.ticks)
         let duration = symbol.fragment.tripletID == nil ? written : String(format: settings.localized("rhythm.tripletDuration %@"), locale: settings.locale, written)
+        if let attack = symbol.resolved.event.mutedAttack {
+            var description = MutedAttackPresentation.spoken(attack, locale: settings.locale, localized: settings.localized)
+            if let stroke = attack.direction, symbol.startTick == symbol.resolved.event.startTick {
+                description = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp"), description)
+            }
+            if symbol.accentedAttack { return Text("mutedAttack.staffAccent \(description) \(duration)") }
+            return Text("mutedAttack.staff \(description) \(duration)")
+        }
         if let pitch = symbol.pitch {
             var sounding = (try! Pitch(midi: symbol.resolved.pitches[0].midi + symbol.fragment.pitchOffset)).name(spelling: timeline.tuning.preferredSpelling)
-            if let stroke = symbol.resolved.event.pickStroke, symbol.startTick == symbol.resolved.event.startTick {
+            if let stroke = symbol.resolved.event.pickingDirection, symbol.startTick == symbol.resolved.event.startTick {
                 let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")
                 sounding = String(format: settings.localized("tab.pickedNotes %@ %@"), locale: settings.locale, direction, sounding)
             }
@@ -192,23 +201,27 @@ struct StaffDrawing {
                 context.stroke(Path(roundedRect: rect, cornerRadius: 5), with: .color(selected ? .accentColor : .primary),
                                style: StrokeStyle(lineWidth: 2, dash: focused ? [3, 3] : []))
             }
-            if let pitch = symbol.pitch {
-                let y = StaffModel.y(step: pitch.step)
-                for ledger in StaffModel.ledgerSteps(for: pitch.step) { line(CGPoint(x: position - 13, y: StaffModel.y(step: ledger)), CGPoint(x: position + 13, y: StaffModel.y(step: ledger))) }
+            if let step = symbol.engravingStep {
+                let y = StaffModel.y(step: step)
+                for ledger in StaffModel.ledgerSteps(for: step) { line(CGPoint(x: position - 13, y: StaffModel.y(step: ledger)), CGPoint(x: position + 13, y: StaffModel.y(step: ledger))) }
                 var head = Path()
-                if symbol.resolved.event.harmonic != nil {
+                if symbol.resolved.event.mutedAttack != nil {
+                    head.move(to: CGPoint(x: position - 5, y: y - 5)); head.addLine(to: CGPoint(x: position + 5, y: y + 5))
+                    head.move(to: CGPoint(x: position - 5, y: y + 5)); head.addLine(to: CGPoint(x: position + 5, y: y - 5))
+                } else if symbol.resolved.event.harmonic != nil {
                     head.move(to: CGPoint(x: position - 7.5, y: y)); head.addLine(to: CGPoint(x: position, y: y - 6))
                     head.addLine(to: CGPoint(x: position + 7.5, y: y)); head.addLine(to: CGPoint(x: position, y: y + 6)); head.closeSubpath()
                 } else { head = Path(ellipseIn: CGRect(x: position - 7.5, y: y - 5, width: 15, height: 10)) }
-                if symbol.hollow {
+                if symbol.resolved.event.mutedAttack != nil { context.stroke(head, with: .color(ink), lineWidth: 2) }
+                else if symbol.hollow {
                     var erase = context; erase.blendMode = .destinationOut
                     erase.fill(head, with: .color(.white)); context.stroke(head, with: .color(ink), lineWidth: 1.7)
                 } else { context.fill(head, with: .color(ink)) }
                 if let accidental = symbol.accidental { context.draw(Text(verbatim: accidental).font(.custom("Apple Symbols", size: 24)), at: CGPoint(x: position - 18, y: y)) }
                 let beam = beams.first { $0.ids.contains(symbol.id) }
-                let up = beam?.stemsUp ?? (pitch.step < 34)
+                let up = beam?.stemsUp ?? (step < 34)
                 let stemX = position + (up ? 7 : -7)
-                let groupY = symbols.filter { beam?.ids.contains($0.id) == true }.compactMap { $0.pitch.map { StaffModel.y(step: $0.step) } }
+                let groupY = symbols.filter { beam?.ids.contains($0.id) == true }.compactMap { $0.engravingStep.map { StaffModel.y(step: $0) } }
                 let stemEnd = (up ? groupY.min() ?? y : groupY.max() ?? y) + (up ? -32 : 32)
                 if symbol.hasStem { line(CGPoint(x: stemX, y: y), CGPoint(x: stemX, y: stemEnd), thickness: 1.5) }
                 if symbol.flags > 0 && beam == nil {
@@ -249,7 +262,7 @@ struct StaffDrawing {
                     }
                 }
             }
-            if let stroke = symbol.resolved.event.pickStroke, symbol.startTick == symbol.resolved.event.startTick {
+            if let stroke = symbol.resolved.event.pickingDirection, symbol.startTick == symbol.resolved.event.startTick {
                 context.draw(Text(verbatim: stroke == .down ? "↓" : "↑").font(.system(size: 12, weight: .bold)),
                     at: CGPoint(x: position, y: StaffModel.canvasHeight - 42))
             }
@@ -268,12 +281,12 @@ struct StaffDrawing {
                 context.draw(Text(verbatim: "P.M.").font(.system(size: 10, weight: .bold)),
                     at: CGPoint(x: position, y: StaffModel.canvasHeight - 26))
             }
-            if symbol.accentedAttack, let pitch = symbol.pitch {
+            if symbol.accentedAttack, let step = symbol.engravingStep {
                 context.draw(Text(verbatim: ">").font(.system(size: 18, weight: .bold)),
-                    at: CGPoint(x: position, y: max(12, min(98, StaffModel.y(step: pitch.step) - 44))))
+                    at: CGPoint(x: position, y: max(12, min(98, StaffModel.y(step: step) - 44))))
             }
             if duration.dotted {
-                let step = symbol.pitch?.step
+                let step = symbol.engravingStep
                 let y = step.map { StaffModel.y(step: $0.isMultiple(of: 2) ? $0 + 1 : $0) } ?? 136
                 context.fill(Path(ellipseIn: CGRect(x: position + 13, y: y - 2, width: 4, height: 4)), with: .color(ink))
             }
@@ -288,7 +301,7 @@ struct StaffDrawing {
         for beam in beams {
             let members = symbols.filter { beam.ids.contains($0.id) }
             guard let first = members.first, let last = members.last else { continue }
-            let heights = members.compactMap { $0.pitch.map { StaffModel.y(step: $0.step) } }
+            let heights = members.compactMap { $0.engravingStep.map { StaffModel.y(step: $0) } }
             let y = (beam.stemsUp ? heights.min() ?? 136 : heights.max() ?? 136) + (beam.stemsUp ? -32 : 32)
             for flag in 0..<beam.flags {
                 let offset = Double(flag) * (beam.stemsUp ? 7 : -7), stemOffset = beam.stemsUp ? 7.0 : -7.0
@@ -317,9 +330,9 @@ struct StaffDrawing {
             }
         }
         for (index, symbol) in symbols.enumerated() {
-            guard let pitch = symbol.pitch else { continue }
-            let noteY = StaffModel.y(step: pitch.step)
-            let direction = pitch.step < 34 ? 1.0 : -1.0
+            guard let step = symbol.engravingStep else { continue }
+            let noteY = StaffModel.y(step: step)
+            let direction = step < 34 ? 1.0 : -1.0
             let y = noteY + direction * 9
             func tie(from start: Double, to end: Double) {
                 guard end > start else { return }

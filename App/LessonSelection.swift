@@ -121,6 +121,7 @@ final class LessonSelection {
         if !range.ids.isEmpty, let exercise {
             return FretboardModel(tuning: exercise.requiredTuning ?? instrument.tuning, orientation: instrument.orientation, frets: instrument.frets,
                 positions: exercise.events.filter { range.ids.contains($0.id) }.flatMap(\.techniquePositions),
+                mutedStrings: Array(Set(exercise.events.filter { range.ids.contains($0.id) }.flatMap { $0.mutedAttack?.strings ?? [] })).sorted(),
                 targets: (try? exercise.events.filter { range.ids.contains($0.id) }.flatMap { try $0.visualTargets(in: exercise.requiredTuning ?? instrument.tuning) }) ?? [])
         }
         if let stepID, let visual = try? snapshot?.visual(stepID: stepID) {

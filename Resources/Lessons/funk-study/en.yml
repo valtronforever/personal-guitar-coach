@@ -1,0 +1,90 @@
+lessonID: funk-study
+lessonVersion: 1
+locale: en
+title: 'Funk: short chords, scratches and space'
+summary: Separate pitched chord stabs, unpitched scratches and deliberate rests on a sixteenth-note grid.
+goal: Play a syncopated four-bar groove with controlled chord endings, muted attacks and contrasting space.
+body: |-
+  A funk guitar part often gets its identity from when the strings stop sounding and from the space around the attacks. A short chord has recognizable pitches; a scratch is an unpitched attack on damped strings; a rest has no attack at all. These are three different events. Learn to choose between them deliberately before making the rhythm dense or adding effects.
+
+  Begin with the three-note dominant-seventh voicing. It contains the third, fifth and minor seventh; the root is implied rather than played in this first shape. Strike the selected upper strings together and release fretting pressure after the short written value, keeping light contact to stop them. Avoid lifting away so abruptly that an open string rings. Listen to the written silence after each chord as carefully as to the chord itself.
+
+  For a scratch, damp the indicated strings without pressing them to a fret and make a small picking motion. The cross marks identify the affected strings, not a fret number. Move the damping contact slightly if a clear natural harmonic appears, and listen for a brief nonpitched texture. This differs from palm muting a fretted note, where a definite pitch is intentionally retained. The app shows the instruction but does not detect your exact hand contact.
+
+  Count four subdivisions per quarter-note click. Keep a regular down-up motion where comfortable, but let silent slots pass without touching the strings. A moving hand is not a requirement to sound every subdivision. Compare the scratch grid with the mixed chord-and-scratch pattern. Notice that some spaces contain a percussive sound and others contain silence; replacing every rest with a scratch changes the groove.
+
+  The syncopated change places chord attacks between stronger beats, then moves to a second compact dominant shape. Learn each bar separately before joining them. Keep the metronome pulse stable while the chord attacks move around it. In the four-bar study, repeat the opening idea, reduce its density, then finish with a single chord and space. Use the same tempo to compare the busy and sparse bars; extra speed would obscure that comparison.
+
+  These examples use playback, a metronome and self-practice. The chord quality, damping and noisy attacks are not automatically graded by the monophonic note detector. The reference uses simple synthesized chords and short noise bursts to show timing, not a realistic guitar tone. Lower its volume to hear your own cutoffs. Finally, invent one bar by changing only two slots, explain which became chord, scratch or rest, and connect it to an unchanged model bar.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  chord-cutoff:
+    title: A short chord and a real rest
+    body: 'Use the upper-string voicing of {{root}}7. Each chord lasts one sixteenth; stop it before counting the
+      other three silent subdivisions. Sounding chord tones: {{notes}}.'
+  muted-grid:
+    title: Crosses make sound; rests do not
+    body: 'Damp strings 1–3. Count sixteen slots: four scratches, four rests, separated scratches, then a short
+      pair. Read the crosses without inventing a pitch.'
+  chord-and-scratch:
+    title: Switch between chord, scratch and silence
+    body: Keep the {{root}}7 shape ready but change fretting pressure deliberately. Preserve every rest instead
+      of filling the whole grid.
+  syncopated-change:
+    title: Offbeat stabs and a compact change
+    body: Play the first shape in bar 1 and the second in bar 2. Upstrokes on the fourth subdivision anticipate
+      the next beat; count through it rather than moving the click.
+  space-study:
+    title: 'Four bars: repeat, reduce, finish'
+    body: Bars 1–2 repeat the groove, bar 3 leaves more space on the second shape, and bar 4 ends with one short
+      chord. Compare density at one tempo.
+  groove-review:
+    title: Hear three different choices
+    body: Play the study twice, then change two slots in your own bar and connect it to an unchanged model bar.
+      Review only what you actually heard or checked physically.
+  cross-check:
+    title: What does the cross mean?
+    body: What should happen at × in these exercises?
+activities:
+  chord-cutoff:
+    title: A short chord and a real rest
+    body: 'Use the upper-string voicing of {{root}}7. Each chord lasts one sixteenth; stop it before counting the
+      other three silent subdivisions. Sounding chord tones: {{notes}}.'
+  muted-grid:
+    title: Crosses make sound; rests do not
+    body: 'Damp strings 1–3. Count sixteen slots: four scratches, four rests, separated scratches, then a short
+      pair. Read the crosses without inventing a pitch.'
+  chord-and-scratch:
+    title: Switch between chord, scratch and silence
+    body: Keep the {{root}}7 shape ready but change fretting pressure deliberately. Preserve every rest instead
+      of filling the whole grid.
+  syncopated-change:
+    title: Offbeat stabs and a compact change
+    body: Play the first shape in bar 1 and the second in bar 2. Upstrokes on the fourth subdivision anticipate
+      the next beat; count through it rather than moving the click.
+  space-study:
+    title: 'Four bars: repeat, reduce, finish'
+    body: Bars 1–2 repeat the groove, bar 3 leaves more space on the second shape, and bar 4 ends with one short
+      chord. Compare density at one tempo.
+learningTasks:
+  groove-review:
+    title: Hear three different choices
+    body: Play the study twice, then change two slots in your own bar and connect it to an unchanged model bar.
+      Review only what you actually heard or checked physically.
+    items:
+      cutoffs: I stopped chord tones at the intended boundaries without open-string spill.
+      scratch: My scratches were brief and distinct from both a pitched note and silence.
+      pulse: I counted through offbeat attacks and preserved the written rests.
+      contrast: I could hear the dense and sparse bars as different choices at one tempo.
+      variation: I changed exactly two slots and explained chord, scratch or rest in each.
+  cross-check:
+    title: What does the cross mean?
+    body: What should happen at × in these exercises?
+    items:
+      scratch: Make an unpitched attack on the indicated damped strings.
+      rest: Stay silent with no attack.
+      palm: Play a definite fretted pitch with palm muting.
+    explanation: A cross marks an audible unpitched attack. A rest is silent; a palm-muted note retains its authored
+      pitch.

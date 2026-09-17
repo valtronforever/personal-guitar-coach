@@ -91,6 +91,6 @@ public struct ResolvedLessonActivity: Equatable, Sendable {
                 positions.append(HighlightedPosition(position: target.position, pitch: target.pitch, finger: nil, role: target.role))
             }
         }
-        return LessonVisualSnapshot(exerciseID: exercise.id, tuning: tuning, events: events, positions: positions, mutedStrings: [])
+        return LessonVisualSnapshot(exerciseID: exercise.id, tuning: tuning, events: events, positions: positions, mutedStrings: Array(Set(events.flatMap { $0.event.mutedAttack?.strings ?? [] })).sorted())
     }
 }

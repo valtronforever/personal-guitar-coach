@@ -208,3 +208,7 @@ Practice `string-skipping`, `economy-picking`, `sweep-picking` and `hybrid-picki
 ## Tremolo picking (96) — pending user
 
 Try the two moderate graded preparations with clean input and a valid instrument timing profile. Check repeated attacks, burst cutoffs and rests; manual timing remains approximate. Use the three fast examples with metronome/reference and self-review only. Confirm arrows, beat accents and rests are legible during playback in both languages and that fast exercises do not present an automatic individual-note score. Actual high-speed picking, comfort and gesture checks are not established by synthetic/reference or content tests.
+
+## Muted attacks and funk (102) — pending user
+
+In both languages/themes, distinguish × attacks from rests and pitched fret numbers during preview. Read direction/accent cues, compare the selected strings on the board, and verify VoiceOver describes an unpitched attack rather than a note/rest. The staff's existing simultaneous-chord limitation remains explicit. Play short chord stabs and damped scratches on the chosen guitar; check accidental open strings/harmonics and the intended silent slots manually. Confirm the five funk activities do not offer an automatic chord/noisy-attack grade. Offline notation renders, deterministic noise tests and content matrices are not evidence of live guitar execution.

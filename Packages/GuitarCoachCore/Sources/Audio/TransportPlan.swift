@@ -172,6 +172,13 @@ public struct TransportPlan: Sendable {
                 guard a < b else { continue }
                 let fade = max(1, min(sampleRate * 0.005, Double(offset - onset) / 2))
                 let gain = request.toneVolume * (item.event.accented ? 0.3 : 0.2) / Double(max(1, frequencies[index].count))
+                if item.event.mutedAttack != nil {
+                    let attackOnset = frame(at: epoch + item.event.startTick - sourceStart)
+                    for sample in a..<b {
+                        output[Int(sample - startFrame)] += Float(Self.mutedSample(age: sample - attackOnset, sampleRate: sampleRate) * gain * min(1, Double(offset - sample - 1) / fade))
+                    }
+                    continue
+                }
                 if item.event.strum != nil {
                     for (voice, frequency) in frequencies[index].enumerated() {
                         let voiceOnset = frame(at: epoch + item.event.startTick + strumOffsets[index][voice] - sourceStart)
@@ -211,6 +218,20 @@ public struct TransportPlan: Sendable {
             }
         }
         return output
+    }
+
+    /// Stateless short noise burst. Sample-age addressing preserves chunks/seeks/loops.
+    private static func mutedSample(age: Int64, sampleRate: Double) -> Double {
+        guard age >= 0 else { return 0 }
+        let seconds = Double(age) / sampleRate
+        guard seconds < 0.08 else { return 0 }
+        var bits = UInt64(age) &+ 0x9E3779B97F4A7C15
+        bits = (bits ^ (bits >> 30)) &* 0xBF58476D1CE4E5B9
+        bits = (bits ^ (bits >> 27)) &* 0x94D049BB133111EB
+        bits ^= bits >> 31
+        let noise = Double(bits & 0xFFFF) / 32767.5 - 1
+        let envelope = min(1, seconds / 0.001) * exp(-seconds / 0.018) * min(1, (0.08 - seconds) / 0.005)
+        return noise * envelope
     }
 
     private func addClick(at onset: Int64, accented: Bool, stop: Int64 = .max, start: Int64, output: inout [Float]) {

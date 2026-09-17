@@ -512,3 +512,24 @@ Natural nodes retain their physical locations under `fretPattern`, deriving the 
 TAB uses angle brackets for a natural touch and an ordinary base with the touched fret above it for artificial harmonics. Staff uses sounding pitches and diamond heads; N.H./A.H. identify the authored type. The fretboard uses distinct touch diamonds and explicit base/touch targets. Text `sequence`/`notes` describes the audible pitches, while `positions` describes physical touch/stop roles. Lesson 94 (`harmonics`) demonstrates six progressive activities, including an artificial octave relocation whose higher region is unavailable on short necks.
 
 The score checks audible monophonic pitch, onset and optionally sustain within the existing capability envelope. It does not detect the hand, node, string, pinch gesture or harmonic timbre. Physical execution and unwanted strings remain self-checks. The reference is synthesized, not a recorded harmonic demonstration. Harmonic attempts opt into `mono-capability-7`, `monophonic-assessment-8` and `file-coach-10`; ordinary events omit the new field and preserve prior encoding/versions. Stored exact targets are validated and never silently regraded.
+
+### Unpitched muted-string attacks
+
+A fully damped string scratch is a sounded event distinct from a rest and from a pitched `palmMuted` note. Author it as `kind: note`, empty `positions`, and explicit `mutedAttack`. The strings must be a nonempty sorted unique list of 1–6. Direction is an optional picking-hand cue, not detected technique. Do not use a negative fret, MIDI placeholder or a rest for this sound.
+
+```yaml
+- id: scratch
+  kind: note
+  startTick: 240
+  durationTicks: 240
+  positions: []
+  mutedAttack:
+    strings: [1, 2, 3]
+    direction: up
+```
+
+Muted attacks require `assessmentMode: displayOnly`, including in mixed pitched/unpitched phrases. They cannot coexist on an event with sounding positions, sustain assessment, palm mute, strum/pick/finger metadata, harmonics or pitch-motion techniques. Put direction inside `mutedAttack`; `accented` can mark an initial rhythmic accent. The event duration occupies musical time, while the reference is a short decaying noise burst, not a sustained tone or a realistic guitar sample. The single transport owns that reference; no additional capture pipeline is involved.
+
+Tuning changes and region choices retain the specified physical strings without inventing a pitch. TAB shows × on those strings, staff shows an unpitched cross with rhythm/stem/beam and no accidental, and the fretboard shows muted strings. `sequence`/`notes`/`positions` text includes a localized muted-string label rather than silently dropping the event. Named-fingering projections from any exercise containing muted attacks are rejected because an ordinary fingering would lose the attack instruction. The normal staff polyphony limit still applies to simultaneous pitched chords; it reports its existing limitation instead of showing one chord tone as the whole chord.
+
+Topic 102 (`funk-study`) progressively separates short chord stabs, scratches and rests, then combines them in syncopated patterns and a four-bar study. Its physical and musical checks are self-reported. There is no automatic pitch, damping or noisy-attack score for these events. Ordinary event encoding omits `mutedAttack`, preserving prior saved data; no prior result is regraded.

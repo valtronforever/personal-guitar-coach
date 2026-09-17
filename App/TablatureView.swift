@@ -35,6 +35,7 @@ struct TablatureView: View {
                 Slider(value: $zoom, in: 1...2).frame(width: 120).accessibilityLabel(Text("tab.zoom"))
                     .accessibilityIdentifier("tab.zoom")
             }
+            if model.exercise.events.contains(where: { $0.mutedAttack != nil }) { Text("mutedAttack.legend").font(.caption).foregroundStyle(.secondary) }
             ScrollViewReader { proxy in
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
@@ -222,6 +223,8 @@ struct TablatureView: View {
                 }
                 if event.kind == .rest {
                     Image(systemName: "pause.circle").font(.title2).frame(width: width, height: rowHeight * 6).offset(y: gridTop)
+                } else if let attack = event.mutedAttack {
+                    MutedAttackTabContent(attack: attack, width: width, gridTop: gridTop, stringSpacing: rowHeight)
                 } else if event.harmonic != nil {
                     HarmonicTabContent(event: event, width: width, gridTop: gridTop, stringSpacing: rowHeight)
                 } else if event.pitchTransition != nil || event.legatoChain != nil {
@@ -272,6 +275,7 @@ struct TablatureView: View {
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if let attack = event.mutedAttack { notes = MutedAttackPresentation.spoken(attack, locale: settings.locale, localized: settings.localized) }
         if event.harmonic != nil { notes = HarmonicPresentation.spoken(event: event, tuning: model.tuning, locale: settings.locale, localized: settings.localized) }
         if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }
         if let vibrato = event.vibrato { notes += "; " + VibratoPresentation.spoken(vibrato, pulseTicks: model.exercise.timeSignature.pulseTicks, locale: settings.locale, localized: settings.localized) }

@@ -37,7 +37,8 @@ struct ActivityTextRenderer {
         for string in strings { _ = try fill(string, values: values) }
     }
     func render(_ text: LessonText) throws -> LessonText {
-        let targets = try exercises.flatMap(\.events).flatMap { try $0.visualTargets(in: tuning) }
+        let allEvents = exercises.flatMap(\.events)
+        let targets = try allEvents.flatMap { try $0.visualTargets(in: tuning) }
         let pitches = targets.filter { $0.role != .harmonicBase }.map(\.pitch)
         let names = pitches.map { $0.name(spelling: tuning.preferredSpelling) }
         let positionLabel: String
@@ -54,16 +55,33 @@ struct ActivityTextRenderer {
         values["highest"] = pitches.max(by: { $0.midi < $1.midi })?.name(spelling: tuning.preferredSpelling) ?? ""
         values["sequence"] = names.joined(separator: " – ")
         values["positionLabel"] = positionLabel
-        func positionValues(_ targets: [EventFretTarget]) -> [String: String] {
-            let notes = targets.filter { $0.role != .harmonicBase }.map { $0.pitch.name(spelling: tuning.preferredSpelling) }
-            let positions = targets.map { target in
+        func positionValues(_ targets: [EventFretTarget], events: [MusicalEvent] = []) throws -> [String: String] {
+            func physical(_ target: EventFretTarget) -> String {
                 let note = target.pitch.name(spelling: tuning.preferredSpelling), p = target.position
                 let role = target.role == .harmonicTouch ? (text.locale == "uk" ? ", дотик" : ", touch") : target.role == .harmonicBase ? (text.locale == "uk" ? ", затисни" : ", stop") : ""
                 return "\(note) (\(p.string)/\(p.fret)\(role))"
             }
+            var notes: [String] = [], positions: [String] = []
+            if events.contains(where: { $0.mutedAttack != nil }) {
+                for event in events {
+                    if let attack = event.mutedAttack {
+                        let strings = attack.strings.map(String.init).joined(separator: ", ")
+                        let label = text.locale == "uk" ? "× (приглушені струни: \(strings))" : "× (muted strings: \(strings))"
+                        notes.append(label); positions.append(label)
+                    } else {
+                        let values = try event.visualTargets(in: tuning)
+                        notes += values.filter { $0.role != .harmonicBase }.map { $0.pitch.name(spelling: tuning.preferredSpelling) }
+                        positions += values.map(physical)
+                    }
+                }
+            } else {
+                notes = targets.filter { $0.role != .harmonicBase }.map { $0.pitch.name(spelling: tuning.preferredSpelling) }
+                positions = targets.map(physical)
+            }
             return ["notes": notes.joined(separator: " – "), "positions": positions.joined(separator: "; ")]
         }
-        values.merge(positionValues(targets)) { _, new in new }
+        values.merge(try positionValues(targets, events: allEvents)) { _, new in new }
+        values["sequence"] = values["notes"]
         guard let activityText = text.activities[activityID] else { throw ContentFailure(.translationMismatch, "Missing activity text: \(activityID)") }
         let activity = try LessonActivityText(title: Self.fill(activityText.title, values: values), body: Self.fill(activityText.body, values: values))
         var copies: [String: LessonStepText] = [:]
@@ -72,12 +90,15 @@ struct ActivityTextRenderer {
             var scoped = values
             if step.kind != .none {
                 let scopedTargets: [EventFretTarget]
+                let scopedEvents: [MusicalEvent]
                 if let shape = fingerings.first(where: { $0.id == step.fingeringID })?.fingering {
+                    scopedEvents = []
                     scopedTargets = try shape.positions.map { try EventFretTarget(position: $0, pitch: tuning.pitch(at: $0)) }
                 } else {
-                    scopedTargets = try exercises.first { $0.id == step.exerciseID }?.events.filter { step.eventIDs.contains($0.id) }.flatMap { try $0.visualTargets(in: tuning) } ?? []
+                    scopedEvents = exercises.first { $0.id == step.exerciseID }?.events.filter { step.eventIDs.contains($0.id) } ?? []
+                    scopedTargets = try scopedEvents.flatMap { try $0.visualTargets(in: tuning) }
                 }
-                scoped.merge(positionValues(scopedTargets)) { _, new in new }
+                scoped.merge(try positionValues(scopedTargets, events: scopedEvents)) { _, new in new }
             }
             copies[step.id] = try LessonStepText(title: Self.fill(copy.title, values: scoped), body: Self.fill(copy.body, values: scoped))
         }

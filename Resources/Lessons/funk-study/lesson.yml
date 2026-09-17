@@ -1,0 +1,1613 @@
+schemaVersion: 3
+id: funk-study
+version: 1
+difficulty: intermediate
+topic: rhythm
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: chord-cutoff
+    kind: events
+    exerciseID: funk-study-chord-cutoff
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+    activityID: chord-cutoff
+  - id: muted-grid
+    kind: events
+    exerciseID: funk-study-muted-grid
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+    activityID: muted-grid
+  - id: chord-and-scratch
+    kind: events
+    exerciseID: funk-study-chord-and-scratch
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+    activityID: chord-and-scratch
+  - id: syncopated-change
+    kind: events
+    exerciseID: funk-study-syncopated-change
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+    activityID: syncopated-change
+  - id: space-study
+    kind: events
+    exerciseID: funk-study-space-study
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+      - event-6
+      - event-7
+      - event-8
+      - event-9
+      - event-10
+      - event-11
+      - event-12
+      - event-13
+      - event-14
+      - event-15
+      - event-16
+      - event-17
+      - event-18
+      - event-19
+      - event-20
+      - event-21
+      - event-22
+      - event-23
+      - event-24
+      - event-25
+      - event-26
+      - event-27
+      - event-28
+      - event-29
+      - event-30
+      - event-31
+      - event-32
+      - event-33
+      - event-34
+      - event-35
+      - event-36
+      - event-37
+      - event-38
+      - event-39
+      - event-40
+      - event-41
+      - event-42
+      - event-43
+      - event-44
+      - event-45
+      - event-46
+      - event-47
+      - event-48
+      - event-49
+      - event-50
+      - event-51
+      - event-52
+      - event-53
+      - event-54
+      - event-55
+      - event-56
+      - event-57
+      - event-58
+      - event-59
+      - event-60
+      - event-61
+      - event-62
+      - event-63
+      - event-64
+    activityID: space-study
+  - id: groove-review
+    kind: none
+    eventIDs: []
+  - id: cross-check
+    kind: none
+    eventIDs: []
+exercises:
+  - id: funk-study-chord-cutoff
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 140
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-2
+        startTick: 240
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 480
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 720
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-5
+        startTick: 960
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-6
+        startTick: 1200
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 1440
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-8
+        startTick: 1680
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 1920
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-10
+        startTick: 2160
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 2400
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 2640
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-13
+        startTick: 2880
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-14
+        startTick: 3120
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-15
+        startTick: 3360
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 3600
+        durationTicks: 240
+        kind: rest
+        positions: []
+  - id: funk-study-muted-grid
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 140
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-2
+        startTick: 240
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-3
+        startTick: 480
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-4
+        startTick: 720
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-5
+        startTick: 960
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 1200
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-7
+        startTick: 1440
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-8
+        startTick: 1680
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 1920
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-10
+        startTick: 2160
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 2400
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-12
+        startTick: 2640
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-13
+        startTick: 2880
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-14
+        startTick: 3120
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-15
+        startTick: 3360
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 3600
+        durationTicks: 240
+        kind: rest
+        positions: []
+  - id: funk-study-chord-and-scratch
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 140
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-2
+        startTick: 240
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 480
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-4
+        startTick: 720
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-5
+        startTick: 960
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 1200
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-7
+        startTick: 1440
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 1680
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-9
+        startTick: 1920
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-10
+        startTick: 2160
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-11
+        startTick: 2400
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-12
+        startTick: 2640
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-13
+        startTick: 2880
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 3120
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-15
+        startTick: 3360
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-16
+        startTick: 3600
+        durationTicks: 240
+        kind: rest
+        positions: []
+  - id: funk-study-syncopated-change
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 140
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-2
+        startTick: 240
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 480
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-4
+        startTick: 720
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: up
+          spreadTicks: 30
+      - id: event-5
+        startTick: 960
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 1200
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-7
+        startTick: 1440
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 1680
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-9
+        startTick: 1920
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-10
+        startTick: 2160
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-11
+        startTick: 2400
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-12
+        startTick: 2640
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: up
+          spreadTicks: 30
+      - id: event-13
+        startTick: 2880
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 3120
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-15
+        startTick: 3360
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-16
+        startTick: 3600
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 3840
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-18
+        startTick: 4080
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-19
+        startTick: 4320
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-20
+        startTick: 4560
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 4
+          - string: 1
+            fret: 1
+        strum:
+          direction: up
+          spreadTicks: 30
+      - id: event-21
+        startTick: 4800
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-22
+        startTick: 5040
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-23
+        startTick: 5280
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 4
+          - string: 1
+            fret: 1
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-24
+        startTick: 5520
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-25
+        startTick: 5760
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+        accented: true
+      - id: event-26
+        startTick: 6000
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-27
+        startTick: 6240
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-28
+        startTick: 6480
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 4
+          - string: 1
+            fret: 1
+        strum:
+          direction: up
+          spreadTicks: 30
+      - id: event-29
+        startTick: 6720
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-30
+        startTick: 6960
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-31
+        startTick: 7200
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-32
+        startTick: 7440
+        durationTicks: 240
+        kind: rest
+        positions: []
+  - id: funk-study-space-study
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 80
+    minimumBPM: 40
+    maximumBPM: 140
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-2
+        startTick: 240
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-3
+        startTick: 480
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-4
+        startTick: 720
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-5
+        startTick: 960
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-6
+        startTick: 1200
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-7
+        startTick: 1440
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-8
+        startTick: 1680
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-9
+        startTick: 1920
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-10
+        startTick: 2160
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-11
+        startTick: 2400
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-12
+        startTick: 2640
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-13
+        startTick: 2880
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-14
+        startTick: 3120
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-15
+        startTick: 3360
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-16
+        startTick: 3600
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-17
+        startTick: 3840
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-18
+        startTick: 4080
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-19
+        startTick: 4320
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-20
+        startTick: 4560
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-21
+        startTick: 4800
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-22
+        startTick: 5040
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-23
+        startTick: 5280
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-24
+        startTick: 5520
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-25
+        startTick: 5760
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-26
+        startTick: 6000
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-27
+        startTick: 6240
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-28
+        startTick: 6480
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-29
+        startTick: 6720
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-30
+        startTick: 6960
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-31
+        startTick: 7200
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-32
+        startTick: 7440
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-33
+        startTick: 7680
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 4
+          - string: 1
+            fret: 1
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-34
+        startTick: 7920
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-35
+        startTick: 8160
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: down
+      - id: event-36
+        startTick: 8400
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-37
+        startTick: 8640
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-38
+        startTick: 8880
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-39
+        startTick: 9120
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-40
+        startTick: 9360
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-41
+        startTick: 9600
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-42
+        startTick: 9840
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-43
+        startTick: 10080
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 2
+          - string: 2
+            fret: 4
+          - string: 1
+            fret: 1
+        strum:
+          direction: down
+          spreadTicks: 30
+      - id: event-44
+        startTick: 10320
+        durationTicks: 240
+        kind: note
+        positions: []
+        mutedAttack:
+          strings:
+            - 1
+            - 2
+            - 3
+          direction: up
+      - id: event-45
+        startTick: 10560
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-46
+        startTick: 10800
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-47
+        startTick: 11040
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-48
+        startTick: 11280
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-49
+        startTick: 11520
+        durationTicks: 240
+        kind: note
+        positions:
+          - string: 3
+            fret: 3
+          - string: 2
+            fret: 5
+          - string: 1
+            fret: 3
+        strum:
+          direction: down
+          spreadTicks: 30
+        accented: true
+      - id: event-50
+        startTick: 11760
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-51
+        startTick: 12000
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-52
+        startTick: 12240
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-53
+        startTick: 12480
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-54
+        startTick: 12720
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-55
+        startTick: 12960
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-56
+        startTick: 13200
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-57
+        startTick: 13440
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-58
+        startTick: 13680
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-59
+        startTick: 13920
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-60
+        startTick: 14160
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-61
+        startTick: 14400
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-62
+        startTick: 14640
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-63
+        startTick: 14880
+        durationTicks: 240
+        kind: rest
+        positions: []
+      - id: event-64
+        startTick: 15120
+        durationTicks: 240
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: chord-cutoff
+    source:
+      kind: exercise
+      exerciseID: funk-study-chord-cutoff
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: muted-grid
+    source:
+      kind: exercise
+      exerciseID: funk-study-muted-grid
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: chord-and-scratch
+    source:
+      kind: exercise
+      exerciseID: funk-study-chord-and-scratch
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: syncopated-change
+    source:
+      kind: exercise
+      exerciseID: funk-study-syncopated-change
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: space-study
+    source:
+      kind: exercise
+      exerciseID: funk-study-space-study
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: chord-cutoff
+    materialID: chord-cutoff
+  - id: muted-grid
+    materialID: muted-grid
+  - id: chord-and-scratch
+    materialID: chord-and-scratch
+  - id: syncopated-change
+    materialID: syncopated-change
+  - id: space-study
+    materialID: space-study
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: groove-review
+    stepID: groove-review
+    kind: selfPractice
+    itemIDs:
+      - cutoffs
+      - scratch
+      - pulse
+      - contrast
+      - variation
+  - id: cross-check
+    stepID: cross-check
+    kind: quiz
+    itemIDs:
+      - scratch
+      - rest
+      - palm
+    correctOptionID: scratch
+curriculum:
+  moduleID: electric-styles
+  ordinal: 102
+  durationMinutes: 35
+  prerequisites:
+    - fretting-hand-muting
+    - slow-sixteenths
+    - down-up-strumming
+  keywords:
+    - funk
+    - scratch
+    - dead notes
+    - sixteenths
+    - фанк
+    - приглушені удари
+    - синкопи
