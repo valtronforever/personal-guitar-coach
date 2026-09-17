@@ -19,4 +19,4 @@ Author substantive bilingual 6/8–12/8 comparison and 5/4–7/8 grouping lesson
 
 ## Implemented and verified
 
-TimeSignature pulse/group contracts, musical-time consumers, transport, notation, UI labels, coach version 4 and two bilingual lessons are implemented. The [same-agent review](../../docs/reviews/compound-odd-meter-review.md) records 269 Core /149 App tests, the final 13-test render/timeline/coach run, content and localization checks, independent sample/musical goldens and deferred native/hardware acceptance. Signed Release evidence is appended there after packaging.
+TimeSignature pulse/group contracts, musical-time consumers, transport, notation, UI labels, coach version 4 and two bilingual lessons are implemented. The [same-agent review](../../docs/reviews/compound-odd-meter-review.md) records 269 Core /149 App tests, the final 13-test render/timeline/coach run, content and localization checks, independent sample/musical goldens and deferred native/hardware acceptance. The signed 75-bundle Release/archive and XPC checks pass, with hashes recorded in the review. Exact-head CI/merge remains open; hardware/native acceptance is deferred.
