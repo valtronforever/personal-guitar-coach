@@ -94,7 +94,7 @@ def main():
     for error in errors:
         print(error)
     if not errors:
-        print('Full acceptance passed.' if args.complete else 'Partial inventory checks passed; this is not full-course acceptance.')
+        print('Full editorial/software acceptance passed; native/hardware acceptance is tracked separately.' if args.complete else 'Partial inventory checks passed; this is not full-course acceptance.')
     return bool(errors)
 
 

@@ -1,6 +1,6 @@
 # Held voices — same-agent review
 
-Implementing-agent review, not independent. Status: `in_progress`; software delivery is under verification, native/hardware gates remain open.
+Implementing-agent review, not independent. Status: `pending_user`; software delivery is under verification, native/hardware gates remain open.
 
 The event contract now represents independent bass/chord continuations through changing melody. Nonoverlapping events list all sounding physical positions and optional sorted heldStrings; new attacks are the complement. Exercise validation rejects first-event/broken/gapped/changed-fret ties, silent/duplicate/unrelated string references, automatic grading, and currently unsupported mixed technique references. Empty metadata preserves old encoding. Complete voice spans carry the original attack/phase/accent to the final release.
 

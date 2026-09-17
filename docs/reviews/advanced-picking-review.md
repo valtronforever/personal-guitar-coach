@@ -1,6 +1,6 @@
 # Advanced picking and hybrid coordination — same-agent review
 
-Local verification in progress. This review is by the implementing agent, not an independent reviewer.
+Software verification and merge are recorded below; native/hardware acceptance remains pending_user. This review is by the implementing agent, not an independent reviewer.
 
 ## Scope
 
