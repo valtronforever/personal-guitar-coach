@@ -23,3 +23,7 @@ Implementing-agent review, not an independent review. Status: software verificat
 - 111 bilingual bundles validate with zero issues; 915 en/uk UI keys and placeholders pass. Partial inventory: 105 authored/23 todo. Generated project current; UI-test sources type-check. Full Learning: 141 tests/49 suites, 170.467 s; Domain: 63 tests/20 suites, 0.393 s; Persistence: 23 tests/four suites, 0.058 s within `/tmp/muted-core-full.log`.
 
 Full Audio/App, signed root-only Release/archive/XPC and exact-head CI results will be recorded below. Actual guitar/native/provider gates remain open.
+
+Full App: 183 tests/57 suites, 222.344 s (`/tmp/muted-app-full.log`). Root Release/archive validates 111 bilingual bundles (334 YAML), arm64/macOS14, ad-hoc hardened sandbox and expected entitlements. Binary SHA256 `103c754c27ae248a19cf6c6f14dcdbefec5bbb369e62577966368b2a6f8446ed`; archive `06512cfdb50fae53893ca7688f34aa3ecf69ee5e2b815482893b616bb818a573`. See `docs/benchmarks/muted-string-attacks-release-bundle.json`. Signed sandbox→separate XPC→invalidRequest passed without calling a provider. No native launch or real-instrument acceptance is claimed.
+
+Full Core completed successfully: Audio 111 tests/38 suites, 512.162 s; AgentBridge six tests, 1.612 s, alongside the Learning/Domain/Persistence results above (`/tmp/muted-core-full.log`). All suites pass. `git diff --check` passes; exact-head CI/merge remains open, with real hardware/native/provider gates pending.
