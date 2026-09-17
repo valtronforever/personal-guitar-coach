@@ -73,12 +73,13 @@ public struct AudioAnalysisSnapshot: Equatable, Sendable {
     public let qualitySpans: [SignalQualitySpan]
     public let totalQualitySpans: UInt64
     public let sustainTrace: SustainTraceSnapshot?
+    public let pitchContour: PitchContourSnapshot?
     /// Immutable worker DTO construction also supports offline fixtures without a capture runtime.
     public init(algorithmVersion: String, latest: PitchObservation?, events: [DetectedNoteEvent], totalEvents: UInt64,
-                invalidSamples: UInt64, qualitySpans: [SignalQualitySpan], totalQualitySpans: UInt64, sustainTrace: SustainTraceSnapshot? = nil) {
+                invalidSamples: UInt64, qualitySpans: [SignalQualitySpan], totalQualitySpans: UInt64, sustainTrace: SustainTraceSnapshot? = nil, pitchContour: PitchContourSnapshot? = nil) {
         self.algorithmVersion = algorithmVersion; self.latest = latest; self.events = events; self.totalEvents = totalEvents
         self.invalidSamples = invalidSamples; self.qualitySpans = qualitySpans; self.totalQualitySpans = totalQualitySpans
-        self.sustainTrace = sustainTrace
+        self.sustainTrace = sustainTrace; self.pitchContour = pitchContour
     }
 }
 
@@ -113,6 +114,7 @@ public final class MonophonicAnalyzer {
     private var totalQualitySpans: UInt64 = 0
     private var sustainFrames: [SustainTraceSample] = []
     private var totalSustainFrames: UInt64 = 0
+    private var contourFrames: [SustainTraceSample] = []
     private var hopSquares = 0.0
     private let highPassCoefficient: Double
     private var previousInput = 0.0, firstHighPass = 0.0, secondHighPass = 0.0
@@ -127,6 +129,7 @@ public final class MonophonicAnalyzer {
         events.reserveCapacity(Self.eventCapacity)
         qualitySpans.reserveCapacity(Self.qualitySpanCapacity)
         sustainFrames.reserveCapacity(Self.sustainFrameCapacity)
+        contourFrames.reserveCapacity(Self.sustainFrameCapacity)
     }
 
     /// The optional host time belongs to the first sample of this chunk, not its delivery time.
@@ -157,7 +160,8 @@ public final class MonophonicAnalyzer {
         AudioAnalysisSnapshot(algorithmVersion: "mono-\(detector.method.rawValue)-flux-4", latest: latest, events: events,
                               totalEvents: totalEvents, invalidSamples: invalidSamples,
                               qualitySpans: qualitySpans, totalQualitySpans: totalQualitySpans,
-                              sustainTrace: SustainTraceSnapshot(frames: sustainFrames, totalFrames: totalSustainFrames))
+                              sustainTrace: SustainTraceSnapshot(frames: sustainFrames, totalFrames: totalSustainFrames),
+                              pitchContour: PitchContourSnapshot(frames: contourFrames, totalFrames: totalSustainFrames))
     }
 
     /// Offline/session finalization preserves an attack that never yielded a stable estimate.
@@ -233,6 +237,15 @@ public final class MonophonicAnalyzer {
             else { state = quality == .reliable && pitch != nil ? .pitched : .uncertain }
             sustainFrames.append(SustainTraceSample(id: totalSustainFrames, time: timestamp(processed - Int64(frame.count / 2)),
                 state: state, frequency: state == .pitched ? pitch?.frequency : nil))
+            // Keep periodicity separate from the stable-onset gate: a moving pitch is not
+            // intrinsically unreliable. Signal, clipping, range and ambiguity gates still apply.
+            let contourState: SustainFrame.State
+            if quality == .clipping || quality == .invalid { contourState = .uncertain }
+            else if centerSilent { contourState = .silence }
+            else { contourState = trackedPeriod && evidence != nil ? .pitched : .uncertain }
+            if contourFrames.count == Self.sustainFrameCapacity { contourFrames.removeFirst() }
+            contourFrames.append(SustainTraceSample(id: totalSustainFrames, time: timestamp(processed - Int64(frame.count / 2)),
+                state: contourState, frequency: contourState == .pitched ? evidence?.frequency : nil))
         }
         if let last = qualitySpans.last, last.quality == quality {
             qualitySpans[qualitySpans.count - 1] = SignalQualitySpan(id: last.id, quality: quality, start: last.start, end: timestamp(processed))

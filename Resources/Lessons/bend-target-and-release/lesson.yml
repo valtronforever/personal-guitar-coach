@@ -1,0 +1,332 @@
+schemaVersion: 3
+id: bend-target-and-release
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: target-comparison
+  kind: events
+  exerciseID: bend-target-and-release-target-comparison
+  activityID: target-comparison
+  eventIDs:
+  - root
+  - target
+  - return
+  - quiet
+- id: return-bend
+  kind: events
+  exerciseID: bend-target-and-release-return-bend
+  activityID: return-bend
+  eventIDs:
+  - bend-1
+  - rest-1
+  - bend-2
+  - rest-2
+- id: half-step-return
+  kind: events
+  exerciseID: bend-target-and-release-half-step-return
+  activityID: half-step-return
+  eventIDs:
+  - bend-1
+  - rest-1
+  - bend-2
+  - rest-2
+  - bend-3
+  - rest-3
+  - bend-4
+  - rest-4
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: bend-target-and-release-target-comparison
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: root
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+  - id: target
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 11
+  - id: return
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+  - id: quiet
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: bend-target-and-release-return-bend
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: bend-1
+    startTick: 0
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 2
+      riseStartTick: 480
+      riseEndTick: 960
+      releaseStartTick: 1920
+      releaseEndTick: 2400
+  - id: rest-1
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: bend-2
+    startTick: 3840
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 2
+      riseStartTick: 480
+      riseEndTick: 960
+      releaseStartTick: 1920
+      releaseEndTick: 2400
+  - id: rest-2
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: bend-target-and-release-half-step-return
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: bend-1
+    startTick: 0
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 1
+      riseStartTick: 480
+      riseEndTick: 960
+      releaseStartTick: 1920
+      releaseEndTick: 2400
+  - id: rest-1
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: bend-2
+    startTick: 3840
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 1
+      riseStartTick: 480
+      riseEndTick: 960
+      releaseStartTick: 1920
+      releaseEndTick: 2400
+  - id: rest-2
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: bend-3
+    startTick: 7680
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 1
+      riseStartTick: 480
+      riseEndTick: 960
+      releaseStartTick: 1920
+      releaseEndTick: 2400
+  - id: rest-3
+    startTick: 10560
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: bend-4
+    startTick: 11520
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 1
+      riseStartTick: 480
+      riseEndTick: 960
+      releaseStartTick: 1920
+      releaseEndTick: 2400
+  - id: rest-4
+    startTick: 14400
+    durationTicks: 960
+    kind: rest
+    positions: []
+fingerings: []
+materials:
+- id: target-comparison
+  source:
+    kind: exercise
+    exerciseID: bend-target-and-release-target-comparison
+- id: return-bend
+  source:
+    kind: exercise
+    exerciseID: bend-target-and-release-return-bend
+- id: half-step-return
+  source:
+    kind: exercise
+    exerciseID: bend-target-and-release-half-step-return
+activities:
+- id: target-comparison
+  materialID: target-comparison
+- id: return-bend
+  materialID: return-bend
+- id: half-step-return
+  materialID: half-step-return
+practiceEntries:
+- id: target-comparison
+  activityID: target-comparison
+  exerciseID: bend-target-and-release-target-comparison
+- id: return-bend
+  activityID: return-bend
+  exerciseID: bend-target-and-release-return-bend
+- id: half-step-return
+  activityID: half-step-return
+  exerciseID: bend-target-and-release-half-step-return
+adaptation:
+  policy: transposeIntervals
+learningTasks:
+- id: technique-review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - motion
+  - sound
+  - repeat
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 55
+  durationMinutes: 25
+  prerequisites:
+  - first-bend
+  keywords:
+  - bend
+  - pitch
+  - підтягування
+  - висота

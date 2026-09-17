@@ -10,6 +10,9 @@ public struct PracticeEvidenceCollector: Sendable {
     public private(set) var uncertainSignal: [PracticeUncertainSpan] = []
     public private(set) var latestNormalizedTime: Double?
     public private(set) var sustainFrames: [SustainFrame] = []
+    public private(set) var contourFrames: [SustainFrame] = []
+    private let collectsContour: Bool
+    private var lastContourFrame: UInt64
     private let collectsSustain: Bool
     private var lastSustainFrame: UInt64
     private var lastEvent: UInt64
@@ -22,6 +25,8 @@ public struct PracticeEvidenceCollector: Sendable {
         lastEvent = baseline.totalEvents; lastSpan = baseline.totalQualitySpans
         collectsSustain = configuration.selectedEvents.contains(where: \.assessSustain)
         lastSustainFrame = baseline.sustainTrace?.totalFrames ?? 0
+        collectsContour = configuration.selectedEvents.contains { $0.bend != nil }
+        lastContourFrame = baseline.pitchContour?.totalFrames ?? 0
     }
 
     public mutating func consume(_ analysis: AudioAnalysisSnapshot, renderEpochSeconds: Double) throws {
@@ -94,6 +99,29 @@ public struct PracticeEvidenceCollector: Sendable {
             }
             lastSustainFrame = trace.totalFrames
         }
+        if collectsContour {
+            guard let trace = analysis.pitchContour, trace.version == PitchContourTrace.currentVersion,
+                  trace.totalFrames >= lastContourFrame else { throw AudioBackendError.dataLoss }
+            let frames = trace.frames.filter { $0.id > lastContourFrame }
+            guard trace.totalFrames - lastContourFrame == UInt64(frames.count) else { throw AudioBackendError.dataLoss }
+            for frame in frames {
+                guard let host = frame.time.hostSeconds else { throw AudioBackendError.invalidFormat }
+                let time = try route.observedTime(inputHostSeconds: host)
+                guard time - offset >= window.lowerBound,
+                      time - offset < window.upperBound + PracticeConfiguration.resolutionAllowanceSeconds else { continue }
+                guard contourFrames.count < PitchContourTrace.maximumFrames else { throw PracticeError.unsupportedSize }
+                if let previous = contourFrames.last {
+                    guard previous.id < UInt64.max, frame.id == previous.id + 1,
+                          (0.018...0.022).contains(time - previous.normalizedTime) else { throw AudioBackendError.dataLoss }
+                }
+                contourFrames.append(try SustainFrame(id: frame.id, normalizedTime: time, state: frame.state, frequency: frame.frequency))
+            }
+            lastContourFrame = trace.totalFrames
+        }
+    }
+
+    public func pitchContourTrace() throws -> PitchContourTrace? {
+        collectsContour ? try PitchContourTrace(frames: contourFrames) : nil
     }
 
     public func sustainTrace() throws -> SustainTrace? {

@@ -1,0 +1,83 @@
+lessonID: first-bend
+lessonVersion: 1
+locale: en
+title: Your first bend
+summary: Match a fretted reference by raising one sustained note.
+goal: Reach half-step and whole-step targets without sliding to another fret.
+body: 'A bend raises pitch by increasing string tension while the fretting contact stays at its fret. A half-step
+  bend rises by 100 cents; a whole-step bend rises by 200. Distance moved across the fretboard is not a pitch measurement:
+  string gauge, tuning and the guitar change the effort. Listen to the destination before trying to reach it.
+
+
+  Use a clean tone and a comfortable fretted note. Support the bending finger with a neighboring finger when that
+  makes the motion steadier. Move the string across the fretboard with a small coordinated hand motion while maintaining
+  contact, without dragging along the neck into another fret. Keep adjacent strings quiet. Do not force a target
+  that feels uncomfortable; pause and work on the smaller half-step first.
+
+
+  The TAB shows the starting fret plus b1 or b2, meaning one or two semitones above it. The separate target exercise
+  sounds the same destination as an ordinary fretted note. The dashed curve divides the sustained bend into an initial
+  pitch, a controlled rise and a target hold. Preview demonstrates this pitch path synthetically; its electronic
+  timbre is not a model of a guitar bend.
+
+
+  Complete the half-step pair first, then the whole-step pair. The automatic result measures audible pitch and onset
+  timing. It cannot prove that you bent rather than moved to a higher fret, or that your fingers used a particular
+  motion. These remain your own observations. Changing Standard tuning transposes both the starting note and target
+  together; Drop preserves their interval.'
+steps:
+  prepare:
+    title: Find support and hear the target
+    body: Set a clean sound. Fret the shown starting position, sound it once and release excess effort. Keep the
+      contact on that fret while gently testing a small upward pitch change; return and stop. Listen to the target
+      exercise before attempting the full bend.
+  half-step-target:
+    title: Hear one semitone
+    body: 'Play this ordinary fretted comparison at 60 BPM: starting note, the next fret on the same string, starting
+      note, then a quarter rest. Listen for the small half-step difference. Resolved notes: {{sequence}}.'
+  half-step-bend:
+    title: Rise and hold a half-step
+    body: In each bar pick on 1. Hold the starting pitch until the & of 1, rise to the target by 2, and sustain
+      that target through beat 3. Mute on 4 before releasing the string. Repeat two bars. At 60 BPM the rise takes
+      half a second. Keep the finger at the shown starting fret; b1 is a pitch instruction, not an extra fret.
+  whole-step-target:
+    title: Hear two semitones
+    body: 'Compare the starting note with the note two frets higher, then return and rest. This is the whole-step
+      destination for the following bend. Resolved notes: {{sequence}}. Hear it clearly before adding force.'
+  whole-step-bend:
+    title: Reach a whole-step target
+    body: 'Use the same two-bar timing: pick on 1, begin rising on & of 1, reach the target on 2, hold through 3
+      and mute on 4. b2 means 200 cents above the starting pitch. If you overshoot, use less motion in the next
+      attempt rather than repeatedly wobbling around the target.'
+  review:
+    title: Compare the phases
+    body: Inspect Starting note, Rise and Target hold separately. A flat target needs more pitch change; a sharp
+      target needs less. Work on one half-step bend, then replay its reference. Repeat a pair three times with a
+      controlled hold before switching to the whole-step exercise.
+activities:
+  half-step-target:
+    title: Hear one semitone
+    body: 'Play this ordinary fretted comparison at 60 BPM: starting note, the next fret on the same string, starting
+      note, then a quarter rest. Listen for the small half-step difference. Resolved notes: {{sequence}}.'
+  half-step-bend:
+    title: Rise and hold a half-step
+    body: In each bar pick on 1. Hold the starting pitch until the & of 1, rise to the target by 2, and sustain
+      that target through beat 3. Mute on 4 before releasing the string. Repeat two bars. At 60 BPM the rise takes
+      half a second. Keep the finger at the shown starting fret; b1 is a pitch instruction, not an extra fret.
+  whole-step-target:
+    title: Hear two semitones
+    body: 'Compare the starting note with the note two frets higher, then return and rest. This is the whole-step
+      destination for the following bend. Resolved notes: {{sequence}}. Hear it clearly before adding force.'
+  whole-step-bend:
+    title: Reach a whole-step target
+    body: 'Use the same two-bar timing: pick on 1, begin rising on & of 1, reach the target on 2, hold through 3
+      and mute on 4. b2 means 200 cents above the starting pitch. If you overshoot, use less motion in the next
+      attempt rather than repeatedly wobbling around the target.'
+learningTasks:
+  technique-review:
+    title: Check the physical technique
+    body: The pitch trace measures sound. Confirm these observations yourself.
+    items:
+      motion: I kept the fretting contact at the starting fret and used a bend rather than a slide.
+      sound: I heard the intended destination and kept the neighboring strings quiet.
+      repeat: I completed three controlled half-step attempts before trying the whole-step pair.

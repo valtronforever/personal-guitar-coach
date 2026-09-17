@@ -2,13 +2,13 @@ import Foundation
 import Domain
 
 public enum FeedbackKind: String, Sendable {
-    case inputLevel, signal, interrupted, restart, calibration, early, late, missed, pitch, tuning, rests, sustain, repeatFragment
+    case inputLevel, signal, interrupted, restart, calibration, early, late, missed, pitch, tuning, rests, sustain, bend, repeatFragment
 }
 public enum FeedbackAction: Sendable { case audioSetup, tuner, repeatFragment }
 
 /// Advice is derived from archived measurements, never from an inferred hand, finger, or string.
 public struct PracticeRecommendation: Equatable, Sendable, Identifiable {
-    public static let ruleVersion = "feedback-2"
+    public static let ruleVersion = "feedback-3"
     public var id: String { kind.rawValue }
     public let sourceAttemptID: UUID
     public let kind: FeedbackKind
@@ -41,9 +41,15 @@ public enum FeedbackEngine {
             if !result.evidence.clipping.isEmpty {
                 return [advice(.inputLevel, .audioSetup, count: result.evidence.clipping.count)]
             }
-            let uncertainIDs = Set(result.notes.filter(\.uncertain).map(\.id) + (result.sustain?.notes.filter { $0.state == .uncertain }.map(\.id) ?? []))
+            var uncertainIDs = Set(result.notes.filter(\.uncertain).map(\.id))
+            if let sustain = result.sustain {
+                uncertainIDs.formUnion(sustain.notes.filter { $0.state == .uncertain }.map(\.id))
+            }
+            if let bends = result.bends {
+                uncertainIDs.formUnion(bends.notes.filter { $0.score == nil }.map(\.id))
+            }
             return [advice(.signal, .audioSetup, events: result.notes.filter { uncertainIDs.contains($0.id) }.map(\.id),
-                attacks: result.extras.filter(\.uncertain).map(\.id), count: uncertainIDs.count + result.uncertainExtraCount,
+                attacks: result.scoredExtras.filter(\.uncertain).map(\.id), count: uncertainIDs.count + result.uncertainExtraCount,
                 denominator: result.expectedCount)]
         }
         if result.validity == .interrupted {
@@ -92,6 +98,8 @@ public enum FeedbackEngine {
         if let missed = best(result.notes.filter { !$0.uncertain && $0.attackID == nil }, minimum: 2, kind: .missed) { answer.append(missed) }
         let sustainIDs = Set(result.sustain?.notes.filter { $0.state == .measured && ($0.heldFraction ?? 1) < 0.8 }.map(\.id) ?? [])
         if let held = best(result.notes.filter { sustainIDs.contains($0.id) }, minimum: 1, kind: .sustain) { answer.append(held) }
+        let bendIDs = Set(result.bends?.notes.filter { ($0.score ?? 100) < 80 }.map(\.id) ?? [])
+        if let bend = best(result.notes.filter { bendIDs.contains($0.id) }, minimum: 1, kind: .bend) { answer.append(bend) }
         let wrong = result.notes.filter { !$0.uncertain && abs($0.centsError ?? 0) >= result.parameters.pitchToleranceCents }
         let pitchGroups = Dictionary(grouping: wrong, by: \.targetFrequency)
         let pitchAdvice = pitchGroups.values.compactMap { best($0, minimum: 2, kind: .pitch) }.sorted {
@@ -112,7 +120,7 @@ public enum FeedbackEngine {
         var restAdvice: PracticeRecommendation?
         for window in windows {
             let rests = config.selectedEvents.filter { $0.kind == .rest && window.contains(barsByID[$0.id] ?? 0) }.map(\.id)
-            let extras = result.extras.filter { !$0.uncertain && $0.restID.map(rests.contains) == true }
+            let extras = result.scoredExtras.filter { !$0.uncertain && $0.restID.map(rests.contains) == true }
             guard extras.count >= 2 else { continue }
             let events = rests.filter { id in extras.contains { $0.restID == id } }
             let item = advice(.rests, .repeatFragment, events: events, attacks: extras.map(\.id), count: extras.count,

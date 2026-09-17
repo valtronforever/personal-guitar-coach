@@ -1,0 +1,362 @@
+schemaVersion: 3
+id: first-bend
+version: 1
+difficulty: beginner
+topic: technique
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: half-step-target
+  kind: events
+  exerciseID: first-bend-half-step-target
+  activityID: half-step-target
+  eventIDs:
+  - root
+  - target
+  - return
+  - quiet
+- id: half-step-bend
+  kind: events
+  exerciseID: first-bend-half-step-bend
+  activityID: half-step-bend
+  eventIDs:
+  - bend-1
+  - rest-1
+  - bend-2
+  - rest-2
+- id: whole-step-target
+  kind: events
+  exerciseID: first-bend-whole-step-target
+  activityID: whole-step-target
+  eventIDs:
+  - root
+  - target
+  - return
+  - quiet
+- id: whole-step-bend
+  kind: events
+  exerciseID: first-bend-whole-step-bend
+  activityID: whole-step-bend
+  eventIDs:
+  - bend-1
+  - rest-1
+  - bend-2
+  - rest-2
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: first-bend-half-step-target
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: root
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+  - id: target
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 10
+  - id: return
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+  - id: quiet
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: first-bend-half-step-bend
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: bend-1
+    startTick: 0
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 1
+      riseStartTick: 480
+      riseEndTick: 960
+  - id: rest-1
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: bend-2
+    startTick: 3840
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 1
+      riseStartTick: 480
+      riseEndTick: 960
+  - id: rest-2
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: first-bend-whole-step-target
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: root
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+  - id: target
+    startTick: 960
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 11
+  - id: return
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+  - id: quiet
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+- id: first-bend-whole-step-bend
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 40
+  maximumBPM: 60
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: bend-1
+    startTick: 0
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 2
+      riseStartTick: 480
+      riseEndTick: 960
+  - id: rest-1
+    startTick: 2880
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: bend-2
+    startTick: 3840
+    durationTicks: 2880
+    kind: note
+    positions:
+    - string: 3
+      fret: 9
+    bend:
+      semitones: 2
+      riseStartTick: 480
+      riseEndTick: 960
+  - id: rest-2
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+fingerings: []
+materials:
+- id: half-step-target
+  source:
+    kind: exercise
+    exerciseID: first-bend-half-step-target
+- id: half-step-bend
+  source:
+    kind: exercise
+    exerciseID: first-bend-half-step-bend
+- id: whole-step-target
+  source:
+    kind: exercise
+    exerciseID: first-bend-whole-step-target
+- id: whole-step-bend
+  source:
+    kind: exercise
+    exerciseID: first-bend-whole-step-bend
+activities:
+- id: half-step-target
+  materialID: half-step-target
+- id: half-step-bend
+  materialID: half-step-bend
+- id: whole-step-target
+  materialID: whole-step-target
+- id: whole-step-bend
+  materialID: whole-step-bend
+practiceEntries:
+- id: half-step-target
+  activityID: half-step-target
+  exerciseID: first-bend-half-step-target
+- id: half-step-bend
+  activityID: half-step-bend
+  exerciseID: first-bend-half-step-bend
+- id: whole-step-target
+  activityID: whole-step-target
+  exerciseID: first-bend-whole-step-target
+- id: whole-step-bend
+  activityID: whole-step-bend
+  exerciseID: first-bend-whole-step-bend
+adaptation:
+  policy: transposeIntervals
+learningTasks:
+- id: technique-review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - motion
+  - sound
+  - repeat
+curriculum:
+  moduleID: lead-foundations
+  ordinal: 54
+  durationMinutes: 25
+  prerequisites:
+  - hand-synchronization
+  keywords:
+  - bend
+  - pitch
+  - підтягування
+  - висота

@@ -95,6 +95,10 @@ struct PracticeScoreRow: View {
                 }
                 durationMark(event.durationTicks, continuation: segment.isContinuation)
                     .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
+                if let bend = event.bend {
+                    Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r"))
+                        .font(.system(size: 9 * zoom, weight: .bold)).offset(x: 1, y: 137 * zoom).accessibilityHidden(true)
+                }
                 if event.palmMuted {
                     Text(verbatim: "P.M.").font(.system(size: 8 * zoom, weight: .bold))
                         .frame(width: max(1, width - 2), alignment: .leading).lineLimit(1).minimumScaleFactor(0.7)
@@ -150,6 +154,7 @@ struct PracticeScoreRow: View {
         var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }
         if event.palmMuted { notes = String(format: localizationBundle.localizedString(forKey: "tab.palmMutedNotes %@", value: nil, table: nil), locale: locale, notes) }
         if let stroke = event.pickingDirection, !segment.isContinuation {
             let direction = localizationBundle.localizedString(forKey: stroke == .down ? "tab.strumDown" : "tab.strumUp", value: nil, table: nil)

@@ -235,7 +235,7 @@ extension AssessmentSnapshot {
             validity: validity,
             overallScore: assessment.overallScore, pitchScore: assessment.pitchScore, timingScore: assessment.timingScore,
             expectedCount: assessment.expectedCount, matchedCount: assessment.matchedCount, missedCount: assessment.missedCount,
-            extraCount: assessment.extras.count, uncertainCount: assessment.uncertainCount)
+            extraCount: assessment.scoredExtras.count, uncertainCount: assessment.uncertainCount)
     }
 }
 extension CalibrationSnapshot {

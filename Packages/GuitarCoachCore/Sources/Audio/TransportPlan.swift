@@ -51,6 +51,7 @@ public struct TransportPlan: Sendable {
     private let events: [ResolvedEvent]
     private let frequencies: [[Double]]
     private let strumOffsets: [[Int64]]
+    private let bendPoints: [[PitchBend.Point]]
     private var firstTicks: Int64 { request.range.upperBound - request.startTick }
     private var cycleTicks: Int64 { request.range.upperBound - request.range.lowerBound }
     public var endFrame: Int64? { request.loops ? nil : frame(at: countInTicks + firstTicks) }
@@ -63,6 +64,7 @@ public struct TransportPlan: Sendable {
         events = try request.exercise.resolvedEvents(instrument: request.tuning)
         let reference = (request.exercise.requiredTuning ?? request.tuning).referenceA4
         frequencies = try events.map { try $0.pitches.map { try $0.frequency(referenceA4: reference) } }
+        bendPoints = events.map { $0.event.bend?.points(durationTicks: $0.event.durationTicks) ?? [] }
         strumOffsets = events.map { item in
             guard let pattern = item.event.strum else { return [] }
             let strings = item.event.positions.map(\.string).sorted(by: pattern.direction == .down ? (>) : (<))
@@ -167,11 +169,16 @@ public struct TransportPlan: Sendable {
                     continue
                 }
                 // Muted references keep their decay age when seeking into an existing note.
-                let toneOnset = item.event.palmMuted ? frame(at: epoch + item.event.startTick - sourceStart) : onset
+                let toneOnset = item.event.palmMuted || item.event.bend != nil ? frame(at: epoch + item.event.startTick - sourceStart) : onset
                 for sample in a..<b {
                     let age = Double(sample - toneOnset), remaining = Double(offset - sample - 1)
                     let envelope = min(1, min(age / fade, remaining / fade))
-                    let tone = frequencies[index].reduce(0.0) { $0 + sin(2 * .pi * $1 * age / sampleRate) }
+                    let phaseSeconds: Double
+                    if item.event.bend != nil {
+                        let secondsPerTick = 60 / (request.bpm * Double(MusicalTime.ppq))
+                        phaseSeconds = PitchBend.integratedMultiplier(to: age / sampleRate / secondsPerTick, points: bendPoints[index]) * secondsPerTick
+                    } else { phaseSeconds = age / sampleRate }
+                    let tone = frequencies[index].reduce(0.0) { $0 + sin(item.event.bend == nil ? 2 * .pi * $1 * age / sampleRate : 2 * .pi * $1 * phaseSeconds) }
                     output[Int(sample - startFrame)] += Float(tone * gain * envelope * (item.event.palmMuted ? exp(-age / (sampleRate * 0.09)) : 1))
                 }
             }

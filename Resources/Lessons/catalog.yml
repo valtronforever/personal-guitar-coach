@@ -60,6 +60,8 @@ lessons:
   - fretboard-map
   - alternate-picking
   - hand-synchronization
+  - first-bend
+  - bend-target-and-release
 modules:
   - id: getting-started
     order: 1

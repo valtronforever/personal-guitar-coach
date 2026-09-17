@@ -27,7 +27,7 @@ extension LoadedLesson {
         guard let first = sourceExercises.first else { throw ContentFailure(.unknownExercise, "Material has no source exercise") }
         let tuning = manifest.adaptation == nil ? first.requiredTuning ?? instrument.tuning : instrument.tuning
         let shapes = manifest.fingerings.filter { material.shapeIDs(in: manifest).contains($0.id) }
-        func resolvePositions(_ positions: [FretPosition], source: Exercise) throws -> [FretPosition] {
+        func resolvePositions(_ positions: [FretPosition], source: Exercise, minimumFret: Int = 0) throws -> [FretPosition] {
             if region == nil && manifest.adaptation?.policy != .transposeIntervals {
                 guard positions.allSatisfy({ $0.fret <= instrument.fretCount }) else { throw PositioningError.beyondFretCount }
                 return positions
@@ -40,7 +40,7 @@ extension LoadedLesson {
             } else { reference = tuning; shift = 0 }
             do {
                 return try LessonFingeringResolver.resolve(positions, sourceTuning: reference, tuning: tuning, shift: shift,
-                    maximumFret: instrument.fretCount, region: region)
+                    maximumFret: instrument.fretCount, region: region, minimumFret: minimumFret)
             } catch LessonAdaptationError.unplayable { throw PositioningError.regionUnplayable }
         }
         var sharedMapping: [FretPosition: FretPosition] = [:]
@@ -70,9 +70,9 @@ extension LoadedLesson {
                 events = try selected.map { event in
                     let positions: [FretPosition]
                     if event.positions.allSatisfy({ sharedMapping[$0] != nil }) { positions = event.positions.compactMap { sharedMapping[$0] } }
-                    else { positions = try resolvePositions(event.positions, source: source) }
+                    else { positions = try resolvePositions(event.positions, source: source, minimumFret: event.bend == nil ? 0 : 1) }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend)
                 }
             }
             return try Exercise(id: source.id, version: source.version, ppq: source.ppq, events: events,

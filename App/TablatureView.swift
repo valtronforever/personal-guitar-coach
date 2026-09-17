@@ -11,6 +11,7 @@ struct TablatureView: View {
     var cursorTick: Int64? = nil
     var instructionsKey = "tab.instructions"
     var annotations: [String: ResultAnnotation] = [:]
+    var showsBendTarget = true
     let onSelect: (String, Bool) -> Void
     @Environment(AppSettings.self) private var settings
     @State private var zoom = 1.0
@@ -100,6 +101,9 @@ struct TablatureView: View {
             }
             Text(LocalizedStringKey(instructionsKey)).font(.caption).foregroundStyle(.secondary)
                 .lineLimit(3).frame(minHeight: 44, alignment: .topLeading)
+            if showsBendTarget, let event = model.events.first(where: { selectedIDs.contains($0.id) && $0.event.bend != nil })?.event {
+                BendCurveView(event: event)
+            }
             if let tick = cursorTick, let bar = model.cursorBar(tick) {
                 Group {
                     if tick == model.exercise.durationTicks { Text("tab.cursorEnd") }
@@ -187,6 +191,7 @@ struct TablatureView: View {
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 3) {
+                        if let bend = event.bend { Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r")).bold() }
                         if event.palmMuted { Text(verbatim: "P.M.").bold() }
                         if event.accented && !segment.isContinuation { Text(verbatim: ">").bold() }
                         if let stroke = event.pickingDirection, !segment.isContinuation { Text(verbatim: stroke == .down ? "↓" : "↑").bold() }
@@ -241,6 +246,7 @@ struct TablatureView: View {
             String(format: settings.localized("tab.position %lld %lld %@"), locale: settings.locale,
                    Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        if let bend = event.bend { notes = String(format: settings.localized(bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld"), locale: settings.locale, notes, bend.semitones * 100) }
         if event.palmMuted { notes = String(format: settings.localized("tab.palmMutedNotes %@"), locale: settings.locale, notes) }
         if let stroke = event.pickingDirection, !segment.isContinuation {
             let direction = settings.localized(stroke == .down ? "tab.strumDown" : "tab.strumUp")

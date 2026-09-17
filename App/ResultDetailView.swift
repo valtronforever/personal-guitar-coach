@@ -44,7 +44,7 @@ struct ResultDetailView: View {
                 }
                 if let timeline = try? TimelineModel(exercise: config.exercise, instrument: tuning) {
                     TablatureView(model: timeline, selectedIDs: Set(selectedID.map { [$0] } ?? [result.notes[0].id]),
-                        instructionsKey: "result.tabInstructions", annotations: annotations) { id, _ in selectedID = id }
+                        instructionsKey: "result.tabInstructions", annotations: annotations, showsBendTarget: false) { id, _ in selectedID = id }
                 }
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 190), alignment: .leading)], alignment: .leading) {
                     ForEach(ResultAnnotation.allCases.filter { annotations.values.contains($0) }, id: \.rawValue) { annotation in
@@ -52,9 +52,12 @@ struct ResultDetailView: View {
                     }
                 }
                 eventDetail(selectedID ?? result.notes[0].id)
-                if !result.extras.isEmpty {
+                if let bend = result.bends?.notes.first(where: { $0.id == (selectedID ?? result.notes[0].id) }) {
+                    BendResultView(result: result, note: bend)
+                }
+                if !result.scoredExtras.isEmpty {
                     DisclosureGroup("result.extraDetails") {
-                        ForEach(result.extras) { extra in
+                        ForEach(result.scoredExtras) { extra in
                             if let attack = result.evidence.attacks.first(where: { $0.id == extra.id }) {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text("result.attackID \(String(extra.id))").font(.headline)
@@ -68,6 +71,7 @@ struct ResultDetailView: View {
                         }
                     }
                 }
+                if result.extras.count > result.scoredExtras.count { Text("bend.unscoredObservations \(result.extras.count - result.scoredExtras.count)").font(.caption) }
                 Text("result.measurementLimits").font(.caption).foregroundStyle(.secondary)
             }.padding(CoachLayout.padding)
         }.frame(minWidth: 620, minHeight: 500)
@@ -130,7 +134,7 @@ struct ResultDetailView: View {
             switch advice.kind {
             case .inputLevel: Text("feedback.clippingEvidence \(advice.evidenceCount)")
             case .signal: Text("feedback.signalEvidence \(advice.evidenceCount) \(advice.denominator)")
-            case .early, .late, .missed, .pitch, .tuning, .sustain:
+            case .early, .late, .missed, .pitch, .tuning, .sustain, .bend:
                 Text("feedback.noteEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .rests: Text("feedback.restEvidence \(advice.evidenceCount) \(advice.denominator)")
             case .repeatFragment: Text("feedback.repeatEvidence \(advice.denominator)")
@@ -188,7 +192,7 @@ struct ResultDetailView: View {
                         }
                     }
                     if event.kind == .rest && config.range.contains(event.startTick) {
-                        Text("result.restAttacks \(result.extras.filter { $0.restID == id }.count)")
+                        Text("result.restAttacks \(result.scoredExtras.filter { $0.restID == id }.count)")
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }.accessibilityIdentifier("result.eventDetails")
