@@ -1,0 +1,107 @@
+lessonID: major-barre-chords
+lessonVersion: 1
+locale: en
+title: 'Major barre chords: two movable families'
+summary: Build a full barre with a sixth-string or fifth-string root, check each string and move the whole shape.
+goal: >-
+  Sound both major shapes comfortably and identify their moving roots without treating an audio score as proof of
+  barre technique.
+body: |-
+  A full barre lets one finger stop several strings at one fret. It replaces the open-string edge of a familiar chord family, so the entire shape can move. “E-family” and “A-family” name the reference shapes; they do not mean that the resulting chord must sound as E or A. Read the current root in each activity. Standard tunings transpose these shapes together; Drop changes the sixth-string position, so follow the adapted markers rather than forcing a straight barre through every displayed note.
+
+  Start with the sixth-root shape around the fifth fret. Place the non-barre fingers first, then add the index across the required strings just behind its fret. Keep the wrist comfortable and use only enough pressure for a clear note. Pluck the strings slowly to locate a dull sound. Adjust finger contact or placement before adding force; release the hand between attempts. A sustained squeeze is not the exercise. Stop if the position hurts.
+
+  The six sounding chord tones, low to high, have roles root–fifth–root–third–fifth–root. Listen for the third on string 3: it supplies the major quality. First inspect the entire grip without the timer, then play the separate-note check. A good score confirms audible pitches and attacks; it cannot confirm that the index held a barre or that a simultaneous strum was clean.
+
+  Next move every fret in the sixth-root shape up by two, including the barre. The root rises by a whole tone, while the interval pattern and major quality stay the same. In the fifth-root family the lowest sounding string is 5 and string 6 is silent. Use the displayed individual fingers for the three inner notes before considering other fingerings. Do not flatten a finger so far that it accidentally silences the top string.
+
+  Finish with one slow, quiet strum of each complete chord outside scored practice. Compare its clarity with the isolated-string check, then release. Work in short attempts, returning to the smaller barre lesson if several strings remain dull.
+steps:
+  prepare:
+    title: Find the root before pressing
+    body: >-
+      Use a clean sound. Locate the lowest sounding string and the marked root. Form the chord without a timer,
+      test one string at a time, and relax the hand between attempts.
+  review:
+    title: Check the grip as well as the score
+    body: >-
+      Try each complete shape quietly outside scored practice. Compare the lowest root, middle third and top note;
+      write down the string that needs adjustment rather than repeatedly squeezing the entire hand.
+  sixth-root-shape:
+    title: 'Sixth-string root: E-family'
+    body: >-
+      The root is {{root}}. In the reference Standard shape, the index covers fret 5, fingers 3 and 4 stop strings
+      5 and 4 at fret 7, and finger 2 stops string 3 at fret 6. Check the current markers for your tuning: {{positions}}.
+      Play all six strings separately before trying a gentle full strum.
+  sixth-root-notes:
+    title: '{{root}} major — check each string'
+    body: >-
+      Keep the shown grip and play its strings from low to high, one per click at 50 BPM. Stop each previous sound
+      before the next attack. Then count the written release beats to finish two bars. The score checks separate
+      pitches and timing, not a full barre or simultaneous chord. {{positions}}.
+  sixth-root-moved-shape:
+    title: Move the entire shape by two frets
+    body: >-
+      The new root is {{root}}. Move the barre and every other contact two frets higher than the previous shape;
+      do not leave an inner finger behind. The major interval pattern is unchanged. {{positions}}. Release the grip,
+      rebuild it, and check whether the third still rings.
+  sixth-root-moved-notes:
+    title: '{{root}} major — check each string'
+    body: >-
+      Keep the shown grip and play its strings from low to high, one per click at 50 BPM. Stop each previous sound
+      before the next attack. Then count the written release beats to finish two bars. The score checks separate
+      pitches and timing, not a full barre or simultaneous chord. {{positions}}.
+  fifth-root-shape:
+    title: 'Fifth-string root: A-family'
+    body: >-
+      The root is {{root}} on string 5; keep string 6 silent. The reference shape uses an index barre at fret 5
+      and separate fingers on strings 4, 3 and 2 at fret 7. Let the top-string note ring without collapsing the
+      inner fingers. Follow {{positions}} and check all five targets.
+  fifth-root-notes:
+    title: '{{root}} major — check each string'
+    body: >-
+      Keep the shown grip and play its strings from low to high, one per click at 50 BPM. Stop each previous sound
+      before the next attack. Then count the written release beats to finish two bars. The score checks separate
+      pitches and timing, not a full barre or simultaneous chord. {{positions}}.
+  question:
+    title: What moves in a movable barre chord?
+    body: Compare the chord-tone roles before answering.
+activities:
+  sixth-root-shape:
+    title: '{{root}} major shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  sixth-root-notes:
+    title: '{{root}} major — separate-note practice'
+    body: Play every target separately, then release. {{sequence}}.
+  sixth-root-moved-shape:
+    title: '{{root}} major shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  sixth-root-moved-notes:
+    title: '{{root}} major — separate-note practice'
+    body: Play every target separately, then release. {{sequence}}.
+  fifth-root-shape:
+    title: '{{root}} major shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  fifth-root-notes:
+    title: '{{root}} major — separate-note practice'
+    body: Play every target separately, then release. {{sequence}}.
+learningTasks:
+  question:
+    title: What moves in a movable barre chord?
+    body: Move the complete sixth-root major form two frets higher. What stays the same?
+    items:
+      quality: The major interval pattern; the root rises by a whole tone.
+      root: The root pitch stays fixed while the chord becomes minor.
+      index: Only the index moves; the other fingers stay behind.
+    explanation: >-
+      Moving every note up two frets transposes the entire chord by a whole tone. Root, third and fifth keep the
+      same distances, so the chord remains major. Moving only the index changes those distances and is not the same
+      operation.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      roots: I located the root on string 6 and on string 5 before playing.
+      contact: I checked the sounding strings separately and adjusted contact without prolonged squeezing.
+      move: I moved every note in the sixth-root shape by two frets.
+      chord: I tried the complete chords separately from the scored single-note checks.

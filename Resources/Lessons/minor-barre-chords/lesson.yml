@@ -1,0 +1,715 @@
+schemaVersion: 3
+id: minor-barre-chords
+version: 1
+difficulty: beginner
+topic: chords
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: major-sixth-reference-shape
+    kind: fingering
+    exerciseID: minor-barre-chords-major-sixth-reference
+    eventIDs: []
+    activityID: major-sixth-reference-shape
+    fingeringID: major-sixth-reference-shape
+  - id: minor-sixth-shape
+    kind: fingering
+    exerciseID: minor-barre-chords-minor-sixth
+    eventIDs: []
+    activityID: minor-sixth-shape
+    fingeringID: minor-sixth-shape
+  - id: minor-sixth-notes
+    kind: events
+    exerciseID: minor-barre-chords-minor-sixth
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - n6
+      - release
+    activityID: minor-sixth-notes
+  - id: major-fifth-reference-shape
+    kind: fingering
+    exerciseID: minor-barre-chords-major-fifth-reference
+    eventIDs: []
+    activityID: major-fifth-reference-shape
+    fingeringID: major-fifth-reference-shape
+  - id: minor-fifth-shape
+    kind: fingering
+    exerciseID: minor-barre-chords-minor-fifth
+    eventIDs: []
+    activityID: minor-fifth-shape
+    fingeringID: minor-fifth-shape
+  - id: minor-fifth-notes
+    kind: events
+    exerciseID: minor-barre-chords-minor-fifth
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - release
+    activityID: minor-fifth-notes
+  - id: minor-sixth-moved-shape
+    kind: fingering
+    exerciseID: minor-barre-chords-minor-sixth-moved
+    eventIDs: []
+    activityID: minor-sixth-moved-shape
+    fingeringID: minor-sixth-moved-shape
+  - id: minor-sixth-moved-notes
+    kind: events
+    exerciseID: minor-barre-chords-minor-sixth-moved
+    eventIDs:
+      - n1
+      - n2
+      - n3
+      - n4
+      - n5
+      - n6
+      - release
+    activityID: minor-sixth-moved-notes
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: minor-barre-chords-major-sixth-reference
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 6
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: minor-barre-chords-minor-sixth
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+  - id: minor-barre-chords-major-fifth-reference
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 7
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: minor-barre-chords-minor-fifth
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 5
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 7
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 5
+      - id: release
+        startTick: 4800
+        durationTicks: 2880
+        kind: rest
+        positions: []
+  - id: minor-barre-chords-minor-sixth-moved
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 50
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: n1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 6
+            fret: 7
+      - id: n2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 9
+      - id: n3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 4
+            fret: 9
+      - id: n4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: n5
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 2
+            fret: 7
+      - id: n6
+        startTick: 4800
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 1
+            fret: 7
+      - id: release
+        startTick: 5760
+        durationTicks: 1920
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: major-sixth-reference-shape
+    source:
+      kind: fingering
+      fingeringID: major-sixth-reference-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: minor-sixth-shape
+    source:
+      kind: fingering
+      fingeringID: minor-sixth-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: minor-sixth-notes
+    source:
+      kind: exercise
+      exerciseID: minor-barre-chords-minor-sixth
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 45
+  - id: major-fifth-reference-shape
+    source:
+      kind: fingering
+      fingeringID: major-fifth-reference-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: minor-fifth-shape
+    source:
+      kind: fingering
+      fingeringID: minor-fifth-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: minor-fifth-notes
+    source:
+      kind: exercise
+      exerciseID: minor-barre-chords-minor-fifth
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 50
+  - id: minor-sixth-moved-shape
+    source:
+      kind: fingering
+      fingeringID: minor-sixth-moved-shape
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 47
+  - id: minor-sixth-moved-notes
+    source:
+      kind: exercise
+      exerciseID: minor-barre-chords-minor-sixth-moved
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 47
+activities:
+  - id: major-sixth-reference-shape
+    materialID: major-sixth-reference-shape
+  - id: minor-sixth-shape
+    materialID: minor-sixth-shape
+  - id: minor-sixth-notes
+    materialID: minor-sixth-notes
+  - id: major-fifth-reference-shape
+    materialID: major-fifth-reference-shape
+  - id: minor-fifth-shape
+    materialID: minor-fifth-shape
+  - id: minor-fifth-notes
+    materialID: minor-fifth-notes
+  - id: minor-sixth-moved-shape
+    materialID: minor-sixth-moved-shape
+  - id: minor-sixth-moved-notes
+    materialID: minor-sixth-moved-notes
+practiceEntries:
+  - id: minor-sixth-notes
+    activityID: minor-sixth-notes
+    exerciseID: minor-barre-chords-minor-sixth
+  - id: minor-fifth-notes
+    activityID: minor-fifth-notes
+    exerciseID: minor-barre-chords-minor-fifth
+  - id: minor-sixth-moved-notes
+    activityID: minor-sixth-moved-notes
+    exerciseID: minor-barre-chords-minor-sixth-moved
+fingerings:
+  - id: major-sixth-reference-shape
+    exerciseID: minor-barre-chords-major-sixth-reference
+    fingering:
+      positions:
+        - string: 6
+          fret: 5
+        - string: 5
+          fret: 7
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 6
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 5
+      mutedStrings: []
+      fingerNumbers:
+        '6': 1
+        '5': 3
+        '4': 4
+        '3': 2
+        '2': 1
+        '1': 1
+  - id: minor-sixth-shape
+    exerciseID: minor-barre-chords-minor-sixth
+    fingering:
+      positions:
+        - string: 6
+          fret: 5
+        - string: 5
+          fret: 7
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 5
+        - string: 2
+          fret: 5
+        - string: 1
+          fret: 5
+      mutedStrings: []
+      fingerNumbers:
+        '6': 1
+        '5': 3
+        '4': 4
+        '3': 1
+        '2': 1
+        '1': 1
+  - id: major-fifth-reference-shape
+    exerciseID: minor-barre-chords-major-fifth-reference
+    fingering:
+      positions:
+        - string: 5
+          fret: 5
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 7
+        - string: 2
+          fret: 7
+        - string: 1
+          fret: 5
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 2
+        '3': 3
+        '2': 4
+        '1': 1
+  - id: minor-fifth-shape
+    exerciseID: minor-barre-chords-minor-fifth
+    fingering:
+      positions:
+        - string: 5
+          fret: 5
+        - string: 4
+          fret: 7
+        - string: 3
+          fret: 7
+        - string: 2
+          fret: 6
+        - string: 1
+          fret: 5
+      mutedStrings:
+        - 6
+      fingerNumbers:
+        '5': 1
+        '4': 3
+        '3': 4
+        '2': 2
+        '1': 1
+  - id: minor-sixth-moved-shape
+    exerciseID: minor-barre-chords-minor-sixth-moved
+    fingering:
+      positions:
+        - string: 6
+          fret: 7
+        - string: 5
+          fret: 9
+        - string: 4
+          fret: 9
+        - string: 3
+          fret: 7
+        - string: 2
+          fret: 7
+        - string: 1
+          fret: 7
+      mutedStrings: []
+      fingerNumbers:
+        '6': 1
+        '5': 3
+        '4': 4
+        '3': 1
+        '2': 1
+        '1': 1
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - third
+      - whole
+      - bass
+    correctOptionID: third
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - sixth
+      - fifth
+      - move
+      - relax
+curriculum:
+  moduleID: harmony
+  ordinal: 74
+  durationMinutes: 30
+  prerequisites:
+    - major-barre-chords
+    - minor-chord-shapes
+  keywords:
+    - barre
+    - minor
+    - major minor comparison
+    - minor third
+    - баре
+    - мінор
+    - мала терція

@@ -1,0 +1,120 @@
+lessonID: minor-barre-chords
+lessonVersion: 1
+locale: en
+title: 'Minor barre chords: change the third'
+summary: Compare major and minor barre forms, then move a minor form without losing its root or quality.
+goal: >-
+  Change only the relevant third when comparing the two qualities and check a moved minor shape string by string.
+body: |-
+  A minor triad contains a root, a minor third and a perfect fifth. Compared with a major triad on the same root, its third is one semitone lower. A six-string chord may repeat some of these tones; it does not need six different pitches. In the two forms here, one string carries the third that changes. The displayed major forms are comparison references, while the separate-note practices use the minor forms.
+
+  Compare the sixth-root major form with its minor partner. String 3 moves one fret lower; the other five pitches stay fixed. In the reference fingering, lifting the middle finger exposes the index barre beneath it. Make sure the newly exposed note rings: it is easy to hear a dull third and mistakenly press harder everywhere. Test that string first, then the bass and treble notes. Take the hand off the neck briefly between attempts.
+
+  Now compare the fifth-root forms. Here the third is on string 2, and that note moves down one fret. The remaining notes, including the root on string 5, stay the same; string 6 remains silent. Reorganize the fingers according to the new grip instead of dragging a major-shape finger across a neighbor. Listen to a quiet complete chord outside scored practice, then stop each preceding note during the timed single-note check.
+
+  Finally move the sixth-root minor shape two frets upward. Moving all notes changes the root; lowering only a third changes the quality. These are different operations. Name the displayed root before each attempt and compare the interval pattern, rather than memorizing one concert-pitch chord name. Standard tunings transpose the pattern, and Drop may move its sixth-string contact. Use the resolved markers; a straight reference barre is not a promise that every adapted grip uses the same fingers.
+
+  Alternate the major reference and its minor partner slowly without a timer. Listen for the changing middle tone while the root remains steady. The app can check the separate notes and their timing; the clarity of a full chord, economy of movement and use of a barre remain your own observations.
+steps:
+  prepare:
+    title: Separate root from quality
+    body: >-
+      Open each major reference and its minor partner. Locate the common root first, then the string that changes.
+      Use a clean sound and short, relaxed attempts.
+  review:
+    title: Hear the third change
+    body: >-
+      Outside scored practice, alternate a major reference and its minor partner on the same root. Then compare
+      the two minor positions. Describe which operation changed the quality and which changed the root.
+  major-sixth-reference-shape:
+    title: 'Reference: sixth-root major'
+    body: >-
+      Keep this reference for comparison. Root: {{root}}. The third is the note on string 3; the other positions
+      will remain fixed in the next minor shape. {{positions}}.
+  minor-sixth-shape:
+    title: Lower string 3 by one fret
+    body: >-
+      Root: {{root}}. Compared with the preceding major shape, lower only string 3 by one fret. In the reference
+      Standard fingering the index now supplies that note. Test it before checking the remaining strings: {{positions}}.
+  minor-sixth-notes:
+    title: '{{root}} minor — check each string'
+    body: >-
+      Keep the shown grip and play its strings from low to high, one per click at 50 BPM. Stop each previous sound
+      before the next attack. Then count the written release beats to finish two bars. The score checks separate
+      pitches and timing, not a full barre or simultaneous chord. {{positions}}.
+  major-fifth-reference-shape:
+    title: 'Reference: fifth-root major'
+    body: >-
+      Root: {{root}} on string 5. String 6 is silent. Find the third on string 2 and compare its current fret with
+      the following minor shape. {{positions}}.
+  minor-fifth-shape:
+    title: Lower string 2 by one fret
+    body: >-
+      Root: {{root}}. Lower the third on string 2 by one fret while retaining the other pitches. Rebuild the finger
+      arrangement comfortably, keep string 6 silent, and check {{positions}}.
+  minor-fifth-notes:
+    title: '{{root}} minor — check each string'
+    body: >-
+      Keep the shown grip and play its strings from low to high, one per click at 50 BPM. Stop each previous sound
+      before the next attack. Then count the written release beats to finish two bars. The score checks separate
+      pitches and timing, not a full barre or simultaneous chord. {{positions}}.
+  minor-sixth-moved-shape:
+    title: Move the complete minor shape
+    body: >-
+      The new root is {{root}}. Every note is two frets above the first sixth-root minor form. The root changes
+      but the minor quality stays. Follow {{positions}}, then compare the third and upper notes with the original
+      minor pattern.
+  minor-sixth-moved-notes:
+    title: '{{root}} minor — check each string'
+    body: >-
+      Keep the shown grip and play its strings from low to high, one per click at 50 BPM. Stop each previous sound
+      before the next attack. Then count the written release beats to finish two bars. The score checks separate
+      pitches and timing, not a full barre or simultaneous chord. {{positions}}.
+  question:
+    title: Root change or quality change?
+    body: Compare the chord-tone roles before answering.
+activities:
+  major-sixth-reference-shape:
+    title: '{{root}} major shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  minor-sixth-shape:
+    title: '{{root}} minor shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  minor-sixth-notes:
+    title: '{{root}} minor — separate-note practice'
+    body: Play every target separately, then release. {{sequence}}.
+  major-fifth-reference-shape:
+    title: '{{root}} major shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  minor-fifth-shape:
+    title: '{{root}} minor shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  minor-fifth-notes:
+    title: '{{root}} minor — separate-note practice'
+    body: Play every target separately, then release. {{sequence}}.
+  minor-sixth-moved-shape:
+    title: '{{root}} minor shape'
+    body: 'Root: {{root}}. Sounding chord tones: {{notes}}.'
+  minor-sixth-moved-notes:
+    title: '{{root}} minor — separate-note practice'
+    body: Play every target separately, then release. {{sequence}}.
+learningTasks:
+  question:
+    title: Root change or quality change?
+    body: Starting from a major chord, which operation produces a minor chord on the same root?
+    items:
+      third: Lower its major third by one semitone while keeping the root and fifth.
+      whole: Move every note two frets higher.
+      bass: Lower only the root by one semitone.
+    explanation: >-
+      A major third is four semitones above the root; a minor third is three. Lowering that chord tone by one semitone
+      changes major to minor on the same root. Moving the complete shape preserves its quality and changes its root
+      instead.
+  review:
+    title: Check the full chord yourself
+    body: Mark only what you actually tried.
+    items:
+      sixth: I located and heard the changing third on string 3 in the sixth-root pair.
+      fifth: I located and heard the changing third on string 2 in the fifth-root pair.
+      move: I distinguished moving the whole minor shape from changing its third.
+      relax: I released the hand between attempts and checked full chords outside the scored practice.
