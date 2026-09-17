@@ -1,6 +1,6 @@
 # Electric-guitar sound course — same-agent review
 
-Implementing-agent review; not an independent review. Status: verification in progress.
+Implementing-agent review; not an independent review. Status: `pending_user` for native/hardware acceptance.
 
 ## Scope and decisions
 
@@ -28,3 +28,5 @@ Four reference phrases are deliberately identical where a controlled A/B needs t
 Full Learning: 136 tests/46 suites, 150.745 s (`/tmp/electric-tone-learning.log`). Full App: 176 tests/53 suites, 211.362 s (`/tmp/electric-tone-app.log`), including eight-lesson filters, full catalog/fretboard/TAB/staff/practice flow and existing recorded-channel/coach tests. Localization: 905 keys; generated project current and UI sources type-check. No production audio code changed. Root-only signed Release/archive/XPC and exact-head CI remain open.
 
 Root-only Release/archive verified with 108 bilingual bundles (325 YAML), arm64/macOS14, ad-hoc hardened sandbox and expected entitlements. Binary SHA256 `176a62b643c76758d7f2860a2688a28dedd7d4028cede305eeeec840a7fcb476`; archive `3c15a637a82ba0b5ebe2a6e8e33c30eee0a90839fc6511a19cd1be2ed63ed5dc`. See `docs/benchmarks/electric-tone-release-bundle.json`. Signed sandbox→separate XPC service→invalidRequest passed without a provider call. No local Debug app, native app launch or hardware acceptance claim. Exact-head CI/merge remains open.
+
+Exact-head CI 35188758111 passed (30m19s) on `0ff18044543c04b3413da70cf7ed8c88ec27c559`; PR #89 merged as `bbc57883899f045b33bb37d8911e157a7b1ce265` at 2026-09-17T06:42:03Z. Native/hardware/provider gates remain open.
