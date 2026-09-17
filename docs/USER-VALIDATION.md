@@ -220,3 +220,7 @@ Read all eight style lessons in en/uk, follow the complete twelve/eight/four-bar
 ## Held voices and topics 107–108 — pending user
 
 Read the new parentheses and continuation legend in both TAB views, languages and themes, including keyboard/VoiceOver. Listen for one continuous bass under changing melody, then a held upper note above alternating bass. Compare the four-bar chord-melody reference and actual fingering; intentionally release/repluck a held string to confirm that the self-check concerns real playing, not an automatic grade. Confirm Standard/Drop geometry and the explicit TAB fallback for simultaneous staff voices. Offline renders and analytic samples are not native interaction or guitar acceptance. Self-practice has no polyphonic/finger/balance score.
+
+## Jazz and modal topics 105–106, 109–112 — pending user
+
+Read both locales and confirm all eight specialization lessons appear in order with correct self-practice/scored filters. Play the clean separated guide tones, chromatic lines and minor/modal examples through the actual interface. Hear degree6/7 differences against one center; compare the held pedal and prepared suspension without extra attacks. Chord feel, harmonic intention, independent voices and invented answers remain self-reviewed. Verify TAB/staff fallbacks, keyboard/VoiceOver and both themes. Software matrices and synthesized references do not establish this real guitar/native acceptance.

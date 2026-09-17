@@ -1,0 +1,66 @@
+lessonID: tension-resolution
+lessonVersion: 1
+locale: en
+title: 'Tension and resolution: choose the destination'
+summary: Hear neighbors, chromatic approaches and a suspension against an actual supporting voice.
+goal: Create a phrase with intentional tension, a clear resolution and room to hear the result.
+body: |-
+  A note is not tense in isolation simply because it lies outside a memorized shape. Its effect depends on the harmony, register, rhythm and what follows. Choose a stable destination first, then use another note to make the arrival meaningful. The examples keep a sounding lower voice so you can hear the relationship directly instead of imagining a chord that is not present.
+
+  The neighbor example begins on the third of the tonic, moves a step higher and returns. The bass remains held beneath all three notes. Hear the middle pitch as a departure because the stable third is established before and after it. Do not restart the parenthesized bass at every upper attack: that would replace the intended sustained context with a different articulation.
+
+  The chromatic models approach the third and root from a semitone below or above. Give the destination its longer written duration so the listener can hear where the motion settled. Then compare a version where you delay that arrival by one beat while keeping the bar length. A different placement changes the phrase’s effect even when the two pitches remain the same.
+
+  A suspension differs from a newly attacked passing note. In the prepared example, the upper note already sounds over a dominant-root bass. It remains held while the bass changes to tonic, creating a fourth above the new bass, then resolves down to the third. Follow the parentheses on the upper string during the bass change and on the bass during the resolution. Each voice has its own attack and release.
+
+  Finish with the short release phrase and its silent bar. The quiet space lets the arrival register before another idea begins. For your own version, select one target, one kind of approach and one planned place to resolve. Compare an early and a delayed resolution, then explain the difference you heard. These are listening and compositional choices; this self-practice lesson does not assign an automatic score to tension, taste or simultaneous voices.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  neighbor-return:
+    title: Leave the third and return
+    body: 'Center: {{root}} major. Keep the bass continuous while the upper third rises to a fourth and returns;
+      then leave one silent bar.'
+  chromatic-arrivals:
+    title: Resolve a chromatic approach clearly
+    body: First approach the tonic third from below, then the tonic root from above. Keep each bass for its full
+      bar and give each destination three beats.
+  prepared-suspension:
+    title: Hold the upper note through the bass change
+    body: Keep the upper note from the dominant-root bar into the tonic bar without reattacking it. Resolve the
+      resulting fourth down to the third on beat 3.
+  release-and-space:
+    title: Reach the tonic and leave space
+    body: Let fourth–third–second–tonic descend over one held bass, then stop both voices for a complete bar.
+  resolution-review:
+    title: Choose one departure and one return
+    body: 'Make two versions of a short phrase with the same target: resolve one earlier and the other later while
+      retaining the bar length.'
+activities:
+  neighbor-return:
+    title: Leave the third and return
+    body: 'Center: {{root}} major. Keep the bass continuous while the upper third rises to a fourth and returns;
+      then leave one silent bar.'
+  chromatic-arrivals:
+    title: Resolve a chromatic approach clearly
+    body: First approach the tonic third from below, then the tonic root from above. Keep each bass for its full
+      bar and give each destination three beats.
+  prepared-suspension:
+    title: Hold the upper note through the bass change
+    body: Keep the upper note from the dominant-root bar into the tonic bar without reattacking it. Resolve the
+      resulting fourth down to the third on beat 3.
+  release-and-space:
+    title: Reach the tonic and leave space
+    body: Let fourth–third–second–tonic descend over one held bass, then stop both voices for a complete bar.
+learningTasks:
+  resolution-review:
+    title: Choose one departure and one return
+    body: 'Make two versions of a short phrase with the same target: resolve one earlier and the other later while
+      retaining the bar length.'
+    items:
+      context: I heard the target against a clear supporting bass.
+      hold: The suspension continued through the bass change without another upper attack.
+      arrival: I could identify the moment of resolution.
+      contrast: The early and delayed versions had an audible difference.
+      space: I left time to hear the arrival before starting another phrase.

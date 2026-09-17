@@ -1,0 +1,410 @@
+schemaVersion: 3
+id: tension-resolution
+version: 1
+difficulty: intermediate
+topic: theory
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: neighbor-return
+    kind: events
+    exerciseID: tension-resolution-neighbor-return
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: neighbor-return
+  - id: chromatic-arrivals
+    kind: events
+    exerciseID: tension-resolution-chromatic-arrivals
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+    activityID: chromatic-arrivals
+  - id: prepared-suspension
+    kind: events
+    exerciseID: tension-resolution-prepared-suspension
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+    activityID: prepared-suspension
+  - id: release-and-space
+    kind: events
+    exerciseID: tension-resolution-release-and-space
+    eventIDs:
+      - event-1
+      - event-2
+      - event-3
+      - event-4
+      - event-5
+    activityID: release-and-space
+  - id: resolution-review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: tension-resolution-neighbor-return
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 5
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 6
+        heldStrings:
+          - 5
+      - id: event-3
+        startTick: 1920
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 5
+        heldStrings:
+          - 5
+      - id: event-4
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+  - id: tension-resolution-chromatic-arrivals
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 4
+      - id: event-2
+        startTick: 960
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 5
+        heldStrings:
+          - 5
+      - id: event-3
+        startTick: 3840
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 3
+            fret: 6
+      - id: event-4
+        startTick: 4800
+        durationTicks: 2880
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 3
+            fret: 5
+        heldStrings:
+          - 5
+  - id: tension-resolution-prepared-suspension
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 3840
+        kind: note
+        positions:
+          - string: 6
+            fret: 3
+          - string: 2
+            fret: 6
+      - id: event-2
+        startTick: 3840
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 6
+        heldStrings:
+          - 2
+      - id: event-3
+        startTick: 5760
+        durationTicks: 1920
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 5
+        heldStrings:
+          - 5
+  - id: tension-resolution-release-and-space
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 120
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: displayOnly
+    events:
+      - id: event-1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 6
+      - id: event-2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 2
+            fret: 5
+        heldStrings:
+          - 5
+      - id: event-3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 3
+            fret: 7
+        heldStrings:
+          - 5
+      - id: event-4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 5
+            fret: 3
+          - string: 3
+            fret: 5
+        heldStrings:
+          - 5
+      - id: event-5
+        startTick: 3840
+        durationTicks: 3840
+        kind: rest
+        positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: neighbor-return
+    source:
+      kind: exercise
+      exerciseID: tension-resolution-neighbor-return
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: chromatic-arrivals
+    source:
+      kind: exercise
+      exerciseID: tension-resolution-chromatic-arrivals
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: prepared-suspension
+    source:
+      kind: exercise
+      exerciseID: tension-resolution-prepared-suspension
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+  - id: release-and-space
+    source:
+      kind: exercise
+      exerciseID: tension-resolution-release-and-space
+    positioning:
+      enabled: false
+    tonalRoot:
+      midi: 60
+activities:
+  - id: neighbor-return
+    materialID: neighbor-return
+  - id: chromatic-arrivals
+    materialID: chromatic-arrivals
+  - id: prepared-suspension
+    materialID: prepared-suspension
+  - id: release-and-space
+    materialID: release-and-space
+practiceEntries: []
+fingerings: []
+learningTasks:
+  - id: resolution-review
+    stepID: resolution-review
+    kind: selfPractice
+    itemIDs:
+      - context
+      - hold
+      - arrival
+      - contrast
+      - space
+curriculum:
+  moduleID: specializations
+  ordinal: 112
+  durationMinutes: 35
+  prerequisites:
+    - chord-tone-targeting
+    - jazz-lines
+    - chord-melody
+  keywords:
+    - 'Tension and resolution: choose the destination'
+    - 'Напруження й розв’язання: обери прибуття'
+    - harmony
+    - гармонія
+    - improvisation
+    - імпровізація

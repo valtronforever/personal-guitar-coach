@@ -1,0 +1,69 @@
+lessonID: melodic-minor
+lessonVersion: 1
+locale: en
+title: 'Melodic minor: choose the convention and hear the color'
+summary: Compare raised sixth and seventh degrees with the natural-minor descent.
+goal: Play both common directional conventions and use the minor-major-seventh color in a phrase.
+body: |-
+  Melodic minor keeps the minor third while raising the sixth and seventh relative to natural minor. Name those changes before learning another shape. Compared with harmonic minor, the raised sixth removes the three-semitone gap on the way toward the tonic. Listen to the smoother upper part of the ascent without mistaking the scale for major: its third is still minor.
+
+  Two common teaching conventions need explicit names. The classical directional exercise uses the raised sixth and seventh ascending, then natural minor descending. Jazz melodic minor commonly keeps the raised degrees in both directions. Neither exercise says that every real melody must obey a direction rule. Read which version is requested and preserve its actual notes rather than changing them automatically when the line turns downward.
+
+  Play the jazz ascent and descent separately, then compare the classical return. The upper two degrees are the audible difference on the way down. Keep one tempo and the same register so the comparison concerns pitches rather than speed or octave. During measured practice, stop one note before attacking the next; long accidental overlap makes a monophonic preparation into a different task.
+
+  The tonic minor-major-seventh arpeggio combines root, minor third, fifth and major seventh. Hear the close pull from that seventh into the upper tonic, then return through the chord members. This is a useful tonic color in this lesson, not permission to apply one scale indiscriminately over every minor chord. A minor-seventh chord has a different seventh; the harmonic context decides whether the raised pitch serves the phrase.
+
+  Finish with the short application phrase and make one variation that retains the minor third, major sixth and leading-tone arrival. Leave space after the ending to hear the tonic as home. Exact exercises receive pitch/time feedback; choosing a convention, harmonic color and phrase shape remains a musical decision. Explain which version you played before judging a differing sixth or seventh as an error.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  jazz-ascent:
+    title: Raise sixth and seventh, retain minor third
+    body: 'Center: {{root}} melodic minor. Compare the final four degrees with harmonic minor.'
+  jazz-descent:
+    title: Keep the raised degrees descending
+    body: Use the same jazz melodic-minor collection in reverse; do not lower the sixth or seventh just because
+      the direction changes.
+  classical-return:
+    title: Compare the classical directional exercise
+    body: Ascend with raised sixth/seventh, descend through the natural-minor degrees and leave the final beat quiet.
+      This is the named directional convention.
+  minor-major-arpeggio:
+    title: Hear the tonic minor-major-seventh color
+    body: Play the root, minor third, fifth and major seventh up and back, then retain the tonic for a full bar.
+  application-phrase:
+    title: Turn the characteristic degrees into a phrase
+    body: Let the minor third establish the quality, give the major sixth time to sound, then resolve the leading
+      tone to tonic.
+  convention-review:
+    title: Name the version before comparing notes
+    body: Compare the two descents at the same tempo and invent one short phrase using the jazz form.
+activities:
+  jazz-ascent:
+    title: Raise sixth and seventh, retain minor third
+    body: 'Center: {{root}} melodic minor. Compare the final four degrees with harmonic minor.'
+  jazz-descent:
+    title: Keep the raised degrees descending
+    body: Use the same jazz melodic-minor collection in reverse; do not lower the sixth or seventh just because
+      the direction changes.
+  classical-return:
+    title: Compare the classical directional exercise
+    body: Ascend with raised sixth/seventh, descend through the natural-minor degrees and leave the final beat quiet.
+      This is the named directional convention.
+  minor-major-arpeggio:
+    title: Hear the tonic minor-major-seventh color
+    body: Play the root, minor third, fifth and major seventh up and back, then retain the tonic for a full bar.
+  application-phrase:
+    title: Turn the characteristic degrees into a phrase
+    body: Let the minor third establish the quality, give the major sixth time to sound, then resolve the leading
+      tone to tonic.
+learningTasks:
+  convention-review:
+    title: Name the version before comparing notes
+    body: Compare the two descents at the same tempo and invent one short phrase using the jazz form.
+    items:
+      third: I retained the minor third in every version.
+      direction: I could explain when the sixth and seventh changed on descent.
+      color: I heard the major seventh in the tonic minor-major arpeggio.
+      phrase: My phrase used the characteristic degrees and returned to tonic.
