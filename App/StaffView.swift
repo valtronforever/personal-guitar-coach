@@ -118,7 +118,8 @@ struct StaffView: View {
         }
     }
     private func accessibility(_ symbol: StaffSymbol) -> Text {
-        let duration = TimelineModel.durationLabel(symbol.fragment.duration.ticks)
+        let written = TimelineModel.durationLabel(symbol.fragment.duration.triplet ? symbol.fragment.duration.baseTicks : symbol.fragment.duration.ticks)
+        let duration = symbol.fragment.tripletID == nil ? written : String(format: settings.localized("rhythm.tripletDuration %@"), locale: settings.locale, written)
         if let pitch = symbol.pitch {
             var sounding = symbol.resolved.pitches[0].name(spelling: timeline.tuning.preferredSpelling)
             if let stroke = symbol.resolved.event.pickStroke, !symbol.fragment.tieFromPrevious {
@@ -256,6 +257,12 @@ struct StaffDrawing {
                 context.fill(Path(ellipseIn: CGRect(x: position + 13, y: y - 2, width: 4, height: 4)), with: .color(ink))
             }
             context.draw(Text(verbatim: duration.label).font(.system(size: 10)), at: CGPoint(x: position, y: StaffModel.canvasHeight - 10))
+        }
+        for group in timeline.triplets(in: currentBar) {
+            TripletBracket.draw(context: &context,
+                start: leading + timeline.x(tick: group.startTick, bar: currentBar, zoom: 1) + 12,
+                end: leading + timeline.x(tick: group.endTick, bar: currentBar, zoom: 1) - 2,
+                y: 36)
         }
         for beam in beams {
             let members = symbols.filter { beam.ids.contains($0.id) }

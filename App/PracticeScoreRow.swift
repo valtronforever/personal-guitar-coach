@@ -40,7 +40,7 @@ struct PracticeScoreRow: View {
                     .animation(playing && !reduceMotion ? .linear(duration: 0.055) : nil, value: cursor.x)
                     .allowsHitTesting(false).accessibilityHidden(true)
             }
-        }.frame(maxWidth: .infinity, alignment: .topLeading).frame(height: PracticeScoreLayout.rowHeight * zoom)
+        }.frame(maxWidth: .infinity, alignment: .topLeading).frame(height: layout.contentRowHeight * zoom)
     }
 
     private func barView(_ bar: Int64?, layout: PracticeScoreLayout) -> some View {
@@ -57,6 +57,14 @@ struct PracticeScoreRow: View {
                     var line = Path(); line.move(to: CGPoint(x: x, y: gridTop - 2)); line.addLine(to: CGPoint(x: x, y: gridTop + 6 * stringSpacing))
                     let boundary = beat == 0 || beat == layout.beatsPerBar
                     context.stroke(line, with: .color(.secondary), style: StrokeStyle(lineWidth: boundary ? 1.5 : 0.5, dash: boundary ? [] : [2, 4]))
+                }
+                if let bar {
+                    for group in model.triplets(in: bar) {
+                        TripletBracket.draw(context: &context,
+                            start: layout.x(tick: Double(group.startTick), bar: bar) + 2 * zoom,
+                            end: layout.x(tick: Double(group.endTick), bar: bar) - 2 * zoom,
+                            y: 163 * zoom, scale: zoom)
+                    }
                 }
             }.accessibilityHidden(true)
             if let bar {
@@ -77,7 +85,7 @@ struct PracticeScoreRow: View {
                 }
             }
         }
-        .frame(width: layout.barWidth, height: PracticeScoreLayout.rowHeight * zoom)
+        .frame(width: layout.barWidth, height: layout.contentRowHeight * zoom)
         .opacity(bar.map { (Int64(firstBar - 1)..<Int64(lastBar)).contains($0) ? 1 : 0.45 } ?? 1)
     }
 
@@ -93,7 +101,7 @@ struct PracticeScoreRow: View {
                     RoundedRectangle(cornerRadius: 3).fill(Color.accentColor.opacity(0.1))
                         .overlay(RoundedRectangle(cornerRadius: 3).strokeBorder(.primary.opacity(0.5), lineWidth: 1))
                 }
-                durationMark(event.durationTicks, continuation: segment.isContinuation)
+                durationMark(segment.writtenDurationTicks, continuation: segment.isContinuation)
                     .frame(width: width, height: 24 * zoom).offset(y: 16 * zoom)
                 if let bend = event.bend {
                     Text(verbatim: "b\(bend.semitones)" + (bend.releaseEndTick == nil ? "" : "r"))
@@ -148,7 +156,9 @@ struct PracticeScoreRow: View {
         let event = segment.resolved.event
         let beat = (Double(segment.startTick - model.startTick(of: segment.bar)) / Double(MusicalTime.ppq) + 1)
             .formatted(.number.precision(.fractionLength(0...2)).locale(locale))
-        let duration = TimelineModel.durationLabel(event.durationTicks)
+        let written = TimelineModel.durationLabel(segment.writtenDurationTicks)
+        let tripletFormat = localizationBundle.localizedString(forKey: "rhythm.tripletDuration %@", value: nil, table: nil)
+        let duration = segment.triplet == nil ? written : String(format: tripletFormat, locale: locale, written)
         if event.kind == .rest { return Text("tab.restDescription \(segment.bar + 1) \(beat) \(duration)", bundle: localizationBundle) }
         let format = localizationBundle.localizedString(forKey: "tab.position %lld %lld %@", value: nil, table: nil)
         var notes = zip(event.positions, segment.resolved.pitches).map { position, pitch in

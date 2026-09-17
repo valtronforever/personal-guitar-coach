@@ -34,6 +34,11 @@ extension LessonCatalogLoader {
                     let selected = exercise.events.enumerated().filter { ids.contains($0.element.id) }
                     try require(selected.map(\.element.id) == ids, "Unknown/out-of-order material events")
                     try require(selected.last!.offset - selected.first!.offset + 1 == selected.count, "Material events must be contiguous, including rests")
+                    let selectedIDs = Set(ids)
+                    let groups = exercise.triplets.filter { $0.eventIDs.contains(where: selectedIDs.contains) }
+                    try require(groups.allSatisfy { Set($0.eventIDs).isSubset(of: selectedIDs) }, "Event materials must include complete triplet groups")
+                    try require(groups.isEmpty || selected.first!.element.startTick % MusicalTime.ppq == 0,
+                        "Materials with triplets must begin at a quarter-beat boundary")
                 }
             case .fingering:
                 try require(source.exerciseID == nil && source.eventIDs == nil && source.fingeringID.flatMap { shapeMap[$0] } != nil, "Unknown shape or unexpected source fields")

@@ -75,9 +75,11 @@ extension LoadedLesson {
                         kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend)
                 }
             }
+            let selectedIDs = Set(events.map(\.id))
+            let triplets = source.triplets.filter { $0.eventIDs.contains(where: selectedIDs.contains) }
             return try Exercise(id: source.id, version: source.version, ppq: source.ppq, events: events,
                 timeSignature: source.timeSignature, defaultBPM: source.defaultBPM, minimumBPM: source.minimumBPM, maximumBPM: source.maximumBPM,
-                tuningPolicy: .fixedTuning, requiredTuning: tuning, assessmentMode: material.source.kind == .fingering || !events.contains(where: { $0.kind == .note }) ? .displayOnly : source.assessmentMode)
+                tuningPolicy: .fixedTuning, requiredTuning: tuning, assessmentMode: material.source.kind == .fingering || !events.contains(where: { $0.kind == .note }) ? .displayOnly : source.assessmentMode, triplets: material.source.kind == .fingering ? [] : triplets)
         }
         let steps = manifest.steps.filter { $0.activityID == activityID }.map { step in
             LessonStep(id: step.id, kind: step.kind, exerciseID: step.exerciseID, eventIDs: step.eventIDs,

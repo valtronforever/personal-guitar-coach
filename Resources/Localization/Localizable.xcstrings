@@ -14177,6 +14177,22 @@
           }
         }
       }
+    },
+    "rhythm.tripletDuration %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ in a triplet (three eighth-note slots per beat)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ у тріолі (три восьмі місця на долю)"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

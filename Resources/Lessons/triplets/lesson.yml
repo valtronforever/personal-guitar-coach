@@ -1,0 +1,889 @@
+schemaVersion: 3
+id: triplets
+version: 1
+difficulty: beginner
+topic: rhythm
+steps:
+  - id: prepare
+    kind: none
+    eventIDs: []
+  - id: duple-and-triple
+    kind: events
+    exerciseID: triplets-duple-and-triple
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+      - e25
+      - e26
+      - e27
+      - e28
+    activityID: duple-and-triple
+  - id: triplet-pulse
+    kind: events
+    exerciseID: triplets-triplet-pulse
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+      - e24
+    activityID: triplet-pulse
+  - id: triplet-melody
+    kind: events
+    exerciseID: triplets-triplet-melody
+    eventIDs:
+      - e1
+      - e2
+      - e3
+      - e4
+      - e5
+      - e6
+      - e7
+      - e8
+      - e9
+      - e10
+      - e11
+      - e12
+      - e13
+      - e14
+      - e15
+      - e16
+      - e17
+      - e18
+      - e19
+      - e20
+      - e21
+      - e22
+      - e23
+    activityID: triplet-melody
+  - id: question
+    kind: none
+    eventIDs: []
+  - id: review
+    kind: none
+    eventIDs: []
+exercises:
+  - id: triplets-duple-and-triple
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e2
+        startTick: 960
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e3
+        startTick: 1920
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e4
+        startTick: 2880
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e5
+        startTick: 3840
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e6
+        startTick: 4320
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e7
+        startTick: 4800
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e8
+        startTick: 5280
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e9
+        startTick: 5760
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e10
+        startTick: 6240
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e11
+        startTick: 6720
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e12
+        startTick: 7200
+        durationTicks: 480
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e13
+        startTick: 7680
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e14
+        startTick: 8000
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e15
+        startTick: 8320
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e16
+        startTick: 8640
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e17
+        startTick: 8960
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e18
+        startTick: 9280
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e19
+        startTick: 9600
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e20
+        startTick: 9920
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e21
+        startTick: 10240
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e22
+        startTick: 10560
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e23
+        startTick: 10880
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e24
+        startTick: 11200
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e25
+        startTick: 11520
+        durationTicks: 960
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e26
+        startTick: 12480
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e27
+        startTick: 13440
+        durationTicks: 960
+        kind: rest
+        positions: []
+      - id: e28
+        startTick: 14400
+        durationTicks: 960
+        kind: rest
+        positions: []
+    triplets:
+      - id: t9
+        eventIDs:
+          - e13
+          - e14
+          - e15
+      - id: t10
+        eventIDs:
+          - e16
+          - e17
+          - e18
+      - id: t11
+        eventIDs:
+          - e19
+          - e20
+          - e21
+      - id: t12
+        eventIDs:
+          - e22
+          - e23
+          - e24
+  - id: triplets-triplet-pulse
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e2
+        startTick: 320
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e3
+        startTick: 640
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e4
+        startTick: 960
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e5
+        startTick: 1280
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e6
+        startTick: 1600
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e7
+        startTick: 1920
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e8
+        startTick: 2240
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e9
+        startTick: 2560
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e10
+        startTick: 2880
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e11
+        startTick: 3200
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e12
+        startTick: 3520
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e13
+        startTick: 3840
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e14
+        startTick: 4160
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e15
+        startTick: 4480
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e16
+        startTick: 4800
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e17
+        startTick: 5120
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e18
+        startTick: 5440
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e19
+        startTick: 5760
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e20
+        startTick: 6080
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e21
+        startTick: 6400
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e22
+        startTick: 6720
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e23
+        startTick: 7040
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e24
+        startTick: 7360
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+    triplets:
+      - id: t1
+        eventIDs:
+          - e1
+          - e2
+          - e3
+      - id: t2
+        eventIDs:
+          - e4
+          - e5
+          - e6
+      - id: t3
+        eventIDs:
+          - e7
+          - e8
+          - e9
+      - id: t4
+        eventIDs:
+          - e10
+          - e11
+          - e12
+      - id: t5
+        eventIDs:
+          - e13
+          - e14
+          - e15
+      - id: t6
+        eventIDs:
+          - e16
+          - e17
+          - e18
+      - id: t7
+        eventIDs:
+          - e19
+          - e20
+          - e21
+      - id: t8
+        eventIDs:
+          - e22
+          - e23
+          - e24
+  - id: triplets-triplet-melody
+    version: 1
+    ppq: 960
+    timeSignature: 4/4
+    defaultBPM: 60
+    minimumBPM: 40
+    maximumBPM: 90
+    tuningPolicy: fixedTuning
+    requiredTuning:
+      id: standard
+      revision: 1
+      name: Standard
+      referenceA4: 440
+      strings:
+        - number: 1
+          openPitch:
+            midi: 64
+        - number: 2
+          openPitch:
+            midi: 59
+        - number: 3
+          openPitch:
+            midi: 55
+        - number: 4
+          openPitch:
+            midi: 50
+        - number: 5
+          openPitch:
+            midi: 45
+        - number: 6
+          openPitch:
+            midi: 40
+    assessmentMode: monophonic
+    events:
+      - id: e1
+        startTick: 0
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e2
+        startTick: 320
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e3
+        startTick: 640
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e4
+        startTick: 960
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e5
+        startTick: 1280
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e6
+        startTick: 1600
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e7
+        startTick: 1920
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e8
+        startTick: 2240
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e9
+        startTick: 2560
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e10
+        startTick: 2880
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 1
+            fret: 3
+      - id: e11
+        startTick: 3200
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e12
+        startTick: 3520
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e13
+        startTick: 3840
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 6
+      - id: e14
+        startTick: 4160
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e15
+        startTick: 4480
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e16
+        startTick: 4800
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e17
+        startTick: 5120
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e18
+        startTick: 5440
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e19
+        startTick: 5760
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 2
+            fret: 5
+      - id: e20
+        startTick: 6080
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 7
+      - id: e21
+        startTick: 6400
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e22
+        startTick: 6720
+        durationTicks: 320
+        kind: note
+        positions:
+          - string: 3
+            fret: 5
+      - id: e23
+        startTick: 7040
+        durationTicks: 640
+        kind: rest
+        positions: []
+    triplets:
+      - id: t1
+        eventIDs:
+          - e1
+          - e2
+          - e3
+      - id: t2
+        eventIDs:
+          - e4
+          - e5
+          - e6
+      - id: t3
+        eventIDs:
+          - e7
+          - e8
+          - e9
+      - id: t4
+        eventIDs:
+          - e10
+          - e11
+          - e12
+      - id: t5
+        eventIDs:
+          - e13
+          - e14
+          - e15
+      - id: t6
+        eventIDs:
+          - e16
+          - e17
+          - e18
+      - id: t7
+        eventIDs:
+          - e19
+          - e20
+          - e21
+      - id: t8
+        eventIDs:
+          - e22
+          - e23
+adaptation:
+  policy: transposeIntervals
+materials:
+  - id: duple-and-triple
+    source:
+      kind: exercise
+      exerciseID: triplets-duple-and-triple
+  - id: triplet-pulse
+    source:
+      kind: exercise
+      exerciseID: triplets-triplet-pulse
+  - id: triplet-melody
+    source:
+      kind: exercise
+      exerciseID: triplets-triplet-melody
+activities:
+  - id: duple-and-triple
+    materialID: duple-and-triple
+  - id: triplet-pulse
+    materialID: triplet-pulse
+  - id: triplet-melody
+    materialID: triplet-melody
+fingerings: []
+practiceEntries:
+  - id: duple-and-triple
+    activityID: duple-and-triple
+    exerciseID: triplets-duple-and-triple
+  - id: triplet-pulse
+    activityID: triplet-pulse
+    exerciseID: triplets-triplet-pulse
+  - id: triplet-melody
+    activityID: triplet-melody
+    exerciseID: triplets-triplet-melody
+learningTasks:
+  - id: question
+    stepID: question
+    kind: quiz
+    itemIDs:
+      - one
+      - three
+      - half
+    correctOptionID: one
+  - id: review
+    stepID: review
+    kind: selfPractice
+    itemIDs:
+      - count
+      - switching
+      - rest
+curriculum:
+  moduleID: advanced-rhythm
+  ordinal: 65
+  durationMinutes: 25
+  prerequisites:
+    - eighth-notes
+  keywords:
+    - triplet
+    - shuffle
+    - тріоль
+    - шафл
+    - rhythm
+    - ритм

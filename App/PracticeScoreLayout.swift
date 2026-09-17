@@ -12,12 +12,14 @@ struct PracticeScoreLayout: Equatable {
     let ticksPerBar: Int64
     let beatsPerBar: Int
     let barsPerRow: Int64
+    let contentRowHeight: Double
     let barWidth: Double
     var rowCount: Int64 { (barCount + barsPerRow) / barsPerRow }
     var countInSlot: Int64 { firstBar }
     var startTick: Double { Double(firstBar * ticksPerBar) }
 
     init(timeline: TimelineModel, firstBar: Int, width: Double, zoom: Double = 1) {
+        contentRowHeight = Self.rowHeight + (timeline.exercise.triplets.isEmpty ? 0 : 16)
         barCount = timeline.barCount
         self.firstBar = min(barCount - 1, max(0, Int64(firstBar - 1)))
         ticksPerBar = timeline.ticksPerBar; beatsPerBar = timeline.exercise.timeSignature.beatsPerBar

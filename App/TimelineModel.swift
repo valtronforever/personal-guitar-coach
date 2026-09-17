@@ -8,8 +8,16 @@ struct TimelineSegment: Identifiable, Sendable {
     let bar: Int64
     let startTick: Int64
     let endTick: Int64
+    var triplet: TripletGroup? = nil
+    var writtenDurationTicks: Int64 { triplet == nil ? resolved.event.durationTicks : resolved.event.durationTicks / 2 * 3 }
     var id: String { resolved.id }
     var isContinuation: Bool { startTick > resolved.event.startTick }
+}
+
+struct TimelineTriplet: Identifiable, Sendable {
+    let id: String
+    let startTick: Int64
+    let endTick: Int64
 }
 
 /// Geometry uses bar-relative integer ticks, preserving precision even for large absolute times.
@@ -19,6 +27,8 @@ struct TimelineModel: Sendable {
     let exercise: Exercise
     let events: [ResolvedEvent]
     let tuning: TuningProfile
+    private let tripletsByEvent: [String: TripletGroup]
+    private let tripletsByBar: [Int64: [TimelineTriplet]]
     var ticksPerBar: Int64 { exercise.timeSignature.ticksPerBar }
     var barCount: Int64 { (exercise.durationTicks - 1) / ticksPerBar + 1 }
 
@@ -26,6 +36,17 @@ struct TimelineModel: Sendable {
         self.exercise = exercise
         tuning = exercise.requiredTuning ?? instrument
         events = try exercise.resolvedEvents(instrument: instrument)
+        var byEvent: [String: TripletGroup] = [:], byBar: [Int64: [TimelineTriplet]] = [:]
+        let indexed = Dictionary(uniqueKeysWithValues: exercise.events.map { ($0.id, $0) })
+        for group in exercise.triplets {
+            for id in group.eventIDs { byEvent[id] = group }
+            if let firstID = group.eventIDs.first, let lastID = group.eventIDs.last,
+               let first = indexed[firstID], let last = indexed[lastID] {
+                let range = TimelineTriplet(id: group.id, startTick: first.startTick, endTick: last.endTick)
+                byBar[first.startTick / exercise.timeSignature.ticksPerBar, default: []].append(range)
+            }
+        }
+        tripletsByEvent = byEvent; tripletsByBar = byBar
     }
 
     func bar(containing tick: Int64) -> Int64 { min(barCount - 1, max(0, tick) / ticksPerBar) }
@@ -61,11 +82,13 @@ struct TimelineModel: Sendable {
         var result: [TimelineSegment] = []
         while lower < events.count, events[lower].event.startTick < end {
             let event = events[lower]
-            result.append(TimelineSegment(resolved: event, bar: bar, startTick: max(start, event.event.startTick), endTick: min(end, event.event.endTick)))
+            result.append(TimelineSegment(resolved: event, bar: bar, startTick: max(start, event.event.startTick), endTick: min(end, event.event.endTick), triplet: tripletsByEvent[event.id]))
             lower += 1
         }
         return result
     }
+    func triplets(in bar: Int64) -> [TimelineTriplet] { tripletsByBar[bar] ?? [] }
+
     func eventID(atX x: Double, bar: Int64, zoom: Double) -> String? {
         guard let tick = tick(x: x, bar: bar, zoom: zoom) else { return nil }
         return segments(in: bar).first { $0.startTick <= tick && tick < $0.endTick }?.id

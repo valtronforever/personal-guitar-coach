@@ -9,7 +9,11 @@ struct NotationFragmentID: Hashable, Sendable {
 struct NotationDuration: Equatable, Sendable {
     let baseTicks: Int64
     let dotted: Bool
-    var ticks: Int64 { baseTicks + (dotted ? baseTicks / 2 : 0) }
+    var triplet = false
+    var ticks: Int64 {
+        let written = baseTicks + (dotted ? baseTicks / 2 : 0)
+        return triplet ? written / 3 * 2 : written
+    }
     var flags: Int { baseTicks == 240 ? 2 : baseTicks == 480 ? 1 : 0 }
     var label: String { TimelineModel.durationLabel(baseTicks) + (dotted ? "·" : "") }
     static let values: [Self] = [
@@ -25,6 +29,7 @@ struct NotationFragment: Identifiable, Sendable {
     let duration: NotationDuration
     let tieFromPrevious: Bool
     let tieToNext: Bool
+    var tripletID: String? = nil
     var startTick: Int64 { id.startTick }
     var endTick: Int64 { startTick + duration.ticks }
 }
@@ -32,6 +37,14 @@ struct NotationFragment: Identifiable, Sendable {
 enum RhythmNotation {
     /// Simple-meter notation down to sixteenths. Unsupported grids remain explicit.
     static func fragments(_ segment: TimelineSegment) throws -> [NotationFragment] {
+        if let group = segment.triplet {
+            guard segment.startTick == segment.resolved.event.startTick,
+                  segment.endTick == segment.resolved.event.endTick,
+                  let written = NotationDuration.values.first(where: { $0.ticks == segment.writtenDurationTicks }) else { throw StaffLimitation.duration }
+            return [NotationFragment(id: .init(eventID: segment.id, startTick: segment.startTick),
+                duration: NotationDuration(baseTicks: written.baseTicks, dotted: written.dotted, triplet: true),
+                tieFromPrevious: false, tieToNext: false, tripletID: group.id)]
+        }
         guard segment.startTick % 240 == 0, segment.endTick % 240 == 0 else { throw StaffLimitation.duration }
         var tick = segment.startTick, result: [NotationFragment] = []
         while tick < segment.endTick {
