@@ -20,6 +20,7 @@ import Persistence
         theory.selectStep("check-understanding")
         #expect(theory.tasks.first?.kind == .quiz && !theory.isListeningQuestion)
         let hearing = LessonSelection(lesson: try lesson("hear-pitch-direction"), tuning: .cStandard)
+        hearing.selectStep("listen")
         #expect(hearing.isListeningQuestion && !hearing.showsMusicalVisuals && hearing.practiceEntries.isEmpty)
         #expect(hearing.exercise?.id == "hear-pitch-direction-practice")
         #expect(hearing.exercise?.requiredTuning == .cStandard && hearing.selectedIDs.isEmpty)
@@ -31,6 +32,26 @@ import Persistence
         #expect(PracticeRequest(lesson: hearing.sourceLesson, snapshot: try #require(hearing.snapshot), entryID: task.id) == nil)
     }
 
+    @Test func listeningResponseKeepsExpectedMaterialOutOfReadingAndCarriesPresentationToPractice() throws {
+        for id in ["find-heard-note", "hear-pitch-direction", "repeat-a-rhythm", "transcribe-short-melody"] {
+            let source = try lesson(id), selection = LessonSelection(lesson: try lesson(id), tuning: .dropA)
+            for entry in source.manifest.practiceEntries {
+                let step = try #require(source.manifest.steps.first { $0.activityID == entry.activityID })
+                selection.selectStep(step.id)
+                #expect(selection.isListeningPractice && !selection.isListeningQuestion && !selection.showsMusicalVisuals)
+                #expect(selection.exercise == nil && selection.selectedIDs.isEmpty && !selection.canChoosePosition)
+                let snapshot = try #require(selection.snapshot)
+                let request = try #require(PracticeRequest(lesson: source, snapshot: snapshot, entryID: entry.id))
+                #expect(request.activityReference?.presentation == .listenAndRepeat)
+                #expect(request.exercise.requiredTuning == .dropA)
+                #expect(selection.fretboard(instrument: InstrumentProfile(tuning: .dropA)).expected.isEmpty)
+                for language in [LessonLanguage.en, .uk] {
+                    let text = try #require(selection.text(stepID: step.id, language: language))
+                    #expect(!text.body.contains("{{") && !text.body.contains("fret=") && !text.body.contains("MIDI"))
+                }
+            }
+        }
+    }
     @Test func selfReportedChordCanBeVisualizedAndPlayedButCannotBecomeAnAssessment() throws {
         let source = try lesson("power-chord-self-practice")
         let selection = LessonSelection(lesson: source, tuning: .cStandard)

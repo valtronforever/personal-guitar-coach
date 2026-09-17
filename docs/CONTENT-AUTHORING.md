@@ -418,3 +418,36 @@ A single fretted `MusicalEvent` can carry `vibrato: {extentCents: 80, startTick:
 The first graded envelope is 30–100 cents, 1–3 cycles/second, at least four complete cycles, base frequency 195.9–880 Hz, top frequency at most 1100 Hz, and at least 0.4s of stable base and return. Rate uses the exercise's actual `pulseTicks`, never an assumed quarter note. Preview remains available outside grading limits. Authors must choose BPM bounds that keep every activity within the envelope; the vibrato lesson uses 60–90 BPM. Ordinary steady-note preparation opts into `assessSustain`, separately from vibrato.
 
 TAB/staff keep one canonical event (ties across barlines) and place a wavy mark over the authored modulation interval. The target curve describes width and rate; it is not an exact oscillation-phase matching requirement. Learner relocation preserves base pitch, timing and modulation metadata, and requires a fretted target. Tuning adaptation transposes the base as usual; cents/period are unchanged. Avoid using this single gesture as a stand-in for combined bend/vibrato or multi-change legato chains.
+
+## Listen and repeat with instrument response
+
+A practice entry may opt into `presentation: listenAndRepeat`. Omit this field for the usual shown-target practice. The author still supplies a real monophonic `Exercise`; its resolved pitches, timing, selected bars and tempo drive both the synthesized reference and the later recorded/measured response. See `Resources/Lessons/find-heard-note` and `Resources/Lessons/repeat-a-rhythm` for complete bilingual examples.
+
+```yaml
+steps:
+  - id: response-a
+    kind: none
+    eventIDs: []
+    activityID: response-a
+materials:
+  - id: response-a
+    source:
+      kind: exercise
+      exerciseID: my-private-exercise
+activities:
+  - id: response-a
+    materialID: response-a
+practiceEntries:
+  - id: response-a
+    activityID: response-a
+    exerciseID: my-private-exercise
+    presentation: listenAndRepeat
+```
+
+This mode requires `transposeIntervals`, a complete private exercise with every silent interval represented by an explicit rest, a material used by exactly one activity, one practice entry and one text-only step. Do not add position controls, another material pointing at its exercise, a fingering for that exercise, or a quiz/self-task on that response step. Use separate private quiz stimuli for recognition questions and separate steps for reflection. The loader rejects these structural leaks and rejects context tokens in the private step/activity titles and bodies. Authors must also review hardcoded prose and other exercises: the validator cannot infer whether words or duplicated notes give away an answer.
+
+Use neutral labels such as “Response A”, describe a comparison method, and avoid printing the answer's pitches, fret numbers or exact rhythm. Provide several progressively harder original examples. The learner may listen repeatedly, search on the guitar before capture, then start after a fresh count-in. Changing tempo, bar range, tuning or audio route invalidates preparation. Reference playback has no input capture, and the practice uses the existing single capture owner with the reference tone disabled. Recording/analysis remains one action for the response.
+
+The learner may deliberately reveal notation and fretboard targets. This remains guided for the current selection, including replays and tempo/range changes. Each performed configuration freezes `listeningConditions` version 1 (completed reference, targets revealed), paired with `PracticeActivityReference` schema 2 and the resolved exercise. Results identify whether targets were hidden during that attempt; guided and hidden conditions are not compared as equal. Older ordinary activity schema 1 and configurations omit the new fields and retain their encoding. A retry must prepare again. Results may display the expected notes for diagnosis.
+
+This is measured pitch/onset reproduction, not proof of perfect pitch, hearing, unfamiliar material, memory, fingering or general ear-training proficiency. The examples are fixed, not randomized. Software playback completion does not prove perception. Rhythm needs valid calibration; manual calibration is explicitly approximate, and missing audio still withholds a score. There is no transcription editor: learners can write their own notes externally and submit a guitar response. The `file-coach-7` exchange includes the frozen listening conditions and instructs the coach to honor these limits.

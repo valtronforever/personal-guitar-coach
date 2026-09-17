@@ -18,7 +18,7 @@ enum LessonLearningMode: String, CaseIterable {
         switch self {
         case .scored: return !lesson.manifest.practiceEntries.isEmpty
         case .selfPractice: return lesson.manifest.tasks.contains { $0.kind == .selfPractice }
-        case .listening: return lesson.manifest.tasks.contains { $0.stimulusExerciseID != nil }
+        case .listening: return lesson.manifest.tasks.contains { $0.stimulusExerciseID != nil } || lesson.manifest.practiceEntries.contains { $0.presentation == .listenAndRepeat }
         case .quiz: return lesson.manifest.tasks.contains { $0.kind == .quiz && $0.stimulusExerciseID == nil }
         case .theory: return lesson.manifest.exercises.isEmpty || lesson.manifest.tasks.contains { $0.kind == .checklist }
         }

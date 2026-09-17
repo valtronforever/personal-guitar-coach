@@ -954,7 +954,8 @@ lessons:
       uk: Знайди почуту ноту
     outcomeUK: Підібрати окремий звук на грифі
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 82
     moduleID: ear-improvisation
     lessonID: hear-pitch-direction
@@ -963,7 +964,8 @@ lessons:
       uk: Інтервали на слух
     outcomeUK: Розрізняти й відтворювати відстані між нотами
     originalAssessment: Р
-    status: needs_review
+    status: authored
+    acceptance: pending
   - number: 83
     moduleID: ear-improvisation
     lessonID: repeat-a-rhythm
@@ -972,7 +974,8 @@ lessons:
       uk: Повтори ритм
     outcomeUK: Відтворити почуту ритмічну фразу
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 84
     moduleID: ear-improvisation
     lessonID: transcribe-short-melody
@@ -981,7 +984,8 @@ lessons:
       uk: Підбір короткої мелодії
     outcomeUK: Знайти фразу без готової табулатури
     originalAssessment: Р
-    status: todo
+    status: authored
+    acceptance: pending
   - number: 85
     moduleID: ear-improvisation
     lessonID: two-note-improvisation

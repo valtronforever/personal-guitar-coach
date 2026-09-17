@@ -108,6 +108,7 @@ enum CoachExchange {
 
     static func promptVersion(for practice: AssessedPractice) -> String {
         let exercise = practice.evidence.configuration.exercise
+        if practice.evidence.configuration.listeningConditions != nil { return "file-coach-7" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.vibrato != nil }) { return "file-coach-6" }
         if practice.evidence.configuration.selectedEvents.contains(where: { $0.pitchTransition != nil }) { return "file-coach-5" }
         if ![TimeSignature.threeFour, .fourFour].contains(exercise.timeSignature) || exercise.beatGrouping != nil { return "file-coach-4" }

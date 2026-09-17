@@ -26,6 +26,7 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     public static let maximumSeconds = 900.0
     public let capabilityVersion: String
     public let lesson: PracticeLessonReference?
+    public let listeningConditions: PracticeListeningConditions?
     public let exercise: Exercise
     public let instrument: InstrumentProfile
     public let bpm: Double
@@ -44,17 +45,19 @@ public struct PracticeConfiguration: Codable, Equatable, Sendable {
     public var finalDrainSeconds: Double { 1.4 + (route.input.hardwareLatencySeconds ?? 0) + (route.output.hardwareLatencySeconds ?? 0) + max(0, calibration?.residualOffsetSeconds ?? 0) }
 
     public init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>? = nil,
-                countInBars: Int = 1, route: CalibrationRoute, calibration: CalibrationProfile? = nil, outputAlignment: OutputAlignmentProfile? = nil, lesson: PracticeLessonReference? = nil) throws {
+                countInBars: Int = 1, route: CalibrationRoute, calibration: CalibrationProfile? = nil, outputAlignment: OutputAlignmentProfile? = nil, lesson: PracticeLessonReference? = nil, listeningConditions: PracticeListeningConditions? = nil) throws {
         try self.init(exercise: exercise, instrument: instrument, bpm: bpm, range: range, countInBars: countInBars,
-            route: route, calibration: calibration, outputAlignment: outputAlignment, lesson: lesson, capabilityVersion: exercise.events.contains(where: { $0.vibrato != nil && (range?.contains($0.startTick) ?? true) }) ? MonophonicCapability.vibratoVersion : exercise.events.contains(where: { $0.pitchTransition != nil && (range?.contains($0.startTick) ?? true) }) ? MonophonicCapability.pitchTransitionVersion : MonophonicCapability.version,
+            route: route, calibration: calibration, outputAlignment: outputAlignment, lesson: lesson, listeningConditions: listeningConditions, capabilityVersion: exercise.events.contains(where: { $0.vibrato != nil && (range?.contains($0.startTick) ?? true) }) ? MonophonicCapability.vibratoVersion : exercise.events.contains(where: { $0.pitchTransition != nil && (range?.contains($0.startTick) ?? true) }) ? MonophonicCapability.pitchTransitionVersion : MonophonicCapability.version,
             validateCurrentCapability: true)
     }
     private init(exercise: Exercise, instrument: InstrumentProfile, bpm: Double, range: Range<Int64>?, countInBars: Int,
-                 route: CalibrationRoute, calibration: CalibrationProfile?, outputAlignment: OutputAlignmentProfile?, lesson: PracticeLessonReference?,
+                 route: CalibrationRoute, calibration: CalibrationProfile?, outputAlignment: OutputAlignmentProfile?, lesson: PracticeLessonReference?, listeningConditions: PracticeListeningConditions?,
                  capabilityVersion: String, validateCurrentCapability: Bool) throws {
         guard !capabilityVersion.isEmpty, capabilityVersion.utf8.count <= 256 else { throw PracticeError.invalidEvidence }
         try exercise.validatePracticeSnapshot(instrument: instrument.tuning, bpm: bpm)
         try lesson?.activity?.validate(exercise: exercise)
+        guard (lesson?.activity?.presentation == .listenAndRepeat) == (listeningConditions != nil) else { throw PracticeError.invalidEvidence }
+        self.listeningConditions = listeningConditions
         if let confirmation = lesson?.activity?.selfConfirmation {
             guard confirmation.frets == instrument.frets, confirmation.tuning.hasSamePitches(as: exercise.requiredTuning ?? instrument.tuning) else { throw PracticeError.invalidEvidence }
         }
@@ -171,7 +174,7 @@ extension PracticeLessonReference {
 }
 
 extension PracticeConfiguration {
-    private enum CodingKeys: String, CodingKey { case exercise, instrument, bpm, range, countInBars, route, calibration, outputAlignment, lesson, capabilityVersion }
+    private enum CodingKeys: String, CodingKey { case exercise, instrument, bpm, range, countInBars, route, calibration, outputAlignment, lesson, listeningConditions, capabilityVersion }
     public init(from decoder: Decoder) throws {
         let v = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(exercise: v.decode(Exercise.self, forKey: .exercise),
@@ -183,6 +186,7 @@ extension PracticeConfiguration {
             calibration: v.decodeIfPresent(CalibrationProfile.self, forKey: .calibration),
             outputAlignment: v.decodeIfPresent(OutputAlignmentProfile.self, forKey: .outputAlignment),
             lesson: v.decodeIfPresent(PracticeLessonReference.self, forKey: .lesson),
+            listeningConditions: v.decodeIfPresent(PracticeListeningConditions.self, forKey: .listeningConditions),
             capabilityVersion: v.decode(String.self, forKey: .capabilityVersion), validateCurrentCapability: false)
     }
 }

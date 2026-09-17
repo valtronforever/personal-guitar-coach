@@ -23,3 +23,5 @@ Verification:
 - Root-only Release and ZIP verified in `docs/benchmarks/vibrato-release-bundle.json`: arm64, macOS 14, ad-hoc signature, hardened runtime, expected sandbox/audio entitlements, 87 bundles / 262 YAML resources. Binary SHA256 `d620ce4803765e08e780e4f034d1590b52bc9eb5fc7455dd0b8886d9d4ce6397`; archive SHA256 `89669dee997c91a2d377e4602913f53d671acc35d370af6cb408d14b32ae44ab`. Final signed sandbox → separate XPC → invalidRequest probe passed, with no provider call. `/tmp/vibrato-release-final.log`, `/tmp/vibrato-xpc-final.log`.
 
 No native app launch, real guitar vibrato, audio-route or user acceptance is claimed. The course inventory is 80 authored / 1 needs_review / 47 todo, not full-course acceptance.
+
+PR 84 merged at exact head `850d76574fbbae841fd1ed142ade524e98ed1d10` after GitHub Actions run `35179866487` passed in 21m53s. Merge commit `78db84b1b5f70dc1897216d889f636cc2cf85287`. Hardware/user validation remains open.

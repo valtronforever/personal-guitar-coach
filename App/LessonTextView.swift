@@ -44,7 +44,7 @@ struct LessonTextView: View {
                         .onAppear { if restoresBookmark, let id = selection.stepID { proxy.scrollTo(id, anchor: .top) } }
                     }.frame(minHeight: 140)
                     Divider()
-                    if selection.exercise != nil { PreviewControls(model: preview, listeningOnly: selection.isListeningQuestion) }
+                    if !selection.isListeningPractice, selection.exercise != nil { PreviewControls(model: preview, listeningOnly: selection.isListeningQuestion) }
                     if selection.showsMusicalVisuals {
                     Picker("tab.visualMode", selection: $visualMode) {
                         Text("fretboard.title").tag("fretboard")

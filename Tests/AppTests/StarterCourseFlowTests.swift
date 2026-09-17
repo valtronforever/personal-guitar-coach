@@ -10,7 +10,7 @@ import Audio
     @Test func EachBundledLessonConnectsTextVisualsPracticeSavedResultAndRetry() async throws {
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         let library = LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons"))
-        #expect(library.issues.isEmpty && library.lessons.count == 87)
+        #expect(library.issues.isEmpty && library.lessons.count == 90)
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }
         let repository = LocalRepository(root: directory), assessment = AssessmentStore(repository: repository)
@@ -43,7 +43,8 @@ import Audio
                 let endpoint = try CalibrationEndpoint(uid: "course-flow-stub", channel: 1, sampleRate: 48000, bufferFrames: 512)
                 let configuration = try PracticeConfiguration(exercise: request.exercise, instrument: InstrumentProfile(tuning: try #require(request.exercise.requiredTuning)), bpm: practice.bpm,
                     route: CalibrationRoute(input: endpoint, output: endpoint, backendVersion: "course-events-1"),
-                    lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, activity: request.activityReference))
+                    lesson: PracticeLessonReference(id: request.lessonID, version: request.lessonVersion, activity: request.activityReference),
+                    listeningConditions: entry.presentation == .listenAndRepeat ? PracticeListeningConditions(referencePlaybackCompleted: true, targetsRevealed: false) : nil)
                 // Healthy silence is explicit synthetic evidence, not a device capture or a permission request.
                 let start = try configuration.expectedStart(renderEpochSeconds: 100)
                 let end = try configuration.expectedEnd(renderEpochSeconds: 100)
@@ -69,6 +70,10 @@ import Audio
                 #expect(practice.firstBar == advice.firstBar && practice.lastBar == advice.lastBar)
                 #expect(practice.selectedEventIDs.isSuperset(of: Set(advice.eventIDs)))
                 #expect(!practice.physicallyTuned && !practice.isBusy && practice.phase == .idle)
+                if entry.presentation == .listenAndRepeat {
+                    #expect(practice.isListeningPractice && practice.hidesTargets && !practice.canStartPreparedAttempt)
+                    #expect(result.evidence.configuration.listeningConditions?.usedHiddenTargets == true)
+                }
                 #expect(ResultPresentation.annotations(result).values.allSatisfy { $0 == .missing })
             }
             for exercise in lesson.manifest.exercises where exercise.assessmentMode == .displayOnly {

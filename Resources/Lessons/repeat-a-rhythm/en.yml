@@ -1,0 +1,65 @@
+lessonID: repeat-a-rhythm
+lessonVersion: 1
+locale: en
+title: Repeat a rhythm by ear
+summary: Retain a short rhythmic pattern and reproduce it on one pitch after the count-in.
+goal: Reproduce attacks and spaces from a heard pattern without rhythmic TAB.
+body: |-
+  Rhythm includes both sounds and the spaces between them. This lesson removes the written pattern so that you listen for when attacks occur. Each example uses one pitch throughout; find that sound before starting, then concentrate on its timing. The visible circles show only the steady metronome pulse. They do not reveal the rhythm you must reproduce.
+
+  Listen to the complete reference once without playing. Keep the pulse with a small comfortable motion. On the next replay, speak or tap the rhythm quietly if useful, then leave a short silence and recall it. Count the beat continuously through gaps. Treat the pattern as a whole sentence rather than a list of isolated attacks; notice whether a sound lands on a click or between clicks.
+
+  Practice A establishes a simple pulse, B introduces a space, and later examples require a finer subdivision and a longer memory. Their exact patterns stay hidden. You may replay as often as needed. Begin at the default tempo; if you change tempo or select a smaller bar range, listen again because the prepared reference must match the response. Do not accelerate through a silence just because your hands are idle.
+
+  After finding the pitch and rehearsing the pattern, start the response. Play only after the new count-in. Use a clean, clearly separated attack and mute deliberately in the heard spaces. Keep the picking motion relaxed and small. The app measures note onsets and available pitch evidence; these examples do not certify your exact muting motion or grade the entire release envelope. Listen back to check whether the intended spaces actually sound quiet.
+
+  Review an early or late tendency separately from a missing attack. A missed event can shift your memory of the remaining phrase, so restart from the count-in instead of chasing the cursor. Timing feedback needs a usable calibration; without it, a pitch result alone cannot establish rhythmic accuracy. Manual calibration produces an approximate timing assessment. Use the diagnostics to choose a shorter pattern, then restore the complete phrase. Revealing the target is a useful comparison step and is labeled guided practice.
+steps:
+  prepare:
+    title: Listen before searching
+    body: Read the method, choose a clean input and prepare to compare sounds.
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+activities:
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its attacks and spaces. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+learningTasks:
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+    items:
+      compare: I compared sounds before looking for a visual answer.
+      replay: I replayed the reference when memory became uncertain.
+      diagnose: I identified a specific pitch, order or timing mismatch to practice.
+      honesty: I distinguished guided attempts and familiar examples from a new listening challenge.

@@ -1,0 +1,65 @@
+lessonID: find-heard-note
+lessonVersion: 1
+locale: en
+title: Find a heard note without TAB
+summary: Compare a remembered pitch with your guitar and find it before a scored response.
+goal: Find and reproduce a heard pitch in the same octave without a displayed fingering.
+body: |-
+  A note can be recognized by sound before you know its name or fret. In this lesson the reference plays a short pattern using one pitch. The practice screen hides both the fretboard targets and TAB. A metronome pulse remains visible, so you can separate finding the sound from starting it on time.
+
+  Start with example A. Listen all the way through without playing over the reference. Hum the pitch quietly if that helps retain it; singing is optional and is not recorded or graded by this exercise. After playback, try a comfortable middle string. Compare one clear note at a time. Decide whether your guitar is lower, higher or close to the remembered sound, then move by a small distance and compare again.
+
+  Avoid racing randomly along the neck. Keep the last useful comparison in mind. When you pass from below the target to above it, search between those positions. Listen again whenever the reference fades from memory. These examples are fixed exercises, not randomized tests of perfect pitch. Repetition trains a comparison process; memorizing one fret does not demonstrate a general listening skill.
+
+  Once you have a candidate, start practice. Pluck for the input check if requested, listen to the new count-in, then reproduce the reference pattern. The reference is not played during your response. Use a clean tone, avoid vibrato or bends, and silence other strings. If the sound has the right note name but is an octave away, the pitch result will still differ: this exercise asks for the same sounding height.
+
+  Continue through B, C and D, restarting the comparison instead of assuming the previous position. Read the result only after the attempt. If needed, reveal the target and compare its sound with your choice; that attempt will be labeled guided. Return later and try without targets again. Change tuning only between attempts: the entire reference transposes and must be heard again. Audio can verify the pitch, not the string or finger you used.
+steps:
+  prepare:
+    title: Listen before searching
+    body: Read the method, choose a clean input and prepare to compare sounds.
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+activities:
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its pitch and pattern. Rehearse before starting,
+      then respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+learningTasks:
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+    items:
+      compare: I compared sounds before looking for a visual answer.
+      replay: I replayed the reference when memory became uncertain.
+      diagnose: I identified a specific pitch, order or timing mismatch to practice.
+      honesty: I distinguished guided attempts and familiar examples from a new listening challenge.

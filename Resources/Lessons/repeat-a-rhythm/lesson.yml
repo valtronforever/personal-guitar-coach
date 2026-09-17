@@ -1,0 +1,415 @@
+schemaVersion: 3
+id: repeat-a-rhythm
+version: 1
+difficulty: beginner
+topic: earTraining
+steps:
+- id: prepare
+  kind: none
+  eventIDs: []
+- id: response-a
+  kind: none
+  eventIDs: []
+  activityID: response-a
+- id: response-b
+  kind: none
+  eventIDs: []
+  activityID: response-b
+- id: response-c
+  kind: none
+  eventIDs: []
+  activityID: response-c
+- id: response-d
+  kind: none
+  eventIDs: []
+  activityID: response-d
+- id: review
+  kind: none
+  eventIDs: []
+exercises:
+- id: repeat-a-rhythm-response-a
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-2
+    startTick: 480
+    durationTicks: 480
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 960
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-3
+    startTick: 1440
+    durationTicks: 480
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-4
+    startTick: 2400
+    durationTicks: 480
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-5
+    startTick: 3360
+    durationTicks: 480
+    kind: rest
+    positions: []
+- id: repeat-a-rhythm-response-b
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-2
+    startTick: 480
+    durationTicks: 1440
+    kind: rest
+    positions: []
+  - id: event-3
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-4
+    startTick: 2400
+    durationTicks: 480
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-5
+    startTick: 3360
+    durationTicks: 480
+    kind: rest
+    positions: []
+- id: repeat-a-rhythm-response-c
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-2
+    startTick: 480
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-3
+    startTick: 960
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-4
+    startTick: 1920
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-5
+    startTick: 2880
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-6
+    startTick: 3360
+    durationTicks: 480
+    kind: rest
+    positions: []
+- id: repeat-a-rhythm-response-d
+  version: 1
+  ppq: 960
+  timeSignature: 4/4
+  defaultBPM: 60
+  minimumBPM: 50
+  maximumBPM: 90
+  tuningPolicy: fixedTuning
+  requiredTuning:
+    id: standard
+    revision: 1
+    name: Standard
+    referenceA4: 440
+    strings:
+    - number: 1
+      openPitch:
+        midi: 64
+    - number: 2
+      openPitch:
+        midi: 59
+    - number: 3
+      openPitch:
+        midi: 55
+    - number: 4
+      openPitch:
+        midi: 50
+    - number: 5
+      openPitch:
+        midi: 45
+    - number: 6
+      openPitch:
+        midi: 40
+  assessmentMode: monophonic
+  events:
+  - id: event-1
+    startTick: 0
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: gap-before-event-2
+    startTick: 960
+    durationTicks: 480
+    kind: rest
+    positions: []
+  - id: event-2
+    startTick: 1440
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-3
+    startTick: 1920
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-4
+    startTick: 2400
+    durationTicks: 960
+    kind: rest
+    positions: []
+  - id: event-5
+    startTick: 3360
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-6
+    startTick: 3840
+    durationTicks: 480
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-7
+    startTick: 4320
+    durationTicks: 1440
+    kind: rest
+    positions: []
+  - id: event-8
+    startTick: 5760
+    durationTicks: 960
+    kind: note
+    positions:
+    - string: 3
+      fret: 7
+  - id: event-9
+    startTick: 6720
+    durationTicks: 960
+    kind: rest
+    positions: []
+adaptation:
+  policy: transposeIntervals
+materials:
+- id: response-a
+  source:
+    kind: exercise
+    exerciseID: repeat-a-rhythm-response-a
+- id: response-b
+  source:
+    kind: exercise
+    exerciseID: repeat-a-rhythm-response-b
+- id: response-c
+  source:
+    kind: exercise
+    exerciseID: repeat-a-rhythm-response-c
+- id: response-d
+  source:
+    kind: exercise
+    exerciseID: repeat-a-rhythm-response-d
+activities:
+- id: response-a
+  materialID: response-a
+- id: response-b
+  materialID: response-b
+- id: response-c
+  materialID: response-c
+- id: response-d
+  materialID: response-d
+practiceEntries:
+- id: response-a
+  activityID: response-a
+  exerciseID: repeat-a-rhythm-response-a
+  presentation: listenAndRepeat
+- id: response-b
+  activityID: response-b
+  exerciseID: repeat-a-rhythm-response-b
+  presentation: listenAndRepeat
+- id: response-c
+  activityID: response-c
+  exerciseID: repeat-a-rhythm-response-c
+  presentation: listenAndRepeat
+- id: response-d
+  activityID: response-d
+  exerciseID: repeat-a-rhythm-response-d
+  presentation: listenAndRepeat
+fingerings: []
+learningTasks:
+- id: review
+  stepID: review
+  kind: selfPractice
+  itemIDs:
+  - compare
+  - replay
+  - diagnose
+  - honesty
+curriculum:
+  moduleID: ear-improvisation
+  ordinal: 83
+  durationMinutes: 25
+  prerequisites:
+  - eighth-notes
+  keywords:
+  - Repeat a rhythm by ear
+  - Повтори ритм на слух
+  - listen and repeat
+  - на слух

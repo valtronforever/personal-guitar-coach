@@ -8,6 +8,10 @@ struct AssessmentSummaryView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(LocalizedStringKey("assessment.validity." + result.validity.rawValue)).font(.headline)
                     .accessibilityIdentifier("assessment.validity")
+                if let conditions = result.evidence.configuration.listeningConditions {
+                    Label(LocalizedStringKey(conditions.usedHiddenTargets ? "listening.resultHidden" : "listening.guided"), systemImage: conditions.usedHiddenTargets ? "ear" : "eye")
+                    Text("listening.resultLimits").font(.caption).foregroundStyle(.secondary)
+                }
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 110), alignment: .leading)], alignment: .leading, spacing: 16) {
                     metric("assessment.overall", result.overallScore)
                     metric("assessment.pitch", result.pitchScore)

@@ -61,7 +61,7 @@ import Persistence
     @Test func modesDistinguishListeningSelfPracticeAndAudioGrading() async throws {
         let store = await library()
         let hearing = try #require(store.sourceLesson(id: "hear-pitch-direction"))
-        #expect(LessonLearningMode.listening.includes(hearing) && !LessonLearningMode.quiz.includes(hearing) && !LessonLearningMode.scored.includes(hearing))
+        #expect(LessonLearningMode.listening.includes(hearing) && !LessonLearningMode.quiz.includes(hearing) && LessonLearningMode.scored.includes(hearing))
         let muted = try #require(store.sourceLesson(id: "stop-a-note"))
         #expect(LessonLearningMode.selfPractice.includes(muted) && !LessonLearningMode.scored.includes(muted))
         let fretted = try #require(store.sourceLesson(id: "clean-fretted-note"))

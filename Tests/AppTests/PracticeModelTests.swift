@@ -116,7 +116,7 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let audio: AudioSessionStore
         let calibration: CalibrationStore
     }
-    private func harness() async throws -> Harness {
+    private func harness(listening: Bool = false) async throws -> Harness {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         let repository = LocalRepository(root: directory), runtime = PracticeRuntimeStub()
         let coordinator = AudioSessionCoordinator(runtime: runtime, permissions: PracticePermissionStub())
@@ -125,9 +125,9 @@ private actor PracticeRuntimeStub: AudioRuntime {
         let calibration = CalibrationStore(repository: repository); await calibration.load()
         let model = PracticeModel(audio: audio, calibration: calibration)
         let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
-        let lesson = try #require(LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons.first)
+        let lesson = try #require(LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons.first { !listening || $0.id == "find-heard-note" })
         let exerciseID = try #require(lesson.manifest.practiceEntries.first?.id)
-        let practiceRequest: PracticeRequest? = PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: "lesson", instrument: InstrumentProfile()), entryID: exerciseID)
+        let practiceRequest: PracticeRequest? = PracticeRequest(lesson: lesson, snapshot: try lesson.resolveActivity(id: listening ? "response-a" : "lesson", instrument: InstrumentProfile()), entryID: exerciseID)
         let unwrapped = try #require(practiceRequest)
         model.configure(unwrapped); model.physicallyTuned = true
         return Harness(directory: directory, model: model, runtime: runtime, audio: audio, calibration: calibration)
@@ -144,6 +144,79 @@ private actor PracticeRuntimeStub: AudioRuntime {
         try await wait(harness) { (await harness.runtime.request != nil) && harness.model.phase == .countIn }
         try await harness.runtime.advance(.playing)
         try await wait(harness) { harness.model.phase == .running }
+    }
+    @Test func hiddenResponseRequiresCompletedReferenceAndDoesNotCaptureTheTeacher() async throws {
+        let h = try await harness(listening: true); defer { try? FileManager.default.removeItem(at: h.directory) }
+        #expect(h.model.isListeningPractice && h.model.hidesTargets && !h.model.canStartPreparedAttempt)
+        #expect(h.model.expectedPositions.isEmpty)
+        h.model.start(instrument: InstrumentProfile())
+        #expect(h.model.machine.configuration == nil && h.model.errorKey == "listening.prepareFirst")
+        h.model.listen(instrument: InstrumentProfile())
+        try await wait(h) { await h.runtime.request != nil }
+        let reference = try #require(await h.runtime.request)
+        #expect(reference.mode == .preview && reference.toneVolume > 0 && reference.countInBars == 1)
+        #expect(reference.exercise == h.model.request?.exercise && reference.bpm == h.model.bpm)
+        #expect(await h.runtime.inputStarts == 0)
+        #expect(await h.runtime.recordingsStarted == 0)
+        h.model.start(instrument: InstrumentProfile())
+        #expect(!h.model.isBusy)
+        try await h.runtime.advance(.completed)
+        try await wait(h) { !h.model.isListeningBusy }
+        #expect(h.model.listeningConditions?.usedHiddenTargets == true && h.model.canStartPreparedAttempt)
+        #expect(await h.runtime.request == nil)
+        h.model.setRepeat(true); #expect(!h.model.repeatEnabled)
+        h.model.start(instrument: InstrumentProfile(), recordForCoach: true)
+        try await playing(h)
+        let response = try #require(await h.runtime.request)
+        #expect(response.mode == .practice && response.toneVolume == 0)
+        #expect(response.exercise == reference.exercise && response.range == reference.range && response.bpm == reference.bpm)
+        #expect(h.model.machine.configuration?.listeningConditions?.usedHiddenTargets == true)
+        #expect(h.model.hidesTargets && h.model.listeningConditions == nil)
+        #expect(await h.runtime.inputStarts == 1)
+        #expect(await h.runtime.recordingsStarted == 1)
+        try await h.runtime.advance(.completed)
+        try await wait(h) { !h.model.isBusy }
+        #expect(h.model.latestEvidence?.configuration.listeningConditions?.usedHiddenTargets == true)
+        #expect(h.model.latestEvidence?.attacks.count == 2)
+        #expect(h.model.recordedTake != nil && !h.model.canStartPreparedAttempt)
+    }
+    @Test func canceledOrChangedReferenceCannotPrepareResponseAndRevealRemainsGuided() async throws {
+        let h = try await harness(listening: true); defer { try? FileManager.default.removeItem(at: h.directory) }
+        for change in 0..<4 {
+            h.model.listen(instrument: InstrumentProfile())
+            try await wait(h) { await h.runtime.request != nil }
+            if change == 0 { h.model.stop() }
+            if change == 1 { h.model.setTempo(61) }
+            if change == 2 { h.audio.invalidateSynchronization() }
+            if change == 3 { h.model.instrumentWillChange(InstrumentProfile(tuning: .cStandard)) }
+            try await h.runtime.advance(.completed)
+            try await wait(h) { !h.model.isListeningBusy }
+            #expect(h.model.listeningConditions == nil && !h.model.canStartPreparedAttempt)
+            #expect(await h.runtime.inputStarts == 0)
+        }
+        h.model.revealListeningTargets()
+        #expect(!h.model.hidesTargets && h.model.canStartPreparedAttempt)
+        #expect(!h.model.expectedPositions.isEmpty)
+        h.model.setTempo(62)
+        #expect(h.model.listeningConditions?.targetsRevealed == true)
+        h.model.physicallyTuned = true
+        h.model.start(instrument: InstrumentProfile()); try await playing(h)
+        #expect(h.model.machine.configuration?.listeningConditions?.usedHiddenTargets == false)
+        #expect(h.model.machine.configuration?.listeningConditions?.targetsRevealed == true)
+        h.model.stop(); try await wait(h) { !h.model.isBusy }
+        h.model.configure(nil)
+        #expect(h.model.listening.conditions == nil && !h.model.isListeningPractice)
+    }
+    @Test func listeningGenerationRejectsLateCompletionAndKeepsDeliberateReveal() throws {
+        var state = ListeningPreparation()
+        let a = UUID(), b = UUID()
+        state.begin(a); state.invalidate(); state.begin(b)
+        #expect(!state.complete(a) && state.conditions == nil)
+        #expect(state.complete(b) && state.conditions?.usedHiddenTargets == true)
+        state.reveal(); state.begin(a); state.complete(a)
+        #expect(state.conditions?.targetsRevealed == true && state.conditions?.usedHiddenTargets == false)
+        state.invalidate()
+        #expect(state.conditions?.referencePlaybackCompleted == false && state.conditions?.targetsRevealed == true)
     }
     @Test func explicitCoachActionRecordsOneTakeWhileOrdinaryPracticeDoesNot() async throws {
         let h = try await harness(); defer { try? FileManager.default.removeItem(at: h.directory) }

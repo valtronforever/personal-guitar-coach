@@ -1,0 +1,67 @@
+lessonID: transcribe-short-melody
+lessonVersion: 1
+locale: en
+title: Find a short melody by ear
+summary: Combine pitch comparison, interval direction and rhythm to find a short phrase without prepared TAB.
+goal: Reproduce a short heard melody in its original order, register and rhythm.
+body: |-
+  Melody combines a path through pitches with a rhythm. Trying to remember every detail at once often leads to guessing. This lesson uses short original phrases whose notation stays hidden until you choose to reveal it. Separate the work into listening, finding an anchor, mapping the pitch direction, retaining the rhythm, and finally playing the complete response.
+
+  Listen to example A without touching the guitar. Remember its overall shape: does it move away and return, keep moving, or repeat a pitch? Hum or describe that shape privately. Then replay and focus on the first note. Find that anchor on the instrument before searching for the rest. Keep its octave: a phrase reproduced an octave away can preserve the contour but does not match this exercise’s absolute targets.
+
+  Find the next sound by comparison with the anchor. After two or three notes, play the small group and compare it with a fresh replay. Do not add speed until the order is stable. When two neighboring sounds are uncertain, isolate their relationship mentally and reuse the interval-comparison process. A comfortable fingering is welcome, but the app measures sounding notes rather than proving a specific string or finger.
+
+  Next recall the attacks and spaces against the metronome. Tap the rhythm separately if the pitches distract you. You may write your own notes or TAB outside the app as a transcription aid, then compare that work after the attempt. There is no notation editor in this exercise; the scored response is your actual guitar performance. Start only when you can remember the short phrase through the count-in.
+
+  Later examples lengthen the phrase or combine a repeated note with a change of direction and rhythm. Rehearse in small groups, then join them without inserting an extra pause. If the complete phrase is difficult, select one bar and listen to that selection again. After a useful partial attempt, restore the full range and listen once more. Avoid reading the result as a global judgment of your ear: it describes this fixed example and the evidence captured in this attempt.
+
+  Use target reveal to locate a stubborn mismatch, then explain to yourself whether it was pitch, register, order or timing. Revealed attempts are marked guided. Later revisit another example without hints, or transpose the instrument setting and relearn its sounds. Software playback completion does not prove that you heard the phrase, and repeated examples may become familiar. The objective is a repeatable method of musical comparison, not a claim that one score measures all listening ability.
+steps:
+  prepare:
+    title: Listen before searching
+    body: Read the method, choose a clean input and prepare to compare sounds.
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+activities:
+  response-a:
+    title: Response A
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-b:
+    title: Response B
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-c:
+    title: Response C
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+  response-d:
+    title: Response D
+    body: Open practice, listen to the complete reference and find its whole phrase. Rehearse before starting, then
+      respond after the new count-in. Targets remain hidden unless you explicitly reveal them.
+learningTasks:
+  review:
+    title: Review the comparison
+    body: Confirm only what you actually did, separately from the measured score.
+    items:
+      compare: I compared sounds before looking for a visual answer.
+      replay: I replayed the reference when memory became uncertain.
+      diagnose: I identified a specific pitch, order or timing mismatch to practice.
+      honesty: I distinguished guided attempts and familiar examples from a new listening challenge.
