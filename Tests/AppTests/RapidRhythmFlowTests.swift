@@ -7,7 +7,7 @@ import Persistence
 
 @MainActor struct RapidRhythmFlowTests {
     private var root: URL { URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent() }
-    private func result(bpm: Double) throws -> AssessedPractice {
+    private func result(bpm: Double, omittedAttacks: Int = 0) throws -> AssessedPractice {
         let lesson = try #require(LessonCatalogLoader().load(directory: root.appendingPathComponent("Resources/Lessons")).lessons.first { $0.id == "tremolo-picking" })
         let instrument = InstrumentProfile(tuning: .cStandard, frets: .nineteen)
         let resolved = try lesson.resolveActivity(id: "fast-short", instrument: instrument)
@@ -20,7 +20,7 @@ import Persistence
         let configuration = try PracticeConfiguration(exercise: request.exercise, instrument: instrument, bpm: bpm, route: route, calibration: calibration)
         let start = try configuration.expectedStart(renderEpochSeconds: 100), seconds = request.exercise.timeSignature.secondsPerTick(bpm: bpm)
         let notes = configuration.selectedEvents.filter { $0.kind == .note }
-        let attacks = try notes.enumerated().map { try PracticeAttack(id: UInt64($0.offset + 1), normalizedOnset: start + Double($0.element.startTick) * seconds + 0.08, frequency: nil, clarity: nil, reliable: false) }
+        let attacks = try notes.enumerated().dropFirst(omittedAttacks).map { try PracticeAttack(id: UInt64($0.offset + 1), normalizedOnset: start + Double($0.element.startTick) * seconds + 0.08, frequency: nil, clarity: nil, reliable: false) }
         let frames = try (0..<Int((configuration.durationSeconds + 0.2) / 0.02)).map { index in
             let relative = Double(index) * 0.02
             let sounding = notes.contains { relative >= Double($0.startTick) * seconds && relative < Double($0.endTick) * seconds }
@@ -43,6 +43,21 @@ import Persistence
         #expect(FeedbackEngine.recommendations(for: fast).first?.kind == .calibration)
         #expect(CoachExchange.promptVersion(for: slow) == "file-coach-11")
         #expect(slow.parameters == .rhythmOnly)
+    }
+    @Test func unreliableRhythmAssignmentsNeverProduceMusicalErrorAdvice() throws {
+        let fast = try result(bpm: 100, omittedAttacks: 2)
+        #expect(fast.validity == .uncalibrated && fast.missedCount >= 2)
+        #expect(ResultPresentation.hasUnassessedRhythm(fast))
+        #expect(ResultPresentation.annotations(fast).isEmpty)
+        let advice = FeedbackEngine.recommendations(for: fast)
+        #expect(advice.map(\.kind) == [.calibration, .repeatFragment])
+        let retry = try #require(advice.last)
+        #expect(retry.eventIDs.isEmpty && retry.attackIDs.isEmpty && retry.evidenceCount == 0)
+        #expect(retry.denominator == fast.expectedCount && retry.bpm == 100)
+        #expect(retry.firstBar == 1 && retry.lastBar == Int((fast.evidence.configuration.range.upperBound - 1) / fast.evidence.configuration.exercise.timeSignature.ticksPerBar) + 1)
+        let slow = try result(bpm: 40, omittedAttacks: 2)
+        #expect(slow.validity == .valid && !ResultPresentation.hasUnassessedRhythm(slow))
+        #expect(FeedbackEngine.recommendations(for: slow).contains { $0.kind == .missed })
     }
     @Test func historyRoundTripKeepsAbsentPitchAndFrozenRhythmMode() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

@@ -43,10 +43,14 @@ struct AssessmentSummaryView: View {
                     Text(LocalizedStringKey("assessment.rhythmReason." + result.rhythmCapability.rawValue)).foregroundStyle(.secondary)
                 }
                 Text("assessment.expected \(result.expectedCount)")
-                Text("assessment.matched \(result.matchedCount)")
-                Text("assessment.missed \(result.missedCount)")
-                Text("assessment.extra \(result.scoredExtras.count)")
-                if result.uncertainCount + result.uncertainExtraCount > 0 {
+                if ResultPresentation.hasUnassessedRhythm(result) {
+                    Text("practice.capturedAttacks \(result.evidence.attacks.count)")
+                } else {
+                    Text("assessment.matched \(result.matchedCount)")
+                    Text("assessment.missed \(result.missedCount)")
+                    Text("assessment.extra \(result.scoredExtras.count)")
+                }
+                if !ResultPresentation.hasUnassessedRhythm(result) && result.uncertainCount + result.uncertainExtraCount > 0 {
                     Text("assessment.uncertain \(result.uncertainCount) \(result.uncertainExtraCount)")
                     Text("assessment.uncertainExplanation").font(.caption).foregroundStyle(.secondary)
                 }

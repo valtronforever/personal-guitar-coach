@@ -8,7 +8,7 @@ public enum FeedbackAction: Sendable { case audioSetup, tuner, repeatFragment }
 
 /// Advice is derived from archived measurements, never from an inferred hand, finger, or string.
 public struct PracticeRecommendation: Equatable, Sendable, Identifiable {
-    public static let ruleVersion = "feedback-6"
+    public static let ruleVersion = "feedback-7"
     public var id: String { kind.rawValue }
     public let sourceAttemptID: UUID
     public let kind: FeedbackKind
@@ -63,6 +63,12 @@ public enum FeedbackEngine {
             let intentional: Set<PracticeStopReason> = [.userCancelled, .paused, .changedTempo, .changedRange, .changedInstrument, .changedExercise]
             return [advice(intentional.contains(result.evidence.reason ?? .audioFailure) ? .restart : .interrupted,
                 intentional.contains(result.evidence.reason ?? .audioFailure) ? .repeatFragment : .audioSetup)]
+        }
+        // Rhythm-only has no pitch assessment fallback when timing cannot be trusted.
+        // Preserve a neutral full-range retry without interpreting diagnostic assignments.
+        if result.validity == .uncalibrated && config.exercise.assessmentMode == .rhythmOnly {
+            return [advice(.calibration, .audioSetup),
+                advice(.repeatFragment, .repeatFragment, denominator: result.expectedCount)]
         }
         var answer: [PracticeRecommendation] = []
         if result.validity == .uncalibrated { answer.append(advice(.calibration, .audioSetup)) }
