@@ -118,6 +118,8 @@ lessons:
   - metal-study
   - rnb-neo-soul
   - country-chicken-picking
+  - fingerstyle-bass-melody
+  - chord-melody
 modules:
   - id: getting-started
     order: 1

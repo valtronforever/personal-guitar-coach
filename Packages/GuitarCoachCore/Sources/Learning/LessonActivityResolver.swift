@@ -69,7 +69,20 @@ extension LoadedLesson {
             } else {
                 events = try selected.map { event in
                     let positions: [FretPosition]
-                    if event.harmonic?.kind == .natural {
+                    if source.hasHeldVoices {
+                        let reference = source.requiredTuning ?? tuning
+                        let shift = manifest.adaptation?.policy == .transposeIntervals ? manifest.adaptation!.transposition(from: reference, to: tuning) : 0
+                        positions = try event.positions.map { position in
+                            if manifest.adaptation?.policy != .transposeIntervals {
+                                guard instrument.contains(position) else { throw PositioningError.regionUnplayable }
+                                return position
+                            }
+                            let open = try tuning.pitch(at: FretPosition(string: position.string, fret: 0))
+                            let fret = try reference.pitch(at: position).midi + shift - open.midi
+                            guard (0...instrument.fretCount).contains(fret) else { throw PositioningError.regionUnplayable }
+                            return try FretPosition(string: position.string, fret: fret)
+                        }
+                    } else if event.harmonic?.kind == .natural {
                         positions = event.positions
                         guard positions.allSatisfy({ instrument.contains($0) && (region?.contains($0, maximumFret: instrument.fretCount) ?? true) }) else { throw PositioningError.regionUnplayable }
                         if let adaptation = manifest.adaptation, adaptation.policy == .transposeIntervals {
@@ -92,7 +105,7 @@ extension LoadedLesson {
                         guard instrument.contains(touch), region?.contains(touch, maximumFret: instrument.fretCount) ?? true else { throw PositioningError.regionUnplayable }
                     }
                     return try MusicalEvent(id: event.id, startTick: event.startTick - offset, durationTicks: event.durationTicks,
-                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger, harmonic: event.harmonic, mutedAttack: event.mutedAttack)
+                        kind: event.kind, positions: positions, assessSustain: event.assessSustain, accented: event.accented, strum: event.strum, palmMuted: event.palmMuted, pickStroke: event.pickStroke, bend: event.bend, pitchTransition: event.pitchTransition, vibrato: event.vibrato, legatoChain: event.legatoChain, pluckFinger: event.pluckFinger, harmonic: event.harmonic, mutedAttack: event.mutedAttack, heldStrings: event.heldStrings)
                 }
             }
             let selectedIDs = Set(events.map(\.id))

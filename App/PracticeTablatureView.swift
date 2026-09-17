@@ -23,6 +23,7 @@ struct PracticeTablatureView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
+            if model.exercise.hasHeldVoices { text("heldVoice.legend").font(.caption).foregroundStyle(.secondary) }
             HStack {
                 text("tab.title").font(.headline)
                 Text(verbatim: model.exercise.timeSignature.rawValue).monospacedDigit()

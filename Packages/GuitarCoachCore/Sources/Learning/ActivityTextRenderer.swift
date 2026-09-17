@@ -62,7 +62,7 @@ struct ActivityTextRenderer {
                 return "\(note) (\(p.string)/\(p.fret)\(role))"
             }
             var notes: [String] = [], positions: [String] = []
-            if events.contains(where: { $0.mutedAttack != nil }) {
+            if events.contains(where: { $0.mutedAttack != nil || !$0.heldStrings.isEmpty }) {
                 for event in events {
                     if let attack = event.mutedAttack {
                         let strings = attack.strings.map(String.init).joined(separator: ", ")
@@ -70,8 +70,11 @@ struct ActivityTextRenderer {
                         notes.append(label); positions.append(label)
                     } else {
                         let values = try event.visualTargets(in: tuning)
-                        notes += values.filter { $0.role != .harmonicBase }.map { $0.pitch.name(spelling: tuning.preferredSpelling) }
-                        positions += values.map(physical)
+                        func holdLabel(_ target: EventFretTarget) -> String {
+                            event.heldStrings.contains(target.position.string) ? (text.locale == "uk" ? " (продовжуй звучання)" : " (keep ringing)") : ""
+                        }
+                        notes += values.filter { $0.role != .harmonicBase }.map { $0.pitch.name(spelling: tuning.preferredSpelling) + holdLabel($0) }
+                        positions += values.map { physical($0) + holdLabel($0) }
                     }
                 }
             } else {

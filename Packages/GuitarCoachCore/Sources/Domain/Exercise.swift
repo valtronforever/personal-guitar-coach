@@ -45,6 +45,9 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     public let legatoChain: LegatoChain?
     public let harmonic: HarmonicNote?
     public let mutedAttack: MutedStringAttack?
+    /// Physical strings continuing from the adjacent previous event, without a new attack.
+    public let heldStrings: [Int]
+    public var attackedPositions: [FretPosition] { positions.filter { !heldStrings.contains($0.string) } }
     /// All technique targets for visualization/reachability; the initial attack has only its starting pitch.
     public var techniquePositions: [FretPosition] {
         if let harmonic, let start = positions.first, let touch = try? harmonic.touchPosition(from: start) { return harmonic.kind == .natural ? [touch] : [start, touch] }
@@ -54,7 +57,7 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
     }
     public var endTick: Int64 { startTick + durationTicks }
 
-    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil, bend: PitchBend? = nil, pitchTransition: PitchTransition? = nil, vibrato: PitchVibrato? = nil, legatoChain: LegatoChain? = nil, pluckFinger: PluckingFinger? = nil, harmonic: HarmonicNote? = nil, mutedAttack: MutedStringAttack? = nil) throws {
+    public init(id: String, startTick: Int64, durationTicks: Int64, kind: MusicalEventKind, positions: [FretPosition] = [], assessSustain: Bool = false, accented: Bool = false, strum: StrumPattern? = nil, palmMuted: Bool = false, pickStroke: StrumDirection? = nil, bend: PitchBend? = nil, pitchTransition: PitchTransition? = nil, vibrato: PitchVibrato? = nil, legatoChain: LegatoChain? = nil, pluckFinger: PluckingFinger? = nil, harmonic: HarmonicNote? = nil, mutedAttack: MutedStringAttack? = nil, heldStrings: [Int] = []) throws {
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw MusicError.invalidEvent }
         guard startTick >= 0, durationTicks > 0, !startTick.addingReportingOverflow(durationTicks).overflow else {
             throw MusicError.invalidTime
@@ -91,6 +94,14 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             guard kind == .note, positions.isEmpty, !assessSustain, !palmMuted, strum == nil, pickStroke == nil,
                   bend == nil, pitchTransition == nil, vibrato == nil, legatoChain == nil, pluckFinger == nil, harmonic == nil else { throw MusicError.invalidEvent }
         }
+        guard heldStrings == heldStrings.sorted(), Set(heldStrings).count == heldStrings.count,
+              heldStrings.allSatisfy({ string in positions.contains { $0.string == string } }) else { throw MusicError.invalidEvent }
+        if !heldStrings.isEmpty {
+            guard kind == .note, !assessSustain, !palmMuted, strum == nil, pickStroke == nil, pluckFinger == nil,
+                  bend == nil, pitchTransition == nil, vibrato == nil, legatoChain == nil, harmonic == nil,
+                  mutedAttack == nil, !accented || heldStrings.count < positions.count else { throw MusicError.invalidEvent }
+        }
+        self.heldStrings = heldStrings
         self.mutedAttack = mutedAttack
         self.harmonic = harmonic
         self.pluckFinger = pluckFinger
@@ -124,9 +135,10 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
         try values.encodeIfPresent(legatoChain, forKey: .legatoChain)
         try values.encodeIfPresent(harmonic, forKey: .harmonic)
         try values.encodeIfPresent(mutedAttack, forKey: .mutedAttack)
+        if !heldStrings.isEmpty { try values.encode(heldStrings, forKey: .heldStrings) }
     }
 
-    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke, bend, pitchTransition, vibrato, legatoChain, pluckFinger, harmonic, mutedAttack }
+    private enum CodingKeys: String, CodingKey { case id, startTick, durationTicks, kind, positions, assessSustain, accented, strum, palmMuted, pickStroke, bend, pitchTransition, vibrato, legatoChain, pluckFinger, harmonic, mutedAttack, heldStrings }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(id: values.decode(String.self, forKey: .id), startTick: values.decode(Int64.self, forKey: .startTick),
@@ -143,7 +155,8 @@ public struct MusicalEvent: Hashable, Codable, Identifiable, Sendable {
             legatoChain: values.decodeIfPresent(LegatoChain.self, forKey: .legatoChain),
             pluckFinger: values.decodeIfPresent(PluckingFinger.self, forKey: .pluckFinger),
             harmonic: values.decodeIfPresent(HarmonicNote.self, forKey: .harmonic),
-            mutedAttack: values.decodeIfPresent(MutedStringAttack.self, forKey: .mutedAttack))
+            mutedAttack: values.decodeIfPresent(MutedStringAttack.self, forKey: .mutedAttack),
+            heldStrings: values.decodeIfPresent([Int].self, forKey: .heldStrings) ?? [])
     }
 }
 
@@ -201,6 +214,16 @@ public struct Exercise: Hashable, Codable, Identifiable, Sendable {
             guard events.allSatisfy({ $0.positions.count <= 1 }) else { throw MusicError.unsupportedPolyphony }
         }
         guard assessmentMode == .monophonic || !events.contains(where: \.assessSustain) else { throw MusicError.invalidExercise }
+        if events.contains(where: { !$0.heldStrings.isEmpty }) {
+            guard assessmentMode == .displayOnly,
+                  events.allSatisfy({ $0.strum == nil && !$0.palmMuted && $0.bend == nil && $0.pitchTransition == nil && $0.vibrato == nil && $0.legatoChain == nil && $0.harmonic == nil && $0.mutedAttack == nil }) else { throw MusicError.invalidExercise }
+            for (index, event) in events.enumerated() where !event.heldStrings.isEmpty {
+                guard index > 0 else { throw MusicError.invalidExercise }
+                let previous = events[index - 1]
+                guard previous.endTick == event.startTick, previous.kind == .note,
+                      event.positions.filter({ event.heldStrings.contains($0.string) }).allSatisfy(previous.positions.contains) else { throw MusicError.invalidExercise }
+            }
+        }
         try TripletGroup.validate(triplets, events: events)
         if let beatGrouping {
             guard !beatGrouping.isEmpty, beatGrouping.count <= timeSignature.beatsPerBar,

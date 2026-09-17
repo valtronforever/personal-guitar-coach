@@ -15501,6 +15501,40 @@
           }
         }
       }
+    },
+    "heldVoice.legend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parenthesized frets keep ringing: hold them without another attack. Other frets are new attacks."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лади в дужках продовжують звучати: утримуй їх без нового щипка. Решта ладів — нові атаки."
+          }
+        }
+      }
+    },
+    "heldVoice.spoken %@ %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@; keep strings %@ ringing without a new attack"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@; продовжуй звучання струн %@ без нової атаки"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -141,7 +141,7 @@ struct PracticeScoreRow: View {
                         anchorX: min(8 * zoom, width / 2), zoom: zoom, compact: true)
                 } else {
                     ForEach(event.positions, id: \.self) { position in
-                        Text(verbatim: String(position.fret)).font(.system(size: 12 * zoom, weight: .bold, design: .monospaced))
+                        Text(verbatim: HeldVoicePresentation.fret(position, event: event, continuation: model.exercise.hasHeldVoices && segment.isContinuation)).font(.system(size: 12 * zoom, weight: .bold, design: .monospaced))
                             .frame(minWidth: 15 * zoom, minHeight: 16 * zoom).background(.background, in: RoundedRectangle(cornerRadius: 3))
                             .position(x: min(8 * zoom, width / 2), y: gridTop + (Double(position.string) - 0.5) * stringSpacing)
                     }
@@ -184,6 +184,7 @@ struct PracticeScoreRow: View {
         var notes = zip(segment.displayPositions, segment.displayPitches).map { position, pitch in
             String(format: format, locale: locale, Int64(position.string), Int64(position.fret), pitch.name(spelling: model.tuning.preferredSpelling))
         }.joined(separator: "; ")
+        notes = HeldVoicePresentation.spoken(notes: notes, event: event, continuation: model.exercise.hasHeldVoices && segment.isContinuation, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) })
         if let attack = event.mutedAttack { notes = MutedAttackPresentation.spoken(attack, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if event.harmonic != nil { notes = HarmonicPresentation.spoken(event: event, tuning: model.tuning, locale: locale, localized: { localizationBundle.localizedString(forKey: $0, value: nil, table: nil) }) }
         if let bend = event.bend { notes = String(format: localizationBundle.localizedString(forKey: bend.releaseEndTick == nil ? "bend.spoken %@ %lld" : "bend.spokenRelease %@ %lld", value: nil, table: nil), locale: locale, notes, bend.semitones * 100) }

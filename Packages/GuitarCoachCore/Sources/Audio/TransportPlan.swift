@@ -50,6 +50,12 @@ public struct TransportPlan: Sendable {
     public let countInTicks: Int64
     private let events: [ResolvedEvent]
     private let frequencies: [[Double]]
+    private struct HeldVoiceReference: Sendable {
+        let span: ReferenceVoiceSpan
+        let frequency: Double
+    }
+    private let heldVoices: [HeldVoiceReference]
+    private let heldVoiceDivisor: Double
     private let strumOffsets: [[Int64]]
     private let vibratoReferences: [VibratoReference?]
     private let bendPoints: [[PitchBend.Point]]
@@ -70,6 +76,8 @@ public struct TransportPlan: Sendable {
         events = try request.exercise.resolvedEvents(instrument: request.tuning)
         let tuning = request.exercise.requiredTuning ?? request.tuning
         frequencies = try events.map { try $0.event.soundingFrequencies(in: tuning) }
+        heldVoices = try request.exercise.referenceVoiceSpans.map { HeldVoiceReference(span: $0, frequency: try tuning.frequency(at: $0.position)) }
+        heldVoiceDivisor = Double(max(1, request.exercise.events.map { $0.positions.count }.max() ?? 1))
         bendPoints = events.map { $0.event.bend?.points(durationTicks: $0.event.durationTicks) ?? [] }
         var waveforms: [Int: VibratoWaveform] = [:]
         vibratoReferences = try events.map { item in
@@ -164,6 +172,24 @@ public struct TransportPlan: Sendable {
                 } }
             }
             guard request.mode == .preview, request.toneVolume > 0 else { continue }
+            if !heldVoices.isEmpty {
+                for voice in heldVoices {
+                    let low = max(sourceStart, voice.span.startTick), high = min(request.range.upperBound, voice.span.endTick)
+                    guard low < high else { continue }
+                    let origin = frame(at: epoch + voice.span.startTick - sourceStart)
+                    let offset = frame(at: epoch + high - sourceStart)
+                    let a = max(startFrame, frame(at: epoch + low - sourceStart)), b = min(end, offset)
+                    guard a < b else { continue }
+                    let fade = max(1, min(sampleRate * 0.005, Double(offset - origin) / 2))
+                    let gain = request.toneVolume * (voice.span.accented ? 0.3 : 0.2) / heldVoiceDivisor
+                    for sample in a..<b {
+                        let age = Double(sample - origin), remaining = Double(offset - sample - 1)
+                        let envelope = min(1, min(age / fade, remaining / fade))
+                        output[Int(sample - startFrame)] += Float(sin(2 * .pi * voice.frequency * age / sampleRate) * gain * envelope)
+                    }
+                }
+                continue
+            }
             for (index, item) in events.enumerated() where item.event.kind == .note {
                 let low = max(sourceStart, item.event.startTick), high = min(request.range.upperBound, item.event.endTick)
                 guard low < high else { continue }

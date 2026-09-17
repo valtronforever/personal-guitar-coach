@@ -216,3 +216,7 @@ In both languages/themes, distinguish × attacks from rests and pitched fret num
 ## Electric styles 97–104 — pending user
 
 Read all eight style lessons in en/uk, follow the complete twelve/eight/four-bar forms and compare reference, TAB and highlighted strings. Check clean physical playing and self-criteria separately from synthesized pitch/time. In metal, compare actual Standard and Drop open-bass power shapes. In R&B, release the chord before the one-string ornament; in country, distinguish short pitched notes from × scratches. Verify self-practice filters, keyboard/VoiceOver and both themes on the native app. No automatic chord, stylistic-feel, fast-gesture or physical-finger score is expected.
+
+## Held voices and topics 107–108 — pending user
+
+Read the new parentheses and continuation legend in both TAB views, languages and themes, including keyboard/VoiceOver. Listen for one continuous bass under changing melody, then a held upper note above alternating bass. Compare the four-bar chord-melody reference and actual fingering; intentionally release/repluck a held string to confirm that the self-check concerns real playing, not an automatic grade. Confirm Standard/Drop geometry and the explicit TAB fallback for simultaneous staff voices. Offline renders and analytic samples are not native interaction or guitar acceptance. Self-practice has no polyphonic/finger/balance score.

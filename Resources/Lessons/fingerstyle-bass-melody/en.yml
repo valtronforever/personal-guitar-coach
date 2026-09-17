@@ -1,0 +1,74 @@
+lessonID: fingerstyle-bass-melody
+lessonVersion: 1
+locale: en
+title: 'Fingerstyle: hold the bass, shape the melody'
+summary: Coordinate two audible lines with different attacks and durations.
+goal: Play a four-bar bass-and-melody study without restarting the held voice at every melody note.
+body: |-
+  Two musical lines do not have to attack or stop together. In this lesson a low bass note can continue across several upper notes. First hear the bass and melody separately, then combine them without changing either part. The goal is to preserve both lines, not simply to play a succession of small chords. Start with a clear sound so an accidental release or extra bass attack is easy to notice.
+
+  Read a parenthesized fret as a continuation: keep that string fretted and ringing without plucking it again. An ordinary fret number asks for a new attack, even when the number repeats. When a string disappears from the next event, end that voice at the boundary. The reference follows these independent starts and stops; the quieter middle of a held bass is not a request for another thumb stroke.
+
+  Use the thumb for the low line and choose comfortable fingers for the upper strings. Keep the bass contact while moving only the fingers needed by the melody. Test one bar very slowly: sound both starting notes, let the bass continue, and change the upper note on each beat. If the bass vanishes, isolate the exact upper-note change that released it. Sound alone cannot identify which finger you used, so observe that physical contact yourself.
+
+  The alternating-bass exercise reverses the responsibility. Here two successive low notes accompany one held upper note. Parentheses now appear on the upper string. Keep the melody sounding while the thumb changes strings, and stop the old bass rather than letting every low note accumulate. Compare this with the held-bass example; independence means choosing which voice continues, not letting everything ring indiscriminately.
+
+  Combine the four-bar study only after both parts are familiar. Follow the melody at an audible level while retaining the bass as support. Count the final two-beat melody note fully. Repeat one difficult transition, then return it to the complete form. Use the checklist for continuity, balance and deliberate releases. This polyphonic lesson has reference playback and self-practice, not an automatic score for two simultaneous voices or for finger choice.
+steps:
+  prepare:
+    title: Choose a small musical idea
+    body: Read the plan, choose a comfortable clean sound and begin slowly.
+  bass-line:
+    title: Learn the four-bar bass route
+    body: 'Center: {{root}} major. Play one bass attack per bar: tonic, dominant, tonic, tonic. Let each fill its
+      own bar.'
+  melody-line:
+    title: Hear the upper line by itself
+    body: Learn the four bars and the final two-beat note before adding bass. Every written number here is a fresh
+      attack.
+  hold-the-bass:
+    title: One bass attack, four melody notes
+    body: Attack both voices on beat 1. Keep the parenthesized fifth-string fret ringing under the three following
+      melody attacks.
+  hold-the-melody:
+    title: Keep the upper note across a bass change
+    body: The bass changes every beat; each upper note lasts two beats. Release the preceding low string while keeping
+      the parenthesized upper string.
+  two-line-study:
+    title: Four bars with an independent bass
+    body: Attack a new bass only at each bar start, including the repeated tonic. Let the melody change above it
+      and count the complete ending.
+  independence-review:
+    title: Listen to both lines
+    body: Play each line alone, then combine them twice and compare one difficult change.
+activities:
+  bass-line:
+    title: Learn the four-bar bass route
+    body: 'Center: {{root}} major. Play one bass attack per bar: tonic, dominant, tonic, tonic. Let each fill its
+      own bar.'
+  melody-line:
+    title: Hear the upper line by itself
+    body: Learn the four bars and the final two-beat note before adding bass. Every written number here is a fresh
+      attack.
+  hold-the-bass:
+    title: One bass attack, four melody notes
+    body: Attack both voices on beat 1. Keep the parenthesized fifth-string fret ringing under the three following
+      melody attacks.
+  hold-the-melody:
+    title: Keep the upper note across a bass change
+    body: The bass changes every beat; each upper note lasts two beats. Release the preceding low string while keeping
+      the parenthesized upper string.
+  two-line-study:
+    title: Four bars with an independent bass
+    body: Attack a new bass only at each bar start, including the repeated tonic. Let the melody change above it
+      and count the complete ending.
+learningTasks:
+  independence-review:
+    title: Listen to both lines
+    body: Play each line alone, then combine them twice and compare one difficult change.
+    items:
+      bass: The bass continued across melody attacks without extra plucks.
+      upper: The upper voice continued through the alternating-bass exercise.
+      release: I ended omitted strings deliberately instead of accumulating notes.
+      balance: I could follow the melody while still hearing bass support.
+      form: I retained all four bars and the complete final duration.
