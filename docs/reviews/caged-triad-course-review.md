@@ -23,3 +23,7 @@ Final results and signed root Release evidence follow below. Native/hardware/phy
 - Final App run: 150 tests /43 suites pass (157.983 s), including the new Drop-map→fragment flow (0.760 s), existing reader/tuning integration and whole-corpus notation checks.
 - Final validator: 79 bilingual bundles, zero issues. Localization: 840 en/uk UI keys pass. Partial coverage: 72 authored, 1 needs_review, 55 todo; full acceptance remains incomplete.
 - Four Python author-tool tests pass (8.217 s); project generation is current; UI test sources type-check. No native UI execution or hardware evidence claimed.
+
+## Signed local Release
+
+Root-only Release/archive build passes. The bundle audit verifies 79 lessons /238 YAML files, en/uk resources, arm64 macOS 14 minimum, ad-hoc signature, hardened runtime and expected sandbox entitlements. Binary SHA256: `c48f87bcce64f04d945127a3969168a2dfb85f954cc9aaeacc43e0f54951f218`; archive: `132c938f1e45069909c71ee9e07d56ad20d49507599001fab186930abaeb7984`. Signed sandbox→separate XPC→invalidRequest passes without an AI provider call. [Bundle report](../benchmarks/caged-triad-release-bundle.json). No local Debug app was built; native launch/hardware flags remain false. Exact-head CI/merge remain open.
