@@ -4312,13 +4312,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This pitch may belong to more than one string or be a harmonic. Select the string you are playing before confirming its tuning."
+            "value": "The scale shows deviation from the suggested target. This pitch may belong to more than one string or be a harmonic. Select the string you are playing to confirm its tuning."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ця висота може належати кільком струнам або бути обертоном. Вибери струну, яку граєш, перш ніж підтвердити її налаштування."
+            "value": "Шкала показує відхилення від запропонованої ноти. Ця висота може належати кільком струнам або бути обертоном. Вибери струну, яку граєш, щоб підтвердити її налаштування."
           }
         }
       }

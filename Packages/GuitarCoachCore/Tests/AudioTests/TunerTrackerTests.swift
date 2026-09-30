@@ -72,6 +72,31 @@ import Domain
         #expect(automatic.reading.targetString == 5 && automatic.reading.feedback == .inTune)
     }
 
+    @Test(arguments: [1, 2]) func ambiguousUpperStringsKeepMovingIndicatorWithoutConfirmingTuning(string: Int) throws {
+        var tracker = try TunerTracker()
+        let target = try TuningProfile.standard.strings[string - 1].openPitch.frequency()
+        for (index, cents) in [-25.0, 0, 25].enumerated() {
+            feed(&tracker, hz: target * pow(2, cents / 1200), from: Double(index) * 0.4)
+            #expect(tracker.reading.feedback == .chooseString)
+            #expect(tracker.reading.targetString == string)
+            #expect(abs(try #require(tracker.reading.cents) - cents) < 1e-6)
+            #expect(abs(try #require(tracker.reading.indicatorCents) - cents) < 1e-6)
+        }
+        // The pointer is still the five-frame median while string confirmation is pending.
+        tracker.update(frequency: target * pow(2, -25.0 / 1200), clarity: 0.99, quality: .reliable, streamTime: 1.2)
+        #expect(abs(try #require(tracker.reading.indicatorCents) - 25) < 1e-6)
+        #expect(abs(try #require(tracker.reading.cents) + 25) < 1e-6)
+        tracker.update(frequency: nil, clarity: nil, quality: .silence, streamTime: 1.25)
+        #expect(tracker.reading.indicatorCents == nil && tracker.reading.cents == nil)
+        tracker.update(frequency: target, clarity: 0.99, quality: .reliable, streamTime: 1.3)
+        #expect(abs(try #require(tracker.reading.indicatorCents)) < 1e-6)
+        try tracker.configure(tuning: .standard, mode: .manual(string: string))
+        feed(&tracker, hz: target, from: 1.35, steps: 6)
+        #expect(tracker.reading.feedback == .centering)
+        feed(&tracker, hz: target, from: 1.65, steps: 2)
+        #expect(tracker.reading.feedback == .inTune)
+    }
+
     @Test func dropDAndReferenceChangeResetAndRecomputeEveryTarget() throws {
         var tracker = try TunerTracker(tuning: .dropD, mode: .manual(string: 6))
         #expect(tracker.reading.targetPitch?.midi == 38)
