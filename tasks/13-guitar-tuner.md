@@ -40,3 +40,9 @@ Synthetic detuning ±5/10/25/50 cents, silence after stable tone, near-boundary 
 Перевірено 2026-09-10: `swift test --package-path Packages/GuitarCoachCore` — 77 тестів/13 suites; `swift test` — 34/9 (зокрема реальний DSP на синтетичній синусоїді → TunerModel → silence). Detuning ±5/10/25/50, raw-boundary jitter, duplicate/gap/intervening clipping, harmonic/manual octave, Drop D та A4=450 покрито тестами. `check_localizations.py` — 279 keys; `check_ui_sources.py` — source type-check. Debug/Release `.app` з ad-hoc signature зібрано. Native UI: Standard string6 target E2, disabled Start без input; English/Ukrainian dark synthetic in-tune/silence, скидання frequency/green. Це не live guitar evidence.
 
 Локальний review: [13-review.md](../docs/reviews/13-review.md). Фізичне налаштування шести струн Standard/Drop D, реальні permission/capture і human accessibility залишено U02/U05/U08 після всіх 22 задач; Xcode UI execution — U07. Issue лишається відкритим до цих перевірок.
+
+## Виправлення індикатора верхніх струн — 2026-09-30
+
+Автоматичні цілі E4/B3 у Standard збігаються з обертонами нижчих струн. Гілка `chooseString` повертала Hz, але `cents`/`indicatorCents` були `nil`, тому шкала не мала індикатора. Тепер надійна висота дає відхилення від показаної цілі та згладжений індикатор навіть до ручного підтвердження струни. Статус `chooseString` залишається; 300 ms підтвердження не накопичуються до ручного вибору. Ненадійний/застарілий сигнал і далі прибирає показники. Пояснення en/uk уточнює значення шкали.
+
+Регресія відтворена тестом до виправлення: обидві струни мали `nil` замість cents. Повторна перевірка та локальний review наведені у [13-review.md](../docs/reviews/13-review.md). Статус задачі залишається `pending_user`: фактична гітара та UI/VoiceOver потребують перевірки U02/U05/U08.

@@ -90,17 +90,17 @@ public struct TunerTracker: Sendable {
             reading = makeReading(feedback: .unsupportedTarget, target: target, frequency: frequency, detected: detected, clarity: clarity)
             return
         }
-        if needsConfirmation {
-            clearQualification()
-            reading = makeReading(feedback: .chooseString, target: target, frequency: frequency, detected: detected, clarity: clarity)
-            return
-        }
         recentCents.append(cents)
         if recentCents.count > 5 { recentCents.removeFirst() }
         let indicator = recentCents.sorted()[recentCents.count / 2]
         let feedback: TunerFeedback
+        if needsConfirmation {
+            // String identity is uncertain, but deviation from the displayed target is measurable.
+            // Keep the smoothed pointer live without accumulating an in-tune confirmation.
+            stableSince = nil
+            feedback = .chooseString
         // Temporal hysteresis: qualify for 300 ms, but revoke immediately outside the true ±5-cent band.
-        if abs(cents) <= 5 + 1e-7 {
+        } else if abs(cents) <= 5 + 1e-7 {
             if stableSince == nil { stableSince = streamTime }
             feedback = streamTime - stableSince! >= 0.3 - 1e-9 ? .inTune : .centering
         } else {

@@ -129,3 +129,5 @@
 - `pending_user` — [Lesson learning modes](follow-up/lesson-learning-modes.md): theory, self-assessment and listening questions alongside scored practice.
 
 - `pending_user` — [Full curriculum and library UX](follow-up/full-curriculum.md): all128 agreed bilingual lessons in16 modules; required bounded audio/notation/listening/recording extensions and course/filter/navigation UX implemented. Complete editorial/software inventory and8×5 instrument matrix pass; [final review](../docs/reviews/full-curriculum-acceptance-review.md) consolidates evidence. Final closeout PR is gated by exact-head CI; actual guitar/interface and remaining native/VoiceOver/file-picker checks stay pending_user.
+
+Tuner follow-up (2026-09-30): task 13 remains `pending_user`. Automatic harmonic-ambiguous targets now retain the cents indicator (including Standard strings 1/2); explicit string confirmation still gates “in tune”. See the [task evidence](13-guitar-tuner.md) and [local review](../docs/reviews/13-review.md); physical acceptance remains in USER-VALIDATION.md.

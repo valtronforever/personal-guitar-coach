@@ -5,6 +5,28 @@ import Domain
 @testable import PersonalGuitarCoach
 
 @MainActor struct TunerModelTests {
+    @Test(arguments: [1, 2], [44100.0, 48000.0]) func automaticUpperStringIndicatorFollowsSyntheticDetuning(string: Int, sampleRate: Double) throws {
+        let target = TuningProfile.standard.strings[string - 1].openPitch
+        let targetHz = try target.frequency()
+        let model = TunerModel(), now = ContinuousClock.now
+        let frames = Int(sampleRate / 20)
+        for cents in [-25.0, 0, 25] {
+            let analyzer = try MonophonicAnalyzer(sampleRate: sampleRate)
+            let frequency = targetHz * pow(2, cents / 1200)
+            for block in 0..<24 {
+                let pcm = (0..<frames).map { Float(0.2 * sin(2 * .pi * frequency * Double(block * frames + $0) / sampleRate)) }
+                pcm.withUnsafeBufferPointer { analyzer.process($0) }
+                model.consume(analyzer.snapshot(), now: now)
+            }
+            #expect(model.reading.feedback == .chooseString)
+            #expect(model.reading.targetString == string && model.reading.detectedPitch == target)
+            #expect(abs(try #require(model.reading.cents) - cents) < 1)
+            #expect(abs(try #require(model.reading.indicatorCents) - cents) < 1)
+        }
+        model.expire(now: now.advanced(by: .milliseconds(201)))
+        #expect(model.isStale && model.reading.indicatorCents == nil)
+    }
+
     @Test(arguments: [44100.0, 48000.0]) func dropALowStringRetainsDetuningFeedbackWithExpandedGradingRange(sampleRate: Double) throws {
         for cents in [-75.0, -25, 0, 25, 75] {
             let frequency = 55 * pow(2, cents / 1200)
@@ -91,6 +113,7 @@ import Domain
                 let expected: TunerFeedback = mode == .automatic && ambiguousStrings.contains(string.number) ? .chooseString : .inTune
                 #expect(model.reading.feedback == expected)
                 #expect(model.reading.detectedPitch == string.openPitch && model.reading.targetString == string.number)
+                #expect(abs(try #require(model.reading.indicatorCents)) < 1)
             }
         }
     }
